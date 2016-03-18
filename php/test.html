@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title> jquery와 php 이용 예제</title>
+    <script type="text/javascript" src="../js/plugins/jquery.min.js"></script>
+    <script type="text/javascript">
+        //jQuery.post를 이용한 예제
+        $(document).ready(function(){
+            $("#form").submit(function(){
+                $.post('test.php', $("#form").serialize(), function(result){
+                    if (result){
+                        $("#message")[0].value = '성공: ' + result.id;
+                        $("#content").html(result.username+ result.password);
+                        return false;
+                    }
+
+                }, 'json');
+                $("#message")[0].value = '실패';
+                return false;
+            });
+        });
+
+        /*
+         * jQuery.ajax를 이용한 예제
+         function test() {
+         $(document).ready(function(){
+         var user = $("#user")[0].value;
+         var password = $("#password")[0].value;
+         $.ajax({
+         type:"GET",
+         url:"test.php",
+         data:"user=" + user + "&password=" + password,
+         success: function(result){
+         if (result){
+         $("#message")[0].value = '성공: ' + result;
+         } else {
+         $("#message")[0].value = '실패';
+         }
+         }
+         });
+         });
+         }*/
+    </script>
+    <style type="text/css">
+        body {
+            margin: auto;
+            width: 100%;
+            display:table;
+            background-color:#666;
+            font-size: 9.5pt;
+        }
+        form {
+            text-align: center;
+            height: 500px;
+            display:table-cell;
+            vertical-align:middle;
+        }
+        input {
+            font-size: 20px;
+            text-shadow: #ccc 1px 1px;
+            text-align: center;
+        }
+        input#message {
+            background-color: transparent;
+            border: 0;
+            color: white;
+            text-shadow: #000 1px 1px;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    <h2> jQuery 와 PHP 를 이용한 간단 로그인</h2>
+    <div id="content"> </div>
+    <input type="text" size="25" name="user" id="user" onKeyup="javascript:test();" />
+    <br />
+    <input type="password" size="25" name="password" id="password" onKeyup="javascript:test();" />
+    <br />
+    <input type="text" size="25" id="message" value="메세지표시" />
+    <br />
+    <input type="submit" size="25" id="submit" value="send" />
+</form>
+</body>
+</html>

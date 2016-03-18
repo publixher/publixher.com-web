@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - publixher@localhost" uuid="97bdcd9a-9306-4506-87e5-4764f0d460c4">
+    <database-info product="MySQL" version="5.6.25" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="publixher"/>
+      <table id="2" parent="1" name="TBL_BUY_LIST"/>
+      <table id="3" parent="1" name="TBL_CONNECTOR"/>
+      <table id="4" parent="1" name="TBL_CONTENT"/>
+      <table id="5" parent="1" name="TBL_CONTENT_IMG_LIST"/>
+      <table id="6" parent="1" name="TBL_CONTENT_NOTI"/>
+      <table id="7" parent="1" name="TBL_CONTENT_REPLY"/>
+      <table id="8" parent="1" name="TBL_CONTENT_REPLY_TAGS"/>
+      <table id="9" parent="1" name="TBL_CONTENT_TAGS"/>
+      <table id="10" parent="1" name="TBL_FORDER"/>
+      <table id="11" parent="1" name="TBL_FRIENDS"/>
+      <table id="12" parent="1" name="TBL_GUESTBOOK"/>
+      <table id="13" parent="1" name="TBL_KNOCK_LIST"/>
+      <table id="14" parent="1" name="TBL_PIN_LIST"/>
+      <table id="15" parent="1" name="TBL_SELL_LIST"/>
+      <table id="16" parent="1" name="TBL_USER">
+        <comment>회원 프로필</comment>
+      </table>
+      <column id="17" parent="2" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="18" parent="2" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="19" parent="2" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="20" parent="2" name="BUY_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <index id="21" parent="2" name="BUY_LIST_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="22" parent="2" name="BUY_LIST_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="23" parent="2" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="24" parent="2" name="BUY_LIST_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="25" parent="2" name="BUY_LIST_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="26" parent="3" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="27" parent="3" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="28" parent="3" name="SEQ_ANONY">
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="29" parent="3" name="CASH_POINT">
+        <data-type>mediumint(6) unsigned zerofill</data-type>
+        <default-expression>&apos;000000&apos;</default-expression>
+      </column>
+      <index id="30" parent="3" name="CONNECTOR_ANNONY_idx">
+        <columns>SEQ_ANONY</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="31" parent="3" name="CONNECTOR_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="32" parent="3" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="33" parent="3" name="CONNECTOR_NICK">
+        <columns>SEQ_ANONY</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="34" parent="3" name="CONNECTOR_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="35" parent="4" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="36" parent="4" name="SEQ_WRITER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="37" parent="4" name="TITLE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="38" parent="4" name="KNOCK">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+        <default-expression>&apos;0000000000&apos;</default-expression>
+      </column>
+      <column id="39" parent="4" name="WRITE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="40" parent="4" name="MODIFY_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="41" parent="4" name="REPORT">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(2) unsigned zerofill</data-type>
+        <default-expression>&apos;00&apos;</default-expression>
+      </column>
+      <column id="42" parent="4" name="FOR_SALE">
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="43" parent="4" name="CATEGORY">
+        <mandatory>1</mandatory>
+        <data-type>char(3)</data-type>
+        <default-expression>&apos;SNS&apos;</default-expression>
+      </column>
+      <column id="44" parent="4" name="PRICE">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned zerofill</data-type>
+        <default-expression>&apos;00000&apos;</default-expression>
+      </column>
+      <column id="45" parent="4" name="AGE">
+        <comment>Y:성인용N:전체용</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="46" parent="4" name="AD">
+        <comment>Y면 광고하기</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="47" parent="4" name="BODY">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="48" parent="4" name="PREVIEW">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="49" parent="4" name="COMMENT">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="50" parent="4" name="SALE">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="51" parent="4" name="DEL">
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="52" parent="4" name="FOLDER">
+        <data-type>int(10)</data-type>
+      </column>
+      <index id="53" parent="4" name="CONTENT_WRITER_idx">
+        <columns>SEQ_WRITER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="54" parent="4" name="title">
+        <columns>TITLE</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="55" parent="4" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="56" parent="4" name="CONTENT_WRITER">
+        <columns>SEQ_WRITER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="57" parent="5" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="58" parent="5" name="FILE_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)</data-type>
+      </column>
+      <column id="59" parent="5" name="FILE_HASH">
+        <data-type>varchar(2048)</data-type>
+      </column>
+      <key id="60" parent="5" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <column id="61" parent="6" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="62" parent="6" name="SEQ_CONTENT">
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="63" parent="6" name="SEQ_TARGET">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="64" parent="6" name="NOTI_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="65" parent="6" name="ACT">
+        <comment>1:내 타임라인에 글쓴거2:내 댓글에 대댓글3:내 게시글에 댓글4:내 게시글에 노크5:태그될때</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+      </column>
+      <column id="66" parent="6" name="SEQ_ACTOR">
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="67" parent="6" name="CHECKED">
+        <comment>체크되면</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <index id="68" parent="6" name="CONTENT_NOTI_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="69" parent="6" name="CONTENT_NOTI_FRIEND_idx">
+        <columns>SEQ_ACTOR</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="70" parent="6" name="CONTENT_NOTI_USER_idx">
+        <columns>SEQ_TARGET</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="71" parent="6" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="72" parent="6" name="CONTENT_NOTI_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="73" parent="6" name="CONTENT_NOTI_FRIEND">
+        <columns>SEQ_ACTOR</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="74" parent="6" name="CONTENT_NOTI_USER">
+        <columns>SEQ_TARGET</columns>
+        <ref-key>~.TBL_CONNECTOR.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="75" parent="7" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="76" parent="7" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="77" parent="7" name="REPLY_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="78" parent="7" name="REPLY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="79" parent="7" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <index id="80" parent="7" name="CONTENT_REPLY_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="81" parent="7" name="CONTENT_REPLY_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="82" parent="7" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="83" parent="7" name="CONTENT_REPLY_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="84" parent="7" name="CONTENT_REPLY_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="85" parent="8" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="86" parent="8" name="SEQ_REPLY">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="87" parent="8" name="TAG_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="88" parent="8" name="REPLY_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <index id="89" parent="8" name="CONTENT_REPLY_TAGS_REPLY_idx">
+        <columns>SEQ_REPLY</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="90" parent="8" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="91" parent="8" name="CONTENT_REPLY_TAGS_REPLY">
+        <columns>SEQ_REPLY</columns>
+        <ref-key>~.TBL_CONTENT_REPLY.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="92" parent="9" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="93" parent="9" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="94" parent="9" name="TAG_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="95" parent="9" name="CONTENT_TAGS_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="96" parent="9" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="97" parent="9" name="CONTENT_TAGS_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="98" parent="10" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="99" parent="10" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="100" parent="10" name="DIR">
+        <data-type>varchar(45)</data-type>
+        <default-expression>&apos;새 폴더&apos;</default-expression>
+      </column>
+      <column id="101" parent="10" name="CONTENT_NUM">
+        <data-type>int(10) unsigned zerofill</data-type>
+        <default-expression>&apos;0000000000&apos;</default-expression>
+      </column>
+      <index id="102" parent="10" name="FORDER_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="103" parent="10" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="104" parent="10" name="FORDER_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="105" parent="11" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="106" parent="11" name="SEQ_FRIEND">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="107" parent="11" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="108" parent="11" name="ALLOWED">
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <index id="109" parent="11" name="FRIENDS_FRIEND_idx">
+        <columns>SEQ_FRIEND</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="110" parent="11" name="FRIENDS_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="111" parent="11" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="112" parent="11" name="FRIENDS_FRIEND">
+        <columns>SEQ_FRIEND</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="113" parent="11" name="FRIENDS_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="114" parent="12" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="115" parent="12" name="SEQ_HOST">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="116" parent="12" name="SEQ_CLIENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="117" parent="12" name="COMMENT">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="118" parent="12" name="COMMENT_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="119" parent="12" name="KNOCK">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="120" parent="12" name="GUESTBOOK_CLIENT_idx">
+        <columns>SEQ_CLIENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="121" parent="12" name="GUESTBOOK_HOST_idx">
+        <columns>SEQ_HOST</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="122" parent="12" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="123" parent="12" name="GUESTBOOK_CLIENT">
+        <columns>SEQ_CLIENT</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="124" parent="12" name="GUESTBOOK_HOST">
+        <columns>SEQ_HOST</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="125" parent="13" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="126" parent="13" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="127" parent="13" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <index id="128" parent="13" name="KNOCK_LIST_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="129" parent="13" name="KNOCK_LIST_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="130" parent="13" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="131" parent="13" name="KNOCK_LIST_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="132" parent="13" name="KNOCK_LIST_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="133" parent="14" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="134" parent="14" name="PIN_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="135" parent="14" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="136" parent="14" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <index id="137" parent="14" name="PIN_LIST_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="138" parent="14" name="PIN_LIST_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="139" parent="14" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="140" parent="14" name="PIN_LIST_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="141" parent="14" name="PIN_LIST_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="142" parent="15" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="143" parent="15" name="SEQ_USER">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="144" parent="15" name="SEQ_CONTENT">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <index id="145" parent="15" name="SELL_LIST_CONTENT_idx">
+        <columns>SEQ_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="146" parent="15" name="SELL_LIST_USER_idx">
+        <columns>SEQ_USER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="147" parent="15" name="PRIMARY">
+        <columns>SEQ</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="148" parent="15" name="SELL_LIST_CONTENT">
+        <columns>SEQ_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="149" parent="15" name="SELL_LIST_USER">
+        <columns>SEQ_USER</columns>
+        <ref-key>publixher.TBL_USER(SEQ)</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="150" parent="16" name="SEQ">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <column id="151" parent="16" name="EMAIL">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="152" parent="16" name="PASSWORD">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="153" parent="16" name="USER_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="154" parent="16" name="SEX">
+        <data-type>char(1)</data-type>
+      </column>
+      <column id="155" parent="16" name="BIRTH">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="156" parent="16" name="REGION">
+        <data-type>char(3)</data-type>
+      </column>
+      <column id="157" parent="16" name="H_SCHOOL">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="158" parent="16" name="UNIV">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="159" parent="16" name="PIC">
+        <data-type>varchar(2048)</data-type>
+        <default-expression>&apos;/img/profile/2cafb4c1154adb353bc7ccb2595528da.jpg&apos;</default-expression>
+      </column>
+      <column id="160" parent="16" name="JOIN_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="161" parent="16" name="IS_NICK">
+        <data-type>char(1)</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="162" parent="16" name="TOP_CONTENT">
+        <data-type>int(10) unsigned zerofill</data-type>
+      </column>
+      <index id="163" parent="16" name="USER_TOP_CONTENT">
+        <columns>TOP_CONTENT</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="164" parent="16" name="PRIMARY">
+        <columns>SEQ
+EMAIL</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="165" parent="16" name="USER_TOP_CONTENT">
+        <columns>TOP_CONTENT</columns>
+        <ref-key>~.TBL_CONTENT.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
