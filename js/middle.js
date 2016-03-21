@@ -382,14 +382,36 @@ $(document).ready(function () {
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
         var thisrepnum = thisrepID.substring(4);
+        var thisitemID=$(this).parents()[9].id;
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisrepnum, action: "repknock", mid: mid, token: token, age: age},
+            data: {seq: thisrepnum, action: "repknock", mid: mid,thisitemID:thisitemID,token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'N' && res['reason'] == 'already') {
                     alert('이미 노크하신 댓글입니다.');
+                }
+                else {
+                    $('#' + thisrepID + ' .repknockbad').text(res['knock']);
+                }
+            }, error: function (request) {
+                alert(request.responseText);
+            }
+        })
+    });
+    //대댓글 클릭시의 동작
+    $(document).on("click", ".repreply", function (e) {
+        var thisrepID = $(this).parents()[6].id;
+        var thisrepnum = thisrepID.substring(4);
+        var thisitemID=$(this).parents(9).id;
+        $.ajax({
+            url: "/php/data/itemAct.php",
+            type: "POST",
+            data: {seq: thisrepnum, action: "reprep", mid: mid,thisitemID:thisitemID,token: token, age: age},
+            dataType: 'json',
+            success: function (res) {
+                if (res['result'] == 'N' && res['reason'] == 'already') {
                 }
                 else {
                     $('#' + thisrepID + ' .repknockbad').text(res['knock']);
@@ -603,9 +625,6 @@ $(document).ready(function () {
     //파일 업로드시 동작
     $('#fileuploads,#fileuploadp').fileupload({
         dataType: 'json',
-        imageMaxWidth: 500,
-        imageMaxHeight: 750,
-        imageCrop: true,
         add: function (e, data) {
             var uploadFile = data.files[0];
             var isValid = true;

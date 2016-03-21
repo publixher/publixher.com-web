@@ -307,13 +307,14 @@ if ($act == 'knock') {
     $knocked = $prepare->fetchColumn();
     if (!$knocked) {
         //노크처리
-        $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK(SEQ_USER,SEQ_REPLY) VALUES(:SEQ_USER,:SEQ_REPLY);";
+        $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK(SEQ_USER,SEQ_REPLY,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_REPLY,:SEQ_CONTENT);";
         $sql2 = "UPDATE publixher.TBL_CONTENT_REPLY SET KNOCK=KNOCK+1 WHERE SEQ=:SEQ;";
         $sql3 = "SELECT SEQ_USER,KNOCK,SEQ_CONTENT FROM publixher.TBL_CONTENT_REPLY WHERE SEQ=:SEQ;";
         //insert문
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
         $prepare1->bindValue(':SEQ_REPLY', $seq, PDO::PARAM_STR);
+        $prepare1->bindValue(':SEQ_CONTENT', $_POST['thisitemID'], PDO::PARAM_STR);
         $prepare1->execute();
         //update문
         $prepare2 = $db->prepare($sql2);

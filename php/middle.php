@@ -66,7 +66,7 @@
                             </td>
                             <td class="regbtn">
                                 <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary"
-                                        autocomplete="off">
+                                        >
                                     보내기
                                 </button>
                             </td>

@@ -1,5 +1,5 @@
 <?php
-header("Content-Type:application/json");
+header("Content-Type:text/json");
 if(! isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest'){
     exit('부정한 호출입니다.');
 }

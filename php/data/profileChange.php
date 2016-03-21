@@ -105,7 +105,7 @@ if ($_POST['action'] == 'profilechange') {
         $prepare2->bindValue(':SEQ', $userseq['SEQ_USER'], PDO::PARAM_STR);
         $prepare2->execute();
         $result = $prepare2->fetchObject(User);
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = $result;
         setcookie('cid', $result->getSEQ(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
     } elseif ($isnick == 'N') {
         //실명일때 익명으로 새로 로그인
@@ -113,17 +113,17 @@ if ($_POST['action'] == 'profilechange') {
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
         $prepare->execute();
-        $anonyseq = $prepare->fetch(PDO::FETCH_ASSOC);
-        if (is_null($anonyseq['SEQ_ANONY'])) {
+        $anonyseq = $prepare->fetchColumn();
+        if (is_null($anonyseq)) {
             echo '<script type="text/javascript">alert("먼저 프로필설정에서 익명계정을 만들어주세요.")</script>';
             echo "<meta http-equiv='refresh' content='0;url=${referer}'>";
         } else {
             $sql2 = "SELECT * FROM publixher.TBL_USER WHERE SEQ=:SEQ";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ', $anonyseq['SEQ_ANONY'], PDO::PARAM_STR);
+            $prepare2->bindValue(':SEQ', $anonyseq, PDO::PARAM_STR);
             $prepare2->execute();
             $result = $prepare2->fetchObject(User);
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = $result;
             setcookie('cid', $result->getSEQ(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
         }
     }
