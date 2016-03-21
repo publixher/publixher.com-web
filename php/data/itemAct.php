@@ -66,31 +66,135 @@ if ($act == 'knock') {
     } else {
         echo '{"result":"N","reason":"already"}';
     }
-} elseif ($act == 'comment') {
+} elseif ($act == 'comment' OR $act == 'more_comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
-    //TODO:댓글에 노크 추가하기
-    $sql1 = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE SEQ_CONTENT=:SEQ_CONTENT ORDER BY REPLY_DATE ASC";
-    $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ_CONTENT', $_GET['seq'], PDO::PARAM_STR);
-    $prepare1->execute();
-    $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-    if (!$result) {        //결과값이 없으면 comment키에 N값을 넣어 전송시킴
-        echo "{\"comment\":\"N\"}";
-        exit;
-    } else {
-        for ($i = 0; $i < count($result); $i++) {//닉네임을 가져와야 할지 실명을 가져와야 할지 정하는것
+    $seq = $_GET['seq'];
+    $userseq=$_GET['userseq'];
+    function getWriter($result, $db)
+    {
+        for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
             $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
-            $key = 'USER_NAME';
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':SEQ', $result[$i]['SEQ_USER'], PDO::PARAM_STR);
             $prepare2->execute();
             $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
-            $val = $fetch['USER_NAME'];
-            $result[$i][${key}] = $val;
+            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
             $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
             $result[$i]['PIC'] = $fetch['PIC'];
         }
-        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        return $result;
+    }
+    function getBest($db, $seq,$index)
+    {
+        $bestrep_sql = "SELECT \n"  //베스트댓글5개
+            . "	* \n"
+            . "FROM \n"
+            . "	publixher.TBL_CONTENT_REPLY REPLY \n"
+            . "WHERE \n"
+            . "	KNOCK + SUB_REPLY >= 10 \n"
+            . "	AND SEQ_CONTENT = :SEQ_CONTENT \n"
+            . "ORDER BY \n"
+            . "	KNOCK + SUB_REPLY DESC \n"
+            . "LIMIT \n"
+            . ":INDEX, 5";
+        $prepare1 = $db->prepare($bestrep_sql);
+        $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+        $prepare1->bindValue(':INDEX', $index, PDO::PARAM_STR);
+        $prepare1->execute();
+        $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {    //베스트 있을때
+            $result = getWriter($result, $db);
+            $result['sort'] = "best";
+            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function getTime($db, $seq,$index)
+    {
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE SEQ_CONTENT=:SEQ_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,5";
+        $prepare1 = $db->prepare($timerep_sql);
+        $prepare1->bindValue(':SEQ_CONTENT', $seq);
+        $prepare1->bindValue(':INDEX', $index);
+        $prepare1->execute();
+        $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {
+            $result = getWriter($result, $db);
+            $result['sort'] = "time";
+            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function getFrie($db,$seq,$userseq,$index){
+        $friend_sql = "SELECT \n"
+            . "	REPLY.* \n"
+            . "FROM \n"
+            . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.SEQ_USER = FRIEND.SEQ_FRIEND \n"
+            . "WHERE \n"
+            . "	FRIEND.SEQ_USER = :SEQ_USER \n"
+            . "	AND REPLY.SEQ_CONTENT = :SEQ_CONTENT \n"
+            . "ORDER BY \n"
+            . "	REPLY.SEQ DESC \n"
+            . "LIMIT \n"
+            . "	:INDEX, 5";
+        $prepare1 = $db->prepare($friend_sql);
+        $prepare1->bindValue(':SEQ_CONTENT', $seq);
+        $prepare1->bindValue(':SEQ_USER', $userseq);
+        $prepare1->bindValue(':INDEX', $index);
+        $prepare1->execute();
+        $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+        if($result){
+            $result = getWriter($result, $db);
+            $result['sort']="friend";
+            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            return true;
+        }else{
+            return false;
+        }
+    }
+    if ($act == 'comment') {
+        $sort = $_GET['sort'];
+        if ($sort == 'first') {
+            //베댓이 없으면 자동으로 시간순 정렬된 댓글이 보여
+            $result = getBest($db, $seq,0);
+            if (!$result) {
+                $result = getTime($db, $seq,0);
+                if (!$result) {
+                    echo '{"result":"NO"}';
+                }
+            }
+        } elseif ($sort== 'best') { //처음으로 로딩한게 아니라 각 탭을 보는거면 sort로 구분한다
+            $result=getBest($db,$seq,0);
+            if(!$result){
+                echo '{"result":"NO"}';
+            }
+        }elseif($sort=='time'){
+            $result=getTime($db,$seq,0);
+            if(!$result){
+                echo '{"result":"NO"}';
+            }
+        }elseif($sort=='frie'){
+            $result=getFrie($db,$seq,$userseq,0);
+            if(!$result){
+                echo '{"result":"NO"}';
+            }
+        }
+    } elseif ($act == 'more_comment') {
+        $sort = $_GET['sort'];
+        $index = $_GET['index'];
+        if ($sort == 'best') {
+            $result=getBest($db,$seq,$index);
+            if(!$result) echo '{"result":"NO"}';
+        } elseif ($sort == 'time') {
+            $result=getTime($db,$seq,$index);
+            if(!$result) echo '{"result":"NO"}';
+        } elseif ($sort == 'frie') {
+            $result=getFrie($db,$seq,$userseq,$index);
+            if(!$result) echo '{"result":"NO"}';
+        }
     }
 } elseif ($act == 'commentreg') {
     $userseq = $_POST['userseq'];
@@ -334,7 +438,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
         $prepare4->bindValue(':SEQ_CONTENT', $target['SEQ_CONTENT'], PDO::PARAM_STR);
         $prepare4->execute();
-        echo '{"knock":"'.$target['KNOCK'].'"}';
+        echo '{"knock":"' . $target['KNOCK'] . '"}';
     } else {
         echo '{"result":"N","reason":"already"}';
     }

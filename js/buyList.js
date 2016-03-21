@@ -210,22 +210,101 @@ $(document).ready(function(){
             }
         })
     });
-    //코멘트 버튼 동작
+    //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
-        if (!$('#' + thisitemID + ' .tail .commentlist').length > 0) {
-            $('#' + thisitemID + ' .tail').append('<div class="commentlist"></div><input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
+        var tail = $('#' + thisitemID + ' .tail');
+        $(this).parent().css('background-color', '#f4f4f4');
+        tail.css('margin-bottom', '10px');
+        if (!tail.hasClass('opend')) {
+            var word = '<div role="tabpanel">'
+            //정렬별 선택패널
+            word += '<ul class="nav nav-tabs" role="tablist" id="repnav-"' + thisitemID + '>'
+            word += '<li role="presentation" class="active"><a class="bestrep" href="#best-' + thisitemID + '" aria-controls="best-' + thisitemID + '" role="tab" data-toggle="tab">베스트 댓글</a></li>'
+            word += '<li role="presentation"><a class="timerep" href="#time-' + thisitemID + '" aria-controls="time-' + thisitemID + '" role="tab" data-toggle="tab">시간순 댓글</a></li>'
+            word += '<li role="presentation"><a class="frierep" href="#frie-' + thisitemID + '" aria-controls="frie-' + thisitemID + '" role="tab" data-toggle="tab">내 친구가 쓴 댓글</a></li>'
+            word += '</ul>'
+            //정렬별 댓글
+            word += '<div class="tab-content">'
+            word += '      <div role="tabpanel" class="tab-pane active" id="best-' + thisitemID + '"></div>'
+            word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
+            word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
+            word += '    </div></div>'
+            tail.append(word);
+            tail.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
+
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "GET",
+                data: {seq: thisitemID, action: "comment", sort: "first", userseq: mid, token: token, age: age},
+                dataType: 'json',
+                success: function (res) {
+                    function registRep(res, where) {
+                        var list = $('#' + thisitemID + ' .tail ' + '#' + where);
+                        list.html('');
+                        for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                            var write = '';
+                            var seq = res[i]['SEQ'];
+                            var name = res[i]['USER_NAME'];
+                            var date = res[i]['REPLY_DATE'];
+                            var reply = res[i]['REPLY'];
+                            var knock = res[i]['KNOCK'];
+                            write += '<div class=commentReply id="rep-' + seq + '">';
+                            write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                            list.append(write);
+                            var ind = parseInt(list.attr('index')) + 1;
+                            list.attr('index', ind);
+                        }
+                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                    }
+
+                    //각 패널에 인덱스 붙이기
+                    if (!$('#best-' + thisitemID).attr('index')) {
+                        $('#best-' + thisitemID).attr('index', '0');
+                    }
+                    if (!$('#time-' + thisitemID).attr('index')) {
+                        $('#time-' + thisitemID).attr('index', '0');
+                    }
+                    if (!$('#frie-' + thisitemID).attr('index')) {
+                        $('#frie-' + thisitemID).attr('index', '0');
+                    }
+
+                    if (res['sort'] == 'best') {//각 탭별로 인덱스 심어서 페이지 나누기함
+                        registRep(res, 'best-' + thisitemID);
+                    } else if (res['sort'] == 'time') {
+                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 베스트 댓글이 없어요 >,.<;;</div>';
+                        $('#best-' + thisitemID).append(word);
+                        registRep(res, 'time-' + thisitemID);
+                    } else if (res['result'] == 'NO') {
+                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 베스트 댓글이 없어요 >,.<;;</div>';
+                        var word2 = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 댓글이 없어요 >,.<;;</div>';
+                        $('#best-' + thisitemID).append(word);
+                        $('#time-' + thisitemID).append(word2);
+
+                    }
+                }, error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            })
+            tail.addClass('opend');
         }
-        $('#' + thisitemID + ' .tail').css('margin-bottom','10px');
+    });
+    $(document).on('click','.bestrep,.timerep,.frierep', function () {
+        var target=$(this).attr('aria-controls');
+        var index=$('#'+target).attr('index');
+        var sort = target.substring(0, 4);
+        var num = target.substring(5);
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {seq: thisitemID, action: "comment", userseq: mid,token:token,age:age},
+            data: {seq: num, action: "comment", userseq: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
-                if (res['comment'] != 'N') {
-                    $('#' + thisitemID + ' .tail .commentlist').html('');
-                    for (var i = 0; i < res.length; i++) {
+                console.log(res)
+                function registRep(res, where) {
+                    var list = $('#' + num + ' .tail ' + '#' + where);
+                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
                         var name = res[i]['USER_NAME'];
@@ -233,16 +312,64 @@ $(document).ready(function(){
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="rep-' + seq + '">';
-                        write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="'+res[i]['PIC']+'" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id='+res[i]['SEQ_USER']+'">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">'+knock+'</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
-                        $('#' + thisitemID + ' .tail .commentlist').append(write);
+                        write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                        list.append(write);
+                        var ind = parseInt(list.attr('index')) + 1;
+                        list.attr('index', ind);
                     }
+                    list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                }
+                if(parseInt(index)==0 && res['result']!='NO') {
+                    registRep(res, sort + '-' + num);
                 }
             }, error: function (request, status, error) {
                 alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
             }
         })
-    });
+    })
+//댓글에서 각 탭에 화살표버튼 새로운 코멘트들을 불러오는거
+    $(document).on('click', '.repbtn', function (e) {
+        var target = $(this).parents()[1].id;
+        var sort = target.substring(0, 4);
+        var num = target.substring(5);
+        var panel = $('#' + sort + '-' + num);
+        var index = panel.attr('index');
+        $.ajax({
+            url: "/php/data/itemAct.php",
+            type: "GET",
+            data: {seq: num, action: "more_comment", userseq: mid, index: index, sort: sort, token: token, age: age},
+            dataType: 'json',
+            success: function (res) {
+                if(res['result']=='NO'){
+                    $('#' + sort + '-' + num + ' .cursor').remove();
+                    return;
+                }
+                function registRep(res, where) {
+                    var list = $('#' + num + ' .tail ' + '#' + where);
+                    var btn = $('#' + sort + '-' + num + ' .cursor');
+                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                        var write = '';
+                        var seq = res[i]['SEQ'];
+                        var name = res[i]['USER_NAME'];
+                        var date = res[i]['REPLY_DATE'];
+                        var reply = res[i]['REPLY'];
+                        var knock = res[i]['KNOCK'];
+                        write += '<div class=commentReply id="rep-' + seq + '">';
+                        write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                        btn.before(write);
+                        var ind = parseInt(list.attr('index')) + 1;
+                        list.attr('index', ind);
+                    }
+                }
+
+                registRep(res, sort + '-' + num);
+            }, error: function (request, status, error) {
+                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            }
+        })
+    })
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13) {

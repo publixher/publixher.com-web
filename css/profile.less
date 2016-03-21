@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #e5e5e5;
+  background-color: #f3f3f3;
 }
 #cropContainerHeader {
   width: 550px;
@@ -37,6 +37,7 @@ body {
     #profilepic{
       width:160px;
       height:160px;
+      margin-top: 5px;
     }
     p{
       text-align: center;
@@ -61,7 +62,6 @@ body {
     width: 550px;
     float: left;
     background-color: white;
-    //알림센터
     #listul{
       padding:0;
       margin:0;
@@ -81,7 +81,7 @@ body {
         background: #aaaaaa;
       }
     }
-    //
+
     #picreg{
       width: 160px;
       height:160px;
@@ -111,15 +111,17 @@ body {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       border-radius: 4px;
-      margin: 5px 10px 0 10px;
+      margin: 5px 10px 10px 10px;
       box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
       background-color: white;
       ul {
         padding-left:2px;
+        font-size: 12px;
         li {
           width: 132px;
-          height: 30px;
-          padding: 4px 0 2px 0;
+          height: 28px;
+          padding: 2px 0 2px 0;
+          margin-bottom: -4px;
           a {
             text-align: center;
             padding: 2px 0 2px 0;
@@ -128,16 +130,16 @@ body {
       }
       .tab-content {
         .tab-pane {
-          padding: 5px 10px 5px 10px;
+          padding: 5px 0px 0px 0px;
           #saleTitle {
-            width: 100%;
-            padding: 6px 12px 6px 12px;
+            width: 510px;
             .roundborder();
             border-bottom: 0;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            height: 21px;
+            height: 25px;
             box-shadow: inset 0 0 0;
+            margin-left: 10px;
           }
           #publiBody {
             z-index: 1;
@@ -146,6 +148,7 @@ body {
             border-top-right-radius: 0;
             border-top-left-radius: 0;
             box-shadow: inset 0 0 0;
+            margin-left: 10px;
             img {
               max-width: 484px !important;
               max-height: 484px !important;
@@ -153,14 +156,17 @@ body {
           }
           #sendBody {
             z-index: 1;
-            height: 35px;
+            height: 45px;
+            box-shadow: inset 0 0 0;
+            margin-left:10px;
             img {
               max-width: 484px !important;
               max-height: 484px !important;
             }
           }
           hr{
-            margin:5px 0 5px 0;
+            margin:5px 0 0px 0;
+            ;
           }
           .form-group {
             .input-group {
@@ -173,22 +179,25 @@ body {
             }
           }
           .fileinput {
-            width: 111px;
+            width: 133px;
             .btn {
               position: relative;
               float: left;
-              width: 111px !important;
+              width: 133px !important;
               height: 22px;
               overflow: hidden;
               cursor: pointer;
               padding: 0 0 0 0;
+              border-radius: 0px;
+              border-bottom-left-radius:  4px;
+              font-size: 12px
             }
             .fileupform {
               display: inline-block;
               position: absolute;
-              margin-left: -79.8px;
+              margin-left: -90px;
               margin-top: -3px;
-              width: 111px;
+              width: 133px;
               height: 22px;
               filter: alpha(opacity=0);
               opacity: 0;
@@ -197,44 +206,65 @@ body {
             }
           }
           .taginput {
-            width: 266px;
+            width: 132px;
             height: 22px;
             align-items: center;
-            margin: 0 10px 0 10px;
+            margin: 0 5px 0 5px;
             input[type=text] {
-              width: 240px;
+              width: 132px;
               height: 22px;
-              margin-left: 15px;
+              border-radius: 0px;
+              box-shadow: inset 0 0 0;
+              text-align : center;
+              border-top: 0px;
+              border-bottom: 0px;
+              border-right: 0px;
+              border-left:1px solid #eee;
+              font-size: 12px;
+              padding: 2px;
             }
           }
           .regbtn {
-            width: 127.5px;
-            height: 25px;
+            width: 133px;
+            height: 22px;
             button {
-              width: 127.5px;
+              width: 133px;
               padding: 0 0 0 0;
               text-align: center;
+              border-radius: 0px;
+              border-left: 1px solid #eee;
+              border-bottom-right-radius: 4px;
+              height: 22px;
+              font-size: 12px
             }
           }
           .cateinput {
             height: 22px;
-            width: 111px;
+            width: 132px;
             padding: 0 0 0 0;
             margin: 0 10px 0 10px;
             .btn {
-              width: 111px;
+              width: 132px;
               padding: 0 0 0 0;
               height: 22px;
+              border-radius: 0px;
+              border: 0px;
+              border-bottom: 1px solid #eee;
+              font-size: 12px;
             }
           }
           .subcateinput {
             height: 22px;
-            width: 111px;
-            padding: 0 15px 0 15px;
+            width: 132px;
             .btn {
-              width: 111px;
+              width: 132px;
               padding: 0 0 0 0;
               height: 22px;
+              border-radius: 0px;
+              border: 0px;
+              border-left: 1px solid #eee;
+              border-bottom: 1px solid #eee;
+              font-size:  12px;
             }
           }
           .priceinput {
@@ -257,7 +287,7 @@ body {
       }
     }
     .item, .item-for-sale {
-      margin: 15px 10px 0 10px;
+      margin: 5px 10px 10px 10px;
       width: 530px;
       height: inherit;
       float: left;
@@ -267,8 +297,8 @@ body {
       .header {
         float: left;
         margin: 10px 10px 15px 10px;
-        width: 530px;
-        height: 40px;
+        width: 510px;
+        height: 50px;
         .profilepic {
           float: left;
           width: 50px;
@@ -308,11 +338,11 @@ body {
         float: left;
         margin-left: 10px;
         margin-right: 10px;
-        margin-bottom: 15px;
-        width: 500px;
+        margin-bottom: 10px;
+        width: 510px;
         word-break: break-all;
         .BodyPic {
-          max-width: 500px !important;
+          max-width: 510px !important;
           max-height: 510px!important;
         }
         .thumbPic {
@@ -330,10 +360,10 @@ body {
       }
       .tail {
         float: left;
-        font-size: 14px;
+        font-size: 12px;
         margin-left: 10px;
         margin-right: 10px;
-        background-color: #e5e5e5;
+        background-color: #f4f4f4;
         .badge {
           cursor: pointer;
         }
@@ -341,14 +371,26 @@ body {
           margin: 2px 0 2px 0;
           cursor: pointer;
         }
-        .cateinput, .subcateinput, .priceinput, .fileinput, .taginput, .regbtn, .tknock, .tcomment, .tshare {
+        .tknock {
           width: 127.5px;
           text-align: center;
+          background-color: white;
+          border-top: 1px solid #eee;
+          border-left: 1px solid #eee
+        }
+        .cateinput, .subcateinput, .priceinput, .fileinput, .taginput, .regbtn, .tcomment, .tshare {
+          width: 127.5px;
+          text-align: center;
+          background-color: white;
+          border-top: 1px solid #eee;
+          height: 22px
         }
         .tprice {
           width: 127.5px;
           text-align: center;
           background-color: white;
+          border-top: 1px solid white;
+          border-left: 1px solid #eee;
         }
         .commentReply {
           .profilepic {
@@ -381,7 +423,7 @@ body {
       height: 150px;
       top: 0;
       z-index: 2;
-      background-color: darkseagreen;
+      background-color: #F2DEDE;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -403,8 +445,8 @@ body {
           padding-bottom: 0;
         }
         .btn-danger .badge {
-          color: aliceblue;
-          background-color: darkseagreen;
+          color: white;
+          background-color: lightgray;
         }
         .pchange {
           width: 34px;
@@ -416,10 +458,10 @@ body {
           background-position: 2px 2px;
         }
         .btn-danger {
-          background-color: grey;
-          border-color: darkslategrey;
+          background-color: #b55f5e;
+          border-color: transparent;
           &:hover, &:focus {
-            background-color: darkslategray;
+            background-color: lightgray;
           }
         }
         #usr {
@@ -432,10 +474,10 @@ body {
           background-size: 30px 30px;
           background-repeat: no-repeat;
           background-position: 2px 2px;
-          background-color: grey;
-          border-color: darkslategrey;
+          background-color: #b55f5e;
+          border-color: transparent;
           &:hover, &:focus {
-            background-color: darkslategray;
+            background-color: lightgray;
           }
         }
         .btn-group {
@@ -477,7 +519,7 @@ body {
         float: left;
         width: 96%;
         .roundborder();
-        border-radius: 5px;
+        border-radius: 4px;
         font-size: 14px;
         padding: 2px 2px 2px 2px;
         margin-left: 6px;
@@ -507,12 +549,11 @@ body {
     }
     .market {
       .roundborder();
-      //float: left;
       top: 140px;
       width: 300px;
       height: 980px;
       position: relative;
-      background-color: lightgrey;
+      background-color: rgba(238, 238, 238, 0.56);
       z-index: 1;
       .catalog {
         float: left;
@@ -543,7 +584,6 @@ body {
     }
   }
 }
-//카탈로그 이미지
 .catalogimg {
   max-width: 100%;
   height: auto;

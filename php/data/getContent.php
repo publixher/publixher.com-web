@@ -41,7 +41,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } else {  //메인화면에서 노출시켜줄 순
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ_WRITER = :SEQ_USER0 "  //내거찾기
+    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ_WRITER = :SEQ_USER0 AND DEL='N' "  //내거찾기
         . "UNION SELECT CONT1.* FROM publixher.TBL_CONTENT CONT1 INNER JOIN ("
         . "SELECT NOTI1.SEQ_CONTENT SEQ_ACT1 FROM "
         . "publixher.TBL_CONTENT_NOTI NOTI1 INNER JOIN publixher.TBL_FRIENDS FRIEND1 ON FRIEND1.SEQ_FRIEND = NOTI1.SEQ_ACTOR "
