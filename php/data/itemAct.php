@@ -400,11 +400,7 @@ if ($act == 'knock') {
     $userseq = $_POST['mid'];
     $seq = $_POST['seq'];
     $sql = "SELECT SEQ FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (SEQ_USER=:SEQ_USER AND SEQ_REPLY=:SEQ_REPLY) LIMIT 1 ";
-    try {
         $prepare = $db->prepare($sql);
-    } catch (PDOException $e) {
-        echo $e;
-    }
     $prepare->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
     $prepare->bindValue(':SEQ_REPLY', $seq, PDO::PARAM_STR);
     $prepare->execute();
@@ -442,5 +438,91 @@ if ($act == 'knock') {
     } else {
         echo '{"result":"N","reason":"already"}';
     }
+}elseif($act=='sub_comment' or $act=='more_sub_comment'){
+    require_once '../../lib/passing_time.php';
+    $seq = $_GET['seq'];
+    $userseq=$_GET['userseq'];
+    $repseq=$_GET['repseq'];
+    function getWriter($result, $db)
+    {
+        for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
+            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':SEQ', $result[$i]['SEQ_USER'], PDO::PARAM_STR);
+            $prepare2->execute();
+            $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
+            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
+            $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
+            $result[$i]['PIC'] = $fetch['PIC'];
+        }
+        return $result;
+    }
+    function getTime($db, $repseq,$index)
+    {
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE SEQ_REPLY=:SEQ_REPLY ORDER BY SEQ DESC LIMIT :INDEX,5";
+        $prepare1 = $db->prepare($timerep_sql);
+        $prepare1->bindValue(':SEQ_REPLY', $repseq);
+        $prepare1->bindValue(':INDEX', $index);
+        $prepare1->execute();
+        $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {
+            $result = getWriter($result, $db);
+            $result['sort'] = "time";
+            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    if($act=='sub_comment'){
+        $result = getTime($db,$repseq,0);
+        if(!$result){
+            echo '{"result":"NO"}';
+        }
+    }else{
+        $result=getTime($db,$repseq,$_GET['index']);
+        if(!result){
+            echo '{"result":"NO"}';
+        }
+    }
+
+}elseif ($act == 'commentreg_sub') {
+    $userseq = $_POST['userseq'];
+    $seq = $_POST['seq'];
+    $comment = $_POST['comment'];
+    $repseq=$_POST['repseq'];
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(SEQ_USER,SEQ_CONTENT,REPLY,SEQ_REPLY) VALUES(:SEQ_USER,:SEQ_CONTENT,:REPLY,:SEQ_REPLY);";
+    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE SEQ=:SEQ;";
+    $sql3 = "SELECT SUB_REPLY,SEQ_USER FROM publixher.TBL_CONTENT_REPLY WHERE SEQ=:SEQ;";
+    $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE SEQ=:SEQ;";
+    $prepare1 = $db->prepare($sql1);
+    $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
+    $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
+    $prepare1->bindValue(':SEQ_REPLY', $repseq, PDO::PARAM_STR);
+    $prepare1->execute();
+
+    $prepare2 = $db->prepare($sql2);
+    $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+    $prepare2->execute();
+
+    $prepare4 = $db->prepare($sql4);
+    $prepare4->bindValue(':SEQ', $repseq, PDO::PARAM_STR);
+    $prepare4->execute();
+
+    $prepare3 = $db->prepare($sql3);
+    $prepare3->bindValue(':SEQ', $repseq, PDO::PARAM_STR);
+    $prepare3->execute();
+    $result = $prepare3->fetch(PDO::FETCH_ASSOC);
+
+    //알람처리
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,7,:SEQ_ACTOR)";
+    $prepare4 = $db->prepare($sql4);
+    $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+    $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_USER'], PDO::PARAM_STR);
+    $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
+    $prepare4->execute();
+    $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+    echo $result;
 }
 ?>

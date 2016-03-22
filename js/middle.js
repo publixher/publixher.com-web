@@ -245,7 +245,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     function registRep(res, where) {
-                        var list = $('#' + thisitemID + ' .tail ' + '#' + where);
+                        var list = $('#' + where);
                         list.html('');
                         for (var i = 0; i < Object.keys(res).length - 1; i++) {
                             var write = '';
@@ -254,9 +254,9 @@ $(document).ready(function () {
                             var date = res[i]['REPLY_DATE'];
                             var reply = res[i]['REPLY'];
                             var knock = res[i]['KNOCK'];
-                            write += '<div class=commentReply id="rep-' + seq + '">';
+                            write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                             write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
                             list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
@@ -278,12 +278,12 @@ $(document).ready(function () {
                     if (res['sort'] == 'best') {//각 탭별로 인덱스 심어서 페이지 나누기함
                         registRep(res, 'best-' + thisitemID);
                     } else if (res['sort'] == 'time') {
-                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 베스트 댓글이 없어요 >,.<;;</div>';
+                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 베스트 댓글이 없어요 >,.<;;</div>';
                         $('#best-' + thisitemID).append(word);
                         registRep(res, 'time-' + thisitemID);
                     } else if (res['result'] == 'NO') {
-                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 베스트 댓글이 없어요 >,.<;;</div>';
-                        var word2 = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;">아직 댓글이 없어요 >,.<;;</div>';
+                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 베스트 댓글이 없어요 >,.<;;</div>';
+                        var word2 = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 댓글이 없어요 >,.<;;</div>';
                         $('#best-' + thisitemID).append(word);
                         $('#time-' + thisitemID).append(word2);
 
@@ -295,9 +295,10 @@ $(document).ready(function () {
             tail.addClass('opend');
         }
     });
-    $(document).on('click','.bestrep,.timerep,.frierep', function () {
-        var target=$(this).attr('aria-controls');
-        var index=$('#'+target).attr('index');
+    //댓글 네비게이션에 각 탭 누를때의 동작
+    $(document).on('click', '.bestrep,.timerep,.frierep', function () {
+        var target = $(this).attr('aria-controls');
+        var index = $('#' + target).attr('index');
         var sort = target.substring(0, 4);
         var num = target.substring(5);
         $.ajax({
@@ -306,9 +307,8 @@ $(document).ready(function () {
             data: {seq: num, action: "comment", userseq: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
-                console.log(res)
                 function registRep(res, where) {
-                    var list = $('#' + num + ' .tail ' + '#' + where);
+                    var list = $('#' + where);
                     for (var i = 0; i < Object.keys(res).length - 1; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
@@ -316,16 +316,17 @@ $(document).ready(function () {
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
-                        write += '<div class=commentReply id="rep-' + seq + '">';
+                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
                     list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                 }
-                if(parseInt(index)==0 && res['result']!='NO') {
+
+                if (parseInt(index) == 0 && res['result'] != 'NO') {
                     registRep(res, sort + '-' + num);
                 }
             }, error: function (request, status, error) {
@@ -346,7 +347,7 @@ $(document).ready(function () {
             data: {seq: num, action: "more_comment", userseq: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
-                if(res['result']=='NO'){
+                if (res['result'] == 'NO') {
                     $('#' + sort + '-' + num + ' .cursor').remove();
                     return;
                 }
@@ -360,9 +361,9 @@ $(document).ready(function () {
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
-                        write += '<div class=commentReply id="rep-' + seq + '">';
+                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -375,12 +376,12 @@ $(document).ready(function () {
             }
         })
     })
-
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13) {
             var thisitemID = $(this).parents()[1].id;
-            var reply = $('#' + thisitemID + ' .tail .form-control').val();
+            var form = $('#' + thisitemID + ' .tail .form-control');
+            var reply = form.val();
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
@@ -388,15 +389,131 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
-                    $('#' + thisitemID + ' .comment').trigger('click');
-                    $('#' + thisitemID + ' .tail .form-control').val('');
-                    $('#' + thisitemID + ' .tail .form-control').blur();
+                    //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
+                    $('#time-' + thisitemID).html('');
+                    $('#time-' + thisitemID).attr('index', '0');
+                    $('a[href=#time-' + thisitemID + ']').trigger('click');
+                    form.val('');
+                    form.blur();
                 }, error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
         }
     });
+
+    //대댓글버튼 동작
+    $(document).on("click", ".repreply", function () {
+        var thisitemID = $(this).parents()[11].id;
+        var thispanelrep = ($(this).parents()[6].id);
+        var thisrepID = (thispanelrep.split('-'))[3];
+        var rep = $('#' + thispanelrep);
+        var subrep_list = $('#' + thispanelrep + '-sub');
+        if (!subrep_list.hasClass('opened')) {
+            rep.after('<div class="subrep opened" id="' + thispanelrep + '-sub"></div>');
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "GET",
+                data: {seq: thisitemID, repseq: thisrepID, action: "sub_comment", userseq: mid, token: token, age: age},
+                dataType: 'json',
+                success: function (res) {
+                    var subrep_list = $('#' + thispanelrep + '-sub');
+                    if (res['result'] != 'NO') {
+                        function registRep(res) {
+                            for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                                var write = '';
+                                var seq = res[i]['SEQ'];
+                                var name = res[i]['USER_NAME'];
+                                var date = res[i]['REPLY_DATE'];
+                                var reply = res[i]['REPLY'];
+                                write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + seq + '">';
+                                write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                                write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
+                                subrep_list.append(write);
+                                var ind = parseInt(subrep_list.attr('index')) + 1;
+                                subrep_list.attr('index', ind);
+                            }
+                            subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                        }
+
+                        //인덱스 붙이기
+                        if (!subrep_list.attr('index')) {
+                            subrep_list.attr('index', '0');
+                        }
+                        registRep(res);
+                    }
+                    subrep_list.after('<input id="'+thispanelrep+'-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
+                }
+            });
+        }
+    });
+//대댓글 등록 동작
+    $(document).on("keydown", ".commentReg_sub", function (e) {
+        if (e.keyCode == 13) {
+            var form=$(this)[0].id;
+            var idset=form.split('-');
+            var thisitemID=idset[1];
+            var thisrepID=idset[3];
+            var reply = $('#'+form).val();
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "POST",
+                data: {seq: thisitemID, action: "commentreg_sub",repseq:thisrepID ,userseq: mid, comment: reply, token: token, age: age},
+                dataType: 'json',
+                success: function (res) {
+                    var subrep_list=$('#'+form.replace('form','sub'));
+                    var thisreply=form.replace('-form','');
+                    //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
+                    subrep_list.html('');
+                    subrep_list.attr('index', '0');
+                    subrep_list.removeClass('opened');
+                    $('#'+form).remove();
+                    $('#'+thisreply+' .repreplybad').text(res['SUB_REPLY']);
+                    $('#'+thisreply+' .repreply').trigger('click');
+                }
+            })
+        }
+    });
+
+    //대댓글에서 화살표 동작
+    $(document).on('click', '.repbtn_sub', function (e) {
+        var caret=$(this).parents()[1].id;
+        var idset=caret.split('-');
+        var repID=idset[3];
+        var index=$('#'+caret).attr('index');
+        $.ajax({
+            url: "/php/data/itemAct.php",
+            type: "GET",
+            data: {repseq: repID, action: "more_sub_comment", userseq: mid, index: index, token: token, age: age},
+            dataType: 'json',
+            success: function (res) {
+                if (res['result'] == 'NO') {
+                    $('#' + sort + '-' + num + ' .cursor').remove();
+                    return;
+                }
+                function registRep(res, where) {
+                    var list = $('#'+caret);
+                    var btn = $('#'+caret+' .cursor');
+                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                        var write = '';
+                        var seq = res[i]['SEQ'];
+                        var name = res[i]['USER_NAME'];
+                        var date = res[i]['REPLY_DATE'];
+                        var reply = res[i]['REPLY'];
+                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
+                        write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
+                        btn.before(write);
+                        var ind = parseInt(list.attr('index')) + 1;
+                        list.attr('index', ind);
+                    }
+                }
+
+                registRep(res, caret);
+            }
+        })
+    })
+
     //공유하기 버튼 동작
     //TODO:공유버튼 동작 설정 다른페이지에도
     $(document).on("click", ".share", function () {
@@ -509,8 +626,8 @@ $(document).ready(function () {
     //댓글 노크클릭시의 동작
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
-        var thisrepnum = thisrepID.substring(4);
-        var thisitemID = $(this).parents()[9].id;
+        var thisrepnum = thisrepID.substring(12);
+        var thisitemID = $(this).parents()[11].id;
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
@@ -528,27 +645,7 @@ $(document).ready(function () {
             }
         })
     });
-    //대댓글 클릭시의 동작
-    $(document).on("click", ".repreply", function (e) {
-        var thisrepID = $(this).parents()[6].id;
-        var thisrepnum = thisrepID.substring(4);
-        var thisitemID = $(this).parents(9).id;
-        $.ajax({
-            url: "/php/data/itemAct.php",
-            type: "POST",
-            data: {seq: thisrepnum, action: "reprep", mid: mid, thisitemID: thisitemID, token: token, age: age},
-            dataType: 'json',
-            success: function (res) {
-                if (res['result'] == 'N' && res['reason'] == 'already') {
-                }
-                else {
-                    $('#' + thisrepID + ' .repknockbad').text(res['knock']);
-                }
-            }, error: function (request) {
-                alert(request.responseText);
-            }
-        })
-    });
+
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
@@ -608,7 +705,7 @@ $(document).ready(function () {
                     price: $('#contentCost').val(),
                     category: category,
                     sub_category: sub_category,
-                    age: $('#adult').is(':checked'),
+                    adult: $('#adult').is(':checked'),
                     ad: $('#ad').is(':checked'),
                     title: $('#saleTitle').val(),
                     folder: $folderseq,

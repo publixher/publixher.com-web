@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     }
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
-    $br = "/(\<div\>\<br\>\<\/div\>){2,}/i";
+    $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
     $body = $purifier->purify($body);

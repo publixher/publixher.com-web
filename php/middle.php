@@ -53,7 +53,7 @@
                     <table>
                         <tr>
                             <td class="fileinput">
-                                <button class="btn btn-primary">파일선택
+                                <button class="btn btn-primary" type="button">파일선택
                                     <input type="file" id="fileuploads" name="fileuploads[]" accept="image/*"
                                            data-url="/php/data/fileUp.php" multiple class="fileupform">
                                 </button>

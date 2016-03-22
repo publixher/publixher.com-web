@@ -375,17 +375,21 @@ $(document).ready(function(){
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13) {
             var thisitemID = $(this).parents()[1].id;
-            var reply = $('#' + thisitemID + ' .tail .form-control').val();
+            var form = $('#' + thisitemID + ' .tail .form-control');
+            var reply = form.val();
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {seq: thisitemID, action: "commentreg", userseq: mid, comment: reply,token:token,age:age},
+                data: {seq: thisitemID, action: "commentreg", userseq: mid, comment: reply, token: token, age: age},
                 dataType: 'json',
                 success: function (res) {
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
-                    $('#' + thisitemID + ' .comment').trigger('click');
-                    $('#' + thisitemID + ' .tail .form-control').val('');
-                    $('#' + thisitemID + ' .tail .form-control').blur();
+                    //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
+                    $('#time-' + thisitemID).html('');
+                    $('#time-' + thisitemID).attr('index', '0');
+                    $('a[href=#time-' + thisitemID + ']').trigger('click');
+                    form.val('');
+                    form.blur();
                 }, error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
@@ -489,17 +493,19 @@ $(document).ready(function(){
 //댓글 노크클릭시의 동작
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
-        var thisrepnum = thisrepID.substring(4);
+        var thisrepnum = thisrepID.substring(12);
+        var thisitemID = $(this).parents()[11].id;
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisrepnum, action: "repknock",mid:mid,token:token,age:age},
+            data: {seq: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token, age: age},
             dataType: 'json',
             success: function (res) {
-                console.log(res);
-                if(res['result']=='N' && res['reason']=='already'){ alert('이미 노크하신 댓글입니다.');}
-                else{
-                    $('#'+thisrepID+' .repknockbad').text(res['knock']);
+                if (res['result'] == 'N' && res['reason'] == 'already') {
+                    alert('이미 노크하신 댓글입니다.');
+                }
+                else {
+                    $('#' + thisrepID + ' .repknockbad').text(res['knock']);
                 }
             }, error: function (request) {
                 alert(request.responseText);

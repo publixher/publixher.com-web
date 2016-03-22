@@ -12,10 +12,11 @@ if ($action == 'noticenter') {
     //계획 : ACT의 값에 따라 그룹화한다 1: 내 컨텐츠 구매 , 2:친구신청 , 3:내 게시글에 댓글 , 4:내 게시글에 노크 , 5: 내가 게시글에서 태그될때 , 6 : 내 댓글에 노크 , 7 : 내 댓글에 대댓글(미구현) , 8 : 운영자의 알림 , 9: 내가 댓글에서 태그될
 //그룹관리
     $nowpage = $_GET['nowpage'] * 30;
-    $notisql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE SEQ_TARGET=:SEQ_TARGET ORDER BY NOTI_DATE DESC LIMIT " . $nowpage . ",30";
+    $notisql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE SEQ_TARGET=:SEQ_TARGET AND NOT SEQ_ACTOR=:SEQ_ACTOR ORDER BY NOTI_DATE DESC LIMIT " . $nowpage . ",30";
 
     $notiprepare = $db->prepare($notisql);
     $notiprepare->bindValue(':SEQ_TARGET', $userseq);
+    $notiprepare->bindValue(':SEQ_ACTOR', $userseq);
     $notiprepare->execute();
     $notis = $notiprepare->fetchAll(PDO::FETCH_ASSOC);
 //알림들을 ACT에 따라 분류
@@ -110,17 +111,19 @@ if ($action == 'noticenter') {
     //사용자한테 답은 갔고 여기서부터 서버단에서 작업하는것
     $db->query("UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' WHERE SEQ_TARGET=" . $userseq);
 } elseif ($action == 'confonload') {
-    $notinumsql = "SELECT COUNT(*) FROM publixher.TBL_CONTENT_NOTI WHERE (SEQ_TARGET=:SEQ_TARGET AND CHECKED='N')";
+    $notinumsql = "SELECT COUNT(*) FROM publixher.TBL_CONTENT_NOTI WHERE (SEQ_TARGET=:SEQ_TARGET AND CHECKED='N' AND NOT SEQ_ACTOR=:SEQ_ACTOR)";
     $notinumpre = $db->prepare($notinumsql);
     $notinumpre->bindValue(':SEQ_TARGET', $userseq);
+    $notinumpre->bindValue(':SEQ_ACTOR', $userseq);
     $notinumpre->execute();
     $number = $notinumpre->fetchColumn();
     echo json_encode($number, JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'confnotireq') {
     $nowpage = $_GET['nowpage']*20;
-    $notireqsql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE (SEQ_TARGET=:SEQ_TARGET) ORDER BY SEQ DESC LIMIT " . $nowpage . ",20";
+    $notireqsql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE (SEQ_TARGET=:SEQ_TARGET AND NOT SEQ_ACTOR=:SEQ_ACTOR) ORDER BY SEQ DESC LIMIT " . $nowpage . ",20";
     $notireqpre = $db->prepare($notireqsql);
     $notireqpre->bindValue(':SEQ_TARGET', $userseq);
+    $notireqpre->bindValue(':SEQ_ACTOR', $userseq);
     $notireqpre->execute();
     $notis = $notireqpre->fetchAll(PDO::FETCH_ASSOC);
     function getTrigger($targetnoti, $order, $db)
