@@ -281,11 +281,13 @@ $(document).ready(function () {
                         var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 베스트 댓글이 없어요 >,.<;;</div>';
                         $('#best-' + thisitemID).append(word);
                         registRep(res, 'time-' + thisitemID);
+                        $('a[href=#time-' + thisitemID + ']').trigger('click');
                     } else if (res['result'] == 'NO') {
                         var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 베스트 댓글이 없어요 >,.<;;</div>';
                         var word2 = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest">아직 댓글이 없어요 >,.<;;</div>';
                         $('#best-' + thisitemID).append(word);
                         $('#time-' + thisitemID).append(word2);
+                        $('a[href=#time-' + thisitemID + ']').trigger('click');
 
                     }
                 }, error: function (request, status, error) {
@@ -488,7 +490,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
-                    $('#' + sort + '-' + num + ' .cursor').remove();
+                    $('#'+caret+' .cursor').remove();
                     return;
                 }
                 function registRep(res, where) {

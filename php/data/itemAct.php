@@ -481,7 +481,7 @@ if ($act == 'knock') {
         }
     }else{
         $result=getTime($db,$repseq,$_GET['index']);
-        if(!result){
+        if(!$result){
             echo '{"result":"NO"}';
         }
     }
