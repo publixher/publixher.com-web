@@ -107,6 +107,10 @@ $(document).ready(function () {
                             var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 노크가 있습니다.";
                             $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
                             break;
+                        case '7':
+                            var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 대댓글이 있습니다.";
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            break;
                     }
                 }
                 if (!$('#notilist').hasClass('loaded')) {

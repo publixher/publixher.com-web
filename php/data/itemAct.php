@@ -516,11 +516,12 @@ if ($act == 'knock') {
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,7,:SEQ_ACTOR)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR,SEQ_REPLY) VALUES(:SEQ_CONTENT,:SEQ_TARGET,7,:SEQ_ACTOR,:SEQ_REPLY)";
     $prepare4 = $db->prepare($sql4);
     $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
     $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_USER'], PDO::PARAM_STR);
     $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
+    $prepare4->bindValue(':SEQ_REPLY', $repseq, PDO::PARAM_STR);
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;

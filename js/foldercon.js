@@ -223,7 +223,7 @@ $(document).ready(function(){
             word += '<ul class="nav nav-tabs" role="tablist" id="repnav-"' + thisitemID + '>'
             word += '<li role="presentation" class="active"><a class="bestrep" href="#best-' + thisitemID + '" aria-controls="best-' + thisitemID + '" role="tab" data-toggle="tab">베스트 댓글</a></li>'
             word += '<li role="presentation"><a class="timerep" href="#time-' + thisitemID + '" aria-controls="time-' + thisitemID + '" role="tab" data-toggle="tab">시간순 댓글</a></li>'
-            word += '<li role="presentation"><a class="frierep" href="#frie-' + thisitemID + '" aria-controls="frie-' + thisitemID + '" role="tab" data-toggle="tab">내 친구가 쓴 댓글</a></li>'
+            word += '<li role="presentation"><a class="frierep" href="#frie-' + thisitemID + '" aria-controls="frie-' + thisitemID + '" role="tab" data-toggle="tab">친구의 댓글</a></li>'
             word += '</ul>'
             //정렬별 댓글
             word += '<div class="tab-content">'

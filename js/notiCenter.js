@@ -11,6 +11,7 @@ $(document).ready(function () {
             data: {action: "noticenter",nowpage:page},
             dataType: 'json',
             success: function (res) {
+                console.log(res)
                 var listul = $('#listul');
                 var snsreg = /SNS-[0-9]*/;
                 //알림문장
@@ -60,10 +61,13 @@ $(document).ready(function () {
                         listul.append('<li><a href="/php/getItem.php?iid='+ res[6][reply[i]][0]['SEQ_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[6][reply[i]]['date']+'</span></li>');
                     }
                 }
-                //if (res[7]) {
-                //    var word_7 = '';
-                //    var title = Object.getOwnPropertyNames(res[7]);
-                //}
+                if (res[7]) {
+                    var reply = Object.keys(res[7]);
+                    for (var i = 0; i < reply.length; i++) {
+                        var word = "회원님의 '" + reply[i] + "' 댓글에 " + res[7][reply[i]]['count'] + '개의 새로운 대댓글이 있습니다.';
+                        listul.append('<li><a href="/php/getItem.php?iid='+ res[7][reply[i]][0]['SEQ_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[7][reply[i]]['date']+'</span></li>');
+                    }
+                }
                 //if (res[8]) {
                 //    var word_8 = '';
                 //    var title = Object.getOwnPropertyNames(res[8]);

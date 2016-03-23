@@ -9,7 +9,7 @@ $userseq = $userinfo->getSEQ();
 $action = $_GET['action'];
 
 if ($action == 'noticenter') {
-    //계획 : ACT의 값에 따라 그룹화한다 1: 내 컨텐츠 구매 , 2:친구신청 , 3:내 게시글에 댓글 , 4:내 게시글에 노크 , 5: 내가 게시글에서 태그될때 , 6 : 내 댓글에 노크 , 7 : 내 댓글에 대댓글(미구현) , 8 : 운영자의 알림 , 9: 내가 댓글에서 태그될
+    //계획 : ACT의 값에 따라 그룹화한다 1: 내 컨텐츠 구매 , 2:친구신청 , 3:내 게시글에 댓글 , 4:내 게시글에 노크 , 5: 내가 게시글에서 태그될때 , 6 : 내 댓글에 노크 , 7 : 내 댓글에 대댓글 , 8 : 운영자의 알림 , 9: 내가 댓글에서 태그될
 //그룹관리
     $nowpage = $_GET['nowpage'] * 30;
     $notisql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE SEQ_TARGET=:SEQ_TARGET AND NOT SEQ_ACTOR=:SEQ_ACTOR ORDER BY NOTI_DATE DESC LIMIT " . $nowpage . ",30";
@@ -73,7 +73,7 @@ if ($action == 'noticenter') {
         if (!$return) $return = null;
         return $return;
     }
-
+//여기부터
 //$act[1]은 SEQ_CONTENT로 나눠서 다시 그룹을 만듦
     $act[1] = notigrouping($act[1], 'SEQ_CONTENT', $db);
 //$act[2]는 그룹을 나누지 않음
@@ -102,6 +102,8 @@ if ($action == 'noticenter') {
     if (!$act[8]) $act[8] = null;
 //$act[9]는SEQ_REPLY로 그룹을 나눔
     $act[9] = notigrouping($act[9], 'SEQ_REPLY', $db);
+
+    //그룹화된 알림 개수 세기
     $count = 0;
     foreach ($act as $val) {
         $count += count($val);
@@ -153,7 +155,7 @@ if ($action == 'noticenter') {
     for ($i = 0; $i < count($notis); $i++) {
         if ($notis[$i]['ACT'] == '1' or $notis[$i]['ACT'] == '3' or $notis[$i]['ACT'] == '4') { //컨텐츠가 주체일때
             $notis[$i]=getTrigger($notis[$i],'SEQ_CONTENT', $db);
-        } elseif ($notis[$i]['ACT'] == '6') {   //댓글이 주체일때
+        } elseif ($notis[$i]['ACT'] == '6' or $notis[$i]['ACT']=='7') {   //댓글이 주체일때
             $notis[$i]=getTrigger($notis[$i],'SEQ_REPLY',$db);
         }elseif($notis[$i]['ACT']=='2'){
             $notis[$i]=getTrigger($notis[$i],'SEQ_ACTOR',$db);
