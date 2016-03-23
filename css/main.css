@@ -1,6 +1,5 @@
 body {
   background-color: #f3f3f3;
-  outline: 0;
 }
 .bar {
   height: 18px;
@@ -14,7 +13,6 @@ body {
   width: 1024px;
   margin: auto;
   position: relative;
-  outline: 0;
 }
 #wrap #left {
   float: left;
@@ -171,12 +169,12 @@ body {
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
   height: 22px;
-  width: 132px;
+  width: 133px;
   padding: 0 0 0 0;
   margin: 0 10px 0 10px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn {
-  width: 132px;
+  width: 133px;
   padding: 0 0 0 0;
   height: 22px;
   border-radius: 0px;
@@ -230,6 +228,22 @@ body {
   width: 469px;
   margin-left: 39px;
   border-left: 2px solid #d7d7d7;
+}
+#wrap #middle .item .commentReg_sub,
+#wrap #middle .item-for-sale .commentReg_sub {
+  width: 460px !important;
+  margin-left: 39px;
+  border-radius: 0px;
+  box-shadow: inset 0 0 0;
+  padding: 4px 0 4px 10px;
+  font-size: 12px;
+}
+#wrap #middle .item .commentReg,
+#wrap #middle .item-for-sale .commentReg {
+  border-radius: 0px;
+  box-shadow: inset 0 0 0;
+  padding: 5px 0 4px 10px;
+  font-size: 12px;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -318,9 +332,9 @@ body {
 }
 #wrap #middle .item .tail a,
 #wrap #middle .item-for-sale .tail a {
-  margin: 2px 0 2px 0;
+  margin: 0px;
   cursor: pointer;
-  padding: 6px;
+  padding: 6px 3px 6px 0;
   border-radius: 0px;
   width: 90px;
   background-color: transparent;
@@ -385,6 +399,7 @@ body {
 #wrap #middle .item .tail .commentReply .rep .repaction,
 #wrap #middle .item-for-sale .tail .commentReply .rep .repaction {
   float: right;
+  margin-right: 10px;
 }
 #wrap #right {
   float: left;
@@ -560,9 +575,4 @@ body {
 }
 li a {
   cursor: pointer;
-}
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
-  border-bottom-color: #f4f4f4;
 }
