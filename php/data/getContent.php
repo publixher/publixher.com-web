@@ -56,12 +56,13 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
         . "WHERE FRIEND3.SEQ_USER = :SEQ_USER3 GROUP BY NOTI3.SEQ_CONTENT HAVING COUNT(DISTINCT NOTI3.SEQ_ACTOR) >= 3"
         . ") AS FRIEND_NOTI3 ON FRIEND_NOTI3.SEQ_ACT3 = CONT3.SEQ WHERE CONT3.DEL = 'N' AND CONT3.EXPOSE > 1 AND CONT3.COMMENT + CONT3.KNOCK > 30"      //여기까지 내 친구중 3명 이상이 액션하고 액션 30개 이상인
         . " ORDER BY SEQ DESC LIMIT "
-        . $nowpage . ", 10";
+        . ":NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':SEQ_USER0', $userseq);
     $prepare->bindValue(':SEQ_USER1', $userseq);
     $prepare->bindValue(':SEQ_USER2', $userseq);
     $prepare->bindValue(':SEQ_USER3', $userseq);
+    $prepare->bindValue(':NOWPAGE', $nowpage);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 }
