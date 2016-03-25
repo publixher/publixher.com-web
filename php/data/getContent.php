@@ -8,7 +8,7 @@ session_start();
 $userseq = $_SESSION['user']->getSEQ();
 //콘텐츠 검색임시로 그냥 다 불러오기
 if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND SEQ_WRITER=:SEQ_WRITER) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
+    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND SEQ_WRITER=:SEQ_WRITER) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':SEQ_WRITER', $_GET['profile'], PDO::PARAM_STR);
     $prepare->execute();

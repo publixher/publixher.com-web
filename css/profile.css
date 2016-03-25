@@ -14,8 +14,7 @@ body {
 }
 #wrap #left {
   float: left;
-  width: 160px;
-  margin-right: 14px;
+  width: 174px;
 }
 #wrap #left #frequestli li {
   width: 160px;
@@ -55,7 +54,36 @@ body {
 #wrap #middle {
   width: 550px;
   float: left;
-  background-color: white;
+}
+#wrap #middle .btn-group .hasInput {
+  background-color: #e1e1e1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 300px;
+  max-height: 300px;
+}
+#wrap #middle .btn-group .hasInput li {
+  width: 100%;
+  padding-top: 0;
+}
+#wrap #middle .btn-group .hasInput li:hover {
+  background-color: #d1d1d1;
+}
+#wrap #middle .btn-group .hasInput li img {
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+#wrap #middle .btn-group .hasInput li a {
+  width: 100%;
+  text-decoration: none;
+  color: #444;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+}
+#wrap #middle .btn-group .hasInput li a input[type=text] {
+  width: 100%;
 }
 #wrap #middle #listul {
   padding: 0;
@@ -116,11 +144,10 @@ body {
   width: 132px;
   height: 28px;
   padding: 2px 0 2px 0;
-  margin-bottom: -4px;
 }
 #wrap #middle #writing-pane ul li a {
   text-align: center;
-  padding: 2px 0 2px 0;
+  padding: 3px 0 4px 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane {
   padding: 5px 0px 0px 0px;
@@ -155,6 +182,7 @@ body {
   height: 45px;
   box-shadow: inset 0 0 0;
   margin-left: 10px;
+  width: 510px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
   max-width: 484px !important;
@@ -162,6 +190,8 @@ body {
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0px 0;
+  border-tpo: 1px solid #eee
+            ;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .form-group .input-group .input-group-addon img {
   width: 20px;
@@ -234,7 +264,7 @@ body {
   margin: 0 10px 0 10px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn {
-  width: 132px;
+  width: 133px;
   padding: 0 0 0 0;
   height: 22px;
   border-radius: 0px;
@@ -285,10 +315,43 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
+#wrap #middle .item .subrep,
+#wrap #middle .item-for-sale .subrep {
+  width: 469px;
+  margin-left: 39px;
+  border-left: 2px solid #d7d7d7;
+  padding-bottom: 5px;
+}
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:focus,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:focus,
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:hover,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:hover {
+  border-bottom: 1px solid #f4f4f4;
+}
+#wrap #middle .item .commentReg_sub,
+#wrap #middle .item-for-sale .commentReg_sub {
+  width: 460px !important;
+  margin-left: 39px;
+  border-radius: 0px;
+  box-shadow: inset 0 0 0;
+  padding: 4px 0 4px 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+#wrap #middle .item .commentReg,
+#wrap #middle .item-for-sale .commentReg {
+  border-radius: 0px;
+  box-shadow: inset 0 0 0;
+  padding: 5px 0 4px 10px;
+  font-size: 12px;
+  margin-top: 5px;
+}
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
   float: left;
-  margin: 10px 10px 15px 10px;
+  margin: 10px 10px 10px 10px;
   width: 510px;
   height: 50px;
 }
@@ -372,8 +435,13 @@ body {
 }
 #wrap #middle .item .tail a,
 #wrap #middle .item-for-sale .tail a {
-  margin: 2px 0 2px 0;
+  margin: 0px;
   cursor: pointer;
+  padding: 6px 3px 6px 0;
+  border-radius: 0px;
+  width: 90px;
+  background-color: transparent;
+  text-align: center;
 }
 #wrap #middle .item .tail .tknock,
 #wrap #middle .item-for-sale .tail .tknock {
@@ -425,7 +493,7 @@ body {
   width: 464px;
   word-break: break-all;
   vertical-align: top;
-  font-size: 14px;
+  font-size: 13px;
 }
 #wrap #middle .item .tail .commentReply .rep .timeago,
 #wrap #middle .item-for-sale .tail .commentReply .rep .timeago {
@@ -434,6 +502,7 @@ body {
 #wrap #middle .item .tail .commentReply .rep .repaction,
 #wrap #middle .item-for-sale .tail .commentReply .rep .repaction {
   float: right;
+  margin-left: 10px;
 }
 #wrap #right {
   float: left;
@@ -441,7 +510,7 @@ body {
 #wrap #right .conf {
   position: fixed;
   width: 300px;
-  height: 150px;
+  height: 120px;
   top: 0;
   z-index: 2;
   background-color: #F2DEDE;
@@ -453,7 +522,7 @@ body {
 #wrap #right .conf #logo {
   margin: 5px 5px 5px 5px;
   height: 40px;
-  width: 240px;
+  width: 200px;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -545,7 +614,7 @@ body {
   font-size: 14px;
   padding: 2px 2px 2px 2px;
   margin-left: 6px;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 #wrap #right .conf .dropdown ul {
   padding: 0 0 0 0;

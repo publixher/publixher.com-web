@@ -2,16 +2,262 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script src="/js/profile_middle.js"></script>
     <?php
-    require_once'../conf/getTarget.php';
-    //    echo "<div style='width: 550px; height:150px'><a id='coverCon'><img src='${coverpic}' id='coverphoto' title='클릭해서 커버사진을 바꿔보세요'></a></div>";
+    require_once '../conf/getTarget.php';
     ?>
     <script>
         var targetseq =<?=${targetid}?>;
     </script>
+    <?php
+    //글쓰기권한,공개설정 탐색
+    $w="SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+    $p=$db->prepare($w);
+    $p->bindValue(':SEQ',$targetid);
+    $p->execute();
+    $auth=$p->fetch(PDO::FETCH_ASSOC);
+    $writeauth=$auth['WRITEAUTH'];
+    $expauth=$auth['EXPAUTH'];
+    //자신일경우
+    $I=$targetid==$userseq?true:false;
+    //위에 버튼그룹
+    if ($I) {
+//        내프로필일경우
+        ?>
+        <div class="btn-group" role="group">
+            <!--            친구목록-->
+            <?php
+            $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue(':SEQ_USER', $targetid);
+            $prepare3->execute();
+            $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
+            $friendnum = count($friends);
+            ?>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    친구목록(<?= $friendnum ?>)
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasInput" role="menu" id="frielist">
+                    <li><input type="text" class="form-control"></li>
+                    <?
+                    $arr = array();
+                    $fsql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $friprepare = $db->prepare($fsql);
+                    for ($i = 0; $i < $friendnum; $i++) {
+                        $friprepare->bindValue(':SEQ', $friends[$i]['SEQ_FRIEND'], PDO::PARAM_STR);
+                        $friprepare->execute();
+                        $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
+                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['SEQ'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        $arr[] = $friend['USER_NAME'];
+                    }
+                    $arr = json_encode($arr);
+                    echo "<script>var frievar=${arr};</script>";
+                    ?>
+                </ul>
+            </div>
+            <!--            구독목록-->
+            <div class="btn-group" role="group">
+                <?php
+                $sql4 = "SELECT SEQ_MASTER FROM publixher.TBL_FOLLOW WHERE SEQ_SLAVE=:SEQ_SLAVE";
+                $prepare4 = $db->prepare($sql4);
+                $prepare4->bindValue(':SEQ_SLAVE', $targetid);
+                $prepare4->execute();
+                $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
+                $masternum = count($masters);
+                ?>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    구독목록(<?= $masternum ?>)
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasInput" role="menu" id="subslist">
+                    <li><input type="text" class="form-control"></li>
+                    <?
+                    $arr = array();
+                    $msql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $mriprepare = $db->prepare($msql);
+                    for ($i = 0; $i < $masternum; $i++) {
+                        $mriprepare->bindValue(':SEQ', $masters[$i]['SEQ_MASTER'], PDO::PARAM_STR);
+                        $mriprepare->execute();
+                        $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
+                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['SEQ'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        $arr[] = $master['USER_NAME'];
+                    }
+                    $arr = json_encode($arr);
+                    echo "<script>var subsvar=${arr};</script>";
+                    ?>
+                </ul>
+            </div>
+            <!--            친구신청목록-->
+            <?
+            //친구요청(SEQ_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
+            $sql2 = "SELECT SEQ_USER,SEQ FROM publixher.TBL_FRIENDS WHERE (SEQ_FRIEND=:SEQ_FRIEND AND ALLOWED='N') ORDER BY SEQ DESC";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':SEQ_FRIEND', $targetid, PDO::PARAM_STR);
+            $prepare2->execute();
+            $friendrequest = $prepare2->fetchAll(PDO::FETCH_ASSOC);
+            $frequestnum = count($friendrequest);
+            ?>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    친구신청목록(<span id="frequestnum"><?= $frequestnum ?></span>)
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasInput" role="menu" id="freqlist">
+                    <li><input type="text" class="form-control"></li>
+                    <?php
+                    if ($frequestnum == 0) {
+                        echo '<li><a>친구요청이 없습니다</a></li>';
+                    } else {
+                        $arr = array();
+                        $fsql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                        $fprepare = $db->prepare($fsql);
+                        for ($i = 0; $i < $frequestnum; $i++) {
+                            $fprepare->bindValue(':SEQ', $friendrequest[$i]['SEQ_USER'], PDO::PARAM_STR);
+                            $fprepare->execute();
+                            $reqname = $fprepare->fetch(PDO::FETCH_ASSOC);
+                            echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['SEQ_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['SEQ_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
+                            $arr[] = $reqname;
+                        }
+                        $arr = json_encode($arr);
+                        echo "<script>var freqvar=${arr};</script>";
+
+                    } ?>
+                </ul>
+            </div>
+            <!--            설정-->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    설정
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasSelect" role="menu" id="confAut">
+                    <li><b>글쓰기 권한</b></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth" value="0" <?if($writeauth==0) echo 'checked'?>>나만</label></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth" value="1" <?if($writeauth==1) echo 'checked'?>>친구</label></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth" value="2" <?if($writeauth==2) echo 'checked'?>>전체</label></li>
+                    <li><b>타인이 설정할 수 있는 공개 권한</b></li>
+                    <li class="checkbox"><label><input type="checkbox" value="a" class="expAuth" checked disabled>나와 글쓴이</label></li>
+                    <li class="checkbox"><label><input type="checkbox" value="b" class="expAuth" <?if(strpos($expauth,'b')!==false) echo 'checked'?>>내 친구</label></li>
+                    <li class="checkbox"><label><input type="checkbox" value="c" class="expAuth" <?if(strpos($expauth,'c')!==false) echo 'checked'?>>전체</label></li>
+                </ul>
+            </div>
+        </div>
+    <? } else {
+//        내 프로필이 아닐경우
+        ?>
+        <div class="btn-group" role="group">
+            <!--            친구목록-->
+            <?php
+            $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue(':SEQ_USER', $targetid);
+            $prepare3->execute();
+            $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
+            $friendnum = count($friends);
+            //나랑 글쓴이랑 친구인지 확인
+            foreach($friends as $fri){
+                $frelation=$userseq==$fri['SEQ_FRIEND'];
+                if($frelation) break;
+            }
+            ?>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    친구목록(<?= $friendnum ?>)
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasInput" role="menu" id="frielist">
+                    <li><input type="text" class="form-control"></li>
+                    <?
+                    $arr = array();
+                    $fsql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $friprepare = $db->prepare($fsql);
+                    for ($i = 0; $i < $friendnum; $i++) {
+                        $friprepare->bindValue(':SEQ', $friends[$i]['SEQ_FRIEND'], PDO::PARAM_STR);
+                        $friprepare->execute();
+                        $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
+                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['SEQ'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        $arr[] = $friend['USER_NAME'];
+                    }
+                    $arr = json_encode($arr);
+                    echo "<script>var frievar=${arr};</script>";
+                    ?>
+                </ul>
+            </div>
+            <!--            구독목록-->
+            <div class="btn-group" role="group">
+                <?php
+                $sql4 = "SELECT SEQ_MASTER FROM publixher.TBL_FOLLOW WHERE SEQ_SLAVE=:SEQ_SLAVE";
+                $prepare4 = $db->prepare($sql4);
+                $prepare4->bindValue(':SEQ_SLAVE', $targetid);
+                $prepare4->execute();
+                $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
+                $masternum = count($masters);
+                ?>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    구독목록(<?= $masternum ?>)
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu hasInput" role="menu" id="subslist">
+                    <li><input type="text" class="form-control"></li>
+                    <?
+                    $arr = array();
+                    $msql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $mriprepare = $db->prepare($msql);
+                    for ($i = 0; $i < $masternum; $i++) {
+                        $mriprepare->bindValue(':SEQ', $masters[$i]['SEQ_MASTER'], PDO::PARAM_STR);
+                        $mriprepare->execute();
+                        $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
+                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['SEQ'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        $arr[] = $master['USER_NAME'];
+                    }
+                    $arr = json_encode($arr);
+                    echo "<script>var subsvar=${arr};</script>";
+                    ?>
+                </ul>
+            </div>
+
+            <?php
+            //친구신청 버튼
+            $sql2 = "SELECT ALLOWED FROM publixher.TBL_FRIENDS WHERE (SEQ_FRIEND=:SEQ_FRIEND AND SEQ_USER=:SEQ_USER) LIMIT 1";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue('SEQ_FRIEND', $targetid, PDO::PARAM_STR);
+            $prepare2->bindValue('SEQ_USER', $userseq, PDO::PARAM_STR);
+            $prepare2->execute();
+            $allowed = $prepare2->fetchColumn();
+            if (!$allowed) {
+                echo '<button type="button" class="btn btn-default request" id="friequst">친구신청</button>';
+            } elseif ($allowed == 'N') {
+                echo '<button type="button" class="btn btn-default request" id="friequst" disabled>친구신청중</button>';
+            } elseif ($allowed == 'Y') {
+                echo '<button type="button" class="btn btn-success onfriend" id="friequst">내칭구칭구</button>';
+            }
+
+            //구독신청 버튼
+            $sql3 = "SELECT SEQ FROM publixher.TBL_FOLLOW WHERE SEQ_MASTER=:SEQ_MASTER AND SEQ_SLAVE=:SEQ_SLAVE LIMIT 1";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue('SEQ_MASTER', $targetid, PDO::PARAM_STR);
+            $prepare3->bindValue('SEQ_SLAVE', $userseq, PDO::PARAM_STR);
+            $prepare3->execute();
+            $subscribe = $prepare3->fetchColumn();
+            if (!$subscribe) {
+                echo '<button type="button" class="btn btn-default subscribe" id="subsbtn">구독하기</button>';
+            } else {
+                echo '<button type="button" class="btn btn-info dis_subscribe" id="subsbtn">구독중</button>';
+            }
+            ?>
+        </div>
+    <? } ?>
     <!--    글쓰는 카드-->
     <form action="/php/data/uploadContent.php" method="post" enctype="multipart/form-data" id="upform">
         <?php
-        if ($targetid == $userinfo->getSEQ()) {
+        //내 프로필일 경우 ,내 친구고 타겟의 글쓰기 권한이 1일경우,2일경우
+        if ($I OR ($frelation AND $writeauth>0) OR $writeauth>1) {
             ?>
 
             <div role="tabpanel" id="writing-pane">
@@ -27,9 +273,8 @@
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
-                            <li><a>친구에게 공개</a></li>
-                            <li><a>팔로워에게 공개</a></li>
-                            <li><a>전체 공개</a></li>
+                            <?if(strpos($expauth,'b')!==false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>"?>
+                            <?if(strpos($expauth,'c')!==false OR $I) echo '<li><a>전체공개</a></li>'?>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -37,8 +282,8 @@
                             <span id="directorySettingSub">비분류</span><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="dirSublist">
                             <?php
-                            require_once'../conf/database_conf.php';
-                            require_once'../conf/User.php';
+                            require_once '../conf/database_conf.php';
+                            require_once '../conf/User.php';
                             session_start();
                             $userinfo = $_SESSION['user'];
                             $userseq = $userinfo->getSEQ();
@@ -63,7 +308,7 @@
                         <table>
                             <tr>
                                 <td class="fileinput">
-                                    <button class="btn btn-primary">파일선택
+                                    <button class="btn btn-primary" type="button">파일선택
                                         <input type="file" id="fileuploads" accept="image/*" name="fileuploads[]"
                                                data-url="/php/data/fileUp.php" multiple class="fileupform">
                                     </button>
@@ -118,7 +363,8 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown"
-                                                aria-expanded="false"><span id="sub-category">하위 분류</span> <span class="caret"></span>
+                                                aria-expanded="false"><span id="sub-category">하위 분류</span> <span
+                                                class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu" role="menu" id="subcategorySelect">
                                         </ul>
@@ -161,9 +407,9 @@
                     </div>
                 </div>
             </div>
-        <? }?>
-        </form>
+        <? } ?>
+    </form>
     <div id="topcon"></div>
 
-        <!--    각 카드가 하나의 아이템-->
+    <!--    각 카드가 하나의 아이템-->
 </div>

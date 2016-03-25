@@ -2,11 +2,11 @@
  * Created by gangdong-gyun on 2016. 2. 24..
  */
 $(document).ready(function () {
-    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic) {
+    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic) {
         write = '<div class="item card" id="';
         write += seq;
         write += '"><div class="header">';
-        write += '<img src="'+pic+'" class="profilepic">';
+        write += '<img src="' + pic + '" class="profilepic">';
         write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
         write += name + '</a>&nbsp;'
         if (folderseq) {
@@ -33,11 +33,11 @@ $(document).ready(function () {
         return write;
     }
 
-    function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic) {
+    function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic) {
         write = '<div class="item-for-sale card" id="';
         write += seq;
         write += '"><div class="header">';
-        write += '<img src="'+pic+'" class="profilepic">';
+        write += '<img src="' + pic + '" class="profilepic">';
         write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
         write += name + '</a>&nbsp;'
         if (folderseq) {
@@ -80,7 +80,7 @@ $(document).ready(function () {
         data: loadOption,
         dataType: 'json',
         success: function (res) {
-            var times = Math.min(9,res.length-1);
+            var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
                 if (res[i]['USER_NAME'] != null) {
                     if (res[i]['FOR_SALE'] == "N") {
@@ -99,7 +99,7 @@ $(document).ready(function () {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic);
+                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
                         $('#topcon').after(write);
                     } else {
                         var write = '';
@@ -120,7 +120,7 @@ $(document).ready(function () {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic);
+                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic);
                         $('#topcon').after(write);
 
                     }
@@ -139,11 +139,11 @@ $(document).ready(function () {
         data: loadOption,
         dataType: 'json',
         success: function (res) {
-            if(res['result']=='N' && res['reason']=='no top'){
+            if (res['result'] == 'N' && res['reason'] == 'no top') {
                 return;
-            }else if(res['result']=='N' && res['reason']=='deleted'){
+            } else if (res['result'] == 'N' && res['reason'] == 'deleted') {
                 return;
-            }else{
+            } else {
                 if (res['FOR_SALE'] == "N") {
                     var write = '';
                     var seq = res['SEQ'];
@@ -160,7 +160,7 @@ $(document).ready(function () {
                         folderseq = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
                     $('#topcon').append(write);
                 } else {
                     var write = '';
@@ -181,7 +181,7 @@ $(document).ready(function () {
                         folderseq = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic);
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic);
                     $('#topcon').append(write);
                 }
             }
@@ -218,7 +218,7 @@ $(document).ready(function () {
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic);
+                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
                                 $('.card:last-child').after(write);
                             } else {
                                 var write = '';
@@ -239,7 +239,7 @@ $(document).ready(function () {
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic);
+                                write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic);
                                 $('.card:last-child').after(write);
                             }
                         }
@@ -313,7 +313,7 @@ $(document).ready(function () {
                             var knock = res[i]['KNOCK'];
                             write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                             write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                             list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
@@ -377,7 +377,7 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -422,7 +422,7 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -501,7 +501,7 @@ $(document).ready(function () {
                         }
                         registRep(res);
                     }
-                    subrep_list.after('<input id="'+thispanelrep+'-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
+                    subrep_list.after('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                 }
             });
         }
@@ -509,26 +509,34 @@ $(document).ready(function () {
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
         if (e.keyCode == 13) {
-            var form=$(this)[0].id;
-            var idset=form.split('-');
-            var thisitemID=idset[1];
-            var thisrepID=idset[3];
-            var reply = $('#'+form).val();
+            var form = $(this)[0].id;
+            var idset = form.split('-');
+            var thisitemID = idset[1];
+            var thisrepID = idset[3];
+            var reply = $('#' + form).val();
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {seq: thisitemID, action: "commentreg_sub",repseq:thisrepID ,userseq: mid, comment: reply, token: token, age: age},
+                data: {
+                    seq: thisitemID,
+                    action: "commentreg_sub",
+                    repseq: thisrepID,
+                    userseq: mid,
+                    comment: reply,
+                    token: token,
+                    age: age
+                },
                 dataType: 'json',
                 success: function (res) {
-                    var subrep_list=$('#'+form.replace('form','sub'));
-                    var thisreply=form.replace('-form','');
+                    var subrep_list = $('#' + form.replace('form', 'sub'));
+                    var thisreply = form.replace('-form', '');
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
                     subrep_list.html('');
                     subrep_list.attr('index', '0');
                     subrep_list.removeClass('opened');
-                    $('#'+form).remove();
-                    $('#'+thisreply+' .repreplybad').text(res['SUB_REPLY']);
-                    $('#'+thisreply+' .repreply').trigger('click');
+                    $('#' + form).remove();
+                    $('#' + thisreply + ' .repreplybad').text(res['SUB_REPLY']);
+                    $('#' + thisreply + ' .repreply').trigger('click');
                 }
             })
         }
@@ -536,10 +544,10 @@ $(document).ready(function () {
 
     //대댓글에서 화살표 동작
     $(document).on('click', '.repbtn_sub', function (e) {
-        var caret=$(this).parents()[1].id;
-        var idset=caret.split('-');
-        var repID=idset[3];
-        var index=$('#'+caret).attr('index');
+        var caret = $(this).parents()[1].id;
+        var idset = caret.split('-');
+        var repID = idset[3];
+        var index = $('#' + caret).attr('index');
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
@@ -547,12 +555,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
-                    $('#'+caret+' .cursor').remove();
+                    $('#' + caret + ' .cursor').remove();
                     return;
                 }
                 function registRep(res, where) {
-                    var list = $('#'+caret);
-                    var btn = $('#'+caret+' .cursor');
+                    var list = $('#' + caret);
+                    var btn = $('#' + caret + ' .cursor');
                     for (var i = 0; i < Object.keys(res).length - 1; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
@@ -711,12 +719,13 @@ $(document).ready(function () {
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
-                data: {body: $('#sendBody').html(),
+                data: {
+                    body: $('#sendBody').html(),
                     seq_writer: mid,
                     folder: $folderseq,
-                    token:token,age:age,
-                    tag:$('#taginputs').val(),
-                    expose:expose
+                    token: token, age: age,
+                    tag: $('#taginputs').val(),
+                    expose: expose
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -728,14 +737,14 @@ $(document).ready(function () {
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
-                    var pic=res['PIC'];
+                    var pic = res['PIC'];
                     var folderseq = null;
                     var foldername = null;
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
                     $('#upform').after(write);
                     $('#sendBody').html("").trigger('keyup');
                 },
@@ -754,11 +763,20 @@ $(document).ready(function () {
                 url: "/php/data/uploadContent.php",
                 type: "POST",
                 data: {
-                    body: $('#publiBody').html(), seq_writer: mid,
-                    for_sale: "Y", price: $('#contentCost').val(),
-                    category: category,sub_category:sub_category, adult: $('#adult').is(':checked'), ad: $('#ad').is(':checked'),
-                    title: $('#saleTitle').val(), folder: $folderseq,token:token,age:age,tag:$('#tag-inputp').val(),
-                    expose:expose
+                    body: $('#publiBody').html(),
+                    seq_writer: mid,
+                    for_sale: "Y",
+                    price: $('#contentCost').val(),
+                    category: category,
+                    sub_category: sub_category,
+                    adult: $('#adult').is(':checked'),
+                    ad: $('#ad').is(':checked'),
+                    title: $('#saleTitle').val(),
+                    folder: $folderseq,
+                    token: token,
+                    age: age,
+                    tag: $('#tag-inputp').val(),
+                    expose: expose
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -779,7 +797,7 @@ $(document).ready(function () {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername,pic);
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
@@ -789,24 +807,25 @@ $(document).ready(function () {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
-        }else{
+        } else {
             console.log('본문과 제목을 입력해 주세요.')
         }
         $btn.button('reset');
     })
     //공개설정 버튼
-    var expose=3;   //기본값 전체공개
+    var expose = 2;   //기본값 전체공개
     $('#expSublist li').click(function () {
         var exptarget = $(this).text()
         $('#exposeSettingSub').text(exptarget);
         switch (exptarget) {
-            case '나만보기':expose=0;
+            case '나만보기':
+                expose = 0;
                 break;
-            case '친구에게 공개':expose=1;
+            case '전체공개':
+                expose = 2;
                 break;
-            case '팔로워에게 공개':expose=2;
-                break;
-            case '전체공개':expose=3;
+            default :
+                expose = 1;
                 break;
         }
     })
@@ -817,52 +836,61 @@ $(document).ready(function () {
         $folderseq = $(this).attr('folderid');
     })
     //카테고리 리스트 버튼
-    var category=null;
+    var category = null;
     $('#categorySelect li').click(function () {
         $('#category').text($(this).text());
         category = $(this).text();
-        function subwrite(sub){
+        function subwrite(sub) {
             $('#subcategorySelect').html('');
-            var write='';
-            for(var i=0;i<sub.length;i++){
-                write+='<li><a>'+sub[i]+'</a></li>'
+            var write = '';
+            for (var i = 0; i < sub.length; i++) {
+                write += '<li><a>' + sub[i] + '</a></li>'
             }
             $('#subcategorySelect').html(write);
         }
+
         switch (category) {
             case '만화':
                 var sub = ['로맨스', '판타지', '개그', '미스터리', '호러', 'SF', '무협', '스포츠'];
                 subwrite(sub);
                 break;
-            case '사진':var sub = ['일상','모델','행사','자연','여행','동식물','스포츠','아트','야경','별사진'];
+            case '사진':
+                var sub = ['일상', '모델', '행사', '자연', '여행', '동식물', '스포츠', '아트', '야경', '별사진'];
                 subwrite(sub);
                 break;
-            case '일러스트':var sub = ['일반','캐릭터'];
+            case '일러스트':
+                var sub = ['일반', '캐릭터'];
                 subwrite(sub);
                 break;
-            case 'e-book':var sub = ['소설','시','에세이','인문','자기개발','교육'];
+            case 'e-book':
+                var sub = ['소설', '시', '에세이', '인문', '자기개발', '교육'];
                 subwrite(sub);
                 break;
-            case '매거진':var sub = ['IT','게임','뷰티','패션','반려동물','소품','DIY'];
+            case '매거진':
+                var sub = ['IT', '게임', '뷰티', '패션', '반려동물', '소품', 'DIY'];
                 subwrite(sub);
                 break;
-            case 'CAD':var sub = ['3D프린팅'];
+            case 'CAD':
+                var sub = ['3D프린팅'];
                 subwrite(sub);
                 break;
-            case 'VR':var sub = ['일상','행사','자연','여행','스포츠','야경'];
+            case 'VR':
+                var sub = ['일상', '행사', '자연', '여행', '스포츠', '야경'];
                 subwrite(sub);
                 break;
-            case '맛집':var sub = [];
+            case '맛집':
+                var sub = [];
                 subwrite(sub);
                 break;
-            case '여행':var sub = ['국내','제주도','일본','동남아','유럽','남미','북미','동북아','오세아니아','아프리카','극지방','중앙아시아'];
+            case '여행':
+                var sub = ['국내', '제주도', '일본', '동남아', '유럽', '남미', '북미', '동북아', '오세아니아', '아프리카', '극지방', '중앙아시아'];
                 subwrite(sub);
                 break;
         }
     })
     //하위 카테고리 리스트 버튼
     var sub_category;
-    $(document).on('click',"#subcategorySelect li", function () {
+    $(document).on('click', "#subcategorySelect li", function () {
         $('#sub-category').text($(this).text());
         sub_category = $(this).text();
     })
@@ -907,10 +935,10 @@ $(document).ready(function () {
         done: function (e, data) {
             if (this == $('#fileuploads')[0]) {
                 $('#sendBody').html($('#sendBody').html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                $('#sendBody').height($('#sendBody').height() + data.result['files']['file_height']+8);
+                $('#sendBody').height($('#sendBody').height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp')[0]) {
                 $('#publiBody').html($('#publiBody').html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                $('#publiBody').height($('#publiBody').height() + data.result['files']['file_height']+8);
+                $('#publiBody').height($('#publiBody').height() + data.result['files']['file_height'] + 8);
 
             }
         }, fail: function (e, data) {
@@ -921,6 +949,135 @@ $(document).ready(function () {
             console.log('e : ' + e);
             console.log('data : ' + data);
         }
+    })
+    //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
+    $('.hasInput,.hasSelect').click(function (e) {
+        e.stopPropagation();
+    });
+    //드롭다운 안에 검색목록의 동작
+    $('.hasInput input[type=text]').on('input', function () {
+        var val = $(this).val();
+        var list = $(this).parents()[1].id;
+        var listarray = [];
+        switch (list) {
+            //친구신청목록에서
+            case 'freqlist':
+                listarray = freqvar;
+                break;
+            //친구목록에서
+            case 'frielist':
+                listarray = frievar;
+                break;
+            //구독목록에서
+            case 'sublist':
+                listarray = subsvar;
+                break;
+        }
+        //grep으로 리스트에서 입력된것과 관련 없는걸 걸러냄
+        var matched = $.grep(listarray, function (el) {
+            return el.indexOf(val) > -1;
+        });
+        var not_matched = $.grep(listarray, function (el) {
+            return el.indexOf(val) <= -1;
+        });
+        //matched는 배열
+
+        $.each(matched, function (ind, val) {
+            var lis = $('#' + list + ' .nameuser:contains(' + val + ')').eq(0).parent();
+            lis.css('display', 'block');
+        })
+        $.each(not_matched, function (ind, val) {
+            var lis = $('#' + list + ' .nameuser:contains(' + val + ')').eq(0).parent();
+            lis.css('display', 'none');
+        })
+
+    });
+
+    //친구요청
+    $('#friequst').on('click', function () {
+        $(this).attr('disabled', 'disabled');
+        var action = $(this).hasClass('request') ? "request" : "endrelation";
+        $.ajax({
+            url: "/php/data/friend.php",
+            type: "POST",
+            data: {targetseq: targetid, myseq: myseq, action: action, token: token, age: age},
+            dataType: 'json',
+            success: function () {
+                var btn = $('#friequst');
+                if (btn.hasClass('request')) {
+                    btn.html('친구신청중');
+                } else if (btn.hasClass('onfriend')) {
+                    btn.html('친구신청').addClass('btn-default').addClass('request').removeClass('btn-success').removeClass('onfriend').removeAttr('disabled');
+                }
+            }, error: function () {
+                $(this).removeAttr('disabled');
+            }
+        });
+    });
+    //친구요청 응답
+    $('.freqanswer').on('click', function () {
+        var fid = $(this).attr('fid') ? $(this).attr('fid') : null;
+        var requestid = $(this).attr('requestid');
+        var pa = $(this).parent()[0];
+        var action = $(this).hasClass('friendok') ? "friendok" : "friendno";
+        $.ajax({
+            url: "/php/data/friend.php",
+            type: "POST",
+            data: {targetseq: fid, requestid: requestid, action: action, myseq: myseq, token: token, age: age},
+            dataType: 'json',
+            success: function (res) {
+                if (res['result'] == 'Y') {
+                    pa.remove();
+                    $('#frequestnum').text($('#frequestnum').text() - 1);
+                    if ($('#frequestnum').text() == 0) {
+                        $('#freqli').append("<li><a>친구요청이 없습니다</a></li>")
+                    }
+                }
+            }
+        })
+    })
+
+    //구독신청
+    $('#subsbtn').on('click', function () {
+        $(this).attr('disabled', 'disabled');
+        var action = $(this).hasClass('subscribe') ? "subscribe" : "dis_subscribe";
+        $.ajax({
+            url: "/php/data/friend.php",
+            type: "POST",
+            data: {targetseq: targetseq, action: action, userseq: mid, token: token, age: age},
+            dataType: 'json',
+            success: function (res) {
+                var btn = $('#subsbtn');
+                if (btn.hasClass('subscribe')) {
+                    btn.addClass('dis_subscribe').removeClass('subscribe').addClass('btn-info').removeClass('btn-default').html('구독중');
+                } else {
+                    btn.addClass('subscribe').removeClass('dis_subscribe').addClass('btn-default').removeClass('btn-info').html('구독하기');
+                }
+                btn.removeAttr('disabled');
+            }, error: function () {
+                $(this).removeAttr('disabled');
+            }
+        })
+    })
+    //글쓰기 권한 설정
+    $("input:radio[name='writeAuth']").change(function () {
+        var radioValue = $(this).val();
+        $.ajax({
+            url: "/php/data/profileChange.php",
+            type: "POST",
+            data: {action: "writeAuth", userseq: mid, radioValue: radioValue}
+        })
+    })
+    $(".expAuth").change(function () {
+        var checkValue = '';
+        $(".expAuth:checked").each(function () {
+            checkValue += $(this).val();
+        })
+        $.ajax({
+            url: "/php/data/profileChange.php",
+            type: "POST",
+            data: {action: "expAuth", userseq: mid, checkValue: checkValue}
+        })
     })
 });
 //텍스트에이리어 입력시 자동 크기조정

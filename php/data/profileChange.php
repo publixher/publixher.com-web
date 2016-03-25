@@ -152,5 +152,17 @@ if ($_POST['action'] == 'profilechange') {
     } else {
         echo '{"message":"자신의 폴더만 지울 수 있습니다"}';
     }
+}elseif($_POST['action']=='writeAuth'){
+    $q="UPDATE publixher.TBL_USER SET WRITEAUTH=:WRITEAUTH WHERE SEQ=:SEQ";
+    $p=$db->prepare($q);
+    $p->bindValue(':WRITEAUTH',$_POST['radioValue']);
+    $p->bindValue(':SEQ',$_POST['userseq']);
+    $p->execute();
+}elseif($_POST['action']=='expAuth'){
+    $q="UPDATE publixher.TBL_USER SET EXPAUTH=:EXPAUTH WHERE SEQ=:SEQ";
+    $p=$db->prepare($q);
+    $p->bindValue(':EXPAUTH',$_POST['checkValue']);
+    $p->bindValue(':SEQ',$_POST['userseq']);
+    $p->execute();
 }
 ?>

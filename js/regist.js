@@ -54,7 +54,7 @@ $(document).ready(function () {
     var idwrong = $('#idwrong');
     var regEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 
-    mid.on("keyup", function () {
+    mid.on("input", function () {
         if (!regEmail.test(mid.val())) {
             idwrong.css('display', 'block');
             idwrong.text('이메일을 입력해 주세요.');
@@ -116,7 +116,7 @@ $(document).ready(function () {
         return true;
     }
 
-    mpass.on("change", function () {
+    mpass.on("input", function () {
         console.log('aa');
         if (!CheckPW()) {
             pwwrong.css('display', 'block');
@@ -131,7 +131,7 @@ $(document).ready(function () {
             pwvali = true;
         }
     });
-    mpassCheck.on("change", function () {
+    mpassCheck.on("input", function () {
         if (mpass.val() != mpassCheck.val()) {
             pwcheckwrong.css('display', 'block');
             pwcheckwrong.text('비밀번호와 다릅니다.');
@@ -152,7 +152,7 @@ $(document).ready(function () {
     var mname = $('#mname');
     var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
     var regEName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-    mname.on("change", function () {
+    mname.on("input", function () {
         if (regHName.test(mname.val())) {
             namewrong.css('display', 'block');
             namewrong.text('훌륭합니다.');

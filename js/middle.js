@@ -751,7 +751,7 @@ $(document).ready(function () {
         $btn.button('reset');
     })
     //공개설정 버튼
-    var expose = 3;   //기본값 전체공개
+    var expose = 2;   //기본값 전체공개
     $('#expSublist li').click(function () {
         var exptarget = $(this).text()
         $('#exposeSettingSub').text(exptarget);
@@ -762,11 +762,8 @@ $(document).ready(function () {
             case '친구에게 공개':
                 expose = 1;
                 break;
-            case '팔로워에게 공개':
-                expose = 2;
-                break;
             case '전체공개':
-                expose = 3;
+                expose = 2;
                 break;
         }
     })
@@ -888,17 +885,6 @@ $(document).ready(function () {
             console.log('data : ' + data);
         }
     })
-    //태그기능 봉인
-    //$('.tag-inputh').on('keyup', function (e) {
-    //    if(e.which==32){
-    //        console.log($(this).val())
-    //        if($(this).parents()[4].id=='send'){
-    //            var sendtag=$('#sendtag');
-    //            sendtag.append('<a class="body-hash-tag badge">'+$(this).val()+'</a><span> </span>')
-    //            $(this).val('');
-    //        }
-    //    }
-    //})
 });
 
 //텍스트에이리어 입력시 자동 크기조정

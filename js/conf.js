@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //검색창에 글자를 입력할때마다 db에서 검색결과 가져옴
-    $('#gsearch').on('keyup', function () {
+    $('#gsearch').on('input', function () {
         //통합검색
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {

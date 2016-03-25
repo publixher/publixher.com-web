@@ -45,6 +45,7 @@ body {
 }
 #wrap #middle #writing-pane ul {
   padding-left: 2px;
+  font-size: 12px;
 }
 #wrap #middle #writing-pane ul li {
   width: 132px;
@@ -53,7 +54,7 @@ body {
 }
 #wrap #middle #writing-pane ul li a {
   text-align: center;
-  padding: 2px 0 2px 0;
+  padding: 3px 0 4px 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane {
   padding: 5px 0px 0px 0px;
@@ -88,20 +89,15 @@ body {
   height: 45px;
   margin-left: 10px;
   box-shadow: inset 0 0 0;
+  width: 510px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
   max-width: 484px !important;
   max-height: 484px !important;
 }
-#wrap #middle #writing-pane .tab-content .tab-pane #sendtag,
-#wrap #middle #writing-pane .tab-content .tab-pane #publitag {
-  height: 20px;
-  padding: 0 5px 0 5px;
-  overflow-x: auto;
-}
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0px 0;
-  border-tpo: 1px solid #eeeeee;
+  border-tpo: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .form-group .input-group .input-group-addon img {
   width: 20px;
@@ -125,7 +121,7 @@ body {
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .fileupform {
   display: inline-block;
   position: absolute;
-  margin-left: -79.8px;
+  margin-left: -90px;
   margin-top: -3px;
   width: 133px;
   height: 22px;
@@ -180,6 +176,7 @@ body {
   border-radius: 0px;
   border: 0px;
   border-bottom: 1px solid #eee;
+  font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput {
   height: 22px;
@@ -193,6 +190,7 @@ body {
   border: 0px;
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
   width: 255px;
@@ -223,11 +221,20 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:focus,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:focus,
+#wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:hover,
+#wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:hover {
+  border-bottom: 1px solid #f4f4f4;
+}
 #wrap #middle .item .subrep,
 #wrap #middle .item-for-sale .subrep {
   width: 469px;
   margin-left: 39px;
   border-left: 2px solid #d7d7d7;
+  padding-bottom: 5px;
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
@@ -237,6 +244,7 @@ body {
   box-shadow: inset 0 0 0;
   padding: 4px 0 4px 10px;
   font-size: 12px;
+  margin-bottom: 5px;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
@@ -244,6 +252,7 @@ body {
   box-shadow: inset 0 0 0;
   padding: 5px 0 4px 10px;
   font-size: 12px;
+  margin-top: 5px;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -324,7 +333,7 @@ body {
   font-size: 12px;
   margin-left: 10px;
   margin-right: 10px;
-  background-color: #F4F4F4;
+  background-color: #F4F4F4    ;
 }
 #wrap #middle .item .tail .badge,
 #wrap #middle .item-for-sale .tail .badge {
@@ -407,7 +416,7 @@ body {
 #wrap #right .conf {
   position: fixed;
   width: 300px;
-  height: 150px;
+  height: 120px;
   top: 0;
   z-index: 2;
   background-color: #F2DEDE;
@@ -419,7 +428,7 @@ body {
 #wrap #right .conf #logo {
   margin: 5px 5px 5px 5px;
   height: 40px;
-  width: 240px;
+  width: 200px;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -511,7 +520,7 @@ body {
   font-size: 14px;
   padding: 2px 2px 2px 2px;
   margin-left: 6px;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 #wrap #right .conf .dropdown ul {
   padding: 0 0 0 0;
