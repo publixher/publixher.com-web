@@ -2,13 +2,16 @@
  * Created by gangdong-gyun on 2016. 2. 24..
  */
 $(document).ready(function () {
-    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic) {
+    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname) {
         write = '<div class="item card" id="';
         write += seq;
         write += '"><div class="header">';
         write += '<img src="' + pic + '" class="profilepic">';
         write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
         write += name + '</a>&nbsp;'
+        if(targetseq){
+            write+='>>> <a href="/php/profile.php?id=' + targetseq + '">'+targetname+'</a> '
+        }
         if (folderseq) {
             write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
         } else {
@@ -80,6 +83,7 @@ $(document).ready(function () {
         data: loadOption,
         dataType: 'json',
         success: function (res) {
+            console.log(res)
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
                 if (res[i]['USER_NAME'] != null) {
@@ -93,13 +97,15 @@ $(document).ready(function () {
                         var comment = res[i]['COMMENT'];
                         var preview = res[i]['PREVIEW'];
                         var pic = res[i]['PIC'];
+                        var targetseq = res[i]['SEQ_TARGET'];
+                        var targetname = res[i]['TARGET_NAME'];
                         var folderseq = null;
                         var foldername = null;
                         if (res[i]['FOLDER'] != null) {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
+                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                         $('#topcon').after(write);
                     } else {
                         var write = '';
@@ -154,13 +160,15 @@ $(document).ready(function () {
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
+                    var targetseq = res['SEQ_TARGET'];
+                    var targetname = res['TARGET_NAME'];
                     var folderseq = null;
                     var foldername = null;
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                     $('#topcon').append(write);
                 } else {
                     var write = '';
@@ -211,6 +219,8 @@ $(document).ready(function () {
                                 var knock = res[i]['KNOCK'];
                                 var comment = res[i]['COMMENT'];
                                 var preview = res[i]['PREVIEW'];
+                                var targetseq = res['SEQ_TARGET'];
+                                var targetname = res['TARGET_NAME'];
                                 var pic = res[i]['PIC'];
                                 var folderseq = null;
                                 var foldername = null;
@@ -218,7 +228,7 @@ $(document).ready(function () {
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
+                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                                 $('.card:last-child').after(write);
                             } else {
                                 var write = '';
@@ -715,6 +725,12 @@ $(document).ready(function () {
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
+        var seq_target;
+        if(mid==targetseq){
+            seq_target=null;
+        }else{
+            seq_target=targetseq;
+        }
         if ($('#sendBody').html().length > 0) {
             $.ajax({
                 url: "/php/data/uploadContent.php",
@@ -725,7 +741,8 @@ $(document).ready(function () {
                     folder: $folderseq,
                     token: token, age: age,
                     tag: $('#taginputs').val(),
-                    expose: expose
+                    expose: expose,
+                    targetseq:seq_target
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -738,13 +755,15 @@ $(document).ready(function () {
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
+                    var targetseq = res['SEQ_TARGET'];
+                    var targetname = res['TARGET_NAME'];
                     var folderseq = null;
                     var foldername = null;
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                     $('#upform').after(write);
                     $('#sendBody').html("").trigger('keyup');
                 },

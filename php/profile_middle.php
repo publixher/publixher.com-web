@@ -9,15 +9,15 @@
     </script>
     <?php
     //글쓰기권한,공개설정 탐색
-    $w="SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE SEQ=:SEQ";
-    $p=$db->prepare($w);
-    $p->bindValue(':SEQ',$targetid);
+    $w = "SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+    $p = $db->prepare($w);
+    $p->bindValue(':SEQ', $targetid);
     $p->execute();
-    $auth=$p->fetch(PDO::FETCH_ASSOC);
-    $writeauth=$auth['WRITEAUTH'];
-    $expauth=$auth['EXPAUTH'];
+    $auth = $p->fetch(PDO::FETCH_ASSOC);
+    $writeauth = $auth['WRITEAUTH'];
+    $expauth = $auth['EXPAUTH'];
     //자신일경우
-    $I=$targetid==$userseq?true:false;
+    $I = $targetid == $userseq ? true : false;
     //위에 버튼그룹
     if ($I) {
 //        내프로필일경우
@@ -136,13 +136,21 @@
                 </button>
                 <ul class="dropdown-menu hasSelect" role="menu" id="confAut">
                     <li><b>글쓰기 권한</b></li>
-                    <li class="radio"><label><input type="radio" name="writeAuth" value="0" <?if($writeauth==0) echo 'checked'?>>나만</label></li>
-                    <li class="radio"><label><input type="radio" name="writeAuth" value="1" <?if($writeauth==1) echo 'checked'?>>친구</label></li>
-                    <li class="radio"><label><input type="radio" name="writeAuth" value="2" <?if($writeauth==2) echo 'checked'?>>전체</label></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth"
+                                                    value="0" <? if ($writeauth == 0) echo 'checked' ?>>나만</label></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth"
+                                                    value="1" <? if ($writeauth == 1) echo 'checked' ?>>친구</label></li>
+                    <li class="radio"><label><input type="radio" name="writeAuth"
+                                                    value="2" <? if ($writeauth == 2) echo 'checked' ?>>전체</label></li>
                     <li><b>타인이 설정할 수 있는 공개 권한</b></li>
-                    <li class="checkbox"><label><input type="checkbox" value="a" class="expAuth" checked disabled>나와 글쓴이</label></li>
-                    <li class="checkbox"><label><input type="checkbox" value="b" class="expAuth" <?if(strpos($expauth,'b')!==false) echo 'checked'?>>내 친구</label></li>
-                    <li class="checkbox"><label><input type="checkbox" value="c" class="expAuth" <?if(strpos($expauth,'c')!==false) echo 'checked'?>>전체</label></li>
+                    <li class="checkbox"><label><input type="checkbox" value="a" class="expAuth" checked disabled>나와 글쓴이</label>
+                    </li>
+                    <li class="checkbox"><label><input type="checkbox" value="b"
+                                                       class="expAuth" <? if (strpos($expauth, 'b') !== false) echo 'checked' ?>>내
+                            친구</label></li>
+                    <li class="checkbox"><label><input type="checkbox" value="c"
+                                                       class="expAuth" <? if (strpos($expauth, 'c') !== false) echo 'checked' ?>>전체</label>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -159,9 +167,9 @@
             $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
             $friendnum = count($friends);
             //나랑 글쓴이랑 친구인지 확인
-            foreach($friends as $fri){
-                $frelation=$userseq==$fri['SEQ_FRIEND'];
-                if($frelation) break;
+            foreach ($friends as $fri) {
+                $frelation = $userseq == $fri['SEQ_FRIEND'];
+                if ($frelation) break;
             }
             ?>
             <div class="btn-group" role="group">
@@ -257,7 +265,7 @@
     <form action="/php/data/uploadContent.php" method="post" enctype="multipart/form-data" id="upform">
         <?php
         //내 프로필일 경우 ,내 친구고 타겟의 글쓰기 권한이 1일경우,2일경우
-        if ($I OR ($frelation AND $writeauth>0) OR $writeauth>1) {
+        if ($I OR ($frelation AND $writeauth > 0) OR $writeauth > 1) {
             ?>
 
             <div role="tabpanel" id="writing-pane">
@@ -265,16 +273,14 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab"
                                                               data-toggle="tab">똥싸기</a></li>
-                    <li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"
-                                               data-toggle="tab">용돈벌기</a>
-                    </li>
+                    <? if ($I) echo '<li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">용돈벌기</a></li>' ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
-                            <?if(strpos($expauth,'b')!==false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>"?>
-                            <?if(strpos($expauth,'c')!==false OR $I) echo '<li><a>전체공개</a></li>'?>
+                            <? if (strpos($expauth, 'b') !== false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>" ?>
+                            <? if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>' ?>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -329,82 +335,83 @@
                             </tr>
                         </table>
                     </div>
-                    <!--여기부턴 용돈벌기 내용-->
-                    <div role="tabpanel" class="tab-pane" id="publixh">
-                        <div>
-                            <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
-                            <div contenteditable="true" class="form-control" id="publiBody"
-                                 onkeyup="resize(this)"></div>
-                        </div>
-                        <hr>
-                        <table>
-                            <tr>
-                                <td class="cateinput">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown"
-                                                aria-expanded="false">
-                                            <span id="category">분류</span> <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" id="categorySelect">
-                                            <li><a>사진</a></li>
-                                            <li><a>만화</a></li>
-                                            <li><a>일러스트</a></li>
-                                            <li><a>e-book</a></li>
-                                            <li><a>매거진</a></li>
-                                            <li><a>CAD</a></li>
-                                            <li><a>VR</a></li>
-                                            <li><a>맛집</a></li>
-                                            <li><a>여행</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td class="subcateinput">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown"
-                                                aria-expanded="false"><span id="sub-category">하위 분류</span> <span
-                                                class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" id="subcategorySelect">
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td class="priceinput" colspan="2">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">PIK</div>
-                                            <input type="text" class="form-control" id="contentCost"
-                                                   placeholder="여기에 가격을 입력하세요."
-                                                   pattern="[0-9]">
-                                            <div class="input-group-addon"><img src="../img/IMG_1795.png"></div>
+                    <? if ($I) { ?>
+                        <div role="tabpanel" class="tab-pane" id="publixh">
+                            <div>
+                                <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
+                                <div contenteditable="true" class="form-control" id="publiBody"
+                                     onkeyup="resize(this)"></div>
+                            </div>
+                            <hr>
+                            <table>
+                                <tr>
+                                    <td class="cateinput">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                <span id="category">분류</span> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" id="categorySelect">
+                                                <li><a>사진</a></li>
+                                                <li><a>만화</a></li>
+                                                <li><a>일러스트</a></li>
+                                                <li><a>e-book</a></li>
+                                                <li><a>매거진</a></li>
+                                                <li><a>CAD</a></li>
+                                                <li><a>VR</a></li>
+                                                <li><a>맛집</a></li>
+                                                <li><a>여행</a></li>
+                                            </ul>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fileinput">
-                                    <button class="btn btn-primary" type="button">파일선택
-                                        <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"
-                                               data-url="/php/data/fileUp.php" multiple class="fileupform">
-                                    </button>
-                                </td>
-                                <td class="taginput">
-                                    <input type="text" class="tag-inputa" class="form-control" placeholder="인물 , 제목">
-                                </td>
-                                <td class="taginput">
-                                    <input type="text" class="tag-inputh" class="form-control" placeholder="히힣힣">
-                                </td>
-                                <td class="regbtn">
-                                    <button type="button" id="publixhButton" data-loading-text="싸는중..."
-                                            class="btn btn-primary"
-                                            autocomplete="off">
-                                        출판하기
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                    </td>
+                                    <td class="subcateinput">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown"
+                                                    aria-expanded="false"><span id="sub-category">하위 분류</span> <span
+                                                    class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" id="subcategorySelect">
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="priceinput" colspan="2">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">PIK</div>
+                                                <input type="text" class="form-control" id="contentCost"
+                                                       placeholder="여기에 가격을 입력하세요."
+                                                       pattern="[0-9]">
+                                                <div class="input-group-addon"><img src="../img/IMG_1795.png"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fileinput">
+                                        <button class="btn btn-primary" type="button">파일선택
+                                            <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"
+                                                   data-url="/php/data/fileUp.php" multiple class="fileupform">
+                                        </button>
+                                    </td>
+                                    <td class="taginput">
+                                        <input type="text" class="tag-inputa" class="form-control"
+                                               placeholder="인물 , 제목">
+                                    </td>
+                                    <td class="taginput">
+                                        <input type="text" class="tag-inputh" class="form-control" placeholder="히힣힣">
+                                    </td>
+                                    <td class="regbtn">
+                                        <button type="button" id="publixhButton" data-loading-text="싸는중..."
+                                                class="btn btn-primary"
+                                                autocomplete="off">
+                                            출판하기
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><? } ?>
                 </div>
             </div>
         <? } ?>

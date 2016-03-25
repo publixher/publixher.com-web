@@ -79,8 +79,9 @@ if (!empty($_POST)) {
     }
     //content테이블에 넣음
     $seq_writer = $_POST['seq_writer'];
+    $targetseq=$_POST['targetseq'];
     if (!$_POST['for_sale']) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET)";
     } else {
         $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE)";
     }
@@ -90,6 +91,7 @@ if (!empty($_POST)) {
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
+    $prepare->bindValue(':SEQ_TARGET', $targetseq, PDO::PARAM_STR);
 
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
@@ -122,6 +124,14 @@ if (!empty($_POST)) {
     $prepare->execute();
     $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
     $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
+    //타겟이 있다면 타겟의 정보도 가져옴
+    if($targetseq) {
+        $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+        $tp = $db->prepare($t);
+        $tp->bindValue(':SEQ', $targetseq);
+        $tp->execute();
+        $result['TARGET_NAME'] = $tp->fetchColumn();
+    }
     //판매목록에 수 증가
     $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
     $prepare2 = $db->prepare($sql2);

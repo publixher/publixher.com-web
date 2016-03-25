@@ -2,13 +2,16 @@
  * Created by gangdong-gyun on 2016. 3. 1..
  */
 $(document).ready(function () {
-    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic) {
+    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname) {
         write = '<div class="item card" id="';
         write += seq;
         write += '"><div class="header">';
-        write += '<img src="'+pic+'" class="profilepic">';
+        write += '<img src="' + pic + '" class="profilepic">';
         write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
         write += name + '</a>&nbsp;'
+        if(targetseq){
+            write+='>>> <a href="/php/profile.php?id=' + targetseq + '">'+targetname+'</a> '
+        }
         if (folderseq) {
             write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
         } else {
@@ -89,14 +92,16 @@ $(document).ready(function () {
                     var knock = res[0]['KNOCK'];
                     var comment = res[0]['COMMENT'];
                     var preview = res[0]['PREVIEW'];
-                    var pic = res[0]['PIC'];
+                    var targetseq = res['SEQ_TARGET'];
+                    var targetname = res['TARGET_NAME'];
+                    var pic = res[i]['PIC'];
                     var folderseq = null;
                     var foldername = null;
-                    if (res[0]['FOLDER'] != null) {
-                        folderseq = res[0]['FOLDER'];
-                        foldername = res[0]['FOLDER_NAME'];
+                    if (res[i]['FOLDER'] != null) {
+                        folderseq = res[i]['FOLDER'];
+                        foldername = res[i]['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername,pic);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                     $('#prea').after(write);
 
                 } else {
