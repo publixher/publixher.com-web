@@ -92,14 +92,14 @@ $(document).ready(function () {
                     var knock = res[0]['KNOCK'];
                     var comment = res[0]['COMMENT'];
                     var preview = res[0]['PREVIEW'];
-                    var targetseq = res['SEQ_TARGET'];
-                    var targetname = res['TARGET_NAME'];
-                    var pic = res[i]['PIC'];
+                    var targetseq = res[0]['SEQ_TARGET'];
+                    var targetname = res[0]['TARGET_NAME'];
+                    var pic = res[0]['PIC'];
                     var folderseq = null;
                     var foldername = null;
                     if (res[i]['FOLDER'] != null) {
-                        folderseq = res[i]['FOLDER'];
-                        foldername = res[i]['FOLDER_NAME'];
+                        folderseq = res[0]['FOLDER'];
+                        foldername = res[0]['FOLDER_NAME'];
                     }
                     write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
                     $('#prea').after(write);

@@ -314,10 +314,13 @@
                         <table>
                             <tr>
                                 <td class="fileinput">
-                                    <button class="btn btn-primary" type="button">파일선택
-                                        <input type="file" id="fileuploads" accept="image/*" name="fileuploads[]"
-                                               data-url="/php/data/fileUp.php" multiple class="fileupform">
-                                    </button>
+<!--                                    <button class="btn btn-primary" type="button">파일선택-->
+<!--                                        <input type="file" id="fileuploads" accept="image/*" name="fileuploads[]"-->
+<!--                                               data-url="/php/data/fileUp.php" multiple class="fileupform">-->
+<!--                                    </button>-->
+                                    <span>파일선택</span>
+                                    <input id="fileuploads" name="fileuploads[]" accept="image/*"
+                                           data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                 </td>
                                 <td class="taginput">
                                     <input type="text" class="tag-inputa" class="form-control" placeholder="인물 , 제목">
@@ -390,10 +393,13 @@
                                 </tr>
                                 <tr>
                                     <td class="fileinput">
-                                        <button class="btn btn-primary" type="button">파일선택
-                                            <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"
-                                                   data-url="/php/data/fileUp.php" multiple class="fileupform">
-                                        </button>
+<!--                                        <button class="btn btn-primary" type="button">파일선택-->
+<!--                                            <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"-->
+<!--                                                   data-url="/php/data/fileUp.php" multiple class="fileupform">-->
+<!--                                        </button>-->
+                                        <span>파일선택</span>
+                                        <input id="fileuploadp" name="fileuploadp[]" accept="image/*"
+                                               data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
                                         <input type="text" class="tag-inputa" class="form-control"

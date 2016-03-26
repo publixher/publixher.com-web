@@ -44,27 +44,22 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ_WRITER = :SEQ_USER0 AND DEL='N' "  //내거찾기
 
         . "UNION SELECT CONT1.* FROM publixher.TBL_CONTENT CONT1 INNER JOIN ("
-        . "SELECT NOTI1.SEQ_CONTENT SEQ_ACT1 FROM "
+        . "SELECT NOTI1.SEQ_CONTE 1 ,COUNT(DISTINCT NOTI1.SEQ_ACTOR) AS FCOUNT FROM "
         . "publixher.TBL_CONTENT_NOTI NOTI1 INNER JOIN publixher.TBL_FRIENDS FRIEND1 ON FRIEND1.SEQ_FRIEND = NOTI1.SEQ_ACTOR "
-        . "WHERE FRIEND1.SEQ_USER = :SEQ_USER1 GROUP BY NOTI1.SEQ_CONTENT HAVING COUNT(DISTINCT NOTI1.SEQ_ACTOR) >= 1 AND COUNT(DISTINCT NOTI1.SEQ_ACTOR) <= 2 "
+        . "WHERE FRIEND1.SEQ_USER = :SEQ_USER1 GROUP BY NOTI1.SEQ_CONTENT"
         . ") AS FRIEND_NOTI1 ON FRIEND_NOTI1.SEQ_ACT1 = CONT1.SEQ "
-        . "WHERE CONT1.DEL = 'N' AND CONT1.EXPOSE > 1 AND CONT1.COMMENT + CONT1.KNOCK > 50 "    //내 친구중 1명~2명이 액션한 컨텐츠중 전체공개인것
+        . "WHERE CONT1.DEL = 'N' AND CONT1.EXPOSE > 1 AND CASE WHEN FRIEND_NOTI1.FCOUNT>2 THEN CONT1.COMMENT + CONT1.KNOCK > 30 "    //내 친구중 1명~2명이 액션하고 50개이상 액션, 3명이상 액션하고 30개이상 액
+        . "WHEN FRIEND_NOTI1.FCOUNT<=2 THEN CONT1.COMMENT + CONT1.KNOCK > 50 END "
 
         . "UNION SELECT DISTINCT CONT2.* FROM publixher.TBL_CONTENT CONT2 "
         . "INNER JOIN publixher.TBL_FRIENDS FRIEND2 ON FRIEND2.SEQ_FRIEND = CONT2.SEQ_WRITER "
         . "WHERE FRIEND2.SEQ_USER = :SEQ_USER2 AND CONT2.DEL = 'N' AND CONT2.EXPOSE > 0 "   //내 친구가 쓰고 공개대상이 친구 이상인것
-
-        . "UNION SELECT CONT3.* FROM publixher.TBL_CONTENT CONT3 INNER JOIN ("
-        . "SELECT NOTI3.SEQ_CONTENT SEQ_ACT3 FROM publixher.TBL_CONTENT_NOTI NOTI3 INNER JOIN publixher.TBL_FRIENDS FRIEND3 ON FRIEND3.SEQ_FRIEND = NOTI3.SEQ_ACTOR "
-        . "WHERE FRIEND3.SEQ_USER = :SEQ_USER3 GROUP BY NOTI3.SEQ_CONTENT HAVING COUNT(DISTINCT NOTI3.SEQ_ACTOR) >= 3"
-        . ") AS FRIEND_NOTI3 ON FRIEND_NOTI3.SEQ_ACT3 = CONT3.SEQ WHERE CONT3.DEL = 'N' AND CONT3.EXPOSE > 1 AND CONT3.COMMENT + CONT3.KNOCK > 30"      //여기까지 내 친구중 3명 이상이 액션하고 액션 30개 이상인
         . " ORDER BY SEQ DESC LIMIT "
         . ":NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':SEQ_USER0', $userseq);
     $prepare->bindValue(':SEQ_USER1', $userseq);
     $prepare->bindValue(':SEQ_USER2', $userseq);
-    $prepare->bindValue(':SEQ_USER3', $userseq);
     $prepare->bindValue(':NOWPAGE', $nowpage);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -93,7 +88,7 @@ for ($i = 0; $i < count($result); $i++) {
         $result[$i]['FOLDER_NAME'] = $foldername['DIR'];
     }
     //타겟 가져오기
-    if($result[$i]['SEQ_TARGET']){
+    if ($result[$i]['SEQ_TARGET']) {
         $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
         $tp = $db->prepare($t);
         $tp->bindValue(':SEQ', $result[$i]['SEQ_TARGET']);

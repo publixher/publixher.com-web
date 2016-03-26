@@ -83,6 +83,7 @@ $(document).ready(function () {
         data: loadOption,
         dataType: 'json',
         success: function (res) {
+            console.log(res)
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
                 if (res[i]['USER_NAME'] != null) {
@@ -95,8 +96,8 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         var comment = res[i]['COMMENT'];
                         var preview = res[i]['PREVIEW'];
-                        var targetseq = res['SEQ_TARGET'];
-                        var targetname = res['TARGET_NAME'];
+                        var targetseq = res[i]['SEQ_TARGET'];
+                        var targetname = res[i]['TARGET_NAME'];
                         var pic = res[i]['PIC'];
                         var folderseq = null;
                         var foldername = null;
@@ -160,8 +161,8 @@ $(document).ready(function () {
                                 var knock = res[i]['KNOCK'];
                                 var comment = res[i]['COMMENT'];
                                 var preview = res[i]['PREVIEW'];
-                                var targetseq = res['SEQ_TARGET'];
-                                var targetname = res['TARGET_NAME'];
+                                var targetseq = res[i]['SEQ_TARGET'];
+                                var targetname = res[i]['TARGET_NAME'];
                                 var pic = res[i]['PIC'];
                                 var folderseq = null;
                                 var foldername = null;

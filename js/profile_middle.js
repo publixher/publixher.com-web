@@ -219,8 +219,8 @@ $(document).ready(function () {
                                 var knock = res[i]['KNOCK'];
                                 var comment = res[i]['COMMENT'];
                                 var preview = res[i]['PREVIEW'];
-                                var targetseq = res['SEQ_TARGET'];
-                                var targetname = res['TARGET_NAME'];
+                                var targetseq = res[i]['SEQ_TARGET'];
+                                var targetname = res[i]['TARGET_NAME'];
                                 var pic = res[i]['PIC'];
                                 var folderseq = null;
                                 var foldername = null;

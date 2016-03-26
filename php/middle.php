@@ -26,19 +26,19 @@
                         <span id="directorySettingSub">비분류</span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" id="dirSublist">
                         <?php
-                        require_once'../conf/database_conf.php';
-                        require_once'../conf/User.php';
+                        require_once '../conf/database_conf.php';
+                        require_once '../conf/User.php';
                         session_start();
-                        $userinfo=$_SESSION['user'];
-                        $userseq=$userinfo->getSEQ();
+                        $userinfo = $_SESSION['user'];
+                        $userseq = $userinfo->getSEQ();
                         //폴더목록 불러오기
                         $sql1 = "SELECT SEQ,DIR FROM publixher.TBL_FORDER WHERE SEQ_USER=:SEQ_USER";
                         $prepare1 = $db->prepare($sql1);
                         $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
                         $prepare1->execute();
                         $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-                        for($i=0;$i<count($forder);$i++){
-                            echo '<li folderid="'.$forder[$i]['SEQ'].'"><a href="#" >'.$forder[$i]['DIR'].'</a></li>';
+                        for ($i = 0; $i < count($forder); $i++) {
+                            echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                         }
                         ?>
                     </ul>
@@ -48,15 +48,18 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="send">
                     <div contenteditable="true" class="form-control" id="sendBody" onkeyup="resize(this)"></div>
-<!--                    <div class="form-control" id="sendtag" contenteditable="true"></div>-->
+                    <!--                    <div class="form-control" id="sendtag" contenteditable="true"></div>-->
                     <hr>
                     <table>
                         <tr>
                             <td class="fileinput">
-                                <button class="btn btn-primary" type="button">파일선택
-                                    <input type="file" id="fileuploads" name="fileuploads[]" accept="image/*"
-                                           data-url="/php/data/fileUp.php" multiple class="fileupform">
-                                </button>
+<!--                                <button class="btn btn-primary" type="button">파일선택-->
+<!--                                    <input type="file" id="fileuploads" name="fileuploads[]" accept="image/*"-->
+<!--                                           data-url="/php/data/fileUp.php" multiple class="fileupform">-->
+<!--                                </button>-->
+                                <span>파일선택</span>
+                                <input id="fileuploads" name="fileuploads[]" accept="image/*"
+                                       data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
                             <td class="taginput">
                                 <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
@@ -66,7 +69,7 @@
                             </td>
                             <td class="regbtn">
                                 <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary"
-                                        >
+                                >
                                     보내기
                                 </button>
                             </td>
@@ -104,7 +107,8 @@
                             <td class="subcateinput">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                            aria-expanded="false"><span id="sub-category">하위 분류</span><span class="caret"></span>
+                                            aria-expanded="false"><span id="sub-category">하위 분류</span><span
+                                            class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" id="subcategorySelect">
                                     </ul>
@@ -124,10 +128,13 @@
                         </tr>
                         <tr>
                             <td class="fileinput">
-                                <button class="btn btn-primary" type="button">파일선택
-                                    <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"
-                                           data-url="/php/data/fileUp.php" multiple class="fileupform">
-                                </button>
+<!--                                <button class="btn btn-primary" type="button">파일선택-->
+<!--                                    <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"-->
+<!--                                           data-url="/php/data/fileUp.php" multiple class="fileupform">-->
+<!--                                </button>-->
+                                <span>파일선택</span>
+                                <input id="fileuploadp" name="fileuploadp[]" accept="image/*"
+                                       data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
                             <td class="taginput">
                                 <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
@@ -136,7 +143,8 @@
                                 <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
                             </td>
                             <td class="regbtn">
-                                <button type="button" id="publixhButton" data-loading-text="싸는중..." class="btn btn-primary"
+                                <button type="button" id="publixhButton" data-loading-text="싸는중..."
+                                        class="btn btn-primary"
                                         autocomplete="off">
                                     출판하기
                                 </button>
