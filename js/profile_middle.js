@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     //페이지 로드 끝나면 아이템카드 불러오기
     var page = 0;
-    var loadOption = {seq: mid, nowpage: page, profile: targetseq};
+    var loadOption = {seq: mid, nowpage: page, profile: targetseq,I:I,frelation:frelation};
     $.ajax({
         url: "/php/data/getContent.php",
         type: "GET",
@@ -773,6 +773,7 @@ $(document).ready(function () {
             })
         }
         $btn.button('reset');
+        $btn.blur();
     })
     //publixh 버튼 내용
     $('#publixhButton').on('click', function () {
@@ -827,9 +828,10 @@ $(document).ready(function () {
                 }
             })
         } else {
-            console.log('본문과 제목을 입력해 주세요.')
+            alert('본문과 제목을 입력해 주세요.')
         }
         $btn.button('reset');
+        $btn.blur();
     })
     //공개설정 버튼
     var expose = 2;   //기본값 전체공개

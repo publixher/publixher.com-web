@@ -17,11 +17,15 @@
     $writeauth = $auth['WRITEAUTH'];
     $expauth = $auth['EXPAUTH'];
     //자신일경우
-    $I = $targetid == $userseq ? true : false;
+    $I = $targetid == $userseq ? 1 : 0;
     //위에 버튼그룹
     if ($I) {
 //        내프로필일경우
         ?>
+        <script>
+            var I=true;
+            var frelation=false;
+        </script>
         <div class="btn-group" role="group">
             <!--            친구목록-->
             <?php
@@ -158,6 +162,10 @@
 //        내 프로필이 아닐경우
         ?>
         <div class="btn-group" role="group">
+        <script>
+            var I=false;
+            var frelation=false;
+        </script>
             <!--            친구목록-->
             <?php
             $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
@@ -169,7 +177,11 @@
             //나랑 글쓴이랑 친구인지 확인
             foreach ($friends as $fri) {
                 $frelation = $userseq == $fri['SEQ_FRIEND'];
-                if ($frelation) break;
+                //친구관계면 스크립트에 쓰고 브레이크
+                if ($frelation){
+                    echo "<script>var frelation=true;</script>";
+                    break;
+                }
             }
             ?>
             <div class="btn-group" role="group">

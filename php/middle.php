@@ -50,11 +50,7 @@
                     <table>
                         <tr>
                             <td class="fileinput">
-<!--                                <button class="btn btn-primary" type="button">파일선택-->
-<!--                                    <input type="file" id="fileuploads" name="fileuploads[]" accept="image/*"-->
-<!--                                           data-url="/php/data/fileUp.php" multiple class="fileupform">-->
-<!--                                </button>-->
-                                <span>파일선택</span>
+                                <span><span class="pubico pico-file-plus"></span>파일선택</span>
                                 <input id="fileuploads" name="fileuploads[]" accept="image/*"
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
@@ -65,9 +61,8 @@
                                 <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
                             </td>
                             <td class="regbtn">
-                                <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary"
-                                >
-                                    보내기
+                                <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary">
+                                    <span class="pubico pico-keyboard"></span>보내기
                                 </button>
                             </td>
                         </tr>
@@ -125,11 +120,7 @@
                         </tr>
                         <tr>
                             <td class="fileinput">
-<!--                                <button class="btn btn-primary" type="button">파일선택-->
-<!--                                    <input type="file" id="fileuploadp" name="fileuploadp[]" accept="image/*"-->
-<!--                                           data-url="/php/data/fileUp.php" multiple class="fileupform">-->
-<!--                                </button>-->
-                                <span>파일선택</span>
+                                <span><span class="pubico pico-file-plus">파일선택</span>
                                 <input id="fileuploadp" name="fileuploadp[]" accept="image/*"
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
@@ -141,9 +132,8 @@
                             </td>
                             <td class="regbtn">
                                 <button type="button" id="publixhButton" data-loading-text="싸는중..."
-                                        class="btn btn-primary"
-                                        autocomplete="off">
-                                    출판하기
+                                        class="btn btn-primary" autocomplete="off">
+                                    <span class="pubico pico-keyboard"></span>출판하기
                                 </button>
                             </td>
                         </tr>

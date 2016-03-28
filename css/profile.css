@@ -127,7 +127,7 @@ body {
   -moz-border-radius: 4px;
   border-radius: 4px;
   margin: 5px 10px 10px 10px;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 #wrap #middle #writing-pane ul {
@@ -144,7 +144,7 @@ body {
   padding: 3px 0 4px 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane {
-  padding: 5px 0px 0px 0px;
+  padding: 5px 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
   width: 510px;
@@ -184,9 +184,8 @@ body {
   max-height: 484px !important;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
-  margin: 5px 0 0px 0;
-  border-tpo: 1px solid #eee
-            ;
+  margin: 5px 0 0 0;
+  border-top: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .form-group .input-group .input-group-addon img {
   width: 20px;
@@ -203,7 +202,7 @@ body {
   overflow: hidden;
   cursor: pointer;
   padding: 0 0 0 0;
-  border-radius: 0px;
+  border-radius: 0;
   border-bottom-left-radius: 4px;
   font-size: 12px;
 }
@@ -228,12 +227,12 @@ body {
 #wrap #middle #writing-pane .tab-content .tab-pane .taginput input[type=text] {
   width: 132px;
   height: 22px;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: inset 0 0 0;
   text-align: center;
-  border-top: 0px;
-  border-bottom: 0px;
-  border-right: 0px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
   border-left: 1px solid #eee;
   font-size: 12px;
   padding: 2px;
@@ -246,11 +245,13 @@ body {
   width: 133px;
   padding: 0 0 0 0;
   text-align: center;
-  border-radius: 0px;
+  border-radius: 0;
   border-left: 1px solid #eee;
   border-bottom-right-radius: 4px;
   height: 22px;
   font-size: 12px;
+  outline: 0;
+  border: 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
   height: 22px;
@@ -262,8 +263,8 @@ body {
   width: 133px;
   padding: 0 0 0 0;
   height: 22px;
-  border-radius: 0px;
-  border: 0px;
+  border-radius: 0;
+  border: 0;
   border-bottom: 1px solid #eee;
   font-size: 12px;
 }
@@ -275,8 +276,8 @@ body {
   width: 132px;
   padding: 0 0 0 0;
   height: 22px;
-  border-radius: 0px;
-  border: 0px;
+  border-radius: 0;
+  border: 0;
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-size: 12px;
@@ -307,7 +308,7 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 #wrap #middle .item .subrep,
@@ -324,12 +325,13 @@ body {
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:hover,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:hover {
   border-bottom: 1px solid #f4f4f4;
+  outline: 0;
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
   width: 460px !important;
   margin-left: 39px;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: inset 0 0 0;
   padding: 4px 0 4px 10px;
   font-size: 12px;
@@ -337,7 +339,7 @@ body {
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: inset 0 0 0;
   padding: 5px 0 4px 10px;
   font-size: 12px;
@@ -399,7 +401,7 @@ body {
 #wrap #middle .item .body .BodyPic,
 #wrap #middle .item-for-sale .body .BodyPic {
   max-width: 510px !important;
-  max-height: 510px!important;
+  max-height: 510px !important;
 }
 #wrap #middle .item .body .thumbPic,
 #wrap #middle .item-for-sale .body .thumbPic {
@@ -430,10 +432,10 @@ body {
 }
 #wrap #middle .item .tail a,
 #wrap #middle .item-for-sale .tail a {
-  margin: 0px;
+  margin: 0;
   cursor: pointer;
   padding: 6px 3px 6px 0;
-  border-radius: 0px;
+  border-radius: 0;
   width: 90px;
   background-color: transparent;
   text-align: center;
@@ -480,7 +482,7 @@ body {
 #wrap #middle .item-for-sale .tail .commentReply .profilepic {
   width: 34px;
   height: 34px;
-  margin: 0px 5px 0px 5px;
+  margin: 0 5px 0 5px;
   vertical-align: top;
 }
 #wrap #middle .item .tail .commentReply .rep,
@@ -511,7 +513,7 @@ body {
   background-color: #F2DEDE;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
 }
 #wrap #right .conf #logo {
@@ -539,10 +541,6 @@ body {
   width: 34px;
   height: 34px;
   display: block !important;
-  background-image: url("../img/icon.png");
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: 2px 2px;
 }
 #wrap #right .conf #controller .btn-danger {
   background-color: #b55f5e;
@@ -551,6 +549,7 @@ body {
 #wrap #right .conf #controller .btn-danger:hover,
 #wrap #right .conf #controller .btn-danger:focus {
   background-color: lightgray;
+  outline: 0;
 }
 #wrap #right .conf #controller #usr {
   margin-left: 10px;
@@ -558,16 +557,13 @@ body {
 #wrap #right .conf #controller #configbtn {
   width: 34px;
   height: 34px;
-  background-image: url("../img/icon.png");
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: 2px 2px;
-  background-color: #b55f5e;
   border-color: transparent;
+  outline: 0;
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
   background-color: lightgray;
+  outline: 0;
 }
 #wrap #right .conf #controller .btn-group ul {
   background-color: #e1e1e1;
@@ -596,9 +592,10 @@ body {
   cursor: pointer;
 }
 #wrap #right .conf #controller #username {
-  background-color: green;
+  background-color: transparent;
   width: 70px;
   height: 34px;
+  outline: 0;
 }
 #wrap #right .conf #gsearch {
   float: left;
@@ -609,7 +606,7 @@ body {
   font-size: 14px;
   padding: 2px 2px 2px 2px;
   margin-left: 6px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 #wrap #right .conf .dropdown ul {
   padding: 0 0 0 0;
@@ -649,7 +646,7 @@ body {
   background-color: white;
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 #wrap #right .market .catalog:hover {
   background-color: #e1e1e1;
@@ -695,11 +692,11 @@ li a {
 .fileinput:focus {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
+.btn-primary:hover,
 .btn-primary.active,
 .btn-primary.focus,
 .btn-primary:active,
 .btn-primary:focus,
-.btn-primary:hover,
 .open > .dropdown-toggle.btn-primary {
   color: #337ab7;
   background-color: #eee;

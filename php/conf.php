@@ -28,14 +28,14 @@
             <div class="btn-group" id="usr">
                 <button type="button" id="username" class="btn btn-danger" role="group"
                         onclick="location.href='/php/logout.php'"><?=$mname?></button>
-                <a class="btn btn-danger pchange" role="group" href="/php/data/profileChange.php?action=profileswap"></a>
+                <a class="btn btn-danger pchange" role="group" href="/php/data/profileChange.php?action=profileswap"><span class="pubico pico-refresh"></span></a>
             </div>
         <!--노티,핀,설정버튼-->
         <!-- 노티버튼 -->
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" id="notibtn"
                     aria-expanded="false">
-                알림
+                <span class="pubico pico-bell"></span>
             </button>
             <ul class="dropdown-menu" role="menu" id="notilist">
                 <li id="li-noticenter"><a href="/php/notiCenter.php?id=<?=$mid?>" style="text-align: center;">알림센터 바로가기</a></li>
@@ -56,7 +56,9 @@
             </ul>
         </div>
         <!--설정버튼-->
-        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href=('#')"></button>
+        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href=('#')">
+            <span class="pubico pico-configure"></span>
+        </button>
     </div>
     <input id="gsearch" type="text" placeholder="사람,커뮤니티,익명,컨텐츠를 검색해 보세요...">
     <div class="dropdown">
