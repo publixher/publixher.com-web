@@ -61,7 +61,7 @@ body {
     width: 550px;
     float: left;
     .btn-group {
-      .hasInput {
+      ul {
         background-color: #e1e1e1;
         overflow-y: auto;
         overflow-x: hidden;
@@ -73,18 +73,12 @@ body {
           &:hover {
             background-color: #d1d1d1;
           }
-          img{
-            width:30px;
-            height:30px;
-            float: left;
-          }
           a {
             width:100%;
             text-decoration: none;
             color: #444;
             font-size:12px;
             text-align: center;
-            float: left;
             input[type=text]{
               width:100%;
             }
@@ -178,6 +172,7 @@ body {
             border-top-left-radius: 0;
             box-shadow: inset 0 0 0;
             margin-left: 10px;
+            width: 510px;
             img {
               max-width: 484px !important;
               max-height: 484px !important;
@@ -658,4 +653,24 @@ body {
 }
 li a{
   cursor: pointer;
+}
+.fileinput {
+color:#337ab7;
+background-color:white;
+font-size: 12px;
+text-align: center;
+border-bottom-left-radius: 4px;
+}
+
+.fileinput.active,.fileinput.focus,.fileinput:active,.fileinput:focus,.fileinput:hover {
+color:#337ab7;
+background-color:#eee;
+}
+.fileinput.active,.fileinput.focus,.fileinput:active,.fileinput:focus {
+box-shadow:inset 0 3px 5px rgba(0,0,0,.125);
+}
+.btn-primary.active,.btn-primary.focus,.btn-primary:active,.btn-primary:focus,.btn-primary:hover,.open>.dropdown-toggle.btn-primary {
+color:#337ab7;
+background-color:#eee;
+outline:0;
 }

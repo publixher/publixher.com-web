@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gangdong-gyun
@@ -21,6 +22,9 @@ class User
     private $TOP_CONTENT;
     private $IN_USE;
     private $SEQ;
+    private $WRITEAUTH;
+    private $EXPAUTH;
+
 
     /**
      * User constructor.
@@ -152,7 +156,22 @@ class User
         return $this->IN_USE;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getWRITEAUTH()
+    {
+        return $this->WRITEAUTH;
+    }
 
+
+    /**
+     * @return mixed
+     */
+    public function getEXPAUTH()
+    {
+        return $this->EXPAUTH;
+    }
 
 
 }

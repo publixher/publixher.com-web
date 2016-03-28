@@ -4,6 +4,7 @@ require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
 session_start();
+if(!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
 $userinfo = $_SESSION['user'];
 $userseq = $userinfo->getSEQ();
 $action = $_GET['action'];

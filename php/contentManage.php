@@ -31,6 +31,7 @@
     require_once'../conf/User.php';
     require_once'../conf/database_conf.php';
     session_start();
+    include_once "../lib/loginchk.php";
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userseq = $userinfo->getSEQ();
@@ -38,7 +39,6 @@
     include "profile_left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
-    //TODO:한눈에 들어오도록 카드형식을 버리고 보여주기
     echo '</div>';
     //오른쪽
     include "right.php";

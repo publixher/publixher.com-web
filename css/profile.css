@@ -55,34 +55,28 @@ body {
   width: 550px;
   float: left;
 }
-#wrap #middle .btn-group .hasInput {
+#wrap #middle .btn-group ul {
   background-color: #e1e1e1;
   overflow-y: auto;
   overflow-x: hidden;
   width: 300px;
   max-height: 300px;
 }
-#wrap #middle .btn-group .hasInput li {
+#wrap #middle .btn-group ul li {
   width: 100%;
   padding-top: 0;
 }
-#wrap #middle .btn-group .hasInput li:hover {
+#wrap #middle .btn-group ul li:hover {
   background-color: #d1d1d1;
 }
-#wrap #middle .btn-group .hasInput li img {
-  width: 30px;
-  height: 30px;
-  float: left;
-}
-#wrap #middle .btn-group .hasInput li a {
+#wrap #middle .btn-group ul li a {
   width: 100%;
   text-decoration: none;
   color: #444;
   font-size: 12px;
   text-align: center;
-  float: left;
 }
-#wrap #middle .btn-group .hasInput li a input[type=text] {
+#wrap #middle .btn-group ul li a input[type=text] {
   width: 100%;
 }
 #wrap #middle #listul {
@@ -172,6 +166,7 @@ body {
   border-top-left-radius: 0;
   box-shadow: inset 0 0 0;
   margin-left: 10px;
+  width: 510px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img {
   max-width: 484px !important;
@@ -678,4 +673,35 @@ body {
 }
 li a {
   cursor: pointer;
+}
+.fileinput {
+  color: #337ab7;
+  background-color: white;
+  font-size: 12px;
+  text-align: center;
+  border-bottom-left-radius: 4px;
+}
+.fileinput.active,
+.fileinput.focus,
+.fileinput:active,
+.fileinput:focus,
+.fileinput:hover {
+  color: #337ab7;
+  background-color: #eee;
+}
+.fileinput.active,
+.fileinput.focus,
+.fileinput:active,
+.fileinput:focus {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn-primary.active,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary {
+  color: #337ab7;
+  background-color: #eee;
+  outline: 0;
 }

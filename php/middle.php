@@ -17,7 +17,6 @@
                     <ul class="dropdown-menu" role="menu" id="expSublist">
                         <li><a>나만보기</a></li>
                         <li><a>친구에게 공개</a></li>
-                        <li><a>팔로워에게 공개</a></li>
                         <li><a>전체 공개</a></li>
                     </ul>
                 </li>
@@ -27,8 +26,6 @@
                     <ul class="dropdown-menu" role="menu" id="dirSublist">
                         <?php
                         require_once '../conf/database_conf.php';
-                        require_once '../conf/User.php';
-                        session_start();
                         $userinfo = $_SESSION['user'];
                         $userseq = $userinfo->getSEQ();
                         //폴더목록 불러오기

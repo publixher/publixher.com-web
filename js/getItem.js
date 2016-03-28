@@ -97,7 +97,7 @@ $(document).ready(function () {
                     var pic = res[0]['PIC'];
                     var folderseq = null;
                     var foldername = null;
-                    if (res[i]['FOLDER'] != null) {
+                    if (res[0]['FOLDER'] != null) {
                         folderseq = res[0]['FOLDER'];
                         foldername = res[0]['FOLDER_NAME'];
                     }

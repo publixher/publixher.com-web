@@ -5,6 +5,7 @@ require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
 $nowpage = $_GET['nowpage'] * 10;
 session_start();
+if(!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
 $userseq = $_SESSION['user']->getSEQ();
 //콘텐츠 검색임시로 그냥 다 불러오기
 if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
@@ -41,19 +42,19 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거 시간순 노출
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } else {  //메인화면에서 노출시켜줄 순
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ_WRITER = :SEQ_USER0 AND DEL='N' "  //내거찾기
+    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (SEQ_WRITER = :SEQ_USER0 AND DEL='N' AND SEQ_TARGET IS NULL)"  //내거찾기
 
         . "UNION SELECT CONT1.* FROM publixher.TBL_CONTENT CONT1 INNER JOIN ("
-        . "SELECT NOTI1.SEQ_CONTE 1 ,COUNT(DISTINCT NOTI1.SEQ_ACTOR) AS FCOUNT FROM "
+        . "SELECT NOTI1.SEQ_CONTENT SEQ_ACT1 ,COUNT(DISTINCT NOTI1.SEQ_ACTOR) AS FCOUNT FROM "
         . "publixher.TBL_CONTENT_NOTI NOTI1 INNER JOIN publixher.TBL_FRIENDS FRIEND1 ON FRIEND1.SEQ_FRIEND = NOTI1.SEQ_ACTOR "
         . "WHERE FRIEND1.SEQ_USER = :SEQ_USER1 GROUP BY NOTI1.SEQ_CONTENT"
         . ") AS FRIEND_NOTI1 ON FRIEND_NOTI1.SEQ_ACT1 = CONT1.SEQ "
-        . "WHERE CONT1.DEL = 'N' AND CONT1.EXPOSE > 1 AND CASE WHEN FRIEND_NOTI1.FCOUNT>2 THEN CONT1.COMMENT + CONT1.KNOCK > 30 "    //내 친구중 1명~2명이 액션하고 50개이상 액션, 3명이상 액션하고 30개이상 액
-        . "WHEN FRIEND_NOTI1.FCOUNT<=2 THEN CONT1.COMMENT + CONT1.KNOCK > 50 END "
+        . "WHERE (CONT1.DEL = 'N' AND CONT1.EXPOSE > 1 AND CASE WHEN FRIEND_NOTI1.FCOUNT>2 THEN CONT1.COMMENT + CONT1.KNOCK > 30 "    //내 친구중 1명~2명이 액션하고 50개이상 액션, 3명이상 액션하고 30개이상 액
+        . "WHEN FRIEND_NOTI1.FCOUNT<=2 THEN CONT1.COMMENT + CONT1.KNOCK > 50 END AND CONT1.SEQ_TARGET IS NULL)"
 
         . "UNION SELECT DISTINCT CONT2.* FROM publixher.TBL_CONTENT CONT2 "
         . "INNER JOIN publixher.TBL_FRIENDS FRIEND2 ON FRIEND2.SEQ_FRIEND = CONT2.SEQ_WRITER "
-        . "WHERE FRIEND2.SEQ_USER = :SEQ_USER2 AND CONT2.DEL = 'N' AND CONT2.EXPOSE > 0 "   //내 친구가 쓰고 공개대상이 친구 이상인것
+        . "WHERE (FRIEND2.SEQ_USER = :SEQ_USER2 AND CONT2.DEL = 'N' AND CONT2.EXPOSE > 0 AND CONT2.SEQ_TARGET IS NULL)"   //내 친구가 쓰고 공개대상이 친구 이상인것
         . " ORDER BY SEQ DESC LIMIT "
         . ":NOWPAGE, 10";
     $prepare = $db->prepare($sql);
