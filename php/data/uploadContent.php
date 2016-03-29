@@ -111,6 +111,13 @@ if (!empty($_POST)) {
     }
         $prepare->execute();
     $id = $db->lastInsertId();
+    //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
+    if($_POST['for_sale']) {
+        $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE SEQ_MASTER=:SEQ_MASTER";
+        $folprepare = $db->prepare($folsql);
+        $folprepare->bindValue(':SEQ_MASTER', $seq_writer);
+        $folprepare->execute();
+    }
     //id로 컨텐츠 테이블의 내용도 가져옴
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
     $prepare = $db->prepare($sql);

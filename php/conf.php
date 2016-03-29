@@ -28,7 +28,7 @@
             <div class="btn-group" id="usr">
                 <button type="button" id="username" class="btn btn-danger" role="group"
                         onclick="location.href='/php/logout.php'"><?=$mname?></button>
-                <a class="btn btn-danger pchange" role="group" href="/php/data/profileChange.php?action=profileswap"><span class="pubico pico-refresh"></span></a>
+                <button class="btn btn-danger" role="group"><a href="/php/data/profileChange.php?action=profileswap" class="pchange"><span class="pubico pico-refresh"></span></a></button>
             </div>
         <!--노티,핀,설정버튼-->
         <!-- 노티버튼 -->
