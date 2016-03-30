@@ -1,15 +1,28 @@
 <?php
 header("Content-Type:application/json");
-if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
-    exit('부정한 호출입니다.');
-}
-if (!empty($_POST)) {
-    require_once '../../conf/database_conf.php';
+require_once '../../conf/database_conf.php';
+require_once '../../conf/User.php';
+session_start();
+$action = $_GET['action'] ? $_GET['action'] : $_POST['action'];
+$itemseq = $_GET['itemseq'] ? $_GET['itemseq'] : $_POST['itemseq'];
+if ($action == 'get_item') {
+    $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $pr = $db->prepare($gs);
+    $pr->bindValue(':SEQ', $itemseq);
+    $pr->execute();
+    $data = $pr->fetch(PDO::FETCH_ASSOC);
+    if ($data['FOLDER']) {
+        $s = "SELECT DIR FROM publixher.TBL_FORDER WHERE SEQ=:SEQ";
+        $pr = $db->prepare($s);
+        $pr->bindValue(':SEQ', $data['FOLDER']);
+        $pr->execute();
+        $data['DIR'] = $pr->fetchColumn();
+    }
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+} elseif ($action == 'mod_item') {
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
-//토큰검사
-    session_start();
     //토큰검사
     if (!isset($_POST['token'])) {
         exit('부정한 조작이 감지되었습니다.');
@@ -22,6 +35,9 @@ if (!empty($_POST)) {
     } elseif ($_POST['age'] != $_SESSION['age']) {
         exit('부정한 조작이 감지되었습니다.');
     }
+
+    //여기부턴 uploadContent.php와 같음
+
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
@@ -79,23 +95,19 @@ if (!empty($_POST)) {
     }
     //content테이블에 넣음
     $seq_writer = $_POST['seq_writer'];
-    $targetseq=$_POST['targetseq'];
+    $targetseq = $_POST['targetseq'];
+    $id=$_POST['seq'];
     if (!$_POST['for_sale']) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET)";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=BODY WHERE SEQ=:SEQ";
     } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET)";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=BODY , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD WHERE SEQ=:SEQ";
     }
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ_WRITER', $seq_writer, PDO::PARAM_STR);
+    $prepare->bindValue(':SEQ', $id);
     $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
-    if($targetseq==''){
-        $prepare->bindValue(':SEQ_TARGET', NULL, PDO::PARAM_STR);
-    }else {
-        $prepare->bindValue(':SEQ_TARGET', $targetseq, PDO::PARAM_STR);
-    }
 
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
@@ -113,15 +125,7 @@ if (!empty($_POST)) {
             $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
         }
     }
-        $prepare->execute();
-    $id = $db->lastInsertId();
-    //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
-    if($_POST['for_sale']) {
-        $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE SEQ_MASTER=:SEQ_MASTER";
-        $folprepare = $db->prepare($folsql);
-        $folprepare->bindValue(':SEQ_MASTER', $seq_writer);
-        $folprepare->execute();
-    }
+    $prepare->execute();
     //id로 컨텐츠 테이블의 내용도 가져옴
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
     $prepare = $db->prepare($sql);
@@ -131,26 +135,23 @@ if (!empty($_POST)) {
     //글쓴이의 정보도 가져옴
     $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ', $seq_writer, PDO::PARAM_STR);
+    $prepare->bindValue(':SEQ', $_SESSION['user']->getSEQ(), PDO::PARAM_STR);
     $prepare->execute();
     $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
     $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
     //타겟이 있다면 타겟의 정보도 가져옴
-    if($targetseq) {
+    if ($targetseq) {
         $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
         $tp = $db->prepare($t);
         $tp->bindValue(':SEQ', $targetseq);
         $tp->execute();
         $result['TARGET_NAME'] = $tp->fetchColumn();
     }
-    //판매목록에 수 증가
-    if ($_POST['for_sale']) {
-        $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ_USER', $seq_writer, PDO::PARAM_STR);
-        $prepare2->bindValue(':SEQ_CONTENT', $id, PDO::PARAM_STR);
-        $prepare2->execute();
-    }
+    //원래 폴더에서 수 감소
+    $fs="UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE SEQ=:SEQ";
+    $fp = $db->prepare($fs);
+    $fp->bindValue(':SEQ', $_POST['folder'], PDO::PARAM_STR);
+    $fp->execute();
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE SEQ=:SEQ";
@@ -166,7 +167,5 @@ if (!empty($_POST)) {
     }
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
-} else {
-    exit;
 }
 ?>

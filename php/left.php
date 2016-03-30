@@ -19,9 +19,9 @@
         $mriprepare->bindValue(':SEQ_WRITER', $masters[$i]['SEQ'], PDO::PARAM_STR);
         $mriprepare->execute();
         $recontent = $mriprepare->fetchAll(PDO::FETCH_ASSOC);
-        echo "<img src='" . $masters[$i]['PIC'] . "'><a href='/php/profile.php?id=" . $masters[$i]['SEQ'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
+        echo "<img src='" . $masters[$i]['PIC'] . "' class='subsprofile'><a href='/php/profile.php?id=" . $masters[$i]['SEQ'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
         if ($masters[$i]['LAST_CHECK'] < $masters[$i]['LAST_UPDATE']) {
-            echo "<span class='newcontent' data-substarget='".$masters[$i]['SEQ']."'>new</span>";
+            echo "<span class='newcontent' data-substarget='" . $masters[$i]['SEQ'] . "'>new</span>";
         }
         ?>
         <div class="accordion-group">
@@ -39,5 +39,6 @@
                     echo "</div></div></div>";
                     }
                     ?>
+
                 </div>
             </div>

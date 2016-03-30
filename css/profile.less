@@ -371,11 +371,9 @@ body {
           width: 300px;
         }
         .conf {
-          float: left;
+          float: right;
           font-size: 16px;
-          height: 18px;
-          width: 100px;
-          margin-left: 10px;
+
           a {
             &:hover {
               background-color: #777777;
@@ -514,7 +512,12 @@ body {
           background-color: lightgray;
         }
         .pchange {
+          width: 34px;
+          height: 34px;
           display: block !important;
+          background-size: 30px 30px;
+          background-repeat: no-repeat;
+          background-position: 2px 2px;
         }
         .btn-danger {
           background-color: #b55f5e;
@@ -530,6 +533,10 @@ body {
         #configbtn {
           width: 34px;
           height: 34px;
+          background-size: 30px 30px;
+          background-repeat: no-repeat;
+          background-position: 2px 2px;
+          background-color: #b55f5e;
           border-color: transparent;
           outline: 0;
           &:hover, &:focus {
@@ -675,4 +682,8 @@ li a {
   color: #337ab7;
   background-color: #eee;
   outline: 0;
+}
+.dropdown-menu{
+  min-width: 130px;
+  width: 130px
 }

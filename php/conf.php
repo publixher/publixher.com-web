@@ -28,7 +28,7 @@
             <div class="btn-group" id="usr">
                 <button type="button" id="username" class="btn btn-danger" role="group"
                         onclick="location.href='/php/logout.php'"><?=$mname?></button>
-                <button class="btn btn-danger" role="group"><a href="/php/data/profileChange.php?action=profileswap" class="pchange"><span class="pubico pico-refresh"></span></a></button>
+                <button class="btn btn-danger" role="group" onclick="location.href='/php/data/profileChange.php?action=profileswap'"><span class="pubico pico-swap"></span></button>
             </div>
         <!--노티,핀,설정버튼-->
         <!-- 노티버튼 -->
@@ -57,7 +57,7 @@
         </div>
         <!--설정버튼-->
         <button type="button" id="configbtn" class="btn btn-default" onclick="location.href=('#')">
-            <span class="pubico pico-configure"></span>
+            <span class="pubico pico-cog"></span>
         </button>
     </div>
     <input id="gsearch" type="text" placeholder="사람,커뮤니티,익명,컨텐츠를 검색해 보세요...">

@@ -369,11 +369,8 @@ body {
 }
 #wrap #middle .item .header .conf,
 #wrap #middle .item-for-sale .header .conf {
-  float: left;
+  float: right;
   font-size: 16px;
-  height: 18px;
-  width: 100px;
-  margin-left: 10px;
 }
 #wrap #middle .item .header .conf a:hover,
 #wrap #middle .item-for-sale .header .conf a:hover {
@@ -538,7 +535,12 @@ body {
   background-color: lightgray;
 }
 #wrap #right .conf #controller .pchange {
+  width: 34px;
+  height: 34px;
   display: block !important;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 2px 2px;
 }
 #wrap #right .conf #controller .btn-danger {
   background-color: #b55f5e;
@@ -555,6 +557,10 @@ body {
 #wrap #right .conf #controller #configbtn {
   width: 34px;
   height: 34px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 2px 2px;
+  background-color: #b55f5e;
   border-color: transparent;
   outline: 0;
 }
@@ -699,4 +705,8 @@ li a {
   color: #337ab7;
   background-color: #eee;
   outline: 0;
+}
+.dropdown-menu {
+  min-width: 130px;
+  width: 130px;
 }

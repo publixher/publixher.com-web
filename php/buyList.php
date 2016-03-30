@@ -23,7 +23,6 @@
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="/js/plugins.js"></script>
-    <script src="/js/buylist.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -79,6 +78,13 @@
             </div>
         </div>
     </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
+    <script>
+        var page = 0;
+        var loadOption={seq:mid,nowpage:page,buylist:"Y"};
+    </script>
+    <script src="/js/itemcard.js"></script>
+    <script src="/js/itemload.js"></script>
     <!--    구글 애널리틱스-->
     <script>(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;

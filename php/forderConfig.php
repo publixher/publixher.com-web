@@ -22,7 +22,6 @@
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="/js/plugins.js"></script>
-    <script src="/js/foldercon.js"></script>
 </head>
 <body>
 <script>

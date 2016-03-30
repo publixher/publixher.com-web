@@ -1,137 +1,7 @@
 /**
- * Created by gangdong-gyun on 2016. 3. 1..
+ * Created by gangdong-gyun on 2016. 3. 30..
  */
-$(document).ready(function () {
-    function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname) {
-        write = '<div class="item card" id="';
-        write += seq;
-        write += '"><div class="header">';
-        write += '<img src="' + pic + '" class="profilepic">';
-        write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
-        write += name + '</a>&nbsp;'
-        if(targetseq){
-            write+='>>> <a href="/php/profile.php?id=' + targetseq + '">'+targetname+'</a> '
-        }
-        if (folderseq) {
-            write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
-        } else {
-            write += date + '&nbsp;비분류&nbsp;';
-        }
-        write += '<a href="#">대상</a>'
-        write += '</div> <div class="conf"><a>핀</a>'
-        write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
-        if (mid == writer) {
-            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li> </ul></div><br>'
-        } else {
-            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금궁금</a></li> </ul></div><br>'
-        }
-        write += '</div></div> <div class="body">'
-        write += preview;
-        write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a>노크</a><span class="badgea"> ';
-        write += knock;
-        write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
-        write += comment + '</span></span></td>'
-        write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-        write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
-        return write;
-    }
-
-    function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic) {
-        write = '<div class="item-for-sale card" id="';
-        write += seq;
-        write += '"><div class="header">';
-        write += '<img src="'+pic+'" class="profilepic">';
-        write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
-        write += name + '</a>&nbsp;'
-        if (folderseq) {
-            write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
-        } else {
-            write += date + '&nbsp;비분류&nbsp;';
-        }
-        write += '<a href="#">대상</a>'
-        write += '</div> <div class="conf"><a>핀</a>'
-        write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
-        if (mid == writer) {
-            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li> </ul></div><br>'
-        } else {
-            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금행</a></li> </ul></div><br>'
-        }
-        write += '</div><div class="title">';
-        write += title;
-        write += '</div></div> <div class="body">'
-        write += preview;
-        write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a>노크</a><span class="badgea"> ';
-        write += knock;
-        write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
-        write += comment + '</span></span></td>'
-        write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-        if (bought) {
-            write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
-        }
-        else {
-            write += '<td class="tprice"><span class="price"><a class="value">' + price + '</a>&nbsp;<a>Pigs</a></span></td></tr></table></div> </div>';
-        }
-        return write;
-    }
-
-    //페이지 로드 끝나면 아이템카드 불러오기
-    var loadOption = {seq: userseq, getItem: iid};
-    $.ajax({
-        url: "/php/data/getContent.php",
-        type: "GET",
-        data: loadOption,
-        dataType: 'json',
-        success: function (res) {
-            if (res[0]['USER_NAME'] != null) {
-                if (res[0]['FOR_SALE'] == "N") {
-                    var write = '';
-                    var seq = res[0]['SEQ'];
-                    var writer = res[0]['SEQ_WRITER'];
-                    var name = res[0]['USER_NAME'];
-                    var date = res[0]['WRITE_DATE'];
-                    var knock = res[0]['KNOCK'];
-                    var comment = res[0]['COMMENT'];
-                    var preview = res[0]['PREVIEW'];
-                    var targetseq = res[0]['SEQ_TARGET'];
-                    var targetname = res[0]['TARGET_NAME'];
-                    var pic = res[0]['PIC'];
-                    var folderseq = null;
-                    var foldername = null;
-                    if (res[0]['FOLDER'] != null) {
-                        folderseq = res[0]['FOLDER'];
-                        foldername = res[0]['FOLDER_NAME'];
-                    }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname);
-                    $('#prea').after(write);
-
-                } else {
-                    var write = '';
-                    var seq = res[0]['SEQ'];
-                    var writer = res[0]['SEQ_WRITER'];
-                    var name = res[0]['USER_NAME'];
-                    var date = res[0]['WRITE_DATE'];
-                    var title = res[0]['TITLE'];
-                    var knock = res[0]['KNOCK'];
-                    var price = res[0]['PRICE'];
-                    var comment = res[0]['COMMENT'];
-                    var bought = res[0]['BOUGHT'];
-                    var preview = res[0]['PREVIEW'];
-                    var pic = res[0]['PIC'];
-                    var folderseq = null;
-                    var foldername = null;
-                    if (res[0]['FOLDER'] != null) {
-                        folderseq = res[0]['FOLDER'];
-                        foldername = res[0]['FOLDER_NAME'];
-                    }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername,pic);
-                    $('#prea').after(write);
-                }
-            }
-        }, error: function (request) {
-            alert(request.responseText);
-        }
-    })
-
+$(document).ready(function(){
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -192,7 +62,7 @@ $(document).ready(function () {
                             var knock = res[i]['KNOCK'];
                             write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                             write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                             list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
@@ -256,7 +126,7 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -301,7 +171,7 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                         write += '<table style="margin-top: 10px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">'+res[i]['SUB_REPLY']+'</span></span></span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -380,7 +250,7 @@ $(document).ready(function () {
                         }
                         registRep(res);
                     }
-                    subrep_list.after('<input id="'+thispanelrep+'-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
+                    subrep_list.after('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                 }
             });
         }
@@ -388,26 +258,34 @@ $(document).ready(function () {
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
         if (e.keyCode == 13) {
-            var form=$(this)[0].id;
-            var idset=form.split('-');
-            var thisitemID=idset[1];
-            var thisrepID=idset[3];
-            var reply = $('#'+form).val();
+            var form = $(this)[0].id;
+            var idset = form.split('-');
+            var thisitemID = idset[1];
+            var thisrepID = idset[3];
+            var reply = $('#' + form).val();
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {seq: thisitemID, action: "commentreg_sub",repseq:thisrepID ,userseq: mid, comment: reply, token: token, age: age},
+                data: {
+                    seq: thisitemID,
+                    action: "commentreg_sub",
+                    repseq: thisrepID,
+                    userseq: mid,
+                    comment: reply,
+                    token: token,
+                    age: age
+                },
                 dataType: 'json',
                 success: function (res) {
-                    var subrep_list=$('#'+form.replace('form','sub'));
-                    var thisreply=form.replace('-form','');
+                    var subrep_list = $('#' + form.replace('form', 'sub'));
+                    var thisreply = form.replace('-form', '');
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
                     subrep_list.html('');
                     subrep_list.attr('index', '0');
                     subrep_list.removeClass('opened');
-                    $('#'+form).remove();
-                    $('#'+thisreply+' .repreplybad').text(res['SUB_REPLY']);
-                    $('#'+thisreply+' .repreply').trigger('click');
+                    $('#' + form).remove();
+                    $('#' + thisreply + ' .repreplybad').text(res['SUB_REPLY']);
+                    $('#' + thisreply + ' .repreply').trigger('click');
                 }
             })
         }
@@ -415,10 +293,10 @@ $(document).ready(function () {
 
     //대댓글에서 화살표 동작
     $(document).on('click', '.repbtn_sub', function (e) {
-        var caret=$(this).parents()[1].id;
-        var idset=caret.split('-');
-        var repID=idset[3];
-        var index=$('#'+caret).attr('index');
+        var caret = $(this).parents()[1].id;
+        var idset = caret.split('-');
+        var repID = idset[3];
+        var index = $('#' + caret).attr('index');
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
@@ -426,12 +304,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
-                    $('#'+caret+' .cursor').remove();
+                    $('#' + caret + ' .cursor').remove();
                     return;
                 }
                 function registRep(res, where) {
-                    var list = $('#'+caret);
-                    var btn = $('#'+caret+' .cursor');
+                    var list = $('#' + caret);
+                    var btn = $('#' + caret + ' .cursor');
                     for (var i = 0; i < Object.keys(res).length - 1; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
@@ -546,6 +424,308 @@ $(document).ready(function () {
             }
         })
     });
+    //수정버튼 동작
+    var expose_mod;
+    var folderid_mod;
+    var itemseq_mod;
+    $(document).on('click', '.itemMod', function () {
+        var thisitemID = $(this).parents()[5].id;
+        var type = '';
+        itemseq_mod=thisitemID;
+        expose_mod = null;
+        folderid_mod = null;
+        $('#directorySettingSub-mod').text('비분류');
+        if ($('#' + thisitemID).hasClass('item')) {
+            if ($('#publixh-mod').hasClass('active')) $('#publixh-mod').removeClass('active');
+            $('#send-mod').addClass('active');
+            type = 'item';
+        } else {
+            if ($('#send-mod').hasClass('active')) $('#send-mod').removeClass('active');
+            $('#publixh-mod').addClass('active');
+            type = 'forsale';
+        }
+        $.ajax({
+            url: '/php/data/modItem.php',
+            type: 'GET',
+            dataType: 'json',
+            data: {itemseq: thisitemID, action: "get_item"},
+            success: function (res) {
+                expose_mod = res['EXPOSE'];
+                var expset = $('#exposeSetting-mod');
+                switch (expose_mod) {case 0:expset.text('나만보기');break;case 1:expset.text('친구에게 공개');break;case 2:expset.text('전체공개');}
+                if (res['FOLDER']) {
+                    $('#directorySettingSub-mod').text(res['DIR']);
+                    folderid_mod = res['FOLDER'];
+                }
+                if (type == 'item') {
+                    $('#sendBody-mod').html(res['BODY']);
+                    $('#sendBody-mod').trigger('keyup')
+                } else if (type == 'forsale') {
+                    $('#saleTitle-mod').val(res['TITLE']);
+                    $('#publiBody-mod').html(res['BODY']);
+                    $('#sendBody-mod').trigger('keyup')
+                    if (res['CATEGOTY']) {
+                        $('#category-mod').text(res['CATEGORY']);
+                        $('#sub-category-mod').text(res['SUB_CATEGORY']);
+                    } else {
+                        $('#category-mod').text('분류');
+                        $('#sub-category-mod').text('하위분류');
+                    }
+                    $('#contentCost-mod').val(res['PRICE']);
+
+                }
+                $('#itemModModal').modal({show: true})
+            }
+        })
+    })
+    //수정모드에서 파일 업로드시 동작
+    $('#fileuploads-mod,#fileuploadp-mod').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            var uploadFile = data.files[0];
+            var isValid = true;
+            if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
+                alert('png, jpg, gif 만 가능합니다');
+                isValid = false;
+            } else if (uploadFile.size > 10000000) { // 10mb
+                alert('파일 용량은 10메가를 초과할 수 없습니다.');
+                isValid = false;
+            }
+            if (isValid) {
+                data.submit();
+            }
+        },
+        done: function (e, data) {
+            if (this == $('#fileuploads-mod')[0]) {
+                var sendBody_mod=$('#sendBody-mod');
+                sendBody_mod.html(sendBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                sendBody_mod.height(sendBody_mod.height() + data.result['files']['file_height'] + 8);
+            } else if (this == $('#fileuploadp-mod')[0]) {
+                var publiBody_mod=$('#publiBody-mod')
+                publiBody_mod.html(publiBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                publiBody_mod.height(publiBody_mod.height() + data.result['files']['file_height'] + 8);
+
+            }
+        }, fail: function (e, data) {
+            alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
+        }
+    })
+    //글쓸때 버튼 클릭할때의 동작
+    $('#sendButton-mod').on('click', function () {
+        var $btn = $(this).button('loading');
+        var seq_target=null;
+        if(targetseq){
+            if (mid == targetseq) {
+                seq_target = null;
+            } else {
+                seq_target = targetseq;
+            }
+        }
+        if ($('#sendBody-mod').html().length > 0) {
+            $.ajax({
+                url: "/php/data/modItem.php",
+                type: "POST",
+                data: {
+                    seq:itemseq_mod,
+                    body: $('#sendBody-mod').html(),
+                    seq_writer: mid,
+                    folder: folderid_mod,
+                    token: token, age: age,
+                    tag: $('#taginputs-mod').val(),
+                    expose: expose_mod,
+                    action:"mod_item"
+                },
+                dataType: 'json',
+                success: function (res) {
+                    var write = '';
+                    var seq = res['SEQ'];
+                    var writer = res['SEQ_WRITER'];
+                    var name = res['USER_NAME'];
+                    var date = res['WRITE_DATE'];
+                    var knock = res['KNOCK'];
+                    var comment = res['COMMENT'];
+                    var preview = res['PREVIEW'];
+                    var pic = res['PIC'];
+                    var targetseq = res['SEQ_TARGET'];
+                    var targetname = res['TARGET_NAME'];
+                    var folderseq = null;
+                    var foldername = null;
+                    var expose=res['EXPOSE'];
+                    if (res['FOLDER'] != null) {
+                        folderseq = res['FOLDER'];
+                        foldername = res['DIR'];
+                    }
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
+                    $('#'+itemseq_mod).replaceWith(write)
+                    $('#sendBody-mod').html("").trigger('keyup');
+                    $('#itemModModal').modal('hide');
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            })
+        }
+        $btn.button('reset');
+        $btn.blur();
+    })
+    //publixh 버튼 내용
+    $('#publixhButton-mod').on('click', function () {
+
+        var $btn = $(this).button('loading');
+        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0) {
+            $.ajax({
+                url: "/php/data/modItem.php",
+                type: "POST",
+                data: {
+                    seq:itemseq_mod,
+                    body: $('#publiBody-mod').html(),
+                    for_sale: "Y",
+                    price: $('#contentCost-mod').val(),
+                    category: category_mod,
+                    sub_category: sub_category_mod,
+                    adult: $('#adult-mod').is(':checked'),
+                    ad: $('#ad-mod').is(':checked'),
+                    title: $('#saleTitle-mod').val(),
+                    folder: folderid_mod,
+                    token: token,
+                    age: age,
+                    tag: $('#taginputp-mod').val(),
+                    expose: expose_mod,
+                    action:"mod_item"
+                },
+                dataType: 'json',
+                success: function (res) {
+                    var write = '';
+                    var seq = res['SEQ'];
+                    var writer = res['SEQ_WRITER'];
+                    var name = res['USER_NAME'];
+                    var date = res['WRITE_DATE'];
+                    var title = res['TITLE'];
+                    var knock = res['KNOCK'];
+                    var price = res['PRICE'];
+                    var comment = res['COMMENT'];
+                    var preview = res['PREVIEW'];
+                    var pic = res['PIC'];
+                    var folderseq = null;
+                    var foldername = null;
+                    var expose=res['EXPOSE']
+                    if (res['FOLDER'] != null) {
+                        folderseq = res['FOLDER'];
+                        foldername = res['DIR'];
+                    }
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic,expose);
+                    $('#'+itemseq_mod).replaceWith(write)
+                    $('#saleTitle-mod').val("");
+                    $('#contentCost-mod').val("");
+                    $('#publiBody-mod').html("").trigger('keyup');
+                    $('#itemModModal').modal('hide');
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            })
+        } else {
+            alert('제목과 본문을 입력해 주세요')
+        }
+        $btn.button('reset');
+    })
+    //공개설정 버튼
+    $('#expSublist-mod li').click(function () {
+        var exptarget = $(this).text()
+        $('#exposeSetting-mod').text(exptarget);
+        switch (exptarget) {
+            case '나만보기':
+                expose_mod = 0;
+                break;
+            case '친구에게 공개':
+                expose_mod = 1;
+                break;
+            case '전체공개':
+                expose_mod = 2;
+                break;
+        }
+    })
+    //폴더설정 버튼
+    $('#dirSublist-mod li').click(function () {
+        $('#directorySettingSub-mod').text($(this).text());
+        folderid_mod = $(this).attr('folderid');
+    })
+    //카테고리 리스트 버튼
+    var category_mod = null;
+    $('#categorySelect-mod li').click(function () {
+        $('#category-mod').text($(this).text());
+        category_mod = $(this).text();
+        function subwrite(sub) {
+            $('#subcategorySelect-mod').html('');
+            var write = '';
+            for (var i = 0; i < sub.length; i++) {
+                write += '<li><a>' + sub[i] + '</a></li>'
+            }
+            $('#subcategorySelect-mod').html(write);
+        }
+
+        switch (category) {
+            case '만화':
+                var sub = ['로맨스', '판타지', '개그', '미스터리', '호러', 'SF', '무협', '스포츠'];
+                subwrite(sub);
+                break;
+            case '사진':
+                var sub = ['일상', '모델', '행사', '자연', '여행', '동식물', '스포츠', '아트', '야경', '별사진'];
+                subwrite(sub);
+                break;
+            case '일러스트':
+                var sub = ['일반', '캐릭터'];
+                subwrite(sub);
+                break;
+            case 'e-book':
+                var sub = ['소설', '시', '에세이', '인문', '자기개발', '교육'];
+                subwrite(sub);
+                break;
+            case '매거진':
+                var sub = ['IT', '게임', '뷰티', '패션', '반려동물', '소품', 'DIY'];
+                subwrite(sub);
+                break;
+            case 'CAD':
+                var sub = ['3D프린팅'];
+                subwrite(sub);
+                break;
+            case 'VR':
+                var sub = ['일상', '행사', '자연', '여행', '스포츠', '야경'];
+                subwrite(sub);
+                break;
+            case '맛집':
+                var sub = [];
+                subwrite(sub);
+                break;
+            case '여행':
+                var sub = ['국내', '제주도', '일본', '동남아', '유럽', '남미', '북미', '동북아', '오세아니아', '아프리카', '극지방', '중앙아시아'];
+                subwrite(sub);
+                break;
+        }
+    })
+    //하위 카테고리 리스트 버튼
+    var sub_category_mod;
+    $(document).on('click', "#subcategorySelect-mod li", function () {
+        $('#sub-category-mod').text($(this).text());
+        sub_category_mod = $(this).text();
+    })
+    //가격입력 숫자 검사
+    var checkNum = /^[0-9]*$/;
+    var costvali_mod = false;
+    //가격 입력 검사
+    $('#contentCost-mod').on('change', function () {
+        var contentCost = $('#contentCost-mod');
+        if (!checkNum.test(contentCost.val())) {
+            alert('가격은 숫자로 입력해 주세요.');
+            $('#contentCost-mod').focus();
+            costvali_mod = false;
+        } else if (contentCost.val().parseint > 65535) {
+            alert('65535픽 이상은 입력되지 않습니다.');
+            costvali_mod = false;
+        } else {
+            costvali_mod = true;
+        }
+    })
 //최상단컨텐츠 버튼 동작
     $(document).on("click", ".itemTop", function (e) {
         var thisitemID = $(this).parents()[5].id;
@@ -564,7 +744,8 @@ $(document).ready(function () {
     //댓글 노크클릭시의 동작
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
-        var thisrepnum = thisrepID.substring(12);
+        var idset=thisrepID.split('-');
+        var thisrepnum = idset[3];
         var thisitemID = $(this).parents()[11].id;
         $.ajax({
             url: "/php/data/itemAct.php",
@@ -583,5 +764,4 @@ $(document).ready(function () {
             }
         })
     });
-
 });
