@@ -315,7 +315,7 @@
                 <!-- 똥싸기와 용돈벌기 내용 -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="send">
-                        <div contenteditable="true" class="form-control" id="sendBody" onkeyup="resize(this)"></div>
+                        <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)"></div>
                         <hr>
                         <table>
                             <tr>
@@ -349,7 +349,7 @@
                             <div>
                                 <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
                                 <div contenteditable="true" class="form-control" id="publiBody"
-                                     onkeyup="resize(this)"></div>
+                                     oninput="resize(this)"></div>
                             </div>
                             <hr>
                             <table>
@@ -465,7 +465,7 @@
                     <!-- 똥싸기와 용돈벌기 내용 -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane" id="send-mod">
-                            <div contenteditable="true" class="form-control" id="sendBody-mod" onkeyup="resize(this)"></div>
+                            <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)"></div>
                             <hr>
                             <table>
                                 <tr>
@@ -492,7 +492,7 @@
                         <div role="tabpanel" class="tab-pane" id="publixh-mod">
                             <div>
                                 <input type="text" class="form-control" id="saleTitle-mod">
-                                <div contenteditable="true" class="form-control" id="publiBody-mod" onkeyup="resize(this)"></div>
+                                <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)"></div>
                             </div>
                             <hr>
                             <table>

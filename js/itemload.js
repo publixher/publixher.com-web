@@ -30,7 +30,7 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     }
     write += '</div></div> <div class="body">'
     write += preview;
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a>노크</a><span class="badgea"> ';
+    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a class="pubico pico-knock">노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
@@ -67,7 +67,7 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     write += title;
     write += '</div></div> <div class="body">'
     write += preview;
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a>노크</a><span class="badgea"> ';
+    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a class="pubico pico-knock">노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
@@ -88,7 +88,6 @@ $(document).ready(function(){
         data: loadOption,
         dataType: 'json',
         success: function (res) {
-            console.log(res)
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
                 if (res[i]['USER_NAME'] != null) {

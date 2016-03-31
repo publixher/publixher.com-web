@@ -41,6 +41,7 @@ if ($action == 'get_item') {
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
+    $gallery="/<a[^>]*href=[\"']?\/img\/origin\/[\"']?[^>]*><\/a>/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
     $body = $purifier->purify($body);
@@ -55,6 +56,7 @@ if ($action == 'get_item') {
         }
         $body = preg_replace($not_covered, $a_covered, $body);
     }
+    $body=preg_replace($gallery,"",$body);
     $previewimg = $imgs[1][0][0];
     $blured;//오타 아님 정의해야해서 하는
     for ($i = 1; $i < count($imgs[1]); $i++) {

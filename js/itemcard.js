@@ -450,6 +450,7 @@ $(document).ready(function(){
             dataType: 'json',
             data: {itemseq: thisitemID, action: "get_item"},
             success: function (res) {
+                console.log(res['BODY'])
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
                 switch (expose_mod) {case 0:expset.text('나만보기');break;case 1:expset.text('친구에게 공개');break;case 2:expset.text('전체공개');}
@@ -459,11 +460,9 @@ $(document).ready(function(){
                 }
                 if (type == 'item') {
                     $('#sendBody-mod').html(res['BODY']);
-                    $('#sendBody-mod').trigger('keyup')
                 } else if (type == 'forsale') {
                     $('#saleTitle-mod').val(res['TITLE']);
                     $('#publiBody-mod').html(res['BODY']);
-                    $('#sendBody-mod').trigger('keyup')
                     if (res['CATEGOTY']) {
                         $('#category-mod').text(res['CATEGORY']);
                         $('#sub-category-mod').text(res['SUB_CATEGORY']);

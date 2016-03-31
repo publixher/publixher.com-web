@@ -90,7 +90,7 @@
                         <!-- 똥싸기와 용돈벌기 내용 -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane" id="send-mod">
-                                <div contenteditable="true" class="form-control" id="sendBody-mod" onkeyup="resize(this)"></div>
+                                <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)"></div>
                                 <hr>
                                 <table>
                                     <tr>
@@ -117,7 +117,7 @@
                             <div role="tabpanel" class="tab-pane" id="publixh-mod">
                                 <div>
                                     <input type="text" class="form-control" id="saleTitle-mod">
-                                    <div contenteditable="true" class="form-control" id="publiBody-mod" onkeyup="resize(this)"></div>
+                                    <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)"></div>
                                 </div>
                                 <hr>
                                 <table>

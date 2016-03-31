@@ -219,6 +219,7 @@ $(document).ready(function(){
     //파일 업로드시 동작
     $('#fileuploads,#fileuploadp').fileupload({
         dataType: 'json',
+        sequentialUploads:true,
         add: function (e, data) {
             var uploadFile = data.files[0];
             var isValid = true;
@@ -245,7 +246,7 @@ $(document).ready(function(){
 
             }
         }, fail: function (e, data) {
-            alert('파일 업로드중 문제가 방생했습니다. 다시 시도해주세요.')
+            alert('파일 업로드중 문제가 방생했습니다. 다시 시도해주세요.<br><img src="/img/sorry.jpeg"> ')
         }
     })
 });

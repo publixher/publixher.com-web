@@ -28,13 +28,13 @@ if ($_POST['action'] == 'profilechange') {
     $univ=$_POST['univ'];
     if ($_POST['pass'] == '') {
         //비밀번호 변경을 안했을때
-        $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV WHERE SEQ=:SEQ";
+        $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV,BIRTH=:BIRTH WHERE SEQ=:SEQ";
         $prepare = $db->prepare($sql);
     } else {
         //비밀번호 변경을 했을때
         //통과시 등록
         if ($check_pass) {
-            $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV,PASSWORD=:PASSWORD WHERE SEQ=:SEQ";
+            $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV,PASSWORD=:PASSWORD,BIRTH=:BIRTH WHERE SEQ=:SEQ";
             $prepare = $db->prepare($sql);
             $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
             $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
@@ -46,6 +46,7 @@ if ($_POST['action'] == 'profilechange') {
     $prepare->bindValue(':H_SCHOOL', $hschool, PDO::PARAM_STR);
     $prepare->bindValue(':UNIV', $univ, PDO::PARAM_STR);
     $prepare->bindValue(':SEQ', $userseq, PDO::PARAM_STR);
+    $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
     $prepare->execute();
     //새로 로그인한 세션을 잡는다
     $sqlin="SELECT * FROM publixher.TBL_USER WHERE SEQ=:SEQ";

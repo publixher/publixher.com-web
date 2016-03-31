@@ -30,6 +30,7 @@
                           href="#collapse<?= $masters[$i]['SEQ'] ?>">
                     </span>
             </div>
+            <div class="sungho-writable"></div>
             <div id="collapse<?= $masters[$i]['SEQ'] ?>" class="accordion-body collapse well well-sm">
                 <div class="accordion-inner">
                     <?php

@@ -19,11 +19,13 @@
     <script src="/plugins/jquery.min.js" type="text/javascript"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="/plugins/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="/plugins/naver.js"></script>
     <script src="/js/plugins.js"></script>
     <style>
-        body{
+        body {
             background-color: #e5e5e5;
         }
+
         #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
             display: none;
             height: 26px;
@@ -60,7 +62,7 @@
             <tr>
                 <td>비밀번호</td>
                 <td><input type='password' name='pass' tabindex='2' class='form-control'/></td>
-<!--                <td colspan="3"><input type="checkbox" name="dont_remem" tabindex="4">날 기억하지 마세요</td>-->
+                <!--                <td colspan="3"><input type="checkbox" name="dont_remem" tabindex="4">날 기억하지 마세요</td>-->
             </tr>
         </table>
     </form>
@@ -99,8 +101,8 @@
             <tr>
                 <td>성별</td>
                 <td><select name='sex' tabindex="9" class='form-control'>
-                        <option value="m">남자</option>
-                        <option value="f">여자</option>
+                        <option value="M">남자</option>
+                        <option value="F">여자</option>
                     </select></td>
             </tr>
             <tr>
@@ -119,6 +121,16 @@
             </tr>
         </table>
     </form>
+    <div id="naver_id_login"></div>
+    <script>
+        var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");
+        naver_id_login.setButton("white", 3, 40)
+        //        naver_id_login.setPopup();
+        naver_id_login.setDomain(".publixher.com");
+        naver_id_login.setState("abcdefghijklmnoqstuv");
+        naver_id_login.init_naver_id_login();
+        console.log('p')
+    </script>
 </div>
 </body>
 </html>

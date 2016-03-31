@@ -9,6 +9,7 @@
     <!-- 부트스트랩 -->
     <link href="/plugins/bootstrap-3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/publixherico/style.css">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -52,7 +53,8 @@
     $useruniv = $userinfo->getUNIV();
     $userpic = $userinfo->getPIC();
 
-    $birth = date("Y년m월d일", strtotime($target['BIRTH']));
+    $birth = date("Y-m-d", strtotime($target['BIRTH']));
+    $birth=explode('-',$birth);
     if ($userinfo->getISNICK() == 'N') {
         $sql3 = "SELECT SEQ_ANONY FROM publixher.TBL_CONNECTOR WHERE SEQ_USER=:SEQ_USER";
         $prepare3 = $db->prepare($sql3);
@@ -67,6 +69,12 @@
         $nickname = $nickname['USER_NAME'];
     }
     ?>
+    <script>
+        var useryear='<?=$birth[0]?>';
+        var usermonth='<?=$birth[1]?>';
+        var userday='<?=$birth[2]?>';
+        console.log(usermonth)
+    </script>
     <form method='post' action='/php/data/profileChange.php' id="pf">
         <input type="hidden" name="action" value="profilechange">
         <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
@@ -106,11 +114,17 @@
             <tr>
                 <td>생년월일<br>
                     <p style="font-size: 10px;">ex)19920318</p></td>
-                <td><?= $birth ?></td>
+                <td><select name="byear" tabindex="10" id="years" class='form-control'
+                            style="width: 65px;display:inline"></select>
+                    <select name="bmonth" tabindex="11" id="months" class='form-control'
+                            style="width: 50px;display:inline"></select>
+                    <select name="bday" tabindex="12" id="days" class='form-control'
+                            style="width: 50px;display:inline"></select>
+                </td>
             </tr>
             <tr>
                 <td>고등학교</td>
-                <td><input type='text' name='hschool' class='form-control' tabindex='5' id="mhschool"
+                <td><input type='text' name='hschool' class='form-control' tabindex='6' id="mhschool"
                            value="<?= $userhschool ?>"/></td>
                 <td>
                     <div class="alert alert-danger" role="alert" id="namewrong"></div>
@@ -118,7 +132,7 @@
             </tr>
             <tr>
                 <td>대학교</td>
-                <td><input type='text' name='univ' class='form-control' tabindex='5' id="muniv"
+                <td><input type='text' name='univ' class='form-control' tabindex='7' id="muniv"
                            value="<?= $useruniv ?>"/></td>
                 <td>
                     <div class="alert alert-danger" role="alert" id="namewrong"></div>
@@ -127,7 +141,7 @@
             <tr>
                 <td>나라</td>
                 <td>
-                    <select class="form-control" name='region' tabindex='6' id='mregion'>
+                    <select class="form-control" name='region' tabindex='8' id='mregion'>
                         <option value='KOR'>한국</option>
                         <option value='USA'>미국</option>
                         <option value='JPN'>일본</option>
@@ -153,7 +167,7 @@
     if ($userinfo->getISNICK() == 'N') { ?>
         <form method='post' action='/php/data/profileChange.php'>
             <input type="hidden" name="action" value="anonyregist">
-            <span><?= $nickname ?></span><a>삭제</a>
+            <span><?= $nickname ?></span> <a>삭제</a>
             <input type="text" class="form-control" name="nick" placeholder="익명은 한글,영문숫자만으로 구성되어야 합니다."
                    style="width:60%;">
             <input type="submit" class="btn btn-default" value="지금 익명계정을 삭제하고 새로운 익명계정 생성">
