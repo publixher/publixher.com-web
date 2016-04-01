@@ -9,7 +9,6 @@ $(document).ready(function(){
         }else{
             mu=($(this).attr('href')).replace('/php/profile.php?id=', '')
         }
-        console.log(mu)
         $.ajax({url:"php/data/subscribe.php", type: "GET", data: {mu:mu,action:"check"}, dataType: 'json'})
         $('.newcontent[data-substarget='+mu+']').remove();
     })

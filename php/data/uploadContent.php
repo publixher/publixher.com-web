@@ -40,6 +40,20 @@ if (!empty($_POST)) {
         $body = preg_replace($not_covered, $a_covered, $body);
     }
     $previewimg = $imgs[1][0][0];
+    //더보기가 있어야할지 검사
+    $bodylen=mb_strlen($body,'utf-8');
+    if(!$previewimg and $bodylen<=400){
+        $more=0;
+    }elseif($previewimg and !$imgs[1][1] and $bodylen<=200){
+        if($_POST['for_sale']){
+            $more=1;
+        }else{
+            $more=0;
+        }
+    }else{
+        $more=1;
+    }
+
     $blured;//오타 아님 정의해야해서 하는
     for ($i = 1; $i < count($imgs[1]); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
@@ -79,21 +93,23 @@ if (!empty($_POST)) {
     }
     //content테이블에 넣음
     $seq_writer = $_POST['seq_writer'];
-    $targetseq=$_POST['targetseq'];
+    $targetseq = $_POST['targetseq'];
     if (!$_POST['for_sale']) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE)";
     } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE)";
     }
+
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':SEQ_WRITER', $seq_writer, PDO::PARAM_STR);
     $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
-    if($targetseq==''){
+    $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
+    if ($targetseq == '') {
         $prepare->bindValue(':SEQ_TARGET', NULL, PDO::PARAM_STR);
-    }else {
+    } else {
         $prepare->bindValue(':SEQ_TARGET', $targetseq, PDO::PARAM_STR);
     }
 
@@ -113,10 +129,10 @@ if (!empty($_POST)) {
             $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
         }
     }
-        $prepare->execute();
+    $prepare->execute();
     $id = $db->lastInsertId();
     //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
-    if($_POST['for_sale']) {
+    if ($_POST['for_sale']) {
         $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE SEQ_MASTER=:SEQ_MASTER";
         $folprepare = $db->prepare($folsql);
         $folprepare->bindValue(':SEQ_MASTER', $seq_writer);
@@ -136,7 +152,7 @@ if (!empty($_POST)) {
     $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
     $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
     //타겟이 있다면 타겟의 정보도 가져옴
-    if($targetseq) {
+    if ($targetseq) {
         $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
         $tp = $db->prepare($t);
         $tp->bindValue(':SEQ', $targetseq);

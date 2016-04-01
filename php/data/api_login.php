@@ -18,40 +18,31 @@ if ($info['api'] == 'naver') {
         $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
         $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
-        try {
-            $prepare->execute();
-            $seq = $db->lastInsertId();
-            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
-            try {
-                $prepare2->execute();
-            } catch (PDOException $e) {
-                trigger_error("<script>alert(' 입력하는데 실패. 이유 : " . $e->getMessage() . "'");
-            }
-        } catch (PDOException $e) {
-            trigger_error("<script>alert(' 입력하는데 실패. 이유 : " . $e->getMessage() . "'");
-        }
+        $prepare->execute();
+        $seq = $db->lastInsertId();
+        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+        $prepare2 = $db->prepare($sql2);
+        $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
         $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $q2 = $db->prepare($sql2);
         $q2->bindValue(':EMAIL', $info['email']);
         $q2->execute();
         $user = $q2->fetchObject(User);
     }
-}elseif($info['api']=='facebook'){
-    if($info['action']=='login'){
+} elseif ($info['api'] == 'facebook') {
+    if ($info['action'] == 'login') {
         $sql = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $q = $db->prepare($sql);
         $q->bindValue(':EMAIL', $info['email']);
         $q->execute();
         $user = $q->fetchObject(User);
-    }elseif($info['action']=='reg'){
+    } elseif ($info['action'] == 'reg') {
         $sql = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $q = $db->prepare($sql);
         $q->bindValue(':EMAIL', $info['email']);
         $q->execute();
         $user = $q->fetchObject(User);
-        if(!$user) {
+        if (!$user) {
             $sql = "INSERT INTO publixher.TBL_USER(EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
             $prepare = $db->prepare($sql);
             $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
@@ -59,20 +50,11 @@ if ($info['api'] == 'naver') {
             $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
             $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
             $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
-            try {
-                $prepare->execute();
-                $seq = $db->lastInsertId();
-                $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
-                $prepare2 = $db->prepare($sql2);
-                $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
-                try {
-                    $prepare2->execute();
-                } catch (PDOException $e) {
-                    trigger_error("<script>alert(' 입력하는데 실패. 이유 : " . $e->getMessage() . "'");
-                }
-            } catch (PDOException $e) {
-                trigger_error("<script>alert(' 입력하는데 실패. 이유 : " . $e->getMessage() . "'");
-            }
+            $prepare->execute();
+            $seq = $db->lastInsertId();
+            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
             $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
             $q2 = $db->prepare($sql2);
             $q2->bindValue(':EMAIL', $info['email']);

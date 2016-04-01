@@ -42,13 +42,14 @@ $(document).ready(function(){
                     var folderseq = null;
                     var foldername = null;
                     var expose=res['EXPOSE']
+                    var more=res['MORE']
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
                     $('#upform').after(write);
-                    $('#sendBody').html("").trigger('keyup');
+                    $('#sendBody').html("").trigger('input').trigger('keyup');
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -98,15 +99,16 @@ $(document).ready(function(){
                     var folderseq = null;
                     var foldername = null;
                     var expose=res['EXPOSE'];
+                    var more=res['MORE']
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic,expose);
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic,expose,more);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
-                    $('#publiBody').html("").trigger('keyup');
+                    $('#publiBody').html("").trigger('input').trigger('keyup');
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);

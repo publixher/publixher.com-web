@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose) {
+function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more) {
     write = '<div class="item card" id="';
     write += seq;
     write += '"><div class="header">';
@@ -35,11 +35,15 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-    write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+    if(more) {
+        write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+    }else{
+        write+='</tr></table></div> </div>';
+    }
     return write;
 }
 
-function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose) {
+function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more) {
     write = '<div class="item-for-sale card" id="';
     write += seq;
     write += '"><div class="header">';
@@ -73,7 +77,11 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
     if (bought) {
-        write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+        if(more) {
+            write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+        }else{
+            write+='</tr></table></div> </div>';
+        }
     }
     else {
         write += '<td class="tprice"><span class="price"><a class="value">' + price + '</a>&nbsp;<a>Pigs</a></span></td></tr></table></div> </div>';
@@ -106,11 +114,12 @@ $(document).ready(function(){
                         var folderseq = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
+                        var more=res[i]['MORE']
                         if (res[i]['FOLDER'] != null) {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
+                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
                         if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
@@ -135,11 +144,12 @@ $(document).ready(function(){
                         var folderseq = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
+                        var more=res[i]['MORE']
                         if (res[i]['FOLDER'] != null) {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose);
+                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more);
                         if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
@@ -182,12 +192,13 @@ $(document).ready(function(){
                                 var targetname = res[i]['TARGET_NAME'];
                                 var folderseq = null;
                                 var foldername = null;
-                                var expose=['EXPOSE']
+                                var expose=res[i]['EXPOSE']
+                                var more=res[i]['MORE']
                                 if (res[i]['FOLDER'] != null) {
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
+                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
                                 if($('.card:last-child').length>0) {
                                     $('.card:last-child').after(write);
                                 }else{
@@ -209,11 +220,12 @@ $(document).ready(function(){
                                 var folderseq = null;
                                 var foldername = null;
                                 var expose=res[i]['EXPOSE']
+                                var more=res[i]['MORE']
                                 if (res[i]['FOLDER'] != null) {
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose);
+                                write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more);
                                 if($('.card:last-child').length>0) {
                                     $('.card:last-child').after(write);
                                 }else{
@@ -222,10 +234,10 @@ $(document).ready(function(){
                             }
                         }
                     }
-                    page = page + 1;
-                    loadOption['nowpage'] = page;
                 }
             })
+            page = page + 1;
+            loadOption['nowpage'] = page;
         }
     })
 });

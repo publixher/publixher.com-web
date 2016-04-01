@@ -96,7 +96,7 @@ if ($act == 'knock') {
             . "ORDER BY \n"
             . "	KNOCK + SUB_REPLY DESC \n"
             . "LIMIT \n"
-            . ":INDEX, 5";
+            . ":INDEX, 6";
         $prepare1 = $db->prepare($bestrep_sql);
         $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
         $prepare1->bindValue(':INDEX', $index, PDO::PARAM_STR);
@@ -105,6 +105,12 @@ if ($act == 'knock') {
         if ($result) {    //베스트 있을때
             $result = getWriter($result, $db);
             $result['sort'] = "best";
+            if($result[5]) {
+                $result['more']='1';
+                unset($result[5]);
+            }else{
+                $result['more']='0';
+            }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
         } else {
@@ -113,7 +119,7 @@ if ($act == 'knock') {
     }
     function getTime($db, $seq,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE SEQ_CONTENT=:SEQ_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,5";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE SEQ_CONTENT=:SEQ_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':SEQ_CONTENT', $seq);
         $prepare1->bindValue(':INDEX', $index);
@@ -122,6 +128,12 @@ if ($act == 'knock') {
         if ($result) {
             $result = getWriter($result, $db);
             $result['sort'] = "time";
+            if($result[5]) {
+                $result['more']='1';
+                unset($result[5]);
+            }else{
+                $result['more']='0';
+            }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
         } else {
@@ -139,7 +151,7 @@ if ($act == 'knock') {
             . "ORDER BY \n"
             . "	REPLY.SEQ DESC \n"
             . "LIMIT \n"
-            . "	:INDEX, 5";
+            . "	:INDEX, 6";
         $prepare1 = $db->prepare($friend_sql);
         $prepare1->bindValue(':SEQ_CONTENT', $seq);
         $prepare1->bindValue(':SEQ_USER', $userseq);
@@ -149,6 +161,12 @@ if ($act == 'knock') {
         if($result){
             $result = getWriter($result, $db);
             $result['sort']="friend";
+            if($result[5]) {
+                $result['more']='1';
+                unset($result[5]);
+            }else{
+                $result['more']='0';
+            }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
         }else{
@@ -459,7 +477,7 @@ if ($act == 'knock') {
     }
     function getTime($db, $repseq,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE SEQ_REPLY=:SEQ_REPLY ORDER BY SEQ DESC LIMIT :INDEX,5";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE SEQ_REPLY=:SEQ_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':SEQ_REPLY', $repseq);
         $prepare1->bindValue(':INDEX', $index);
@@ -468,6 +486,12 @@ if ($act == 'knock') {
         if ($result) {
             $result = getWriter($result, $db);
             $result['sort'] = "time";
+            if($result[5]) {
+                $result['more']='1';
+                unset($result[5]);
+            }else{
+                $result['more']='0';
+            }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
         } else {

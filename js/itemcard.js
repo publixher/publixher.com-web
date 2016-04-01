@@ -41,9 +41,8 @@ $(document).ready(function(){
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
-            tail.append(word);
             tail.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
-
+            tail.append(word);
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
@@ -53,7 +52,7 @@ $(document).ready(function(){
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
-                        for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                        for (var i = 0; i < Object.keys(res).length - 2; i++) {
                             var write = '';
                             var seq = res[i]['SEQ'];
                             var name = res[i]['USER_NAME'];
@@ -67,7 +66,9 @@ $(document).ready(function(){
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
                         }
-                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                        if(res['more']==1) {
+                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                        }
                     }
 
                     //각 패널에 인덱스 붙이기
@@ -115,9 +116,10 @@ $(document).ready(function(){
             data: {seq: num, action: "comment", userseq: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
+                console.log(res)
                 function registRep(res, where) {
                     var list = $('#' + where);
-                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
                         var name = res[i]['USER_NAME'];
@@ -131,7 +133,9 @@ $(document).ready(function(){
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
-                    list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                    if(res['more']==1) {
+                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                    }
                 }
 
                 if (parseInt(index) == 0 && res['result'] != 'NO') {
@@ -162,7 +166,7 @@ $(document).ready(function(){
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
                     var btn = $('#' + sort + '-' + num + ' .cursor');
-                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
                         var name = res[i]['USER_NAME'];
@@ -175,6 +179,9 @@ $(document).ready(function(){
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
+                        if(res['more']==0){
+                            btn.remove();
+                        }
                     }
                 }
 
@@ -186,7 +193,7 @@ $(document).ready(function(){
     })
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13 && $(this).val().length>0) {
             var thisitemID = $(this).parents()[1].id;
             var form = $('#' + thisitemID + ' .tail .form-control');
             var reply = form.val();
@@ -226,9 +233,10 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
+                    subrep_list.append('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                            for (var i = 0; i < Object.keys(res).length - 2; i++) {
                                 var write = '';
                                 var seq = res[i]['SEQ'];
                                 var name = res[i]['USER_NAME'];
@@ -241,7 +249,9 @@ $(document).ready(function(){
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
                             }
-                            subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                            if(res['more']==1) {
+                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                            }
                         }
 
                         //인덱스 붙이기
@@ -250,16 +260,16 @@ $(document).ready(function(){
                         }
                         registRep(res);
                     }
-                    subrep_list.after('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                 }
             });
         }
     });
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13 && $(this).val().length>0) {
             var form = $(this)[0].id;
             var idset = form.split('-');
+            var sub=form.replace('form','sub');
             var thisitemID = idset[1];
             var thisrepID = idset[3];
             var reply = $('#' + form).val();
@@ -283,7 +293,7 @@ $(document).ready(function(){
                     subrep_list.html('');
                     subrep_list.attr('index', '0');
                     subrep_list.removeClass('opened');
-                    $('#' + form).remove();
+                    $('#' + sub).remove();
                     $('#' + thisreply + ' .repreplybad').text(res['SUB_REPLY']);
                     $('#' + thisreply + ' .repreply').trigger('click');
                 }
@@ -310,7 +320,7 @@ $(document).ready(function(){
                 function registRep(res, where) {
                     var list = $('#' + caret);
                     var btn = $('#' + caret + ' .cursor');
-                    for (var i = 0; i < Object.keys(res).length - 1; i++) {
+                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
                         var seq = res[i]['SEQ'];
                         var name = res[i]['USER_NAME'];
@@ -322,16 +332,17 @@ $(document).ready(function(){
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
+                        if(res['more']==0){
+                            btn.remove();
+                        }
                     }
                 }
-
                 registRep(res, caret);
             }
         })
     })
 
     //공유하기 버튼 동작
-    //TODO:공유버튼 동작 설정 다른페이지에도
     $(document).on("click", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
         var thisitem = $('#' + thisitemID);
@@ -339,8 +350,8 @@ $(document).ready(function(){
         var cardheight = thisitem.height();
         var linkstr = 'publixher.com/php/getItem.php?iid=' + thisitemID;
         var iframetag = '<iframe src="publixher.com/php/getItem.php?iid=' + thisitemID + '\" width=\"' + cardwidth + '\" height=\"' + cardheight + '\" frameborder=\"0\"></iframe>';
-        var sharetext = '이 게시물의 주소 : <input type="text" class="form-control" value="' + linkstr + '" title="링크" style="width:510px;">';
-        sharetext += 'HTML코드를 다른페이지에 붙여넣기 : <input type="text" class="form-control" value="' + iframetag + '" title="링크" style="width:510px;">'
+        var sharetext = '이 게시물의 주소 : <div type="text" class="form-control" value="' + linkstr + '" title="링크" style="width:510px;"></div>';
+        sharetext += 'HTML코드를 다른페이지에 붙여넣기 : <div type="text" class="form-control" value="' + iframetag + '" title="링크" style="width:510px;"></div>'
 
         $('#' + thisitemID + ' .tail').append(sharetext);
 
@@ -762,5 +773,9 @@ $(document).ready(function(){
                 alert(request.responseText);
             }
         })
+    });
+
+    $(document).on("dragstart", "img,a", function() {
+        return false;
     });
 });

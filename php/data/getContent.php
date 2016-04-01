@@ -5,17 +5,17 @@ require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
 $nowpage = $_GET['nowpage'] * 10;
 session_start();
-if(!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
+if (!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
 $userseq = $_SESSION['user']->getSEQ();
 //콘텐츠 검색임시로 그냥 다 불러오기
 if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
     //내 프로필일때는 내가쓴것내가 타겟인것 전부 가져온다
-    if($_GET['I']=="true"){
+    if ($_GET['I'] == "true") {
         $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (SEQ_WRITER=:SEQ_WRITER OR SEQ_TARGET=:SEQ_TARGET)) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
-    }elseif($_GET['frelation']=="true"){
+    } elseif ($_GET['frelation'] == "true") {
         //친구관계일때
         $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (SEQ_WRITER=:SEQ_WRITER OR SEQ_TARGET=:SEQ_TARGET) AND EXPOSE>0) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
-    }else{
+    } else {
         //무관계일때
         $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (SEQ_WRITER=:SEQ_WRITER OR SEQ_TARGET=:SEQ_TARGET) AND EXPOSE>1) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
     }
@@ -53,6 +53,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } else {  //메인화면에서 노출시켜줄 순
+
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (SEQ_WRITER = :SEQ_USER0 AND DEL='N' AND SEQ_TARGET IS NULL)"  //내거찾기
 
         . "UNION SELECT CONT1.* FROM publixher.TBL_CONTENT CONT1 INNER JOIN ("
