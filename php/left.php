@@ -26,8 +26,8 @@
         ?>
         <div class="accordion-group">
             <div class="accordion-heading">
-                    <span class="accordion-toggle caret" data-toggle="collapse" data-parent="#subslist"
-                          href="#collapse<?= $masters[$i]['SEQ'] ?>">
+                    <span class="accordion-toggle" data-toggle="collapse" data-parent="#subslist"
+                          href="#collapse<?= $masters[$i]['SEQ'] ?>"><span class="caret"></span>
                     </span>
             </div>
             <div class="sungho-writable"></div>

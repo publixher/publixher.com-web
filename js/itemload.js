@@ -178,6 +178,8 @@ $(document).ready(function(){
                                 var comment = res[i]['COMMENT'];
                                 var preview = res[i]['PREVIEW'];
                                 var pic = res[i]['PIC'];
+                                var targetseq = res[i]['SEQ_TARGET'];
+                                var targetname = res[i]['TARGET_NAME'];
                                 var folderseq = null;
                                 var foldername = null;
                                 var expose=['EXPOSE']
@@ -185,7 +187,7 @@ $(document).ready(function(){
                                     folderseq = res[i]['FOLDER'];
                                     foldername = res[i]['FOLDER_NAME'];
                                 }
-                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,expose);
+                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
                                 if($('.card:last-child').length>0) {
                                     $('.card:last-child').after(write);
                                 }else{

@@ -15,7 +15,7 @@
         $.ajax({
             url: "/php/data/api_login.php",
             type: "POST",
-            data: {email:email,age:age,birthday:birthday,gender:gender,image:profile_image,name:name},
+            data: {email:email,age:age,birthday:birthday,gender:gender,image:profile_image,name:name,api:"naver"},
             dataType: 'json',
             success: function (res) {
                 location.href='/';
