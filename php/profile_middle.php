@@ -20,7 +20,7 @@
             var I=true;
             var frelation=false;
         </script>
-        <div class="btn-group" role="group">
+        <div class="btn-group" role="group" id="profile-middle-nav">
             <!--            친구목록-->
             <?php
             $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
@@ -571,3 +571,13 @@
 <script src="/js/upform.js"></script>
 <script src="/js/topcon.js"></script>
 <script src="/js/profilenav.js"></script>
+<!--움직이는 svg아이콘-->
+<script src="/plugins/AnimatedSVGIcons-master/js/snap.svg-min.js"></script>
+<script src="/plugins/AnimatedSVGIcons-master/js/svgicons-config.js"></script>
+<script src="/plugins/AnimatedSVGIcons-master/js/svgicons.js"></script>
+<link href="/plugins/AnimatedSVGIcons-master/css/component.css" rel="stylesheet">
+<script>
+    [].slice.call( document.querySelectorAll( '.si-icon' ) ).forEach( function( el ) {
+        var svgicon = new svgIcon( el, svgIconConfig );
+    } );
+</script>

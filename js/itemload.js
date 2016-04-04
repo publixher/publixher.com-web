@@ -38,7 +38,7 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     if(more) {
         write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
     }else{
-        write+='</tr></table></div> </div>';
+        write+='<td class="blank"></td> </tr></table></div> </div>';
     }
     return write;
 }
@@ -80,7 +80,7 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
         if(more) {
             write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
         }else{
-            write+='</tr></table></div> </div>';
+            write+='<td class="blank"></td></tr></table></div> </div>';
         }
     }
     else {
@@ -88,14 +88,25 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     }
     return write;
 }
+var spinner='<div class="load-item" data-loader="spinner"></div>'
 $(document).ready(function(){
     //페이지 로드 끝나면 아이템카드 불러오기
+    if($('#topcon').length>0){
+        $('#topcon').after(spinner);
+    } else if($('#upform').length>0) {
+        $('#upform').after(spinner);
+    }else{
+        $('#prea').after(spinner);
+    }
     $.ajax({
         url: "/php/data//getContent.php",
         type: "GET",
         data: loadOption,
         dataType: 'json',
+        tryCount:0,
+        retryLimit:3,
         success: function (res) {
+            $('.load-item').remove();
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
                 if (res[i]['USER_NAME'] != null) {
@@ -162,82 +173,125 @@ $(document).ready(function(){
             }
             page = page + 1;
             loadOption['nowpage'] = page;
+        },error : function(xhr, textStatus, errorThrown ) {
+            if (textStatus == 'timeout') {
+                this.tryCount++;
+                if (this.tryCount <= this.retryLimit) {
+                    //try again
+                    $.ajax(this);
+                    return;
+                }
+                return;
+            }
+            if (xhr.status == 500) {
+                alert('문법 오류! 관리자에게 문의하기')
+            } else {
+                alert('몰랑몰랑')
+            }
         }
     })
 
     //무한스크롤
+    var loading=false;
     $(document).scroll(function () {
         var maxHeight = $(document).height();
         var currentScroll = $(window).scrollTop() + $(window).height();
         if (maxHeight <= currentScroll + 400) {
-            $.ajax({
-                url: "/php/data/getContent.php",
-                type: "get",
-                data: loadOption,
-                dataType: 'json',
-                success: function (res) {
-                    for (var i = 0; i < res.length; i++) {
-                        if (res[i]['USER_NAME'] != null) {
-                            if (res[i]['FOR_SALE'] == "N") {
-                                var write = '';
-                                var seq = res[i]['SEQ'];
-                                var writer = res[i]['SEQ_WRITER'];
-                                var name = res[i]['USER_NAME'];
-                                var date = res[i]['WRITE_DATE'];
-                                var knock = res[i]['KNOCK'];
-                                var comment = res[i]['COMMENT'];
-                                var preview = res[i]['PREVIEW'];
-                                var pic = res[i]['PIC'];
-                                var targetseq = res[i]['SEQ_TARGET'];
-                                var targetname = res[i]['TARGET_NAME'];
-                                var folderseq = null;
-                                var foldername = null;
-                                var expose=res[i]['EXPOSE']
-                                var more=res[i]['MORE']
-                                if (res[i]['FOLDER'] != null) {
-                                    folderseq = res[i]['FOLDER'];
-                                    foldername = res[i]['FOLDER_NAME'];
-                                }
-                                write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
-                                if($('.card:last-child').length>0) {
-                                    $('.card:last-child').after(write);
-                                }else{
-                                    $('#prea').after(write);
-                                }
-                            } else {
-                                var write = '';
-                                var seq = res[i]['SEQ'];
-                                var writer = res[i]['SEQ_WRITER'];
-                                var name = res[i]['USER_NAME'];
-                                var date = res[i]['WRITE_DATE'];
-                                var title = res[i]['TITLE'];
-                                var knock = res[i]['KNOCK'];
-                                var price = res[i]['PRICE'];
-                                var comment = res[i]['COMMENT'];
-                                var bought = res[i]['BOUGHT'];
-                                var preview = res[i]['PREVIEW'];
-                                var pic = res[i]['PIC'];
-                                var folderseq = null;
-                                var foldername = null;
-                                var expose=res[i]['EXPOSE']
-                                var more=res[i]['MORE']
-                                if (res[i]['FOLDER'] != null) {
-                                    folderseq = res[i]['FOLDER'];
-                                    foldername = res[i]['FOLDER_NAME'];
-                                }
-                                write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more);
-                                if($('.card:last-child').length>0) {
-                                    $('.card:last-child').after(write);
-                                }else{
-                                    $('#prea').after(write);
+            if(loading==false) {
+                loading=true;
+                if ($('.card:last-child').length > 0) {
+                    $('.card:last-child').after(spinner);
+                } else {
+                    $('#prea').after(spinner);
+                }
+                $.ajax({
+                    url: "/php/data/getContent.php",
+                    type: "get",
+                    data: loadOption,
+                    dataType: 'json',
+                    tryCount:0,
+                    retryLimit:3,
+                    success: function (res) {
+                        $('.load-item').remove();
+                        for (var i = 0; i < res.length; i++) {
+                            if (res[i]['USER_NAME'] != null) {
+                                if (res[i]['FOR_SALE'] == "N") {
+                                    var write = '';
+                                    var seq = res[i]['SEQ'];
+                                    var writer = res[i]['SEQ_WRITER'];
+                                    var name = res[i]['USER_NAME'];
+                                    var date = res[i]['WRITE_DATE'];
+                                    var knock = res[i]['KNOCK'];
+                                    var comment = res[i]['COMMENT'];
+                                    var preview = res[i]['PREVIEW'];
+                                    var pic = res[i]['PIC'];
+                                    var targetseq = res[i]['SEQ_TARGET'];
+                                    var targetname = res[i]['TARGET_NAME'];
+                                    var folderseq = null;
+                                    var foldername = null;
+                                    var expose = res[i]['EXPOSE']
+                                    var more = res[i]['MORE']
+                                    if (res[i]['FOLDER'] != null) {
+                                        folderseq = res[i]['FOLDER'];
+                                        foldername = res[i]['FOLDER_NAME'];
+                                    }
+                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more);
+                                    if ($('.card:last-child').length > 0) {
+                                        $('.card:last-child').after(write);
+                                    } else {
+                                        $('#prea').after(write);
+                                    }
+                                } else {
+                                    var write = '';
+                                    var seq = res[i]['SEQ'];
+                                    var writer = res[i]['SEQ_WRITER'];
+                                    var name = res[i]['USER_NAME'];
+                                    var date = res[i]['WRITE_DATE'];
+                                    var title = res[i]['TITLE'];
+                                    var knock = res[i]['KNOCK'];
+                                    var price = res[i]['PRICE'];
+                                    var comment = res[i]['COMMENT'];
+                                    var bought = res[i]['BOUGHT'];
+                                    var preview = res[i]['PREVIEW'];
+                                    var pic = res[i]['PIC'];
+                                    var folderseq = null;
+                                    var foldername = null;
+                                    var expose = res[i]['EXPOSE']
+                                    var more = res[i]['MORE']
+                                    if (res[i]['FOLDER'] != null) {
+                                        folderseq = res[i]['FOLDER'];
+                                        foldername = res[i]['FOLDER_NAME'];
+                                    }
+                                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic, expose, more);
+                                    if ($('.card:last-child').length > 0) {
+                                        $('.card:last-child').after(write);
+                                    } else {
+                                        $('#prea').after(write);
+                                    }
                                 }
                             }
                         }
+                        loading=false;
+                        page = page + 1;
+                        loadOption['nowpage'] = page;
+                    },error : function(xhr, textStatus, errorThrown ) {
+                        if (textStatus == 'timeout') {
+                            this.tryCount++;
+                            if (this.tryCount <= this.retryLimit) {
+                                //try again
+                                $.ajax(this);
+                                return;
+                            }
+                            return;
+                        }
+                        if (xhr.status == 500) {
+                            alert('문법 오류! 관리자에게 문의하기')
+                        } else {
+                            alert('몰랑몰랑')
+                        }
                     }
-                }
-            })
-            page = page + 1;
-            loadOption['nowpage'] = page;
+                })
+            }
         }
     })
 });

@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', -1);    //이미지 로테이션시켜야할때 메모리 제한 없앰
 // Imaging
 class imaging
 {
@@ -21,6 +22,7 @@ class imaging
 
         // Find format
         $ext = strtoupper(pathinfo($img, PATHINFO_EXTENSION));
+        $exif=exif_read_data($img);
 
         // JPEG image
         if(is_file($img) && ($ext == "JPG" OR $ext == "JPEG"))
@@ -29,7 +31,6 @@ class imaging
             $this->format = $ext;
             $this->img_input = ImageCreateFromJPEG($img);
             $this->img_src = $img;
-
 
         }
 
@@ -52,7 +53,19 @@ class imaging
             $this->img_src = $img;
 
         }
-
+        if(!empty($exif['Orientation'])) {
+            switch ($exif['Orientation']) {
+                case 8:
+                    $this->img_input = imagerotate($this->img_input, 90, 0);
+                    break;
+                case 3:
+                    $this->img_input = imagerotate($this->img_input, 180, 0);
+                    break;
+                case 6:
+                    $this->img_input = imagerotate($this->img_input, -90, 0);
+                    break;
+            }
+        }
         // Get dimensions
         $this->x_input = imagesx($this->img_input);
         $this->y_input = imagesy($this->img_input);
@@ -192,5 +205,4 @@ class imaging
     }
 
 }
-
 ?>

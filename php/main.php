@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="/plugins/Bootstrap-Image-Gallery-master/css/bootstrap-image-gallery.min.css">
     <link rel="stylesheet" href="/css/publixherico/style.css">
+    <link rel="stylesheet" href="/plugins/loader-master/loaders.min.css">
     <link href="/css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

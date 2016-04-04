@@ -235,20 +235,36 @@ $(document).ready(function(){
             if (isValid) {
                 data.submit();
             }
+        },progressall: function(e,data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            var upp=$('#up-progress');
+            upp.css('width', progress + '%');
+            if(progress==100){
+                upp.remove()
+                $('#sendBody').trigger('keyup')
+                $('#publiBody').trigger('keyup')
+            }
+        },start: function (e) {
+            if (this == $('#fileuploads')[0]) {
+                var sendBody=$('#sendBody');
+                sendBody.html(sendBody.html() +'<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
+            }else if (this == $('#fileuploadp')[0]) {
+                var publiBody=$('#publiBody')
+                publiBody.html(publiBody.html() +'<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
+            }
         },
         done: function (e, data) {
             if (this == $('#fileuploads')[0]) {
                 var sendBody=$('#sendBody');
                 sendBody.html(sendBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
+                sendBody.height(sendBody.height() + data.result['files']['file_height']+8);
             } else if (this == $('#fileuploadp')[0]) {
                 var publiBody=$('#publiBody')
                 publiBody.html(publiBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
-
+                publiBody.height(publiBody.height() + data.result['files']['file_height']+8);
             }
         }, fail: function (e, data) {
-            alert('파일 업로드중 문제가 방생했습니다. 다시 시도해주세요.<br><img src="/img/sorry.jpeg"> ')
+            alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
     })
 });

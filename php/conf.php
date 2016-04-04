@@ -1,8 +1,8 @@
 <div class="conf">
-
+    <script src="/js/conf.js"></script>
     <div id="logo"><a href="/">로고</a></div>
 
-    <script src="/js/conf.js"></script>
+
     <?php
 
     $mid = $_SESSION['user']->getSEQ();
@@ -26,7 +26,7 @@
         <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><img src="<?=$mpic?>" style="width: 40px; height: 40px;"></a>
         <!--이름 및 상태전환버튼-->
             <div class="btn-group" id="usr">
-                <button type="button" id="username" class="btn btn-danger" role="group"><?=$mname?></button>
+                <button type="button" id="username" class="btn btn-danger" role="group" onclick="location.href='/php/profile.php?id=<?= $mid ?>'" style="padding: 0;text-align: center;"><?=$mname?></button>
                 <button class="btn btn-danger" role="group" onclick="location.href='/php/data/profileChange.php?action=profileswap'"><span class="pubico pico-swap"></span></button>
             </div>
         <!--노티,핀,설정버튼-->
@@ -44,9 +44,9 @@
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
                     aria-expanded="false">
-                a <span class="badge">12</span>
+                <span class="pubico pico-pin2"></span>
             </button>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu" id="pinlist">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
@@ -69,3 +69,12 @@
         </ul>
     </div>
 </div>
+<script>
+    $(function () {
+        var fontResize= function () {
+            var username=$('#username');
+            username.css('font-size',18-username.text().length*2)
+        }
+        fontResize();
+    })
+</script>
