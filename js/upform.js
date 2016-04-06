@@ -36,7 +36,7 @@ $(document).ready(function(){
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
-                    var pic = res['PIC'];
+                    var pic = res['PIC'].replace('profile','crop50');
                     var targetseq = res['SEQ_TARGET'];
                     var targetname = res['TARGET_NAME'];
                     var folderseq = null;
@@ -95,7 +95,7 @@ $(document).ready(function(){
                     var price = res['PRICE'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
-                    var pic = res['PIC'];
+                    var pic = res['PIC'].replace('profile','crop50');
                     var folderseq = null;
                     var foldername = null;
                     var expose=res['EXPOSE'];

@@ -13,8 +13,8 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
-    $sql = "INSERT INTO publixher.USER(EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
-    $prepare = $db->prepare($sql);
+    $sql = "INSERT INTO publixher.TBL_USER(EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
+        $prepare = $db->prepare($sql);
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $prepare->bindValue(':EMAIL', $check_email, PDO::PARAM_STR);
     $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
@@ -27,7 +27,8 @@ if ($check_email && $check_pass && $check_name) {
     $prepare2 = $db->prepare($sql2);
     $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
 } else {
-    echo '<script>alert("입력된 값을 확인해 주세요")</script>';
+    echo '<script>alert("입력된 값을 확인해 주세요");history.go(-1)</script>';
+
 }
 ?>
 <meta http-equiv='refresh' content='0;url=../login.php'>

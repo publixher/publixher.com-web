@@ -22,9 +22,6 @@ $(document).ready(function () {
         done: function (e, data) {
             $('.file-input-img').attr('src', '/img/' + data.result['files']['file_profile']);
         }, fail: function (e, data) {
-            // data.errorThrown
-            // data.textStatus;
-            // data.jqXHR;
             console.log('서버와 통신 중 문제가 발생했습니다');
             console.log('e : ' + e);
             console.log('data : ' + data);

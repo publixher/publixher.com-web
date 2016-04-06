@@ -138,6 +138,11 @@ $(document).ready(function () {
             getNoti();
         }
     })
-
-
+//이름크기 바꾸기
+    var fontResize= function () {
+        var username=$('#username');
+        var size=(84/username.text().length)>14?14:(84/username.text().length)
+        username.css('font-size',size);
+    }
+    fontResize();
 })

@@ -25,9 +25,16 @@ $(document).ready(function(){
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail');
-        $(this).parent().css('background-color', '#f4f4f4');
         tail.css('margin-bottom', '10px');
-        if (!tail.hasClass('opend')) {
+        if (!tail.hasClass('opend-comment')) {
+            if(tail.hasClass('opend-share')) {
+                tail.removeClass('opend-share')
+                $('#' + thisitemID + ' .tail .tab-share').remove();
+                $('#' + thisitemID + ' .tail .tshare').css('background-color','white');
+            }
+            $(this).parent().css('background-color', '#f4f4f4');
+            tail.append('<div class="tab-comment"></div>');
+            var tab_comment=$('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
             word += '<ul class="nav nav-tabs" role="tablist" id="repnav-"' + thisitemID + '>'
@@ -41,8 +48,8 @@ $(document).ready(function(){
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
-            tail.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
-            tail.append(word);
+            tab_comment.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
+            tab_comment.append(word);
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
@@ -61,7 +68,11 @@ $(document).ready(function(){
                             var knock = res[i]['KNOCK'];
                             write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                            if(mid==res[i]['SEQ_USER']){
+                                write += ' <a class="repdel">삭제</a>'
+                            }
+                            write +='</span></span></td></tr></table></div>';
                             list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
@@ -101,7 +112,7 @@ $(document).ready(function(){
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
-            tail.addClass('opend');
+            tail.addClass('opend-comment');
         }
     });
     //댓글 네비게이션에 각 탭 누를때의 동작
@@ -116,7 +127,6 @@ $(document).ready(function(){
             data: {seq: num, action: "comment", userseq: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
-                console.log(res)
                 function registRep(res, where) {
                     var list = $('#' + where);
                     for (var i = 0; i < Object.keys(res).length - 2; i++) {
@@ -127,8 +137,12 @@ $(document).ready(function(){
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
+                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace("profile","crop34") + '" class="profilepic"></td>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                        if(mid==res[i]['SEQ_USER']){
+                            write += ' <a class="repdel">삭제</a>'
+                        }
+                        write +='</span></span></td></tr></table></div>';
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -148,7 +162,7 @@ $(document).ready(function(){
     })
 //댓글에서 각 탭에 화살표버튼 새로운 코멘트들을 불러오는거
     $(document).on('click', '.repbtn', function (e) {
-        var target = $(this).parents()[1].id;
+        var target = $(this).parents()[2].id;
         var sort = target.substring(0, 4);
         var num = target.substring(5);
         var panel = $('#' + sort + '-' + num);
@@ -174,8 +188,12 @@ $(document).ready(function(){
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span></span></span></td></tr></table></div>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                        if(mid==res[i]['SEQ_USER']){
+                            write += ' <a class="repdel">삭제</a>'
+                        }
+                        write +='</span></span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -194,8 +212,8 @@ $(document).ready(function(){
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).val().length>0) {
-            var thisitemID = $(this).parents()[1].id;
-            var form = $('#' + thisitemID + ' .tail .form-control');
+            var thisitemID = $(this).parents()[2].id;
+            var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.val();
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -216,10 +234,23 @@ $(document).ready(function(){
             })
         }
     });
+    //댓글삭제 동작
+    $(document).on('click','.repdel', function () {
+        var thisrep=$(this).parents()[6];
+        var thisrepID=(thisrep.split('-'))[3];
+        $.ajax({
+            url:"/php/data/itemAct.php",
+            type:"POST",
+            data:{seq:thisrepID,action:"rep_del",token: token, age: age,userseq:mid},
+            dataType:'json',
+            success: function () {
 
+            }
+        })
+    })
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
-        var thisitemID = $(this).parents()[11].id;
+        var thisitemID = $(this).parents()[12].id;
         var thispanelrep = ($(this).parents()[6].id);
         var thisrepID = (thispanelrep.split('-'))[3];
         var rep = $('#' + thispanelrep);
@@ -243,7 +274,7 @@ $(document).ready(function(){
                                 var date = res[i]['REPLY_DATE'];
                                 var reply = res[i]['REPLY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + seq + '">';
-                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
                                 subrep_list.append(write);
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
@@ -327,7 +358,7 @@ $(document).ready(function(){
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
@@ -345,15 +376,23 @@ $(document).ready(function(){
     //공유하기 버튼 동작
     $(document).on("click", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
-        var thisitem = $('#' + thisitemID);
-        var cardwidth = thisitem.width();
-        var cardheight = thisitem.height();
-        var linkstr = 'publixher.com/php/getItem.php?iid=' + thisitemID;
-        var iframetag = '<iframe src="publixher.com/php/getItem.php?iid=' + thisitemID + '\" width=\"' + cardwidth + '\" height=\"' + cardheight + '\" frameborder=\"0\"></iframe>';
-        var sharetext = '이 게시물의 주소 : <div type="text" class="form-control" value="' + linkstr + '" title="링크" style="width:510px;"></div>';
-        sharetext += 'HTML코드를 다른페이지에 붙여넣기 : <div type="text" class="form-control" value="' + iframetag + '" title="링크" style="width:510px;"></div>'
-
-        $('#' + thisitemID + ' .tail').append(sharetext);
+        var tail = $('#' + thisitemID + ' .tail');
+        if(!tail.hasClass('opend-share')){
+            var linkstr = 'http://alpha.publixher.com/php/getItem.php?iid=' + thisitemID;
+            var embedstr = '<iframe width="530" height="633" src="http://alpha.publixher.com/php/embeded.php?iid='+thisitemID+'" frameborder="0"></iframe>'
+            if(tail.hasClass('opend-comment')){
+                tail.removeClass('opend-comment');
+                $('#' + thisitemID + ' .tail .tab-comment').remove();
+                $('#' + thisitemID + ' .tail .tcomment').css('background-color','white');
+            }
+            $(this).parent().css('background-color', '#f4f4f4');
+            tail.append('<div class="tab-share"></div>')
+            var tab_share=$('#' + thisitemID + ' .tail .tab-share');
+            var text='이 게시물의 url<br><div class="form-control linkurl">'+linkstr+'</div><br>이 게시물의 머스타드 소스코드 <br><div class="form-control embedtag" style="height: 70px;"></div>';
+            tab_share.append(text)
+            $('#' + thisitemID + ' .tail .tab-share .embedtag').text(embedstr);
+            tail.addClass('opend-share')
+        }
 
     });
     //구매버튼(가격표시)동작
@@ -461,7 +500,6 @@ $(document).ready(function(){
             dataType: 'json',
             data: {itemseq: thisitemID, action: "get_item"},
             success: function (res) {
-                console.log(res['BODY'])
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
                 switch (expose_mod) {case 0:expset.text('나만보기');break;case 1:expset.text('친구에게 공개');break;case 2:expset.text('전체공개');}
@@ -471,9 +509,11 @@ $(document).ready(function(){
                 }
                 if (type == 'item') {
                     $('#sendBody-mod').html(res['BODY']);
+
                 } else if (type == 'forsale') {
                     $('#saleTitle-mod').val(res['TITLE']);
                     $('#publiBody-mod').html(res['BODY']);
+
                     if (res['CATEGOTY']) {
                         $('#category-mod').text(res['CATEGORY']);
                         $('#sub-category-mod').text(res['SUB_CATEGORY']);
@@ -482,11 +522,15 @@ $(document).ready(function(){
                         $('#sub-category-mod').text('하위분류');
                     }
                     $('#contentCost-mod').val(res['PRICE']);
-
                 }
                 $('#itemModModal').modal({show: true})
             }
         })
+    })
+    //모달 실행되면 내용물 리사이징
+    $('#itemModModal').on('shown.bs.modal', function (e) {
+        $('#publiBody-mod').trigger('keyup');
+        $('#sendBody-mod').trigger('keyup');
     })
     //수정모드에서 파일 업로드시 동작
     $('#fileuploads-mod,#fileuploadp-mod').fileupload({

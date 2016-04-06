@@ -69,12 +69,3 @@
         </ul>
     </div>
 </div>
-<script>
-    $(function () {
-        var fontResize= function () {
-            var username=$('#username');
-            username.css('font-size',18-username.text().length*2)
-        }
-        fontResize();
-    })
-</script>

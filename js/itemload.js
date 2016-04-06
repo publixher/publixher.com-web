@@ -23,14 +23,16 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     }
     write += '</div> <div class="conf"><a>핀</a>'
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
-    if (mid == writer) {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
-    } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금궁금</a></li> </ul></div><br>'
-    }
+
+        if (mid == writer) {
+            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
+        } else {
+            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금궁금</a></li> </ul></div><br>'
+        }
+
     write += '</div></div> <div class="body">'
     write += preview;
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a class="pubico pico-knock">노크</a><span class="badgea"> ';
+    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
@@ -62,16 +64,16 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     }
     write += '</div> <div class="conf"><a>핀</a>'
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
-    if (mid == writer) {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
-    } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금행</a></li> </ul></div><br>'
-    }
+        if (mid == writer) {
+            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
+        } else {
+            write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금행</a></li> </ul></div><br>'
+        }
     write += '</div><div class="title">';
     write += title;
     write += '</div></div> <div class="body">'
     write += preview;
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><a class="pubico pico-knock">노크</a><span class="badgea"> ';
+    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
@@ -119,7 +121,7 @@ $(document).ready(function(){
                         var knock = res[i]['KNOCK'];
                         var comment = res[i]['COMMENT'];
                         var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'];
+                        var pic = res[i]['PIC'].replace('profile','crop50');
                         var targetseq = res[i]['SEQ_TARGET'];
                         var targetname = res[i]['TARGET_NAME'];
                         var folderseq = null;
@@ -151,7 +153,7 @@ $(document).ready(function(){
                         var comment = res[i]['COMMENT'];
                         var bought = res[i]['BOUGHT'];
                         var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'];
+                        var pic = res[i]['PIC'].replace('profile','crop50');
                         var folderseq = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
@@ -184,9 +186,9 @@ $(document).ready(function(){
                 return;
             }
             if (xhr.status == 500) {
-                alert('문법 오류! 관리자에게 문의하기')
+                console.log('문법 오류! 관리자에게 문의하기')
             } else {
-                alert('몰랑몰랑')
+                console.log('몰랑몰랑')
             }
         }
     })
@@ -224,7 +226,7 @@ $(document).ready(function(){
                                     var knock = res[i]['KNOCK'];
                                     var comment = res[i]['COMMENT'];
                                     var preview = res[i]['PREVIEW'];
-                                    var pic = res[i]['PIC'];
+                                    var pic = res[i]['PIC'].replace('profile','crop50');
                                     var targetseq = res[i]['SEQ_TARGET'];
                                     var targetname = res[i]['TARGET_NAME'];
                                     var folderseq = null;
@@ -253,7 +255,7 @@ $(document).ready(function(){
                                     var comment = res[i]['COMMENT'];
                                     var bought = res[i]['BOUGHT'];
                                     var preview = res[i]['PREVIEW'];
-                                    var pic = res[i]['PIC'];
+                                    var pic = res[i]['PIC'].replace('profile','crop50');
                                     var folderseq = null;
                                     var foldername = null;
                                     var expose = res[i]['EXPOSE']
@@ -285,9 +287,9 @@ $(document).ready(function(){
                             return;
                         }
                         if (xhr.status == 500) {
-                            alert('문법 오류! 관리자에게 문의하기')
+                            console.log('문법 오류! 관리자에게 문의하기')
                         } else {
-                            alert('몰랑몰랑')
+                            console.log('몰랑몰랑')
                         }
                     }
                 })

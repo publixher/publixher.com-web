@@ -182,6 +182,7 @@ $(document).ready(function () {
             });
         }else{
             alert('아이디,비밀번호,이름을 확인해 주세요');
+            console.log('invali : '+invali+' dupidchk : '+dupidchk+' pwvali : '+pwvali+' pwconfirm : '+pwconfirm+' namevali : '+namevali)
             return false;
         }
     });

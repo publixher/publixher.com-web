@@ -8,25 +8,27 @@ if (!empty($_POST)) {
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
+    require_once'../../lib/imagecrop.php';
 //토큰검사
     session_start();
-    //토큰검사
-    if (!isset($_POST['token'])) {
-        exit('부정한 조작이 감지되었습니다.');
-    } elseif ($_POST['token'] != $_SESSION['token']) {
-        exit('부정한 조작이 감지되었습니다.');
+    //CSRF검사
+    if (!isset($_POST['token']) AND !isset($_GET['token'])) {
+        exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+    } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
+        exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
     }
-    //브라우저 검사
-    if (!isset($_POST['age'])) {
-        exit('부정한 조작이 감지되었습니다.');
-    } elseif ($_POST['age'] != $_SESSION['age']) {
-        exit('부정한 조작이 감지되었습니다.');
+//세션탈취 검사
+    if (!isset($_POST['age']) AND !isset($_GET['age'])) {
+        exit('부정한 조작이 감지되었습니다. case3 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
+    } elseif ($_POST['age'] != $_SESSION['age'] AND $_GET['age'] != $_SESSION['age']) {
+        exit('부정한 조작이 감지되었습니다. case4 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
     }
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
+    $for_sale=$_POST['for_sale'];
     $body = $purifier->purify($body);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
@@ -45,7 +47,7 @@ if (!empty($_POST)) {
     if(!$previewimg and $bodylen<=400){
         $more=0;
     }elseif($previewimg and !$imgs[1][1] and $bodylen<=200){
-        if($_POST['for_sale']){
+        if($for_sale){
             $more=1;
         }else{
             $more=0;
@@ -91,13 +93,23 @@ if (!empty($_POST)) {
             $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
         }
     }
+    //사진 80으로 크롭시켜서 대표이미지로 등록
+    if($previewimg and $for_sale){
+        $imgsrc=__DIR__.'/../..'.str_replace('crop','origin',$imgs[1][0][0]);
+        $imgout=str_replace('origin','crop80',$imgsrc);
+        $img = new imaging;
+        $img->set_img($imgsrc);
+        $img->set_quality(100);
+        $img->set_size(80, 80);
+        $img->save_img($imgout);
+    }
     //content테이블에 넣음
     $seq_writer = $_POST['seq_writer'];
     $targetseq = $_POST['targetseq'];
-    if (!$_POST['for_sale']) {
+    if (!$for_sale) {
         $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE)";
     } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE,PIC) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE,:PIC)";
     }
 
     $prepare = $db->prepare($sql);
@@ -113,11 +125,12 @@ if (!empty($_POST)) {
         $prepare->bindValue(':SEQ_TARGET', $targetseq, PDO::PARAM_STR);
     }
 
-    if ($_POST['for_sale']) {
+    if ($for_sale) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
         $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
         $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
         $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
+        $prepare->bindValue(':PIC', $imgout?str_replace('crop','crop80',$imgs[1][0][0]):'/img/alt_img.jpg', PDO::PARAM_STR);
         if ($_POST['adult'] == "true") {
             $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
         } else {
@@ -132,7 +145,7 @@ if (!empty($_POST)) {
     $prepare->execute();
     $id = $db->lastInsertId();
     //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
-    if ($_POST['for_sale']) {
+    if ($for_sale) {
         $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE SEQ_MASTER=:SEQ_MASTER";
         $folprepare = $db->prepare($folsql);
         $folprepare->bindValue(':SEQ_MASTER', $seq_writer);
@@ -160,7 +173,7 @@ if (!empty($_POST)) {
         $result['TARGET_NAME'] = $tp->fetchColumn();
     }
     //판매목록에 수 증가
-    if ($_POST['for_sale']) {
+    if ($for_sale) {
         $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':SEQ_USER', $seq_writer, PDO::PARAM_STR);

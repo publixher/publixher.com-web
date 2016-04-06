@@ -209,7 +209,7 @@ body {
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .fileupform {
   display: inline-block;
   position: absolute;
-  margin-left: -90px;
+  margin-left: -96px;
   margin-top: -3px;
   width: 133px;
   height: 22px;
@@ -335,6 +335,7 @@ body {
   box-shadow: inset 0 0 0;
   padding: 4px 0 4px 10px;
   font-size: 12px;
+  border: 1px solid #ddd;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
@@ -342,7 +343,9 @@ body {
   box-shadow: inset 0 0 0;
   padding: 5px 0 4px 10px;
   font-size: 12px;
-  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-right: 0;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -733,7 +736,8 @@ li a {
   width: 96%;
   margin-left: 2%;
 }
-#publixh-mod hr {
+#publixh-mod hr,
+#send-mod hr {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -763,7 +767,7 @@ li a {
 #repnav-.nav-tabs > li.active > a,
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
-  border: 1px solid #;
+  border: 1px solid #ddd;
   border-bottom: 1px solid #f4f4f4;
   border-top: 1px solid transparent;
 }
@@ -773,4 +777,77 @@ li a {
   background-color: white;
   border: 1px solid white;
   border-left: 0;
+}
+#categorySelect,
+#subcategorySelect,
+#categorySelect-mod,
+#subcategorySelect-mod {
+  margin-top: 0px;
+  width: 133px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+#categorySelect li a,
+#subcategorySelect li a,
+#categorySelect-mod li a,
+#subcategorySelect-mod li a {
+  width: 127px;
+}
+#notilist {
+  left: -122px !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: -1px;
+}
+#pinlist {
+  left: -165px !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: -1px;
+}
+.bestrep {
+  border-left: 0px !important;
+}
+.tab-comment {
+  border: 1px solid #ddd;
+  border-top: 0;
+}
+.load-item {
+  margin: auto;
+}
+#send-mod .fileinput,
+#publixh-mod .fileinput {
+  width: 133px;
+}
+#send-mod .fileinput .btn,
+#publixh-mod .fileinput .btn {
+  position: relative;
+  float: left;
+  width: 133px !important;
+  height: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0 0 0 0;
+  border-radius: 0;
+  border-bottom-left-radius: 4px;
+  font-size: 12px;
+}
+#send-mod .fileinput .fileupform,
+#publixh-mod .fileinput .fileupform {
+  display: inline-block;
+  position: absolute;
+  margin-left: -90px;
+  margin-top: -3px;
+  width: 133px;
+  height: 22px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -moz-opacity: 0;
+  cursor: pointer;
+}
+#sendBody-mod {
+  margin-top: 5px;
+  box-shadow: inset 0 0 0;
+  width: 96%;
+  margin-left: 2%;
 }

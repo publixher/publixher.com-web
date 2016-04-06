@@ -42,6 +42,11 @@ if ($_FILES) {
             //요청이 들어온 페이지가 프로필 수정페이지면 160으로 크롭하고 유저 테이블에 저장도 하세기!
             $img->set_size(160, 160);
             $img->save_img($uploadDir . "profile/" . $filepath);
+            //34짜리와 50짜리도 크롭 하세기!
+            $img->set_size(34,34);
+            $img->save_img($uploadDir."crop34/".$filepath);
+            $img->set_size(50,50);
+            $img->save_img($uploadDir."crop50/".$filepath);
             include_once '../../conf/User.php';
             session_start();
             $userinfo = $_SESSION['user'];
