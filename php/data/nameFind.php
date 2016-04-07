@@ -2,13 +2,32 @@
 header("Content-Type:application/json");
 if (!empty($_GET)) {
     require_once '../../conf/database_conf.php';
-    $sql = "SELECT SEQ,USER_NAME,IS_NICK,PIC FROM publixher.TBL_USER WHERE (USER_NAME LIKE CONCAT('%',:USER_NAME,'%') AND IN_USE='Y')";
-    $prepare=$db->prepare($sql);
-    $prepare->bindValue(':USER_NAME',$_GET['searchword'],PDO::PARAM_STR);
-    $prepare->execute();
-    $result=$prepare->fetchALL(PDO::FETCH_ASSOC);
-    $result=json_encode($result,JSON_UNESCAPED_UNICODE);
-    echo $result;
+    $target=$_GET['target'];
+    if($target=='name') {
+        $sql = "SELECT SEQ,USER_NAME,IS_NICK,PIC FROM publixher.TBL_USER WHERE (MATCH(USER_NAME) AGAINST('*" . $_GET['searchword'] . "*' IN BOOLEAN MODE) AND IN_USE='Y')";
+        $prepare = $db->prepare($sql);
+//    $prepare->bindValue(':USER_NAME',$_GET['searchword'],PDO::PARAM_STR);
+        $prepare->execute();
+        $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+        $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+        echo $result;
+    }elseif($target=='title'){
+        $sql = "SELECT SEQ,SEQ_WRITER,TITLE FROM publixher.TBL_CONTENT WHERE (MATCH(TITLE) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE) AND DEL='N' AND EXPOSE>1)";
+        $prepare=$db->prepare($sql);
+        $prepare->bindValue(':TITLE',$_GET['searchword'],PDO::PARAM_STR);
+        $prepare->execute();
+        $result=$prepare->fetchALL(PDO::FETCH_ASSOC);
+        $result=json_encode($result,JSON_UNESCAPED_UNICODE);
+        echo $result;
+    }elseif($target=='tag'){
+        $sql = "SELECT SEQ,TAG FROM publixher.TBL_TAGS WHERE MATCH(TAG) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE)";
+        $prepare=$db->prepare($sql);
+        $prepare->bindValue(':TITLE',$_GET['searchword'],PDO::PARAM_STR);
+        $prepare->execute();
+        $result=$prepare->fetchALL(PDO::FETCH_ASSOC);
+        $result=json_encode($result,JSON_UNESCAPED_UNICODE);
+        echo $result;
+    }
 } else {
     exit;
 }

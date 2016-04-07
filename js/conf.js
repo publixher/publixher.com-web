@@ -8,7 +8,7 @@ $(document).ready(function () {
             $.ajax({
                 url: "/php/data/nameFind.php",
                 type: "GET",
-                data: {searchword: search_word},
+                data: {searchword: search_word,target:"name"},
                 dataType: 'json',
                 success: function (res) {
                     if (res.length > 0) {
@@ -31,9 +31,9 @@ $(document).ready(function () {
                 }
             });
             $.ajax({
-                url: "/php/data/contentFind.php",
+                url: "/php/data/nameFind.php",
                 type: "GET",
-                data: {searchword: search_word},
+                data: {searchword: search_word,target:"title"},
                 dataType: 'json',
                 success: function (res) {
                     if (res.length > 0) {
@@ -42,7 +42,7 @@ $(document).ready(function () {
                         var titleSearchRes = '';
 
                         for (var i = 0; i < res.length; i++) {
-                            titleSearchRes += '<li><a href="/hp/getItem.php?iid=' + res[i]['SEQ'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
+                            titleSearchRes += '<li><a href="/php/getItem.php?iid=' + res[i]['SEQ'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
                         }
                         contResult.html(titleSearchRes);
                     } else {
@@ -52,11 +52,33 @@ $(document).ready(function () {
                     }
                 }
             });
+            $.ajax({
+                url: "/php/data/nameFind.php",
+                type: "GET",
+                data: {searchword: search_word,target:"tag"},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.length > 0) {
+                        var tagResult = $('#tagResult');
+                        tagResult.css('display', 'block');
+                        var titleSearchRes = '';
+
+                        for (var i = 0; i < res.length; i++) {
+                            titleSearchRes += '<li><a href="/php/Search.php?type=tag&tag=' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
+                        }
+                        tagResult.html(titleSearchRes);
+                    } else {
+                        var tagResult = $('#tagResult');
+                        tagResult.html('');
+                        tagResult.css('display', 'none');
+                    }
+                }
+            });
         } else {
             $('#searchResult').css('display', 'none');
             $('#contResult').html('');
             $('#nameResult').html('');
-            $('#nickResult').html('');
+            $('#tagResult').html('');
         }
     })
 

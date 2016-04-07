@@ -107,9 +107,9 @@ if (!empty($_POST)) {
     $seq_writer = $_POST['seq_writer'];
     $targetseq = $_POST['targetseq'];
     if (!$for_sale) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE,TAG) VALUES (:SEQ_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE,:TAG)";
     } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE,PIC) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE,:PIC)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (SEQ_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,SEQ_TARGET,MORE,PIC,TAG) VALUES (:SEQ_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:SEQ_TARGET,:MORE,:PIC,:TAG);";
     }
 
     $prepare = $db->prepare($sql);
@@ -119,6 +119,7 @@ if (!empty($_POST)) {
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
     $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
+    $prepare->bindValue(':TAG', $_POST['tags']?implode(' ',json_decode($_POST['tags'])):null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
     if ($targetseq == '') {
         $prepare->bindValue(':SEQ_TARGET', NULL, PDO::PARAM_STR);
     } else {
@@ -179,6 +180,17 @@ if (!empty($_POST)) {
         $prepare2->bindValue(':SEQ_USER', $seq_writer, PDO::PARAM_STR);
         $prepare2->bindValue(':SEQ_CONTENT', $id, PDO::PARAM_STR);
         $prepare2->execute();
+    }
+    //태그 넣기
+    if($_POST['tags']){
+        $tags=json_decode($_POST['tags']);
+        $tagsql="INSERT INTO publixher.TBL_TAGS(TAG,SEQ_CONTENT) VALUES(:TAG,:SEQ_CONTENT)";
+        $tpr=$db->prepare($tagsql);
+        $tpr->bindValue(':SEQ_CONTENT',$id);
+        for($i=0;$i<count($tags);$i++){
+            $tpr->bindValue(':TAG',$tags[$i]);
+            $tpr->execute();
+        }
     }
     if ($_POST['folder']) {
         //폴더에 내용 수 증가

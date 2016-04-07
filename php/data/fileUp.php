@@ -51,12 +51,16 @@ if ($_FILES) {
             session_start();
             $userinfo = $_SESSION['user'];
             $userseq = $userinfo->getSEQ();
-            $sqlup = "UPDATE publixher.TBL_USER SET PIC=:PIC WHERE SEQ=:SEQ";
+            $sqlup = "UPDATE publixher.TBL_USER SET PIC=:PIC WHERE SEQ=:SEQ;";
             $prepareup = $db->prepare($sqlup);
             $prepareup->bindValue(':PIC', '/img/profile/' . $filepath, PDO::PARAM_STR);
             $prepareup->bindValue(':SEQ', $userseq, PDO::PARAM_STR);
             $prepareup->execute();
-            $user = new User($userinfo->getEMAIL(), $hash ? $hash : $userinfo->getPASSWORD(), $userinfo->getUSERNAME(), $userinfo->getSEX(), $userinfo->getBIRTH(), $userinfo->getREGINO(), $userinfo->getHSCHOOL(), $userinfo->getUNIV(), '/img/profile/' . $filepath, $userinfo->getJOINDATE(), $userinfo->getISNICK(),$userinfo->getTOPCONTENT(),$userinfo->getINUSE(),$userseq);
+            $getuser="SELECT * from publixher.TBL_USER WHERE SEQ=:SEQ";
+            $w=$db->prepare($getuser);
+            $w->bindValue(':SEQ',$userseq);
+            $w->execute();
+            $user=$w->fetchObject(User);
             $_SESSION['user'] = $user;
         }else {
             $img->set_size(510, 510);

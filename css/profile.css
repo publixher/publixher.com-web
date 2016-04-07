@@ -668,6 +668,17 @@ body {
 #wrap #right .market .noImg {
   height: 70px;
 }
+.carousel-control.right,
+.carousel-control.left {
+  background-image: none;
+  width: 50px;
+  padding: 8px;
+  font-size: 14px;
+}
+a[href="#now"],
+a[href="#monthly"] {
+  margin-left: 50px;
+}
 .catalogimg {
   max-width: 100%;
   height: auto;

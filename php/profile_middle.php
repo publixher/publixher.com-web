@@ -17,8 +17,8 @@
 //        내프로필일경우
         ?>
         <script>
-            var I=true;
-            var frelation=false;
+            var I = true;
+            var frelation = false;
         </script>
         <div class="btn-group" role="group" id="profile-middle-nav">
             <!--            친구목록-->
@@ -153,13 +153,13 @@
             </div>
         </div>
     <? } else {
-//        내 프로필이 아닐경우
-        ?>
+    //        내 프로필이 아닐경우
+    ?>
         <div class="btn-group" role="group">
-        <script>
-            var I=false;
-            var frelation=false;
-        </script>
+            <script>
+                var I = false;
+                var frelation = false;
+            </script>
             <!--            친구목록-->
             <?php
             $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
@@ -172,7 +172,7 @@
             foreach ($friends as $fri) {
                 $frelation = $userseq == $fri['SEQ_FRIEND'];
                 //친구관계면 스크립트에 쓰고 브레이크
-                if ($frelation){
+                if ($frelation) {
                     echo "<script>var frelation=true;</script>";
                     break;
                 }
@@ -315,24 +315,18 @@
                 <!-- 똥싸기와 용돈벌기 내용 -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="send">
-                        <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)" onkeyup="resize(this)"></div>
+                        <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)"
+                             onkeyup="resize(this)"></div>
                         <hr>
                         <table>
                             <tr>
                                 <td class="fileinput">
-<!--                                    <button class="btn btn-primary" type="button">파일선택-->
-<!--                                        <input type="file" id="fileuploads" accept="image/*" name="fileuploads[]"-->
-<!--                                               data-url="/php/data/fileUp.php" multiple class="fileupform">-->
-<!--                                    </button>-->
                                     <span>파일선택</span>
                                     <input id="fileuploads" name="fileuploads[]" accept="image/*"
                                            data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                 </td>
                                 <td class="taginput">
-                                    <input type="text" class="tag-inputa" class="form-control" placeholder="인물 , 제목">
-                                </td>
-                                <td class="taginput">
-                                    <input type="text" class="tag-inputh" class="form-control" placeholder="히힣힣">
+                                    <input type="text" class="tag-input" class="form-control" placeholder="인물 , 제목" id="send-tag">
                                 </td>
                                 <td class="regbtn">
                                     <button type="button" id="sendButton" data-loading-text="싸는중..."
@@ -404,11 +398,8 @@
                                                data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
-                                        <input type="text" class="tag-inputa" class="form-control"
-                                               placeholder="인물 , 제목">
-                                    </td>
-                                    <td class="taginput">
-                                        <input type="text" class="tag-inputh" class="form-control" placeholder="히힣힣">
+                                        <input type="text" class="tag-input" class="form-control"
+                                               placeholder="인물 , 제목" id="publi-tag">
                                     </td>
                                     <td class="regbtn">
                                         <button type="button" id="publixhButton" data-loading-text="싸는중..."
@@ -437,7 +428,8 @@
                     <!-- 위탭 -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"></li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                                    href="#"
                                                                     role="button" aria-expanded="false">
                                 <span id="exposeSetting-mod">전체공개</span> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="expSublist-mod">
@@ -446,7 +438,8 @@
                                 <li><a>전체 공개</a></li>
                             </ul>
                         </li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                                    href="#"
                                                                     role="button" aria-expanded="false">
                                 <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
@@ -461,7 +454,8 @@
                     <!-- 똥싸기와 용돈벌기 내용 -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane" id="send-mod">
-                            <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                            <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)"
+                                 onkeyup="resize(this)"></div>
                             <hr>
                             <table>
                                 <tr>
@@ -471,13 +465,11 @@
                                                data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
-                                        <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
-                                    </td>
-                                    <td class="taginput">
-                                        <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
+                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag-mod">
                                     </td>
                                     <td class="regbtn">
-                                        <button type="button" id="sendButton-mod" data-loading-text="싸는중..." class="btn btn-primary">
+                                        <button type="button" id="sendButton-mod" data-loading-text="싸는중..."
+                                                class="btn btn-primary">
                                             <span class="pubico pico-pen2">보내기</span>
                                         </button>
                                     </td>
@@ -488,14 +480,16 @@
                         <div role="tabpanel" class="tab-pane" id="publixh-mod">
                             <div>
                                 <input type="text" class="form-control" id="saleTitle-mod">
-                                <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                                <div contenteditable="true" class="form-control" id="publiBody-mod"
+                                     oninput="resize(this)" onkeyup="resize(this)"></div>
                             </div>
                             <hr>
                             <table>
                                 <tr>
                                     <td class="cateinput">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown"
                                                     aria-expanded="false">
                                                 <span id="category-mod">분류</span> <span class="caret"></span>
                                             </button>
@@ -514,7 +508,8 @@
                                     </td>
                                     <td class="subcateinput">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown"
                                                     aria-expanded="false"><span id="sub-category-mod">하위 분류</span><span
                                                     class="caret"></span>
                                             </button>
@@ -541,10 +536,7 @@
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
-                                        <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
-                                    </td>
-                                    <td class="taginput">
-                                        <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
+                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag-mod">
                                     </td>
                                     <td class="regbtn">
                                         <button type="button" id="publixhButton-mod" data-loading-text="싸는중..."
@@ -564,8 +556,13 @@
 <script>
     var page = 0;
     var targetseq =<?=${targetid}?>;
-    var loadOption = {seq: mid, nowpage: page, profile: targetseq,I:I,frelation:frelation};
+    var loadOption = {seq: mid, nowpage: page, profile: targetseq, I: I, frelation: frelation};
 </script>
+<!--    해시 태그-->
+<link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">
+<script src="/plugins/jQuery-tagEditor-master/jquery.caret.min.js"></script>
+<script src="/plugins/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>
+
 <script src="/js/itemcard.js"></script>
 <script src="/js/itemload.js"></script>
 <script src="/js/upform.js"></script>
@@ -577,7 +574,7 @@
 <script src="/plugins/AnimatedSVGIcons-master/js/svgicons.js"></script>
 <link href="/plugins/AnimatedSVGIcons-master/css/component.css" rel="stylesheet">
 <script>
-    [].slice.call( document.querySelectorAll( '.si-icon' ) ).forEach( function( el ) {
-        var svgicon = new svgIcon( el, svgIconConfig );
-    } );
+    [].slice.call(document.querySelectorAll('.si-icon')).forEach(function (el) {
+        var svgicon = new svgIcon(el, svgIconConfig);
+    });
 </script>

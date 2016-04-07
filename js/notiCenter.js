@@ -50,10 +50,6 @@ $(document).ready(function () {
                         listul.append('<li><a href="/php/getItem.php?iid=' + res[4][title[i]][0]['SEQ_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[4][title[i]]['date']+'</span></li>');
                     }
                 }
-                //if (res[5]) {
-                //    var word_5 = '';
-                //    var title = Object.getOwnPropertyNames(res[5]);
-                //}
                 if (res[6]) {
                     var reply = Object.keys(res[6]);
                     for (var i = 0; i < reply.length; i++) {
@@ -68,14 +64,6 @@ $(document).ready(function () {
                         listul.append('<li><a href="/php/getItem.php?iid='+ res[7][reply[i]][0]['SEQ_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[7][reply[i]]['date']+'</span></li>');
                     }
                 }
-                //if (res[8]) {
-                //    var word_8 = '';
-                //    var title = Object.getOwnPropertyNames(res[8]);
-                //}
-                //if (res[9]) {
-                //    var word_9 = '';
-                //    var title = Object.getOwnPropertyNames(res[9]);
-                //}
                 page=page+1;
             }
         })

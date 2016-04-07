@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more) {
+function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag) {
     write = '<div class="item card" id="';
     write += seq;
     write += '"><div class="header">';
@@ -32,6 +32,11 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
 
     write += '</div></div> <div class="body">'
     write += preview;
+    if(tag){
+        for(var t=0;t<tag.length;t++) {
+            write += '<a href="/php/Search.php?type=tag&tag='+tag[t]+'">#'+tag[t]+'</a> '
+        }
+    }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
@@ -45,7 +50,7 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     return write;
 }
 
-function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more) {
+function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more,tag) {
     write = '<div class="item-for-sale card" id="';
     write += seq;
     write += '"><div class="header">';
@@ -73,6 +78,11 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     write += title;
     write += '</div></div> <div class="body">'
     write += preview;
+    if(tag){
+        for(var t=0;t<tag.length;t++) {
+            write += '<a href="/php/Search.php?type=tag&tag='+tag[t]+'">#'+tag[t]+'</a> '
+        }
+    }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
@@ -108,6 +118,7 @@ $(document).ready(function(){
         tryCount:0,
         retryLimit:3,
         success: function (res) {
+            console.log(res)
             $('.load-item').remove();
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
@@ -127,12 +138,13 @@ $(document).ready(function(){
                         var folderseq = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
-                        var more=res[i]['MORE']
+                        var more=res[i]['MORE'];
                         if (res[i]['FOLDER'] != null) {
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
+                        var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
+                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);
                         if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
@@ -162,8 +174,8 @@ $(document).ready(function(){
                             folderseq = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
-                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more);
-                        if($('#topcon').length>0){
+                        var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
+                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                        if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
                             $('#upform').after(write);
@@ -186,7 +198,7 @@ $(document).ready(function(){
                 return;
             }
             if (xhr.status == 500) {
-                console.log('문법 오류! 관리자에게 문의하기')
+                console.log('서버 오류! 관리자에게 문의하기')
             } else {
                 console.log('몰랑몰랑')
             }
@@ -237,8 +249,8 @@ $(document).ready(function(){
                                         folderseq = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
-                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more);
-                                    if ($('.card:last-child').length > 0) {
+                                    var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
+                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                                    if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
                                         $('#prea').after(write);
@@ -264,8 +276,8 @@ $(document).ready(function(){
                                         folderseq = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
-                                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic, expose, more);
-                                    if ($('.card:last-child').length > 0) {
+                                    var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
+                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                                    if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
                                         $('#prea').after(write);
@@ -287,7 +299,7 @@ $(document).ready(function(){
                             return;
                         }
                         if (xhr.status == 500) {
-                            console.log('문법 오류! 관리자에게 문의하기')
+                            console.log('서버 오류! 관리자에게 문의하기')
                         } else {
                             console.log('몰랑몰랑')
                         }

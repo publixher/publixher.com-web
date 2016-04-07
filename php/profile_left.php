@@ -5,7 +5,7 @@
     $birth = date("Y년m월d일", strtotime($target['BIRTH']));
     $userinfo = $_SESSION['user'];
     $userseq = $userinfo->getSEQ();
-    echo "<div id='profilepic' style='width: 160px; height: 160px;background-image: url(${profilepic});background-size: 160px 160px'></div>";
+    echo "<img id='profilepic' src='${profilepic}'>";
     //스크립트 올리기?>
     <script>
         var targetid =<?=$targetid?>;

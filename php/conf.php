@@ -64,8 +64,10 @@
         <button type="button" id="searchbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                 style="display: none;"></button>
         <ul class="dropdown-menu" id="searchResult" role="menu" aria-labelledby="searchbtn">
+            <li class="menu"><a>본문검색으로 바로가기</a></li>
             <li class="menu" id="contResult"></li>
             <li class="menu" id="nameResult"></li>
+            <li class="menu" id="tagResult"></li>
         </ul>
     </div>
 </div>

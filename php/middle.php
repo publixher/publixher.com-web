@@ -51,11 +51,9 @@
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
                             <td class="taginput">
-                                <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
+                                <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag">
                             </td>
-                            <td class="taginput">
-                                <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
-                            </td>
+
                             <td class="regbtn">
                                 <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary">
                                     <span class="pubico pico-pen2">보내기</span>
@@ -121,10 +119,7 @@
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
                             <td class="taginput">
-                                <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
-                            </td>
-                            <td class="taginput">
-                                <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
+                                <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag">
                             </td>
                             <td class="regbtn">
                                 <button type="button" id="publixhButton" data-loading-text="싸는중..."
@@ -183,10 +178,7 @@
                                                data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
-                                        <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
-                                    </td>
-                                    <td class="taginput">
-                                        <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
+                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag-mod">
                                     </td>
                                     <td class="regbtn">
                                         <button type="button" id="sendButton-mod" data-loading-text="싸는중..." class="btn btn-primary">
@@ -253,10 +245,7 @@
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
                                     <td class="taginput">
-                                        <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
-                                    </td>
-                                    <td class="taginput">
-                                        <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
+                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag-mod">
                                     </td>
                                     <td class="regbtn">
                                         <button type="button" id="publixhButton-mod" data-loading-text="싸는중..."
@@ -280,6 +269,10 @@
     var targetseq=null;
     var loadOption = {seq: mid, nowpage: page};
 </script>
+<!--    해시 태그-->
+<link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">
+<script src="/plugins/jQuery-tagEditor-master/jquery.caret.min.js"></script>
+<script src="/plugins/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>
 <script src="/js/upform.js"></script>
 <script src="/js/itemcard.js"></script>
 <script src="/js/itemload.js"></script>

@@ -21,7 +21,7 @@ $(document).ready(function(){
                 listarray = frievar;
                 break;
             //구독목록에서
-            case 'sublist':
+            case 'subslist':
                 listarray = subsvar;
                 break;
         }

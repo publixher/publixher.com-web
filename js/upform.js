@@ -1,12 +1,12 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-$(document).ready(function(){
+$(document).ready(function () {
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
-        var seq_target=null;
-        if(targetseq){
+        var seq_target = null;
+        if (targetseq) {
             if (mid == targetseq) {
                 seq_target = null;
             } else {
@@ -24,7 +24,8 @@ $(document).ready(function(){
                     token: token, age: age,
                     tag: $('#taginputs').val(),
                     expose: expose,
-                    targetseq:seq_target
+                    targetseq: seq_target,
+                    tags:JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -36,20 +37,24 @@ $(document).ready(function(){
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
-                    var pic = res['PIC'].replace('profile','crop50');
+                    var pic = res['PIC'].replace('profile', 'crop50');
                     var targetseq = res['SEQ_TARGET'];
                     var targetname = res['TARGET_NAME'];
                     var folderseq = null;
                     var foldername = null;
-                    var expose=res['EXPOSE']
-                    var more=res['MORE']
+                    var expose = res['EXPOSE']
+                    var more = res['MORE']
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more);
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more);
                     $('#upform').after(write);
                     $('#sendBody').html("").trigger('input').trigger('keyup');
+                    var tags=$('#send-tag').tagEditor('getTags')[0].tags
+                    for(var i=0;i<tags.length;i++){
+                        $('#send-tag').tagEditor('removeTag',tags[i]);
+                    }
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -81,7 +86,8 @@ $(document).ready(function(){
                     token: token,
                     age: age,
                     tag: $('#taginputp').val(),
-                    expose: expose
+                    expose: expose,
+                    tags:JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -95,20 +101,24 @@ $(document).ready(function(){
                     var price = res['PRICE'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
-                    var pic = res['PIC'].replace('profile','crop50');
+                    var pic = res['PIC'].replace('profile', 'crop50');
                     var folderseq = null;
                     var foldername = null;
-                    var expose=res['EXPOSE'];
-                    var more=res['MORE']
+                    var expose = res['EXPOSE'];
+                    var more = res['MORE']
                     if (res['FOLDER'] != null) {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic,expose,more);
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic, expose, more);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
                     $('#publiBody').html("").trigger('input').trigger('keyup');
+                    var tags=$('#publi-tag').tagEditor('getTags')[0].tags;
+                    for(var i=0;i<tags.length;i++){
+                        $('#publi-tag').tagEditor('removeTag',tags[i]);
+                    }
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -221,7 +231,7 @@ $(document).ready(function(){
     //파일 업로드시 동작
     $('#fileuploads,#fileuploadp').fileupload({
         dataType: 'json',
-        sequentialUploads:true,
+        sequentialUploads: true,
         add: function (e, data) {
             var uploadFile = data.files[0];
             var isValid = true;
@@ -235,39 +245,44 @@ $(document).ready(function(){
             if (isValid) {
                 data.submit();
             }
-        },progressall: function(e,data) {
+        }, progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
-            var upp=$('#up-progress');
+            var upp = $('#up-progress');
             upp.css('width', progress + '%');
-            if(progress==100){
+            if (progress == 100) {
                 upp.remove()
                 $('#sendBody').trigger('keyup')
                 $('#publiBody').trigger('keyup')
             }
-        },start: function (e) {
+        }, start: function (e) {
             if (this == $('#fileuploads')[0]) {
-                var sendBody=$('#sendBody');
-                sendBody.html(sendBody.html() +'<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
-            }else if (this == $('#fileuploadp')[0]) {
-                var publiBody=$('#publiBody')
-                publiBody.html(publiBody.html() +'<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
-            }
-        },
-        done: function (e, data) {
-            if (this == $('#fileuploads')[0]) {
-                var sendBody=$('#sendBody');
-                sendBody.html(sendBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                sendBody.height(sendBody.height() + data.result['files']['file_height']+8);
+                var sendBody = $('#sendBody');
+                sendBody.html(sendBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             } else if (this == $('#fileuploadp')[0]) {
-                var publiBody=$('#publiBody')
+                var publiBody = $('#publiBody')
+                publiBody.html(publiBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
+            }
+        }, done: function (e, data) {
+            if (this == $('#fileuploads')[0]) {
+                var sendBody = $('#sendBody');
+                sendBody.html(sendBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
+            } else if (this == $('#fileuploadp')[0]) {
+                var publiBody = $('#publiBody')
                 publiBody.html(publiBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                publiBody.height(publiBody.height() + data.result['files']['file_height']+8);
+                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
     })
+//해시태그 플러그인
+    $('.tag-input').tagEditor({
+        delimiter:', ',
+        maxLength:50
+    });
 });
+
 //텍스트에이리어 입력시 자동 크기조정
 function resize(obj) {
     obj.style.height = "1px";
