@@ -48,8 +48,8 @@ $(document).ready(function () {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more);
-                    $('#upform').after(write);
+                    var tag=res['TAG']?res['TAG'].split(' '):null;
+                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                    $('#upform').after(write);
                     $('#sendBody').html("").trigger('input').trigger('keyup');
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
@@ -110,7 +110,8 @@ $(document).ready(function () {
                         folderseq = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic, expose, more);
+                    var tag=res['TAG']?res['TAG'].split(' '):null;
+                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic, expose, more,tag);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");

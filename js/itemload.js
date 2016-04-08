@@ -33,8 +33,8 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     write += '</div></div> <div class="body">'
     write += preview;
     if(tag){
-        for(var t=0;t<tag.length;t++) {
-            write += '<a href="/php/Search.php?type=tag&tag='+tag[t]+'">#'+tag[t]+'</a> '
+        for(var i=0;i<tag.length;i++) {
+            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '">#' + tag[i] + '</a>'
         }
     }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
@@ -79,8 +79,8 @@ function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, b
     write += '</div></div> <div class="body">'
     write += preview;
     if(tag){
-        for(var t=0;t<tag.length;t++) {
-            write += '<a href="/php/Search.php?type=tag&tag='+tag[t]+'">#'+tag[t]+'</a> '
+        for(var i=0;i<tag.length;i++) {
+            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '">#' + tag[i] + '</a>'
         }
     }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
@@ -118,7 +118,6 @@ $(document).ready(function(){
         tryCount:0,
         retryLimit:3,
         success: function (res) {
-            console.log(res)
             $('.load-item').remove();
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
@@ -175,7 +174,8 @@ $(document).ready(function(){
                             foldername = res[i]['FOLDER_NAME'];
                         }
                         var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                        if($('#topcon').length>0){
+                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more,tag);
+                        if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
                             $('#upform').after(write);
@@ -249,8 +249,8 @@ $(document).ready(function(){
                                         folderseq = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
-                                    var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                                    if ($('.card:last-child').length > 0) {
+                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more,tag);
+                                    if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
                                         $('#prea').after(write);
@@ -277,7 +277,8 @@ $(document).ready(function(){
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                                    if ($('.card:last-child').length > 0) {
+                                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic, expose, more,tag);
+                                    if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
                                         $('#prea').after(write);

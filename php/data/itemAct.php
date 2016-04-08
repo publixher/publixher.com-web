@@ -38,7 +38,7 @@ if ($act == 'knock') {
         //노크처리
         $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
         $sql2 = "UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK+1 WHERE SEQ=:SEQ;";
-        $sql3 = "SELECT KNOCK,SEQ_WRITER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
+        $sql3 = "SELECT KNOCK,SEQ_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
         //insert문
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
@@ -53,7 +53,7 @@ if ($act == 'knock') {
         $prepare3->bindValue(':SEQ', $seq, PDO::PARAM_STR);
         $prepare3->execute();
         $result = $prepare3->fetch(PDO::FETCH_ASSOC);
-
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);;
         //알람처리
         $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,4,:SEQ_ACTOR)";
         $prepare4 = $db->prepare($sql4);
@@ -61,8 +61,31 @@ if ($act == 'knock') {
         $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
         $prepare4->execute();
-        $result = json_encode($result, JSON_UNESCAPED_UNICODE);
-        echo $result;
+        //흥미 처리
+        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(SEQ_USER,TYPE,INTEREST) VALUES(:SEQ_USER,:TYPE,:INTEREST)";
+        $ip=$db->prepare($sql5);
+        $ip->bindValue(':SEQ_USER',$userseq);
+        //작성자를 추가
+        $ip->bindValue(':TYPE',1);
+        $ip->bindValue(':INTEREST', $result['SEQ_WRITER']);
+        $ip->execute();
+        //서브 카테고리를 추가
+        if($result['SUB_CATEGORY']){
+            $ip->bindValue(':TYPE',2);
+            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
+            $ip->execute();
+        }
+
+        //게시물의 태그를 추가
+        if($result['TAG']){
+            $ip->bindValue(':TYPE',0);
+            $tags=explode(' ',$result['TAG']);
+            $tagnum=count($tags);
+            for($i=0;$i<$tagnum;$i++){
+                $ip->bindValue(':INTEREST',$tags[$i]);
+                $ip->execute();
+            }
+        }
     } else {
         echo '{"result":"N","reason":"already"}';
     }
@@ -264,7 +287,6 @@ if ($act == 'knock') {
     $price = $result['PRICE'];
     $writer = $result['SEQ_WRITER'];
     //유저 id로 커넥터에 접속해서 캐쉬정보 가져오기
-    $sql6 = '';
     if ($isnick == 'N') {
         $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE SEQ_USER=:SEQ_USER";
         $prepare6 = $db->prepare($sql6);
@@ -317,6 +339,37 @@ if ($act == 'knock') {
         $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
         $prepare4->execute();
         echo '{"buy":"t"}';
+
+        //흥미 처리
+        $sql6 = "SELECT SEQ_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
+        $intp=$db->prepare($sql6);
+        $intp->bindValue(':SEQ',$seq);
+        $intp->execute();
+        $result=$intp->fetch(PDO::FETCH_ASSOC);
+        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(SEQ_USER,TYPE,INTEREST) VALUES(:SEQ_USER,:TYPE,:INTEREST)";
+        $ip=$db->prepare($sql5);
+        $ip->bindValue(':SEQ_USER',$userseq);
+        //작성자를 추가
+        $ip->bindValue(':TYPE',1);
+        $ip->bindValue(':INTEREST', $result['SEQ_WRITER']);
+        $ip->execute();
+        //서브 카테고리를 추가
+        if($result['SUB_CATEGORY']){
+            $ip->bindValue(':TYPE',2);
+            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
+            $ip->execute();
+        }
+
+        //게시물의 태그를 추가
+        if($result['TAG']){
+            $ip->bindValue(':TYPE',0);
+            $tags=explode(' ',$result['TAG']);
+            $tagnum=count($tags);
+            for($i=0;$i<$tagnum;$i++){
+                $ip->bindValue(':INTEREST',$tags[$i]);
+                $ip->execute();
+            }
+        }
         exit;
     }
     echo '{"buy":"f","reason":"already bought"}';
