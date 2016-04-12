@@ -5,75 +5,49 @@ $(document).ready(function () {
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {
             $('#searchResult').css('display', 'block');
-            $.ajax({
-                url: "/php/data/nameFind.php",
-                type: "GET",
-                data: {searchword: search_word,target:"name"},
-                dataType: 'json',
-                success: function (res) {
-                    if (res.length > 0) {
-                        var nameResult = $('#nameResult');
-                        nameResult.css('display', 'block');
-                        var nameSearchRes = '';
-                        for (var i = 0; i < res.length; i++) {
-                            if (res[i]['IS_NICK'] == 'Y') {
-                                nameSearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
-                            } else {
-                                nameSearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
+            function search(target){
+                $.ajax({
+                    url: "/php/data/nameFind.php",
+                    type: "GET",
+                    data: {searchword: search_word,target:target},
+                    dataType: 'json',
+                    success: function (res) {
+                        var Result;
+                        switch(target){
+                            case 'name':Result=$('#nameResult');break;
+                            case 'title':Result=$('#contResult');break;
+                            case 'tag':Result=$('#tagResult');break;
+                        }
+                        if (res.length > 0) {
+                            Result.css('display', 'block');
+                            var SearchRes = '';
+                            for (var i = 0; i < res.length; i++) {
+                                switch(target){
+                                    case 'name':if (res[i]['IS_NICK'] == 'Y') {
+                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
+                                    } else {
+                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
+                                    }break;
+                                    case 'title':for (var i = 0; i < res.length; i++) {
+                                        SearchRes += '<li><a href="/php/getItem.php?iid=' + res[i]['SEQ'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
+                                    }break;
+                                    case 'tag':for (var i = 0; i < res.length; i++) {
+                                        SearchRes += '<li><a href="/php/Search.php?type=tag&tag=' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
+                                    }break;
+                                }
+
                             }
+                            Result.html(SearchRes);
+                        } else {
+                            Result.html('');
+                            Result.css('display', 'none');
                         }
-                        nameResult.html(nameSearchRes);
-                    } else {
-                        var nameResult = $('#nameResult');
-                        nameResult.html('');
-                        nameResult.css('display', 'none');
                     }
-                }
-            });
-            $.ajax({
-                url: "/php/data/nameFind.php",
-                type: "GET",
-                data: {searchword: search_word,target:"title"},
-                dataType: 'json',
-                success: function (res) {
-                    if (res.length > 0) {
-                        var contResult = $('#contResult');
-                        contResult.css('display', 'block');
-                        var titleSearchRes = '';
-
-                        for (var i = 0; i < res.length; i++) {
-                            titleSearchRes += '<li><a href="/php/getItem.php?iid=' + res[i]['SEQ'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
-                        }
-                        contResult.html(titleSearchRes);
-                    } else {
-                        var contResult = $('#contResult');
-                        contResult.html('');
-                        contResult.css('display', 'none');
-                    }
-                }
-            });
-            $.ajax({
-                url: "/php/data/nameFind.php",
-                type: "GET",
-                data: {searchword: search_word,target:"tag"},
-                dataType: 'json',
-                success: function (res) {
-                    if (res.length > 0) {
-                        var tagResult = $('#tagResult');
-                        tagResult.css('display', 'block');
-                        var titleSearchRes = '';
-
-                        for (var i = 0; i < res.length; i++) {
-                            titleSearchRes += '<li><a href="/php/Search.php?type=tag&tag=' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
-                        }
-                        tagResult.html(titleSearchRes);
-                    } else {
-                        var tagResult = $('#tagResult');
-                        tagResult.html('');
-                        tagResult.css('display', 'none');
-                    }
-                }
-            });
+                });
+            }
+            search('name');
+            search('title')
+            search('tag')
         } else {
             $('#searchResult').css('display', 'none');
             $('#contResult').html('');

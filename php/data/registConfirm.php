@@ -13,19 +13,28 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
-    $sql = "INSERT INTO publixher.TBL_USER(EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
+    try {
+        $db->beginTransaction();
+        $sql = "INSERT INTO publixher.TBL_USER(EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
         $prepare = $db->prepare($sql);
-    $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $prepare->bindValue(':EMAIL', $check_email, PDO::PARAM_STR);
-    $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
-    $prepare->bindValue(':USER_NAME', $name, PDO::PARAM_STR);
-    $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
-    $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
-    $prepare->execute();
-    $seq = $db->lastInsertId();
-    $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
-    $prepare2 = $db->prepare($sql2);
-    $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
+        $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        $prepare->bindValue(':EMAIL', $check_email, PDO::PARAM_STR);
+        $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
+        $prepare->bindValue(':USER_NAME', $name, PDO::PARAM_STR);
+        $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
+        $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
+        $prepare->execute();
+        $seq = $db->lastInsertId();
+        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+        $prepare2 = $db->prepare($sql2);
+        $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
+        $prepare2->execute();
+        $db->commit();
+    }catch(PDOException $e){
+        $db->rollBack();
+        $msg=$e->getMessage();
+        echo "<script>alert('동작중 문제가 생겼습니다. 다시 동작해주세요\n'+${msg}</script>";
+    }
 } else {
     echo '<script>alert("입력된 값을 확인해 주세요");history.go(-1)</script>';
 
