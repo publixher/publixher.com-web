@@ -117,7 +117,6 @@ $(document).ready(function () {
     }
 
     mpass.on("input", function () {
-        console.log('aa');
         if (!CheckPW()) {
             pwwrong.css('display', 'block');
             pwwrong.removeClass('alert-success');
@@ -176,6 +175,14 @@ $(document).ready(function () {
     })
 
     $('#submit').click(function () {
+        var regEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+        var pwcheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,16}$/;
+        var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
+        var regEName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+        if(regEmail.test(mid.val())) idvali = true;
+        if ((mpass.val() == mpassCheck.val()) && check.test(mpass.val())) pwvali = false;
+        if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
+        else {namevali = true;}
         if(idvali&&dupidchk&&pwvali&&pwconfirm&&namevali) {
             $('#rf').submit(function () {
                 console.log('submit함수 실행중');

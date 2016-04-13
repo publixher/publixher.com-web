@@ -30,9 +30,9 @@
     include_once "../conf/User.php";
     session_start();
     include_once "../lib/loginchk.php";
-    include "profile_left.php";
-    include "profile_middle.php";
-    include "right.php";
+    require_once "profile_left.php";
+    require_once "profile_middle.php";
+    require_once "right.php";
     ?>
 
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->

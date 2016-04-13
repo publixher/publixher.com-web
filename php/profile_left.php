@@ -57,7 +57,6 @@
     $prepare1->execute();
     $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
     echo '<hr>폴더목록<ul>';
-
     for ($i = 0; $i < count($forder); $i++) {
         echo '<li><a href="foldercon.php?fid=' . $forder[$i]['SEQ'] . '">' . $forder[$i]['DIR'] . '</a>(' . $forder[$i]['CONTENT_NUM'] . ')</li>';
     }

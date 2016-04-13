@@ -163,7 +163,7 @@
             </tr>
         </table>
     </form>
-    <?
+    <?php
     if ($userinfo->getISNICK() == 'N') { ?>
         <form method='post' action='/php/data/profileChange.php'>
             <input type="hidden" name="action" value="anonyregist">
@@ -178,9 +178,7 @@
             <span class="sr-only">Error:</span>
             새로운 익명계정을 생성할 경우 기존의 익명계정은 더이상 접속할 수 없지만 익명계정으로 써진 글은 지워지지 않고 사람들이 구매한 컨텐츠는 구매자의 구매항목에 남아있습니다.
         </div>
-
-
-    <? }
+    <?php }
 
     echo '</div>';
     //오른쪽
