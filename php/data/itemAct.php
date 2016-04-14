@@ -61,6 +61,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
+        //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
 //        $ip=$db->prepare($sql5);
@@ -347,7 +348,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
         echo '{"buy":"t"}';
-
+//TODO:흥미처리해야함
 //        //흥미 처리
 //        $sql6 = "SELECT ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
 //        $intp=$db->prepare($sql6);

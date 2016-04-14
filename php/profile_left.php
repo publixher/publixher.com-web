@@ -8,8 +8,8 @@
     echo "<img id='profilepic' src='${profilepic}'>";
     //스크립트 올리기?>
     <script>
-        var targetid =<?=$targetid?>;
-        var myID =<?=$userID?>;
+        var targetid ='<?=$targetid?>';
+        var myID ='<?=$userID?>';
         var mid = myID;
     </script>
     <script src="/js/profile_left.js"></script>
