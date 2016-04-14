@@ -9,15 +9,15 @@ require_once '../../conf/User.php';
 session_start();
 //CSRF검사
 if (!isset($_POST['token']) AND !isset($_GET['token'])) {
-    exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
-    exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 }
 //세션탈취 검사
 if (!isset($_POST['age']) AND !isset($_GET['age'])) {
-    exit('부정한 조작이 감지되었습니다. case3 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case3 \n$_POST["age"] :' . $_POST['age'] . ' \n $_GET["age"] :' . $_GET['age'] . '$_SESSION :' . $_SESSION);
 } elseif ($_POST['age'] != $_SESSION['age'] AND $_GET['age'] != $_SESSION['age']) {
-    exit('부정한 조작이 감지되었습니다. case4 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case4 \n$_POST["age"] :' . $_POST['age'] . ' \n $_GET["age"] :' . $_GET['age'] . '$_SESSION :' . $_SESSION);
 }
 
 $act = $_POST['action'];
@@ -60,7 +60,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-            $prepare4->execute();
+        $prepare4->execute();
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
 //        $ip=$db->prepare($sql5);
@@ -92,7 +92,7 @@ if ($act == 'knock') {
 } elseif ($act == 'comment' OR $act == 'more_comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
     $ID = $_GET['ID'];
-    $userID=$_GET['userID'];
+    $userID = $_GET['userID'];
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
@@ -107,7 +107,8 @@ if ($act == 'knock') {
         }
         return $result;
     }
-    function getBest($db, $ID,$index)
+
+    function getBest($db, $ID, $index)
     {
         $bestrep_sql = "SELECT \n"  //베스트댓글5개
             . "	* \n"
@@ -128,11 +129,11 @@ if ($act == 'knock') {
         if ($result) {    //베스트 있을때
             $result = getWriter($result, $db);
             $result['sort'] = "best";
-            if($result[5]) {
-                $result['more']='1';
+            if ($result[5]) {
+                $result['more'] = '1';
                 unset($result[5]);
-            }else{
-                $result['more']='0';
+            } else {
+                $result['more'] = '0';
             }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
@@ -140,7 +141,8 @@ if ($act == 'knock') {
             return false;
         }
     }
-    function getTime($db, $ID,$index)
+
+    function getTime($db, $ID, $index)
     {
         $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
@@ -151,11 +153,11 @@ if ($act == 'knock') {
         if ($result) {
             $result = getWriter($result, $db);
             $result['sort'] = "time";
-            if($result[5]) {
-                $result['more']='1';
+            if ($result[5]) {
+                $result['more'] = '1';
                 unset($result[5]);
-            }else{
-                $result['more']='0';
+            } else {
+                $result['more'] = '0';
             }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
@@ -163,7 +165,9 @@ if ($act == 'knock') {
             return false;
         }
     }
-    function getFrie($db,$ID,$userID,$index){
+
+    function getFrie($db, $ID, $userID, $index)
+    {
         $friend_sql = "SELECT \n"
             . "	REPLY.* \n"
             . "FROM \n"
@@ -181,45 +185,46 @@ if ($act == 'knock') {
         $prepare1->bindValue(':INDEX', $index);
         $prepare1->execute();
         $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-        if($result){
+        if ($result) {
             $result = getWriter($result, $db);
-            $result['sort']="friend";
-            if($result[5]) {
-                $result['more']='1';
+            $result['sort'] = "friend";
+            if ($result[5]) {
+                $result['more'] = '1';
                 unset($result[5]);
-            }else{
-                $result['more']='0';
+            } else {
+                $result['more'] = '0';
             }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     if ($act == 'comment') {
         $sort = $_GET['sort'];
         if ($sort == 'first') {
             //베댓이 없으면 자동으로 시간순 정렬된 댓글이 보여
-            $result = getBest($db, $ID,0);
+            $result = getBest($db, $ID, 0);
             if (!$result) {
-                $result = getTime($db, $ID,0);
+                $result = getTime($db, $ID, 0);
                 if (!$result) {
                     echo '{"result":"NO"}';
                 }
             }
-        } elseif ($sort== 'best') { //처음으로 로딩한게 아니라 각 탭을 보는거면 sort로 구분한다
-            $result=getBest($db,$ID,0);
-            if(!$result){
+        } elseif ($sort == 'best') { //처음으로 로딩한게 아니라 각 탭을 보는거면 sort로 구분한다
+            $result = getBest($db, $ID, 0);
+            if (!$result) {
                 echo '{"result":"NO"}';
             }
-        }elseif($sort=='time'){
-            $result=getTime($db,$ID,0);
-            if(!$result){
+        } elseif ($sort == 'time') {
+            $result = getTime($db, $ID, 0);
+            if (!$result) {
                 echo '{"result":"NO"}';
             }
-        }elseif($sort=='frie'){
-            $result=getFrie($db,$ID,$userID,0);
-            if(!$result){
+        } elseif ($sort == 'frie') {
+            $result = getFrie($db, $ID, $userID, 0);
+            if (!$result) {
                 echo '{"result":"NO"}';
             }
         }
@@ -227,24 +232,27 @@ if ($act == 'knock') {
         $sort = $_GET['sort'];
         $index = $_GET['index'];
         if ($sort == 'best') {
-            $result=getBest($db,$ID,$index);
-            if(!$result) echo '{"result":"NO"}';
+            $result = getBest($db, $ID, $index);
+            if (!$result) echo '{"result":"NO"}';
         } elseif ($sort == 'time') {
-            $result=getTime($db,$ID,$index);
-            if(!$result) echo '{"result":"NO"}';
+            $result = getTime($db, $ID, $index);
+            if (!$result) echo '{"result":"NO"}';
         } elseif ($sort == 'frie') {
-            $result=getFrie($db,$ID,$userID,$index);
-            if(!$result) echo '{"result":"NO"}';
+            $result = getFrie($db, $ID, $userID, $index);
+            if (!$result) echo '{"result":"NO"}';
         }
     }
 } elseif ($act == 'commentreg') {
+    require_once '../../lib/random_64.php';
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
     $comment = $_POST['comment'];
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID_USER,ID_CONTENT,REPLY) VALUES(:ID_USER,:ID_CONTENT,:REPLY);";
+    $uid=uniqueid($db,'reply');
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
+    $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_USER', $_POST['userID'], PDO::PARAM_STR);
     $prepare1->bindValue(':ID_CONTENT', $_POST['ID'], PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $_POST['comment'], PDO::PARAM_STR);
@@ -471,7 +479,7 @@ if ($act == 'knock') {
     $userID = $_POST['mid'];
     $ID = $_POST['ID'];
     $sql = "SELECT ID FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (ID_USER=:ID_USER AND ID_REPLY=:ID_REPLY) LIMIT 1 ";
-        $prepare = $db->prepare($sql);
+    $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
     $prepare->execute();
@@ -509,11 +517,11 @@ if ($act == 'knock') {
     } else {
         echo '{"result":"N","reason":"already"}';
     }
-}elseif($act=='sub_comment' or $act=='more_sub_comment'){
+} elseif ($act == 'sub_comment' or $act == 'more_sub_comment') {
     require_once '../../lib/passing_time.php';
     $ID = $_GET['ID'];
-    $userID=$_GET['userID'];
-    $repID=$_GET['repID'];
+    $userID = $_GET['userID'];
+    $repID = $_GET['repID'];
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
@@ -528,7 +536,8 @@ if ($act == 'knock') {
         }
         return $result;
     }
-    function getTime($db, $repID,$index)
+
+    function getTime($db, $repID, $index)
     {
         $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
@@ -539,11 +548,11 @@ if ($act == 'knock') {
         if ($result) {
             $result = getWriter($result, $db);
             $result['sort'] = "time";
-            if($result[5]) {
-                $result['more']='1';
+            if ($result[5]) {
+                $result['more'] = '1';
                 unset($result[5]);
-            }else{
-                $result['more']='0';
+            } else {
+                $result['more'] = '0';
             }
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
             return true;
@@ -551,23 +560,24 @@ if ($act == 'knock') {
             return false;
         }
     }
-    if($act=='sub_comment'){
-        $result = getTime($db,$repID,0);
-        if(!$result){
+
+    if ($act == 'sub_comment') {
+        $result = getTime($db, $repID, 0);
+        if (!$result) {
             echo '{"result":"NO"}';
         }
-    }else{
-        $result=getTime($db,$repID,$_GET['index']);
-        if(!$result){
+    } else {
+        $result = getTime($db, $repID, $_GET['index']);
+        if (!$result) {
             echo '{"result":"NO"}';
         }
     }
 
-}elseif ($act == 'commentreg_sub') {
+} elseif ($act == 'commentreg_sub') {
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
     $comment = $_POST['comment'];
-    $repID=$_POST['repID'];
+    $repID = $_POST['repID'];
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
