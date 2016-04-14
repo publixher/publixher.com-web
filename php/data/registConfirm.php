@@ -1,5 +1,6 @@
 <?php
 require_once '../../conf/database_conf.php';
+require_once '../../lib/random_64.php';
 //유효성 검사
 $email = $_POST['email'];
 $pass = $_POST['pass'];
@@ -13,11 +14,20 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
+    $sql="SELECT ID FROM publixher.TBL_USER WHERE ID=:ID";
+    $p=$db->prepare($sql);
+    do{
+        $id=rand64();
+        $p->bindValue(':ID', $id);
+        $p->execute();
+        $exist=$p->fetchColumn();
+    }while($exist);
     try {
         $db->beginTransaction();
-        $sql = "INSERT INTO publixher.TBL_USER(EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
+        $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
         $prepare = $db->prepare($sql);
         $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
         $prepare->bindValue(':EMAIL', $check_email, PDO::PARAM_STR);
         $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
         $prepare->bindValue(':USER_NAME', $name, PDO::PARAM_STR);

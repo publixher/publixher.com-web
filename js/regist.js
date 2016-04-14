@@ -60,13 +60,11 @@ $(document).ready(function () {
             idwrong.text('이메일을 입력해 주세요.');
             idwrong.removeClass('alert-success');
             idwrong.addClass('alert-danger');
-            idvali = false;
         } else {
             idwrong.css('display', 'block');
             idwrong.removeClass('alert-danger');
             idwrong.text('훌륭합니다.');
             idwrong.addClass('alert-success');
-            idvali = true;
         }
     });
 //아이디 입력 다하면 서버로 아이디가 있는지 검사
@@ -121,13 +119,11 @@ $(document).ready(function () {
             pwwrong.css('display', 'block');
             pwwrong.removeClass('alert-success');
             pwwrong.addClass('alert-danger');
-            pwvali = false;
         } else {
             pwwrong.css('display', 'block');
             pwwrong.removeClass('alert-danger');
             pwwrong.text('훌륭합니다.');
             pwwrong.addClass('alert-success');
-            pwvali = true;
         }
     });
     mpassCheck.on("input", function () {
@@ -136,13 +132,11 @@ $(document).ready(function () {
             pwcheckwrong.text('비밀번호와 다릅니다.');
             pwcheckwrong.removeClass('alert-success');
             pwcheckwrong.addClass('alert-danger');
-            pwconfirm = false;
         } else {
             pwcheckwrong.css('display', 'block');
             pwcheckwrong.removeClass('alert-danger');
             pwcheckwrong.text('훌륭합니다.');
             pwcheckwrong.addClass('alert-success');
-            pwconfirm = true;
         }
     })
 
@@ -157,20 +151,17 @@ $(document).ready(function () {
             namewrong.text('훌륭합니다.');
             namewrong.removeClass('alert-danger');
             namewrong.addClass('alert-success');
-            namevali = true;
         } else if (regEName.test(mname.val())) {
             namewrong.css('display', 'block');
             namewrong.text('훌륭합니다.');
             namewrong.removeClass('alert-danger');
             namewrong.addClass('alert-success');
-            namevali = true;
         }
         else {
             namewrong.css('display', 'block');
             namewrong.text('이름을 입력해 주세요.');
             namewrong.removeClass('alert-success');
             namewrong.addClass('alert-danger');
-            namevali = true;
         }
     })
 
@@ -180,16 +171,13 @@ $(document).ready(function () {
         var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
         var regEName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
         if(regEmail.test(mid.val())) idvali = true;
-        if ((mpass.val() == mpassCheck.val()) && check.test(mpass.val())) pwvali = false;
+        if ((mpass.val() == mpassCheck.val()) && pwcheck.test(mpass.val())) pwvali = false;
         if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
         else {namevali = true;}
         if(idvali&&dupidchk&&pwvali&&pwconfirm&&namevali) {
-            $('#rf').submit(function () {
-                console.log('submit함수 실행중');
-            });
+            $('#rf').submit();
         }else{
             alert('아이디,비밀번호,이름을 확인해 주세요');
-            console.log('invali : '+invali+' dupidchk : '+dupidchk+' pwvali : '+pwvali+' pwconfirm : '+pwconfirm+' namevali : '+namevali)
             return false;
         }
     });
