@@ -123,7 +123,7 @@ if ($action == 'noticenter') {
     echo json_encode($number, JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'confnotireq') {
     $nowpage = $_GET['nowpage']*20;
-    $notireqsql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE (ID_TARGET=:ID_TARGET AND NOT ID_ACTOR=:ID_ACTOR) ORDER BY ID DESC LIMIT " . $nowpage . ",20";
+    $notireqsql = "SELECT * FROM publixher.TBL_CONTENT_NOTI WHERE (ID_TARGET=:ID_TARGET AND NOT ID_ACTOR=:ID_ACTOR) ORDER BY SEQ DESC LIMIT " . $nowpage . ",20";
     $notireqpre = $db->prepare($notireqsql);
     $notireqpre->bindValue(':ID_TARGET', $userID);
     $notireqpre->bindValue(':ID_ACTOR', $userID);

@@ -9,6 +9,7 @@ if (!empty($_POST)) {
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
     require_once'../../lib/imagecrop.php';
+    require_once'../../lib/random_64.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -107,12 +108,13 @@ if (!empty($_POST)) {
     $ID_writer = $_POST['ID_writer'];
     $targetID = $_POST['targetID'];
     if (!$for_sale) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
     } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,PIC,TAG) VALUES (:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:PIC,:TAG);";
+        $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,PIC,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:PIC,:TAG);";
     }
-
+    $uid=uniqueid($db,'content');
     $prepare = $db->prepare($sql);
+    $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
     $prepare->bindValue(':ID_WRITER', $ID_writer, PDO::PARAM_STR);
     $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
@@ -144,7 +146,6 @@ if (!empty($_POST)) {
         }
     }
     $prepare->execute();
-    $id = $db->lastInsertId();
     //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
     if ($for_sale) {
         $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE ID_MASTER=:ID_MASTER";
@@ -155,7 +156,7 @@ if (!empty($_POST)) {
     //id로 컨텐츠 테이블의 내용도 가져옴
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
+    $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
     //글쓴이의 정보도 가져옴
@@ -178,7 +179,7 @@ if (!empty($_POST)) {
         $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID_USER', $ID_writer, PDO::PARAM_STR);
-        $prepare2->bindValue(':ID_CONTENT', $id, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_CONTENT', $uid, PDO::PARAM_STR);
         $prepare2->execute();
     }
     //태그 넣기
@@ -186,7 +187,7 @@ if (!empty($_POST)) {
         $tags=json_decode($_POST['tags']);
         $tagsql="INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
         $tpr=$db->prepare($tagsql);
-        $tpr->bindValue(':ID_CONTENT',$id);
+        $tpr->bindValue(':ID_CONTENT',$uid);
         for($i=0;$i<count($tags);$i++){
             $tpr->bindValue(':TAG',$tags[$i]);
             $tpr->execute();

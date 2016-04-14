@@ -62,6 +62,7 @@ if ($_POST['action'] == 'profilechange') {
     $nick = $_POST['nick'];
     if (preg_match("/[\xA1-\xFE\xA1-\xFEa-zA-Z0-9]{2,10}/", $nick)) {
         //현재 커넥터에 익명계정으로 연결된 계정의 in_use를 N으로 만들어서 계정자체는 살아있어서 닉네임을 쓸 수 없고 컨텐츠는 볼 수 있지만 접속은 할 수 없도록 만든다
+        require_once'../../lib/random_64.php';
         $sql = "SELECT ID_ANONY  FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
         $prepare = $db ->prepare($sql);
         $prepare->bindValue(':ID_USER',$userID,PDO::PARAM_STR);
@@ -72,20 +73,21 @@ if ($_POST['action'] == 'profilechange') {
         $prepare3->bindValue(':ID',$ID_anony,PDO::PARAM_STR);
         $prepare3->execute();
         //익명 사용자 생성
-        $sql1 = "INSERT INTO publixher.TBL_USER(USER_NAME,IS_NICK,BIRTH,REGION) VALUES (:USER_NAME,'Y',:BIRTH,:REGION)";
+        $uid=uniqueid($db,'user');
+        $sql1 = "INSERT INTO publixher.TBL_USER(ID,USER_NAME,IS_NICK,BIRTH,REGION) VALUES (:ID,:USER_NAME,'Y',:BIRTH,:REGION)";
         $prepare1 = $db->prepare($sql1);
+        $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
         $prepare1->bindValue(':USER_NAME', $_POST['nick'], PDO::PARAM_STR);
         $birth = $userinfo->getBirth();
         $prepare1->bindValue(':BIRTH', $birth, PDO::PARAM_STR);
         $region = $userinfo->getRegion();
         $prepare1->bindValue(':REGION', $region, PDO::PARAM_STR);
         $prepare1->execute();
-        $ID = $db->lastInsertId();
         //익명계정과 실명계정을 맵핑
         $sql2 = "UPDATE publixher.TBL_CONNECTOR SET ID_ANONY=:ID_ANONY WHERE ID_USER=:ID_USER";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-        $prepare2->bindValue(':ID_ANONY', $ID, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_ANONY', $uid, PDO::PARAM_STR);
         $prepare2->execute();
         echo "<meta http-equiv='refresh' content='0;url=../profile.php?id=${userID}'>";
     } else {
@@ -130,8 +132,11 @@ if ($_POST['action'] == 'profilechange') {
     }
     echo "<meta http-equiv='refresh' content='0;url=${referer}'>";
 } elseif ($_POST['action'] == 'newfolder') {
-    $sql = "INSERT INTO publixher.TBL_FOLDER(ID_USER,DIR) VALUES(:ID_USER,:DIR)";
+    require_once'../../lib/random_64.php';
+    $fuid=uniqueid($db,'folder');
+    $sql = "INSERT INTO publixher.TBL_FOLDER(ID,ID_USER,DIR) VALUES(:ID,:ID_USER,:DIR)";
     $prepare = $db->prepare($sql);
+    $prepare->bindValue(':ID', $fuid, PDO::PARAM_STR);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('DIR', $_POST['folder'], PDO::PARAM_STR);
     $prepare->execute();

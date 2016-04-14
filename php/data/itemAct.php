@@ -28,7 +28,7 @@ if (!$act) {
 if ($act == 'knock') {
     $ID = $_POST['ID'];
     $userID = $_POST['userID'];
-    $sql = "SELECT ID FROM publixher.TBL_KNOCK_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT) LIMIT 1 ";
+    $sql = "SELECT SEQ FROM publixher.TBL_KNOCK_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT) LIMIT 1 ";
     $prepare = $db->prepare($sql);
     $prepare->bindValue('ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('ID_CONTENT', $ID, PDO::PARAM_STR);
@@ -61,31 +61,31 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
-        //흥미 처리
-        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
-        $ip=$db->prepare($sql5);
-        $ip->bindValue(':ID_USER',$userID);
-        //작성자를 추가
-        $ip->bindValue(':TYPE',1);
-        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
-        $ip->execute();
-        //서브 카테고리를 추가
-        if($result['SUB_CATEGORY']){
-            $ip->bindValue(':TYPE',2);
-            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
-            $ip->execute();
-        }
-
-        //게시물의 태그를 추가
-        if($result['TAG']){
-            $ip->bindValue(':TYPE',0);
-            $tags=explode(' ',$result['TAG']);
-            $tagnum=count($tags);
-            for($i=0;$i<$tagnum;$i++){
-                $ip->bindValue(':INTEREST',$tags[$i]);
-                $ip->execute();
-            }
-        }
+//        //흥미 처리
+//        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
+//        $ip=$db->prepare($sql5);
+//        $ip->bindValue(':ID_USER',$userID);
+//        //작성자를 추가
+//        $ip->bindValue(':TYPE',1);
+//        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
+//        $ip->execute();
+//        //서브 카테고리를 추가
+//        if($result['SUB_CATEGORY']){
+//            $ip->bindValue(':TYPE',2);
+//            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
+//            $ip->execute();
+//        }
+//
+//        //게시물의 태그를 추가
+//        if($result['TAG']){
+//            $ip->bindValue(':TYPE',0);
+//            $tags=explode(' ',$result['TAG']);
+//            $tagnum=count($tags);
+//            for($i=0;$i<$tagnum;$i++){
+//                $ip->bindValue(':INTEREST',$tags[$i]);
+//                $ip->execute();
+//            }
+//        }
     } else {
         echo '{"result":"N","reason":"already"}';
     }
@@ -142,7 +142,7 @@ if ($act == 'knock') {
     }
     function getTime($db, $ID,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY ID DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':INDEX', $index);
@@ -274,8 +274,8 @@ if ($act == 'knock') {
     require_once '../../conf/User.php';
     session_start();
     $userinfo = $_SESSION['user'];
-    $userbirth = $userinfo->getBirth();
-    $isnick = $userinfo->getIsNick();
+    $userbirth = $userinfo->getBIRTH();
+    $isnick = $userinfo->getISNICK();
     $ID = $_POST['ID'];
     $userID = $_POST['userID'];
     //가격은 db의 데이터로 정해져야함
@@ -340,36 +340,36 @@ if ($act == 'knock') {
         $prepare4->execute();
         echo '{"buy":"t"}';
 
-        //흥미 처리
-        $sql6 = "SELECT ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
-        $intp=$db->prepare($sql6);
-        $intp->bindValue(':ID',$ID);
-        $intp->execute();
-        $result=$intp->fetch(PDO::FETCH_ASSOC);
-        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
-        $ip=$db->prepare($sql5);
-        $ip->bindValue(':ID_USER',$userID);
-        //작성자를 추가
-        $ip->bindValue(':TYPE',1);
-        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
-        $ip->execute();
-        //서브 카테고리를 추가
-        if($result['SUB_CATEGORY']){
-            $ip->bindValue(':TYPE',2);
-            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
-            $ip->execute();
-        }
-
-        //게시물의 태그를 추가
-        if($result['TAG']){
-            $ip->bindValue(':TYPE',0);
-            $tags=explode(' ',$result['TAG']);
-            $tagnum=count($tags);
-            for($i=0;$i<$tagnum;$i++){
-                $ip->bindValue(':INTEREST',$tags[$i]);
-                $ip->execute();
-            }
-        }
+//        //흥미 처리
+//        $sql6 = "SELECT ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
+//        $intp=$db->prepare($sql6);
+//        $intp->bindValue(':ID',$ID);
+//        $intp->execute();
+//        $result=$intp->fetch(PDO::FETCH_ASSOC);
+//        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
+//        $ip=$db->prepare($sql5);
+//        $ip->bindValue(':ID_USER',$userID);
+//        //작성자를 추가
+//        $ip->bindValue(':TYPE',1);
+//        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
+//        $ip->execute();
+//        //서브 카테고리를 추가
+//        if($result['SUB_CATEGORY']){
+//            $ip->bindValue(':TYPE',2);
+//            $ip->bindValue(':INTEREST',$result['SUB_CATEGORY']);
+//            $ip->execute();
+//        }
+//
+//        //게시물의 태그를 추가
+//        if($result['TAG']){
+//            $ip->bindValue(':TYPE',0);
+//            $tags=explode(' ',$result['TAG']);
+//            $tagnum=count($tags);
+//            for($i=0;$i<$tagnum;$i++){
+//                $ip->bindValue(':INTEREST',$tags[$i]);
+//                $ip->execute();
+//            }
+//        }
         exit;
     }
     echo '{"buy":"f","reason":"already bought"}';
@@ -530,7 +530,7 @@ if ($act == 'knock') {
     }
     function getTime($db, $repID,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY ID DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);

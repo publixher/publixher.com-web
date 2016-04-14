@@ -11,7 +11,7 @@ if ($info['api'] == 'naver') {
     $q->execute();
     $user = $q->fetchObject(User);
     if (!$user) {
-        $id=user_idcheck($db);
+        $id=uniqueid($db,'user');
         $age = date("Y") - (substr($info['age'], 0, 1) . '5') . '-';
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
         $prepare = $db->prepare($sql);
@@ -46,7 +46,7 @@ if ($info['api'] == 'naver') {
         $user = $q->fetchObject(User);
         if (!$user) {
             require_once '../../lib/random_64.php';
-            $id=user_idcheck($db);
+            $id=uniqueid($db,'user');
             $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
             $prepare = $db->prepare($sql);
             $prepare->bindValue(':ID', $id, PDO::PARAM_STR);

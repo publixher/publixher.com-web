@@ -7,8 +7,15 @@ function rand64($size=10){
     }
     return $return;
 }
-function user_idcheck($db){
-    $sql="SELECT ID FROM publixher.TBL_USER WHERE ID=:ID";
+function uniqueid($db,$obj){
+    switch($obj){
+        case 'user':$table='USER';break;
+        case 'content':$table='CONTENT';break;
+        case 'reply':$table='CONTENT_REPLY';break;
+        case 'sub_reply':$table='CONTENT_SUB_REPLY';break;
+        case 'folder':$table='FOLDER';break;
+    }
+    $sql="SELECT ID FROM publixher.TBL_${table} WHERE ID=:ID";
     $p=$db->prepare($sql);
     do{
         $id=rand64();

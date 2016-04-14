@@ -11,13 +11,13 @@ $userID = $_SESSION['user']->getID();
 if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
     //내 프로필일때는 내가쓴것내가 타겟인것 전부 가져온다
     if ($_GET['I'] == "true") {
-        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET)) ORDER BY ID DESC LIMIT " . $nowpage . ",10;";
+        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET)) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
     } elseif ($_GET['frelation'] == "true") {
         //친구관계일때
-        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET) AND EXPOSE>0) ORDER BY ID DESC LIMIT " . $nowpage . ",10;";
+        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET) AND EXPOSE>0) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
     } else {
         //무관계일때
-        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET) AND EXPOSE>1) ORDER BY ID DESC LIMIT " . $nowpage . ",10;";
+        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND (ID_WRITER=:ID_WRITER OR ID_TARGET=:ID_TARGET) AND EXPOSE>1) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10;";
     }
 
     $prepare = $db->prepare($sql);
@@ -26,14 +26,14 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif ($_GET['fid']) { //폴더에선 폴더 내용물이 시간순 노출
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND FOLDER=:FOLDER) ORDER BY ID DESC LIMIT " . $nowpage . ",10";
+    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND FOLDER=:FOLDER) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':FOLDER', $_GET['fid'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif ($_GET['buylist']) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
     //구매리스트의 번호를 찾아온다
-    $sql = "SELECT ID_CONTENT FROM publixher.TBL_BUY_LIST WHERE ID_USER=:ID_USER ORDER BY ID DESC LIMIT " . $nowpage . ",10";
+    $sql = "SELECT ID_CONTENT FROM publixher.TBL_BUY_LIST WHERE ID_USER=:ID_USER ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->execute();
@@ -67,7 +67,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
         . "UNION SELECT DISTINCT CONT2.* FROM publixher.TBL_CONTENT CONT2 "
         . "INNER JOIN publixher.TBL_FRIENDS FRIEND2 ON FRIEND2.ID_FRIEND = CONT2.ID_WRITER "
         . "WHERE (FRIEND2.ID_USER = :ID_USER2 AND CONT2.DEL = 'N' AND CONT2.EXPOSE > 0 AND CONT2.ID_TARGET IS NULL)"   //내 친구가 쓰고 공개대상이 친구 이상인것
-        . " ORDER BY ID DESC LIMIT "
+        . " ORDER BY SEQ DESC LIMIT "
         . ":NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER0', $userID);

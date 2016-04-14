@@ -6,7 +6,6 @@ if (!empty($_GET)) {
     if($target=='name') {
         $sql = "SELECT ID,USER_NAME,IS_NICK,PIC FROM publixher.TBL_USER WHERE (MATCH(USER_NAME) AGAINST('*" . $_GET['searchword'] . "*' IN BOOLEAN MODE) AND IN_USE='Y')";
         $prepare = $db->prepare($sql);
-//    $prepare->bindValue(':USER_NAME',$_GET['searchword'],PDO::PARAM_STR);
         $prepare->execute();
         $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);

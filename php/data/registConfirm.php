@@ -14,7 +14,7 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
-    $id=user_idcheck($db);
+    $id=uniqueid($db,'user');
     try {
         $db->beginTransaction();
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";

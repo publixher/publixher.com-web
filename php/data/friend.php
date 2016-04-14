@@ -51,9 +51,9 @@ if ($action == 'request') {
     $targetID = $_POST['targetID'];
     $requestid = $_POST['requestid'];
     $myID = $_POST['myID'];
-    $sql1 = "UPDATE publixher.TBL_FRIENDS SET ALLOWED='Y' WHERE ID=:ID";
+    $sql1 = "UPDATE publixher.TBL_FRIENDS SET ALLOWED='Y' WHERE SEQ=:SEQ";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':ID', $requestid, PDO::PARAM_STR);
+    $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
     $prepare1->execute();
 
     $sql2 = "INSERT INTO publixher.TBL_FRIENDS(ID_FRIEND,ID_USER,ALLOWED) VALUES(:ID_FRIEND,:ID_USER,'Y')";
@@ -64,9 +64,9 @@ if ($action == 'request') {
     echo '{"result":"Y"}';
 } elseif ($action == 'friendno') {
     $requestid = $_POST['requestid'];
-    $sql1 = "DELETE FROM publixher.TBL_FRIENDS WHERE ID=:ID";
+    $sql1 = "DELETE FROM publixher.TBL_FRIENDS WHERE SEQ=:SEQ";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':ID', $requestid, PDO::PARAM_STR);
+    $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"result":"Y"}';
 } elseif ($action == 'endrelation') {
