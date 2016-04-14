@@ -171,10 +171,10 @@ $(document).ready(function () {
         var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
         var regEName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
         if(regEmail.test(mid.val())) idvali = true;
-        if ((mpass.val() == mpassCheck.val()) && pwcheck.test(mpass.val())) pwvali = false;
+        if ((mpass.val() == mpassCheck.val()) && pwcheck.test(mpass.val())) pwvali = true;
         if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
         else {namevali = true;}
-        if(idvali&&dupidchk&&pwvali&&pwconfirm&&namevali) {
+        if(idvali&&dupidchk&&pwvali&&namevali) {
             $('#rf').submit();
         }else{
             alert('아이디,비밀번호,이름을 확인해 주세요');
