@@ -19,10 +19,10 @@ if ($info['api'] == 'naver') {
         $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
         $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
         $prepare->execute();
-        $seq = $db->lastInsertId();
-        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+        $ID = $db->lastInsertId();
+        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
         $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $q2 = $db->prepare($sql2);
         $q2->bindValue(':EMAIL', $info['email']);
@@ -51,10 +51,10 @@ if ($info['api'] == 'naver') {
             $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
             $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
             $prepare->execute();
-            $seq = $db->lastInsertId();
-            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+            $ID = $db->lastInsertId();
+            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
             $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
             $q2 = $db->prepare($sql2);
             $q2->bindValue(':EMAIL', $info['email']);
@@ -72,7 +72,7 @@ if (!isset($_SESSION['token'])) {
 if (!isset($_SESSION['age'])) {
     $_SESSION['age'] = $_SERVER['HTTP_USER_AGENT'];
 }
-setcookie('cid', $user->getSEQ(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
+setcookie('cid', $user->getID(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
 echo '{"result":"Y"}';
 
 ?>

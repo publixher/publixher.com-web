@@ -8,7 +8,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisitemID, action: "knock", userseq: mid, token: token, age: age},
+            data: {ID: thisitemID, action: "knock", userID: mid, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] != 'N') {
@@ -53,7 +53,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {seq: thisitemID, action: "comment", sort: "first", userseq: mid, token: token, age: age},
+                data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token, age: age},
                 dataType: 'json',
                 success: function (res) {
                     function registRep(res, where) {
@@ -61,15 +61,15 @@ $(document).ready(function(){
                         list.html('');
                         for (var i = 0; i < Object.keys(res).length - 2; i++) {
                             var write = '';
-                            var seq = res[i]['SEQ'];
+                            var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
                             var date = res[i]['REPLY_DATE'];
                             var reply = res[i]['REPLY'];
                             var knock = res[i]['KNOCK'];
-                            write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
+                            write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
-                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                            if(mid==res[i]['SEQ_USER']){
+                            write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                            if(mid==res[i]['ID_USER']){
                                 write += ' <a class="repdel">삭제</a>'
                             }
                             write +='</span></span></td></tr></table></div>';
@@ -124,22 +124,22 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {seq: num, action: "comment", userseq: mid, index: index, sort: sort, token: token, age: age},
+            data: {ID: num, action: "comment", userID: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 function registRep(res, where) {
                     var list = $('#' + where);
                     for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
-                        var seq = res[i]['SEQ'];
+                        var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
-                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
+                        write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace("profile","crop34") + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if(mid==res[i]['SEQ_USER']){
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                        if(mid==res[i]['ID_USER']){
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write +='</span></span></td></tr></table></div>';
@@ -170,7 +170,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {seq: num, action: "more_comment", userseq: mid, index: index, sort: sort, token: token, age: age},
+            data: {ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
@@ -182,15 +182,15 @@ $(document).ready(function(){
                     var btn = $('#' + sort + '-' + num + ' .cursor');
                     for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
-                        var seq = res[i]['SEQ'];
+                        var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
-                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
+                        write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if(mid==res[i]['SEQ_USER']){
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                        if(mid==res[i]['ID_USER']){
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write +='</span></span></td></tr></table></div>';
@@ -218,7 +218,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {seq: thisitemID, action: "commentreg", userseq: mid, comment: reply, token: token, age: age},
+                data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token, age: age},
                 dataType: 'json',
                 success: function (res) {
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
@@ -241,7 +241,7 @@ $(document).ready(function(){
         $.ajax({
             url:"/php/data/itemAct.php",
             type:"POST",
-            data:{seq:thisrepID,action:"rep_del",token: token, age: age,userseq:mid},
+            data:{ID:thisrepID,action:"rep_del",token: token, age: age,userID:mid},
             dataType:'json',
             success: function () {
 
@@ -260,7 +260,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {seq: thisitemID, repseq: thisrepID, action: "sub_comment", userseq: mid, token: token, age: age},
+                data: {ID: thisitemID, repID: thisrepID, action: "sub_comment", userID: mid, token: token, age: age},
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
@@ -269,13 +269,13 @@ $(document).ready(function(){
                         function registRep(res) {
                             for (var i = 0; i < Object.keys(res).length - 2; i++) {
                                 var write = '';
-                                var seq = res[i]['SEQ'];
+                                var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
                                 var date = res[i]['REPLY_DATE'];
                                 var reply = res[i]['REPLY'];
-                                write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + seq + '">';
+                                write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
-                                write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
+                                write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
                                 subrep_list.append(write);
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
@@ -308,10 +308,10 @@ $(document).ready(function(){
                 url: "/php/data/itemAct.php",
                 type: "POST",
                 data: {
-                    seq: thisitemID,
+                    ID: thisitemID,
                     action: "commentreg_sub",
-                    repseq: thisrepID,
-                    userseq: mid,
+                    repID: thisrepID,
+                    userID: mid,
                     comment: reply,
                     token: token,
                     age: age
@@ -341,7 +341,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {repseq: repID, action: "more_sub_comment", userseq: mid, index: index, token: token, age: age},
+            data: {repID: repID, action: "more_sub_comment", userID: mid, index: index, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
@@ -353,13 +353,13 @@ $(document).ready(function(){
                     var btn = $('#' + caret + ' .cursor');
                     for (var i = 0; i < Object.keys(res).length - 2; i++) {
                         var write = '';
-                        var seq = res[i]['SEQ'];
+                        var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
-                        write += '<div class=commentReply id="' + where + '-rep-' + seq + '">';
+                        write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['SEQ_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
+                        write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -406,9 +406,9 @@ $(document).ready(function(){
                 url: "/php/data/itemAct.php",
                 type: "POST",
                 data: {
-                    seq: thisitemID,
+                    ID: thisitemID,
                     action: "buy",
-                    userseq: mid,
+                    userID: mid,
                     price: $('#' + thisitemID + ' .tail .price .value').text(), token: token, age: age
                 },
                 dataType: 'json',
@@ -430,7 +430,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {seq: thisitemID, action: "more", userseq: mid, token: token, age: age},
+                data: {ID: thisitemID, action: "more", userID: mid, token: token, age: age},
                 dataType: 'json',
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
@@ -460,7 +460,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisitemID, action: "del", token: token, age: age},
+            data: {ID: thisitemID, action: "del", token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
@@ -477,11 +477,11 @@ $(document).ready(function(){
     //수정버튼 동작
     var expose_mod;
     var folderid_mod;
-    var itemseq_mod;
+    var itemID_mod;
     $(document).on('click', '.itemMod', function () {
         var thisitemID = $(this).parents()[5].id;
         var type = '';
-        itemseq_mod=thisitemID;
+        itemID_mod=thisitemID;
         expose_mod = null;
         folderid_mod = null;
         $('#directorySettingSub-mod').text('비분류');
@@ -498,7 +498,7 @@ $(document).ready(function(){
             url: '/php/data/modItem.php',
             type: 'GET',
             dataType: 'json',
-            data: {itemseq: thisitemID, action: "get_item"},
+            data: {itemID: thisitemID, action: "get_item"},
             success: function (res) {
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
@@ -567,12 +567,12 @@ $(document).ready(function(){
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
-        var seq_target=null;
-        if(targetseq){
-            if (mid == targetseq) {
-                seq_target = null;
+        var ID_target=null;
+        if(targetID){
+            if (mid == targetID) {
+                ID_target = null;
             } else {
-                seq_target = targetseq;
+                ID_target = targetID;
             }
         }
         if ($('#sendBody-mod').html().length > 0) {
@@ -580,9 +580,9 @@ $(document).ready(function(){
                 url: "/php/data/modItem.php",
                 type: "POST",
                 data: {
-                    seq:itemseq_mod,
+                    ID:itemID_mod,
                     body: $('#sendBody-mod').html(),
-                    seq_writer: mid,
+                    ID_writer: mid,
                     folder: folderid_mod,
                     token: token, age: age,
                     tag: $('#taginputs-mod').val(),
@@ -592,25 +592,25 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function (res) {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
-                    var targetseq = res['SEQ_TARGET'];
+                    var targetID = res['ID_TARGET'];
                     var targetname = res['TARGET_NAME'];
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose=res['EXPOSE'];
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
-                    $('#'+itemseq_mod).replaceWith(write)
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose);
+                    $('#'+itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
                 },
@@ -631,7 +631,7 @@ $(document).ready(function(){
                 url: "/php/data/modItem.php",
                 type: "POST",
                 data: {
-                    seq:itemseq_mod,
+                    ID:itemID_mod,
                     body: $('#publiBody-mod').html(),
                     for_sale: "Y",
                     price: $('#contentCost-mod').val(),
@@ -650,8 +650,8 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function (res) {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var title = res['TITLE'];
@@ -660,15 +660,15 @@ $(document).ready(function(){
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose=res['EXPOSE']
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic,expose);
-                    $('#'+itemseq_mod).replaceWith(write)
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic,expose);
+                    $('#'+itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
                     $('#publiBody-mod').html("").trigger('keyup');
@@ -786,7 +786,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisitemID, action: "top", mid: mid, token: token, age: age},
+            data: {ID: thisitemID, action: "top", mid: mid, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (!res['result'] == 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
@@ -804,7 +804,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {seq: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token, age: age},
+            data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'N' && res['reason'] == 'already') {

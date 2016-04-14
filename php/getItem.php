@@ -33,8 +33,8 @@
     $iid=$_GET['iid'];  //item id
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $userseq = $userinfo->getSEQ();
-    $_GET['id']=$userseq;
+    $userID = $userinfo->getID();
+    $_GET['id']=$userID;
     include "left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
@@ -66,7 +66,7 @@
                                 <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                     <?php
                                     for ($i = 0; $i < count($forder); $i++) {
-                                        echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                        echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                                     }
                                     ?>
                                 </ul>
@@ -212,8 +212,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script>
         var iid=<?=$iid?>;
-        var userseq=<?=$userseq?>;
-        var loadOption = {seq: userseq, getItem: iid};
+        var userID=<?=$userID?>;
+        var loadOption = {ID: userID, getItem: iid};
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

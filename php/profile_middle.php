@@ -3,15 +3,15 @@
     <?php
     require_once '../conf/getTarget.php';
     //글쓰기권한,공개설정 탐색
-    $w = "SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+    $w = "SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE ID=:ID";
     $p = $db->prepare($w);
-    $p->bindValue(':SEQ', $targetid);
+    $p->bindValue(':ID', $targetid);
     $p->execute();
     $auth = $p->fetch(PDO::FETCH_ASSOC);
     $writeauth = $auth['WRITEAUTH'];
     $expauth = $auth['EXPAUTH'];
     //자신일경우
-    $I = $targetid == $userseq ? 1 : 0;
+    $I = $targetid == $userID ? 1 : 0;
     //위에 버튼그룹
     if ($I) {
 //        내프로필일경우
@@ -23,9 +23,9 @@
         <div class="btn-group" role="group" id="profile-middle-nav">
             <!--            친구목록-->
             <?php
-            $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
+            $sql3 = "SELECT ID_FRIEND FROM publixher.TBL_FRIENDS WHERE ID_USER=:ID_USER AND ALLOWED='Y'";
             $prepare3 = $db->prepare($sql3);
-            $prepare3->bindValue(':SEQ_USER', $targetid);
+            $prepare3->bindValue(':ID_USER', $targetid);
             $prepare3->execute();
             $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
             $friendnum = count($friends);
@@ -40,13 +40,13 @@
                     <li><input type="text" class="form-control"></li>
                     <?
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
                     for ($i = 0; $i < $friendnum; $i++) {
-                        $friprepare->bindValue(':SEQ', $friends[$i]['SEQ_FRIEND'], PDO::PARAM_STR);
+                        $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
                         $friprepare->execute();
                         $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['SEQ'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -57,9 +57,9 @@
             <!--            구독목록-->
             <div class="btn-group" role="group">
                 <?php
-                $sql4 = "SELECT SEQ_MASTER FROM publixher.TBL_FOLLOW WHERE SEQ_SLAVE=:SEQ_SLAVE";
+                $sql4 = "SELECT ID_MASTER FROM publixher.TBL_FOLLOW WHERE ID_SLAVE=:ID_SLAVE";
                 $prepare4 = $db->prepare($sql4);
-                $prepare4->bindValue(':SEQ_SLAVE', $targetid);
+                $prepare4->bindValue(':ID_SLAVE', $targetid);
                 $prepare4->execute();
                 $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
                 $masternum = count($masters);
@@ -73,13 +73,13 @@
                     <li><input type="text" class="form-control"></li>
                     <?
                     $arr = array();
-                    $msql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
                     for ($i = 0; $i < $masternum; $i++) {
-                        $mriprepare->bindValue(':SEQ', $masters[$i]['SEQ_MASTER'], PDO::PARAM_STR);
+                        $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
                         $mriprepare->execute();
                         $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['SEQ'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -89,10 +89,10 @@
             </div>
             <!--            친구신청목록-->
             <?
-            //친구요청(SEQ_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
-            $sql2 = "SELECT SEQ_USER,SEQ FROM publixher.TBL_FRIENDS WHERE (SEQ_FRIEND=:SEQ_FRIEND AND ALLOWED='N') ORDER BY SEQ DESC";
+            //친구요청(ID_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
+            $sql2 = "SELECT ID_USER,ID FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ALLOWED='N') ORDER BY ID DESC";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ_FRIEND', $targetid, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID_FRIEND', $targetid, PDO::PARAM_STR);
             $prepare2->execute();
             $friendrequest = $prepare2->fetchAll(PDO::FETCH_ASSOC);
             $frequestnum = count($friendrequest);
@@ -110,13 +110,13 @@
                         echo '<li><a>친구요청이 없습니다</a></li>';
                     } else {
                         $arr = array();
-                        $fsql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                        $fsql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
                         $fprepare = $db->prepare($fsql);
                         for ($i = 0; $i < $frequestnum; $i++) {
-                            $fprepare->bindValue(':SEQ', $friendrequest[$i]['SEQ_USER'], PDO::PARAM_STR);
+                            $fprepare->bindValue(':ID', $friendrequest[$i]['ID_USER'], PDO::PARAM_STR);
                             $fprepare->execute();
                             $reqname = $fprepare->fetch(PDO::FETCH_ASSOC);
-                            echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['SEQ_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['SEQ_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
+                            echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['ID'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['ID'] . "' class='friendno freqanswer'>X</a></li>";
                             $arr[] = $reqname;
                         }
                         $arr = json_encode($arr);
@@ -162,15 +162,15 @@
             </script>
             <!--            친구목록-->
             <?php
-            $sql3 = "SELECT SEQ_FRIEND FROM publixher.TBL_FRIENDS WHERE SEQ_USER=:SEQ_USER AND ALLOWED='Y'";
+            $sql3 = "SELECT ID_FRIEND FROM publixher.TBL_FRIENDS WHERE ID_USER=:ID_USER AND ALLOWED='Y'";
             $prepare3 = $db->prepare($sql3);
-            $prepare3->bindValue(':SEQ_USER', $targetid);
+            $prepare3->bindValue(':ID_USER', $targetid);
             $prepare3->execute();
             $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
             $friendnum = count($friends);
             //나랑 글쓴이랑 친구인지 확인
             foreach ($friends as $fri) {
-                $frelation = $userseq == $fri['SEQ_FRIEND'];
+                $frelation = $userID == $fri['ID_FRIEND'];
                 //친구관계면 스크립트에 쓰고 브레이크
                 if ($frelation) {
                     echo "<script>var frelation=true;</script>";
@@ -188,13 +188,13 @@
                     <li><input type="text" class="form-control"></li>
                     <?
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
                     for ($i = 0; $i < $friendnum; $i++) {
-                        $friprepare->bindValue(':SEQ', $friends[$i]['SEQ_FRIEND'], PDO::PARAM_STR);
+                        $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
                         $friprepare->execute();
                         $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['SEQ'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -205,9 +205,9 @@
             <!--            구독목록-->
             <div class="btn-group" role="group">
                 <?php
-                $sql4 = "SELECT SEQ_MASTER FROM publixher.TBL_FOLLOW WHERE SEQ_SLAVE=:SEQ_SLAVE";
+                $sql4 = "SELECT ID_MASTER FROM publixher.TBL_FOLLOW WHERE ID_SLAVE=:ID_SLAVE";
                 $prepare4 = $db->prepare($sql4);
-                $prepare4->bindValue(':SEQ_SLAVE', $targetid);
+                $prepare4->bindValue(':ID_SLAVE', $targetid);
                 $prepare4->execute();
                 $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
                 $masternum = count($masters);
@@ -221,13 +221,13 @@
                     <li><input type="text" class="form-control"></li>
                     <?
                     $arr = array();
-                    $msql = "SELECT USER_NAME,PIC,SEQ FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+                    $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
                     for ($i = 0; $i < $masternum; $i++) {
-                        $mriprepare->bindValue(':SEQ', $masters[$i]['SEQ_MASTER'], PDO::PARAM_STR);
+                        $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
                         $mriprepare->execute();
                         $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['SEQ'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -238,10 +238,10 @@
 
             <?php
             //친구신청 버튼
-            $sql2 = "SELECT ALLOWED FROM publixher.TBL_FRIENDS WHERE (SEQ_FRIEND=:SEQ_FRIEND AND SEQ_USER=:SEQ_USER) LIMIT 1";
+            $sql2 = "SELECT ALLOWED FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) LIMIT 1";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue('SEQ_FRIEND', $targetid, PDO::PARAM_STR);
-            $prepare2->bindValue('SEQ_USER', $userseq, PDO::PARAM_STR);
+            $prepare2->bindValue('ID_FRIEND', $targetid, PDO::PARAM_STR);
+            $prepare2->bindValue('ID_USER', $userID, PDO::PARAM_STR);
             $prepare2->execute();
             $allowed = $prepare2->fetchColumn();
             if (!$allowed) {
@@ -253,10 +253,10 @@
             }
 
             //구독신청 버튼
-            $sql3 = "SELECT SEQ FROM publixher.TBL_FOLLOW WHERE SEQ_MASTER=:SEQ_MASTER AND SEQ_SLAVE=:SEQ_SLAVE LIMIT 1";
+            $sql3 = "SELECT ID FROM publixher.TBL_FOLLOW WHERE ID_MASTER=:ID_MASTER AND ID_SLAVE=:ID_SLAVE LIMIT 1";
             $prepare3 = $db->prepare($sql3);
-            $prepare3->bindValue('SEQ_MASTER', $targetid, PDO::PARAM_STR);
-            $prepare3->bindValue('SEQ_SLAVE', $userseq, PDO::PARAM_STR);
+            $prepare3->bindValue('ID_MASTER', $targetid, PDO::PARAM_STR);
+            $prepare3->bindValue('ID_SLAVE', $userID, PDO::PARAM_STR);
             $prepare3->execute();
             $subscribe = $prepare3->fetchColumn();
             if (!$subscribe) {
@@ -298,15 +298,15 @@
                             require_once '../conf/User.php';
                             session_start();
                             $userinfo = $_SESSION['user'];
-                            $userseq = $userinfo->getSEQ();
+                            $userID = $userinfo->getID();
                             //폴더목록 불러오기
-                            $sql1 = "SELECT SEQ,DIR FROM publixher.TBL_FORDER WHERE SEQ_USER=:SEQ_USER";
+                            $sql1 = "SELECT ID,DIR FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
                             $prepare1 = $db->prepare($sql1);
-                            $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
+                            $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
                             $prepare1->execute();
                             $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
                             for ($i = 0; $i < count($forder); $i++) {
-                                echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                             }
                             ?>
                         </ul>
@@ -445,7 +445,7 @@
                             <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                 <?php
                                 for ($i = 0; $i < count($forder); $i++) {
-                                    echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                    echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -555,8 +555,8 @@
 </div>
 <script>
     var page = 0;
-    var targetseq =<?=${targetid}?>;
-    var loadOption = {seq: mid, nowpage: page, profile: targetseq, I: I, frelation: frelation};
+    var targetID =<?=${targetid}?>;
+    var loadOption = {ID: mid, nowpage: page, profile: targetID, I: I, frelation: frelation};
 </script>
 <!--    해시 태그-->
 <link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">

@@ -21,7 +21,7 @@ class User
     private $IS_NICK;
     private $TOP_CONTENT;
     private $IN_USE;
-    private $SEQ;
+    private $ID;
     private $WRITEAUTH;
     private $EXPAUTH;
 
@@ -41,15 +41,15 @@ class User
      * @param $IS_NICK
      * @param $TOP_CONTENT
      * @param $IN_USE
-     * @param $SEQ
+     * @param $ID
      */
 
     /**
      * @return mixed
      */
-    public function getSEQ()
+    public function getID()
     {
-        return $this->SEQ;
+        return $this->ID;
     }
 
     /**

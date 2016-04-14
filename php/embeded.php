@@ -33,13 +33,13 @@
     $iid=$_GET['iid'];
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $userseq = $userinfo->getSEQ();
-    $_GET['id']=$userseq;
+    $userID = $userinfo->getID();
+    $_GET['id']=$userID;
     echo '<div id="middle"><span id="prea"></span>';
     echo '</div>';
     ?>
     <script>
-        var loadOption = {seq: <?=$iid?>};
+        var loadOption = {ID: <?=$iid?>};
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

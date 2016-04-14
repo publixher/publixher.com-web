@@ -1,18 +1,18 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag) {
+function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag) {
     write = '<div class="item card" id="';
-    write += seq;
+    write += ID;
     write += '"><div class="header">';
     write += '<img src="' + pic + '" class="profilepic">';
     write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
     write += name + '</a>&nbsp;'
-    if(targetseq){
-        write+='>>> <a href="/php/profile.php?id=' + targetseq + '">'+targetname+'</a> '
+    if(targetID){
+        write+='>>> <a href="/php/profile.php?id=' + targetID + '">'+targetname+'</a> '
     }
-    if (folderseq) {
-        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
+    if (folderID) {
+        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderID + '">' + foldername + '</a>&nbsp;';
     } else {
         write += date + '&nbsp;비분류&nbsp;';
     }
@@ -50,15 +50,15 @@ function itemLoad(write, seq, name, date, knock, comment, preview, writer, folde
     return write;
 }
 
-function itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more,tag) {
+function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose,more,tag) {
     write = '<div class="item-for-sale card" id="';
-    write += seq;
+    write += ID;
     write += '"><div class="header">';
     write += '<img src="' + pic + '" class="profilepic">';
     write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
     write += name + '</a>&nbsp;'
-    if (folderseq) {
-        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderseq + '">' + foldername + '</a>&nbsp;';
+    if (folderID) {
+        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderID + '">' + foldername + '</a>&nbsp;';
     } else {
         write += date + '&nbsp;비분류&nbsp;';
     }
@@ -124,26 +124,26 @@ $(document).ready(function(){
                 if (res[i]['USER_NAME'] != null) {
                     if (res[i]['FOR_SALE'] == "N") {
                         var write = '';
-                        var seq = res[i]['SEQ'];
-                        var writer = res[i]['SEQ_WRITER'];
+                        var ID = res[i]['ID'];
+                        var writer = res[i]['ID_WRITER'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['WRITE_DATE'];
                         var knock = res[i]['KNOCK'];
                         var comment = res[i]['COMMENT'];
                         var preview = res[i]['PREVIEW'];
                         var pic = res[i]['PIC'].replace('profile','crop50');
-                        var targetseq = res[i]['SEQ_TARGET'];
+                        var targetID = res[i]['ID_TARGET'];
                         var targetname = res[i]['TARGET_NAME'];
-                        var folderseq = null;
+                        var folderID = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
                         var more=res[i]['MORE'];
                         if (res[i]['FOLDER'] != null) {
-                            folderseq = res[i]['FOLDER'];
+                            folderID = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
                         var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                        write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);
+                        write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag);
                         if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
@@ -154,8 +154,8 @@ $(document).ready(function(){
 
                     } else {
                         var write = '';
-                        var seq = res[i]['SEQ'];
-                        var writer = res[i]['SEQ_WRITER'];
+                        var ID = res[i]['ID'];
+                        var writer = res[i]['ID_WRITER'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['WRITE_DATE'];
                         var title = res[i]['TITLE'];
@@ -165,16 +165,16 @@ $(document).ready(function(){
                         var bought = res[i]['BOUGHT'];
                         var preview = res[i]['PREVIEW'];
                         var pic = res[i]['PIC'].replace('profile','crop50');
-                        var folderseq = null;
+                        var folderID = null;
                         var foldername = null;
                         var expose=res[i]['EXPOSE'];
                         var more=res[i]['MORE']
                         if (res[i]['FOLDER'] != null) {
-                            folderseq = res[i]['FOLDER'];
+                            folderID = res[i]['FOLDER'];
                             foldername = res[i]['FOLDER_NAME'];
                         }
                         var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                        write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose,more,tag);
+                        write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose,more,tag);
                         if($('#topcon').length>0){
                             $('#topcon').after(write);
                         } else if($('#upform').length>0) {
@@ -231,25 +231,25 @@ $(document).ready(function(){
                             if (res[i]['USER_NAME'] != null) {
                                 if (res[i]['FOR_SALE'] == "N") {
                                     var write = '';
-                                    var seq = res[i]['SEQ'];
-                                    var writer = res[i]['SEQ_WRITER'];
+                                    var ID = res[i]['ID'];
+                                    var writer = res[i]['ID_WRITER'];
                                     var name = res[i]['USER_NAME'];
                                     var date = res[i]['WRITE_DATE'];
                                     var knock = res[i]['KNOCK'];
                                     var comment = res[i]['COMMENT'];
                                     var preview = res[i]['PREVIEW'];
                                     var pic = res[i]['PIC'].replace('profile','crop50');
-                                    var targetseq = res[i]['SEQ_TARGET'];
+                                    var targetID = res[i]['ID_TARGET'];
                                     var targetname = res[i]['TARGET_NAME'];
-                                    var folderseq = null;
+                                    var folderID = null;
                                     var foldername = null;
                                     var expose = res[i]['EXPOSE']
                                     var more = res[i]['MORE']
                                     if (res[i]['FOLDER'] != null) {
-                                        folderseq = res[i]['FOLDER'];
+                                        folderID = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
-                                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic, targetseq, targetname, expose, more,tag);
+                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more,tag);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
@@ -257,8 +257,8 @@ $(document).ready(function(){
                                     }
                                 } else {
                                     var write = '';
-                                    var seq = res[i]['SEQ'];
-                                    var writer = res[i]['SEQ_WRITER'];
+                                    var ID = res[i]['ID'];
+                                    var writer = res[i]['ID_WRITER'];
                                     var name = res[i]['USER_NAME'];
                                     var date = res[i]['WRITE_DATE'];
                                     var title = res[i]['TITLE'];
@@ -268,16 +268,16 @@ $(document).ready(function(){
                                     var bought = res[i]['BOUGHT'];
                                     var preview = res[i]['PREVIEW'];
                                     var pic = res[i]['PIC'].replace('profile','crop50');
-                                    var folderseq = null;
+                                    var folderID = null;
                                     var foldername = null;
                                     var expose = res[i]['EXPOSE']
                                     var more = res[i]['MORE']
                                     if (res[i]['FOLDER'] != null) {
-                                        folderseq = res[i]['FOLDER'];
+                                        folderID = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag=res[i]['TAG']?res[i]['TAG'].split(' '):null;
-                                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic, expose, more,tag);
+                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more,tag);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {

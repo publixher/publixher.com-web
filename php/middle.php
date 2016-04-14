@@ -23,15 +23,15 @@
                         <?php
                         require_once '../conf/database_conf.php';
                         $userinfo = $_SESSION['user'];
-                        $userseq = $userinfo->getSEQ();
+                        $userID = $userinfo->getID();
                         //폴더목록 불러오기
-                        $sql1 = "SELECT SEQ,DIR FROM publixher.TBL_FORDER WHERE SEQ_USER=:SEQ_USER";
+                        $sql1 = "SELECT ID,DIR FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
                         $prepare1 = $db->prepare($sql1);
-                        $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
+                        $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
                         $prepare1->execute();
                         $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
                         for ($i = 0; $i < count($forder); $i++) {
-                            echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                            echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                         }
                         ?>
                     </ul>
@@ -159,7 +159,7 @@
                             <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                 <?php
                                 for ($i = 0; $i < count($forder); $i++) {
-                                    echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                    echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -265,9 +265,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
 <script>
     var page = 0;
-    var mid=<?=$userseq?>;
-    var targetseq=null;
-    var loadOption = {seq: mid, nowpage: page};
+    var mid=<?=$userID?>;
+    var targetID=null;
+    var loadOption = {ID: mid, nowpage: page};
 </script>
 <!--    해시 태그-->
 <link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">

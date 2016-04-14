@@ -35,8 +35,8 @@
     //토큰
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $userseq = $userinfo->getSEQ();
-    $_GET['id']=$userseq;
+    $userID = $userinfo->getID();
+    $_GET['id']=$userID;
     include "profile_left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
@@ -81,7 +81,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script>
         var page = 0;
-        var loadOption={seq:mid,nowpage:page,buylist:"Y"};
+        var loadOption={ID:mid,nowpage:page,buylist:"Y"};
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

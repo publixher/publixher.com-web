@@ -42,7 +42,7 @@
     //중간
     echo '<div id="middle">';
     //폴더목록 가져오기
-    $userseq = $userinfo->getSEQ();
+    $userID = $userinfo->getID();
     $usermail = $userinfo->getEMAIL();
     $userpw = $userinfo->getPASSWORD();
     $username = $userinfo->getUSERNAME();
@@ -56,14 +56,14 @@
     $birth = date("Y-m-d", strtotime($target['BIRTH']));
     $birth=explode('-',$birth);
     if ($userinfo->getISNICK() == 'N') {
-        $sql3 = "SELECT SEQ_ANONY FROM publixher.TBL_CONNECTOR WHERE SEQ_USER=:SEQ_USER";
+        $sql3 = "SELECT ID_ANONY FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue('SEQ_USER', $userseq, PDO::PARAM_STR);
+        $prepare3->bindValue('ID_USER', $userID, PDO::PARAM_STR);
         $prepare3->execute();
-        $anonyseq = $prepare3->fetch(PDO::FETCH_ASSOC);
-        $sql4 = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+        $anonyID = $prepare3->fetch(PDO::FETCH_ASSOC);
+        $sql4 = "SELECT USER_NAME FROM publixher.TBL_USER WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue('SEQ', $anonyseq['SEQ_ANONY'], PDO::PARAM_STR);
+        $prepare4->bindValue('ID', $anonyID['ID_ANONY'], PDO::PARAM_STR);
         $prepare4->execute();
         $nickname = $prepare4->fetch(PDO::FETCH_ASSOC);
         $nickname = $nickname['USER_NAME'];

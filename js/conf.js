@@ -24,12 +24,12 @@ $(document).ready(function () {
                             for (var i = 0; i < res.length; i++) {
                                 switch(target){
                                     case 'name':if (res[i]['IS_NICK'] == 'Y') {
-                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
+                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
                                     } else {
-                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['SEQ'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
+                                        SearchRes += '<li><a href="/php/profile.php?id=' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
                                     }break;
                                     case 'title':for (var i = 0; i < res.length; i++) {
-                                        SearchRes += '<li><a href="/php/getItem.php?iid=' + res[i]['SEQ'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
+                                        SearchRes += '<li><a href="/php/getItem.php?iid=' + res[i]['ID'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
                                     }break;
                                     case 'tag':for (var i = 0; i < res.length; i++) {
                                         SearchRes += '<li><a href="/php/Search.php?type=tag&tag=' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
@@ -83,7 +83,7 @@ $(document).ready(function () {
                     switch (res[i]['ACT']) {
                         case '1':
                             var word = "" + res[i]['TITLE'] + " 게시물에 신규 구매가 있습니다.";
-                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
                             break;
                         case '2':
                             var word = res[i]['USER_NAME'] + '님이 회원님과 친구가 되고싶어 합니다.';
@@ -92,20 +92,20 @@ $(document).ready(function () {
                         case '3':
                             res[i]['TITLE'] = res[i]['TITLE'] ? res[i]['TITLE'] : '회원님의';
                             var word = "" + res[i]['TITLE'] + " 게시물에 새로운 댓글이 있습니다.";
-                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
                             break;
                         case '4':
                             res[i]['TITLE'] = res[i]['TITLE'] ? res[i]['TITLE'] : '회원님의';
                             var word = "" + res[i]['TITLE'] + " 게시물에 새로운 노크가 있습니다.";
-                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
                             break;
                         case '6':
                             var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 노크가 있습니다.";
-                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
                             break;
                         case '7':
                             var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 대댓글이 있습니다.";
-                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['SEQ_CONTENT'] + '">' + word + '</a></li>');
+                            $('#notilist li:last-child').after('<li><a href="/php/getItem.php?iid=' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
                             break;
                     }
                 }

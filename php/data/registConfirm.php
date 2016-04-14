@@ -34,10 +34,10 @@ if ($check_email && $check_pass && $check_name) {
         $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
         $prepare->execute();
-        $seq = $db->lastInsertId();
-        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(SEQ_USER) VALUES(:SEQ_USER)";
+        $ID = $db->lastInsertId();
+        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ_USER', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         $db->commit();
     }catch(PDOException $e){

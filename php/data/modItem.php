@@ -4,17 +4,17 @@ require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 session_start();
 $action = $_GET['action'] ? $_GET['action'] : $_POST['action'];
-$itemseq = $_GET['itemseq'] ? $_GET['itemseq'] : $_POST['itemseq'];
+$itemID = $_GET['itemID'] ? $_GET['itemID'] : $_POST['itemID'];
 if ($action == 'get_item') {
-    $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $pr = $db->prepare($gs);
-    $pr->bindValue(':SEQ', $itemseq);
+    $pr->bindValue(':ID', $itemID);
     $pr->execute();
     $data = $pr->fetch(PDO::FETCH_ASSOC);
     if ($data['FOLDER']) {
-        $s = "SELECT DIR FROM publixher.TBL_FORDER WHERE SEQ=:SEQ";
+        $s = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
         $pr = $db->prepare($s);
-        $pr->bindValue(':SEQ', $data['FOLDER']);
+        $pr->bindValue(':ID', $data['FOLDER']);
         $pr->execute();
         $data['DIR'] = $pr->fetchColumn();
     }
@@ -96,24 +96,24 @@ if ($action == 'get_item') {
         }
     }
     //content테이블에 넣음
-    $seq_writer = $_POST['seq_writer'];
-    $targetseq = $_POST['targetseq'];
-    $id=$_POST['seq'];
+    $ID_writer = $_POST['ID_writer'];
+    $targetID = $_POST['targetID'];
+    $id=$_POST['ID'];
 
-    $q="SELECT ORIGINAL,CHANGED,BODY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $q="SELECT ORIGINAL,CHANGED,BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $p=$db->prepare($q);
-    $p->bindValue(':SEQ',$id);
+    $p->bindValue(':ID',$id);
     $p->execute();
     $origin=$p->fetch(PDO::FETCH_ASSOC);
     $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
 
     if (!$_POST['for_sale']) {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL WHERE SEQ=:SEQ";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL WHERE ID=:ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD WHERE SEQ=:SEQ";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD WHERE ID=:ID";
     }
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ', $id);
+    $prepare->bindValue(':ID', $id);
     $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
@@ -138,41 +138,41 @@ if ($action == 'get_item') {
     }
     $prepare->execute();
     //id로 컨텐츠 테이블의 내용도 가져옴
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ', $id, PDO::PARAM_STR);
+    $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
     //글쓴이의 정보도 가져옴
-    $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+    $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ', $_SESSION['user']->getSEQ(), PDO::PARAM_STR);
+    $prepare->bindValue(':ID', $_SESSION['user']->getID(), PDO::PARAM_STR);
     $prepare->execute();
     $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
     $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
     //타겟이 있다면 타겟의 정보도 가져옴
-    if ($targetseq) {
-        $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+    if ($targetID) {
+        $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE ID=:ID";
         $tp = $db->prepare($t);
-        $tp->bindValue(':SEQ', $targetseq);
+        $tp->bindValue(':ID', $targetID);
         $tp->execute();
         $result['TARGET_NAME'] = $tp->fetchColumn();
     }
     //원래 폴더에서 수 감소
-    $fs="UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE SEQ=:SEQ";
+    $fs="UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
     $fp = $db->prepare($fs);
-    $fp->bindValue(':SEQ', $_POST['folder'], PDO::PARAM_STR);
+    $fp->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
     $fp->execute();
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
-        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE SEQ=:SEQ";
+        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':SEQ', $_POST['folder'], PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare3->execute();
         //폴더 이름 받아오기
-        $sql4 = "SELECT DIR FROM publixher.TBL_FORDER WHERE SEQ=:SEQ";
+        $sql4 = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':SEQ', $_POST['folder'], PDO::PARAM_STR);
+        $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare4->execute();
         $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
     }

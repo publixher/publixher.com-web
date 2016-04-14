@@ -5,12 +5,12 @@ $(document).ready(function () {
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
-        var seq_target = null;
-        if (targetseq) {
-            if (mid == targetseq) {
-                seq_target = null;
+        var ID_target = null;
+        if (targetID) {
+            if (mid == targetID) {
+                ID_target = null;
             } else {
-                seq_target = targetseq;
+                ID_target = targetID;
             }
         }
         if ($('#sendBody').html().length > 0) {
@@ -19,37 +19,37 @@ $(document).ready(function () {
                 type: "POST",
                 data: {
                     body: $('#sendBody').html(),
-                    seq_writer: mid,
-                    folder: $folderseq,
+                    ID_writer: mid,
+                    folder: $folderID,
                     token: token, age: age,
                     tag: $('#taginputs').val(),
                     expose: expose,
-                    targetseq: seq_target,
+                    targetID: ID_target,
                     tags:JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
                 },
                 dataType: 'json',
                 success: function (res) {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'].replace('profile', 'crop50');
-                    var targetseq = res['SEQ_TARGET'];
+                    var targetID = res['ID_TARGET'];
                     var targetname = res['TARGET_NAME'];
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose = res['EXPOSE']
                     var more = res['MORE']
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose,more,tag);                    $('#upform').after(write);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag);                    $('#upform').after(write);
                     $('#sendBody').html("").trigger('input').trigger('keyup');
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
@@ -74,7 +74,7 @@ $(document).ready(function () {
                 type: "POST",
                 data: {
                     body: $('#publiBody').html(),
-                    seq_writer: mid,
+                    ID_writer: mid,
                     for_sale: "Y",
                     price: $('#contentCost').val(),
                     category: category,
@@ -82,7 +82,7 @@ $(document).ready(function () {
                     adult: $('#adult').is(':checked'),
                     ad: $('#ad').is(':checked'),
                     title: $('#saleTitle').val(),
-                    folder: $folderseq,
+                    folder: $folderID,
                     token: token,
                     age: age,
                     tag: $('#taginputp').val(),
@@ -92,8 +92,8 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var title = res['TITLE'];
@@ -102,16 +102,16 @@ $(document).ready(function () {
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'].replace('profile', 'crop50');
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose = res['EXPOSE'];
                     var more = res['MORE']
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, true, preview, writer, folderseq, foldername, pic, expose, more,tag);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
@@ -148,10 +148,10 @@ $(document).ready(function () {
         }
     })
     //폴더설정 버튼
-    var $folderseq;
+    var $folderID;
     $('#dirSublist li').click(function () {
         $('#directorySettingSub').text($(this).text());
-        $folderseq = $(this).attr('folderid');
+        $folderID = $(this).attr('folderid');
     })
     //카테고리 리스트 버튼
     var category = null;
@@ -232,7 +232,7 @@ $(document).ready(function () {
     //파일 업로드시 동작
     $('#fileuploads,#fileuploadp').fileupload({
         dataType: 'json',
-        sequentialUploads: true,
+        IDuentialUploads: true,
         add: function (e, data) {
             var uploadFile = data.files[0];
             var isValid = true;

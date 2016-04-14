@@ -5,7 +5,7 @@
 
     <?php
 
-    $mid = $_SESSION['user']->getSEQ();
+    $mid = $_SESSION['user']->getID();
     $mname = $_SESSION['user']->getUSERNAME();
     $mage = $_SESSION['user']->getBIRTH();
     $mpic=$_SESSION['user']->getPIC();

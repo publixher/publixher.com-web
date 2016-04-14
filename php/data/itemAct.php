@@ -26,48 +26,48 @@ if (!$act) {
 }
 //액션에 따라 동작이 달라짐 knock,comment,commentreg,share,buy
 if ($act == 'knock') {
-    $seq = $_POST['seq'];
-    $userseq = $_POST['userseq'];
-    $sql = "SELECT SEQ FROM publixher.TBL_KNOCK_LIST WHERE (SEQ_USER=:SEQ_USER AND SEQ_CONTENT=:SEQ_CONTENT) LIMIT 1 ";
+    $ID = $_POST['ID'];
+    $userID = $_POST['userID'];
+    $sql = "SELECT ID FROM publixher.TBL_KNOCK_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT) LIMIT 1 ";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue('SEQ_USER', $userseq, PDO::PARAM_STR);
-    $prepare->bindValue('SEQ_CONTENT', $seq, PDO::PARAM_STR);
+    $prepare->bindValue('ID_USER', $userID, PDO::PARAM_STR);
+    $prepare->bindValue('ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare->execute();
     $knocked = $prepare->fetch(PDO::FETCH_ASSOC);
     if (!$knocked) {
         //노크처리
-        $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
-        $sql2 = "UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK+1 WHERE SEQ=:SEQ;";
-        $sql3 = "SELECT KNOCK,SEQ_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
+        $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+        $sql2 = "UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK+1 WHERE ID=:ID;";
+        $sql3 = "SELECT KNOCK,ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
         //insert문
         $prepare1 = $db->prepare($sql1);
-        $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-        $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare1->execute();
         //update문
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         //select문
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare3->execute();
         $result = $prepare3->fetch(PDO::FETCH_ASSOC);
         echo json_encode($result, JSON_UNESCAPED_UNICODE);;
         //알람처리
-        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,4,:SEQ_ACTOR)";
+        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,4,:ID_ACTOR)";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_WRITER'], PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
         //흥미 처리
-        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(SEQ_USER,TYPE,INTEREST) VALUES(:SEQ_USER,:TYPE,:INTEREST)";
+        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
         $ip=$db->prepare($sql5);
-        $ip->bindValue(':SEQ_USER',$userseq);
+        $ip->bindValue(':ID_USER',$userID);
         //작성자를 추가
         $ip->bindValue(':TYPE',1);
-        $ip->bindValue(':INTEREST', $result['SEQ_WRITER']);
+        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
         $ip->execute();
         //서브 카테고리를 추가
         if($result['SUB_CATEGORY']){
@@ -91,14 +91,14 @@ if ($act == 'knock') {
     }
 } elseif ($act == 'comment' OR $act == 'more_comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
-    $seq = $_GET['seq'];
-    $userseq=$_GET['userseq'];
+    $ID = $_GET['ID'];
+    $userID=$_GET['userID'];
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ', $result[$i]['SEQ_USER'], PDO::PARAM_STR);
+            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
             $prepare2->execute();
             $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
             $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
@@ -107,7 +107,7 @@ if ($act == 'knock') {
         }
         return $result;
     }
-    function getBest($db, $seq,$index)
+    function getBest($db, $ID,$index)
     {
         $bestrep_sql = "SELECT \n"  //베스트댓글5개
             . "	* \n"
@@ -115,13 +115,13 @@ if ($act == 'knock') {
             . "	publixher.TBL_CONTENT_REPLY REPLY \n"
             . "WHERE \n"
             . "	KNOCK + SUB_REPLY >= 10 \n"
-            . "	AND SEQ_CONTENT = :SEQ_CONTENT \n"
+            . "	AND ID_CONTENT = :ID_CONTENT \n"
             . "ORDER BY \n"
             . "	KNOCK + SUB_REPLY DESC \n"
             . "LIMIT \n"
             . ":INDEX, 6";
         $prepare1 = $db->prepare($bestrep_sql);
-        $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare1->bindValue(':INDEX', $index, PDO::PARAM_STR);
         $prepare1->execute();
         $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
@@ -140,11 +140,11 @@ if ($act == 'knock') {
             return false;
         }
     }
-    function getTime($db, $seq,$index)
+    function getTime($db, $ID,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE SEQ_CONTENT=:SEQ_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY ID DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
-        $prepare1->bindValue(':SEQ_CONTENT', $seq);
+        $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':INDEX', $index);
         $prepare1->execute();
         $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
@@ -163,21 +163,21 @@ if ($act == 'knock') {
             return false;
         }
     }
-    function getFrie($db,$seq,$userseq,$index){
+    function getFrie($db,$ID,$userID,$index){
         $friend_sql = "SELECT \n"
             . "	REPLY.* \n"
             . "FROM \n"
-            . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.SEQ_USER = FRIEND.SEQ_FRIEND \n"
+            . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND \n"
             . "WHERE \n"
-            . "	FRIEND.SEQ_USER = :SEQ_USER \n"
-            . "	AND REPLY.SEQ_CONTENT = :SEQ_CONTENT \n"
+            . "	FRIEND.ID_USER = :ID_USER \n"
+            . "	AND REPLY.ID_CONTENT = :ID_CONTENT \n"
             . "ORDER BY \n"
-            . "	REPLY.SEQ DESC \n"
+            . "	REPLY.ID DESC \n"
             . "LIMIT \n"
             . "	:INDEX, 6";
         $prepare1 = $db->prepare($friend_sql);
-        $prepare1->bindValue(':SEQ_CONTENT', $seq);
-        $prepare1->bindValue(':SEQ_USER', $userseq);
+        $prepare1->bindValue(':ID_CONTENT', $ID);
+        $prepare1->bindValue(':ID_USER', $userID);
         $prepare1->bindValue(':INDEX', $index);
         $prepare1->execute();
         $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
@@ -200,25 +200,25 @@ if ($act == 'knock') {
         $sort = $_GET['sort'];
         if ($sort == 'first') {
             //베댓이 없으면 자동으로 시간순 정렬된 댓글이 보여
-            $result = getBest($db, $seq,0);
+            $result = getBest($db, $ID,0);
             if (!$result) {
-                $result = getTime($db, $seq,0);
+                $result = getTime($db, $ID,0);
                 if (!$result) {
                     echo '{"result":"NO"}';
                 }
             }
         } elseif ($sort== 'best') { //처음으로 로딩한게 아니라 각 탭을 보는거면 sort로 구분한다
-            $result=getBest($db,$seq,0);
+            $result=getBest($db,$ID,0);
             if(!$result){
                 echo '{"result":"NO"}';
             }
         }elseif($sort=='time'){
-            $result=getTime($db,$seq,0);
+            $result=getTime($db,$ID,0);
             if(!$result){
                 echo '{"result":"NO"}';
             }
         }elseif($sort=='frie'){
-            $result=getFrie($db,$seq,$userseq,0);
+            $result=getFrie($db,$ID,$userID,0);
             if(!$result){
                 echo '{"result":"NO"}';
             }
@@ -227,44 +227,44 @@ if ($act == 'knock') {
         $sort = $_GET['sort'];
         $index = $_GET['index'];
         if ($sort == 'best') {
-            $result=getBest($db,$seq,$index);
+            $result=getBest($db,$ID,$index);
             if(!$result) echo '{"result":"NO"}';
         } elseif ($sort == 'time') {
-            $result=getTime($db,$seq,$index);
+            $result=getTime($db,$ID,$index);
             if(!$result) echo '{"result":"NO"}';
         } elseif ($sort == 'frie') {
-            $result=getFrie($db,$seq,$userseq,$index);
+            $result=getFrie($db,$ID,$userID,$index);
             if(!$result) echo '{"result":"NO"}';
         }
     }
 } elseif ($act == 'commentreg') {
-    $userseq = $_POST['userseq'];
-    $seq = $_POST['seq'];
+    $userID = $_POST['userID'];
+    $ID = $_POST['ID'];
     $comment = $_POST['comment'];
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(SEQ_USER,SEQ_CONTENT,REPLY) VALUES(:SEQ_USER,:SEQ_CONTENT,:REPLY);";
-    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE SEQ=:SEQ;";
-    $sql3 = "SELECT COMMENT,SEQ_WRITER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID_USER,ID_CONTENT,REPLY) VALUES(:ID_USER,:ID_CONTENT,:REPLY);";
+    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
+    $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ_USER', $_POST['userseq'], PDO::PARAM_STR);
-    $prepare1->bindValue(':SEQ_CONTENT', $_POST['seq'], PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_USER', $_POST['userID'], PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_CONTENT', $_POST['ID'], PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $_POST['comment'], PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
-    $prepare2->bindValue(':SEQ', $_POST['seq'], PDO::PARAM_STR);
+    $prepare2->bindValue(':ID', $_POST['ID'], PDO::PARAM_STR);
     $prepare2->execute();
 
     $prepare3 = $db->prepare($sql3);
-    $prepare3->bindValue(':SEQ', $_POST['seq'], PDO::PARAM_STR);
+    $prepare3->bindValue(':ID', $_POST['ID'], PDO::PARAM_STR);
     $prepare3->execute();
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,3,:SEQ_ACTOR)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR)";
     $prepare4 = $db->prepare($sql4);
-    $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
-    $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_WRITER'], PDO::PARAM_STR);
-    $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
@@ -276,25 +276,25 @@ if ($act == 'knock') {
     $userinfo = $_SESSION['user'];
     $userbirth = $userinfo->getBirth();
     $isnick = $userinfo->getIsNick();
-    $seq = $_POST['seq'];
-    $userseq = $_POST['userseq'];
+    $ID = $_POST['ID'];
+    $userID = $_POST['userID'];
     //가격은 db의 데이터로 정해져야함
-    $sql7 = "SELECT PRICE,SEQ_WRITER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $sql7 = "SELECT PRICE,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare7 = $db->prepare($sql7);
-    $prepare7->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+    $prepare7->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare7->execute();
     $result = $prepare7->fetch(PDO::FETCH_ASSOC);
     $price = $result['PRICE'];
-    $writer = $result['SEQ_WRITER'];
+    $writer = $result['ID_WRITER'];
     //유저 id로 커넥터에 접속해서 캐쉬정보 가져오기
     if ($isnick == 'N') {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE SEQ_USER=:SEQ_USER";
+        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
         $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
+        $prepare6->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     } else {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE SEQ_ANONY=:SEQ_ANONY";
+        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY";
         $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':SEQ_ANONY', $userseq, PDO::PARAM_STR);
+        $prepare6->bindValue(':ID_ANONY', $userID, PDO::PARAM_STR);
     }
     $prepare6->execute();
     $usercash = $prepare6->fetch(PDO::FETCH_ASSOC);
@@ -312,46 +312,46 @@ if ($act == 'knock') {
         exit;
     }
     //샀는지 확인
-    $sql1 = "SELECT BUY_DATE FROM publixher.TBL_BUY_LIST WHERE (SEQ_USER=:SEQ_USER AND SEQ_CONTENT=:SEQ_CONTENT)";
+    $sql1 = "SELECT BUY_DATE FROM publixher.TBL_BUY_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT)";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-    $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result = $prepare1->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
         //안샀으면
-        $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(SEQ_USER,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_CONTENT);";
+        $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-        $prepare2->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare2->execute();
 
-        $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE SEQ=:SEQ;";
+        $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare3->execute();
 
         //알람처리
-        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR) VALUES(:SEQ_CONTENT,:SEQ_TARGET,1,:SEQ_ACTOR)";
+        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_TARGET', $writer, PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_TARGET', $writer, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
         echo '{"buy":"t"}';
 
         //흥미 처리
-        $sql6 = "SELECT SEQ_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ;";
+        $sql6 = "SELECT ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
         $intp=$db->prepare($sql6);
-        $intp->bindValue(':SEQ',$seq);
+        $intp->bindValue(':ID',$ID);
         $intp->execute();
         $result=$intp->fetch(PDO::FETCH_ASSOC);
-        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(SEQ_USER,TYPE,INTEREST) VALUES(:SEQ_USER,:TYPE,:INTEREST)";
+        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
         $ip=$db->prepare($sql5);
-        $ip->bindValue(':SEQ_USER',$userseq);
+        $ip->bindValue(':ID_USER',$userID);
         //작성자를 추가
         $ip->bindValue(':TYPE',1);
-        $ip->bindValue(':INTEREST', $result['SEQ_WRITER']);
+        $ip->bindValue(':INTEREST', $result['ID_WRITER']);
         $ip->execute();
         //서브 카테고리를 추가
         if($result['SUB_CATEGORY']){
@@ -376,37 +376,37 @@ if ($act == 'knock') {
     exit;
 } elseif ($act == 'more') {
     //링크를 타고 온게 아니라 진짜로 샀는지 확인
-    $seq = $_GET['seq'];
-    $userseq = $_GET['userseq'];
+    $ID = $_GET['ID'];
+    $userID = $_GET['userID'];
     //유료글인지 무료글인지 확인
-    $sql = "SELECT FOR_SALE,SEQ_WRITER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $sql = "SELECT FOR_SALE,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+    $prepare->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
     //유료글일때
     if ($result['FOR_SALE'] == "Y") {
         //자기 글일땐 허용
-        if ($result['SEQ_WRITER'] == $userseq) {
-            $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+        if ($result['ID_WRITER'] == $userID) {
+            $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
             $prepare2->execute();
             $result = $prepare2->fetch(PDO::FETCH_ASSOC);
             echo json_encode($result, JSON_UNESCAPED_UNICODE);
         } else {
             //남의글일땐 샀는지 확인
-            $sql1 = "SELECT BUY_DATE FROM publixher.TBL_BUY_LIST WHERE (SEQ_USER=:SEQ_USER AND SEQ_CONTENT=:SEQ_CONTENT)";
+            $sql1 = "SELECT BUY_DATE FROM publixher.TBL_BUY_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT)";
             $prepare1 = $db->prepare($sql1);
-            $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-            $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+            $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+            $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
             $prepare1->execute();
             $result = $prepare1->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+                $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
                 $prepare2 = $db->prepare($sql2);
-                $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+                $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
                 $prepare2->execute();
                 $result = $prepare2->fetch(PDO::FETCH_ASSOC);
                 echo json_encode($result, JSON_UNESCAPED_UNICODE);
@@ -416,43 +416,43 @@ if ($act == 'knock') {
         }
     } else {
         //무료글일때
-        $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+        $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         $result = $prepare2->fetch(PDO::FETCH_ASSOC);
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
 } elseif ($act == 'del') {
     $userinfo = $_SESSION['user'];
-    $seq = $_POST['seq'];
-    $userseq = $userinfo->getSEQ();
-    $sql1 = "SELECT SEQ_WRITER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+    $ID = $_POST['ID'];
+    $userID = $userinfo->getID();
+    $sql1 = "SELECT ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['SEQ_WRITER'] == $userseq) {
+    if ($result1['ID_WRITER'] == $userID) {
         //폴더 시퀀스 찾기
-        $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE SEQ=:SEQ";
+        $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare4->execute();
         $folderid = $prepare4->fetch(PDO::FETCH_ASSOC);
         //컨텐츠에서 지워진걸로 처리
-        $sql2 = "UPDATE publixher.TBL_CONTENT SET DEL='Y',FOLDER=NULL WHERE SEQ=:SEQ";
+        $sql2 = "UPDATE publixher.TBL_CONTENT SET DEL='Y',FOLDER=NULL WHERE ID=:ID";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         //폴더에서 삭제
-        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE SEQ=:SEQ";
+        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':SEQ', $folderid['FOLDER'], PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $folderid['FOLDER'], PDO::PARAM_STR);
         $prepare3->execute();
         //판매목록에서 삭제
-        $sql5 = "DELETE FROM publixher.TBL_SELL_LIST WHERE SEQ_CONTENT=:SEQ_CONTENT";
+        $sql5 = "DELETE FROM publixher.TBL_SELL_LIST WHERE ID_CONTENT=:ID_CONTENT";
         $prepare5 = $db->prepare($sql5);
-        $prepare5->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+        $prepare5->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare5->execute();
         echo '{"result":"Y"}';
     } else {
@@ -460,50 +460,50 @@ if ($act == 'knock') {
     }
 } elseif ($act == 'top') {
     //한번 확인해주고
-    $sql1 = "UPDATE publixher.TBL_USER SET TOP_CONTENT=:TOP_CONTENT WHERE SEQ=:SEQ";
+    $sql1 = "UPDATE publixher.TBL_USER SET TOP_CONTENT=:TOP_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':TOP_CONTENT', $_POST['seq'], PDO::PARAM_STR);
-    $prepare1->bindValue(':SEQ', $_POST['mid'], PDO::PARAM_STR);
+    $prepare1->bindValue(':TOP_CONTENT', $_POST['ID'], PDO::PARAM_STR);
+    $prepare1->bindValue(':ID', $_POST['mid'], PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"result":"Y"}';
 } elseif ($act == 'repknock') {
     //댓글에 노크처리
-    $userseq = $_POST['mid'];
-    $seq = $_POST['seq'];
-    $sql = "SELECT SEQ FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (SEQ_USER=:SEQ_USER AND SEQ_REPLY=:SEQ_REPLY) LIMIT 1 ";
+    $userID = $_POST['mid'];
+    $ID = $_POST['ID'];
+    $sql = "SELECT ID FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (ID_USER=:ID_USER AND ID_REPLY=:ID_REPLY) LIMIT 1 ";
         $prepare = $db->prepare($sql);
-    $prepare->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-    $prepare->bindValue(':SEQ_REPLY', $seq, PDO::PARAM_STR);
+    $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
     $prepare->execute();
     $knocked = $prepare->fetchColumn();
     if (!$knocked) {
         //노크처리
-        $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK(SEQ_USER,SEQ_REPLY,SEQ_CONTENT) VALUES(:SEQ_USER,:SEQ_REPLY,:SEQ_CONTENT);";
-        $sql2 = "UPDATE publixher.TBL_CONTENT_REPLY SET KNOCK=KNOCK+1 WHERE SEQ=:SEQ;";
-        $sql3 = "SELECT SEQ_USER,KNOCK,SEQ_CONTENT FROM publixher.TBL_CONTENT_REPLY WHERE SEQ=:SEQ;";
+        $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK(ID_USER,ID_REPLY,ID_CONTENT) VALUES(:ID_USER,:ID_REPLY,:ID_CONTENT);";
+        $sql2 = "UPDATE publixher.TBL_CONTENT_REPLY SET KNOCK=KNOCK+1 WHERE ID=:ID;";
+        $sql3 = "SELECT ID_USER,KNOCK,ID_CONTENT FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
         //insert문
         $prepare1 = $db->prepare($sql1);
-        $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-        $prepare1->bindValue(':SEQ_REPLY', $seq, PDO::PARAM_STR);
-        $prepare1->bindValue(':SEQ_CONTENT', $_POST['thisitemID'], PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_CONTENT', $_POST['thisitemID'], PDO::PARAM_STR);
         $prepare1->execute();
         //update문
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         //select문
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare3->execute();
         $target = $prepare3->fetch(PDO::FETCH_ASSOC);
 
         //알람처리
-        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_REPLY,SEQ_TARGET,ACT,SEQ_ACTOR,SEQ_CONTENT) VALUES(:SEQ_REPLY,:SEQ_TARGET,6,:SEQ_ACTOR,:SEQ_CONTENT)";
+        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_REPLY,ID_TARGET,ACT,ID_ACTOR,ID_CONTENT) VALUES(:ID_REPLY,:ID_TARGET,6,:ID_ACTOR,:ID_CONTENT)";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':SEQ_REPLY', $seq, PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_TARGET', $target['SEQ_USER'], PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
-        $prepare4->bindValue(':SEQ_CONTENT', $target['SEQ_CONTENT'], PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_TARGET', $target['ID_USER'], PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+        $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
         $prepare4->execute();
         echo '{"knock":"' . $target['KNOCK'] . '"}';
     } else {
@@ -511,15 +511,15 @@ if ($act == 'knock') {
     }
 }elseif($act=='sub_comment' or $act=='more_sub_comment'){
     require_once '../../lib/passing_time.php';
-    $seq = $_GET['seq'];
-    $userseq=$_GET['userseq'];
-    $repseq=$_GET['repseq'];
+    $ID = $_GET['ID'];
+    $userID=$_GET['userID'];
+    $repID=$_GET['repID'];
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':SEQ', $result[$i]['SEQ_USER'], PDO::PARAM_STR);
+            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
             $prepare2->execute();
             $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
             $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
@@ -528,11 +528,11 @@ if ($act == 'knock') {
         }
         return $result;
     }
-    function getTime($db, $repseq,$index)
+    function getTime($db, $repID,$index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE SEQ_REPLY=:SEQ_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY ID DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
-        $prepare1->bindValue(':SEQ_REPLY', $repseq);
+        $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);
         $prepare1->execute();
         $result = $prepare1->fetchAll(PDO::FETCH_ASSOC);
@@ -552,53 +552,53 @@ if ($act == 'knock') {
         }
     }
     if($act=='sub_comment'){
-        $result = getTime($db,$repseq,0);
+        $result = getTime($db,$repID,0);
         if(!$result){
             echo '{"result":"NO"}';
         }
     }else{
-        $result=getTime($db,$repseq,$_GET['index']);
+        $result=getTime($db,$repID,$_GET['index']);
         if(!$result){
             echo '{"result":"NO"}';
         }
     }
 
 }elseif ($act == 'commentreg_sub') {
-    $userseq = $_POST['userseq'];
-    $seq = $_POST['seq'];
+    $userID = $_POST['userID'];
+    $ID = $_POST['ID'];
     $comment = $_POST['comment'];
-    $repseq=$_POST['repseq'];
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(SEQ_USER,SEQ_CONTENT,REPLY,SEQ_REPLY) VALUES(:SEQ_USER,:SEQ_CONTENT,:REPLY,:SEQ_REPLY);";
-    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE SEQ=:SEQ;";
-    $sql3 = "SELECT SUB_REPLY,SEQ_USER FROM publixher.TBL_CONTENT_REPLY WHERE SEQ=:SEQ;";
-    $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE SEQ=:SEQ;";
+    $repID=$_POST['repID'];
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
+    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
+    $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
+    $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ_USER', $userseq, PDO::PARAM_STR);
-    $prepare1->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
-    $prepare1->bindValue(':SEQ_REPLY', $repseq, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
-    $prepare2->bindValue(':SEQ', $seq, PDO::PARAM_STR);
+    $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare2->execute();
 
     $prepare4 = $db->prepare($sql4);
-    $prepare4->bindValue(':SEQ', $repseq, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID', $repID, PDO::PARAM_STR);
     $prepare4->execute();
 
     $prepare3 = $db->prepare($sql3);
-    $prepare3->bindValue(':SEQ', $repseq, PDO::PARAM_STR);
+    $prepare3->bindValue(':ID', $repID, PDO::PARAM_STR);
     $prepare3->execute();
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(SEQ_CONTENT,SEQ_TARGET,ACT,SEQ_ACTOR,SEQ_REPLY) VALUES(:SEQ_CONTENT,:SEQ_TARGET,7,:SEQ_ACTOR,:SEQ_REPLY)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,7,:ID_ACTOR,:ID_REPLY)";
     $prepare4 = $db->prepare($sql4);
-    $prepare4->bindValue(':SEQ_CONTENT', $seq, PDO::PARAM_STR);
-    $prepare4->bindValue(':SEQ_TARGET', $result['SEQ_USER'], PDO::PARAM_STR);
-    $prepare4->bindValue(':SEQ_ACTOR', $userseq, PDO::PARAM_STR);
-    $prepare4->bindValue(':SEQ_REPLY', $repseq, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_TARGET', $result['ID_USER'], PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;

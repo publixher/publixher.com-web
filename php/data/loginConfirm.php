@@ -26,7 +26,7 @@ if (!password_verify($pass, $result->getPASSWORD())) {
 }
 //기억 안하기
 if (!$_POST['dont_remem']) {
-    setcookie('cid', $result->getSEQ(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
+    setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
 } else {
     foreach ($_COOKIE as $key => $val) {
         setCookie($key, "", time() - 3600, "/",'publixher.com',false,true);

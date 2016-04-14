@@ -31,7 +31,7 @@
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
-            data: { action: "deletefolder", userseq: mid,folderid:thisfolder},
+            data: { action: "deletefolder", userID: mid,folderid:thisfolder},
             dataType: 'json',
             success: function (res) {
                 alert(res['message']);
@@ -50,9 +50,9 @@
         setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
         //쿠키있으면 로그인
         include_once '../conf/database_conf.php';
-        $loginsql = "SELECT * FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+        $loginsql = "SELECT * FROM publixher.TBL_USER WHERE ID=:ID";
         $loginprepare=$db->prepare($loginsql);
-        $loginprepare->bindValue(':SEQ',$_COOKIE['cid'],PDO::PARAM_STR);
+        $loginprepare->bindValue(':ID',$_COOKIE['cid'],PDO::PARAM_STR);
         $loginprepare->execute();
         $user = $loginprepare->fetchObject(User);
 
@@ -67,21 +67,21 @@
         echo "<meta http-equiv='refresh' content='0;url=/php/login.php'>";
         exit;
     }
-    $userseq = $userinfo->getSEQ();
+    $userID = $userinfo->getID();
     //왼쪽
     include "profile_left.php";
     //중간
     echo '<div id="middle">';
     //폴더목록 가져오기
-    $sql1 = "SELECT CONTENT_NUM,DIR,SEQ FROM publixher.TBL_FORDER WHERE SEQ_USER=:SEQ_USER";
+    $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':SEQ_USER', $targetid, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
     $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
     echo '폴더목록<ul>';
 
     for ($i = 0; $i < count($forder); $i++) {
-        echo '<li><a href="foldercon.php?fid=' .$forder[$i]['SEQ']. '">' . $forder[$i]['DIR'] . '</a>(' . $forder[$i]['CONTENT_NUM'] . ')  <button class="btn btn-danger deletefolder" folderid="' . $forder[$i]['SEQ'] . '" style="width:15px;padding:0 0 0 0;">X</button></li>';
+        echo '<li><a href="foldercon.php?fid=' .$forder[$i]['ID']. '">' . $forder[$i]['DIR'] . '</a>(' . $forder[$i]['CONTENT_NUM'] . ')  <button class="btn btn-danger deletefolder" folderid="' . $forder[$i]['ID'] . '" style="width:15px;padding:0 0 0 0;">X</button></li>';
     }
     echo '</ul>';
     ?>

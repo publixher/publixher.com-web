@@ -16,29 +16,29 @@ $(document).ready(function(){
             } else {
                 if (res['FOR_SALE'] == "N") {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var knock = res['KNOCK'];
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
-                    var targetseq = res['SEQ_TARGET'];
+                    var targetID = res['ID_TARGET'];
                     var targetname = res['TARGET_NAME'];
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose=res['EXPOSE'];
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, seq, name, date, knock, comment, preview, writer, folderseq, foldername, pic,targetseq,targetname,expose);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose);
                     $('#topcon').append(write);
                 } else {
                     var write = '';
-                    var seq = res['SEQ'];
-                    var writer = res['SEQ_WRITER'];
+                    var ID = res['ID'];
+                    var writer = res['ID_WRITER'];
                     var name = res['USER_NAME'];
                     var date = res['WRITE_DATE'];
                     var title = res['TITLE'];
@@ -48,14 +48,14 @@ $(document).ready(function(){
                     var bought = res['BOUGHT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'];
-                    var folderseq = null;
+                    var folderID = null;
                     var foldername = null;
                     var expose=res['EXPOSE']
                     if (res['FOLDER'] != null) {
-                        folderseq = res['FOLDER'];
+                        folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemForSaleLoad(write, seq, name, date, title, knock, price, comment, bought, preview, writer, folderseq, foldername, pic,expose);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose);
                     $('#topcon').append(write);
                 }
             }

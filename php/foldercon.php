@@ -41,13 +41,13 @@
     $userinfo = $_SESSION['user'];
     $fid = $_GET['fid'];
     //폴더의 소유자 찾아오기
-    $sql1 = "SELECT SEQ_USER FROM publixher.TBL_FORDER WHERE SEQ=:SEQ";
+    $sql1 = "SELECT ID_USER FROM publixher.TBL_FORDER WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue('SEQ', $fid, PDO::PARAM_STR);
+    $prepare1->bindValue('ID', $fid, PDO::PARAM_STR);
     $prepare1->execute();
     $folderuser = $prepare1->fetch(PDO::FETCH_ASSOC);
-    $userseq = $userinfo->getSEQ();
-    $_GET['id'] = $folderuser['SEQ_USER'];
+    $userID = $userinfo->getID();
+    $_GET['id'] = $folderuser['ID_USER'];
     include "profile_left.php";
 
     //중간
@@ -81,7 +81,7 @@
                                 <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                     <?php
                                     for ($i = 0; $i < count($forder); $i++) {
-                                        echo '<li folderid="' . $forder[$i]['SEQ'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                        echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
                                     }
                                     ?>
                                 </ul>
@@ -228,7 +228,7 @@
     <script>
         var page = 0;
         var fid=<?=$fid?>;
-        var loadOption={seq:mid,nowpage:page,fid:fid};
+        var loadOption={ID:mid,nowpage:page,fid:fid};
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

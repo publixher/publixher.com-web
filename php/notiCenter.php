@@ -32,9 +32,9 @@
 
         setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
         //쿠키있으면 로그인
-        $loginsql = "SELECT * FROM publixher.TBL_USER WHERE SEQ=:SEQ";
+        $loginsql = "SELECT * FROM publixher.TBL_USER WHERE ID=:ID";
         $loginprepare=$db->prepare($loginsql);
-        $loginprepare->bindValue(':SEQ',$_COOKIE['cid'],PDO::PARAM_STR);
+        $loginprepare->bindValue(':ID',$_COOKIE['cid'],PDO::PARAM_STR);
         $loginprepare->execute();
         $user = $loginprepare->fetchObject(User);
 
@@ -56,7 +56,7 @@
     //토큰
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $userseq = $userinfo->getSEQ();
+    $userID = $userinfo->getID();
     include "profile_left.php";
     //중간
     echo '<div id="middle"><ul id="listul"></ul><div style="text-align: center"><a id="notimore" style="cursor: pointer;">더 보기</a></div>';

@@ -34,8 +34,8 @@
     include_once "../lib/loginchk.php";
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $userseq = $userinfo->getSEQ();
-    $_GET['id']=$folderuser['SEQ_USER'];
+    $userID = $userinfo->getID();
+    $_GET['id']=$folderuser['ID_USER'];
     include "profile_left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';

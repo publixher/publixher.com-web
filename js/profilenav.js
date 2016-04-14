@@ -52,7 +52,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetseq: targetid, myseq: myseq, action: action, token: token, age: age},
+            data: {targetID: targetid, myID: myID, action: action, token: token, age: age},
             dataType: 'json',
             success: function () {
                 var btn = $('#friequst');
@@ -75,7 +75,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetseq: fid, requestid: requestid, action: action, myseq: myseq, token: token, age: age},
+            data: {targetID: fid, requestid: requestid, action: action, myID: myID, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
@@ -96,7 +96,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetseq: targetseq, action: action, userseq: mid, token: token, age: age},
+            data: {targetID: targetID, action: action, userID: mid, token: token, age: age},
             dataType: 'json',
             success: function (res) {
                 var btn = $('#subsbtn');
@@ -117,7 +117,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
-            data: {action: "writeAuth", userseq: mid, radioValue: radioValue}
+            data: {action: "writeAuth", userID: mid, radioValue: radioValue}
         })
     })
     $(".expAuth").change(function () {
@@ -128,7 +128,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
-            data: {action: "expAuth", userseq: mid, checkValue: checkValue}
+            data: {action: "expAuth", userID: mid, checkValue: checkValue}
         })
     })
 });
