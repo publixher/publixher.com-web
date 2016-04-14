@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php/forderConfig.php" afterPath="$PROJECT_DIR$/php/folderConfig.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/itemAct.php" afterPath="$PROJECT_DIR$/php/data/itemAct.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_left.php" afterPath="$PROJECT_DIR$/php/profile_left.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_middle.php" afterPath="$PROJECT_DIR$/php/profile_middle.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -41,37 +40,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.625">
-              <caret line="133" column="28" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-135.625">
-              <caret line="217" column="5" selection-start-line="217" selection-start-column="5" selection-end-line="217" selection-end-column="5" />
-              <folding>
-                <marker date="1460631549000" expanded="true" signature="4573:4744" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1460631549000" expanded="true" signature="4784:5065" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1460631549000" expanded="true" signature="7009:7085" placeholder="UPDATE publi... " />
-                <marker date="1460631549000" expanded="true" signature="7292:7340" placeholder="SELECT * FRO... TBL_CONTENT" />
-                <marker date="1460631549000" expanded="true" signature="7561:7618" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1460631549000" expanded="true" signature="7970:8023" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1460631549000" expanded="true" signature="8270:8354" placeholder="INSERT INTO publixher.TBL_SELL_LIST... " />
-                <marker date="1460631549000" expanded="true" signature="8710:8781" placeholder="INSERT INTO publixher.TBL_TAGS... " />
-                <marker date="1460631549000" expanded="true" signature="9116:9186" placeholder="UPDATE publi... " />
-                <marker date="1460631549000" expanded="true" signature="9389:9438" placeholder="SELECT DIR F... TBL_FOLDER" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/logout.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,28 +84,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile_left.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile_left.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/profile_left.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="14.916667">
-              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.65675056">
+              <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
               <folding>
-                <marker date="1460636951000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1460636951000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1460636951000" expanded="true" signature="1970:2044" placeholder="SELECT CONTE... TBL_FORDER" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.75">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-              <folding>
-                <marker date="1460626457000" expanded="true" signature="645:767" placeholder="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1460626457000" expanded="true" signature="1353:1414" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1460638287000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1460638287000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1460638287000" expanded="true" signature="1970:2044" placeholder="SELECT CONTE... TBL_FORDER" />
               </folding>
             </state>
           </provider>
@@ -225,14 +180,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upform.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upform.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/upform.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2516269">
+            <state vertical-scroll-proportion="0.0">
               <caret line="260" column="50" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
               <folding>
                 <marker date="1460595557000" expanded="true" signature="10193:10242" placeholder="..." />
                 <marker date="1460595557000" expanded="true" signature="10437:10486" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fileUp.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/data/fileUp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.041666">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding>
+                <marker date="1460595557000" expanded="true" signature="2220:2271" placeholder="UPDATE publi... " />
+                <marker date="1460595557000" expanded="true" signature="2534:2579" placeholder="SELECT * fro... TBL_USER" />
+                <marker date="1460595557000" expanded="true" signature="3054:3147" placeholder="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profileConfig.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/profileConfig.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.625">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <marker date="1460595557000" expanded="true" signature="2236:2303" placeholder="SELECT ID_AN... TBL_CONNECTOR" />
+                <marker date="1460595557000" expanded="true" signature="2515:2568" placeholder="SELECT USER_... TBL_USER" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+              <folding>
+                <marker date="1460624004000" expanded="true" signature="596:740" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+                <marker date="1460624004000" expanded="true" signature="2028:2080" placeholder="SELECT TITLE... TBL_CONTENT" />
+                <marker date="1460624004000" expanded="true" signature="2609:2667" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+                <marker date="1460624004000" expanded="true" signature="3380:3433" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460624004000" expanded="true" signature="4514:4580" placeholder="UPDATE publi... " />
+                <marker date="1460624004000" expanded="true" signature="4650:4769" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+                <marker date="1460624004000" expanded="true" signature="5136:5276" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+                <marker date="1460624004000" expanded="true" signature="5621:5673" placeholder="SELECT TITLE... TBL_CONTENT" />
+                <marker date="1460624004000" expanded="true" signature="5941:5999" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+                <marker date="1460624004000" expanded="true" signature="6317:6370" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460624004000" expanded="true" signature="7195:7271" placeholder="UPDATE publi... " />
               </folding>
             </state>
           </provider>
@@ -321,8 +325,8 @@
         <option value="$PROJECT_DIR$/js/regist.js" />
         <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
         <option value="$PROJECT_DIR$/php/data/itemAct.php" />
-        <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/php/profile_middle.php" />
+        <option value="$PROJECT_DIR$/php/profile_left.php" />
       </list>
     </option>
   </component>
@@ -985,7 +989,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460633271798</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fileup 처리해야함">
+      <created>1460637518674</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1460637518675</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1037,7 +1047,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="원래쿼리 수정한거" />
     <MESSAGE value="접속시 세션 못잡는거 그냥 부러올때도 각 페이지에서 세션 잡도록 수정" />
     <MESSAGE value="아이콘 적용하기 전 버전&#10;" />
     <MESSAGE value="구독자 새로운 컨텐츠 확인 추가" />
@@ -1062,7 +1071,8 @@
     <MESSAGE value="댓글노크 완료&#10;대댓글작성 체크" />
     <MESSAGE value="대댓글작성 완료&#10;최상단컨텐츠 체크" />
     <MESSAGE value="최상단컨텐츠 완료&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="최상단컨텐츠 완료&#10;" />
+    <MESSAGE value="fileup 처리해야함" />
+    <option name="LAST_COMMIT_MESSAGE" value="fileup 처리해야함" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1138,6 +1148,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.75">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1210,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/forderConfig.php">
+    <entry file="file://$PROJECT_DIR$/php/folderConfig.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5">
           <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
@@ -1243,17 +1254,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profileConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.375">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/middle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41647598">
           <caret line="267" column="26" selection-start-line="267" selection-start-column="26" selection-end-line="267" selection-end-column="26" />
+          <folding>
+            <marker date="1460601054000" expanded="true" signature="1776:1838" placeholder="SELECT ID,DI... TBL_FOLDER" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1280,18 +1287,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/fileUp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.875">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-          <folding>
-            <marker date="1460595557000" expanded="true" signature="2220:2271" placeholder="UPDATE publi... " />
-            <marker date="1460595557000" expanded="true" signature="2534:2579" placeholder="SELECT * fro... TBL_USER" />
-            <marker date="1460595557000" expanded="true" signature="3054:3147" placeholder="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/friend.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.375">
@@ -1306,26 +1301,6 @@
             <marker date="1460623510000" expanded="true" signature="3496:3628" placeholder="DELETE FROM " />
             <marker date="1460623510000" expanded="true" signature="4100:4181" placeholder="INSERT INTO publixher.TBL_FOLLOW... " />
             <marker date="1460623510000" expanded="true" signature="4494:4578" placeholder="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.041667">
-          <caret line="120" column="27" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
-          <folding>
-            <marker date="1460624004000" expanded="true" signature="596:740" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-            <marker date="1460624004000" expanded="true" signature="2028:2080" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1460624004000" expanded="true" signature="2609:2667" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-            <marker date="1460624004000" expanded="true" signature="3380:3433" placeholder="SELECT USER_... TBL_USER" />
-            <marker date="1460624004000" expanded="true" signature="4514:4580" placeholder="UPDATE publi... " />
-            <marker date="1460624004000" expanded="true" signature="4650:4769" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-            <marker date="1460624004000" expanded="true" signature="5136:5276" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-            <marker date="1460624004000" expanded="true" signature="5621:5673" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1460624004000" expanded="true" signature="5941:5999" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-            <marker date="1460624004000" expanded="true" signature="6317:6370" placeholder="SELECT USER_... TBL_USER" />
-            <marker date="1460624004000" expanded="true" signature="7195:7271" placeholder="UPDATE publi... " />
           </folding>
         </state>
       </provider>
@@ -1609,18 +1584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile_left.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.916667">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <marker date="1460636951000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1460636951000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1460636951000" expanded="true" signature="1970:2044" placeholder="SELECT CONTE... TBL_FORDER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.208333">
@@ -1646,11 +1609,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/upform.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2516269">
+        <state vertical-scroll-proportion="0.0">
           <caret line="260" column="50" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
           <folding>
             <marker date="1460595557000" expanded="true" signature="10193:10242" placeholder="..." />
             <marker date="1460595557000" expanded="true" signature="10437:10486" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/fileUp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.041666">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <marker date="1460595557000" expanded="true" signature="2220:2271" placeholder="UPDATE publi... " />
+            <marker date="1460595557000" expanded="true" signature="2534:2579" placeholder="SELECT * fro... TBL_USER" />
+            <marker date="1460595557000" expanded="true" signature="3054:3147" placeholder="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profileConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <marker date="1460595557000" expanded="true" signature="2236:2303" placeholder="SELECT ID_AN... TBL_CONNECTOR" />
+            <marker date="1460595557000" expanded="true" signature="2515:2568" placeholder="SELECT USER_... TBL_USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+          <folding>
+            <marker date="1460624004000" expanded="true" signature="596:740" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+            <marker date="1460624004000" expanded="true" signature="2028:2080" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1460624004000" expanded="true" signature="2609:2667" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1460624004000" expanded="true" signature="3380:3433" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460624004000" expanded="true" signature="4514:4580" placeholder="UPDATE publi... " />
+            <marker date="1460624004000" expanded="true" signature="4650:4769" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+            <marker date="1460624004000" expanded="true" signature="5136:5276" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+            <marker date="1460624004000" expanded="true" signature="5621:5673" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1460624004000" expanded="true" signature="5941:5999" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1460624004000" expanded="true" signature="6317:6370" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460624004000" expanded="true" signature="7195:7271" placeholder="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile_left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65675056">
+          <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+          <folding>
+            <marker date="1460638287000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1460638287000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1460638287000" expanded="true" signature="1970:2044" placeholder="SELECT CONTE... TBL_FORDER" />
           </folding>
         </state>
       </provider>

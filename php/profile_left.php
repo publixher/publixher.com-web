@@ -62,7 +62,7 @@
     }
 
     if ($userID == $targetid) {
-        echo "<a href='FOLDERConfig.php?id=${targetid}'>폴더 관리</a></ul>";
+        echo "<a href='folderConfig.php?id=${targetid}'>폴더 관리</a></ul>";
     }
     ?>
 
