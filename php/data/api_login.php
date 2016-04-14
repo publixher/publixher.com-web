@@ -21,7 +21,7 @@ if ($info['api'] == 'naver') {
         $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
         $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
-        $prepare->execute();
+            $prepare->execute();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
