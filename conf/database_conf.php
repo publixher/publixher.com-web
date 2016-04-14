@@ -2,7 +2,7 @@
 //TODO:데이터베이스 설정 바꿔야함
 $dbServer = '127.0.0.1';
 $dbUser='Kang';
-$dbPass='sk763118';
+$dbPass='!Pp999223';
 $dbName='publixher';
 
 $dsn="mysql:host={$dbServer};dbName={$dbName};,charset=utf8";
