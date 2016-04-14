@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/api_login.php" afterPath="$PROJECT_DIR$/php/data/api_login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/login.php" afterPath="$PROJECT_DIR$/php/login.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -38,7 +38,7 @@
     <favorites_list name="publixherBoot" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.11680328">
+    <splitter split-orientation="vertical" split-proportion="0.8831967">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
@@ -65,8 +65,8 @@
           <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/php/login.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.2">
-                  <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.28759894">
+                  <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -226,8 +226,8 @@
           <file leaf-file-name="api_login.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28759894">
-                  <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+                <state vertical-scroll-proportion="15.0">
+                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding>
                     <marker date="1460602639000" expanded="true" signature="199:250" placeholder="SELECT * FRO... TBL_USER" />
                     <marker date="1460602639000" expanded="true" signature="515:627" placeholder="INSERT INTO publixher.TBL_USER... " />
@@ -326,10 +326,10 @@
         <option value="$PROJECT_DIR$/php/profile_middle.php" />
         <option value="$PROJECT_DIR$/lib/random_64.php" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
-        <option value="$PROJECT_DIR$/php/login.php" />
         <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/conf/database_conf.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
+        <option value="$PROJECT_DIR$/php/login.php" />
       </list>
     </option>
   </component>
@@ -926,7 +926,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460602000977</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="비밀번호 업데이트">
+      <created>1460602679470</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1460602679470</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1540,18 +1546,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28759894">
-          <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <marker date="1460602639000" expanded="true" signature="199:250" placeholder="SELECT * FRO... TBL_USER" />
             <marker date="1460602639000" expanded="true" signature="515:627" placeholder="INSERT INTO publixher.TBL_USER... " />
@@ -1563,6 +1561,14 @@
             <marker date="1460602639000" expanded="true" signature="2863:2924" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
             <marker date="1460602639000" expanded="true" signature="3060:3111" placeholder="SELECT * FRO... TBL_USER" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28759894">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
