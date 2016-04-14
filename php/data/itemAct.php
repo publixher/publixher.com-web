@@ -60,7 +60,12 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-        $prepare4->execute();
+        try {
+            $prepare4->execute();
+        }catch(PDOException $e){
+            $a=$e->getMessage();
+            $w;
+        }
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
 //        $ip=$db->prepare($sql5);

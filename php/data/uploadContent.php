@@ -105,109 +105,117 @@ if (!empty($_POST)) {
         $img->save_img($imgout);
     }
     //content테이블에 넣음
-    $ID_writer = $_POST['ID_writer'];
-    $targetID = $_POST['targetID'];
-    if (!$for_sale) {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
-    } else {
-        $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,PIC,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:PIC,:TAG);";
-    }
-    $uid=uniqueid($db,'content');
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
-    $prepare->bindValue(':ID_WRITER', $ID_writer, PDO::PARAM_STR);
-    $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
-    $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
-    $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
-    $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
-    $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
-    $prepare->bindValue(':TAG', $_POST['tags']?implode(' ',json_decode($_POST['tags'])):null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
-    if ($targetID == '') {
-        $prepare->bindValue(':ID_TARGET', NULL, PDO::PARAM_STR);
-    } else {
-        $prepare->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
-    }
+    try {
+        $db->beginTransaction();
+        $ID_writer = $_POST['ID_writer'];
+        $targetID = $_POST['targetID'];
+        if (!$for_sale) {
+            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
+        } else {
+            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,PIC,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:PIC,:TAG);";
+        }
+        $uid = uniqueid($db, 'content');
+        $prepare = $db->prepare($sql);
+        $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
+        $prepare->bindValue(':ID_WRITER', $ID_writer, PDO::PARAM_STR);
+        $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
+        $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
+        $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
+        $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
+        $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
+        $prepare->bindValue(':TAG', $_POST['tags'] ? implode(' ', json_decode($_POST['tags'])) : null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
+        if ($targetID == '') {
+            $prepare->bindValue(':ID_TARGET', NULL, PDO::PARAM_STR);
+        } else {
+            $prepare->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
+        }
 
-    if ($for_sale) {
-        $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
-        $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
-        $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
-        $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-        $prepare->bindValue(':PIC', $imgout?str_replace('crop','crop80',$imgs[1][0][0]):'/img/alt_img.jpg', PDO::PARAM_STR);
-        if ($_POST['adult'] == "true") {
-            $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
-        } else {
-            $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
+        if ($for_sale) {
+            $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
+            $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
+            $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
+            $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
+            $prepare->bindValue(':PIC', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
+            if ($_POST['adult'] == "true") {
+                $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
+            } else {
+                $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
+            }
+            if ($_POST['ad'] == "true") {
+                $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
+            } else {
+                $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
+            }
         }
-        if ($_POST['ad'] == "true") {
-            $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
-        } else {
-            $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
+        $prepare->execute();
+        //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
+        if ($for_sale) {
+            $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE ID_MASTER=:ID_MASTER";
+            $folprepare = $db->prepare($folsql);
+            $folprepare->bindValue(':ID_MASTER', $ID_writer);
+            $folprepare->execute();
         }
-    }
-    $prepare->execute();
-    //유료컨텐츠 업로드가 성공하면 팔로우테이블에 LAST_UPDATE도 수정함
-    if ($for_sale) {
-        $folsql = "UPDATE publixher.TBL_FOLLOW SET LAST_UPDATE=NOW() WHERE ID_MASTER=:ID_MASTER";
-        $folprepare = $db->prepare($folsql);
-        $folprepare->bindValue(':ID_MASTER', $ID_writer);
-        $folprepare->execute();
-    }
-    //id로 컨텐츠 테이블의 내용도 가져옴
-    $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE ID=:ID";
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
-    $prepare->execute();
-    $result = $prepare->fetch(PDO::FETCH_ASSOC);
-    //글쓴이의 정보도 가져옴
-    $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID', $ID_writer, PDO::PARAM_STR);
-    $prepare->execute();
-    $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
-    $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
-    //타겟이 있다면 타겟의 정보도 가져옴
-    if ($targetID) {
-        $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE ID=:ID";
-        $tp = $db->prepare($t);
-        $tp->bindValue(':ID', $targetID);
-        $tp->execute();
-        $result['TARGET_NAME'] = $tp->fetchColumn();
-    }
-    //판매목록에 수 증가
-    if ($for_sale) {
-        $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID_USER', $ID_writer, PDO::PARAM_STR);
-        $prepare2->bindValue(':ID_CONTENT', $uid, PDO::PARAM_STR);
-        $prepare2->execute();
-    }
-    //태그 넣기
-    if($_POST['tags']){
-        $tags=json_decode($_POST['tags']);
-        $tagsql="INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
-        $tpr=$db->prepare($tagsql);
-        $tpr->bindValue(':ID_CONTENT',$uid);
-        for($i=0;$i<count($tags);$i++){
-            $tpr->bindValue(':TAG',$tags[$i]);
-            $tpr->execute();
+        //id로 컨텐츠 테이블의 내용도 가져옴
+        $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE ID=:ID";
+        $prepare = $db->prepare($sql);
+        $prepare->bindValue(':ID', $uid, PDO::PARAM_STR);
+        $prepare->execute();
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
+        //글쓴이의 정보도 가져옴
+        $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+        $prepare = $db->prepare($sql);
+        $prepare->bindValue(':ID', $ID_writer, PDO::PARAM_STR);
+        $prepare->execute();
+        $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
+        $result = array_merge($result, $prepare->fetch(PDO::FETCH_ASSOC));
+        //타겟이 있다면 타겟의 정보도 가져옴
+        if ($targetID) {
+            $t = "SELECT USER_NAME FROM publixher.TBL_USER WHERE ID=:ID";
+            $tp = $db->prepare($t);
+            $tp->bindValue(':ID', $targetID);
+            $tp->execute();
+            $result['TARGET_NAME'] = $tp->fetchColumn();
         }
+        //판매목록에 수 증가
+        if ($for_sale) {
+            $sql2 = "INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':ID_USER', $ID_writer, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID_CONTENT', $uid, PDO::PARAM_STR);
+            $prepare2->execute();
+        }
+        //태그 넣기
+        if ($_POST['tags']) {
+            $tags = json_decode($_POST['tags']);
+            $tagsql = "INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
+            $tpr = $db->prepare($tagsql);
+            $tpr->bindValue(':ID_CONTENT', $uid);
+            for ($i = 0; $i < count($tags); $i++) {
+                $tpr->bindValue(':TAG', $tags[$i]);
+                $tpr->execute();
+            }
+        }
+        if ($_POST['folder']) {
+            //폴더에 내용 수 증가
+            $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
+            $prepare3->execute();
+            //폴더 이름 받아오기
+            $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
+            $prepare4 = $db->prepare($sql4);
+            $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
+            $prepare4->execute();
+            $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
+        }
+        $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+        $db->commit();
+        echo $result;
+    }catch(PDOException $e){
+        $db->rollBack();
+        echo "<script>alert('동작중 문제가 생겼습니다. message : $e->getMessage()')";
+        exit;
     }
-    if ($_POST['folder']) {
-        //폴더에 내용 수 증가
-        $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
-        $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
-        $prepare3->execute();
-        //폴더 이름 받아오기
-        $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
-        $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
-        $prepare4->execute();
-        $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
-    }
-    $result = json_encode($result, JSON_UNESCAPED_UNICODE);
-    echo $result;
 } else {
     exit;
 }
