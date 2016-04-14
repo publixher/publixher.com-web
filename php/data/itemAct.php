@@ -472,7 +472,12 @@ if ($act == 'knock') {
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':TOP_CONTENT', $_POST['ID'], PDO::PARAM_STR);
     $prepare1->bindValue(':ID', $_POST['mid'], PDO::PARAM_STR);
-    $prepare1->execute();
+    try {
+        $prepare1->execute();
+    }catch(PDOException $e){
+        $a=$e->getMessage();
+        $w;
+    }
     echo '{"result":"Y"}';
 } elseif ($act == 'repknock') {
     //댓글에 노크처리
