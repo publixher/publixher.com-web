@@ -574,15 +574,18 @@ if ($act == 'knock') {
     }
 
 } elseif ($act == 'commentreg_sub') {
+    require_once '../../lib/random_64.php';
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
     $comment = $_POST['comment'];
     $repID = $_POST['repID'];
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
+    $uid=uniqueid($db,'sub_reply');
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
     $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
+    $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
