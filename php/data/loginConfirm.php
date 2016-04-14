@@ -24,14 +24,6 @@ if (!password_verify($pass, $result->getPASSWORD())) {
     echo "<script>alert('아이디 또는 패스워드가 잘못되었습니다.');history.back();</script>";
     exit;
 }
-//기억 안하기
-if (!$_POST['dont_remem']) {
-    setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
-} else {
-    foreach ($_COOKIE as $key => $val) {
-        setCookie($key, "", time() - 3600, "/",'publixher.com',false,true);
-    }
-}
 //유저객체에 할당
 $_SESSION['user'] = $result;
 //세션토큰 생성(CSRF등 대책)

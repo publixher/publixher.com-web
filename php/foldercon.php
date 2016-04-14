@@ -41,7 +41,7 @@
     $userinfo = $_SESSION['user'];
     $fid = $_GET['fid'];
     //폴더의 소유자 찾아오기
-    $sql1 = "SELECT ID_USER FROM publixher.TBL_FORDER WHERE ID=:ID";
+    $sql1 = "SELECT ID_USER FROM publixher.TBL_FOLDER WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue('ID', $fid, PDO::PARAM_STR);
     $prepare1->execute();
@@ -80,8 +80,8 @@
                                     <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                     <?php
-                                    for ($i = 0; $i < count($forder); $i++) {
-                                        echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                    for ($i = 0; $i < count($FOLDER); $i++) {
+                                        echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                                     }
                                     ?>
                                 </ul>

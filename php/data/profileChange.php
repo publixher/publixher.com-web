@@ -130,16 +130,16 @@ if ($_POST['action'] == 'profilechange') {
     }
     echo "<meta http-equiv='refresh' content='0;url=${referer}'>";
 } elseif ($_POST['action'] == 'newfolder') {
-    $sql = "INSERT INTO publixher.TBL_FORDER(ID_USER,DIR) VALUES(:ID_USER,:DIR)";
+    $sql = "INSERT INTO publixher.TBL_FOLDER(ID_USER,DIR) VALUES(:ID_USER,:DIR)";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('DIR', $_POST['folder'], PDO::PARAM_STR);
     $prepare->execute();
-    echo "<meta http-equiv='refresh' content='0;url=../forderConfig.php?id=${userID}'>";
+    echo "<meta http-equiv='refresh' content='0;url=../FOLDERConfig.php?id=${userID}'>";
 } elseif ($_POST['action'] == 'deletefolder') {
     if ($userID == $_POST['userID']) {
         $folderid = $_POST['folderid'];
-        $sql = "DELETE FROM publixher.TBL_FORDER WHERE ID=:ID";
+        $sql = "DELETE FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID', $folderid, PDO::PARAM_STR);
         $prepare->execute();

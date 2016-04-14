@@ -25,13 +25,13 @@
                         $userinfo = $_SESSION['user'];
                         $userID = $userinfo->getID();
                         //폴더목록 불러오기
-                        $sql1 = "SELECT ID,DIR FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
+                        $sql1 = "SELECT ID,DIR FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
                         $prepare1 = $db->prepare($sql1);
                         $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
                         $prepare1->execute();
-                        $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-                        for ($i = 0; $i < count($forder); $i++) {
-                            echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                        $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+                        for ($i = 0; $i < count($FOLDER); $i++) {
+                            echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                         }
                         ?>
                     </ul>
@@ -158,8 +158,8 @@
                                 <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                 <?php
-                                for ($i = 0; $i < count($forder); $i++) {
-                                    echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                for ($i = 0; $i < count($FOLDER); $i++) {
+                                    echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -265,7 +265,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
 <script>
     var page = 0;
-    var mid=<?=$userID?>;
+    var mid='<?=$userID?>';
     var targetID=null;
     var loadOption = {ID: mid, nowpage: page};
 </script>

@@ -93,7 +93,7 @@ for ($i = 0; $i < count($result); $i++) {
 
     //폴더이름 가져오기
     if ($result[$i]['FOLDER']) {
-        $fsql = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
+        $fsql = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $fprepare = $db->prepare($fsql);
         $fprepare->bindValue(':ID', $result[$i]['FOLDER'], PDO::PARAM_INT);
         $fprepare->execute();

@@ -7,4 +7,15 @@ function rand64($size=10){
     }
     return $return;
 }
+function user_idcheck($db){
+    $sql="SELECT ID FROM publixher.TBL_USER WHERE ID=:ID";
+    $p=$db->prepare($sql);
+    do{
+        $id=rand64();
+        $p->bindValue(':ID', $id);
+        $p->execute();
+        $exist=$p->fetchColumn();
+    }while($exist);
+    return $id;
+}
 ?>

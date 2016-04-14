@@ -90,7 +90,7 @@
             <!--            친구신청목록-->
             <?
             //친구요청(ID_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
-            $sql2 = "SELECT ID_USER,ID FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ALLOWED='N') ORDER BY ID DESC";
+            $sql2 = "SELECT ID_USER,SEQ FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ALLOWED='N') ORDER BY SEQ DESC";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID_FRIEND', $targetid, PDO::PARAM_STR);
             $prepare2->execute();
@@ -116,7 +116,7 @@
                             $fprepare->bindValue(':ID', $friendrequest[$i]['ID_USER'], PDO::PARAM_STR);
                             $fprepare->execute();
                             $reqname = $fprepare->fetch(PDO::FETCH_ASSOC);
-                            echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['ID'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['ID'] . "' class='friendno freqanswer'>X</a></li>";
+                            echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
                             $arr[] = $reqname;
                         }
                         $arr = json_encode($arr);
@@ -300,13 +300,13 @@
                             $userinfo = $_SESSION['user'];
                             $userID = $userinfo->getID();
                             //폴더목록 불러오기
-                            $sql1 = "SELECT ID,DIR FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
+                            $sql1 = "SELECT ID,DIR FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
                             $prepare1 = $db->prepare($sql1);
                             $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
                             $prepare1->execute();
-                            $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-                            for ($i = 0; $i < count($forder); $i++) {
-                                echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                            $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+                            for ($i = 0; $i < count($FOLDER); $i++) {
+                                echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                             }
                             ?>
                         </ul>
@@ -444,8 +444,8 @@
                                 <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                 <?php
-                                for ($i = 0; $i < count($forder); $i++) {
-                                    echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                for ($i = 0; $i < count($FOLDER); $i++) {
+                                    echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                                 }
                                 ?>
                             </ul>

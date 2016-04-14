@@ -12,7 +12,7 @@ if ($action == 'get_item') {
     $pr->execute();
     $data = $pr->fetch(PDO::FETCH_ASSOC);
     if ($data['FOLDER']) {
-        $s = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
+        $s = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $pr = $db->prepare($s);
         $pr->bindValue(':ID', $data['FOLDER']);
         $pr->execute();
@@ -159,18 +159,18 @@ if ($action == 'get_item') {
         $result['TARGET_NAME'] = $tp->fetchColumn();
     }
     //원래 폴더에서 수 감소
-    $fs="UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
+    $fs="UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
     $fp = $db->prepare($fs);
     $fp->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
     $fp->execute();
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
-        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
+        $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
         $prepare3 = $db->prepare($sql3);
         $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare3->execute();
         //폴더 이름 받아오기
-        $sql4 = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
+        $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
         $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare4->execute();

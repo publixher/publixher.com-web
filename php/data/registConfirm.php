@@ -14,14 +14,7 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
-    $sql="SELECT ID FROM publixher.TBL_USER WHERE ID=:ID";
-    $p=$db->prepare($sql);
-    do{
-        $id=rand64();
-        $p->bindValue(':ID', $id);
-        $p->execute();
-        $exist=$p->fetchColumn();
-    }while($exist);
+    $id=user_idcheck($db);
     try {
         $db->beginTransaction();
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
@@ -34,10 +27,9 @@ if ($check_email && $check_pass && $check_name) {
         $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
         $prepare->execute();
-        $ID = $db->lastInsertId();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
         $prepare2->execute();
         $db->commit();
     }catch(PDOException $e){

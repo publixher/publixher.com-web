@@ -73,15 +73,15 @@
     //중간
     echo '<div id="middle">';
     //폴더목록 가져오기
-    $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FORDER WHERE ID_USER=:ID_USER";
+    $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
-    $forder = $prepare1->fetchAll(PDO::FETCH_ASSOC);
+    $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
     echo '폴더목록<ul>';
 
-    for ($i = 0; $i < count($forder); $i++) {
-        echo '<li><a href="foldercon.php?fid=' .$forder[$i]['ID']. '">' . $forder[$i]['DIR'] . '</a>(' . $forder[$i]['CONTENT_NUM'] . ')  <button class="btn btn-danger deletefolder" folderid="' . $forder[$i]['ID'] . '" style="width:15px;padding:0 0 0 0;">X</button></li>';
+    for ($i = 0; $i < count($FOLDER); $i++) {
+        echo '<li><a href="foldercon.php?fid=' .$FOLDER[$i]['ID']. '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')  <button class="btn btn-danger deletefolder" folderid="' . $FOLDER[$i]['ID'] . '" style="width:15px;padding:0 0 0 0;">X</button></li>';
     }
     echo '</ul>';
     ?>

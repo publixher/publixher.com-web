@@ -194,12 +194,12 @@ if (!empty($_POST)) {
     }
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
-        $sql3 = "UPDATE publixher.TBL_FORDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
+        $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
         $prepare3 = $db->prepare($sql3);
         $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare3->execute();
         //폴더 이름 받아오기
-        $sql4 = "SELECT DIR FROM publixher.TBL_FORDER WHERE ID=:ID";
+        $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
         $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare4->execute();

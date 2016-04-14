@@ -4,25 +4,27 @@ require_once '../../conf/User.php';
 //유효성 검사
 $info = $_POST;
 if ($info['api'] == 'naver') {
+    require_once '../../lib/random_64.php';
     $sql = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
     $q = $db->prepare($sql);
     $q->bindValue(':EMAIL', $info['email']);
     $q->execute();
     $user = $q->fetchObject(User);
     if (!$user) {
+        $id=user_idcheck($db);
         $age = date("Y") - (substr($info['age'], 0, 1) . '5') . '-';
-        $sql = "INSERT INTO publixher.TBL_USER(EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
+        $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
         $prepare = $db->prepare($sql);
+        $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
         $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
         $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
         $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
         $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
         $prepare->execute();
-        $ID = $db->lastInsertId();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
+        $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
         $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $q2 = $db->prepare($sql2);
         $q2->bindValue(':EMAIL', $info['email']);
@@ -43,18 +45,20 @@ if ($info['api'] == 'naver') {
         $q->execute();
         $user = $q->fetchObject(User);
         if (!$user) {
-            $sql = "INSERT INTO publixher.TBL_USER(EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
+            require_once '../../lib/random_64.php';
+            $id=user_idcheck($db);
+            $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
             $prepare = $db->prepare($sql);
+            $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
             $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
             $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
             $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
             $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
             $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
             $prepare->execute();
-            $ID = $db->lastInsertId();
             $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
             $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID_USER', $ID, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
             $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
             $q2 = $db->prepare($sql2);
             $q2->bindValue(':EMAIL', $info['email']);

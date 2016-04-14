@@ -65,8 +65,8 @@
                                     <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
                                     <?php
-                                    for ($i = 0; $i < count($forder); $i++) {
-                                        echo '<li folderid="' . $forder[$i]['ID'] . '"><a href="#" >' . $forder[$i]['DIR'] . '</a></li>';
+                                    for ($i = 0; $i < count($FOLDER); $i++) {
+                                        echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                                     }
                                     ?>
                                 </ul>
