@@ -478,7 +478,7 @@ if ($act == 'knock') {
     //댓글에 노크처리
     $userID = $_POST['mid'];
     $ID = $_POST['ID'];
-    $sql = "SELECT ID FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (ID_USER=:ID_USER AND ID_REPLY=:ID_REPLY) LIMIT 1 ";
+    $sql = "SELECT SEQ FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (ID_USER=:ID_USER AND ID_REPLY=:ID_REPLY) LIMIT 1 ";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
