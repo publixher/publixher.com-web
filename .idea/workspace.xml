@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/php/profile_middlee.php" afterPath="$PROJECT_DIR$/php/profile_middle.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile.php" afterPath="$PROJECT_DIR$/php/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_middle.php" afterPath="$PROJECT_DIR$/php/profile_middle.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -67,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75514877">
+            <state vertical-scroll-proportion="-13.75">
               <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
               <folding />
             </state>
@@ -202,13 +201,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile_middle.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile_middle.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.125">
-              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.3682927">
+              <caret line="558" column="37" selection-start-line="558" selection-start-column="37" selection-end-line="558" selection-end-column="37" />
               <folding>
-                <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
+                <marker date="1460706597000" expanded="true" signature="212:273" placeholder="SELECT WRITE... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="818:900" placeholder="SELECT ID_FR... TBL_FRIENDS" />
+                <marker date="1460706597000" expanded="true" signature="1712:1772" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="2656:2723" placeholder="SELECT ID_MA... TBL_FOLLOW" />
+                <marker date="1460706597000" expanded="true" signature="3511:3571" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="4473:4581" placeholder="SELECT ID_US... TBL_FRIENDS" />
+                <marker date="1460706597000" expanded="true" signature="5600:5657" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="8785:8867" placeholder="SELECT ID_FR... TBL_FRIENDS" />
+                <marker date="1460706597000" expanded="true" signature="10005:10065" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="10949:11016" placeholder="SELECT ID_MA... TBL_FOLLOW" />
+                <marker date="1460706597000" expanded="true" signature="11804:11864" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1460706597000" expanded="true" signature="12678:12777" placeholder="SELECT ALLOW... TBL_FRIENDS" />
+                <marker date="1460706597000" expanded="true" signature="13551:13645" placeholder="SELECT SEQ F... TBL_FOLLOW" />
+                <marker date="1460706597000" expanded="true" signature="16567:16629" placeholder="SELECT ID,DI... TBL_FOLDER" />
               </folding>
             </state>
           </provider>
@@ -308,11 +320,11 @@
         <option value="$PROJECT_DIR$/lib/loginchk.php" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/php/data/profileChange.php" />
-        <option value="$PROJECT_DIR$/php/profile_middle.php" />
         <option value="$PROJECT_DIR$/conf/database_conf.php" />
         <option value="$PROJECT_DIR$/lib/blur.php" />
         <option value="$USER_HOME$/Desktop/php.ini" />
         <option value="$PROJECT_DIR$/php/profile.php" />
+        <option value="$PROJECT_DIR$/php/profile_middle.php" />
       </list>
     </option>
   </component>
@@ -718,12 +730,6 @@
       <option name="number" value="Default" />
       <updated>1454489775436</updated>
     </task>
-    <task id="LOCAL-00018" summary="끝">
-      <created>1459515478130</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1459515478130</updated>
-    </task>
     <task id="LOCAL-00019" summary="사진 눕는거 해결">
       <created>1459751390908</created>
       <option name="number" value="00019" />
@@ -1012,7 +1018,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460704536728</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="middlee-&gt;middle">
+      <created>1460704602735</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1460704602735</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -1064,7 +1076,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="middle손봄" />
     <MESSAGE value="비밀번호 업데이트" />
     <MESSAGE value="ID와 SEQ 나누기" />
     <MESSAGE value="패스워드 체크" />
@@ -1089,7 +1100,8 @@
     <MESSAGE value="프로필 시험중" />
     <MESSAGE value="todo삭제" />
     <MESSAGE value="middle-&gt;middlee" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle-&gt;middlee" />
+    <MESSAGE value="middlee-&gt;middle" />
+    <option name="LAST_COMMIT_MESSAGE" value="middlee-&gt;middle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1623,16 +1635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding>
-            <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/profile_left.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.625">
@@ -1647,9 +1649,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75514877">
+        <state vertical-scroll-proportion="-13.75">
           <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3682927">
+          <caret line="558" column="37" selection-start-line="558" selection-start-column="37" selection-end-line="558" selection-end-column="37" />
+          <folding>
+            <marker date="1460706597000" expanded="true" signature="212:273" placeholder="SELECT WRITE... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="818:900" placeholder="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1460706597000" expanded="true" signature="1712:1772" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="2656:2723" placeholder="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1460706597000" expanded="true" signature="3511:3571" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="4473:4581" placeholder="SELECT ID_US... TBL_FRIENDS" />
+            <marker date="1460706597000" expanded="true" signature="5600:5657" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="8785:8867" placeholder="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1460706597000" expanded="true" signature="10005:10065" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="10949:11016" placeholder="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1460706597000" expanded="true" signature="11804:11864" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1460706597000" expanded="true" signature="12678:12777" placeholder="SELECT ALLOW... TBL_FRIENDS" />
+            <marker date="1460706597000" expanded="true" signature="13551:13645" placeholder="SELECT SEQ F... TBL_FOLLOW" />
+            <marker date="1460706597000" expanded="true" signature="16567:16629" placeholder="SELECT ID,DI... TBL_FOLDER" />
+          </folding>
         </state>
       </provider>
     </entry>
