@@ -161,10 +161,10 @@
       <file leaf-file-name="profile_middle.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.034324944">
-              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.06864989">
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="205" selection-end-column="48" />
               <folding>
-                <marker date="1460702179000" expanded="true" signature="2441:2503" placeholder="SELECT ID,DI... TBL_FOLDER" />
+                <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
               </folding>
             </state>
           </provider>
@@ -653,12 +653,6 @@
       <option name="number" value="Default" />
       <updated>1454489775436</updated>
     </task>
-    <task id="LOCAL-00014" summary="구독자 새로운 컨텐츠 확인 추가">
-      <created>1459235616176</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1459235616176</updated>
-    </task>
     <task id="LOCAL-00015" summary="자바스크립트 모듈화 및 컨텐츠 수정">
       <created>1459341567783</created>
       <option name="number" value="00015" />
@@ -947,7 +941,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460702108345</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="프로필 시험중">
+      <created>1460702195406</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1460702195406</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TodoView">
@@ -966,6 +966,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24474959" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.503231" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32465753" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -976,7 +977,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33013698" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39879155" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -999,7 +999,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="시작" />
     <MESSAGE value="회원가입 id를 임의의 64진수 적용" />
     <MESSAGE value="SEQ를 ID로 바꿈" />
     <MESSAGE value="middle손봄" />
@@ -1024,7 +1023,8 @@
     <MESSAGE value="로그인체크 문제있던거" />
     <MESSAGE value="프로필 문제생김" />
     <MESSAGE value="폴더생성 문제 해결" />
-    <option name="LAST_COMMIT_MESSAGE" value="폴더생성 문제 해결" />
+    <MESSAGE value="프로필 시험중" />
+    <option name="LAST_COMMIT_MESSAGE" value="프로필 시험중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1579,10 +1579,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.034324944">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.06864989">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="205" selection-end-column="48" />
           <folding>
-            <marker date="1460702179000" expanded="true" signature="2441:2503" placeholder="SELECT ID,DI... TBL_FOLDER" />
+            <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
           </folding>
         </state>
       </provider>
