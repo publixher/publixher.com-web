@@ -18,6 +18,7 @@
             data: {email:email,age:age,birthday:birthday,gender:gender,image:profile_image,name:name,api:"naver"},
             dataType: 'json',
             success: function (res) {
+                window.close();
                 location.href='/';
             },error: function () {
                 alert('작업중 문제가 생겼습니다.');
