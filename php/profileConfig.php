@@ -38,7 +38,7 @@
     require_once'../conf/getTarget.php';
     //왼쪽
     include_once "../lib/loginchk.php";
-    include "profile_left.php";
+    require "profile_left.php";
     //중간
     echo '<div id="middle">';
     //폴더목록 가져오기
@@ -182,7 +182,7 @@
 
     echo '</div>';
     //오른쪽
-    include "right.php";
+    require "right.php";
     ?>
     <!--    구글 애널리틱스-->
     <script>(function (i, s, o, g, r, a, m) {

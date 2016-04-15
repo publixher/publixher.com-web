@@ -31,17 +31,17 @@
     require_once'../conf/User.php';
     require_once'../conf/database_conf.php';
     session_start();
-    include_once "../lib/loginchk.php";
+    require_once "../lib/loginchk.php";
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
     $_GET['id']=$folderuser['ID_USER'];
-    include "profile_left.php";
+    require "profile_left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
     echo '</div>';
     //오른쪽
-    include "right.php";
+    require "right.php";
     ?>
     <!--    구글 애널리틱스-->
     <script>(function (i, s, o, g, r, a, m) {

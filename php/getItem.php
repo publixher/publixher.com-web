@@ -35,12 +35,12 @@
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
     $_GET['id']=$userID;
-    include "left.php";
+    require "left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
     echo '</div>';
     //오른쪽
-    include "right.php";
+    require "right.php";
     ?>
     <!--    수정을 위한 모달-->
     <div id="itemModModal" class="modal fade" tabindex="-1">

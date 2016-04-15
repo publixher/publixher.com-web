@@ -1,6 +1,6 @@
 <div id="right">
     <?php
-    include "conf.php";
-    include "market.php";
+    require "conf.php";
+    require "market.php";
     ?>
 </div>
