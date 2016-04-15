@@ -140,7 +140,7 @@ if ($_POST['action'] == 'profilechange') {
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('DIR', $_POST['folder'], PDO::PARAM_STR);
     $prepare->execute();
-    echo "<meta http-equiv='refresh' content='0;url=../FOLDERConfig.php?id=${userID}'>";
+    echo "<meta http-equiv='refresh' content='0;url=../folderConfig.php?id=${userID}'>";
 } elseif ($_POST['action'] == 'deletefolder') {
     if ($userID == $_POST['userID']) {
         $folderid = $_POST['folderid'];
