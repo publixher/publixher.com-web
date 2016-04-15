@@ -105,6 +105,7 @@
                         data: {email:response.email,birthday:response.birthday,gender:gender,image:profile_image,name:response.name,locale:response.locale,api:"facebook",action:'reg'},
                         dataType: 'json',
                         success: function (res) {
+                            window.close();
                             location.href='/';
                         },error: function () {
                             alert('작업중 문제가 생겼습니다.');
