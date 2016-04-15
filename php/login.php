@@ -115,10 +115,7 @@
             }, {scope: 'public_profile,email,user_birthday'});
         } else {
             // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
-            FB.login(function(response) {
-                console.log(response)
-                console.log('no_idea')
-            }, {scope: 'public_profile,email,user_birthday'});
+            FB.login(function(response) {}, {scope: 'public_profile,email,user_birthday'});
         }
     }
 </script>
