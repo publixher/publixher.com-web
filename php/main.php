@@ -34,14 +34,14 @@
 <body>
 <div id="wrap">
     <?php
-    include_once "../conf/User.php";
+    require_once "../conf/User.php";
     session_start();
-    include_once "../lib/loginchk.php";
+    require_once "../lib/loginchk.php";
 
 
-    include "left.php";
-    include "middle.php";
-    include "right.php";
+    require "left.php";
+    require "middle.php";
+    require "right.php";
     ?>
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">

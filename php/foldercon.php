@@ -31,7 +31,7 @@
     require_once '../conf/database_conf.php';
     session_start();
 
-    include_once "../lib/loginchk.php";
+    require_once "../lib/loginchk.php";
     //세션에 mid가 없으면 로그인페이지로 넘기고 있으면 유저 등록
     if (!isset($_SESSION['user'])) {
         echo "<meta http-equiv='refresh' content='0;url=/php/login.php'>";
@@ -48,14 +48,14 @@
     $folderuser = $prepare1->fetch(PDO::FETCH_ASSOC);
     $userID = $userinfo->getID();
     $_GET['id'] = $folderuser['ID_USER'];
-    include "profile_left.php";
+    require "profile_left.php";
 
     //중간
     echo '<div id="middle"><span id="prea"></span>';
     //폴더 내용물들 가져오기(j쿼리를 이용해서 비동기식으로 가져온다)
     echo '</div>';
     //오른쪽
-    include "right.php";
+    require "right.php";
     ?>
     <!--    수정을 위한 모달-->
     <div id="itemModModal" class="modal fade" tabindex="-1">

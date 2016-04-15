@@ -49,7 +49,7 @@
     if (($_COOKIE['cid'] != '')) {
         setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
         //쿠키있으면 로그인
-        include_once '../conf/database_conf.php';
+        require_once '../conf/database_conf.php';
         $loginsql = "SELECT * FROM publixher.TBL_USER WHERE ID=:ID";
         $loginprepare=$db->prepare($loginsql);
         $loginprepare->bindValue(':ID',$_COOKIE['cid'],PDO::PARAM_STR);
@@ -69,7 +69,7 @@
     }
     $userID = $userinfo->getID();
     //왼쪽
-    include "profile_left.php";
+    require "profile_left.php";
     //중간
     echo '<div id="middle">';
     //폴더목록 가져오기
@@ -92,7 +92,7 @@
     </form>
 </div>
 <?
-include "right.php";
+require "right.php";
 ?>
 <!--    구글 애널리틱스-->
 <script>(function (i, s, o, g, r, a, m) {
