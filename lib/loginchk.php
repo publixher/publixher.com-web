@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['user'])) {
+if(!$_SESSION['user']) {
     if (($_COOKIE['cid'] != '' and isset($_COOKIE['cid']))) {
         setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
         //쿠키있으면 로그인
