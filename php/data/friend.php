@@ -23,7 +23,7 @@ if ($action == 'request') {
     //친구신청 되 있는지 확인
     $targetID = $_POST['targetID'];
     $myID = $_POST['myID'];
-    $sql1 = "SELECT ID FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER)";
+    $sql1 = "SELECT SEQ FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER)";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID_FRIEND', $targetID, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_USER', $myID, PDO::PARAM_STR);

@@ -513,7 +513,12 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $target['ID_USER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
-        $prepare4->execute();
+        try {
+            $prepare4->execute();
+        }catch(PDOException $e){
+            $a=$e->getMessage();
+            $w;
+        }
         echo '{"knock":"' . $target['KNOCK'] . '"}';
     } else {
         echo '{"result":"N","reason":"already"}';

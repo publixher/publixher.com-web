@@ -253,7 +253,7 @@
             }
 
             //구독신청 버튼
-            $sql3 = "SELECT ID FROM publixher.TBL_FOLLOW WHERE ID_MASTER=:ID_MASTER AND ID_SLAVE=:ID_SLAVE LIMIT 1";
+            $sql3 = "SELECT SEQ FROM publixher.TBL_FOLLOW WHERE ID_MASTER=:ID_MASTER AND ID_SLAVE=:ID_SLAVE LIMIT 1";
             $prepare3 = $db->prepare($sql3);
             $prepare3->bindValue('ID_MASTER', $targetid, PDO::PARAM_STR);
             $prepare3->bindValue('ID_SLAVE', $userID, PDO::PARAM_STR);
