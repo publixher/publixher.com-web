@@ -1,5 +1,4 @@
 <?php
-//TODO:데이터베이스 설정 바꿔야함
 $dbServer = '127.0.0.1';
 $dbUser='Kang';
 $dbPass='!Pp999223';
