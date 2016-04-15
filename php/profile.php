@@ -31,7 +31,7 @@
     session_start();
     include_once "../lib/loginchk.php";
     require_once "profile_left.php";
-    require_once "profile_middle.php";
+    require_once "profile_middlee.php";
     require_once "right.php";
     ?>
 

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php/profile_middle.php" afterPath="$PROJECT_DIR$/php/profile_middlee.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/database_conf.php" afterPath="$PROJECT_DIR$/conf/database_conf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/blur.php" afterPath="$PROJECT_DIR$/lib/blur.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile.php" afterPath="$PROJECT_DIR$/php/profile.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.51487416">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -202,13 +202,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile_middle.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
+      <file leaf-file-name="profile_middlee.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/profile_middlee.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11061947">
-              <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
+            <state vertical-scroll-proportion="-3.125">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
               <folding>
                 <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile_left.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/profile_left.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.625">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <marker date="1460701092000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1460701092000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1460701092000" expanded="true" signature="1875:1949" placeholder="SELECT CONTE... TBL_FORDER" />
               </folding>
             </state>
           </provider>
@@ -704,12 +718,6 @@
       <option name="number" value="Default" />
       <updated>1454489775436</updated>
     </task>
-    <task id="LOCAL-00016" summary="네이버로 로그인 구현">
-      <created>1459418839710</created>
-      <option name="number" value="00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1459418839710</updated>
-    </task>
     <task id="LOCAL-00017" summary="뭐 했나?">
       <created>1459483641184</created>
       <option name="number" value="00017" />
@@ -998,7 +1006,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460702283292</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="todo삭제">
+      <created>1460704282675</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1460704282675</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -1021,12 +1035,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32465753" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24474959" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24474959" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31917807" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33013698" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33013698" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1050,7 +1064,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="회원가입 id를 임의의 64진수 적용" />
     <MESSAGE value="SEQ를 ID로 바꿈" />
     <MESSAGE value="middle손봄" />
     <MESSAGE value="비밀번호 업데이트" />
@@ -1075,7 +1088,8 @@
     <MESSAGE value="프로필 문제생김" />
     <MESSAGE value="폴더생성 문제 해결" />
     <MESSAGE value="프로필 시험중" />
-    <option name="LAST_COMMIT_MESSAGE" value="프로필 시험중" />
+    <MESSAGE value="todo삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo삭제" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1463,18 +1477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile_left.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.958333">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-          <folding>
-            <marker date="1460701092000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1460701092000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1460701092000" expanded="true" signature="1875:1949" placeholder="SELECT CONTE... TBL_FORDER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/folderConfig.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.0">
@@ -1583,14 +1585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.416667">
@@ -1629,13 +1623,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
+    <entry file="file://$PROJECT_DIR$/php/profile_middlee.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11061947">
-          <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
+        <state vertical-scroll-proportion="-3.125">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
           <folding>
             <marker date="1460702277000" expanded="true" signature="16528:16590" placeholder="SELECT ID,DI... TBL_FOLDER" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile_left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1460701092000" expanded="true" signature="1082:1153" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1460701092000" expanded="true" signature="1229:1301" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1460701092000" expanded="true" signature="1875:1949" placeholder="SELECT CONTE... TBL_FORDER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51487416">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
