@@ -215,7 +215,7 @@
     <script>
         var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");
         naver_id_login.setButton("white", 3, 40)
-        naver_id_login.setPopup();
+//        naver_id_login.setPopup();
         naver_id_login.setDomain(".publixher.com");
         naver_id_login.setState("abcdefghijklmnoqstuv");
         naver_id_login.init_naver_id_login();
