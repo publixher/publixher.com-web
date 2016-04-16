@@ -12,7 +12,6 @@
  */
 function blur($gdImageResource, $blurFactor = 3)
 {
-    //TODO:path 도메인에 맞춰 바꿔야함
     // blurFactor has to be an integer
     $blurFactor = round($blurFactor);
     $filepath=__DIR__.'/..'. $gdImageResource;

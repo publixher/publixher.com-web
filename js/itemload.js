@@ -33,8 +33,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '</div></div> <div class="body">'
     write += preview;
     if(tag){
+        write+='<br>'
         for(var i=0;i<tag.length;i++) {
-            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '">#' + tag[i] + '</a>'
+            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
@@ -79,8 +80,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '</div></div> <div class="body">'
     write += preview;
     if(tag){
+        write+='<br>'
         for(var i=0;i<tag.length;i++) {
-            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '">#' + tag[i] + '</a>'
+            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
     write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';

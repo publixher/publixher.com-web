@@ -38,7 +38,7 @@
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
-                    <?
+                    <?php
                     $arr = array();
                     $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
@@ -71,7 +71,7 @@
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
-                    <?
+                    <?php
                     $arr = array();
                     $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
@@ -88,7 +88,7 @@
                 </ul>
             </div>
             <!--            친구신청목록-->
-            <?
+            <?php
             //친구요청(ID_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
             $sql2 = "SELECT ID_USER,SEQ FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ALLOWED='N') ORDER BY SEQ DESC";
             $prepare2 = $db->prepare($sql2);
@@ -135,11 +135,11 @@
                 <ul class="dropdown-menu hasSelect" role="menu" id="confAut">
                     <li><b>글쓰기 권한</b></li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="0" <? if ($writeauth == 0) echo 'checked' ?>>나만</label></li>
+                                                    value="0" <?php if ($writeauth == 0) echo 'checked' ?>>나만</label></li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="1" <? if ($writeauth == 1) echo 'checked' ?>>친구</label></li>
+                                                    value="1" <?php if ($writeauth == 1) echo 'checked' ?>>친구</label></li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="2" <? if ($writeauth == 2) echo 'checked' ?>>전체</label></li>
+                                                    value="2" <?php if ($writeauth == 2) echo 'checked' ?>>전체</label></li>
                     <li><b>타인이 설정할 수 있는 공개 권한</b></li>
                     <li class="checkbox"><label><input type="checkbox" value="a" class="expAuth" checked disabled>나와 글쓴이</label>
                     </li>
@@ -152,7 +152,7 @@
                 </ul>
             </div>
         </div>
-    <? } else {
+    <?php } else {
     //        내 프로필이 아닐경우
     ?>
         <div class="btn-group" role="group">
@@ -186,7 +186,7 @@
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
-                    <?
+                    <?php
                     $arr = array();
                     $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
@@ -219,7 +219,7 @@
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
-                    <?
+                    <?php
                     $arr = array();
                     $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
@@ -266,7 +266,7 @@
             }
             ?>
         </div>
-    <? } ?>
+    <?php } ?>
     <!--    글쓰는 카드-->
     <form action="/php/data/uploadContent.php" method="post" enctype="multipart/form-data" id="upform">
         <?php
@@ -279,14 +279,14 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab"
                                                               data-toggle="tab">똥싸기</a></li>
-                    <? if ($I) echo '<li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">용돈벌기</a></li>' ?>
+                    <?php if ($I) echo '<li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">용돈벌기</a></li>' ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
-                            <? if (strpos($expauth, 'b') !== false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>" ?>
-                            <? if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>' ?>
+                            <?php if (strpos($expauth, 'b') !== false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>" ?>
+                            <?php if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>' ?>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -338,7 +338,7 @@
                             </tr>
                         </table>
                     </div>
-                    <? if ($I) { ?>
+                    <?php if ($I) { ?>
                         <div role="tabpanel" class="tab-pane" id="publixh">
                             <div>
                                 <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
@@ -410,10 +410,10 @@
                                     </td>
                                 </tr>
                             </table>
-                        </div><? } ?>
+                        </div><?php } ?>
                 </div>
             </div>
-        <? } ?>
+        <?php } ?>
     </form>
     <div id="topcon"></div>
 
@@ -555,7 +555,7 @@
 </div>
 <script>
     var page = 0;
-    var targetID ='<?=${targetid}?>';
+    var targetID ='<?=$targetid?>';
     var loadOption = {ID: mid, nowpage: page, profile: targetID, I: I, frelation: frelation};
 </script>
 <!--    해시 태그-->

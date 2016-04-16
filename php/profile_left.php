@@ -32,11 +32,7 @@
             $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_TARGET";
         }
         $prepare1 = $db->prepare($sql1);
-        try {
             $prepare1->bindValue(':ID_TARGET', $userinfo->getID(), PDO::PARAM_STR);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
         $prepare1->execute();
         $cash = $prepare1->fetch(PDO::FETCH_ASSOC);
         $cash = $cash['CASH_POINT'];
