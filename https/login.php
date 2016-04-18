@@ -138,7 +138,7 @@
 
 <script src="/https/regist.js"></script>
 <div id="center">
-    <form method='post' action='/php/data/loginConfirm.php'>
+    <form method='post' action='/https/loginConfirm.php'>
         <table>
             <tr>
                 <td>아이디</td>
