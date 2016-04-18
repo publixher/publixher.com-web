@@ -43,15 +43,14 @@ if (!empty($_POST)) {
         $file_hash = $date.$url;
         $file_hash = md5($file_hash);
         $filepath = "../../img/origin/${file_hash}.jpg" ;
-        $croppath = "../../img/crop/${file_hash}.jpg";
+        $croppath = "/img/crop/${file_hash}.jpg";
         copy($url,$filepath);
         $img = new imaging;
         $img->set_img($filepath);
         $img->set_quality(100);
         $img->set_size(510, 510);
-        $img->save_img($croppath);
+        $img->save_img("../../img/crop/${file_hash}.jpg");
     return $croppath;
-    // $size[2]의 값이 1=gif,2=jpg,3=png
     }
     $imgcount=count($imgs[0]);
     $croprex="/^\\/img\\/crop\\//i";
@@ -60,6 +59,8 @@ if (!empty($_POST)) {
         if (!preg_match($croprex,$imgs[1][$i][0])){
             $originurl[$i]=$imgs[1][$i][0];
             $savedurl[$i]=getImgFromUrl($imgs[1][$i][0]);
+            $imgs[1][$i][0]=$savedurl[$i];
+            $imgs[0][$i][0]=str_replace($originurl[$i],$savedurl[$i],$imgs[0][$i][0]);
             $body=str_replace($originurl,$savedurl,$body);
         }
     }
@@ -90,7 +91,7 @@ if (!empty($_POST)) {
     }
 
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < count($imgs[1]); $i++) {
+    for ($i = 1; $i < $imgcount; $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
         $blured[$i - 1] = blur($imgs[1][$i][0], 2, $ext);
     }
