@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-$(document).ready(function(){
+$(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
     $('.hasInput,.hasSelect').click(function (e) {
         e.stopPropagation();
@@ -52,7 +52,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetID: targetid, myID: myID, action: action, token: token, age: age},
+            data: {targetID: targetid, myID: myID, action: action, token: token},
             dataType: 'json',
             success: function () {
                 var btn = $('#friequst');
@@ -75,7 +75,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetID: fid, requestid: requestid, action: action, myID: myID, token: token, age: age},
+            data: {targetID: fid, requestid: requestid, action: action, myID: myID, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
@@ -96,7 +96,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
-            data: {targetID: targetID, action: action, userID: mid, token: token, age: age},
+            data: {targetID: targetID, action: action, userID: mid, token: token},
             dataType: 'json',
             success: function (res) {
                 var btn = $('#subsbtn');

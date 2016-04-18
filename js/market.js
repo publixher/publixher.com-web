@@ -7,7 +7,7 @@ $(document).ready(function () {
         $.ajax({
             url: "/php/data/.php",
             type: "POST",
-            data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token, age: age},
+            data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'N' && res['reason'] == 'already') {

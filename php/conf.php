@@ -10,7 +10,6 @@
     $mage = $_SESSION['user']->getBIRTH();
     $mpic=$_SESSION['user']->getPIC();
     $token = $_SESSION['token'];    //토큰
-    $agen = $_SESSION['age']; //브라우저 정보
     //나이구하기
     $birthday = date("Y", strtotime($mage)); //생년월일
     $nowday = date('Y'); //현재날짜
@@ -20,7 +19,6 @@
     <script>
         var mid = "<?=$mid?>"
         var token = "<?=$token?>";
-        var age = "<?=$agen?>";
     </script>
     <div id="controller">
         <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><img src="<?=$mpic?>" style="width: 40px; height: 40px;"></a>

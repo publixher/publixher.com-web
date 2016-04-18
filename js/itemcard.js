@@ -1,14 +1,14 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-$(document).ready(function(){
+$(document).ready(function () {
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var thisitemID = $(this).parents()[5].id;
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {ID: thisitemID, action: "knock", userID: mid, token: token, age: age},
+            data: {ID: thisitemID, action: "knock", userID: mid, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] != 'N') {
@@ -27,14 +27,14 @@ $(document).ready(function(){
         var tail = $('#' + thisitemID + ' .tail');
         tail.css('margin-bottom', '10px');
         if (!tail.hasClass('opend-comment')) {
-            if(tail.hasClass('opend-share')) {
+            if (tail.hasClass('opend-share')) {
                 tail.removeClass('opend-share')
                 $('#' + thisitemID + ' .tail .tab-share').remove();
-                $('#' + thisitemID + ' .tail .tshare').css('background-color','white');
+                $('#' + thisitemID + ' .tail .tshare').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
             tail.append('<div class="tab-comment"></div>');
-            var tab_comment=$('#' + thisitemID + ' .tail .tab-comment');
+            var tab_comment = $('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
             word += '<ul class="nav nav-tabs" role="tablist" id="repnav-"' + thisitemID + '>'
@@ -53,7 +53,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token, age: age},
+                data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
                     function registRep(res, where) {
@@ -69,15 +69,15 @@ $(document).ready(function(){
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'] + '" class="profilepic"></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                            if(mid==res[i]['ID_USER']){
+                            if (mid == res[i]['ID_USER']) {
                                 write += ' <a class="repdel">삭제</a>'
                             }
-                            write +='</span></span></td></tr></table></div>';
+                            write += '</span></span></td></tr></table></div>';
                             list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
                         }
-                        if(res['more']==1) {
+                        if (res['more'] == 1) {
                             list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                         }
                     }
@@ -124,7 +124,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {ID: num, action: "comment", userID: mid, index: index, sort: sort, token: token, age: age},
+            data: {ID: num, action: "comment", userID: mid, index: index, sort: sort, token: token},
             dataType: 'json',
             success: function (res) {
                 function registRep(res, where) {
@@ -137,17 +137,17 @@ $(document).ready(function(){
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace("profile","crop34") + '" class="profilepic"></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace("profile", "crop34") + '" class="profilepic"></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if(mid==res[i]['ID_USER']){
+                        if (mid == res[i]['ID_USER']) {
                             write += ' <a class="repdel">삭제</a>'
                         }
-                        write +='</span></span></td></tr></table></div>';
+                        write += '</span></span></td></tr></table></div>';
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
-                    if(res['more']==1) {
+                    if (res['more'] == 1) {
                         list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                     }
                 }
@@ -170,7 +170,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token, age: age},
+            data: {ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
@@ -188,16 +188,16 @@ $(document).ready(function(){
                         var reply = res[i]['REPLY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if(mid==res[i]['ID_USER']){
+                        if (mid == res[i]['ID_USER']) {
                             write += ' <a class="repdel">삭제</a>'
                         }
-                        write +='</span></span></td></tr></table></div>';
+                        write += '</span></span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
-                        if(res['more']==0){
+                        if (res['more'] == 0) {
                             btn.remove();
                         }
                     }
@@ -211,14 +211,14 @@ $(document).ready(function(){
     })
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
-        if (e.keyCode == 13 && $(this).val().length>0) {
+        if (e.keyCode == 13 && $(this).val().length > 0) {
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.val();
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token, age: age},
+                data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
                 dataType: 'json',
                 success: function (res) {
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
@@ -235,14 +235,14 @@ $(document).ready(function(){
         }
     });
     //댓글삭제 동작
-    $(document).on('click','.repdel', function () {
-        var thisrep=$(this).parents()[6];
-        var thisrepID=(thisrep.split('-'))[3];
+    $(document).on('click', '.repdel', function () {
+        var thisrep = $(this).parents()[6];
+        var thisrepID = (thisrep.split('-'))[3];
         $.ajax({
-            url:"/php/data/itemAct.php",
-            type:"POST",
-            data:{ID:thisrepID,action:"rep_del",token: token, age: age,userID:mid},
-            dataType:'json',
+            url: "/php/data/itemAct.php",
+            type: "POST",
+            data: {ID: thisrepID, action: "rep_del", token: token, userID: mid},
+            dataType: 'json',
             success: function () {
 
             }
@@ -260,7 +260,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {ID: thisitemID, repID: thisrepID, action: "sub_comment", userID: mid, token: token, age: age},
+                data: {ID: thisitemID, repID: thisrepID, action: "sub_comment", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
@@ -274,13 +274,13 @@ $(document).ready(function(){
                                 var date = res[i]['REPLY_DATE'];
                                 var reply = res[i]['REPLY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
-                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
+                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
                                 subrep_list.append(write);
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
                             }
-                            if(res['more']==1) {
+                            if (res['more'] == 1) {
                                 subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
                             }
                         }
@@ -297,10 +297,10 @@ $(document).ready(function(){
     });
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
-        if (e.keyCode == 13 && $(this).val().length>0) {
+        if (e.keyCode == 13 && $(this).val().length > 0) {
             var form = $(this)[0].id;
             var idset = form.split('-');
-            var sub=form.replace('form','sub');
+            var sub = form.replace('form', 'sub');
             var thisitemID = idset[1];
             var thisrepID = idset[3];
             var reply = $('#' + form).val();
@@ -341,7 +341,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {repID: repID, action: "more_sub_comment", userID: mid, index: index, token: token, age: age},
+            data: {repID: repID, action: "more_sub_comment", userID: mid, index: index, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'NO') {
@@ -358,16 +358,17 @@ $(document).ready(function(){
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REPLY'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile','crop34') + '" class="profilepic"></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
-                        if(res['more']==0){
+                        if (res['more'] == 0) {
                             btn.remove();
                         }
                     }
                 }
+
                 registRep(res, caret);
             }
         })
@@ -377,18 +378,18 @@ $(document).ready(function(){
     $(document).on("click", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail');
-        if(!tail.hasClass('opend-share')){
+        if (!tail.hasClass('opend-share')) {
             var linkstr = 'http://alpha.publixher.com/php/getItem.php?iid=' + thisitemID;
-            var embedstr = '<iframe width="530" height="633" src="http://alpha.publixher.com/php/embeded.php?iid='+thisitemID+'" frameborder="0"></iframe>'
-            if(tail.hasClass('opend-comment')){
+            var embedstr = '<iframe width="530" height="633" src="http://alpha.publixher.com/php/embeded.php?iid=' + thisitemID + '" frameborder="0"></iframe>'
+            if (tail.hasClass('opend-comment')) {
                 tail.removeClass('opend-comment');
                 $('#' + thisitemID + ' .tail .tab-comment').remove();
-                $('#' + thisitemID + ' .tail .tcomment').css('background-color','white');
+                $('#' + thisitemID + ' .tail .tcomment').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
             tail.append('<div class="tab-share"></div>')
-            var tab_share=$('#' + thisitemID + ' .tail .tab-share');
-            var text='이 게시물의 url<br><div class="form-control linkurl">'+linkstr+'</div><br>이 게시물의 머스타드 소스코드 <br><div class="form-control embedtag" style="height: 70px;"></div>';
+            var tab_share = $('#' + thisitemID + ' .tail .tab-share');
+            var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div><br>이 게시물의 머스타드 소스코드 <br><div class="form-control embedtag" style="height: 70px;"></div>';
             tab_share.append(text)
             $('#' + thisitemID + ' .tail .tab-share .embedtag').text(embedstr);
             tail.addClass('opend-share')
@@ -409,7 +410,7 @@ $(document).ready(function(){
                     ID: thisitemID,
                     action: "buy",
                     userID: mid,
-                    price: $('#' + thisitemID + ' .tail .price .value').text(), token: token, age: age
+                    price: $('#' + thisitemID + ' .tail .price .value').text(), token: token
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -430,7 +431,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
-                data: {ID: thisitemID, action: "more", userID: mid, token: token, age: age},
+                data: {ID: thisitemID, action: "more", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
@@ -460,7 +461,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {ID: thisitemID, action: "del", token: token, age: age},
+            data: {ID: thisitemID, action: "del", token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
@@ -481,7 +482,7 @@ $(document).ready(function(){
     $(document).on('click', '.itemMod', function () {
         var thisitemID = $(this).parents()[5].id;
         var type = '';
-        itemID_mod=thisitemID;
+        itemID_mod = thisitemID;
         expose_mod = null;
         folderid_mod = null;
         $('#directorySettingSub-mod').text('비분류');
@@ -502,7 +503,16 @@ $(document).ready(function(){
             success: function (res) {
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
-                switch (expose_mod) {case 0:expset.text('나만보기');break;case 1:expset.text('친구에게 공개');break;case 2:expset.text('전체공개');}
+                switch (expose_mod) {
+                    case 0:
+                        expset.text('나만보기');
+                        break;
+                    case 1:
+                        expset.text('친구에게 공개');
+                        break;
+                    case 2:
+                        expset.text('전체공개');
+                }
                 if (res['FOLDER']) {
                     $('#directorySettingSub-mod').text(res['DIR']);
                     folderid_mod = res['FOLDER'];
@@ -551,11 +561,11 @@ $(document).ready(function(){
         },
         done: function (e, data) {
             if (this == $('#fileuploads-mod')[0]) {
-                var sendBody_mod=$('#sendBody-mod');
+                var sendBody_mod = $('#sendBody-mod');
                 sendBody_mod.html(sendBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
                 sendBody_mod.height(sendBody_mod.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp-mod')[0]) {
-                var publiBody_mod=$('#publiBody-mod')
+                var publiBody_mod = $('#publiBody-mod')
                 publiBody_mod.html(publiBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
                 publiBody_mod.height(publiBody_mod.height() + data.result['files']['file_height'] + 8);
 
@@ -567,8 +577,8 @@ $(document).ready(function(){
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
-        var ID_target=null;
-        if(targetID){
+        var ID_target = null;
+        if (targetID) {
             if (mid == targetID) {
                 ID_target = null;
             } else {
@@ -580,14 +590,14 @@ $(document).ready(function(){
                 url: "/php/data/modItem.php",
                 type: "POST",
                 data: {
-                    ID:itemID_mod,
+                    ID: itemID_mod,
                     body: $('#sendBody-mod').html(),
                     ID_writer: mid,
                     folder: folderid_mod,
-                    token: token, age: age,
+                    token: token,
                     tag: $('#taginputs-mod').val(),
                     expose: expose_mod,
-                    action:"mod_item"
+                    action: "mod_item"
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -604,13 +614,13 @@ $(document).ready(function(){
                     var targetname = res['TARGET_NAME'];
                     var folderID = null;
                     var foldername = null;
-                    var expose=res['EXPOSE'];
+                    var expose = res['EXPOSE'];
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose);
-                    $('#'+itemID_mod).replaceWith(write)
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose);
+                    $('#' + itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
                 },
@@ -631,7 +641,7 @@ $(document).ready(function(){
                 url: "/php/data/modItem.php",
                 type: "POST",
                 data: {
-                    ID:itemID_mod,
+                    ID: itemID_mod,
                     body: $('#publiBody-mod').html(),
                     for_sale: "Y",
                     price: $('#contentCost-mod').val(),
@@ -645,7 +655,7 @@ $(document).ready(function(){
                     age: age,
                     tag: $('#taginputp-mod').val(),
                     expose: expose_mod,
-                    action:"mod_item"
+                    action: "mod_item"
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -662,13 +672,13 @@ $(document).ready(function(){
                     var pic = res['PIC'];
                     var folderID = null;
                     var foldername = null;
-                    var expose=res['EXPOSE']
+                    var expose = res['EXPOSE']
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic,expose);
-                    $('#'+itemID_mod).replaceWith(write)
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose);
+                    $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
                     $('#publiBody-mod').html("").trigger('keyup');
@@ -786,7 +796,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {ID: thisitemID, action: "top", mid: mid, token: token, age: age},
+            data: {ID: thisitemID, action: "top", mid: mid, token: token},
             dataType: 'json',
             success: function (res) {
                 if (!res['result'] == 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
@@ -798,13 +808,13 @@ $(document).ready(function(){
     //댓글 노크클릭시의 동작
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
-        var idset=thisrepID.split('-');
+        var idset = thisrepID.split('-');
         var thisrepnum = idset[3];
         var thisitemID = $(this).parents()[11].id;
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
-            data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token, age: age},
+            data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token},
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'N' && res['reason'] == 'already') {
@@ -819,7 +829,7 @@ $(document).ready(function(){
         })
     });
 
-    $(document).on("dragstart", "img,a", function() {
+    $(document).on("dragstart", "img,a", function () {
         return false;
     });
 });

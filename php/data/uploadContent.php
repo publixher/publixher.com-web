@@ -18,12 +18,6 @@ if (!empty($_POST)) {
     } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
         exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
     }
-//세션탈취 검사
-    if (!isset($_POST['age']) AND !isset($_GET['age'])) {
-        exit('부정한 조작이 감지되었습니다. case3 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
-    } elseif ($_POST['age'] != $_SESSION['age'] AND $_GET['age'] != $_SESSION['age']) {
-        exit('부정한 조작이 감지되었습니다. case4 \n$_POST["age"] :'.$_POST['age'].' \n $_GET["age"] :'.$_GET['age'].'$_SESSION :'.$_SESSION);
-    }
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
@@ -34,7 +28,6 @@ if (!empty($_POST)) {
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
-    //TODO:파일이 있는지 확인해서 없으면 페이지로 가서 사진을 가져오고 크롭하는작업 해야함 $imgs[1]의 주소값을 사용
     function getImgFromUrl($url){
         require_once'../../lib/imagecrop.php';
         //이미지가 서버에 없으면 경로에서 이미지 따와서 서버에 저장하는것
@@ -67,8 +60,6 @@ if (!empty($_POST)) {
     //링크로 덮는작업
     if (isset($imgs[0][0])) {
         for ($i = 0; $i < $imgcount; $i++) {
-            /*TODO:$imgs[1][$i][0]는 외부의 이미지를 서버로 저장했을때의 정보를 갖지 못함
-            블러크롭도 처리 해야함*/
             $originSource = str_replace("crop", "origin", $imgs[1][$i][0]);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
