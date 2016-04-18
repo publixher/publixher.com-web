@@ -2,8 +2,8 @@
 session_start();
 session_regenerate_id(true);
 //db뒤지기
-require_once '../../conf/database_conf.php';
-require_once '../../conf/User.php';
+require_once 'database_conf.php';
+require_once 'User.php';
 //넘어온 값 받기
 if (!isset($_POST['email'])) exit;
 $email = $_POST['email'];
