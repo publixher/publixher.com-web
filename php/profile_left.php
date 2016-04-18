@@ -1,7 +1,7 @@
 <div id="left">
     <?php
     require_once '../conf/getTarget.php';
-    $profilepic = $target['PIC'] ? $target['PIC'] : '/sample/12742491_1065271350203874_7743765745963739525_n.jpg';
+    $profilepic = $target['PIC'];
     $birth = date("Y년m월d일", strtotime($target['BIRTH']));
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();

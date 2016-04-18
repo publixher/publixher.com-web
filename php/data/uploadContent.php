@@ -34,8 +34,41 @@ if (!empty($_POST)) {
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
+    //TODO:파일이 있는지 확인해서 없으면 페이지로 가서 사진을 가져오고 크롭하는작업 해야함 $imgs[1]의 주소값을 사용
+    function getImgFromUrl($url){
+        require_once'../../lib/imagecrop.php';
+        //이미지가 서버에 없으면 경로에서 이미지 따와서 서버에 저장하는것
+        $tmp_file = explode(' ', microtime());
+        $date = substr($tmp_file[0], 2, 6);
+        $file_hash = $date.$url;
+        $file_hash = md5($file_hash);
+        $filepath = "../../img/origin/${file_hash}.jpg" ;
+        $croppath = "/img/crop/${file_hash}.jpg";
+        copy($url,$filepath);
+        $img = new imaging;
+        $img->set_img($filepath);
+        $img->set_quality(100);
+        $img->set_size(510, 510);
+        $img->save_img("../../img/crop/${file_hash}.jpg");
+    return $croppath;
+    }
+    $imgcount=count($imgs[0]);
+    $croprex="/^\\/img\\/crop\\//i";
+    //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
+    for($i=0;$i<$imgcount;$i++) {
+        if (!preg_match($croprex,$imgs[1][$i][0])){
+            $originurl[$i]=$imgs[1][$i][0];
+            $savedurl[$i]=getImgFromUrl($imgs[1][$i][0]);
+            $imgs[1][$i][0]=$savedurl[$i];
+            $imgs[0][$i][0]=str_replace($originurl[$i],$savedurl[$i],$imgs[0][$i][0]);
+            $body=str_replace($originurl,$savedurl,$body);
+        }
+    }
+    //링크로 덮는작업
     if (isset($imgs[0][0])) {
-        for ($i = 0; $i < count($imgs[0]); $i++) {
+        for ($i = 0; $i < $imgcount; $i++) {
+            /*TODO:$imgs[1][$i][0]는 외부의 이미지를 서버로 저장했을때의 정보를 갖지 못함
+            블러크롭도 처리 해야함*/
             $originSource = str_replace("crop", "origin", $imgs[1][$i][0]);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
@@ -58,7 +91,7 @@ if (!empty($_POST)) {
     }
 
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < count($imgs[1]); $i++) {
+    for ($i = 1; $i < $imgcount; $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
         $blured[$i - 1] = blur($imgs[1][$i][0], 2, $ext);
     }
