@@ -25,13 +25,13 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
     $prepare->bindValue(':ID_TARGET', $_GET['profile'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif ($_GET['fid']) { //폴더에선 폴더 내용물이 시간순 노출
+} elseif (isset($_GET['fid'])) { //폴더에선 폴더 내용물이 시간순 노출
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND FOLDER=:FOLDER) ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':FOLDER', $_GET['fid'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif ($_GET['buylist']) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
+} elseif (isset($_GET['buylist'])) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
     //구매리스트의 번호를 찾아온다
     $sql = "SELECT ID_CONTENT FROM publixher.TBL_BUY_LIST WHERE ID_USER=:ID_USER ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
     $prepare = $db->prepare($sql);
@@ -46,7 +46,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
         $prepare2->execute();
         $result[$i] = $prepare2->fetch(PDO::FETCH_ASSOC);
     }
-} elseif ($_GET['getItem']) {  //한개만 특정 주소로 가서 찾는것
+} elseif (isset($_GET['getItem'])) {  //한개만 특정 주소로 가서 찾는것
     $sql = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND ID=:ID)";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $_GET['getItem'], PDO::PARAM_STR);

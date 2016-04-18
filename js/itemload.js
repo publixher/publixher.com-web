@@ -37,14 +37,14 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
 
     write += '</div></div> <div class="body">'
-    write += preview;
+    write += preview+'</div>';
     if (tag) {
-        write += '<br>'
+        write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
             write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
+    write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
@@ -90,14 +90,14 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '</div><div class="title">';
     write += title;
     write += '</div></div> <div class="body">'
-    write += preview;
+    write += preview+'</div>';
     if (tag) {
-        write += '<br>'
+        write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
             write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
-    write += '</div> <div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
+    write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'

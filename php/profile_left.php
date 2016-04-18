@@ -41,7 +41,7 @@
         <ul class="list-unstyled" id="activity">
             <li><a><?= $cash ?> pigs</a></li>
             <li><a>충전 &middot 결제정보</a></li>
-            <li><a href="/php/buyList.php?id=${userID}">구매목록</a></li>
+            <li><a href="/php/buyList.php?id=<?=$userID?>">구매목록</a></li>
             <li><a>판매관리</a></li>
         </ul>
         <?php
