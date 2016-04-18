@@ -9,18 +9,18 @@
     <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
     <title>Publixher</title>
     <!-- 부트스트랩 -->
-    <link href="/plugins/bootstrap-3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/publixherico/style.css">
+    <link href="/https/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/https/style.css">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <script src="/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/https/jquery.min.js" type="text/javascript"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="/plugins/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
-    <script src="/plugins/naver.js"></script>
-    <script src="/js/plugins.js"></script>
+    <script src="/https/bootstrap.min.js"></script>
+    <script src="/https/naver.js"></script>
+    <script src="/https/plugins.js"></script>
     <style>
         body {
             background-color: #e5e5e5;
@@ -90,7 +90,7 @@
                         location.href = '/';
                     }, error: function () {
                         alert('작업중 문제가 생겼습니다.');
-                        location.href = '/php/login.php';
+                        location.href = '/https/login.php';
                     }
                 })
             });
@@ -123,7 +123,7 @@
                             location.href = '/';
                         }, error: function () {
                             alert('작업중 문제가 생겼습니다.');
-                            location.href = '/php/login.php';
+                            location.href = '/https/login.php';
                         }
                     })
                 });
@@ -136,7 +136,7 @@
     }
 </script>
 
-<script src="/js/regist.js"></script>
+<script src="/https/regist.js"></script>
 <div id="center">
     <form method='post' action='/php/data/loginConfirm.php'>
         <table>

@@ -126,7 +126,7 @@ $(document).ready(function () {
     }
     $.ajax({
         url: "/php/data//getContent.php",
-        type: "GET",
+        type: "get",
         data: loadOption,
         dataType: 'json',
         tryCount: 0,

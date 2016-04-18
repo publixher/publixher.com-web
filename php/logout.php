@@ -9,4 +9,4 @@ foreach($_COOKIE as $key=>$val){
     setCookie($key,'',time()-3600,"/",'publixher.com',false,true);
 }
 ?>
-<meta http-equiv='refresh' content='0;url=/php/login.php'>
+<meta http-equiv='refresh' content='0;url=/https/login.php'>

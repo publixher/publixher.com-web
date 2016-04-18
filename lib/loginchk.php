@@ -17,7 +17,7 @@ if(!$_SESSION['user']) {
         }
     }else{
         //세션에 user가 없으면 로그인페이지로 넘기고 있으면 유저 등록
-        echo "<meta http-equiv='refresh' content='0;url=/php/login.php'>";
+        echo "<meta http-equiv='refresh' content='0;url=/https/login.php'>";
         exit;
     }
     session_write_close();
