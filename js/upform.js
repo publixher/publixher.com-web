@@ -21,7 +21,7 @@ $(document).ready(function () {
                     body: $('#sendBody').html(),
                     ID_writer: mid,
                     folder: $folderID,
-                    token: token, age: age,
+                    token: token,
                     tag: $('#taginputs').val(),
                     expose: expose,
                     targetID: ID_target,
@@ -84,7 +84,6 @@ $(document).ready(function () {
                     title: $('#saleTitle').val(),
                     folder: $folderID,
                     token: token,
-                    age: age,
                     tag: $('#taginputp').val(),
                     expose: expose,
                     tags:JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)

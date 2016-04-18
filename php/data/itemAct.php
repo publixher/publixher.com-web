@@ -13,12 +13,6 @@ if (!isset($_POST['token']) AND !isset($_GET['token'])) {
 } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
     exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 }
-//세션탈취 검사
-if (!isset($_POST['age']) AND !isset($_GET['age'])) {
-    exit('부정한 조작이 감지되었습니다. case3 \n$_POST["age"] :' . $_POST['age'] . ' \n $_GET["age"] :' . $_GET['age'] . '$_SESSION :' . $_SESSION);
-} elseif ($_POST['age'] != $_SESSION['age'] AND $_GET['age'] != $_SESSION['age']) {
-    exit('부정한 조작이 감지되었습니다. case4 \n$_POST["age"] :' . $_POST['age'] . ' \n $_GET["age"] :' . $_GET['age'] . '$_SESSION :' . $_SESSION);
-}
 
 $act = $_POST['action'];
 if (!$act) {
@@ -513,12 +507,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $target['ID_USER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
-        try {
             $prepare4->execute();
-        }catch(PDOException $e){
-            $a=$e->getMessage();
-            $w;
-        }
         echo '{"knock":"' . $target['KNOCK'] . '"}';
     } else {
         echo '{"result":"N","reason":"already"}';
