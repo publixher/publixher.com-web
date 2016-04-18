@@ -259,7 +259,6 @@ body {
               padding: 0 0 0 0;
               text-align: center;
               border-radius: 0;
-              border-left: 1px solid #eee !important;
               border-bottom-right-radius: 4px;
               height: 22px;
               font-size: 12px;
@@ -585,11 +584,12 @@ body {
         float: left;
         width: 96%;
         .roundborder();
-        border-radius: 4px;
+        border-radius: 2px;
         font-size: 14px;
         padding: 2px 2px 2px 2px;
         margin-left: 6px;
         margin-top: 0;
+        border: 0;
       }
       .dropdown {
         ul {
@@ -841,4 +841,15 @@ li a {
   height:22px;
   border: 0 !important;
   border-left: 1px solid #eee !important;
+}
+.tag-editor {
+  width: 264px;
+  height: auto;
+  border: 0 !important;
+  border-left: 1px solid #eee !important;
+  border-right: 1px solid #eee !important;
+}
+.tag-editor li{
+  width: auto !important;
+  vertical-align: middle;
 }
