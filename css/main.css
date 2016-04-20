@@ -829,9 +829,10 @@ li a {
 .body-tag {
   color: #46799b;
   background: #e0eaf1;
+  white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
   border-radius: 2px;
   padding: 4px;
-  margin-left: 10px;
+  margin-top: 10px !important;
 }
