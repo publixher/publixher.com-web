@@ -119,12 +119,13 @@ $(document).ready(function () {
     $(document).on('click', '.bestrep,.timerep,.frierep', function () {
         var target = $(this).attr('aria-controls');
         var index = $('#' + target).attr('index');
-        var sort = target.substring(0, 4);
-        var num = target.substring(5);
+        var tarsplit=target.split('-');
+        var sort = tarsplit[0];
+        var num = tarsplit[1];
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
-            data: {ID: num, action: "comment", userID: mid, index: index, sort: sort, token: token},
+            data: {ID: num, action: "comment", userID: mid, sort: sort, token: token},
             dataType: 'json',
             success: function (res) {
                 function registRep(res, where) {
@@ -162,9 +163,10 @@ $(document).ready(function () {
     })
 //댓글에서 각 탭에 화살표버튼 새로운 코멘트들을 불러오는거
     $(document).on('click', '.repbtn', function (e) {
-        var target = $(this).parents()[2].id;
-        var sort = target.substring(0, 4);
-        var num = target.substring(5);
+        var target = $(this).parents()[1].id;
+        var tarsplit=target.split('-');
+        var sort = tarsplit[0];
+        var num = tarsplit[1];
         var panel = $('#' + sort + '-' + num);
         var index = panel.attr('index');
         $.ajax({
@@ -180,7 +182,8 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
                     var btn = $('#' + sort + '-' + num + ' .cursor');
-                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
+                    var numrep=Object.keys(res).length-2;
+                    for (var i = 0; i < numrep; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -197,9 +200,9 @@ $(document).ready(function () {
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
-                        if (res['more'] == 0) {
-                            btn.remove();
-                        }
+                    }
+                    if (res['more'] == 0) {
+                        btn.remove();
                     }
                 }
 
@@ -267,7 +270,8 @@ $(document).ready(function () {
                     subrep_list.append('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            for (var i = 0; i < Object.keys(res).length - 2; i++) {
+                            var repnum=Object.keys(res).length - 2;
+                            for (var i = 0; i < repnum; i++) {
                                 var write = '';
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
@@ -313,11 +317,11 @@ $(document).ready(function () {
                     repID: thisrepID,
                     userID: mid,
                     comment: reply,
-                    token: token,
-                    age: age
+                    token: token
                 },
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     var subrep_list = $('#' + form.replace('form', 'sub'));
                     var thisreply = form.replace('-form', '');
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
@@ -363,12 +367,11 @@ $(document).ready(function () {
                         btn.before(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
-                        if (res['more'] == 0) {
-                            btn.remove();
-                        }
+                    }
+                    if (res['more'] == 0) {
+                        btn.remove();
                     }
                 }
-
                 registRep(res, caret);
             }
         })
@@ -410,7 +413,7 @@ $(document).ready(function () {
                     ID: thisitemID,
                     action: "buy",
                     userID: mid,
-                    price: $('#' + thisitemID + ' .tail .price .value').text(), token: token
+                    token: token
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -434,6 +437,7 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "more", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>');
                     priceSpan.html('<a>접기</a>');
@@ -574,7 +578,7 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
         }
     })
-    //글쓸때 버튼 클릭할때의 동작
+    //수정시 글쓰기 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
         var ID_target = null;
@@ -585,6 +589,7 @@ $(document).ready(function () {
                 ID_target = targetID;
             }
         }
+        //TODO:수정시 태그처리 해야함
         if ($('#sendBody-mod').html().length > 0) {
             $.ajax({
                 url: "/php/data/modItem.php",
@@ -595,7 +600,7 @@ $(document).ready(function () {
                     ID_writer: mid,
                     folder: folderid_mod,
                     token: token,
-                    tag: $('#taginputs-mod').val(),
+                    tag: JSON.stringify($('#send-tag-mod').tagEditor('getTags')[0].tags),
                     expose: expose_mod,
                     action: "mod_item"
                 },
@@ -652,8 +657,7 @@ $(document).ready(function () {
                     title: $('#saleTitle-mod').val(),
                     folder: folderid_mod,
                     token: token,
-                    age: age,
-                    tag: $('#taginputp-mod').val(),
+                    tag: JSON.stringify($('#publi-tag-mod').tagEditor('getTags')[0].tags),
                     expose: expose_mod,
                     action: "mod_item"
                 },

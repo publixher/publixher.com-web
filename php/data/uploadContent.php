@@ -136,7 +136,7 @@ if (!empty($_POST)) {
         if (!$for_sale) {
             $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
         } else {
-            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,PIC,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:PIC,:TAG);";
+            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,IMG,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:IMG,:TAG);";
         }
         $uid = uniqueid($db, 'content');
         $prepare = $db->prepare($sql);
@@ -159,7 +159,7 @@ if (!empty($_POST)) {
             $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
             $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
             $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-            $prepare->bindValue(':PIC', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
+            $prepare->bindValue(':IMG', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
             if ($_POST['adult'] == "true") {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {

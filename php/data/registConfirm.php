@@ -1,11 +1,12 @@
 <?php
+header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../lib/random_64.php';
 //유효성 검사
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 $name = $_POST['name'];
-
+$msg='';
 $check_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL); //옵션에 따라 유효성검사하는거 틀리면 false리턴하고 맞으면 그걸 리턴하는거
 $check_pass = preg_match("/^[[:alnum:]]{6,16}$/", $pass);
 $check_name = preg_match("/[\xA1-\xFE]{1,3}/", $name);
@@ -14,7 +15,7 @@ if (!$check_name) {
 }
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
-    $id=uniqueid($db,'user');
+    $id = uniqueid($db, 'user');
     try {
         $db->beginTransaction();
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
@@ -32,14 +33,18 @@ if ($check_email && $check_pass && $check_name) {
         $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
         $prepare2->execute();
         $db->commit();
-    }catch(PDOException $e){
+        $msg = '{"result":"regist"}';
+        echo $msg;
+        exit;
+    } catch (PDOException $e) {
         $db->rollBack();
-        $msg=$e->getMessage();
-        echo "<script>alert('동작중 문제가 생겼습니다. 다시 동작해주세요\n'+${msg}</script>";
+        $msg='{"result":"server error"}';
+        echo $msg;
+        exit;
     }
 } else {
-    echo '<script>alert("입력된 값을 확인해 주세요");history.go(-1)</script>';
-
+    $msg = '{"result":"check value"}';
+    echo $msg;
+    exit;
 }
 ?>
-<meta http-equiv='refresh' content='0;url=../login.php'>
