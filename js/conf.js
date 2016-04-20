@@ -12,6 +12,7 @@ $(document).ready(function () {
                     data: {searchword: search_word,target:target},
                     dataType: 'json',
                     success: function (res) {
+                        console.log(res)
                         var Result;
                         switch(target){
                             case 'name':Result=$('#nameResult');break;
@@ -78,6 +79,7 @@ $(document).ready(function () {
             data: {action: "confnotireq", nowpage: page},
             dataType: 'json',
             success: function (res) {
+                console.log(res)
                 //알림문장
                 for (var i = 0; i < res.length; i++) {
                     switch (res[i]['ACT']) {

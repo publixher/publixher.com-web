@@ -8,7 +8,7 @@ $preparetop->bindValue(':ID', $_GET['profile'], PDO::PARAM_STR);
 $preparetop->execute();
 $result = $preparetop->fetch(PDO::FETCH_ASSOC);
 if ($result) {
-    $sqlcon = "SELECT * FROM publixher.TBL_CONTENT WHERE (DEL='N' AND ID=:ID)";
+    $sqlcon = "SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND ID=:ID)";
     $preparecon = $db->prepare($sqlcon);
     $preparecon->bindValue(':ID', $result['TOP_CONTENT'], PDO::PARAM_STR);
     $preparecon->execute();

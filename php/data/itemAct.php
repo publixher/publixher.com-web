@@ -414,7 +414,7 @@ if ($act == 'knock') {
                 $result = $prepare2->fetch(PDO::FETCH_ASSOC);
                 echo json_encode($result, JSON_UNESCAPED_UNICODE);
             } else {
-                echo '구매먼저 해주세요!';
+                echo '{"result":"not bought"}';
             }
         }
     } else {
@@ -459,7 +459,7 @@ if ($act == 'knock') {
         $prepare5->execute();
         echo '{"result":"Y"}';
     } else {
-        echo '작성자만 삭제할 수 있습니다';
+        echo '{"result":"N","reason":"user not writer"}';
     }
 } elseif ($act == 'top') {
     //한번 확인해주고

@@ -125,7 +125,7 @@ $(document).ready(function () {
         $('#prea').after(spinner);
     }
     $.ajax({
-        url: "/php/data//getContent.php",
+        url: "/php/data/getContent.php",
         type: "get",
         data: loadOption,
         dataType: 'json',

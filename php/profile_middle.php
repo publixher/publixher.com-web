@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL);
+ini_set("display_errors",1);
+?>
 <div id="middle">
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <?php
