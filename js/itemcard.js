@@ -119,7 +119,7 @@ $(document).ready(function () {
     $(document).on('click', '.bestrep,.timerep,.frierep', function () {
         var target = $(this).attr('aria-controls');
         var index = $('#' + target).attr('index');
-        var tarsplit=target.split('-');
+        var tarsplit = target.split('-');
         var sort = tarsplit[0];
         var num = tarsplit[1];
         $.ajax({
@@ -164,7 +164,7 @@ $(document).ready(function () {
 //댓글에서 각 탭에 화살표버튼 새로운 코멘트들을 불러오는거
     $(document).on('click', '.repbtn', function (e) {
         var target = $(this).parents()[1].id;
-        var tarsplit=target.split('-');
+        var tarsplit = target.split('-');
         var sort = tarsplit[0];
         var num = tarsplit[1];
         var panel = $('#' + sort + '-' + num);
@@ -182,7 +182,7 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
                     var btn = $('#' + sort + '-' + num + ' .cursor');
-                    var numrep=Object.keys(res).length-2;
+                    var numrep = Object.keys(res).length - 2;
                     for (var i = 0; i < numrep; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
@@ -270,7 +270,7 @@ $(document).ready(function () {
                     subrep_list.append('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            var repnum=Object.keys(res).length - 2;
+                            var repnum = Object.keys(res).length - 2;
                             for (var i = 0; i < repnum; i++) {
                                 var write = '';
                                 var ID = res[i]['ID'];
@@ -372,6 +372,7 @@ $(document).ready(function () {
                         btn.remove();
                     }
                 }
+
                 registRep(res, caret);
             }
         })
@@ -494,14 +495,12 @@ $(document).ready(function () {
             if ($('#publixh-mod').hasClass('active')) $('#publixh-mod').removeClass('active');
             $('#send-mod').addClass('active');
             type = 'item';
-                var tags = $('#send-tag-mod').tagEditor('getTags')[0].tags;
-                for (var i = 0; i < tags.length; i++) { $('#send-tag-mod').tagEditor('removeTag', tags[i]); }
+            $('#send-tag-mod').tagEditor('destroy').val('').tagEditor();
         } else {
             if ($('#send-mod').hasClass('active')) $('#send-mod').removeClass('active');
             $('#publixh-mod').addClass('active');
             type = 'forsale';
-                var tags = $('#publi-tag-mod').tagEditor('getTags')[0].tags;
-                for (var i = 0; i < tags.length; i++) { $('#publi-tag-mod').tagEditor('removeTag', tags[i]); }
+            $('#publi-tag-mod').tagEditor('destroy').val('').tagEditor();
         }
         $.ajax({
             url: '/php/data/modItem.php',
@@ -542,11 +541,11 @@ $(document).ready(function () {
                     }
                     $('#contentCost-mod').val(res['PRICE']);
                 }
-                var tags=res['TAG'].split(' ');
-                for(var i=0;i<tags.length;i++){
-                    if(type=='item') {
+                var tags = res['TAG'].split(' ');
+                for (var i = 0; i < tags.length; i++) {
+                    if (type == 'item') {
                         $('#send-tag-mod').tagEditor('addTag', tags[i]);
-                    }else{
+                    } else {
                         $('#publi-tag-mod').tagEditor('addTag', tags[i]);
                     }
                 }
@@ -632,14 +631,14 @@ $(document).ready(function () {
                     var targetname = res['TARGET_NAME'];
                     var folderID = null;
                     var foldername = null;
-                    var more=res['MORE'];
+                    var more = res['MORE'];
                     var expose = res['EXPOSE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose,more,tag);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
@@ -692,13 +691,13 @@ $(document).ready(function () {
                     var folderID = null;
                     var foldername = null;
                     var expose = res['EXPOSE']
-                    var more=res['MORE'];
+                    var more = res['MORE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose,more,tag);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
