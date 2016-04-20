@@ -392,7 +392,6 @@ body {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 10px;
   width: 510px;
   word-break: break-all;
 }
@@ -422,6 +421,7 @@ body {
   font-size: 12px;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 10px;
   background-color: #f4f4f4;
 }
 #wrap #middle .item .tail .badge,
@@ -886,11 +886,15 @@ li a {
 .body-tag{
   color: #46799b;
   background: #e0eaf1;
+<<<<<<< HEAD
   white-space: nowrap;
+=======
+>>>>>>> 202b5f29116889f84be5345c98c58309242b79f3
   overflow: hidden;
   cursor: pointer;
   border-radius: 2px;
   padding: 4px;
+<<<<<<< HEAD
 <<<<<<< HEAD
   margin-top: 10px !important;
 }
@@ -903,3 +907,7 @@ li a {
 =======
 }
 >>>>>>> 025a1a15673c3300e299e1cfc7366d121e5debf1
+=======
+  margin-left: 10px;
+}
+>>>>>>> 202b5f29116889f84be5345c98c58309242b79f3
