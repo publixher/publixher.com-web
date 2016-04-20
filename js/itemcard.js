@@ -655,7 +655,7 @@ $(document).ready(function () {
     $('#publixhButton-mod').on('click', function () {
 
         var $btn = $(this).button('loading');
-        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0) {
+        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length>0) {
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -709,7 +709,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            alert('제목과 본문을 입력해 주세요')
+            alert('제목과 본문, 가격을 입력해 주세요')
         }
         $btn.button('reset');
     })
