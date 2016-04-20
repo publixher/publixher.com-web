@@ -6,7 +6,7 @@ session_start();
 $action = $_GET['action'] ? $_GET['action'] : $_POST['action'];
 $itemID = $_GET['itemID'] ? $_GET['itemID'] : $_POST['itemID'];
 if ($action == 'get_item') {
-    $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER,TAG FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $pr = $db->prepare($gs);
     $pr->bindValue(':ID', $itemID);
     $pr->execute();
@@ -101,9 +101,9 @@ if ($action == 'get_item') {
     $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
 
     if (!$_POST['for_sale']) {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG WHERE ID=:ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG WHERE ID=:ID";
     }
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $id);
@@ -112,6 +112,7 @@ if ($action == 'get_item') {
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
     $prepare->bindValue(':ORIGINAL', $originData, PDO::PARAM_STR);
+    $prepare->bindValue(':TAG', $_POST['tag'] ? implode(' ', json_decode($_POST['tag'])) : null, PDO::PARAM_STR);
 
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);

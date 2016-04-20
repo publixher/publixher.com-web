@@ -494,10 +494,14 @@ $(document).ready(function () {
             if ($('#publixh-mod').hasClass('active')) $('#publixh-mod').removeClass('active');
             $('#send-mod').addClass('active');
             type = 'item';
+                var tags = $('#send-tag-mod').tagEditor('getTags')[0].tags;
+                for (var i = 0; i < tags.length; i++) { $('#send-tag-mod').tagEditor('removeTag', tags[i]); }
         } else {
             if ($('#send-mod').hasClass('active')) $('#send-mod').removeClass('active');
             $('#publixh-mod').addClass('active');
             type = 'forsale';
+                var tags = $('#publi-tag-mod').tagEditor('getTags')[0].tags;
+                for (var i = 0; i < tags.length; i++) { $('#publi-tag-mod').tagEditor('removeTag', tags[i]); }
         }
         $.ajax({
             url: '/php/data/modItem.php',
@@ -505,6 +509,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: {itemID: thisitemID, action: "get_item"},
             success: function (res) {
+                console.log(res)
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
                 switch (expose_mod) {
@@ -536,6 +541,14 @@ $(document).ready(function () {
                         $('#sub-category-mod').text('하위분류');
                     }
                     $('#contentCost-mod').val(res['PRICE']);
+                }
+                var tags=res['TAG'].split(' ');
+                for(var i=0;i<tags.length;i++){
+                    if(type=='item') {
+                        $('#send-tag-mod').tagEditor('addTag', tags[i]);
+                    }else{
+                        $('#publi-tag-mod').tagEditor('addTag', tags[i]);
+                    }
                 }
                 $('#itemModModal').modal({show: true})
             }
@@ -589,7 +602,6 @@ $(document).ready(function () {
                 ID_target = targetID;
             }
         }
-        //TODO:수정시 태그처리 해야함
         if ($('#sendBody-mod').html().length > 0) {
             $.ajax({
                 url: "/php/data/modItem.php",
@@ -606,6 +618,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];
@@ -619,12 +632,14 @@ $(document).ready(function () {
                     var targetname = res['TARGET_NAME'];
                     var folderID = null;
                     var foldername = null;
+                    var more=res['MORE'];
                     var expose = res['EXPOSE'];
+                    var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose,more,tag);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
@@ -677,11 +692,13 @@ $(document).ready(function () {
                     var folderID = null;
                     var foldername = null;
                     var expose = res['EXPOSE']
+                    var more=res['MORE'];
+                    var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose,more,tag);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
