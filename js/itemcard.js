@@ -589,6 +589,7 @@ $(document).ready(function () {
                 ID_target = targetID;
             }
         }
+        //TODO:수정시 태그처리 해야함
         if ($('#sendBody-mod').html().length > 0) {
             $.ajax({
                 url: "/php/data/modItem.php",
@@ -599,7 +600,7 @@ $(document).ready(function () {
                     ID_writer: mid,
                     folder: folderid_mod,
                     token: token,
-                    tag: $('#taginputs-mod').val(),
+                    tag: JSON.stringify($('#send-tag-mod').tagEditor('getTags')[0].tags),
                     expose: expose_mod,
                     action: "mod_item"
                 },
@@ -656,8 +657,7 @@ $(document).ready(function () {
                     title: $('#saleTitle-mod').val(),
                     folder: folderid_mod,
                     token: token,
-                    age: age,
-                    tag: $('#taginputp-mod').val(),
+                    tag: JSON.stringify($('#publi-tag-mod').tagEditor('getTags')[0].tags),
                     expose: expose_mod,
                     action: "mod_item"
                 },

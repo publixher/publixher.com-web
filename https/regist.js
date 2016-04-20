@@ -165,7 +165,7 @@ $(document).ready(function () {
         }
     })
 
-    $('#submit').click(function () {
+    $('#submit').click(function (e) {
         var regEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
         var pwcheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,16}$/;
         var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
@@ -175,7 +175,25 @@ $(document).ready(function () {
         if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
         else {namevali = true;}
         if(idvali&&dupidchk&&pwvali&&namevali) {
-            $('#rf').submit();
+            //$('#rf').submit();
+            e.preventDefault();
+            var formData=$('#rf').serialize();
+            $.ajax({
+                url: "/php/data/registConfirm.php",
+                type: "POST",
+                data: formData,
+                dataType: 'json',
+                success: function (res) {
+                    if(res['result']=='regist'){
+                        alert('회원가입이 완료되었습니다. 이제 로그인 해 주세요')
+                        window.location.reload(true);
+                    }else if(res['result']=='server error'){
+                        alert('서버 에러입니다. 다시 시도해 주세요')
+                    }else if(res['result']=='check value'){
+                        alert('입력값이 잘못되었습니다. 입력값을 확인해 주세요')
+                    }
+                }
+            })
         }else{
             alert('아이디,비밀번호,이름을 확인해 주세요');
             return false;

@@ -22,7 +22,6 @@ $(document).ready(function () {
                     ID_writer: mid,
                     folder: $folderID,
                     token: token,
-                    tag: $('#taginputs').val(),
                     expose: expose,
                     targetID: ID_target,
                     tags:JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
@@ -66,7 +65,6 @@ $(document).ready(function () {
     })
     //publixh 버튼 내용
     $('#publixhButton').on('click', function () {
-
         var $btn = $(this).button('loading');
         if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0) {
             $.ajax({
@@ -84,7 +82,6 @@ $(document).ready(function () {
                     title: $('#saleTitle').val(),
                     folder: $folderID,
                     token: token,
-                    tag: $('#taginputp').val(),
                     expose: expose,
                     tags:JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
                 },
