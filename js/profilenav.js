@@ -72,6 +72,8 @@ $(document).ready(function () {
         var requestid = $(this).attr('requestid');
         var pa = $(this).parent()[0];
         var action = $(this).hasClass('friendok') ? "friendok" : "friendno";
+        var thisre=$(this);
+        thisre.removeClass('freqanswer');
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
