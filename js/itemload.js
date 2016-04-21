@@ -49,7 +49,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-    if (more) {
+    if (more=='1') {
         write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
@@ -103,7 +103,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
     if (bought) {
-        if (more) {
+        if (more=='1') {
             write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
