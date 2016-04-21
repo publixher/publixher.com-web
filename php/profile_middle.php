@@ -172,6 +172,7 @@ ini_set("display_errors",1);
             $prepare3->execute();
             $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
             $friendnum = count($friends);
+            $frelation=false;
             //나랑 글쓴이랑 친구인지 확인
             foreach ($friends as $fri) {
                 $frelation = $userID == $fri['ID_FRIEND'];
