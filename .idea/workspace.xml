@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_left.php" afterPath="$PROJECT_DIR$/php/profile_left.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -107,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5646552">
-              <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="104" selection-start-line="73" selection-start-column="96" selection-end-line="73" selection-end-column="104" />
               <folding>
                 <marker date="1461228055000" expanded="true" signature="3084:3110" placeholder="..." />
                 <marker date="1461228055000" expanded="true" signature="4131:4166" placeholder="..." />
@@ -182,11 +179,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/conf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.625">
-              <caret line="23" column="86" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.375">
+              <caret line="23" column="108" selection-start-line="23" selection-start-column="108" selection-end-line="23" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -241,8 +238,8 @@
         <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
-        <option value="$PROJECT_DIR$/php/conf.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
+        <option value="$PROJECT_DIR$/php/conf.php" />
       </list>
     </option>
   </component>
@@ -631,7 +628,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461227031730</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="프로필사진">
+      <created>1461228072030</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1461228072030</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -690,7 +693,8 @@
     <MESSAGE value="unset" />
     <MESSAGE value="전부 50으로 바꿈" />
     <MESSAGE value="콜스팬&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="콜스팬&#10;" />
+    <MESSAGE value="프로필사진" />
+    <option name="LAST_COMMIT_MESSAGE" value="프로필사진" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1285,18 +1289,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.625">
-          <caret line="23" column="86" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5646552">
-          <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="104" selection-start-line="73" selection-start-column="96" selection-end-line="73" selection-end-column="104" />
           <folding>
             <marker date="1461228055000" expanded="true" signature="3084:3110" placeholder="..." />
             <marker date="1461228055000" expanded="true" signature="4131:4166" placeholder="..." />
@@ -1326,6 +1322,14 @@
             <marker date="1461228055000" expanded="true" signature="21260:21276" placeholder="..." />
             <marker date="1461228055000" expanded="true" signature="22796:22809" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.375">
+          <caret line="23" column="108" selection-start-line="23" selection-start-column="108" selection-end-line="23" selection-end-column="108" />
+          <folding />
         </state>
       </provider>
     </entry>
