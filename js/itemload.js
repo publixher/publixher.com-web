@@ -5,7 +5,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write = '<div class="item card" id="';
     write += ID;
     write += '"><div class="header">';
-    write += '<img src="' + pic + '" class="profilepic">';
+    write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
     write += name + '</a>&nbsp;'
     if (targetID) {
@@ -61,7 +61,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write = '<div class="item-for-sale card" id="';
     write += ID;
     write += '"><div class="header">';
-    write += '<img src="' + pic + '" class="profilepic">';
+    write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
     write += name + '</a>&nbsp;'
     if (folderID) {

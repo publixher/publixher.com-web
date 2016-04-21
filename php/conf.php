@@ -21,7 +21,7 @@
         var token = "<?=$token?>";
     </script>
     <div id="controller">
-        <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><img src="<?=$mpic?>" style="width: 40px; height: 40px;"></a>
+        <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>" style="width: 40px; height: 40px;"></div></a>
         <!--이름 및 상태전환버튼-->
             <div class="btn-group" id="usr">
                 <button type="button" id="username" class="btn btn-danger" role="group" onclick="location.href='/php/profile.php?id=<?= $mid ?>'" style="padding: 0;text-align: center;"><?=$mname?></button>
