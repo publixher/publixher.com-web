@@ -810,12 +810,6 @@ li a {
 }
 .tag-editor {
   width: 264px;
-  height: 22px;
-  border: 0 !important;
-  border-left: 1px solid #eee !important;
-}
-.tag-editor {
-  width: 264px;
   height: auto;
   border: 0 !important;
   border-left: 1px solid #eee !important;
@@ -834,5 +828,7 @@ li a {
   cursor: pointer;
   border-radius: 2px;
   padding: 4px;
+  margin-left: 10px !important;
+  line-height: 2.2em;
   margin-top: 10px !important;
 }
