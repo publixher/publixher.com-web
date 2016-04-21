@@ -55,6 +55,13 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
+
+        $sql5="UPDATE publixher.TBL_PIN_LIST SET KNOCK=KNOCK+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare5=$db->prepare($sql5);
+        $prepare5->bindValue(':ID_CONTENT',$ID);
+        $prepare5->execute();
+
+
         //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
@@ -242,7 +249,7 @@ if ($act == 'knock') {
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
     $comment = $_POST['comment'];
-    $uid=uniqueid($db,'reply');
+    $uid = uniqueid($db, 'reply');
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
@@ -271,6 +278,11 @@ if ($act == 'knock') {
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
+
+    $sql5="UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare5=$db->prepare($sql5);
+        $prepare5->bindValue(':ID_CONTENT',$ID);
+        $prepare5->execute();
 } elseif ($act == 'share') {
 
 } elseif ($act == 'buy') {
@@ -467,7 +479,7 @@ if ($act == 'knock') {
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':TOP_CONTENT', $_POST['ID'], PDO::PARAM_STR);
     $prepare1->bindValue(':ID', $_POST['mid'], PDO::PARAM_STR);
-        $prepare1->execute();
+    $prepare1->execute();
     echo '{"result":"Y"}';
 } elseif ($act == 'repknock') {
     //댓글에 노크처리
@@ -507,7 +519,7 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_TARGET', $target['ID_USER'], PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
-            $prepare4->execute();
+        $prepare4->execute();
         echo '{"knock":"' . $target['KNOCK'] . '"}';
     } else {
         echo '{"result":"N","reason":"already"}';
@@ -574,7 +586,7 @@ if ($act == 'knock') {
     $ID = $_POST['ID'];
     $comment = $_POST['comment'];
     $repID = $_POST['repID'];
-    $uid=uniqueid($db,'sub_reply');
+    $uid = uniqueid($db, 'sub_reply');
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
@@ -610,32 +622,35 @@ if ($act == 'knock') {
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
+    $sql5="UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare5=$db->prepare($sql5);
+        $prepare5->bindValue(':ID_CONTENT',$ID);
+        $prepare5->execute();
     exit;
-}elseif($act=='addPin' OR $act=='delPin'){
-    $userID=$_POST['userID'];
-    $ID=$_POST['ID'];
+} elseif ($act == 'addPin' OR $act == 'delPin') {
+    $userID = $_POST['userID'];
+    $ID = $_POST['ID'];
     try {
         $db->beginTransaction();
         if ($act == 'addPin') {
             $sql1 = "INSERT INTO publixher.TBL_PIN_LIST(ID_CONTENT,ID_USER) VALUES(:ID_CONTENT,:ID_USER)";
-            $_SESSION['user']->setPIN($_SESSION['user']->getPIN().' '.$ID);
-        }
-        elseif ($act == 'delPin') {
+            $_SESSION['user']->setPIN($_SESSION['user']->getPIN() . ' ' . $ID);
+        } elseif ($act == 'delPin') {
             $sql1 = "DELETE FROM publixher.TBL_PIN_LIST WHERE ID_CONTENT=:ID_CONTENT AND ID_USER=:ID_USER";
-            $_SESSION['user']->setPIN(str_replace(' '.$ID,'',$_SESSION['user']->getPIN()));
+            $_SESSION['user']->setPIN(str_replace(' ' . $ID, '', $_SESSION['user']->getPIN()));
         }
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':ID_USER', $userID);
         $prepare1->execute();
         //coalesce로 PIN값이 NULL이면 빈문자열로 치환해서 넣는다
-        $sql2="UPDATE publixher.TBL_USER SET PIN=CONCAT(COALESCE(PIN,''),' ',:PIN) WHERE ID=:ID";
+        $sql2 = "UPDATE publixher.TBL_USER SET PIN=CONCAT(COALESCE(PIN,''),' ',:PIN) WHERE ID=:ID";
         $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':PIN',$ID);
-        $prepare2->bindValue(':ID',$userID);
+        $prepare2->bindValue(':PIN', $ID);
+        $prepare2->bindValue(':ID', $userID);
         $prepare2->execute();
         $db->commit();
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         $db->rollBack();
         echo '{"result":"N"}';
         exit;

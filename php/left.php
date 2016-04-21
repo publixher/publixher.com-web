@@ -11,7 +11,7 @@
         $prepare4->execute();
         $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
         $masternum = count($masters);
-        $msql = "SELECT TITLE,ID FROM publixher.TBL_CONTENT WHERE (ID_WRITER=:ID_WRITER AND DEL='N' AND TBL_CONTENT.FOR_SALE='Y' AND EXPOSE>1)ORDER BY ID DESC LIMIT 0,5";
+        $msql = "SELECT TITLE,ID,WRITE_DATE FROM publixher.TBL_CONTENT WHERE (ID_WRITER=:ID_WRITER AND DEL='N' AND TBL_CONTENT.FOR_SALE='Y' AND EXPOSE>1)ORDER BY WRITE_DATE DESC LIMIT 0,5";
         $mriprepare = $db->prepare($msql);
         for ($i = 0;
         $i < $masternum;

@@ -170,6 +170,11 @@ if ($action == 'get_item') {
         $prepare4->execute();
         $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
     }
+
+    $sql5="UPDATE publixher.TBL_PIN_LIST SET MODIFIED=1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+    $prepare5=$db->prepare($sql5);
+    $prepare5->bindValue(':ID_CONTENT',$id);
+    $prepare5->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
 }
