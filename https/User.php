@@ -24,6 +24,23 @@ class User
     private $ID;
     private $WRITEAUTH;
     private $EXPAUTH;
+    private $PIN;
+
+    /**
+     * @param mixed $PIN
+     */
+    public function setPIN($PIN)
+    {
+        $this->PIN = $PIN;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPIN()
+    {
+        return $this->PIN;
+    }
 
 
     /**

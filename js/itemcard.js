@@ -652,7 +652,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
@@ -862,6 +862,49 @@ $(document).ready(function () {
             }
         })
     });
+    //핀 클릭시 동작
+    $(document).on('click','.pin-a', function () {
+        var thisitemID=$(this).parents()[2].id;
+        var pin_a=$(this);
+        pin_a.removeClass('pin-a')
+        if($(this).hasClass('pinned')){
+            $.ajax({
+                url:"/php/data/itemAct.php",
+                type:"POST",
+                data:{ID:thisitemID,token:token,action:"delPin",userID:mid},
+                dataType:'json',
+                success: function (res) {
+                    if(res['result']=='Y'){
+                        pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
+                        pin_a.removeClass('pinned')
+                        pin=pin.replace(' '+thisitemID,'');
+                        console.log(pin)
+                    }else{
+                        alert('작업중 문제가 생겼습니다.')
+                    }
+                }
+            })
+        }else {
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "POST",
+                data: {ID: thisitemID, token: token, action: "addPin",userID:mid},
+                dataType:'json',
+                success: function (res) {
+                    if(res['result']=='Y') {
+                        pin_a.addClass('pin-a').addClass('pubico').addClass('pico-pin2');
+                        pin_a.addClass('pinned');
+
+                        pin=pin+' '+thisitemID;
+                        console.log(pin)
+                    }else{
+                        alert('작업중 문제가 생겼습니다.')
+                    }
+                }
+            })
+        }
+
+    })
 
     $(document).on("dragstart", "img,a", function () {
         return false;

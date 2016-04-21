@@ -8,6 +8,7 @@
  */
 class User
 {
+    private $ID;
     private $EMAIL;
     private $PASSWORD;
     private $USER_NAME;
@@ -21,9 +22,25 @@ class User
     private $IS_NICK;
     private $TOP_CONTENT;
     private $IN_USE;
-    private $ID;
     private $WRITEAUTH;
     private $EXPAUTH;
+    private $PIN;
+
+    /**
+     * @param mixed $PIN
+     */
+    public function setPIN($PIN)
+    {
+        $this->PIN = $PIN;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPIN()
+    {
+        return $this->PIN;
+    }
 
 
     /**

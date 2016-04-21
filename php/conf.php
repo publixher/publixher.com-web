@@ -9,6 +9,7 @@
     $mname = $_SESSION['user']->getUSERNAME();
     $mage = $_SESSION['user']->getBIRTH();
     $mpic=$_SESSION['user']->getPIC();
+    $mpin=$_SESSION['user']->getPIN();
     $token = $_SESSION['token'];    //토큰
     //나이구하기
     $birthday = date("Y", strtotime($mage)); //생년월일
@@ -19,6 +20,7 @@
     <script>
         var mid = "<?=$mid?>"
         var token = "<?=$token?>";
+        var pin = "<?=$mpin?>";
     </script>
     <div id="controller">
         <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>"></div></a>

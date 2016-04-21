@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag) {
+function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin) {
     write = '<div class="item card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -27,7 +27,12 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
             write += '전체공개';
             break;
     }
-    write += '</div> <div class="conf"><a>핀</a>'
+    write += '</div> <div class="conf">';
+    if(pin.indexOf(ID) !=-1){   //핀에 아이디가 있을경우
+        write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
+    }else {
+        write += '<a class="pin-a">핀</a>';
+    }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
 
     if (mid == writer) {
@@ -37,7 +42,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
 
     write += '</div></div> <div class="body">'
-    write += preview+'</div>';
+    write += preview + '</div>';
     if (tag) {
         write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
@@ -49,7 +54,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-    if (more=='1') {
+    if (more == '1') {
         write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
@@ -57,7 +62,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     return write;
 }
 
-function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag) {
+function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin) {
     write = '<div class="item-for-sale card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -80,7 +85,12 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '전체공개';
             break;
     }
-    write += '</div> <div class="conf"><a>핀</a>'
+    write += '</div> <div class="conf">';
+    if(pin.indexOf(ID) !=-1){   //핀에 아이디가 있을경우
+        write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
+    }else {
+        write += '<a class="pin-a">핀</a>';
+    }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
     if (mid == writer) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
@@ -90,7 +100,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '</div><div class="title">';
     write += title;
     write += '</div></div> <div class="body">'
-    write += preview+'</div>';
+    write += preview + '</div>';
     if (tag) {
         write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
@@ -103,7 +113,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
     if (bought) {
-        if (more=='1') {
+        if (more == '1') {
             write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
@@ -158,7 +168,7 @@ $(document).ready(function () {
                             foldername = res[i]['FOLDER_NAME'];
                         }
                         var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                        write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag);
+                        write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
                         if ($('#topcon').length > 0) {
                             $('#topcon').after(write);
                         } else if ($('#upform').length > 0) {
@@ -189,7 +199,7 @@ $(document).ready(function () {
                             foldername = res[i]['FOLDER_NAME'];
                         }
                         var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                        write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag);
+                        write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin);
                         if ($('#topcon').length > 0) {
                             $('#topcon').after(write);
                         } else if ($('#upform').length > 0) {
@@ -264,7 +274,8 @@ $(document).ready(function () {
                                         folderID = res[i]['FOLDER'];
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
-                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag);
+                                    var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
+                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
@@ -292,7 +303,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag);
+                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {

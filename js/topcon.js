@@ -34,7 +34,9 @@ $(document).ready(function(){
                         folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose);
+                    var more = res['MORE'];
+                    var tag = res['TAG'] ? res['TAG'].split(' ') : null;
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
                     $('#topcon').append(write);
                 } else {
                     var write = '';
@@ -56,7 +58,9 @@ $(document).ready(function(){
                         folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose);
+                    var more = res['MORE'];
+                    var tag = res['TAG'] ? res['TAG'].split(' ') : null;
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose,more,tag,pin);
                     $('#topcon').append(write);
                 }
             }
