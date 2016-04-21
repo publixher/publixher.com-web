@@ -301,7 +301,6 @@ ini_set("display_errors",1);
                             <?php
                             require_once '../conf/database_conf.php';
                             require_once '../conf/User.php';
-                            session_start();
                             $userinfo = $_SESSION['user'];
                             $userID = $userinfo->getID();
                             //폴더목록 불러오기
