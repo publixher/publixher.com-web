@@ -44,7 +44,7 @@ ini_set("display_errors",1);
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
+                    $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
                     for ($i = 0; $i < $friendnum; $i++) {
                         $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
@@ -78,7 +78,7 @@ ini_set("display_errors",1);
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
+                    $msql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
                     for ($i = 0; $i < $masternum; $i++) {
                         $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
@@ -116,7 +116,7 @@ ini_set("display_errors",1);
                         echo '<li><a>친구요청이 없습니다</a></li>';
                     } else {
                         $arr = array();
-                        $fsql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+                        $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
                         $fprepare = $db->prepare($fsql);
                         for ($i = 0; $i < $frequestnum; $i++) {
                             $fprepare->bindValue(':ID', $friendrequest[$i]['ID_USER'], PDO::PARAM_STR);
@@ -196,7 +196,7 @@ ini_set("display_errors",1);
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
+                    $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $friprepare = $db->prepare($fsql);
                     for ($i = 0; $i < $friendnum; $i++) {
                         $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
@@ -230,7 +230,7 @@ ini_set("display_errors",1);
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $msql = "SELECT USER_NAME,PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
+                    $msql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
                     $mriprepare = $db->prepare($msql);
                     for ($i = 0; $i < $masternum; $i++) {
                         $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
