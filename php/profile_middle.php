@@ -53,6 +53,7 @@ ini_set("display_errors",1);
                         echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
+                    unset($friprepare);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
@@ -86,6 +87,7 @@ ini_set("display_errors",1);
                         echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
+                    unset($mriprepare);
                     $arr = json_encode($arr);
                     echo "<script>var subsvar=${arr};</script>";
                     ?>
@@ -123,6 +125,7 @@ ini_set("display_errors",1);
                             echo "<li><img src='${reqname['PIC']}'><a href='profile.php?id=" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
                             $arr[] = $reqname;
                         }
+                        unset($fprepare);
                         $arr = json_encode($arr);
                         echo "<script>var freqvar=${arr};</script>";
 
@@ -202,6 +205,7 @@ ini_set("display_errors",1);
                         echo "<li><img src='${friend['PIC']}'><a href='profile.php?id=" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
+                    unset($friprepare);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
@@ -235,6 +239,7 @@ ini_set("display_errors",1);
                         echo "<li><img src='${master['PIC']}'><a href='profile.php?id=" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
+                    unset($mriprepare);
                     $arr = json_encode($arr);
                     echo "<script>var subsvar=${arr};</script>";
                     ?>
