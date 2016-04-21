@@ -50,7 +50,7 @@
                                 <input id="fileuploads" name="fileuploads[]" accept="image/*"
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
-                            <td class="taginput">
+                            <td class="taginput" colspan="2">
                                 <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag">
                             </td>
 
@@ -118,7 +118,7 @@
                                 <input id="fileuploadp" name="fileuploadp[]" accept="image/*"
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                             </td>
-                            <td class="taginput">
+                            <td class="taginput" colspan="2">
                                 <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag">
                             </td>
                             <td class="regbtn">
@@ -177,7 +177,7 @@
                                         <input id="fileuploads-mod" name="fileuploads[]" accept="image/*"
                                                data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
-                                    <td class="taginput">
+                                    <td class="taginput" colspan="2">
                                         <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag-mod">
                                     </td>
                                     <td class="regbtn">
@@ -244,7 +244,7 @@
                                 <input id="fileuploadp-mod" name="fileuploadp[]" accept="image/*"
                                        data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
-                                    <td class="taginput">
+                                    <td class="taginput" colspan="2">
                                         <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag-mod">
                                     </td>
                                     <td class="regbtn">
