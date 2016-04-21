@@ -5,13 +5,16 @@ $(document).ready(function () {
     $(this).attr('')
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
+        var knockbtn=$(this);
         var thisitemID = $(this).parents()[5].id;
+        knockbtn.removeClass('knock');
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
             data: {ID: thisitemID, action: "knock", userID: mid, token: token},
             dataType: 'json',
             success: function (res) {
+                knockbtn.addClass('knock');
                 if (res['result'] != 'N') {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                 } else if (res['reason'] == 'already') {
@@ -19,6 +22,7 @@ $(document).ready(function () {
                 }
             }, error: function (request, status, error) {
                 alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                knockbtn.addClass('knock');
             }
         })
     });
@@ -216,6 +220,8 @@ $(document).ready(function () {
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
+            var thisform=$(this);
+            thisform.removeClass('commentReg');
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.val();
@@ -225,6 +231,7 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
                 dataType: 'json',
                 success: function (res) {
+                    thisform.removeClass('commentReg');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
                     $('#time-' + thisitemID).html('');
@@ -233,6 +240,7 @@ $(document).ready(function () {
                     form.val('');
                     form.blur();
                 }, error: function (request, status, error) {
+                    thisform.removeClass('commentReg');
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
@@ -303,6 +311,8 @@ $(document).ready(function () {
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
+            var thisform=$(this);
+            thisform.removeClass('commentReg_sub');
             var form = $(this)[0].id;
             var idset = form.split('-');
             var sub = form.replace('form', 'sub');
@@ -322,7 +332,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
+                    thisform.addClass('commentReg_sub');
                     var subrep_list = $('#' + form.replace('form', 'sub'));
                     var thisreply = form.replace('-form', '');
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
@@ -408,6 +418,8 @@ $(document).ready(function () {
         var priceSpan = $('#' + thisitemID + ' .tail .price')
         //안산상태에서 한번 눌려졌을때 한번 더누르면 구매됨
         if (priceSpan.hasClass('buyConfirm')) {
+            var pricebtn=$(this);
+            pricebtn.removeClass('price');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
@@ -419,6 +431,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    pricebtn.addClass('price')
                     if (res['buy'] == 'f') {
                         alert('구매 실패 : ' + res['reason']);
                     } else {
@@ -427,6 +440,7 @@ $(document).ready(function () {
                     }
                 }
                 , error: function (request, status, error) {
+                    pricebtn.addClass('price')
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
