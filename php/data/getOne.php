@@ -15,7 +15,7 @@ if ($result) {
     $topcon = $preparecon->fetch(PDO::FETCH_ASSOC);
     if ($topcon) {
         //탑컨텐츠가 있기도 하고 그게 지워진거도 아닐때
-        $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+        $sql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
         $key = 'USER_NAME';
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID', $topcon['ID_WRITER'], PDO::PARAM_STR);
