@@ -91,7 +91,7 @@ if ($act == 'knock') {
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
             $prepare2->execute();
@@ -520,7 +520,7 @@ if ($act == 'knock') {
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
             $prepare2->execute();

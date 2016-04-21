@@ -145,7 +145,7 @@ $(document).ready(function () {
                         var knock = res[i]['KNOCK'];
                         var comment = res[i]['COMMENT'];
                         var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'].replace('profile', 'crop50');
+                        var pic = res[i]['PIC'];
                         var targetID = res[i]['ID_TARGET'];
                         var targetname = res[i]['TARGET_NAME'];
                         var folderID = null;
@@ -178,7 +178,7 @@ $(document).ready(function () {
                         var comment = res[i]['COMMENT'];
                         var bought = res[i]['BOUGHT'];
                         var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'].replace('profile', 'crop50');
+                        var pic = res[i]['PIC'];
                         var folderID = null;
                         var foldername = null;
                         var expose = res[i]['EXPOSE'];
@@ -252,7 +252,7 @@ $(document).ready(function () {
                                     var knock = res[i]['KNOCK'];
                                     var comment = res[i]['COMMENT'];
                                     var preview = res[i]['PREVIEW'];
-                                    var pic = res[i]['PIC'].replace('profile', 'crop50');
+                                    var pic = res[i]['PIC'];
                                     var targetID = res[i]['ID_TARGET'];
                                     var targetname = res[i]['TARGET_NAME'];
                                     var folderID = null;
@@ -281,7 +281,7 @@ $(document).ready(function () {
                                     var comment = res[i]['COMMENT'];
                                     var bought = res[i]['BOUGHT'];
                                     var preview = res[i]['PREVIEW'];
-                                    var pic = res[i]['PIC'].replace('profile', 'crop50');
+                                    var pic = res[i]['PIC'];
                                     var folderID = null;
                                     var foldername = null;
                                     var expose = res[i]['EXPOSE']

@@ -80,7 +80,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
 
 
 for ($i = 0; $i < count($result); $i++) {
-    $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+    $sql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
     $key = 'USER_NAME';
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $result[$i]['ID_WRITER'], PDO::PARAM_STR);
