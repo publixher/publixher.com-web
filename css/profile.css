@@ -794,8 +794,9 @@ li a {
 #subcategorySelect,
 #categorySelect-mod,
 #subcategorySelect-mod {
+  background-color: #fff !important;
   margin-top: 0px;
-  width: 133px;
+  width: 133px !important;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
@@ -893,4 +894,21 @@ li a {
   margin-left: 10px !important;
   line-height: 2.2em;
   margin-top: 10px !important;
+}
+#frielist li img{
+  margin: 5px;
+  float: left;
+}
+#frielist li .nameuser{
+  float: left;
+}
+#profile-middle-nav{
+  left: 10px;
+  width: 530px;
+}
+#profile-middle-nav div{
+  width: 25% !important;
+}
+#profile-middle-nav button{
+  width: 100% !important;
 }
