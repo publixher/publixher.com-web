@@ -2,7 +2,6 @@
  * Created by gangdong-gyun on 2016. 3. 30..
  */
 $(document).ready(function () {
-    $(this).attr('')
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn=$(this);
@@ -221,10 +220,10 @@ $(document).ready(function () {
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
             var thisform=$(this);
-            thisform.removeClass('commentReg');
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.val();
+            thisform.removeClass('commentReg');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
@@ -312,13 +311,13 @@ $(document).ready(function () {
     $(document).on("keydown", ".commentReg_sub", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
             var thisform=$(this);
-            thisform.removeClass('commentReg_sub');
             var form = $(this)[0].id;
             var idset = form.split('-');
             var sub = form.replace('form', 'sub');
             var thisitemID = idset[1];
             var thisrepID = idset[3];
             var reply = $('#' + form).val();
+            thisform.removeClass('commentReg_sub');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
