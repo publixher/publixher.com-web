@@ -27,14 +27,14 @@
 <body>
 <div id="wrap">
     <?php
-    require_once'../conf/User.php';
-    require_once'../conf/database_conf.php';
+    require_once '../conf/User.php';
+    require_once '../conf/database_conf.php';
     session_start();
-    $iid=$_GET['iid'];  //item id
+    $iid = $_GET['iid'];  //item id
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
-    $_GET['id']=$userID;
+    $_GET['id'] = $userID;
     require "left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
@@ -51,7 +51,8 @@
                         <!-- 위탭 -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"></li>
-                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                                        href="#"
                                                                         role="button" aria-expanded="false">
                                     <span id="exposeSetting-mod">전체공개</span> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" id="expSublist-mod">
@@ -60,7 +61,8 @@
                                     <li><a>전체 공개</a></li>
                                 </ul>
                             </li>
-                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                                        href="#"
                                                                         role="button" aria-expanded="false">
                                     <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
@@ -75,14 +77,16 @@
                         <!-- 똥싸기와 용돈벌기 내용 -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane" id="send-mod">
-                                <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)"></div>
+                                <div contenteditable="true" class="form-control" id="sendBody-mod"
+                                     oninput="resize(this)"></div>
                                 <hr>
                                 <table>
                                     <tr>
                                         <td class="fileinput">
                                             <span><span class="pubico pico-file-plus"></span>파일선택</span>
                                             <input id="fileuploads-mod" name="fileuploads[]" accept="image/*"
-                                                   data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
+                                                   data-url="/php/data/fileUp.php" multiple class="fileupform"
+                                                   type="file">
                                         </td>
                                         <td class="taginput">
                                             <input type="text" class="tag-inputa form-control" placeholder="인물 , 제목">
@@ -91,7 +95,8 @@
                                             <input type="text" class="tag-inputh form-control" placeholder="히힣힣">
                                         </td>
                                         <td class="regbtn">
-                                            <button type="button" id="sendButton-mod" data-loading-text="싸는중..." class="btn btn-primary">
+                                            <button type="button" id="sendButton-mod" data-loading-text="싸는중..."
+                                                    class="btn btn-primary">
                                                 <span class="pubico pico-pen2">보내기</span>
                                             </button>
                                         </td>
@@ -102,14 +107,16 @@
                             <div role="tabpanel" class="tab-pane" id="publixh-mod">
                                 <div>
                                     <input type="text" class="form-control" id="saleTitle-mod">
-                                    <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)"></div>
+                                    <div contenteditable="true" class="form-control" id="publiBody-mod"
+                                         oninput="resize(this)"></div>
                                 </div>
                                 <hr>
                                 <table>
                                     <tr>
                                         <td class="cateinput">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
                                                         aria-expanded="false">
                                                     <span id="category-mod">분류</span> <span class="caret"></span>
                                                 </button>
@@ -128,8 +135,10 @@
                                         </td>
                                         <td class="subcateinput">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                                        aria-expanded="false"><span id="sub-category-mod">하위 분류</span><span
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-expanded="false"><span
+                                                        id="sub-category-mod">하위 분류</span><span
                                                         class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu" id="subcategorySelect-mod">
@@ -211,8 +220,8 @@
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script>
-        var iid='<?=$iid?>';
-        var userID='<?=$userID?>';
+        var iid = '<?=$iid?>';
+        var userID = '<?=$userID?>';
         var loadOption = {ID: userID, getItem: iid};
     </script>
     <script src="/js/itemcard.js"></script>
@@ -233,4 +242,8 @@
         ga('send', 'pageview');</script>
 </div>
 </body>
+<!--    해시 태그-->
+<link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">
+<script src="/plugins/jQuery-tagEditor-master/jquery.caret.min.js"></script>
+<script src="/plugins/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>
 </html>

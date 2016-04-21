@@ -158,7 +158,6 @@ $(document).ready(function () {
                 data: {action: "loadpin", nowpage: pinPage},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     for (var i = 0; i < res.length; i++) {
                         var word = '<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + res[i]['ID_CONTENT'] + '</a></li>'
                         $('#pinlist li:last-child').after(word);

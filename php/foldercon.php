@@ -232,6 +232,10 @@
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>
+    <!--    해시 태그-->
+    <link rel="stylesheet" href="/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">
+    <script src="/plugins/jQuery-tagEditor-master/jquery.caret.min.js"></script>
+    <script src="/plugins/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>
     <!--    구글 애널리틱스-->
     <script>(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
