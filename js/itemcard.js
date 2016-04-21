@@ -230,7 +230,7 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    thisform.removeClass('commentReg');
+                    thisform.addClass('commentReg');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
                     $('#time-' + thisitemID).html('');
@@ -239,7 +239,7 @@ $(document).ready(function () {
                     form.val('');
                     form.blur();
                 }, error: function (request, status, error) {
-                    thisform.removeClass('commentReg');
+                    thisform.addClass('commentReg');
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
