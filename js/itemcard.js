@@ -2,6 +2,7 @@
  * Created by gangdong-gyun on 2016. 3. 30..
  */
 $(document).ready(function () {
+    $(this).attr('')
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var thisitemID = $(this).parents()[5].id;
