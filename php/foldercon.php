@@ -227,7 +227,7 @@
     </div>
     <script>
         var page = 0;
-        var fid=<?=$fid?>;
+        var fid='<?=$fid?>';
         var loadOption={ID:mid,nowpage:page,fid:fid};
     </script>
     <script src="/js/itemcard.js"></script>
