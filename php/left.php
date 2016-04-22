@@ -19,7 +19,7 @@
         $mriprepare->bindValue(':ID_WRITER', $masters[$i]['ID'], PDO::PARAM_STR);
         $mriprepare->execute();
         $recontent = $mriprepare->fetchAll(PDO::FETCH_ASSOC);
-        echo "<img src='" . $masters[$i]['PIC'] . "' class='subsprofile'><a href='/php/profile.php?id=" . $masters[$i]['ID'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
+        echo "<div class='subpic-wrap'><img src='" . $masters[$i]['PIC'] . "' class='subsprofile'></div><a href='/php/profile.php?id=" . $masters[$i]['ID'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
         if ($masters[$i]['LAST_CHECK'] < $masters[$i]['LAST_UPDATE']) {
             echo "<span class='newcontent' data-substarget='" . $masters[$i]['ID'] . "'>new</span>";
         }
