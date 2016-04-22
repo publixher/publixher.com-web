@@ -142,7 +142,6 @@ $(document).ready(function () {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
-            console.log(res)
             $('.load-item').remove();
             var times = Math.min(9, res.length - 1);
             for (var i = times; i >= 0; i--) {
