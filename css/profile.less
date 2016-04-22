@@ -36,9 +36,10 @@ body {
       }
     }
     #profilepic {
-      width: 160px;
-      height: 160px;
-      margin-top: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     p {
       text-align: center;
@@ -359,10 +360,10 @@ body {
         width: 510px;
         height: 50px;
         .profilepic {
-          float: left;
-          width: 50px;
-          height: 50px;
-          margin-right: 10px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .writer {
           font-size: 14px;
@@ -889,4 +890,17 @@ li a {
   background-color: #eee;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
+}
+.profile-wrap{
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-top: 5px;
+}
+.item-profile-wrap{
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }

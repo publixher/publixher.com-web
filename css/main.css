@@ -267,10 +267,10 @@ body {
 }
 #wrap #middle .item .header .profilepic,
 #wrap #middle .item-for-sale .header .profilepic {
-  float: left;
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #wrap #middle .item .header .writer,
 #wrap #middle .item-for-sale .header .writer {
@@ -819,4 +819,11 @@ li a {
   margin-left: 10px !important;
   line-height: 2.2em;
   margin-top: 10px !important;
+}
+.item-profile-wrap{
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
