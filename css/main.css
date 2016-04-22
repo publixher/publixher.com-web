@@ -389,10 +389,10 @@ body {
 }
 #wrap #middle .item .tail .commentReply .profilepic,
 #wrap #middle .item-for-sale .tail .commentReply .profilepic {
-  width: 34px;
-  height: 34px;
-  margin: 0 5px 0 5px;
-  vertical-align: top;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #wrap #middle .item .tail .commentReply .rep,
 #wrap #middle .item-for-sale .tail .commentReply .rep {
@@ -826,4 +826,11 @@ li a {
   width: 50px;
   height: 50px;
   margin-right: 10px;
+}
+.rep-profilepic-wrap{
+  position: relative;
+  width: 34px;
+  height: 34px;
+  margin: 0 5px 0 5px;
+  vertical-align: top;
 }
