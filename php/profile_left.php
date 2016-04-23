@@ -8,8 +8,8 @@
     echo "<div class='profile-wrap'><img id='profilepic' src='${profilepic}'></div>";
     //스크립트 올리기?>
     <script>
-        var targetid ='<?=$targetid?>';
-        var myID ='<?=$userID?>';
+        var targetid = '<?=$targetid?>';
+        var myID = '<?=$userID?>';
         var mid = myID;
     </script>
     <script src="/js/profile_left.js"></script>
@@ -32,7 +32,7 @@
             $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_TARGET";
         }
         $prepare1 = $db->prepare($sql1);
-            $prepare1->bindValue(':ID_TARGET', $userinfo->getID(), PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_TARGET', $userinfo->getID(), PDO::PARAM_STR);
         $prepare1->execute();
         $cash = $prepare1->fetch(PDO::FETCH_ASSOC);
         $cash = $cash['CASH_POINT'];
@@ -41,7 +41,7 @@
         <ul class="list-unstyled" id="activity">
             <li><a><?= $cash ?> pigs</a></li>
             <li><a>충전 &middot 결제정보</a></li>
-            <li><a href="/php/buyList.php?id=<?=$userID?>">구매목록</a></li>
+            <li><a href="/php/buyList.php?id=<?= $userID ?>">구매목록</a></li>
             <li><a>판매관리</a></li>
         </ul>
         <?php
@@ -59,6 +59,17 @@
 
     if ($userID == $targetid) {
         echo "<a href='folderConfig.php?id=${targetid}'>폴더 관리</a></ul>";
+    } else echo '</ul>';
+    if ($userinfo->getLEVEL() == 99) {
+        echo <<<END
+<hr>관리자 권한
+<ul>
+    <li id="id-ban-3"><a>로그인 제한(3일)</a></li>
+    <li id="id-ban-7"><a>로그인 제한(7일)</a></li>
+    <li id="id-ban-30"><a>로그인 제한(30일)</a></li>
+    <li id="id-ban-cancel"><a>로그인 제한 풀기</a></li>
+</ul>
+END;
     }
     ?>
 

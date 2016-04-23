@@ -24,6 +24,13 @@ if (!password_verify($pass, $result->getPASSWORD())) {
     echo "<script>alert('아이디 또는 패스워드가 잘못되었습니다.');history.back();</script>";
     exit;
 }
+$bandate=$result->getBAN(); //로그인 제한되었으면 튕기기
+$date=date("Y-m-d H:i:s",time());
+if($bandate
+    and
+    $bandate>$date){
+    exit("해당 ID는 ${bandate} 까지 로그인이 제한되었습니다.");
+}
 //유저객체에 할당
 $_SESSION['user'] = $result;
 //세션토큰 생성(CSRF등 대책)

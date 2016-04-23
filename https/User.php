@@ -10,6 +10,7 @@ class User
 {
     private $EMAIL;
     private $PASSWORD;
+    private $LEVEL;
     private $USER_NAME;
     private $SEX;
     private $BIRTH;
@@ -25,6 +26,23 @@ class User
     private $WRITEAUTH;
     private $EXPAUTH;
     private $PIN;
+    private $BAN;
+
+    /**
+     * @return mixed
+     */
+    public function getBAN()
+    {
+        return $this->BAN;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLEVEL()
+    {
+        return $this->LEVEL;
+    }
 
     /**
      * @param mixed $PIN
