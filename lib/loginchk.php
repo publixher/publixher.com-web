@@ -10,6 +10,10 @@ if(!$_SESSION['user']) {
         $loginprepare->execute();
         $user = $loginprepare->fetchObject(User);
 
+        $bandate=$result->getBAN(); //로그인 제한되었으면 튕기기
+        if(isset($bandate) and $bandate>mktime()){
+            exit("해당 ID는 ${bandate} 까지 로그인이 제한되었습니다.");
+        }
         $_SESSION['user'] = $user;
         //세션토큰 생성(CSRF등 대책)
         if (!isset($_SESSION['token'])) {

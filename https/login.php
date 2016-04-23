@@ -10,7 +10,8 @@
     <title>Publixher</title>
     <!-- 부트스트랩 -->
     <link href="/https/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/https/style.css">
+    <link rel="stylesheet" href="/https/publixherico/style.css">
+    <link rel="stylesheet" href="/https/login.css">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,29 +22,6 @@
     <script src="/https/bootstrap.min.js"></script>
     <script src="/https/naver.js"></script>
     <script src="/https/plugins.js"></script>
-    <style>
-        body {
-            background-color: #e5e5e5;
-        }
-
-        #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
-            display: none;
-            height: 26px;
-            width: 340px;
-            text-align: center;
-            margin: 0;
-            padding: 5px 5px 5px 5px;
-        }
-
-        #center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            overflow: hidden;
-            margin-top: -150px;
-            margin-left: -100px;
-        }
-    </style>
 </head>
 <body>
 
@@ -150,7 +128,6 @@
             <tr>
                 <td>비밀번호</td>
                 <td><input type='password' name='pass' tabindex='2' class='form-control'/></td>
-                <!--                <td colspan="3"><input type="checkbox" name="dont_remem" tabindex="4">날 기억하지 마세요</td>-->
             </tr>
         </table>
     </form>
