@@ -142,11 +142,9 @@
         <table>
             <tr>
                 <td>아이디</td>
-                <td><?php if ($_COOKIE['cid'] != '') {
-                        echo "<input type='text' name='email' tabindex='1' class='form-control'/>";
-                    } else {
-                        echo "<input type='text' name='email' tabindex='1' value='{$cmail}' class='form-control'/>";
-                    } ?></td>
+                <td>
+                        <input type='text' name='email' tabindex='1' class='form-control'/>
+                    </td>
                 <td><input type='submit' tabindex='3' value='로그인' class="btn btn-default"/></td>
             </tr>
             <tr>

@@ -13,9 +13,7 @@
         $masternum = count($masters);
         $msql = "SELECT TITLE,ID,WRITE_DATE FROM publixher.TBL_CONTENT WHERE (ID_WRITER=:ID_WRITER AND DEL='N' AND TBL_CONTENT.FOR_SALE='Y' AND EXPOSE>1)ORDER BY WRITE_DATE DESC LIMIT 0,5";
         $mriprepare = $db->prepare($msql);
-        for ($i = 0;
-        $i < $masternum;
-        $i++) {
+        for ($i = 0;$i < $masternum;$i++) {
         $mriprepare->bindValue(':ID_WRITER', $masters[$i]['ID'], PDO::PARAM_STR);
         $mriprepare->execute();
         $recontent = $mriprepare->fetchAll(PDO::FETCH_ASSOC);
