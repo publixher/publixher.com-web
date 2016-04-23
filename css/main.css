@@ -39,8 +39,8 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  margin: 5px 10px 10px 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 5px 9px 10px 9px;
+  border: 1px solid #e3e3e3;;
   background-color: white;
 }
 #wrap #middle #writing-pane ul {
@@ -213,14 +213,14 @@ body {
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
-  margin: 5px 10px 10px 10px;
-  width: 530px;
+  margin: 5px 9px 10px 9px;
+  width: 532px;
   height: inherit;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #e3e3e3;;
   background-color: white;
 }
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
@@ -422,7 +422,7 @@ body {
   background-color: #172547;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   font-size: 12px;
 }
 #wrap #right .conf #logo {
@@ -722,6 +722,7 @@ li a {
   background-color: white;
   border: 1px solid white;
   border-left: 0;
+  border-bottom: 0;
 }
 #categorySelect,
 #subcategorySelect,
@@ -841,4 +842,11 @@ li a {
   margin-bottom: 0;
   float: left;
   position: relative;
+}
+#wrap #middle .item .tail opend-comment>table,
+#wrap #middle .item-for-sale .tail opend-comment>table{
+  margin-bottom: -1px !important;
+}
+.form-control{
+  border: 1px solid #e3e3e3;
 }
