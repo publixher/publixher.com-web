@@ -790,6 +790,7 @@ li a {
   background-color: white;
   border: 1px solid white;
   border-left: 0;
+  border-bottom: 0;
 }
 #categorySelect,
 #subcategorySelect,
@@ -945,7 +946,7 @@ li a {
   margin: 0 5px 0 5px;
   vertical-align: top;
 }
-#wrap #middle .item .tail>table,
-#wrap #middle .item-for-sale .tail>table{
+#wrap #middle .item .tail opend-comment>table,
+#wrap #middle .item-for-sale .tail opend-comment>table{
   margin-bottom: -1px !important;
 }

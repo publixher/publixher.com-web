@@ -722,6 +722,7 @@ li a {
   background-color: white;
   border: 1px solid white;
   border-left: 0;
+  border-bottom: 0;
 }
 #categorySelect,
 #subcategorySelect,
@@ -842,7 +843,7 @@ li a {
   float: left;
   position: relative;
 }
-#wrap #middle .item .tail>table,
-#wrap #middle .item-for-sale .tail>table{
+#wrap #middle .item .tail opend-comment>table,
+#wrap #middle .item-for-sale .tail opend-comment>table{
   margin-bottom: -1px !important;
 }
