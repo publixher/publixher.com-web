@@ -91,10 +91,6 @@ $_SESSION['user'] = $user;
 if (!isset($_SESSION['token'])) {
     $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
-//세션 중간에는 브라우저가 바뀌지 않는다고 가정하고 HTTP_USER_AGENT를 세션에 저장해서 탈취됬는지 확인하기
-if (!isset($_SESSION['age'])) {
-    $_SESSION['age'] = $_SERVER['HTTP_USER_AGENT'];
-}
 setcookie('cid', $user->getID(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
 echo '{"result":"Y"}';
 
