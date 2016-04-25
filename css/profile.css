@@ -339,6 +339,7 @@ body {
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
+  width: 508px !important;
   border-radius: 0;
   box-shadow: inset 0 0 0;
   padding: 5px 0 4px 10px;
@@ -497,7 +498,6 @@ body {
 #wrap #middle .item .tail .commentReply .rep .repaction,
 #wrap #middle .item-for-sale .tail .commentReply .rep .repaction {
   float: right;
-  margin-left: 10px;
 }
 #wrap #right {
   float: left;
