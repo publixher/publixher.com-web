@@ -127,8 +127,8 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  margin: 5px 9px 10px 9px;
-  border: 1px solid #e3e3e3;
+  margin: 5px 10px 10px 10px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 #wrap #middle #writing-pane ul {
@@ -301,14 +301,14 @@ body {
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
-  margin: 5px 9px 10px 9px;
-  width: 532px;
+  margin: 5px 10px 10px 10px;
+  width: 530px;
   height: inherit;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  border: 1px solid #e3e3e3;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 #wrap #middle .item .subrep,
@@ -485,7 +485,7 @@ body {
 }
 #wrap #middle .item .tail .commentReply .rep,
 #wrap #middle .item-for-sale .tail .commentReply .rep {
-  width: 464px;
+  width: 452px;
   word-break: break-all;
   vertical-align: top;
   font-size: 13px;
