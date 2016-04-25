@@ -4,6 +4,7 @@ if(!$_SESSION['user']) {
         setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
         //쿠키있으면 로그인
         include_once '../conf/database_conf.php';
+        require_once "../conf/User.php";
         $loginsql = "SELECT * FROM publixher.TBL_USER WHERE ID=:ID";
         $loginprepare = $db->prepare($loginsql);
         $loginprepare->bindValue(':ID', $_COOKIE['cid'], PDO::PARAM_STR);
