@@ -5,31 +5,43 @@ require_once '../../conf/User.php';
 $info = $_POST;
 if ($info['api'] == 'naver') {
     require_once '../../lib/random_64.php';
+    require_once '../../lib/getImgFromUrl.php';
     $sql = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
     $q = $db->prepare($sql);
     $q->bindValue(':EMAIL', $info['email']);
     $q->execute();
     $user = $q->fetchObject(User);
     if (!$user) {
-        $id=uniqueid($db,'user');
+        $id = uniqueid($db, 'user');
         $age = date("Y") - (substr($info['age'], 0, 1) . '5') . '-';
-        $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
-        $prepare = $db->prepare($sql);
-        $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
-        $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
-        $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
-        $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
-        $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
-        $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
-        $prepare->execute();
-        $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
-        $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
-        $q2 = $db->prepare($sql2);
-        $q2->bindValue(':EMAIL', $info['email']);
-        $q2->execute();
-        $user = $q2->fetchObject(User);
+        $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
+        try {
+            $db->beginTransaction();
+            $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
+            $prepare = $db->prepare($sql);
+            $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
+            $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
+            $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
+            $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
+            $prepare->bindValue(':BIRTH', $age . $info['birthday'], PDO::PARAM_STR);
+            $prepare->bindValue(':PIC', $pic, PDO::PARAM_STR);
+            $prepare->execute();
+            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
+            $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
+            $q2 = $db->prepare($sql2);
+            $q2->bindValue(':EMAIL', $info['email']);
+            $q2->execute();
+            $user = $q2->fetchObject(User);
+            $db->commit();
+        } catch (PDOException $e) {
+            $db->rollBack();
+            $msg = '{"result":"server error"}';
+            echo $msg;
+            exit;
+
+        }
     }
 } elseif ($info['api'] == 'facebook') {
     if ($info['action'] == 'login') {
@@ -46,24 +58,31 @@ if ($info['api'] == 'naver') {
         $user = $q->fetchObject(User);
         if (!$user) {
             require_once '../../lib/random_64.php';
-            $id=uniqueid($db,'user');
-            $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
-            $prepare = $db->prepare($sql);
-            $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
-            $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
-            $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
-            $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
-            $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
-            $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
-            $prepare->execute();
-            $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
-            $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
-            $q2 = $db->prepare($sql2);
-            $q2->bindValue(':EMAIL', $info['email']);
-            $q2->execute();
-            $user = $q2->fetchObject(User);
+            $id = uniqueid($db, 'user');
+            try {
+                $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC)";
+                $prepare = $db->prepare($sql);
+                $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
+                $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
+                $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
+                $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
+                $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
+                $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
+                $prepare->execute();
+                $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
+                $prepare2 = $db->prepare($sql2);
+                $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
+                $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
+                $q2 = $db->prepare($sql2);
+                $q2->bindValue(':EMAIL', $info['email']);
+                $q2->execute();
+                $user = $q2->fetchObject(User);
+            }catch(PDOException $e){
+                $db->rollBack();
+                $msg = '{"result":"server error"}';
+                echo $msg;
+                exit;
+            }
         }
     }
 }

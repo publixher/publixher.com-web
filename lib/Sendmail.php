@@ -26,7 +26,7 @@ class Sendmail {
 	/* 문자 인코딩 종류 설정*/
     var $charset="UTF-8";
 	/* 메일의 기본 타입을 설정 */
-    var $ctype="text/plain";
+    var $ctype="text/html";
 
 
 	/* 아래 3개의 변수는 수정 금지 */

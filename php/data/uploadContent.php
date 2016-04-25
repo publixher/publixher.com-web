@@ -10,6 +10,8 @@ if (!empty($_POST)) {
     require_once '../../lib/HTMLPurifier.php';
     require_once'../../lib/imagecrop.php';
     require_once'../../lib/random_64.php';
+    require_once'../../lib/getImgFromUrl.php';
+
 //토큰검사
     session_start();
     //CSRF검사
@@ -28,30 +30,13 @@ if (!empty($_POST)) {
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
-    function getImgFromUrl($url){
-        require_once'../../lib/imagecrop.php';
-        //이미지가 서버에 없으면 경로에서 이미지 따와서 서버에 저장하는것
-        $tmp_file = explode(' ', microtime());
-        $date = substr($tmp_file[0], 2, 6);
-        $file_hash = $date.$url;
-        $file_hash = md5($file_hash);
-        $filepath = "../../img/origin/${file_hash}.jpg" ;
-        $croppath = "/img/crop/${file_hash}.jpg";
-        copy($url,$filepath);
-        $img = new imaging;
-        $img->set_img($filepath);
-        $img->set_quality(100);
-        $img->set_size(510, 510);
-        $img->save_img("../../img/crop/${file_hash}.jpg");
-    return $croppath;
-    }
     $imgcount=count($imgs[0]);
     $croprex="/^\\/img\\/crop\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for($i=0;$i<$imgcount;$i++) {
         if (!preg_match($croprex,$imgs[1][$i][0])){
             $originurl[$i]=$imgs[1][$i][0];
-            $savedurl[$i]=getImgFromUrl($imgs[1][$i][0]);
+            $savedurl[$i]=getImgFromUrl($imgs[1][$i][0],'origin','crop',510);
             $imgs[1][$i][0]=$savedurl[$i];
             $imgs[0][$i][0]=str_replace($originurl[$i],$savedurl[$i],$imgs[0][$i][0]);
             $body=str_replace($originurl,$savedurl,$body);

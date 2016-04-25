@@ -19,8 +19,13 @@ if ($check_email && $check_pass && $check_name) {
     $id = uniqueid($db, 'user');
     $sendmail=new Sendmail();   //기본설정을 사용
     $from="publixher.com";
-    $subject = "퍼블릭셔에 가입하신것을 환영합니다.";
-    $body = "하이용";
+    $subject = "troughout 회원가입을 위한 인증 메일입니다.";
+    $body = "
+<p>대학별 프라이빗 커뮤니티 throughout에 오신 것을 환영합니다!</p>
+<p>회원가입 후 학교의 모든 구성원과 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
+<p><a href='http://localhost/registValid/${id}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>
+<p>가입 절차 및 기타 문의는 cs@throughout.kr로 메일 주시기 바랍니다.</p>";
+
 
     try {
         $db->beginTransaction();
@@ -42,7 +47,6 @@ if ($check_email && $check_pass && $check_name) {
         $msg = '{"result":"regist"}';
         $sendmail->send_mail($email, $from, $subject, $body);
         echo $msg;
-
         exit;
     } catch (PDOException $e) {
         $db->rollBack();
