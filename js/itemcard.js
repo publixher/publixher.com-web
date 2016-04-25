@@ -711,7 +711,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag,pin);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
@@ -878,6 +878,7 @@ $(document).ready(function () {
                         pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
                         pin_a.removeClass('pinned')
                         pin=pin.replace(' '+thisitemID,'');
+                        console.log(pin)
                     }else{
                         alert('작업중 문제가 생겼습니다.')
                     }
@@ -893,7 +894,9 @@ $(document).ready(function () {
                     if(res['result']=='Y') {
                         pin_a.addClass('pin-a').addClass('pubico').addClass('pico-pin2');
                         pin_a.addClass('pinned');
+
                         pin=pin+' '+thisitemID;
+                        console.log(pin)
                     }else{
                         alert('작업중 문제가 생겼습니다.')
                     }
