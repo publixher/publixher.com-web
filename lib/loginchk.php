@@ -14,6 +14,11 @@ if(!$_SESSION['user']) {
         if(isset($bandate) and $bandate>mktime()){
             exit("해당 ID는 ${bandate} 까지 로그인이 제한되었습니다.");
         }
+        $level=$result->getLEVEL();
+        if($level==0){
+            echo '{"result":"N","reason":"not valid"}';
+            exit;
+        }
         $_SESSION['user'] = $user;
         //세션토큰 생성(CSRF등 대책)
         if (!isset($_SESSION['token'])) {

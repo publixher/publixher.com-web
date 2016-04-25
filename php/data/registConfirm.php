@@ -2,6 +2,7 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../lib/random_64.php';
+require_once '../../lib/Sendmail.php';
 //유효성 검사
 $email = $_POST['email'];
 $pass = $_POST['pass'];
@@ -16,6 +17,11 @@ if (!$check_name) {
 //통과시 등록
 if ($check_email && $check_pass && $check_name) {
     $id = uniqueid($db, 'user');
+    $sendmail=new Sendmail();   //기본설정을 사용
+    $from="publixher.com";
+    $subject = "퍼블릭셔에 가입하신것을 환영합니다.";
+    $body = "하이용";
+
     try {
         $db->beginTransaction();
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
@@ -34,7 +40,9 @@ if ($check_email && $check_pass && $check_name) {
         $prepare2->execute();
         $db->commit();
         $msg = '{"result":"regist"}';
+        $sendmail->send_mail($email, $from, $subject, $body);
         echo $msg;
+
         exit;
     } catch (PDOException $e) {
         $db->rollBack();

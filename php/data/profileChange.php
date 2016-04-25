@@ -68,7 +68,7 @@ if ($_POST['action'] == 'profilechange') {
         $prepare3->execute();
         //익명 사용자 생성
         $uid=uniqueid($db,'user');
-        $sql1 = "INSERT INTO publixher.TBL_USER(ID,USER_NAME,IS_NICK,BIRTH,REGION) VALUES (:ID,:USER_NAME,'Y',:BIRTH,:REGION)";
+        $sql1 = "INSERT INTO publixher.TBL_USER(ID,USER_NAME,IS_NICK,BIRTH,REGION,LEVEL) VALUES (:ID,:USER_NAME,'Y',:BIRTH,:REGION,1)";
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
         $prepare1->bindValue(':USER_NAME', $_POST['nick'], PDO::PARAM_STR);
