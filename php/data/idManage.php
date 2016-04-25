@@ -27,7 +27,7 @@ if ($action == 'ban') {
     $prepare->execute();
     echo '{"result":"Y"}';
 } elseif ($action == 'release') {
-    $sql = "UPDATE publixher.TBL_USER SET BAN=NULL WHERE ID=:ID";
+    $sql = 'UPDATE publixher.TBL_USER SET BAN=NULL WHERE ID=:ID';
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $_POST['target']);
     $prepare->execute();
