@@ -113,7 +113,7 @@ if ($act == 'knock') {
     function getBest($db, $ID, $index)
     {
         $bestrep_sql = "SELECT \n"  //베스트댓글5개
-            . "	* \n"
+            . "	ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.'),ID_USER,KNOCK,SUB_REPLY \n"
             . "FROM \n"
             . "	publixher.TBL_CONTENT_REPLY REPLY \n"
             . "WHERE \n"
@@ -146,7 +146,7 @@ if ($act == 'knock') {
 
     function getTime($db, $ID, $index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,ID_USER,KNOCK,SUB_REPLY FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':INDEX', $index);
@@ -171,7 +171,7 @@ if ($act == 'knock') {
     function getFrie($db, $ID, $userID, $index)
     {
         $friend_sql = "SELECT \n"
-            . "	REPLY.* \n"
+            . "	REPLY.ID,REPLY.REPLY_DATE,IF(REPLY.DEL=0,REPLY.REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,REPLY.ID_USER,REPLY.KNOCK,REPLY.SUB_REPLY \n"
             . "FROM \n"
             . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND \n"
             . "WHERE \n"
@@ -546,7 +546,7 @@ if ($act == 'knock') {
 
     function getTime($db, $repID, $index)
     {
-        $timerep_sql = "SELECT * FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,ID_USER FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);
@@ -656,5 +656,18 @@ if ($act == 'knock') {
         exit;
     }
     echo '{"result":"Y"}';
+}elseif($act=='rep_del'){
+    $id = $_POST['ID'];
+    $userID=$_SESSION['user']->getID();
+    $type = $_POST['type'];
+    if($_POST['userID']==$userID){
+        if($type==0) $sql="UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
+        else $sql="UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
+
+        $prepare=$db->prepare($sql);
+        $prepare->bindValue(':ID', $id);
+        $prepare->execute();
+        echo '{"result":"Y"}';
+    }
 }
 ?>

@@ -4,7 +4,7 @@
 $(document).ready(function () {
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
-        var knockbtn=$(this);
+        var knockbtn = $(this);
         var thisitemID = $(this).parents()[5].id;
         knockbtn.removeClass('knock');
         $.ajax({
@@ -219,7 +219,7 @@ $(document).ready(function () {
     //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
-            var thisform=$(this);
+            var thisform = $(this);
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.val();
@@ -246,18 +246,24 @@ $(document).ready(function () {
         }
     });
     //댓글삭제 동작
-    $(document).on('click', '.repdel', function () {
-        var thisrep = $(this).parents()[6];
-        var thisrepID = (thisrep.split('-'))[3];
-        $.ajax({
-            url: "/php/data/itemAct.php",
-            type: "POST",
-            data: {ID: thisrepID, action: "rep_del", token: token, userID: mid},
-            dataType: 'json',
-            success: function () {
-
-            }
-        })
+    $(document).on('click', '.repdel,.sub-repdel', function () {
+        var type=$(this).hasClass('repdel')? 0:1;
+        var thisrep = type==0?$(this).parents()[6].id:$(this).parents()[5].id;
+        var thisrepID = type==0?(thisrep.split('-'))[3]:(thisrep.split('-'))[5];
+        if (confirm('정말 삭제하시겠습니까?')) {
+            var btn = type==0?$(this).removeClass('repdel'):$(this).removeClass('sub-repdel');
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "POST",
+                data: {ID: thisrepID, action: "rep_del", token: token, userID: mid,type:type},
+                dataType: 'json',
+                success: function (res) {
+                    type==0?btn.addClass('repdel'):btn.addClass('sub-repdel');
+                    if(res['result']=='Y') alert('삭제되었습니다.');
+                    else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
+                }
+            })
+        }
     })
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
@@ -287,7 +293,11 @@ $(document).ready(function () {
                                 var reply = res[i]['REPLY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
-                                write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></span></td></tr></table></div>';
+                                write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span>'
+                                if (mid == res[i]['ID_USER']) {
+                                    write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
+                                }
+                                write += '</td></tr></table></div>';
                                 subrep_list.append(write);
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
@@ -310,7 +320,7 @@ $(document).ready(function () {
 //대댓글 등록 동작
     $(document).on("keydown", ".commentReg_sub", function (e) {
         if (e.keyCode == 13 && $(this).val().length > 0) {
-            var thisform=$(this);
+            var thisform = $(this);
             var form = $(this)[0].id;
             var idset = form.split('-');
             var sub = form.replace('form', 'sub');
@@ -417,7 +427,7 @@ $(document).ready(function () {
         var priceSpan = $('#' + thisitemID + ' .tail .price')
         //안산상태에서 한번 눌려졌을때 한번 더누르면 구매됨
         if (priceSpan.hasClass('buyConfirm')) {
-            var pricebtn=$(this);
+            var pricebtn = $(this);
             pricebtn.removeClass('price');
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -614,7 +624,7 @@ $(document).ready(function () {
             }
         }
         if ($('#sendBody-mod').html().length > 0) {
-            var btn=$(this).attr('disabled','disabled')
+            var btn = $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -650,7 +660,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
@@ -669,8 +679,8 @@ $(document).ready(function () {
     $('#publixhButton-mod').on('click', function () {
 
         var $btn = $(this).button('loading');
-        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length>0) {
-            var btn=$(this).attr('disabled','disabled')
+        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length > 0) {
+            var btn = $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -866,39 +876,39 @@ $(document).ready(function () {
         })
     });
     //핀 클릭시 동작
-    $(document).on('click','.pin-a', function () {
-        var thisitemID=$(this).parents()[2].id;
-        var pin_a=$(this);
+    $(document).on('click', '.pin-a', function () {
+        var thisitemID = $(this).parents()[2].id;
+        var pin_a = $(this);
         pin_a.removeClass('pin-a')
-        if($(this).hasClass('pinned')){
+        if ($(this).hasClass('pinned')) {
             $.ajax({
-                url:"/php/data/itemAct.php",
-                type:"POST",
-                data:{ID:thisitemID,token:token,action:"delPin",userID:mid},
-                dataType:'json',
+                url: "/php/data/itemAct.php",
+                type: "POST",
+                data: {ID: thisitemID, token: token, action: "delPin", userID: mid},
+                dataType: 'json',
                 success: function (res) {
-                    if(res['result']=='Y'){
+                    if (res['result'] == 'Y') {
                         pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
                         pin_a.removeClass('pinned')
-                        pin=pin.replace(' '+thisitemID,'');
-                    }else{
+                        pin = pin.replace(' ' + thisitemID, '');
+                    } else {
                         alert('작업중 문제가 생겼습니다.')
                     }
                 }
             })
-        }else {
+        } else {
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {ID: thisitemID, token: token, action: "addPin",userID:mid},
-                dataType:'json',
+                data: {ID: thisitemID, token: token, action: "addPin", userID: mid},
+                dataType: 'json',
                 success: function (res) {
-                    if(res['result']=='Y') {
+                    if (res['result'] == 'Y') {
                         pin_a.addClass('pin-a').addClass('pubico').addClass('pico-pin2');
                         pin_a.addClass('pinned');
 
-                        pin=pin+' '+thisitemID;
-                    }else{
+                        pin = pin + ' ' + thisitemID;
+                    } else {
                         alert('작업중 문제가 생겼습니다.')
                     }
                 }
