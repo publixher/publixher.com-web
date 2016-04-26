@@ -669,5 +669,20 @@ if ($act == 'knock') {
         $prepare->execute();
         echo '{"result":"Y"}';
     }
+}elseif($act=='report'){
+    $id = $_POST['ID'];
+    $userID = $_POST['userID'];
+    $sql="INSERT INTO publixher.TBL_CONTENT_REPORT(USER_ID,CONTENT_ID) VALUES(:USER_ID,:CONTENT_ID)";
+    $prepare = $db->prepare($sql);
+    $prepare->bindValue(':USER_ID', $userID);
+    $prepare->bindValue(':CONTENT_ID',$id);
+    try{
+        $prepare->execute();
+        echo '{"result":"Y"}';
+        exit;
+    }catch(PDOException $e){
+        echo '{"reason":"already"}';
+        exit;
+    }
 }
 ?>

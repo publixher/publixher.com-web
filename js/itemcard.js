@@ -916,7 +916,27 @@ $(document).ready(function () {
         }
 
     })
-
+    //신고 동작
+    $(document).on('click','.itemReport', function () {
+        var thisitemID=$(this).parents()[5].id;
+        var btn=$(this).removeClass('itemReport');
+        if(confirm('해당 게시물을 신고하시겠습니까?')){
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type:"POST",
+                data:{ID:thisitemID,token:token,action:"report",userID:mid},
+                dataType:'json',
+                success: function (res) {
+                    if(res['result']=='Y'){
+                        alert('신고가 완료되었습니다. 해당 게시물이 일정 횟수 이상 신고되면 다른 사용자에게 보여지지 않게 됩니다.');
+                    }else if(res['reason']=='already'){
+                        alert('이미 신고한 게시물입니다.')
+                    }
+                    btn.addClass('itemReport');
+                }
+            });
+        }
+    })
     $(document).on("dragstart", "img,a", function () {
         return false;
     });

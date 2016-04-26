@@ -19,7 +19,7 @@ if (!empty($_GET)) {
         $result=json_encode($result,JSON_UNESCAPED_UNICODE);
         echo $result;
     }elseif($target=='tag'){
-        $sql = "SELECT COUNT(TAG) AS CONTENT_NUM,TAG FROM publixher.TBL_TAGS WHERE MATCH(TAG) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE) GROUP BY TAG ";
+        $sql = "SELECT COUNT(TAG) AS CONTENT_NUM,TAG FROM publixher.TBL_TAGS WHERE MATCH(TAG) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE) GROUP BY TAG ORDER BY CONTENT_NUM DESC LIMIT 5";
         $prepare=$db->prepare($sql);
         $prepare->bindValue(':TITLE',$_GET['searchword'],PDO::PARAM_STR);
         $prepare->execute();
