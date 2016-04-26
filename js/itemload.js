@@ -6,13 +6,13 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
+    write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     if (targetID) {
-        write += '>>> <a href="/php/profile.php?id=' + targetID + '">' + targetname + '</a> '
+        write += '>>> <a href="/profile/' + targetID + '">' + targetname + '</a> '
     }
     if (folderID) {
-        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderID + '">' + foldername + '</a>&nbsp;';
+        write += date + '&nbsp;<a href="/folder/' + folderID + '">' + foldername + '</a>&nbsp;';
     } else {
         write += date + '&nbsp;비분류&nbsp;';
     }
@@ -38,7 +38,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     if (mid == writer || level==99) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금궁금</a></li> </ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
     }
 
     write += '</div></div> <div class="body">'
@@ -46,7 +46,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     if (tag) {
         write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
-            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
+            write += ' <a href="/tag/' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
@@ -67,10 +67,10 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/php/profile.php?id=' + writer + '">'
+    write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     if (folderID) {
-        write += date + '&nbsp;<a href="/php/foldercon.php?fid=' + folderID + '">' + foldername + '</a>&nbsp;';
+        write += date + '&nbsp;<a href="/folder/' + folderID + '">' + foldername + '</a>&nbsp;';
     } else {
         write += date + '&nbsp;비분류&nbsp;';
     }
@@ -95,7 +95,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     if (mid == writer || level==99) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li><li><a>궁금행</a></li> </ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
     }
     write += '</div><div class="title">';
     write += title;
@@ -104,7 +104,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     if (tag) {
         write += '<br><br>'
         for (var i = 0; i < tag.length; i++) {
-            write += ' <a href="/php/Search.php?type=tag&tag=' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
+            write += ' <a href="/tag/' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';

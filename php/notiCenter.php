@@ -26,6 +26,7 @@
     <?php
     require_once'../conf/User.php';
     require_once'../conf/database_conf.php';
+    require_once '../lib/loginchk.php';
     session_start();
 
     if (($_COOKIE['cid'] != '')) {
@@ -47,11 +48,6 @@
         if(!isset($_SESSION['age'])){
             $_SESSION['age']=$_SERVER['HTTP_USER_AGENT'];
         }
-    }
-    //세션에 mid가 없으면 로그인페이지로 넘기고 있으면 유저 등록
-    if (!isset($_SESSION['user'])) {
-        echo "<meta http-equiv='refresh' content='0;url=/php/login.php'>";
-        exit;
     }
     //토큰
     //$userinfo는 현재 접속한 유저

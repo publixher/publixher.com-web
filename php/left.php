@@ -17,7 +17,7 @@
         $mriprepare->bindValue(':ID_WRITER', $masters[$i]['ID'], PDO::PARAM_STR);
         $mriprepare->execute();
         $recontent = $mriprepare->fetchAll(PDO::FETCH_ASSOC);
-        echo "<div class='subpic-wrap'><img src='" . $masters[$i]['PIC'] . "' class='subsprofile'></div><a href='/php/profile.php?id=" . $masters[$i]['ID'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
+        echo "<div class='subpic-wrap'><img src='" . $masters[$i]['PIC'] . "' class='subsprofile'></div><a href='/profile/" . $masters[$i]['ID'] . "' class='nameuser'>" . $masters[$i]['USER_NAME'] . "</a>";
         if ($masters[$i]['LAST_CHECK'] < $masters[$i]['LAST_UPDATE']) {
             echo "<span class='newcontent' data-substarget='" . $masters[$i]['ID'] . "'>new</span>";
         }
@@ -33,7 +33,7 @@
                 <div class="accordion-inner">
                     <?php
                     for ($j = 0; $j < count($recontent); $j++) {
-                        echo "<div><a href='/php/getItem.php?iid=" . $recontent[$j]['ID'] . "'>" . $recontent[$j]['TITLE'] . "</a></div>";
+                        echo "<div><a href='/content/" . $recontent[$j]['ID'] . "'>" . $recontent[$j]['TITLE'] . "</a></div>";
                     }
                     echo "</div></div></div>";
                     }

@@ -7,7 +7,7 @@ $(document).ready(function(){
         if($(this).hasClass('accordion-toggle')) {
             mu = ($(this).attr('href')).replace('#collapse', '')
         }else{
-            mu=($(this).attr('href')).replace('/php/profile.php?id=', '')
+            mu=($(this).attr('href')).replace('/profile/', '')
         }
         $.ajax({url:"php/data/subscribe.php", type: "GET", data: {mu:mu,action:"check"}, dataType: 'json'})
         $('.newcontent[data-substarget='+mu+']').remove();

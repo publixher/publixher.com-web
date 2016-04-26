@@ -33,10 +33,6 @@
 
     require_once "../lib/loginchk.php";
     //세션에 mid가 없으면 로그인페이지로 넘기고 있으면 유저 등록
-    if (!isset($_SESSION['user'])) {
-        echo "<meta http-equiv='refresh' content='0;url=/php/login.php'>";
-        exit;
-    }
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $fid = $_GET['fid'];

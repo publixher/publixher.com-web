@@ -25,10 +25,10 @@
         var level=<?=$mlevel?>;
     </script>
     <div id="controller">
-        <a id="usrpic" href='/php/profile.php?id=<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>"></div></a>
+        <a id="usrpic" href='/profile/<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>"></div></a>
         <!--이름 및 상태전환버튼-->
             <div class="btn-group" id="usr">
-                <button type="button" id="username" class="btn btn-danger" role="group" onclick="location.href='/php/profile.php?id=<?= $mid ?>'" style="padding: 0;text-align: center;"><?=$mname?></button>
+                <button type="button" id="username" class="btn btn-danger" role="group" onclick="location.href='/profile/<?= $mid ?>'" style="padding: 0;text-align: center;"><?=$mname?></button>
                 <button class="btn btn-danger" role="group" onclick="location.href='/php/data/profileChange.php?action=profileswap'"><span class="pubico pico-swap"></span></button>
             </div>
         <!--노티,핀,설정버튼-->

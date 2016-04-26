@@ -22,7 +22,7 @@
     <?php
     if ($userID == $targetid) {
         //현재 접속자와 타겟 유저가 같을때의 동작
-        echo "<a href='profileConfig.php?id=${targetid}' id='profileMod'>정보 수정하기</a></ul><hr>";
+        echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a></ul><hr>";
 
         //가진돈 찾기위해 커넥터를 통해 캐쉬를 찾음
         $sql1 = '';
@@ -41,7 +41,7 @@
         <ul class="list-unstyled" id="activity">
             <li><a><?= $cash ?> pigs</a></li>
             <li><a>충전 &middot 결제정보</a></li>
-            <li><a href="/php/buyList.php?id=<?= $userID ?>">구매목록</a></li>
+            <li><a href="/buyList/<?= $userID ?>">구매목록</a></li>
             <li><a>판매관리</a></li>
         </ul>
         <?php
@@ -54,11 +54,11 @@
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
     echo '<hr>폴더목록<ul>';
     for ($i = 0; $i < count($FOLDER); $i++) {
-        echo '<li><a href="foldercon.php?fid=' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')</li>';
+        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')</li>';
     }
 
     if ($userID == $targetid) {
-        echo "<a href='folderConfig.php?id=${targetid}'>폴더 관리</a></ul>";
+        echo "<a href='/folderManage/${targetid}'>폴더 관리</a></ul>";
     } else echo '</ul>';
     if ($userinfo->getLEVEL() == 99) {
         echo <<<END
