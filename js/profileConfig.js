@@ -90,7 +90,6 @@ $(document).ready(function () {
     $('#submit').click(function () {
         if(pwvali&&pwconfirm) {
             $('#rf').submit(function () {
-                console.log('submit중');
             });
         }else{
             alert('비밀번호를 확인해 주세요');

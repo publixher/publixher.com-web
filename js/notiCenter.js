@@ -11,7 +11,6 @@ $(document).ready(function () {
             data: {action: "noticenter",nowpage:page},
             dataType: 'json',
             success: function (res) {
-                console.log(res)
                 var listul = $('#listul');
                 var snsreg = /SNS-[0-9]*/;
                 //알림문장

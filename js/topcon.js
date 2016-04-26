@@ -9,7 +9,6 @@ $(document).ready(function(){
         data: {profile:targetID},
         dataType: 'json',
         success: function (res) {
-            console.log(res)
             if (res['result'] == 'N' && res['reason'] == 'no top') {
                 return;
             } else if (res['result'] == 'N' && res['reason'] == 'deleted') {

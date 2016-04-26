@@ -12,7 +12,6 @@ $(document).ready(function () {
                     data: {searchword: search_word,target:target},
                     dataType: 'json',
                     success: function (res) {
-                        console.log(res)
                         var Result;
                         switch(target){
                             case 'name':Result=$('#nameResult');break;

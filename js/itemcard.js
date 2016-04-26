@@ -452,7 +452,6 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "more", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>');
                     priceSpan.html('<a>접기</a>');
@@ -522,7 +521,6 @@ $(document).ready(function () {
             dataType: 'json',
             data: {itemID: thisitemID, action: "get_item"},
             success: function (res) {
-                console.log(res)
                 expose_mod = res['EXPOSE'];
                 var expset = $('#exposeSetting-mod');
                 switch (expose_mod) {
@@ -632,7 +630,6 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];
@@ -884,7 +881,6 @@ $(document).ready(function () {
                         pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
                         pin_a.removeClass('pinned')
                         pin=pin.replace(' '+thisitemID,'');
-                        console.log(pin)
                     }else{
                         alert('작업중 문제가 생겼습니다.')
                     }
@@ -902,7 +898,6 @@ $(document).ready(function () {
                         pin_a.addClass('pinned');
 
                         pin=pin+' '+thisitemID;
-                        console.log(pin)
                     }else{
                         alert('작업중 문제가 생겼습니다.')
                     }
