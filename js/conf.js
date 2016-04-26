@@ -55,7 +55,11 @@ $(document).ready(function () {
             $('#tagResult').html('');
         }
     })
-
+    //본문검색
+    $('#search-body').on('click', function () {
+        var search_body = $('#gsearch').val();
+        location.href='/body/'+search_body;
+    })
     //페이지 로딩이 끝나면 알림의 개수를 받아온다
     $.ajax({
         url: "/php/data/getNoti.php",

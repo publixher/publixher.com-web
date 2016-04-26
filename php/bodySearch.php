@@ -34,7 +34,7 @@
     //세션에 mid가 없으면 로그인페이지로 넘기고 있으면 유저 등록
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
-    $tag = $_GET['tag'];
+    $body = $_GET['body'];
     require "left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span></div>';
@@ -211,8 +211,9 @@
     </div>
     <script>
         var page = 0;
-        var tag='<?=$tag?>';
-        var loadOption={ID:mid,nowpage:page,tag:tag};
+        var body='<?=$body?>';
+        var loadOption={ID:mid,nowpage:page,body:body};
+
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

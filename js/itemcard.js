@@ -52,7 +52,7 @@ $(document).ready(function () {
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
-            tab_comment.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;">');
+            tab_comment.append('<input type="text" class="commentReg form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 510px;height: 25px;white-space=normal">');
             tab_comment.append(word);
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -281,7 +281,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
-                    subrep_list.append('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;">');
+                    subrep_list.append('<input id="' + thispanelrep + '-form" class="commentReg_sub form-control" placeholder="작성자 && 다른 사람과 신명나는 키배한판!!" style="width: 100%;height: 25px;white-space=normal">');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
                             var repnum = Object.keys(res).length - 2;
@@ -413,7 +413,7 @@ $(document).ready(function () {
             $(this).parent().css('background-color', '#f4f4f4');
             tail.append('<div class="tab-share"></div>')
             var tab_share = $('#' + thisitemID + ' .tail .tab-share');
-            var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div><br>이 게시물의 머스타드 소스코드 <br><div class="form-control embedtag" style="height: 70px;"></div>';
+            var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div>';
             tab_share.append(text)
             $('#' + thisitemID + ' .tail .tab-share .embedtag').text(embedstr);
             tail.addClass('opend-share')
@@ -921,3 +921,9 @@ $(document).ready(function () {
         return false;
     });
 });
+
+//텍스트에이리어 입력시 자동 크기조정
+function resize(obj) {
+    obj.style.height = "1px";
+    obj.style.height = (23 + obj.scrollHeight) + "px";
+}

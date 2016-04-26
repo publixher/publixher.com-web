@@ -26,6 +26,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif (isset($_GET['fid'])) { //폴더에선 폴더 내용물이 시간순 노출
+    //TODO:공개범위 설정 해야함
     $sql = "SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND FOLDER=:FOLDER) ORDER BY WRITE_DATE DESC LIMIT " . $nowpage . ",10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':FOLDER', $_GET['fid'], PDO::PARAM_STR);
@@ -34,7 +35,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
 } elseif (isset($_GET['buylist'])) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
     //구매리스트의 번호를 찾아온다
     $sql = "SELECT ID_CONTENT FROM publixher.TBL_BUY_LIST WHERE ID_USER=:ID_USER ORDER BY SEQ DESC LIMIT " . $nowpage . ",10";
-        $prepare = $db->prepare($sql);
+    $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->execute();
     $boughtlist = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -52,7 +53,17 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
     $prepare->bindValue(':ID', $_GET['getItem'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} else {  //메인화면에서 노출시켜줄 순
+} elseif (isset($_GET['tag'])) {
+    $sql = "SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND MATCH(TAG) AGAINST('".$_GET['tag']."')) ORDER BY WRITE_DATE DESC LIMIT " . $nowpage . ",10";
+    $prepare = $db->prepare($sql);
+    $prepare->execute();
+    $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+} elseif(isset($_GET['body'])){
+    $sql="SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND MATCH(BODY) AGAINST('*".$_GET['body']."*' IN BOOLEAN MODE)) ORDER BY WRITE_DATE DESC LIMIT ".$nowpage.",10";
+    $prepare = $db->prepare($sql);
+    $prepare->execute();
+    $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+}else {  //메인화면에서 노출시켜줄 순
 
 //    $sql = "SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (ID_WRITER = :ID_USER0 AND DEL='N' AND ID_TARGET IS NULL)"  //내거찾기
 //
@@ -69,7 +80,7 @@ if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타
 //        . "WHERE (FRIEND2.ID_USER = :ID_USER2 AND CONT2.DEL = 'N' AND CONT2.EXPOSE > 0 AND CONT2.ID_TARGET IS NULL)"   //내 친구가 쓰고 공개대상이 친구 이상인것
 //        . " ORDER BY WRITE_DATE DESC LIMIT "
 //        . ":NOWPAGE, 10";
-    $sql="SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND ID_TARGET IS NULL AND EXPOSE>1) ORDER BY WRITE_DATE DESC LIMIT :NOWPAGE,10";
+    $sql = "SELECT ID,ID_WRITER,TITLE,EXPOSE,KNOCK,WRITE_DATE,MODIFY_DATE,FOR_SALE,CATEGORY,SUB_CATEGORY,PRICE,PREVIEW,COMMENT,SALE,FOLDER,CHANGED,MORE,TAG FROM publixher.TBL_CONTENT WHERE (DEL='N' AND ID_TARGET IS NULL AND EXPOSE>1) ORDER BY WRITE_DATE DESC LIMIT :NOWPAGE,10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
     $prepare->execute();
