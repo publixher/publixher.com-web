@@ -130,36 +130,56 @@ class imaging
         {
 
             $this->img_output = ImageCreateTrueColor($this->x_output, $this->y_output);
+//            if($this->format=="PNG"){
+//                // integer representation of the color black (rgb: 0,0,0)
+//                $background = imagecolorallocate($this->img_input,255, 255, 255);
+//                // removing the black from the placeholder
+//                imagecolortransparent($this->img_input, $background);
+//
+//                // turning off alpha blending (to ensure alpha channel information
+//                // is preserved, rather than removed (blending with the rest of the
+//                // image in the form of black))
+//                imagealphablending($this->img_input, false);
+//
+//                // turning on alpha channel information saving (to ensure the full range
+//                // of transparency is preserved)
+//                imagesavealpha($this->img_input, true);
+//            }elseif($this->format=='GIF'){
+//                // integer representation of the color black (rgb: 0,0,0)
+//                $background = imagecolorallocatealpha($this->img_input,255, 255, 255, 127);
+//                // removing the black from the placeholder
+//                imagecolortransparent($this->img_input, $background);
+//            }
             ImageCopyResampled($this->img_output, $this->img_input, 0, 0, 0, 0, $this->x_output, $this->y_output, $this->x_input, $this->y_input);
 
         }
 
         // Save JPEG
-        if($this->format == "JPG" OR $this->format == "JPEG")
-        {
+//        if($this->format == "JPG" OR $this->format == "JPEG")
+//        {
 
             if($this->resize) { imageJPEG($this->img_output, $path, $this->quality); }
             else { copy($this->img_src, $path); }
 
-        }
+//        }
 
         // Save PNG
-        elseif($this->format == "PNG")
-        {
-
-            if($this->resize) { imagePNG($this->img_output, $path); }
-            else { copy($this->img_src, $path); }
-
-        }
-
-        // Save GIF
-        elseif($this->format == "GIF")
-        {
-
-            if($this->resize) { imageGIF($this->img_output, $path); }
-            else { copy($this->img_src, $path); }
-
-        }
+//        elseif($this->format == "PNG")
+//        {
+//
+//            if($this->resize) { imagePNG($this->img_output, $path); }
+//            else { copy($this->img_src, $path); }
+//
+//        }
+//
+//        // Save GIF
+//        elseif($this->format == "GIF")
+//        {
+//
+//            if($this->resize) { imageGIF($this->img_output, $path); }
+//            else { copy($this->img_src, $path); }
+//
+//        }
 
     }
 

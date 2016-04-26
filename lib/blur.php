@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', -1);    //흐리게 할 때 메모리 제한 없앰
 /**
  * Strong Blur
  *
@@ -66,6 +66,26 @@ function blur($gdImageResource, $blurFactor = 3)
 
     //save image
     $bluredImg=ImageCreateTrueColor(100, 100);
+    if($ext=="PNG"){
+        // integer representation of the color black (rgb: 0,0,0)
+        $background = imagecolorallocatealpha($gdImageResource,0, 0, 0, 127);
+        // removing the black from the placeholder
+        imagecolortransparent($gdImageResource, $background);
+
+        // turning off alpha blending (to ensure alpha channel information
+        // is preserved, rather than removed (blending with the rest of the
+        // image in the form of black))
+        imagealphablending($gdImageResource, false);
+
+        // turning on alpha channel information saving (to ensure the full range
+        // of transparency is preserved)
+        imagesavealpha($gdImageResource, true);
+    }elseif($ext=='GIF'){
+        // integer representation of the color black (rgb: 0,0,0)
+        $background = imagecolorallocatealpha($gdImageResource,0, 0, 0, 127);
+        // removing the black from the placeholder
+        imagecolortransparent($gdImageResource, $background);
+    }
     ImageCopyResampled($bluredImg, $gdImageResource, 0, 0, 0, 0, 100, 100, $originalWidth, $originalHeight);
     if($ext == "JPG" OR $ext == "JPEG"){
         imagejpeg($bluredImg,$outpath);

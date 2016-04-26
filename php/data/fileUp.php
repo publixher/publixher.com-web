@@ -17,6 +17,7 @@ if ($_FILES) {
         $name = $file['name'][0];
         $ext = substr(strrchr($name, "."), 1);    //확장자앞 .을 제거하기 위하여 substr()함수를 이용
         $ext = strtolower($ext);
+        $ext='jpg';
         $EXT = strtoupper($ext);
         //확장자가 jpg,gif,png가 아닐경우 뻗는다
         if (!($EXT == 'JPG' or $EXT == 'JPEG' or $EXT == 'PNG' or $EXT == 'GIF')) {

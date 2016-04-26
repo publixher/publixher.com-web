@@ -13,7 +13,9 @@ $(document).ready(function () {
                 ID_target = targetID;
             }
         }
+
         if ($('#sendBody').html().length > 0) {
+            var btn=$(this).attr('disabled','disabled');
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
@@ -54,9 +56,11 @@ $(document).ready(function () {
                     for(var i=0;i<tags.length;i++){
                         $('#send-tag').tagEditor('removeTag',tags[i]);
                     }
+                    btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    btn.removeAttr('disabled')
                 }
             })
         }
@@ -67,6 +71,7 @@ $(document).ready(function () {
     $('#publixhButton').on('click', function () {
         var $btn = $(this).button('loading');
         if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0 && $('#contentCost').val().length>0) {
+            var btn=$(this).attr('disabled','disabled')
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
@@ -116,9 +121,11 @@ $(document).ready(function () {
                     for(var i=0;i<tags.length;i++){
                         $('#publi-tag').tagEditor('removeTag',tags[i]);
                     }
+                    btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    btn.removeAttr('disabled')
                 }
             })
         } else {
