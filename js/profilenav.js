@@ -68,6 +68,7 @@ $(document).ready(function () {
     });
     //친구요청 응답
     $('.freqanswer').on('click', function () {
+        var btn = $(this).removeClass('freqanswer');
         var fid = $(this).attr('fid') ? $(this).attr('fid') : null;
         var requestid = $(this).attr('requestid');
         var pa = $(this).parent()[0];
@@ -86,6 +87,9 @@ $(document).ready(function () {
                     if ($('#frequestnum').text() == 0) {
                         $('#freqli').append("<li><a>친구요청이 없습니다</a></li>")
                     }
+                }else{
+                    alert('서버 오류가 생겼습니다. 다시 시도해 주세요');
+                    btn.removeClass('freqanswer');
                 }
             }
         })
