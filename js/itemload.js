@@ -142,69 +142,80 @@ $(document).ready(function () {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
-            $('.load-item').remove();
-            var times = Math.min(9, res.length - 1);
-            for (var i = times; i >= 0; i--) {
-                if (res[i]['USER_NAME'] != null) {
-                    if (res[i]['FOR_SALE'] == "N") {
-                        var write = '';
-                        var ID = res[i]['ID'];
-                        var writer = res[i]['ID_WRITER'];
-                        var name = res[i]['USER_NAME'];
-                        var date = res[i]['WRITE_DATE'];
-                        var knock = res[i]['KNOCK'];
-                        var comment = res[i]['COMMENT'];
-                        var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'];
-                        var targetID = res[i]['ID_TARGET'];
-                        var targetname = res[i]['TARGET_NAME'];
-                        var folderID = null;
-                        var foldername = null;
-                        var expose = res[i]['EXPOSE'];
-                        var more = res[i]['MORE'];
-                        if (res[i]['FOLDER'] != null) {
-                            folderID = res[i]['FOLDER'];
-                            foldername = res[i]['FOLDER_NAME'];
-                        }
-                        var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                        write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
-                        if ($('#topcon').length > 0) {
-                            $('#topcon').after(write);
-                        } else if ($('#upform').length > 0) {
-                            $('#upform').after(write);
-                        } else {
-                            $('#prea').after(write);
-                        }
+            if(res.length==0){
+                write='<div>결과가 없네요 >,.<;;</div>'
+                if ($('#topcon').length > 0) {
+                    $('#topcon').after(write);
+                } else if ($('#upform').length > 0) {
+                    $('#upform').after(write);
+                } else {
+                    $('#prea').after(write);
+                }
+            }else {
+                $('.load-item').remove();
+                var times = Math.min(9, res.length - 1);
+                for (var i = times; i >= 0; i--) {
+                    if (res[i]['USER_NAME'] != null) {
+                        if (res[i]['FOR_SALE'] == "N") {
+                            var write = '';
+                            var ID = res[i]['ID'];
+                            var writer = res[i]['ID_WRITER'];
+                            var name = res[i]['USER_NAME'];
+                            var date = res[i]['WRITE_DATE'];
+                            var knock = res[i]['KNOCK'];
+                            var comment = res[i]['COMMENT'];
+                            var preview = res[i]['PREVIEW'];
+                            var pic = res[i]['PIC'];
+                            var targetID = res[i]['ID_TARGET'];
+                            var targetname = res[i]['TARGET_NAME'];
+                            var folderID = null;
+                            var foldername = null;
+                            var expose = res[i]['EXPOSE'];
+                            var more = res[i]['MORE'];
+                            if (res[i]['FOLDER'] != null) {
+                                folderID = res[i]['FOLDER'];
+                                foldername = res[i]['FOLDER_NAME'];
+                            }
+                            var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
+                            write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
+                            if ($('#topcon').length > 0) {
+                                $('#topcon').after(write);
+                            } else if ($('#upform').length > 0) {
+                                $('#upform').after(write);
+                            } else {
+                                $('#prea').after(write);
+                            }
 
-                    } else {
-                        var write = '';
-                        var ID = res[i]['ID'];
-                        var writer = res[i]['ID_WRITER'];
-                        var name = res[i]['USER_NAME'];
-                        var date = res[i]['WRITE_DATE'];
-                        var title = res[i]['TITLE'];
-                        var knock = res[i]['KNOCK'];
-                        var price = res[i]['PRICE'];
-                        var comment = res[i]['COMMENT'];
-                        var bought = res[i]['BOUGHT'];
-                        var preview = res[i]['PREVIEW'];
-                        var pic = res[i]['PIC'];
-                        var folderID = null;
-                        var foldername = null;
-                        var expose = res[i]['EXPOSE'];
-                        var more = res[i]['MORE']
-                        if (res[i]['FOLDER'] != null) {
-                            folderID = res[i]['FOLDER'];
-                            foldername = res[i]['FOLDER_NAME'];
-                        }
-                        var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                        write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin);
-                        if ($('#topcon').length > 0) {
-                            $('#topcon').after(write);
-                        } else if ($('#upform').length > 0) {
-                            $('#upform').after(write);
                         } else {
-                            $('#prea').after(write);
+                            var write = '';
+                            var ID = res[i]['ID'];
+                            var writer = res[i]['ID_WRITER'];
+                            var name = res[i]['USER_NAME'];
+                            var date = res[i]['WRITE_DATE'];
+                            var title = res[i]['TITLE'];
+                            var knock = res[i]['KNOCK'];
+                            var price = res[i]['PRICE'];
+                            var comment = res[i]['COMMENT'];
+                            var bought = res[i]['BOUGHT'];
+                            var preview = res[i]['PREVIEW'];
+                            var pic = res[i]['PIC'];
+                            var folderID = null;
+                            var foldername = null;
+                            var expose = res[i]['EXPOSE'];
+                            var more = res[i]['MORE']
+                            if (res[i]['FOLDER'] != null) {
+                                folderID = res[i]['FOLDER'];
+                                foldername = res[i]['FOLDER_NAME'];
+                            }
+                            var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
+                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin);
+                            if ($('#topcon').length > 0) {
+                                $('#topcon').after(write);
+                            } else if ($('#upform').length > 0) {
+                                $('#upform').after(write);
+                            } else {
+                                $('#prea').after(write);
+                            }
                         }
                     }
                 }

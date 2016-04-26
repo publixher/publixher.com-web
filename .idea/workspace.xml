@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/bodySearch.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/conf.js" afterPath="$PROJECT_DIR$/js/conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/getContent.php" afterPath="$PROJECT_DIR$/php/data/getContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/tagSearch.php" afterPath="$PROJECT_DIR$/php/tagSearch.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/nameFind.php" afterPath="$PROJECT_DIR$/php/data/nameFind.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -52,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="270" column="53" selection-start-line="270" selection-start-column="53" selection-end-line="270" selection-end-column="53" />
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
               <folding>
                 <marker date="1461664604000" expanded="true" signature="3086:3112" placeholder="..." />
                 <marker date="1461664604000" expanded="true" signature="3086:3130" placeholder="..." />
@@ -83,6 +79,16 @@
                 <marker date="1461664604000" expanded="true" signature="21674:21699" placeholder="..." />
                 <marker date="1461664604000" expanded="true" signature="22034:22050" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/itemload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8248472">
+              <caret line="221" column="13" selection-start-line="221" selection-start-column="13" selection-end-line="221" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,10 +158,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bodySearch.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bodySearch.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37578288">
+            <state vertical-scroll-proportion="-15.0">
               <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
               <folding />
             </state>
@@ -165,8 +171,8 @@
       <file leaf-file-name="getContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
-              <caret line="61" column="237" selection-start-line="61" selection-start-column="237" selection-end-line="61" selection-end-column="237" />
+            <state vertical-scroll-proportion="-6.875">
+              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <marker date="1461665777000" expanded="true" signature="494:792" placeholder="SELECT ID,ID... TBL_CONTENT" />
                 <marker date="1461665777000" expanded="true" signature="875:1186" placeholder="SELECT ID,ID... TBL_CONTENT" />
@@ -197,25 +203,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="184" selection-start-line="0" selection-start-column="184" selection-end-line="0" selection-end-column="184" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="nameFind.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            <state vertical-scroll-proportion="-4.375">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
               <folding>
-                <marker date="1461138177000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
-                <marker date="1461138177000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
-                <marker date="1461138177000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
+                <marker date="1461667794000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
+                <marker date="1461667794000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
+                <marker date="1461667794000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
               </folding>
             </state>
           </provider>
@@ -236,7 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/best.php" />
         <option value="$PROJECT_DIR$/php/right.php" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
         <option value="$PROJECT_DIR$/php/data/getPin.php" />
@@ -273,7 +268,6 @@
         <option value="$PROJECT_DIR$/php/data/fileUp.php" />
         <option value="$PROJECT_DIR$/php/data/itemAct.php" />
         <option value="$PROJECT_DIR$/js/profilenav.js" />
-        <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="$PROJECT_DIR$/js/left.js" />
         <option value="$PROJECT_DIR$/js/notiCenter.js" />
         <option value="$PROJECT_DIR$/php/foldercon.php" />
@@ -287,6 +281,8 @@
         <option value="$PROJECT_DIR$/php/conf.php" />
         <option value="$PROJECT_DIR$/js/conf.js" />
         <option value="$PROJECT_DIR$/php/bodySearch.php" />
+        <option value="$PROJECT_DIR$/php/data/nameFind.php" />
+        <option value="$PROJECT_DIR$/js/itemload.js" />
       </list>
     </option>
   </component>
@@ -618,12 +614,6 @@
       <option name="number" value="Default" />
       <updated>1461121523591</updated>
     </task>
-    <task id="LOCAL-00003" summary="Merge branch 'master' of github.com:publixher/publixher.com-web&#10;&#10;# Conflicts:&#10;#&#9;css/main.css&#10;#&#9;css/main.less&#10;#&#9;css/profile.css&#10;#&#9;css/profile.less&#10;">
-      <created>1461135602419</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1461135602419</updated>
-    </task>
     <task id="LOCAL-00004" summary="로그인 , 회원가입 완성">
       <created>1461153718656</created>
       <option name="number" value="00004" />
@@ -912,7 +902,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461658354742</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="본문검색,태그검색">
+      <created>1461666449521</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1461666449521</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -956,7 +952,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="프로필사진" />
     <MESSAGE value="인라인 뺀거" />
     <MESSAGE value="sql에서 프로필사진 다른거 가져오게" />
     <MESSAGE value="best 추가" />
@@ -981,7 +976,8 @@
     <MESSAGE value="관리자가 댓글삭제도 하게" />
     <MESSAGE value="친구 답변시 여러번 동작 안되게" />
     <MESSAGE value="url 재정의" />
-    <option name="LAST_COMMIT_MESSAGE" value="url 재정의" />
+    <MESSAGE value="본문검색,태그검색" />
+    <option name="LAST_COMMIT_MESSAGE" value="본문검색,태그검색" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1238,14 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.37037">
-          <caret line="137" column="18" selection-start-line="137" selection-start-column="14" selection-end-line="137" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/contentManage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1451,55 +1439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemcard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="270" column="53" selection-start-line="270" selection-start-column="53" selection-end-line="270" selection-end-column="53" />
-          <folding>
-            <marker date="1461664604000" expanded="true" signature="3086:3112" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="3086:3130" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="4151:4186" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="4203:4228" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="4538:4554" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="5309:5340" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="5391:5407" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="6224:6281" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="6637:6694" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="6790:6847" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="8567:8602" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="8619:8644" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="8950:8966" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="9681:9712" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="9763:9779" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="11688:11721" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="11738:11763" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="12098:12114" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="16457:16482" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="16457:16500" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="17200:17234" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="17251:17276" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="17619:17635" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="18299:18330" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="18385:18401" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="21623:21657" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="21674:21699" placeholder="..." />
-            <marker date="1461664604000" expanded="true" signature="22034:22050" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding>
-            <marker date="1461138177000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
-            <marker date="1461138177000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461138177000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1536,18 +1475,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.791666">
+          <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="184" selection-start-line="0" selection-start-column="184" selection-end-line="0" selection-end-column="184" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="108" selection-start-line="0" selection-start-column="108" selection-end-line="0" selection-end-column="108" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75">
-          <caret line="61" column="237" selection-start-line="61" selection-start-column="237" selection-end-line="61" selection-end-column="237" />
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <marker date="1461665777000" expanded="true" signature="494:792" placeholder="SELECT ID,ID... TBL_CONTENT" />
             <marker date="1461665777000" expanded="true" signature="875:1186" placeholder="SELECT ID,ID... TBL_CONTENT" />
@@ -1585,26 +1548,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/conf.php">
+    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.791666">
-          <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-          <folding />
+        <state vertical-scroll-proportion="-4.375">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <marker date="1461667794000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
+            <marker date="1461667794000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461667794000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/conf.js">
+    <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding>
+            <marker date="1461664604000" expanded="true" signature="3086:3112" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="3086:3130" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="4151:4186" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="4203:4228" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="4538:4554" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="5309:5340" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="5391:5407" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="6224:6281" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="6637:6694" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="6790:6847" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="8567:8602" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="8619:8644" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="8950:8966" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="9681:9712" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="9763:9779" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="11688:11721" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="11738:11763" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="12098:12114" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="16457:16482" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="16457:16500" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="17200:17234" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="17251:17276" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="17619:17635" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="18299:18330" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="18385:18401" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="21623:21657" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="21674:21699" placeholder="..." />
+            <marker date="1461664604000" expanded="true" signature="22034:22050" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37578288">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.8248472">
+          <caret line="221" column="13" selection-start-line="221" selection-start-column="13" selection-end-line="221" selection-end-column="13" />
           <folding />
         </state>
       </provider>
