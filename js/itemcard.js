@@ -73,7 +73,7 @@ $(document).ready(function () {
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                            if (mid == res[i]['ID_USER']) {
+                            if (mid == res[i]['ID_USER'] || level==99) {
                                 write += ' <a class="repdel">삭제</a>'
                             }
                             write += '</span></span></td></tr></table></div>';
@@ -144,7 +144,7 @@ $(document).ready(function () {
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if (mid == res[i]['ID_USER']) {
+                        if (mid == res[i]['ID_USER'] || level==99) {
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
@@ -197,7 +197,7 @@ $(document).ready(function () {
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '<span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if (mid == res[i]['ID_USER']) {
+                        if (mid == res[i]['ID_USER'] || level==99) {
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
@@ -294,7 +294,7 @@ $(document).ready(function () {
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/php/profile.php?id=' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span>'
-                                if (mid == res[i]['ID_USER']) {
+                                if (mid == res[i]['ID_USER'] || level==99) {
                                     write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
                                 }
                                 write += '</td></tr></table></div>';
