@@ -143,7 +143,7 @@ $(document).ready(function () {
         retryLimit: 3,
         success: function (res) {
             if(res.length==0){
-                write='<div>결과가 없네요 >,.<;;</div>'
+                write='<div id="no-content">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
                 } else if ($('#upform').length > 0) {
