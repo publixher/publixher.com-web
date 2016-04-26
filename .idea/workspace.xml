@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/data/report.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/left.js" afterPath="$PROJECT_DIR$/js/left.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/left.php" afterPath="$PROJECT_DIR$/php/left.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -82,12 +86,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8095723">
-              <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="164" column="56" selection-start-line="164" selection-start-column="56" selection-end-line="164" selection-end-column="56" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="left.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/left.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-28.75">
+              <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+              <folding>
+                <marker date="1461669809000" expanded="true" signature="264:492" placeholder="SELECT USER_... TBL_USER" />
+                <marker date="1461669809000" expanded="true" signature="731:901" placeholder="SELECT TITLE... TBL_CONTENT" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="left.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/left.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="90" selection-start-line="18" selection-start-column="90" selection-end-line="18" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/data/report.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.092449926">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding>
+                <marker date="1461670063000" expanded="true" signature="152:229" placeholder="INSERT INTO publixher.TBL_REPORT... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,48 +150,6 @@
             <state vertical-scroll-proportion="-13.291667">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/conf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.791666">
-              <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <marker date="1460624004000" expanded="true" signature="596:740" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-                <marker date="1460624004000" expanded="true" signature="2028:2080" placeholder="SELECT TITLE... TBL_CONTENT" />
-                <marker date="1460624004000" expanded="true" signature="2609:2667" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1460624004000" expanded="true" signature="3380:3433" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1460624004000" expanded="true" signature="4514:4580" placeholder="UPDATE publi... " />
-                <marker date="1460624004000" expanded="true" signature="4650:4769" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-                <marker date="1460624004000" expanded="true" signature="5136:5276" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-                <marker date="1460624004000" expanded="true" signature="5621:5673" placeholder="SELECT TITLE... TBL_CONTENT" />
-                <marker date="1460624004000" expanded="true" signature="5941:5999" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1460624004000" expanded="true" signature="6317:6370" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1460624004000" expanded="true" signature="7195:7271" placeholder="UPDATE publi... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -205,8 +202,8 @@
       <file leaf-file-name="nameFind.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state vertical-scroll-proportion="-1.875">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="48" />
               <folding>
                 <marker date="1461667794000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
                 <marker date="1461667794000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
@@ -231,7 +228,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/right.php" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
         <option value="$PROJECT_DIR$/php/data/getPin.php" />
         <option value="$PROJECT_DIR$/php/getItem.php" />
@@ -267,10 +263,8 @@
         <option value="$PROJECT_DIR$/php/data/fileUp.php" />
         <option value="$PROJECT_DIR$/php/data/itemAct.php" />
         <option value="$PROJECT_DIR$/js/profilenav.js" />
-        <option value="$PROJECT_DIR$/js/left.js" />
         <option value="$PROJECT_DIR$/js/notiCenter.js" />
         <option value="$PROJECT_DIR$/php/foldercon.php" />
-        <option value="$PROJECT_DIR$/php/left.php" />
         <option value="$PROJECT_DIR$/php/notiCenter.php" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/php/tagSearch.php" />
@@ -282,6 +276,9 @@
         <option value="$PROJECT_DIR$/php/bodySearch.php" />
         <option value="$PROJECT_DIR$/php/data/nameFind.php" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
+        <option value="$PROJECT_DIR$/php/left.php" />
+        <option value="$PROJECT_DIR$/js/left.js" />
+        <option value="$PROJECT_DIR$/php/data/report.php" />
       </list>
     </option>
   </component>
@@ -613,12 +610,6 @@
       <option name="number" value="Default" />
       <updated>1461121523591</updated>
     </task>
-    <task id="LOCAL-00005" summary="로그인 , 회원가입 완성">
-      <created>1461154220438</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1461154220438</updated>
-    </task>
     <task id="LOCAL-00006" summary="수정시 태그 활성화">
       <created>1461155440363</created>
       <option name="number" value="00006" />
@@ -907,7 +898,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461668334039</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="결과없음 출력">
+      <created>1461668432525</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1461668432525</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -917,7 +914,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.503231" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32465753" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3237624" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21386139" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -926,7 +923,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.319802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3059406" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3059406" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1002,13 +999,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/profile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28365386">
@@ -1243,14 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/left.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/market.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1347,17 +1329,6 @@
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <marker date="1461571143000" expanded="true" signature="329:374" placeholder="SELECT * FRO... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/left.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.75">
-          <caret line="19" column="122" selection-start-line="19" selection-start-column="122" selection-end-line="19" selection-end-column="122" />
-          <folding>
-            <marker date="1461658220000" expanded="true" signature="264:492" placeholder="SELECT USER_... TBL_USER" />
-            <marker date="1461658220000" expanded="true" signature="731:901" placeholder="SELECT TITLE... TBL_CONTENT" />
           </folding>
         </state>
       </provider>
@@ -1479,72 +1450,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="108" selection-start-line="0" selection-start-column="108" selection-end-line="0" selection-end-column="108" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-          <folding>
-            <marker date="1461665777000" expanded="true" signature="494:792" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="875:1186" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="1235:1546" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="1905:2161" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="2452:2564" placeholder="SELECT ID_CO... TBL_BUY_LIST" />
-            <marker date="1461665777000" expanded="true" signature="2782:2979" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3317:3514" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:3950" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:3969" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:4000" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:4001" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:4020" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:4021" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="3740:4156" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="4177:4389" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="4177:4457" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="4177:4458" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="4177:4473" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="6500:6648" placeholder="SELECT ID,ID... " />
-            <marker date="1461665777000" expanded="true" signature="6500:6764" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461665777000" expanded="true" signature="6984:7076" placeholder="SELECT USER_... TBL_USER" />
-            <marker date="1461665777000" expanded="true" signature="7529:7578" placeholder="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1461665777000" expanded="true" signature="7913:7966" placeholder="SELECT USER_... TBL_USER" />
-            <marker date="1461665777000" expanded="true" signature="8369:8462" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.291667">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding>
-            <marker date="1461667794000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
-            <marker date="1461667794000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461667794000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1585,6 +1495,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="56" selection-start-line="164" selection-start-column="56" selection-end-line="164" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/upform.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1596,11 +1514,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+    <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8095723">
-          <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+        <state vertical-scroll-proportion="-13.291667">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding>
+            <marker date="1461665777000" expanded="true" signature="494:792" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="875:1186" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="1235:1546" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="1905:2161" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="2452:2564" placeholder="SELECT ID_CO... TBL_BUY_LIST" />
+            <marker date="1461665777000" expanded="true" signature="2782:2979" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3317:3514" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:3950" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:3969" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:4000" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:4001" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:4020" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:4021" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="3740:4156" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="4177:4389" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="4177:4457" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="4177:4458" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="4177:4473" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="6500:6648" placeholder="SELECT ID,ID... " />
+            <marker date="1461665777000" expanded="true" signature="6500:6764" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461665777000" expanded="true" signature="6984:7076" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1461665777000" expanded="true" signature="7529:7578" placeholder="SELECT DIR F... TBL_FOLDER" />
+            <marker date="1461665777000" expanded="true" signature="7913:7966" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1461665777000" expanded="true" signature="8369:8462" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.875">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="48" />
+          <folding>
+            <marker date="1461667794000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
+            <marker date="1461667794000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461667794000" expanded="true" signature="1076:1219" placeholder="SELECT COUNT... TBL_TAGS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.75">
+          <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+          <folding>
+            <marker date="1461669809000" expanded="true" signature="264:492" placeholder="SELECT USER_... TBL_USER" />
+            <marker date="1461669809000" expanded="true" signature="731:901" placeholder="SELECT TITLE... TBL_CONTENT" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/left.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="90" selection-start-line="18" selection-start-column="90" selection-end-line="18" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.092449926">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding>
+            <marker date="1461670063000" expanded="true" signature="152:229" placeholder="INSERT INTO publixher.TBL_REPORT... " />
+          </folding>
         </state>
       </provider>
     </entry>

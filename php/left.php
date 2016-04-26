@@ -13,7 +13,9 @@
         $masternum = count($masters);
         $msql = "SELECT TITLE,ID,WRITE_DATE FROM publixher.TBL_CONTENT WHERE (ID_WRITER=:ID_WRITER AND DEL='N' AND TBL_CONTENT.FOR_SALE='Y' AND EXPOSE>1)ORDER BY WRITE_DATE DESC LIMIT 0,5";
         $mriprepare = $db->prepare($msql);
-        for ($i = 0;$i < $masternum;$i++) {
+        for ($i = 0;
+        $i < $masternum;
+        $i++) {
         $mriprepare->bindValue(':ID_WRITER', $masters[$i]['ID'], PDO::PARAM_STR);
         $mriprepare->execute();
         $recontent = $mriprepare->fetchAll(PDO::FETCH_ASSOC);
@@ -40,4 +42,8 @@
                     ?>
 
                 </div>
-            </div>
+                <div id="report-div">
+                <textarea id="report" class="form-control" placeholder="사용시 오류사항 및 건의사항을 적어서 보내주세요.. ex)프로필화면에서 글쓰기가 안되요!! , 태그기능 만들어주세요!"></textarea>
+                    <button class="btn-default" id="report-button">보내기</button>
+                    </div>
+            </div><!--                여기까지 left-->
