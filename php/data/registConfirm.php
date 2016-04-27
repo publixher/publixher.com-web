@@ -20,13 +20,6 @@ if ($check_email && $check_pass && $check_name) {
     $sendmail=new Sendmail();   //기본설정을 사용
     $from="publixher.com";
     $subject = "troughout 회원가입을 위한 인증 메일입니다.";
-    $body = "
-<p>대학별 프라이빗 커뮤니티 throughout에 오신 것을 환영합니다!</p>
-<p>회원가입 후 학교의 모든 구성원과 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
-<p><a href='http://localhost/registValid/${id}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>
-<p>가입 절차 및 기타 문의는 cs@throughout.kr로 메일 주시기 바랍니다.</p>";
-
-
     try {
         $db->beginTransaction();
         $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
@@ -39,24 +32,29 @@ if ($check_email && $check_pass && $check_name) {
         $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
         $prepare->execute();
+        $seq=$db->lastInsertId();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
         $prepare2->execute();
-        $db->commit();
-        $msg = '{"result":"regist"}';
+//메일보내는작업
+        $id_crypt = sha1($seq . $id);
+        $body = "
+<p>대학별 프라이빗 커뮤니티 throughout에 오신 것을 환영합니다!</p>
+<p>회원가입 후 학교의 모든 구성원과 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
+<p><a href='http://localhost/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>
+<p>가입 절차 및 기타 문의는 cs@throughout.kr로 메일 주시기 바랍니다.</p>";
         $sendmail->send_mail($email, $from, $subject, $body);
+        $db->commit();
+        $msg = '{"result":"reg"}';
         echo $msg;
-        exit;
     } catch (PDOException $e) {
         $db->rollBack();
         $msg='{"result":"server error"}';
         echo $msg;
-        exit;
     }
 } else {
     $msg = '{"result":"check value"}';
     echo $msg;
-    exit;
 }
 ?>

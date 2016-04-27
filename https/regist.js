@@ -175,7 +175,6 @@ $(document).ready(function () {
         if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
         else {namevali = true;}
         if(idvali&&dupidchk&&pwvali&&namevali) {
-            //$('#rf').submit();
             e.preventDefault();
             var formData=$('#rf').serialize();
             $.ajax({
@@ -184,9 +183,8 @@ $(document).ready(function () {
                 data: formData,
                 dataType: 'json',
                 success: function (res) {
-                    if(res['result']=='regist'){
-                        alert('회원가입이 완료되었습니다. 이제 로그인 해 주세요')
-                        window.location.reload(true);
+                    if(res['result']=='reg'){
+                        alert('회원가입이 완료되었습니다.이메일의 링크를 눌러 인증을 해주세요.');
                     }else if(res['result']=='server error'){
                         alert('서버 에러입니다. 다시 시도해 주세요')
                     }else if(res['result']=='check value'){
@@ -198,5 +196,6 @@ $(document).ready(function () {
             alert('아이디,비밀번호,이름을 확인해 주세요');
             return false;
         }
+        $('#rf').replaceWith('<div>인증메일을 보냈습니다.<br> 메일을 통해 ID를 인증해주세요.</div>');
     });
 });
