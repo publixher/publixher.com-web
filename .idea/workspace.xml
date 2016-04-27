@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/registConfirm.php" afterPath="$PROJECT_DIR$/php/data/registConfirm.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -43,14 +43,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.416666">
-              <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.21920668">
+              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
               <folding>
-                <marker date="1461732740000" expanded="true" signature="853:975" placeholder="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1461732740000" expanded="true" signature="1595:1656" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1461733509000" expanded="true" signature="687:809" placeholder="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1461733509000" expanded="true" signature="1429:1490" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
               </folding>
             </state>
           </provider>
@@ -90,10 +90,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/conf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.032223415">
+            <state vertical-scroll-proportion="-0.5882353">
               <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
               <folding />
             </state>
@@ -123,7 +123,7 @@
       <file leaf-file-name="loginConfirm.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.041666">
+            <state vertical-scroll-proportion="-28.125">
               <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
               <folding>
                 <marker date="1461730977000" expanded="true" signature="279:330" placeholder="SELECT * FRO... TBL_USER" />
@@ -226,10 +226,10 @@
         <option value="$PROJECT_DIR$/https/loginConfirm.php" />
         <option value="$PROJECT_DIR$/php/data/registValid.php" />
         <option value="$PROJECT_DIR$/js/regist.js" />
-        <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/https/regist.js" />
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/conf.php" />
+        <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
       </list>
     </option>
   </component>
@@ -561,12 +561,6 @@
       <option name="number" value="Default" />
       <updated>1461121523591</updated>
     </task>
-    <task id="LOCAL-00011" summary="more 수정">
-      <created>1461219295059</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1461219295060</updated>
-    </task>
     <task id="LOCAL-00012" summary="한번 했던거 두번 안하게 바뀜">
       <created>1461220201191</created>
       <option name="number" value="00012" />
@@ -855,7 +849,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461733097055</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="로고 추가">
+      <created>1461733330022</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1461733330022</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -899,7 +899,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="태그에디터 추가" />
     <MESSAGE value="폴더에 추가" />
     <MESSAGE value="css바뀜" />
     <MESSAGE value="left 감싸기" />
@@ -924,7 +923,8 @@
     <MESSAGE value="신고 추가" />
     <MESSAGE value="인증내용 추가 및 네이버,페이스북 로그인 빼기 직전" />
     <MESSAGE value="네이버,페이스북 인증 뺀 후" />
-    <option name="LAST_COMMIT_MESSAGE" value="네이버,페이스북 인증 뺀 후" />
+    <MESSAGE value="로고 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="로고 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1410,16 +1410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.041666">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-          <folding>
-            <marker date="1461730977000" expanded="true" signature="279:330" placeholder="SELECT * FRO... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../bin/phpMyAdmin/tbl_structure.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27734977">
@@ -1452,29 +1442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/registValid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1461731806000" expanded="true" signature="159:206" placeholder="SELECT SEQ F... TBL_USER" />
-            <marker date="1461731806000" expanded="true" signature="395:445" placeholder="UPDATE publi... " />
-            <marker date="1461731806000" expanded="true" signature="560:607" placeholder="SELECT * FRO... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.416666">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-          <folding>
-            <marker date="1461732740000" expanded="true" signature="853:975" placeholder="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1461732740000" expanded="true" signature="1595:1656" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/regist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1493,9 +1460,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/conf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032223415">
+        <state vertical-scroll-proportion="-0.5882353">
           <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/registValid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <marker date="1461731806000" expanded="true" signature="159:206" placeholder="SELECT SEQ F... TBL_USER" />
+            <marker date="1461731806000" expanded="true" signature="395:445" placeholder="UPDATE publi... " />
+            <marker date="1461731806000" expanded="true" signature="560:607" placeholder="SELECT * FRO... TBL_USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.125">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <folding>
+            <marker date="1461730977000" expanded="true" signature="279:330" placeholder="SELECT * FRO... TBL_USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21920668">
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <marker date="1461733509000" expanded="true" signature="687:809" placeholder="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1461733509000" expanded="true" signature="1429:1490" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
+          </folding>
         </state>
       </provider>
     </entry>

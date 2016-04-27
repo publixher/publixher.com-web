@@ -10,12 +10,9 @@ $name = $_POST['name'];
 $msg='';
 $check_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL); //옵션에 따라 유효성검사하는거 틀리면 false리턴하고 맞으면 그걸 리턴하는거
 $check_pass = preg_match("/^[[:alnum:]]{6,16}$/", $pass);
-$check_name = preg_match("/[\xA1-\xFE]{1,3}/", $name);
-if (!$check_name) {
-    $check_name = preg_match('/^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/', $name);
-}
+
 //통과시 등록
-if ($check_email && $check_pass && $check_name) {
+if ($check_email && $check_pass) {
     $id = uniqueid($db, 'user');
     $sendmail=new Sendmail();   //기본설정을 사용
     $from="publixher.com";
