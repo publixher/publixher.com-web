@@ -13,7 +13,7 @@
         var mid = myID;
     </script>
     <script src="/js/profile_left.js"></script>
-    <p id="name"><?= $target['USER_NAME'] ?></p>
+    <p id="name"><?php echo $target['USER_NAME'];if($target['IN_USE']=='N') echo '(삭제된 ID)' ?></p>
     <ul class="list-unstyled" id="profile">
         <li>생일 : <?= $birth ?></li>
         <li>대학교 : <?= $target['UNIV'] ?></li>
