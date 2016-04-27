@@ -51,7 +51,8 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);                    $('#upform').after(write);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
+                    $('#upform').after(write);
                     $('#sendBody').html("").trigger('input').trigger('keyup');
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
