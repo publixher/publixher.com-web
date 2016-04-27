@@ -546,7 +546,7 @@ if ($act == 'knock') {
 
     function getTime($db, $repID, $index)
     {
-        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.'),DEL AS REPLY,ID_USER FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,DEL,ID_USER FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);
