@@ -517,7 +517,7 @@ body {
 #wrap #right .conf #logo {
   margin: 5px 5px 5px 5px;
   height: 40px;
-  width: 200px;
+  width: 184px;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -607,13 +607,13 @@ body {
   width: 96%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
   border-radius: 2px;
   font-size: 14px;
   padding: 2px 2px 2px 2px;
   margin-left: 6px;
   margin-top: 6px;
   border: 0;
+  outline: 0;
 }
 #wrap #right .conf .dropdown ul {
   padding: 0 0 0 0;
@@ -961,4 +961,26 @@ li a {
 .usrpic-wrap img {
   width: 34px;
   height: 34px;
+}
+#right .conf{
+  width: 1024px !important;
+  height: 40px !important;
+  left: 50%;
+  margin-left: -512px;
+  background-color: #7FBEC2 !important;
+}
+#middle, #left, #right{
+  margin-top: 45px !important;
+}
+#controller{
+  float: right !important;
+}
+#gsearch{
+  width: 530px !important;
+  margin: 0 !important;
+  height: 40px !important;
+  border-radius: 0 !important;
+}
+#wrap #right .market{
+  top: 5px !important;
 }

@@ -428,7 +428,7 @@ body {
 #wrap #right .conf #logo {
   margin: 5px 5px 5px 5px;
   height: 40px;
-  width: 200px;
+  width: 184px;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -517,13 +517,13 @@ body {
   width: 96%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
   border-radius: 2px;
   font-size: 14px;
   padding: 2px 2px 2px 2px;
   margin-left: 6px;
   margin-top: 6px;
   border: 0;
+  outline: 0;
 }
 #wrap #right .conf .dropdown ul {
   padding: 0 0 0 0;
@@ -858,4 +858,69 @@ li a {
 .usrpic-wrap img {
   width: 34px;
   height: 34px;
+}
+#report-button {
+  border: 1px solid #e3e3e3;
+  padding: 2px;
+  width: 174px;
+  border-radius: 4px;
+  background: #83C3C4;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  vertical-align: middle;
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+}
+#report-button:hover {
+  border: 1px solid #e3e3e3;
+  background: #e3e3e3;
+  color: #fff;
+}
+#report-button:active {
+  border: 1px solid #e3e3e3;
+  background: #e3e3e3;
+  color: #fff;
+  outline:0 !important;
+}
+#report-button:focus {
+  border: 1px solid #e3e3e3;
+  background: #e3e3e3;
+  color: #fff;
+  outline:0 !important;
+}
+#report{
+  float:left;
+  width: 174px !important;
+  margin-top:10px;
+  min-height: 130px;
+  overflow-y:hidden;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  border-bottom: 0;
+  box-shadow:inset 0 0 0;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+}
+#right .conf{
+  width: 1024px !important;
+  height: 40px !important;
+  left: 50%;
+  margin-left: -512px;
+  background-color: #7FBEC2 !important;
+}
+#middle, #left, #right{
+  margin-top: 45px !important;
+}
+#controller{
+  float: right !important;
+}
+#gsearch{
+  width: 530px !important;
+  margin: 0 !important;
+  height: 40px !important;
+  border-radius: 0 !important;
+}
+#wrap #right .market{
+  top: 5px !important;
 }
