@@ -951,19 +951,10 @@ only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
-#left, #right .market{
+#left, #right{
   display: none;
 }
-.conf {
-width: 530px;
+#middle, #writing-pane, .item-for-sale, .item{
+  width: 100% !important;
 }
-#logo{
-  display: none;
-}
-#gsearch{
-  display: none;
-}
- .conf #controller {
-    float: left !important;
-  }
 }
