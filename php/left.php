@@ -44,6 +44,6 @@
                 </div>
                 <div id="report-div">
                 <textarea id="report" class="form-control" placeholder="사용시 오류사항 및 건의사항을 적어서 보내주세요.. ex)프로필화면에서 글쓰기가 안되요!! , 태그기능 만들어주세요!"></textarea>
-                    <button class="btn-default" id="report-button">보내기</button>
+                    <button class="btn-default" id="report-button" onclick="blur(this)">보내기</button>
                     </div>
             </div><!--                여기까지 left-->

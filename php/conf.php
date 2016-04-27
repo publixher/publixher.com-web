@@ -1,6 +1,6 @@
 <div class="conf">
     <script src="/js/conf.js"></script>
-    <div id="logo"><a href="/">로고</a></div>
+    <div id="logo"><img src="/img/throughoutr.png" onclick="location.href='/'"></div>
 
 
     <?php

@@ -607,6 +607,7 @@ body {
   width: 96%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  border-radius: 4px;
   border-radius: 2px;
   font-size: 14px;
   padding: 2px 2px 2px 2px;
@@ -962,28 +963,31 @@ li a {
   width: 34px;
   height: 34px;
 }
-#right .conf{
+#right .conf {
   width: 1024px !important;
   height: 40px !important;
   left: 50%;
   margin-left: -512px;
   background-color: #7FBEC2 !important;
 }
-#middle, #left, #right{
+#middle,
+#left,
+#right {
   margin-top: 45px !important;
 }
-#controller{
+#controller {
   float: right !important;
 }
-#gsearch{
+#gsearch {
   width: 530px !important;
   margin: 0 !important;
   height: 40px !important;
   border-radius: 0 !important;
 }
-#wrap #right .market{
+#wrap #right .market {
   top: 5px !important;
 }
+<<<<<<< HEAD
 #wrap #right .conf .dropdown ul {
   top: 40px !important;
   left: 184px !important;
@@ -994,3 +998,5 @@ li a {
 #wrap #right .conf #logo{
   margin: 0 !important;
 }
+=======
+>>>>>>> 59be15ac33e1333b428cb5fe64e98b792a4e3018
