@@ -947,6 +947,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
   #left, #right{
     display: none;
   }
+  #middle{
+    width: 100%;
+  }
 
 }
 #wrap #right .conf #controller .usrpic-wrap{
