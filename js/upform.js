@@ -17,11 +17,13 @@ $(document).ready(function () {
         if ($('#sendBody').html().length > 0) {
             var btn=$(this);
             $(this).attr('disabled','disabled');
+            console.log($('#sendBody').text())
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
                 data: {
                     body: $('#sendBody').html(),
+                    body_text:$('#sendBody').text(),
                     ID_writer: mid,
                     folder: $folderID,
                     token: token,
@@ -80,6 +82,7 @@ $(document).ready(function () {
                 type: "POST",
                 data: {
                     body: $('#publiBody').html(),
+                    body_text:$('#publiBody').text(),
                     ID_writer: mid,
                     for_sale: "Y",
                     price: $('#contentCost').val(),

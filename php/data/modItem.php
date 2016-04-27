@@ -37,7 +37,9 @@ if ($action == 'get_item') {
     $gallery="/<a[^>]*href=[\"']?\/img\/origin\/[\"']?[^>]*><\/a>/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
+    $body_text=$_POST['body_text'];
     $body = $purifier->purify($body);
+    $body_text=$purifier->purify($body_text);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
@@ -101,9 +103,9 @@ if ($action == 'get_item') {
     $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
 
     if (!$_POST['for_sale']) {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
     }
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $id);
@@ -112,6 +114,7 @@ if ($action == 'get_item') {
     $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
     $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
     $prepare->bindValue(':ORIGINAL', $originData, PDO::PARAM_STR);
+    $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
     $prepare->bindValue(':TAG', $_POST['tag'] ? implode(' ', json_decode($_POST['tag'])) : null, PDO::PARAM_STR);
 
     if ($_POST['for_sale']) {
