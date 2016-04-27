@@ -844,8 +844,8 @@ li a {
   float: left;
   position: relative;
 }
-#wrap #middle .item .tail opend-comment > table,
-#wrap #middle .item-for-sale .tail opend-comment > table {
+#wrap #middle .item .tail .opend-comment > table,
+#wrap #middle .item-for-sale .tail .opend-comment > table {
   margin-bottom: -1px !important;
 }
 .form-control {
@@ -939,3 +939,7 @@ li a {
   margin: 0 !important;
   border-bottom-left-radius: 4px;
 }
+#wrap #right .conf #logo {
+  margin: 0 !important;
+}
+

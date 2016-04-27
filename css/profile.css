@@ -947,8 +947,8 @@ li a {
   margin: 0 5px 0 5px;
   vertical-align: top;
 }
-#wrap #middle .item .tail opend-comment > table,
-#wrap #middle .item-for-sale .tail opend-comment > table {
+#wrap #middle .item .tail .opend-comment > table,
+#wrap #middle .item-for-sale .tail .opend-comment > table {
   margin-bottom: -1px !important;
 }
 .form-control {
@@ -998,4 +998,7 @@ li a {
 #wrap #right .conf #logo img{
   margin: 0 !important;
   border-bottom-left-radius: 4px;
+}
+#wrap #right .conf #logo {
+  margin: 0 !important;
 }
