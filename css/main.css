@@ -863,7 +863,7 @@ li a {
   padding: 2px;
   width: 174px;
   border-radius: 4px;
-  background: #83C3C4 ;
+  background: #83C3C4;
   color: #fff;
   font-size: 14px;
   text-decoration: none;
@@ -937,6 +937,13 @@ li a {
   border-bottom-left-radius: 4px;
   cursor: pointer;
 }
+#wrap #right .conf #controller .usrpic-wrap{
+  margin: 3px;
+}
+.caret, .caret-repbtn, .caret-repbtn_sub{
+  margin: 5px !important;
+  cursor: pointer !important;
+}
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
@@ -944,8 +951,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
-
+#left, #right .market{
+  display: none;
 }
-#wrap #right .conf #controller .usrpic-wrap{
-  margin: 3px;
 }
