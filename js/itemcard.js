@@ -230,7 +230,6 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(this)
                     thisform.addClass('commentReg').text('').css('height','25px');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
@@ -252,7 +251,8 @@ $(document).ready(function () {
         var thisrep = type==0?$(this).parents()[6].id:$(this).parents()[5].id;
         var thisrepID = type==0?(thisrep.split('-'))[3]:(thisrep.split('-'))[5];
         if (confirm('정말 삭제하시겠습니까?')) {
-            var btn = type==0?$(this).removeClass('repdel'):$(this).removeClass('sub-repdel');
+            var btn = $(this);
+                type==0?$(this).removeClass('repdel'):$(this).removeClass('sub-repdel');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
@@ -262,7 +262,6 @@ $(document).ready(function () {
                     type==0?btn.addClass('repdel'):btn.addClass('sub-repdel');
                     if(res['result']=='Y'){
                         alert('삭제되었습니다.');
-                        console.log($('#' + thisrep + ' .reply-body'))
                         $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.');
                     }
                     else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
@@ -629,7 +628,8 @@ $(document).ready(function () {
             }
         }
         if ($('#sendBody-mod').html().length > 0) {
-            var btn = $(this).attr('disabled', 'disabled')
+            var btn = $(this);
+                $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -685,7 +685,8 @@ $(document).ready(function () {
 
         var $btn = $(this).button('loading');
         if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length > 0) {
-            var btn = $(this).attr('disabled', 'disabled')
+            var btn = $(this);
+                $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -924,7 +925,8 @@ $(document).ready(function () {
     //신고 동작
     $(document).on('click','.itemReport', function () {
         var thisitemID=$(this).parents()[5].id;
-        var btn=$(this).removeClass('itemReport');
+        var btn=$(this);
+            $(this).removeClass('itemReport');
         if(confirm('해당 게시물을 신고하시겠습니까?')){
             $.ajax({
                 url: "/php/data/itemAct.php",

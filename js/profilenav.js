@@ -68,7 +68,8 @@ $(document).ready(function () {
     });
     //친구요청 응답
     $('.freqanswer').on('click', function () {
-        var btn = $(this).removeClass('freqanswer');
+        var btn = $(this);
+        $(this).removeClass('freqanswer');
         var fid = $(this).attr('fid') ? $(this).attr('fid') : null;
         var requestid = $(this).attr('requestid');
         var pa = $(this).parent()[0];

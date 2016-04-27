@@ -15,7 +15,8 @@ $(document).ready(function () {
         }
 
         if ($('#sendBody').html().length > 0) {
-            var btn=$(this).attr('disabled','disabled');
+            var btn=$(this);
+            $(this).attr('disabled','disabled');
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
@@ -71,7 +72,8 @@ $(document).ready(function () {
     $('#publixhButton').on('click', function () {
         var $btn = $(this).button('loading');
         if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0 && $('#contentCost').val().length>0) {
-            var btn=$(this).attr('disabled','disabled')
+            var btn=$(this);
+            $(this).attr('disabled','disabled')
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
