@@ -52,7 +52,7 @@ $(document).ready(function () {
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
-            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)"></div>');
+            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             tab_comment.append(word);
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -282,7 +282,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
-                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)">');
+                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)">');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
                             var repnum = Object.keys(res).length - 2;
