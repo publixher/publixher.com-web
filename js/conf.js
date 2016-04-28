@@ -5,35 +5,47 @@ $(document).ready(function () {
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {
             $('#searchResult').css('display', 'block');
-            function search(target){
+            function search(target) {
                 $.ajax({
                     url: "/php/data/nameFind.php",
                     type: "GET",
-                    data: {searchword: search_word,target:target},
+                    data: {searchword: search_word, target: target},
                     dataType: 'json',
                     success: function (res) {
                         var Result;
-                        switch(target){
-                            case 'name':Result=$('#nameResult');break;
-                            case 'title':Result=$('#contResult');break;
-                            case 'tag':Result=$('#tagResult');break;
+                        switch (target) {
+                            case 'name':
+                                Result = $('#nameResult');
+                                break;
+                            case 'title':
+                                Result = $('#contResult');
+                                break;
+                            case 'tag':
+                                Result = $('#tagResult');
+                                break;
                         }
                         if (res.length > 0) {
                             Result.css('display', 'block');
                             var SearchRes = '';
                             for (var i = 0; i < res.length; i++) {
-                                switch(target){
-                                    case 'name':if (res[i]['IS_NICK'] == 'Y') {
-                                        SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
-                                    } else {
-                                        SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
-                                    }break;
-                                    case 'title':for (var i = 0; i < res.length; i++) {
-                                        SearchRes += '<li><a href="/content/' + res[i]['ID'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
-                                    }break;
-                                    case 'tag':for (var i = 0; i < res.length; i++) {
-                                        SearchRes += '<li><a href="/tag/' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
-                                    }break;
+                                switch (target) {
+                                    case 'name':
+                                        if (res[i]['IS_NICK'] == 'Y') {
+                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
+                                        } else {
+                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
+                                        }
+                                        break;
+                                    case 'title':
+                                        for (var i = 0; i < res.length; i++) {
+                                            SearchRes += '<li><a href="/content/' + res[i]['ID'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
+                                        }
+                                        break;
+                                    case 'tag':
+                                        for (var i = 0; i < res.length; i++) {
+                                            SearchRes += '<li><a href="/tag/' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
+                                        }
+                                        break;
                                 }
 
                             }
@@ -45,6 +57,7 @@ $(document).ready(function () {
                     }
                 });
             }
+
             search('name');
             search('title')
             search('tag')
@@ -58,7 +71,7 @@ $(document).ready(function () {
     //본문검색
     $('#search-body').on('click', function () {
         var search_body = $('#gsearch').val();
-        location.href='/body/'+search_body;
+        location.href = '/body/' + search_body;
     })
     //페이지 로딩이 끝나면 알림의 개수를 받아온다
     $.ajax({
@@ -74,10 +87,11 @@ $(document).ready(function () {
     })
     //알림을 받아오는 함수
     var notiPage = 0;
-    var notiLoading=false;
+    var notiLoading = false;
+
     function getNoti() {
-        if(!notiLoading) {
-            notiLoading=true;
+        if (!notiLoading) {
+            notiLoading = true;
             $.ajax({
                 url: "/php/data/getNoti.php",
                 type: "GET",
@@ -122,7 +136,7 @@ $(document).ready(function () {
                         $('#notibtn .badge').remove();
                     }
                     notiPage = notiPage + 1;
-                    notiLoading=false;
+                    notiLoading = false;
                 }
             })
         }
@@ -143,18 +157,19 @@ $(document).ready(function () {
         }
     })
 //이름크기 바꾸기
-    var fontResize= function () {
-        var username=$('#username');
-        var size=(84/username.text().length)>14?14:(84/username.text().length)
-        username.css('font-size',size);
+    var fontResize = function () {
+        var username = $('#username');
+        var size = (84 / username.text().length) > 14 ? 14 : (84 / username.text().length)
+        username.css('font-size', size);
     }
     fontResize();
     //핀받아오는 함수
-    var pinPage=0;
-    var pinLoading=false;
-    function getPin(){
-        if(!pinLoading) {
-            pinLoading=true;
+    var pinPage = 0;
+    var pinLoading = false;
+
+    function getPin() {
+        if (!pinLoading) {
+            pinLoading = true;
             $.ajax({
                 url: "/php/data/getPin.php",
                 type: "GET",
@@ -162,28 +177,42 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     for (var i = 0; i < res.length; i++) {
-                        var word = '<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + res[i]['ID_CONTENT'] + '</a></li>'
-                        $('#pinlist li:last-child').after(word);
+                        var pin_li = $('<li>')
+                            .addClass('pin-list')
+                            .append(
+                                $('<a>')
+                                    .addClass('pin-body')
+                                    .attr('href', '/content/' + res[i]['ID_CONTENT'])
+                                    .text(res[i]['BODY'])
+                                , $('<span>')
+                                    .text(res[i]['KNOCK'])
+                                    .addClass('pin-knock')
+                                , $('<span>')
+                                    .text(res[i]['REPLY'])
+                                    .addClass('pin-reply')
+                            )
+                            .insertAfter($('#pinlist li:last-child'))
                     }
                     if (!$('#pinlist').hasClass('loaded')) {
                         $('#pinlist').addClass('loaded');
                     }
 
                     pinPage = pinPage + 1;
-                    pinLoading=false;
+                    pinLoading = false;
                 }
             })
         }
     }
+
     //핀리스트
     $('#pinbtn').on('click', function () {
-        if(!$('#pinlist').hasClass('loaded')){
+        if (!$('#pinlist').hasClass('loaded')) {
             getPin();
         }
     })
     //무한 휠!!
     $('#pinlist').scroll(function () {
-        pinlist=$('#pinlist');
+        pinlist = $('#pinlist');
         var maxHeight = pinlist[0].scrollHeight;
         var currentScroll = pinlist.scrollTop() + pinlist.height();
         if (maxHeight <= currentScroll + 100) {
