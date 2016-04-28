@@ -195,13 +195,17 @@ $(document).ready(function () {
                         $('<li>')
                             .addClass('pin-list')
                             .append(
-                                $('<img>')
-                                    .attr({
-                                        src:res[i]['WRITER_PIC'],
-                                        onclick:'location.href="/profile/'+res[i]['ID_WRITER']+'"'
-                                    })
-                                    .addClass('pin-pic')
-                                ,$('<a>')
+                                $('<div>')
+                                    .append(
+                                        $('<img>')
+                                            .attr({
+                                                src: res[i]['WRITER_PIC'],
+                                                onclick: 'location.href="/profile/' + res[i]['ID_WRITER'] + '"'
+                                            })
+                                            .addClass('pin-pic')
+                                    )
+                                    .addClass('pin-pin-wrap')
+                                , $('<a>')
                                     .addClass('pin-body')
                                     .attr('href', '/content/' + res[i]['ID_CONTENT'])
                                     .text(res[i]['BODY'])

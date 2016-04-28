@@ -16,18 +16,22 @@ $(document).ready(function () {
             data: {act: action},
             success: function (res) {
                 spinner.detach();
-                for (var i = 0; i <res.length; i++) {
+                for (var i = 0; i < res.length; i++) {
                     $('<li>')
                         .appendTo($('#' + action + '-hot-list'))
                         .addClass(action + '-list-item')
                         .append(
-                            $('<img>')
-                                .attr({
-                                    src:res[i]['WRITER_PIC'],
-                                    onclick:'location.href="/profile/"'+res[i]['ID_WRITER']+'"'
-                                })
-                                .addClass('hot-pic')
-                            ,$('<a>')
+                            $('<div>')
+                                .append(
+                                    $('<img>')
+                                        .attr({
+                                            src: res[i]['WRITER_PIC'],
+                                            onclick: 'location.href="/profile/"' + res[i]['ID_WRITER'] + '"'
+                                        })
+                                        .addClass('hot-pic')
+                                )
+                                .addClass('hot-pic-wrap')
+                            , $('<a>')
                                 .attr('href', '/content/' + res[i]['ID_CONTENT'])
                                 .text(res[i]['BODY'])
                                 .append(
