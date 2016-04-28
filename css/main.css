@@ -1020,4 +1020,14 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
     width: 12%;
     height: 80%;
   }
+  #writing-pane .nav-tabs > li{
+    width:25% !important;
+  }
+  #writing-pane .nav-tabs li > .dropdown-menu{
+    width: 98% !important;
+    min-width: 98% !important;
+  }
+  #writing-pane .nav-tabs .dropdown-menu li{
+    width:100% !important;
+  }
 }
