@@ -636,6 +636,7 @@ $(document).ready(function () {
                 data: {
                     ID: itemID_mod,
                     body: $('#sendBody-mod').html(),
+                    body_text: $('#sendBody-mod').text(),
                     ID_writer: mid,
                     folder: folderid_mod,
                     token: token,
@@ -693,6 +694,7 @@ $(document).ready(function () {
                 data: {
                     ID: itemID_mod,
                     body: $('#publiBody-mod').html(),
+                    body_text: $('#publiBody-mod').text(),
                     for_sale: "Y",
                     price: $('#contentCost-mod').val(),
                     category: category_mod,

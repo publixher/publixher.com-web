@@ -25,8 +25,10 @@ if (!empty($_POST)) {
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
+    $body_text=$_POST['body_text'];
     $for_sale=$_POST['for_sale'];
     $body = $purifier->purify($body);
+    $body_text=$purifier->purify($body_text);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
@@ -119,9 +121,9 @@ if (!empty($_POST)) {
         $ID_writer = $_POST['ID_writer'];
         $targetID = $_POST['targetID'];
         if (!$for_sale) {
-            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG)";
+            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG,BODY_TEXT) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG,:BODY_TEXT)";
         } else {
-            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,IMG,TAG) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:IMG,:TAG);";
+            $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,FOR_SALE,PRICE,CATEGORY,SUB_CATEGORY,AGE,AD,TITLE,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,IMG,TAG,BODY_TEXT) VALUES (:ID,:ID_WRITER,:BODY,'Y',:PRICE,:CATEGORY,:SUB_CATEGORY,:AGE,:AD,:TITLE,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:IMG,:TAG,:BODY_TEXT);";
         }
         $uid = uniqueid($db, 'content');
         $prepare = $db->prepare($sql);
@@ -132,6 +134,7 @@ if (!empty($_POST)) {
         $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
         $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
         $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
+        $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
         $prepare->bindValue(':TAG', $_POST['tags'] ? implode(' ', json_decode($_POST['tags'])) : null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
         if ($targetID == '') {
             $prepare->bindValue(':ID_TARGET', NULL, PDO::PARAM_STR);
