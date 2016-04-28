@@ -521,7 +521,7 @@ body {
       .roundborder();
       top: 140px;
       width: 300px;
-      height: 800px;
+      height: auto;
       position: relative;
       background-color: #f5f5f5;
       z-index: 1;
@@ -942,4 +942,34 @@ li a {
 .caret, .caret-repbtn, .caret-repbtn_sub{
   margin: 5px !important;
   cursor: pointer !important;
+}
+
+.now-list-item,
+.daily-list-item,
+.weekly-list-item{
+  height:60px;
+  width: 100%;
+  float:left;
+  list-style-type: none;
+}
+.hot-pic-wrap{
+  width:60px;
+  height:60px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-left: -30px;
+}
+.hot-pic{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hot-body{
+  display:block;
+}
+.hot-knock,
+.hot-reply{
+  margin-left:5px;
 }
