@@ -167,8 +167,8 @@
     if ($userinfo->getISNICK() == 'N') { ?>
         <form method='post' action='/php/data/profileChange.php'>
             <input type="hidden" name="action" value="anonyregist">
-            <span><?= $nickname ?></span> <a>삭제</a>
-            <input type="text" class="form-control" name="nick" placeholder="익명은 한글,영문숫자만으로 구성되어야 합니다."
+            <span>현재 익명 : </span><span><?= $nickname ?></span>
+            <input type="text" class="form-control" name="nick" placeholder="익명은 한글,영문,숫자만으로 구성되어야 합니다."
                    style="width:60%;">
             <input type="submit" class="btn btn-default" value="지금 익명계정을 삭제하고 새로운 익명계정 생성">
         </form>

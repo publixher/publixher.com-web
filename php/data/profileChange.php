@@ -54,7 +54,7 @@ if ($_POST['action'] == 'profilechange') {
 } elseif ($_POST['action'] == 'anonyregist') {
     //익명 적합성 검사
     $nick = $_POST['nick'];
-    if (preg_match("/[\xA1-\xFE\xA1-\xFEa-zA-Z0-9]{2,10}/", $nick)) {
+    if (preg_match("/[\xA1-\xFE\xA1-\xFEa-zA-Z0-9]/", $nick)) {
         //현재 커넥터에 익명계정으로 연결된 계정의 in_use를 N으로 만들어서 계정자체는 살아있어서 닉네임을 쓸 수 없고 컨텐츠는 볼 수 있지만 접속은 할 수 없도록 만든다
         require_once'../../lib/random_64.php';
         $sql = "SELECT ID_ANONY  FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";

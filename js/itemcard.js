@@ -31,6 +31,11 @@ $(document).ready(function () {
         var tail = $('#' + thisitemID + ' .tail');
         tail.css('margin-bottom', '10px');
         if (!tail.hasClass('opend-comment')) {
+
+            var spinner = $('<div>')
+                .attr('data-loader', 'spinner')
+                .addClass('load-item reply-load')
+
             if (tail.hasClass('opend-share')) {
                 tail.removeClass('opend-share')
                 $('#' + thisitemID + ' .tail .tab-share').remove();
@@ -54,12 +59,14 @@ $(document).ready(function () {
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             tab_comment.append(word);
+            $('#best-'+thisitemID).append(spinner);
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
                 data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
+                    spinner.detach();
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
@@ -126,12 +133,17 @@ $(document).ready(function () {
         var tarsplit = target.split('-');
         var sort = tarsplit[0];
         var num = tarsplit[1];
+        var spinner = $('<div>')
+            .attr('data-loader', 'spinner')
+            .addClass('load-item reply-load')
+        $('#'+target).append(spinner);
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
             data: {ID: num, action: "comment", userID: mid, sort: sort, token: token},
             dataType: 'json',
             success: function (res) {
+                spinner.detach();
                 function registRep(res, where) {
                     var list = $('#' + where);
                     for (var i = 0; i < Object.keys(res).length - 2; i++) {
@@ -173,19 +185,24 @@ $(document).ready(function () {
         var num = tarsplit[1];
         var panel = $('#' + sort + '-' + num);
         var index = panel.attr('index');
+        var spinner = $('<div>')
+            .attr('data-loader', 'spinner')
+            .addClass('load-item reply-load');
+        var btn = $('#' + sort + '-' + num + ' .cursor').append(spinner);
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
             data: {ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token},
             dataType: 'json',
             success: function (res) {
+                spinner.detach();
                 if (res['result'] == 'NO') {
                     $('#' + sort + '-' + num + ' .cursor').remove();
                     return;
                 }
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
-                    var btn = $('#' + sort + '-' + num + ' .cursor');
+
                     var numrep = Object.keys(res).length - 2;
                     for (var i = 0; i < numrep; i++) {
                         var write = '';
@@ -241,6 +258,8 @@ $(document).ready(function () {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
+        }else{
+            resize(this)
         }
     });
     //댓글삭제 동작
@@ -269,7 +288,6 @@ $(document).ready(function () {
     })
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
-        console.log($(this).parents())
         var thisitemID = $(this).parents()[12].id;
         var thispanelrep = ($(this).parents()[6].id);
         var thisrepID = (thispanelrep.split('-'))[3];

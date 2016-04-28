@@ -23,6 +23,7 @@
         var token = "<?=$token?>";
         var pin = "<?=$mpin?>";
         var level=<?=$mlevel?>;
+
     </script>
     <div id="controller">
         <a id="usrpic" href='/profile/<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>"></div></a>

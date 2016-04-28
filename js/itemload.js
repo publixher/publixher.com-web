@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin) {
+function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin) {
     write = '<div class="item card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -28,14 +28,14 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
             break;
     }
     write += '</div> <div class="conf">';
-    if(pin.indexOf(ID) !=-1){   //핀에 아이디가 있을경우
+    if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
-    }else {
+    } else {
         write += '<a class="pin-a">핀</a>';
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
 
-    if (mid == writer || level==99) {
+    if (mid == writer || level == 99) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
@@ -62,7 +62,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     return write;
 }
 
-function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin) {
+function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin) {
     write = '<div class="item-for-sale card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -86,13 +86,13 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             break;
     }
     write += '</div> <div class="conf">';
-    if(pin.indexOf(ID) !=-1){   //핀에 아이디가 있을경우
+    if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
-    }else {
+    } else {
         write += '<a class="pin-a">핀</a>';
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">설정<span class="caret"></span> </button> '
-    if (mid == writer || level==99) {
+    if (mid == writer || level == 99) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
@@ -124,8 +124,11 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     return write;
 }
-var spinner = '<div class="load-item" data-loader="spinner"></div>'
 $(document).ready(function () {
+    //스피너
+    var spinner = $('<div>')
+        .attr('data-loader', 'spinner')
+        .addClass('load-item content-load')
     //페이지 로드 끝나면 아이템카드 불러오기
     if ($('#topcon').length > 0) {
         $('#topcon').after(spinner);
@@ -142,8 +145,8 @@ $(document).ready(function () {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
-            if(res.length==0){
-                write='<div id="no-content">결과가 없네요 >,.<;;</div>'
+            if (res.length == 0) {
+                write = '<div id="no-content">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
                 } else if ($('#upform').length > 0) {
@@ -151,8 +154,8 @@ $(document).ready(function () {
                 } else {
                     $('#prea').after(write);
                 }
-            }else {
-                $('.load-item').remove();
+            } else {
+                spinner.detach();
                 var times = Math.min(9, res.length - 1);
                 for (var i = times; i >= 0; i--) {
                     if (res[i]['USER_NAME'] != null) {
@@ -261,7 +264,7 @@ $(document).ready(function () {
                     tryCount: 0,
                     retryLimit: 3,
                     success: function (res) {
-                        $('.load-item').remove();
+                        spinner.detach();
                         for (var i = 0; i < res.length; i++) {
                             if (res[i]['USER_NAME'] != null) {
                                 if (res[i]['FOR_SALE'] == "N") {
@@ -285,7 +288,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag,pin);
+                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
@@ -313,7 +316,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag,pin);
+                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
