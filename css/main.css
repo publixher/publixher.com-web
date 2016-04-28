@@ -547,13 +547,14 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  top: 140px;
+  top: 5px;
   width: 300px;
   height: auto;
   position: relative;
   background-color: #f5f5f5;
   z-index: 1;
   border: 1px solid #e3e3e3;
+  overflow: hidden;
 }
 #wrap #right .market #market-nav {
   width: 100%;
@@ -921,9 +922,7 @@ li a {
   margin: 6px 0 6px 0 !important;
   height: 28px !important;
 }
-#wrap #right .market {
-  top: 5px !important;
-}
+
 #wrap #right .conf .dropdown ul {
   top: 40px !important;
   left: 184px !important;
