@@ -972,7 +972,10 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
     width: 50% !important;
   }
   #wrap #middle .item .header .conf, #wrap #middle .item-for-sale .header .conf{
-    margin-right: 10px !important
+    right: 10px !important;
   }
-
+  #wrap #middle .item .body .BodyPic, #wrap #middle .item-for-sale .body .BodyPic{
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
 }
