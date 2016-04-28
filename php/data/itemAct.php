@@ -56,9 +56,9 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->execute();
 
-        $sql5="UPDATE publixher.TBL_PIN_LIST SET KNOCK=KNOCK+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
-        $prepare5=$db->prepare($sql5);
-        $prepare5->bindValue(':ID_CONTENT',$ID);
+        $sql5 = "UPDATE publixher.TBL_PIN_LIST SET KNOCK=KNOCK+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare5 = $db->prepare($sql5);
+        $prepare5->bindValue(':ID_CONTENT', $ID);
         $prepare5->execute();
 
 
@@ -279,10 +279,10 @@ if ($act == 'knock') {
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
 
-    $sql5="UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
-        $prepare5=$db->prepare($sql5);
-        $prepare5->bindValue(':ID_CONTENT',$ID);
-        $prepare5->execute();
+    $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+    $prepare5 = $db->prepare($sql5);
+    $prepare5->bindValue(':ID_CONTENT', $ID);
+    $prepare5->execute();
 } elseif ($act == 'share') {
 
 } elseif ($act == 'buy') {
@@ -622,10 +622,10 @@ if ($act == 'knock') {
     $prepare4->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
-    $sql5="UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
-        $prepare5=$db->prepare($sql5);
-        $prepare5->bindValue(':ID_CONTENT',$ID);
-        $prepare5->execute();
+    $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+    $prepare5 = $db->prepare($sql5);
+    $prepare5->bindValue(':ID_CONTENT', $ID);
+    $prepare5->execute();
     exit;
 } elseif ($act == 'addPin' OR $act == 'delPin') {
     $userID = $_POST['userID'];
@@ -633,7 +633,15 @@ if ($act == 'knock') {
     try {
         $db->beginTransaction();
         if ($act == 'addPin') {
-            $sql1 = "INSERT INTO publixher.TBL_PIN_LIST(ID_CONTENT,ID_USER) VALUES(:ID_CONTENT,:ID_USER)";
+            $sql1 = "INSERT publixher.TBL_PIN_LIST (ID_CONTENT, ID_USER, ID_WRITER, BODY, WRITER_PIC)
+  SELECT
+    CONT.ID,
+    :ID_USER,
+    CONT.ID_WRITER,
+    LEFT(CONT.BODY_TEXT, 20),
+    USER.PIC
+  FROM publixher.TBL_CONTENT AS CONT INNER JOIN publixher.TBL_USER AS USER ON CONT.ID_WRITER = USER.ID
+  WHERE CONT.ID = :ID_CONTENT";
             $_SESSION['user']->setPIN($_SESSION['user']->getPIN() . ' ' . $ID);
         } elseif ($act == 'delPin') {
             $sql1 = "DELETE FROM publixher.TBL_PIN_LIST WHERE ID_CONTENT=:ID_CONTENT AND ID_USER=:ID_USER";
@@ -656,31 +664,31 @@ if ($act == 'knock') {
         exit;
     }
     echo '{"result":"Y"}';
-}elseif($act=='rep_del'){
+} elseif ($act == 'rep_del') {
     $id = $_POST['ID'];
-    $userID=$_SESSION['user']->getID();
+    $userID = $_SESSION['user']->getID();
     $type = $_POST['type'];
-    if($_POST['userID']==$userID){
-        if($type==0) $sql="UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
-        else $sql="UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
+    if ($_POST['userID'] == $userID) {
+        if ($type == 0) $sql = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
+        else $sql = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
 
-        $prepare=$db->prepare($sql);
+        $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
         echo '{"result":"Y"}';
     }
-}elseif($act=='report'){
+} elseif ($act == 'report') {
     $id = $_POST['ID'];
     $userID = $_POST['userID'];
-    $sql="INSERT INTO publixher.TBL_CONTENT_REPORT(USER_ID,CONTENT_ID) VALUES(:USER_ID,:CONTENT_ID)";
+    $sql = "INSERT INTO publixher.TBL_CONTENT_REPORT(USER_ID,CONTENT_ID) VALUES(:USER_ID,:CONTENT_ID)";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':USER_ID', $userID);
-    $prepare->bindValue(':CONTENT_ID',$id);
-    try{
+    $prepare->bindValue(':CONTENT_ID', $id);
+    try {
         $prepare->execute();
         echo '{"result":"Y"}';
         exit;
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         echo '{"reason":"already"}';
         exit;
     }

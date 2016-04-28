@@ -177,10 +177,16 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     for (var i = 0; i < res.length; i++) {
-                        var pin_li = $('<li>')
+                        $('<li>')
                             .addClass('pin-list')
                             .append(
-                                $('<a>')
+                                $('<img>')
+                                    .attr({
+                                        src:res[i]['WRITER_PIC'],
+                                        onclick:'location.href="/profile/'+res[i]['ID_WRITER']+'"'
+                                    })
+                                    .addClass('pin-pic')
+                                ,$('<a>')
                                     .addClass('pin-body')
                                     .attr('href', '/content/' + res[i]['ID_CONTENT'])
                                     .text(res[i]['BODY'])

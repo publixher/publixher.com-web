@@ -9,7 +9,7 @@ $userID = $userinfo->getID();
 $action = $_GET['action'];
 $nowpage=$_GET['nowpage']*20;
 if($action=='loadpin'){
-    $selPin="SELECT PIN.ID_CONTENT,PIN.MODIFIED,PIN.KNOCK,PIN.REPLY,PIN.LAST_UPDATE,LEFT(CONT.BODY_TEXT,20) AS BODY FROM publixher.TBL_PIN_LIST AS PIN INNER JOIN publixher.TBL_CONTENT AS CONT ON PIN.ID_CONTENT=CONT.ID WHERE ID_USER=:ID_USER ORDER BY LAST_UPDATE DESC LIMIT :PAGE,20";
+    $selPin="SELECT ID_CONTENT,MODIFIED,KNOCK,REPLY,LAST_UPDATE,BODY,ID_WRITER,REPLACE(WRITER_PIC,'profile','crop50') AS WRITER_PIC FROM publixher.TBL_PIN_LIST WHERE ID_USER=:ID_USER ORDER BY LAST_UPDATE DESC LIMIT :PAGE,20";
     $selpre=$db->prepare($selPin);
     $selpre->bindValue(':ID_USER',$userID);
     $selpre->bindValue(':PAGE',$nowpage);
