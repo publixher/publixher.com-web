@@ -1,10 +1,14 @@
 $(document).ready(function () {
     //검색창에 글자를 입력할때마다 db에서 검색결과 가져옴
     $('#gsearch').on('input', function () {
+        //스피너
+        var spinner = $('<div>')
+            .attr('data-loader', 'spinner')
+            .addClass('load-item search-load')
         //통합검색
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {
-            $('#searchResult').css('display', 'block');
+            $('#searchResult').css('display', 'block').append(spinner);
             function search(target) {
                 $.ajax({
                     url: "/php/data/nameFind.php",
@@ -24,6 +28,7 @@ $(document).ready(function () {
                                 Result = $('#tagResult');
                                 break;
                         }
+                        spinner.detach();
                         if (res.length > 0) {
                             Result.css('display', 'block');
                             var SearchRes = '';
@@ -31,19 +36,19 @@ $(document).ready(function () {
                                 switch (target) {
                                     case 'name':
                                         if (res[i]['IS_NICK'] == 'Y') {
-                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>익명</a></li>';
+                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>익명</a></li>';
                                         } else {
-                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i].USER_NAME + '>>>>이름</a></li>';
+                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>이름</a></li>';
                                         }
                                         break;
                                     case 'title':
                                         for (var i = 0; i < res.length; i++) {
-                                            SearchRes += '<li><a href="/content/' + res[i]['ID'] + '">' + res[i].TITLE + '>>>>아이템</a></li>';
+                                            SearchRes += '<li><a href="/content/' + res[i]['ID'] + '">' + res[i]['TITLE'] + '>>>>아이템</a></li>';
                                         }
                                         break;
                                     case 'tag':
                                         for (var i = 0; i < res.length; i++) {
-                                            SearchRes += '<li><a href="/tag/' + res[i]['TAG'] + '">' + res[i].TAG + '>>>>태그</a></li>';
+                                            SearchRes += '<li><a href="/tag/' + res[i]['TAG'] + '">' + res[i]['TAG'] + '>>>>태그</a></li>';
                                         }
                                         break;
                                 }
@@ -92,12 +97,17 @@ $(document).ready(function () {
     function getNoti() {
         if (!notiLoading) {
             notiLoading = true;
+            var spinner = $('<div>')
+                .attr('data-loader', 'spinner')
+                .addClass('load-item noti-load')
+            $('#notilist').append(spinner);
             $.ajax({
                 url: "/php/data/getNoti.php",
                 type: "GET",
                 data: {action: "confnotireq", nowpage: notiPage},
                 dataType: 'json',
                 success: function (res) {
+                    spinner.detach()
                     //알림문장
                     for (var i = 0; i < res.length; i++) {
                         switch (res[i]['ACT']) {
@@ -170,12 +180,17 @@ $(document).ready(function () {
     function getPin() {
         if (!pinLoading) {
             pinLoading = true;
+            var spinner = $('<div>')
+                .attr('data-loader', 'spinner')
+                .addClass('load-item pin-load')
+            $('#pinlist').append(spinner);
             $.ajax({
                 url: "/php/data/getPin.php",
                 type: "GET",
                 data: {action: "loadpin", nowpage: pinPage},
                 dataType: 'json',
                 success: function (res) {
+                    spinner.detach();
                     for (var i = 0; i < res.length; i++) {
                         $('<li>')
                             .addClass('pin-list')
@@ -225,4 +240,5 @@ $(document).ready(function () {
             getPin();
         }
     })
+
 })
