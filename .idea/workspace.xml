@@ -158,27 +158,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="47" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="47" />
-              <folding>
-                <marker date="1461768431000" expanded="true" signature="4806:4998" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1461768431000" expanded="true" signature="5038:5340" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1461768431000" expanded="true" signature="7355:7431" placeholder="UPDATE publi... " />
-                <marker date="1461768431000" expanded="true" signature="7638:7686" placeholder="SELECT * FRO... TBL_CONTENT" />
-                <marker date="1461768431000" expanded="true" signature="7907:7964" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1461768431000" expanded="true" signature="8316:8369" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1461768431000" expanded="true" signature="8616:8700" placeholder="INSERT INTO publixher.TBL_SELL_LIST... " />
-                <marker date="1461768431000" expanded="true" signature="9056:9127" placeholder="INSERT INTO publixher.TBL_TAGS... " />
-                <marker date="1461768431000" expanded="true" signature="9462:9532" placeholder="UPDATE publi... " />
-                <marker date="1461768431000" expanded="true" signature="9735:9784" placeholder="SELECT DIR F... TBL_FOLDER" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="best.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/best.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -214,11 +193,21 @@
       <file leaf-file-name="isId.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/https/isId.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12195122">
-              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.85365856">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
               <folding>
-                <marker date="1461849172000" expanded="true" signature="126:181" placeholder="SELECT EMAIL... TBL_USER" />
+                <marker date="1461849353000" expanded="true" signature="593:648" placeholder="SELECT EMAIL... TBL_USER" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database_conf.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/database_conf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.625">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -660,18 +649,6 @@
       <option name="number" value="Default" />
       <updated>1461121523591</updated>
     </task>
-    <task id="LOCAL-00040" summary="메일전송 추가 및 64진수 63진수로 바꾸기 및 메일인증페이지 추가">
-      <created>1461569998032</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1461569998032</updated>
-    </task>
-    <task id="LOCAL-00041" summary="로그인 체크페이지에 개별적으로 User객체 추가">
-      <created>1461570872557</created>
-      <option name="number" value="00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1461570872557</updated>
-    </task>
     <task id="LOCAL-00042" summary="result를 User로">
       <created>1461571152853</created>
       <option name="number" value="00042" />
@@ -954,7 +931,19 @@
       <option name="project" value="LOCAL" />
       <updated>1461848942740</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="isId 위치 바꿈">
+      <created>1461849177715</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1461849177715</updated>
+    </task>
+    <task id="LOCAL-00090" summary="isId 위치 바꿈">
+      <created>1461849201732</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1461849201733</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1042,13 +1031,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/data/registValid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-28.125">
@@ -1530,12 +1512,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/conf/database_conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/https/isId.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12195122">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.85365856">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
           <folding>
-            <marker date="1461849172000" expanded="true" signature="126:181" placeholder="SELECT EMAIL... TBL_USER" />
+            <marker date="1461849353000" expanded="true" signature="593:648" placeholder="SELECT EMAIL... TBL_USER" />
           </folding>
         </state>
       </provider>
