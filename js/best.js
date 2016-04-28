@@ -10,7 +10,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: {act: action},
             success: function (res) {
-                for (var i = res.length - 1; i > -1; i--) {
+                for (var i = 0; i <res.length; i++) {
                     $('<li>')
                         .appendTo($('#' + action + '-hot-list'))
                         .addClass(action + '-list-item')

@@ -271,6 +271,7 @@ $(document).ready(function () {
     })
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
+        console.log($(this).parents())
         var thisitemID = $(this).parents()[12].id;
         var thispanelrep = ($(this).parents()[6].id);
         var thisrepID = (thispanelrep.split('-'))[3];
