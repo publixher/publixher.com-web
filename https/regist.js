@@ -70,7 +70,7 @@ $(document).ready(function () {
 //아이디 입력 다하면 서버로 아이디가 있는지 검사
     mid.on("change", function () {
         $.ajax({
-            url: "/php/data/isId.php",
+            url: "/https/isId.php",
             type: "GET",
             data: mid,
             dataType: 'json',
