@@ -422,7 +422,7 @@ $(document).ready(function () {
     //공유하기 버튼 동작
     $(document).on("click", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
-        var tail = $('#' + thisitemID + ' .tail');
+        var tail = $('#' + thisitemID + ' .tail').css('margin-bottom','10px');
         if (!tail.hasClass('opend-share')) {
             var linkstr = 'http://alpha.publixher.com/content/' + thisitemID;
             var embedstr = '<iframe width="530" height="633" src="http://alpha.publixher.com/php/embeded.php?iid=' + thisitemID + '" frameborder="0"></iframe>'
