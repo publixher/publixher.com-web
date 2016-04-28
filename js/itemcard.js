@@ -222,7 +222,7 @@ $(document).ready(function () {
             var thisform = $(this);
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
-            var reply = form.text();
+            var reply = form.html();
             thisform.removeClass('commentReg');
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -330,7 +330,7 @@ $(document).ready(function () {
             var sub = form.replace('form', 'sub');
             var thisitemID = idset[1];
             var thisrepID = idset[3];
-            var reply = $('#' + form).text();
+            var reply = $('#' + form).html();
             thisform.removeClass('commentReg_sub');
             $.ajax({
                 url: "/php/data/itemAct.php",
