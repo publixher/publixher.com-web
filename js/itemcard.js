@@ -233,11 +233,9 @@ $(document).ready(function () {
                     thisform.addClass('commentReg').text('').css('height','25px');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
-                    $('#time-' + thisitemID).html('');
-                    $('#time-' + thisitemID).attr('index', '0');
-                    $('a[href=#time-' + thisitemID + ']').trigger('click');
-                    form.val('');
-                    form.blur();
+                    $('#' + thisitemID+' .tail .tab-comment').remove();
+                    $('#'+thisitemID+' .tail').removeClass('opend-comment');
+                    $('#'+thisitemID+' .comment').trigger('click');
                 }, error: function (request, status, error) {
                     thisform.addClass('commentReg');
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);

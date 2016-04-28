@@ -247,9 +247,11 @@ if ($act == 'knock') {
 } elseif ($act == 'commentreg') {
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
+    $br = "/(\<br\>){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
-    $comment=$purifier->purify($_POST['comment']);
+    $comment=preg_replace($br,'<br><br>',$_POST['comment']);
+    $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
@@ -584,9 +586,11 @@ if ($act == 'knock') {
 } elseif ($act == 'commentreg_sub') {
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
+    $br = "/(\<br\>){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
-    $comment = $purifier->purify($_POST['comment']);
+    $comment=preg_replace($br,'<br><br>',$_POST['comment']);
+    $comment = $purifier->purify($comment);
     $repID = $_POST['repID'];
     $uid = uniqueid($db, 'sub_reply');
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
