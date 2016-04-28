@@ -947,7 +947,6 @@ li a {
   cursor: pointer !important;
 }
 
-
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
@@ -1041,7 +1040,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
   }
   #sendButton, #publixhButton,
   #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn,
-  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn{
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div{
     width: 100% !important;
     text-align: center;
   }
