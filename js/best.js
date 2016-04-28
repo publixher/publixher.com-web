@@ -16,29 +16,31 @@ $(document).ready(function () {
             data: {act: action},
             success: function (res) {
                 spinner.detach();
-                for (var i = 0; i <res.length; i++) {
+                for (var i = 0; i < res.length; i++) {
                     $('<li>')
                         .appendTo($('#' + action + '-hot-list'))
                         .addClass(action + '-list-item')
                         .append(
-                            $('<img>')
-                                .attr({
-                                    src:res[i]['WRITER_PIC'],
-                                    onclick:'location.href="/profile/"'+res[i]['ID_WRITER']+'"'
-                                })
-                                .addClass('hot-pic')
-                            ,$('<a>')
-                                .attr('href', '/content/' + res[i]['ID_CONTENT'])
-                                .text(res[i]['BODY'])
+                            $('<div>')
                                 .append(
-                                    $('<span>')
+                                    $('<img>')
+                                        .attr({
+                                            src: res[i]['WRITER_PIC'],
+                                            onclick: 'location.href="/profile/"' + res[i]['ID_WRITER'] + '"'
+                                        })
+                                        .addClass('hot-pic')
+                                )
+                                .addClass('hot-pic-wrap')
+                            , $('<span>')
+                                .append(
+                                    $('<a>')
+                                        .addClass('hot-body')
+                                        .attr('href', '/content/' + res[i]['ID_CONTENT'])
+                                        .text(res[i]['BODY'])
+                                    , $('<a>')
+                                        .attr('href', '/profile/' + res[i]['ID_WRITER'])
+                                        .text(res[i]['USER_NAME'])
                                         .addClass('hot-data')
-                                        .append(
-                                            $('<a>')
-                                                .attr('href', '/profile/' + res[i]['ID_WRITER'])
-                                                .text(res[i]['USER_NAME'])
-                                        )
-
                                     , $('<span>')
                                         .addClass('hot-knock')
                                         .text(res[i]['KNOCK'])
