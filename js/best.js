@@ -5,14 +5,12 @@ $(document).ready(function () {
     //로딩 다 끝내면 베스트 게시물 찾아오기
     function getBest(action) {
         $.ajax({
-            url: 'php/data/best.php',
+            url: '/php/data/best.php',
             type: "GET",
             dataType: 'json',
             data: {act: action},
             success: function (res) {
-                console.log(res)
                 for (var i = res.length - 1; i > -1; i--) {
-                    console.log(i);
                     $('<li>')
                         .appendTo($('#' + action + '-hot-list'))
                         .addClass(action + '-list-item')
