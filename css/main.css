@@ -170,6 +170,7 @@ body {
   width: 133px;
   padding: 0 0 0 0;
   margin: 0 10px 0 10px;
+  border-bottom: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn {
   width: 133px;
@@ -177,12 +178,13 @@ body {
   height: 22px;
   border-radius: 0;
   border: 0;
-  border-bottom: 1px solid #eee;
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput {
   height: 22px;
   width: 132px;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
   width: 132px;
@@ -190,8 +192,6 @@ body {
   height: 22px;
   border-radius: 0;
   border: 0;
-  border-left: 1px solid #eee;
-  border-bottom: 1px solid #eee;
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
@@ -1001,7 +1001,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
   #wrap #middle .item .header, #wrap #middle .item-for-sale .header{
     width: 96%;
   }
-  #wrap #middle #writing-pane .tab-content .tab-pane .taginput{
+  #wrap #middle #writing-pane .tab-content .tab-pane .taginput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .priceinput{
     width: 50% !important;
   }
   #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group{
@@ -1020,5 +1021,32 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
   .item-profile-wrap {
     width: 12%;
     height: 80%;
+  }
+  #writing-pane .nav-tabs > li{
+    width:25% !important;
+  }
+  #writing-pane .nav-tabs li > .dropdown-menu{
+    width: 98% !important;
+    min-width: 98% !important;
+  }
+  #writing-pane .nav-tabs .dropdown-menu li{
+    width:100% !important;
+  }
+  #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .fileupform,
+  #wrap #middle #writing-pane .tab-content .tab-pane .fileinput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput,
+  .regbtn{
+    width: 25% !important;
+    text-align: center;
+  }
+  #sendButton, #publixhButton,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn{
+    width: 100% !important;
+    text-align: center;
+  }
+  .tab-content table{
+    width: 100% !important;
   }
 }
