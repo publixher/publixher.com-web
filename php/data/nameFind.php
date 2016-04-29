@@ -25,7 +25,7 @@ if (!empty($_GET)) {
         $result=json_encode($result,JSON_UNESCAPED_UNICODE);
         echo $result;
     }elseif($target=='friend'){
-        $sql="SELECT SQL_CACHE REPLACE(USER.PIC,'profile','crop50') AS PIC,USER.USER_NAME,USER.ID FROM publixher.TBL_USER AS USER INNER JOIN publixher.TBL_FRIENDS AS FRIENDS ON FRIENDS.ID_FRIEND=USER.ID WHERE FRIENDS.ID_USER=:ID_USER AND MATCH(USER.USER_NAME) AGAINST('*".$_GET['name']."*' IN BOOLEAN MODE) AND USER.IN_USE='Y'";
+        $sql="SELECT SQL_CACHE DISTINCT REPLACE(USER.PIC,'profile','crop50') AS PIC,USER.USER_NAME,USER.ID FROM publixher.TBL_USER AS USER INNER JOIN publixher.TBL_FRIENDS AS FRIENDS ON FRIENDS.ID_FRIEND=USER.ID WHERE FRIENDS.ID_USER=:ID_USER AND MATCH(USER.USER_NAME) AGAINST('*".$_GET['name']."*' IN BOOLEAN MODE) AND USER.IN_USE='Y'";
         $prepare=$db->prepare($sql);
         $prepare->bindValue(':ID_USER',$_GET['mid']);
         $prepare->execute();
