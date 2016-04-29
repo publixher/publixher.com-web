@@ -60,6 +60,7 @@ $(document).ready(function () {
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //댓글 태그기능
+            $('.dropdown-toggle').dropdown();
             tab_comment
                 .append(
                     $('<div>')
@@ -88,6 +89,7 @@ $(document).ready(function () {
                                 })
                                 .append(
                                     $('<li>')
+                                        .addClass('rep-tag-input-li')
                                         .append(
                                             $('<input>')
                                                 .addClass('form-control rep-tag-input')
@@ -139,8 +141,7 @@ $(document).ready(function () {
                                                                                         })
                                                                                         .css('cursor', 'pointer')
                                                                                 );
-                                                                                $(this).parents('.dropdown').dropdown('toggle');
-                                                                                $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                $(this).parent().children(':not(.rep-tag-input-li)').remove();
                                                                             })
                                                                     )
                                                                 }
@@ -426,6 +427,7 @@ $(document).ready(function () {
                                         })
                                         .append(
                                             $('<li>')
+                                                .addClass('rep-tag-input-li')
                                                 .append(
                                                     $('<input>')
                                                         .addClass('form-control rep-tag-input')
@@ -477,8 +479,7 @@ $(document).ready(function () {
                                                                                                 })
                                                                                                 .css('cursor', 'pointer')
                                                                                         );
-                                                                                        $(this).parents('.dropdown').dropdown('toggle');
-                                                                                        $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                        $(this).parent().children(':not(.rep-tag-input-li)').remove();
                                                                                     })
                                                                             )
                                                                         }
