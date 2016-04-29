@@ -253,6 +253,8 @@ if ($act == 'knock') {
     $comment=preg_replace($br,'<br><br>',$_POST['comment']);
     $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
+    $taglist=$_POST['taglist'];
+    $taglist_len=count($taglist);
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
@@ -279,6 +281,16 @@ if ($act == 'knock') {
     $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare4->execute();
+    //댓글에 태그된 사람도 알림처리
+    $sql6="INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $prepare6 = $db->prepare($sql6);
+    $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
+    for($i=0;$i<$taglist_len;$i++){
+        $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
+        $prepare6->execute();
+    }
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
 
@@ -593,6 +605,8 @@ if ($act == 'knock') {
     $comment = $purifier->purify($comment);
     $repID = $_POST['repID'];
     $uid = uniqueid($db, 'sub_reply');
+    $taglist=$_POST['taglist'];
+    $taglist_len=count($taglist);
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
@@ -626,6 +640,16 @@ if ($act == 'knock') {
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
     $prepare4->execute();
+    //댓글에 태그된 사람도 알림처리
+    $sql6="INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $prepare6 = $db->prepare($sql6);
+    $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
+    for($i=0;$i<$taglist_len;$i++){
+        $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
+        $prepare6->execute();
+    }
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";

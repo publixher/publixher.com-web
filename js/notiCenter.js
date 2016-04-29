@@ -63,6 +63,15 @@ $(document).ready(function () {
                         listul.append('<li><a href="/content/'+ res[7][reply[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[7][reply[i]]['date']+'</span></li>');
                     }
                 }
+                if (res[9]) {
+                    console.log(res)
+                    var reply = Object.keys(res[9]);
+                    console.log(reply)
+                    for (var i = 0; i < reply.length; i++) {
+                        var word = "회원님의 '" + reply[i] + "' 댓글에 " + res[9][reply[i]]['count'] + '태그되었습니다.';
+                        listul.append('<li><a href="/content/'+ res[9][reply[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[9][reply[i]]['date']+'</span></li>');
+                    }
+                }
                 page=page+1;
             }
         })
