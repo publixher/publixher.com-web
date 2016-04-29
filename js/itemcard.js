@@ -59,7 +59,7 @@ $(document).ready(function () {
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
-            //TODO:a
+            //댓글 태그기능
             tab_comment
                 .append(
                     $('<div>')
@@ -126,7 +126,7 @@ $(document).ready(function () {
                                                                                     .attr('data-userID', res[i]['ID'])
                                                                                     .text(res[i]['USER_NAME'])
                                                                             )
-                                                                            .on('click', function () {
+                                                                            .on('click', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
                                                                                 tab_comment.children('.commentReg').append(
                                                                                     $('<span>')
                                                                                         .addClass('rep-tag')
@@ -139,7 +139,8 @@ $(document).ready(function () {
                                                                                         })
                                                                                         .css('cursor', 'pointer')
                                                                                 );
-                                                                                $(this).parents('ul').remove();
+                                                                                $(this).parents('.dropdown').dropdown('toggle');
+                                                                                $(this).parent().children('.rep-tag-friend,.tag-load').remove();
                                                                             })
                                                                     )
                                                                 }
@@ -396,7 +397,7 @@ $(document).ready(function () {
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
                     subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
-                    //TODO:a
+                    //대댓글 태그기능
                     subrep_list
                         .append(
                             $('<div>')
@@ -463,7 +464,7 @@ $(document).ready(function () {
                                                                                             .attr('data-userID', res[i]['ID'])
                                                                                             .text(res[i]['USER_NAME'])
                                                                                     )
-                                                                                    .on('click', function () {
+                                                                                    .on('click', function () {  //찾아서 클릭하면 친구 li 다 지우고 댓글창에 넘긴다음 드롭다운 토글
                                                                                         subrep_list.children('.commentReg_sub').append(
                                                                                             $('<span>')
                                                                                                 .addClass('rep-tag')
@@ -476,7 +477,8 @@ $(document).ready(function () {
                                                                                                 })
                                                                                                 .css('cursor', 'pointer')
                                                                                         );
-                                                                                        $(this).parents('ul').remove();
+                                                                                        $(this).parents('.dropdown').dropdown('toggle');
+                                                                                        $(this).parent().children('.rep-tag-friend,.tag-load').remove();
                                                                                     })
                                                                             )
                                                                         }
