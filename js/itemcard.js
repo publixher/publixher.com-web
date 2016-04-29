@@ -60,10 +60,9 @@ $(document).ready(function () {
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //댓글 태그기능
-            $('.dropdown-toggle').dropdown();
             tab_comment
                 .append(
-                    $('<div>')
+                    $('<div>')  //드롭다운 div
                         .addClass('dropdown')
                         .append(
                             $('<button>')
@@ -78,7 +77,7 @@ $(document).ready(function () {
                                     $('<span>')
                                         .addClass('pubico pico-person-plus')
                                 )
-                            , $('<ul>')
+                            , $('<ul>') //태그 리스트 안에 input이 들어간다
                                 .on('click', function (e) {
                                     e.stopPropagation();
                                 })
@@ -113,22 +112,26 @@ $(document).ready(function () {
                                                             dataType: 'json',
                                                             data: {target: 'friend', mid: mid, name: name},
                                                             success: function (res) {
-                                                                console.log(res)
                                                                 ul.find('.rep-tag-friend,.tag-load').remove();
                                                                 for (var i = 0; i < res.length; i++) {
                                                                     ul.append(
                                                                         $('<li>')
                                                                             .addClass('rep-tag-friend')
                                                                             .append(
-                                                                                $('<img>')
-                                                                                    .attr('src', res[i]['PIC'])
-                                                                                    .addClass('rep-tag-friend-pic')
+                                                                                $('<div>')
+                                                                                    .append(
+                                                                                        $('<img>')
+                                                                                            .attr('src', res[i]['PIC'])
+                                                                                            .addClass('rep-tag-friend-pic')
+                                                                                    )
+                                                                                    .addClass('rep-tag-friend-pic-wrap')
                                                                                 , $('<span>')
                                                                                     .addClass('rep-tag-friend-name')
                                                                                     .attr('data-userID', res[i]['ID'])
                                                                                     .text(res[i]['USER_NAME'])
                                                                             )
                                                                             .on('click', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
+                                                                                var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
                                                                                 tab_comment.children('.commentReg').append(
                                                                                     $('<span>')
                                                                                         .addClass('rep-tag')
@@ -136,12 +139,14 @@ $(document).ready(function () {
                                                                                             $(this).children('.rep-tag-friend-name').text()
                                                                                         )
                                                                                         .attr({
-                                                                                            'onclick': 'location.href="/profile/' + $(this).children('.rep-tag-friend-name').attr('data-userID') + '"',
-                                                                                            'contenteditable': 'false'
+                                                                                            'onclick': 'location.href="/profile/' + tagId + '"',
+                                                                                            'contenteditable': 'false',
+                                                                                            'data-userid': tagId
                                                                                         })
                                                                                         .css('cursor', 'pointer')
                                                                                 );
-                                                                                $(this).parent().children(':not(.rep-tag-input-li)').remove();
+                                                                                $(this).parent().children(':not(.rep-tag-input-li)').remove();  //리스트 전부 삭제
+                                                                                ul.find('input').val('');  //입력 내용도 삭제
                                                                             })
                                                                     )
                                                                 }
@@ -335,11 +340,22 @@ $(document).ready(function () {
             var thisitemID = $(this).parents()[2].id;
             var form = $('#' + thisitemID + ' .tail .commentReg');
             var reply = form.html();
+            var taglist = []; //댓글에서 태그의 아이디 추출
+            form.children('.rep-tag').each(function () {
+                taglist.push($(this).attr('data-userid'))
+            })
             thisform.removeClass('commentReg');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
+                data: {
+                    ID: thisitemID,
+                    action: "commentreg",
+                    userID: mid,
+                    comment: reply,
+                    token: token,
+                    taglist: taglist
+                },
                 dataType: 'json',
                 success: function (res) {
                     thisform.addClass('commentReg').text('').css('height', '25px');
@@ -451,22 +467,26 @@ $(document).ready(function () {
                                                                     dataType: 'json',
                                                                     data: {target: 'friend', mid: mid, name: name},
                                                                     success: function (res) {
-                                                                        console.log(res)
                                                                         ul.find('.rep-tag-friend,.tag-load').remove();
                                                                         for (var i = 0; i < res.length; i++) {
                                                                             ul.append(
                                                                                 $('<li>')
                                                                                     .addClass('rep-tag-friend')
                                                                                     .append(
+                                                                                        $('<div>')
+                                                                                            .append(
                                                                                         $('<img>')
                                                                                             .attr('src', res[i]['PIC'])
                                                                                             .addClass('rep-tag-friend-pic')
+                                                                                            )
+                                                                                            .addClass('rep-tag-friend-pic-wrap')
                                                                                         , $('<span>')
                                                                                             .addClass('rep-tag-friend-name')
                                                                                             .attr('data-userID', res[i]['ID'])
                                                                                             .text(res[i]['USER_NAME'])
                                                                                     )
                                                                                     .on('click', function () {  //찾아서 클릭하면 친구 li 다 지우고 댓글창에 넘긴다음 드롭다운 토글
+                                                                                        var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
                                                                                         subrep_list.children('.commentReg_sub').append(
                                                                                             $('<span>')
                                                                                                 .addClass('rep-tag')
@@ -474,12 +494,14 @@ $(document).ready(function () {
                                                                                                     $(this).children('.rep-tag-friend-name').text()
                                                                                                 )
                                                                                                 .attr({
-                                                                                                    'onclick': 'location.href="/profile/' + $(this).children('.rep-tag-friend-name').attr('data-userID') + '"',
-                                                                                                    'contenteditable': 'false'
+                                                                                                    'onclick': 'location.href="/profile/' + tagId + '"',
+                                                                                                    'contenteditable': 'false',
+                                                                                                    'data-userid': tagId
                                                                                                 })
                                                                                                 .css('cursor', 'pointer')
                                                                                         );
                                                                                         $(this).parent().children(':not(.rep-tag-input-li)').remove();
+                                                                                        ul.find('input').val('');
                                                                                     })
                                                                             )
                                                                         }
@@ -536,6 +558,10 @@ $(document).ready(function () {
             var thisitemID = idset[1];
             var thisrepID = idset[3];
             var reply = $('#' + form).html();
+            var taglist = []; //댓글에서 태그의 아이디 추출
+            $('#' + form).children('.rep-tag').each(function () {
+                taglist.push($(this).attr('data-userid'))
+            })
             thisform.removeClass('commentReg_sub');
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -546,7 +572,8 @@ $(document).ready(function () {
                     repID: thisrepID,
                     userID: mid,
                     comment: reply,
-                    token: token
+                    token: token,
+                    taglist: taglist
                 },
                 dataType: 'json',
                 success: function (res) {

@@ -26,30 +26,8 @@
     <?php
     require_once'../conf/User.php';
     require_once'../conf/database_conf.php';
-    require_once '../lib/loginchk.php';
     session_start();
-
-    if (($_COOKIE['cid'] != '')) {
-
-        setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
-        //쿠키있으면 로그인
-        $loginsql = "SELECT * FROM publixher.TBL_USER WHERE ID=:ID";
-        $loginprepare=$db->prepare($loginsql);
-        $loginprepare->bindValue(':ID',$_COOKIE['cid'],PDO::PARAM_STR);
-        $loginprepare->execute();
-        $user = $loginprepare->fetchObject(User);
-
-        $_SESSION['user'] = $user;
-        //세션토큰 생성(CSRF등 대책)
-        if(!isset($_SESSION['token'])){
-            $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
-        }
-        //세션 중간에는 브라우저가 바뀌지 않는다고 가정하고 HTTP_USER_AGENT를 세션에 저장해서 탈취됬는지 확인하기
-        if(!isset($_SESSION['age'])){
-            $_SESSION['age']=$_SERVER['HTTP_USER_AGENT'];
-        }
-    }
-    //토큰
+    require_once '../lib/loginchk.php';
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
