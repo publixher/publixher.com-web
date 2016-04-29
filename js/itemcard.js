@@ -26,10 +26,6 @@ $(document).ready(function () {
         })
     });
 
-    //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
-    $('.rep-tag-input').on('click',function (e) {
-        e.stopPropagation();
-    });
     //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -64,7 +60,7 @@ $(document).ready(function () {
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //TODO:a
-            tab_comment.find('.commentReg')
+            tab_comment
                 .append(
                     $('<div>')
                         .addClass('dropdown')
@@ -72,20 +68,23 @@ $(document).ready(function () {
                             $('<button>')
                                 .addClass('btn btn-default dropdown-toggle reply-tag-btn')
                                 .attr({
-                                    'type':'button',
-                                    'data-toggle':'dropdown',
-                                    'aria-expanded':'true',
-                                    'id':thisitemID+'-rep-tag'
+                                    'type': 'button',
+                                    'data-toggle': 'dropdown',
+                                    'aria-expanded': 'true',
+                                    'id': thisitemID + '-rep-tag'
                                 })
                                 .append(
                                     $('<span>')
                                         .addClass('pubico pico-person-plus')
                                 )
-                            ,$('<ul>')
+                            , $('<ul>')
+                                .on('click', function (e) {
+                                    e.stopPropagation();
+                                })
                                 .addClass('dropdown-menu rep_tag-ul')
                                 .attr({
-                                    'role':'menu',
-                                    'aria-labelledby':thisitemID+'-rep-tag'
+                                    'role': 'menu',
+                                    'aria-labelledby': thisitemID + '-rep-tag'
                                 })
                                 .append(
                                     $('<li>')
@@ -93,7 +92,58 @@ $(document).ready(function () {
                                             $('<input>')
                                                 .addClass('form-control rep-tag-input')
                                                 .attr({
-                                                    'type':'text'
+                                                    'type': 'text'
+                                                })
+                                                .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
+                                                    var name = $(this).val();
+                                                    var spinner = $('<div>')
+                                                        .attr('data-loader', 'spinner')
+                                                        .addClass('load-item tag-load');
+                                                    var ul = $(this).parents('ul')   //ul에 스피너 추가
+                                                        .append(
+                                                            $('<li>')
+                                                                .append(spinner)
+                                                        );
+                                                    $.ajax({
+                                                        url: '/php/data/nameFind.php',
+                                                        type: 'GET',
+                                                        dataType: 'json',
+                                                        data: {target: 'friend', mid: mid, name: name},
+                                                        success: function (res) {
+                                                            console.log(res)
+                                                            ul.find('.rep-tag-friend,.tag-load').remove();
+                                                            for(var i=0;i<res.length;i++){
+                                                            ul.append(
+                                                                $('<li>')
+                                                                    .addClass('rep-tag-friend')
+                                                                    .append(
+                                                                        $('<img>')
+                                                                            .attr('src', res[i]['PIC'])
+                                                                            .addClass('rep-tag-friend-pic')
+                                                                        , $('<span>')
+                                                                            .addClass('rep-tag-friend-name')
+                                                                            .attr('data-userID', res[i]['ID'])
+                                                                            .text(res[i]['USER_NAME'])
+                                                                    )
+                                                                    .on('click', function () {
+                                                                        tab_comment.children('.commentReg').append(
+                                                                            $('<span>')
+                                                                                .addClass('rep-tag')
+                                                                                .text(
+                                                                                    $(this).children('.rep-tag-friend-name').text()
+                                                                                )
+                                                                                .attr({
+                                                                                    'onclick':'location.href="/profile/'+$(this).children('.rep-tag-friend-name').attr('data-userID')+'"',
+                                                                                    'contenteditable':'false'
+                                                                                })
+                                                                                .css('cursor','pointer')
+                                                                        );
+                                                                        $(this).parents('ul').remove();
+                                                                    })
+                                                            )
+                                                            }
+                                                        }
+                                                    })
                                                 })
                                         )
                                 )
@@ -345,7 +395,7 @@ $(document).ready(function () {
                     var subrep_list = $('#' + thispanelrep + '-sub');
                     subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
                     //TODO:a
-                    subrep_list.find('.commentReg_sub')
+                    subrep_list
                         .append(
                             $('<div>')
                                 .addClass('dropdown')
@@ -353,20 +403,23 @@ $(document).ready(function () {
                                     $('<button>')
                                         .addClass('btn btn-default dropdown-toggle reply-tag-btn')
                                         .attr({
-                                            'type':'button',
-                                            'data-toggle':'dropdown',
-                                            'aria-expanded':'true',
-                                            'id':thispanelrep+'-rep-tag'
+                                            'type': 'button',
+                                            'data-toggle': 'dropdown',
+                                            'aria-expanded': 'true',
+                                            'id': thispanelrep + '-rep-tag'
                                         })
                                         .append(
                                             $('<span>')
                                                 .addClass('pubico pico-person-plus')
                                         )
-                                    ,$('<ul>')
+                                    , $('<ul>')
+                                        .on('click', function (e) {
+                                            e.stopPropagation();
+                                        })
                                         .addClass('dropdown-menu rep_tag-ul')
                                         .attr({
-                                            'role':'menu',
-                                            'aria-labelledby':thispanelrep+'-rep-tag'
+                                            'role': 'menu',
+                                            'aria-labelledby': thispanelrep + '-rep-tag'
                                         })
                                         .append(
                                             $('<li>')
@@ -374,7 +427,7 @@ $(document).ready(function () {
                                                     $('<input>')
                                                         .addClass('form-control rep-tag-input')
                                                         .attr({
-                                                            'type':'text'
+                                                            'type': 'text'
                                                         })
                                                 )
                                         )
