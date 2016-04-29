@@ -25,6 +25,11 @@ $(document).ready(function () {
             }
         })
     });
+
+    //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
+    $('.rep-tag-input').on('click',function (e) {
+        e.stopPropagation();
+    });
     //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -82,8 +87,18 @@ $(document).ready(function () {
                                     'role':'menu',
                                     'aria-labelledby':thisitemID+'-rep-tag'
                                 })
+                                .append(
+                                    $('<li>')
+                                        .append(
+                                            $('<input>')
+                                                .addClass('form-control rep-tag-input')
+                                                .attr({
+                                                    'type':'text'
+                                                })
+                                        )
+                                )
                         )
-                )
+                );
             tab_comment.append(word);
             $('#best-' + thisitemID).append(spinner);
             $.ajax({
@@ -353,6 +368,16 @@ $(document).ready(function () {
                                             'role':'menu',
                                             'aria-labelledby':thispanelrep+'-rep-tag'
                                         })
+                                        .append(
+                                            $('<li>')
+                                                .append(
+                                                    $('<input>')
+                                                        .addClass('form-control rep-tag-input')
+                                                        .attr({
+                                                            'type':'text'
+                                                        })
+                                                )
+                                        )
                                 )
                         )
                     if (res['result'] != 'NO') {
