@@ -111,8 +111,7 @@ $(document).ready(function () {
                                                             dataType: 'json',
                                                             data: {target: 'friend', mid: mid, name: name},
                                                             success: function (res) {
-                                                                console.log(res)
-                                                                ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                ul.find(':not(".form-control")').remove();
                                                                 for (var i = 0; i < res.length; i++) {
                                                                     ul.append(
                                                                         $('<li>')
@@ -140,7 +139,7 @@ $(document).ready(function () {
                                                                                         .css('cursor', 'pointer')
                                                                                 );
                                                                                 $(this).parents('.dropdown').dropdown('toggle');
-                                                                                $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                ul.find(':not(".form-control")').remove();
                                                                             })
                                                                     )
                                                                 }
@@ -450,7 +449,7 @@ $(document).ready(function () {
                                                                     data: {target: 'friend', mid: mid, name: name},
                                                                     success: function (res) {
                                                                         console.log(res)
-                                                                        ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                        ul.find(':not(".form-control")').remove();
                                                                         for (var i = 0; i < res.length; i++) {
                                                                             ul.append(
                                                                                 $('<li>')
@@ -478,7 +477,7 @@ $(document).ready(function () {
                                                                                                 .css('cursor', 'pointer')
                                                                                         );
                                                                                         $(this).parents('.dropdown').dropdown('toggle');
-                                                                                        $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                        ul.find(':not(".form-control")').remove();
                                                                                     })
                                                                             )
                                                                         }
