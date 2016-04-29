@@ -58,8 +58,34 @@ $(document).ready(function () {
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
+            //TODO:a
+            tab_comment.find('.commentReg')
+                .append(
+                    $('<div>')
+                        .addClass('dropdown')
+                        .append(
+                            $('<button>')
+                                .addClass('btn btn-default dropdown-toggle reply-tag-btn')
+                                .attr({
+                                    'type':'button',
+                                    'data-toggle':'dropdown',
+                                    'aria-expanded':'true',
+                                    'id':thisitemID+'-rep-tag'
+                                })
+                                .append(
+                                    $('<span>')
+                                        .addClass('pubico pico-person-plus')
+                                )
+                            ,$('<ul>')
+                                .addClass('dropdown-menu rep_tag-ul')
+                                .attr({
+                                    'role':'menu',
+                                    'aria-labelledby':thisitemID+'-rep-tag'
+                                })
+                        )
+                )
             tab_comment.append(word);
-            $('#best-'+thisitemID).append(spinner);
+            $('#best-' + thisitemID).append(spinner);
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
@@ -80,7 +106,7 @@ $(document).ready(function () {
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                            if (mid == res[i]['ID_USER'] || level==99) {
+                            if (mid == res[i]['ID_USER'] || level == 99) {
                                 write += ' <a class="repdel">삭제</a>'
                             }
                             write += '</span></span></td></tr></table></div>';
@@ -136,7 +162,7 @@ $(document).ready(function () {
         var spinner = $('<div>')
             .attr('data-loader', 'spinner')
             .addClass('load-item reply-load')
-        $('#'+target).append(spinner);
+        $('#' + target).append(spinner);
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "GET",
@@ -156,7 +182,7 @@ $(document).ready(function () {
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"<span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if (mid == res[i]['ID_USER'] || level==99) {
+                        if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
@@ -214,7 +240,7 @@ $(document).ready(function () {
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
-                        if (mid == res[i]['ID_USER'] || level==99) {
+                        if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
@@ -247,37 +273,37 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "commentreg", userID: mid, comment: reply, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    thisform.addClass('commentReg').text('').css('height','25px');
+                    thisform.addClass('commentReg').text('').css('height', '25px');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
-                    $('#' + thisitemID+' .tail .tab-comment').remove();
-                    $('#'+thisitemID+' .tail').removeClass('opend-comment');
-                    $('#'+thisitemID+' .comment').trigger('click');
+                    $('#' + thisitemID + ' .tail .tab-comment').remove();
+                    $('#' + thisitemID + ' .tail').removeClass('opend-comment');
+                    $('#' + thisitemID + ' .comment').trigger('click');
                 }, error: function (request, status, error) {
                     thisform.addClass('commentReg');
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
-        }else{
+        } else {
             resize(this)
         }
     });
     //댓글삭제 동작
     $(document).on('click', '.repdel,.sub-repdel', function () {
-        var type=$(this).hasClass('repdel')? 0:1;
-        var thisrep = type==0?$(this).parents()[6].id:$(this).parents()[5].id;
-        var thisrepID = type==0?(thisrep.split('-'))[3]:(thisrep.split('-'))[5];
+        var type = $(this).hasClass('repdel') ? 0 : 1;
+        var thisrep = type == 0 ? $(this).parents()[6].id : $(this).parents()[5].id;
+        var thisrepID = type == 0 ? (thisrep.split('-'))[3] : (thisrep.split('-'))[5];
         if (confirm('정말 삭제하시겠습니까?')) {
             var btn = $(this);
-                type==0?$(this).removeClass('repdel'):$(this).removeClass('sub-repdel');
+            type == 0 ? $(this).removeClass('repdel') : $(this).removeClass('sub-repdel');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "POST",
-                data: {ID: thisrepID, action: "rep_del", token: token, userID: mid,type:type},
+                data: {ID: thisrepID, action: "rep_del", token: token, userID: mid, type: type},
                 dataType: 'json',
                 success: function (res) {
-                    type==0?btn.addClass('repdel'):btn.addClass('sub-repdel');
-                    if(res['result']=='Y'){
+                    type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
+                    if (res['result'] == 'Y') {
                         alert('삭제되었습니다.');
                         $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.');
                     }
@@ -302,7 +328,33 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
-                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)">');
+                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
+                    //TODO:a
+                    subrep_list.find('.commentReg_sub')
+                        .append(
+                            $('<div>')
+                                .addClass('dropdown')
+                                .append(
+                                    $('<button>')
+                                        .addClass('btn btn-default dropdown-toggle reply-tag-btn')
+                                        .attr({
+                                            'type':'button',
+                                            'data-toggle':'dropdown',
+                                            'aria-expanded':'true',
+                                            'id':thispanelrep+'-rep-tag'
+                                        })
+                                        .append(
+                                            $('<span>')
+                                                .addClass('pubico pico-person-plus')
+                                        )
+                                    ,$('<ul>')
+                                        .addClass('dropdown-menu rep_tag-ul')
+                                        .attr({
+                                            'role':'menu',
+                                            'aria-labelledby':thispanelrep+'-rep-tag'
+                                        })
+                                )
+                        )
                     if (res['result'] != 'NO') {
                         function registRep(res) {
                             var repnum = Object.keys(res).length - 2;
@@ -315,7 +367,7 @@ $(document).ready(function () {
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
-                                if (mid == res[i]['ID_USER'] || level==99) {
+                                if (mid == res[i]['ID_USER'] || level == 99) {
                                     write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
                                 }
                                 write += '</td></tr></table></div>';
@@ -362,7 +414,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    thisform.addClass('commentReg_sub').text('').css('height','25px');
+                    thisform.addClass('commentReg_sub').text('').css('height', '25px');
                     var subrep_list = $('#' + form.replace('form', 'sub'));
                     var thisreply = form.replace('-form', '');
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
@@ -422,10 +474,9 @@ $(document).ready(function () {
     //공유하기 버튼 동작
     $(document).on("click", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
-        var tail = $('#' + thisitemID + ' .tail').css('margin-bottom','10px');
+        var tail = $('#' + thisitemID + ' .tail').css('margin-bottom', '10px');
         if (!tail.hasClass('opend-share')) {
-            var linkstr = 'http://alpha.publixher.com/content/' + thisitemID;
-            var embedstr = '<iframe width="530" height="633" src="http://alpha.publixher.com/php/embeded.php?iid=' + thisitemID + '" frameborder="0"></iframe>'
+            var linkstr = 'https://alpha.publixher.com/content/' + thisitemID;
             if (tail.hasClass('opend-comment')) {
                 tail.removeClass('opend-comment');
                 $('#' + thisitemID + ' .tail .tab-comment').remove();
@@ -436,7 +487,6 @@ $(document).ready(function () {
             var tab_share = $('#' + thisitemID + ' .tail .tab-share');
             var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div>';
             tab_share.append(text)
-            $('#' + thisitemID + ' .tail .tab-share .embedtag').text(embedstr);
             tail.addClass('opend-share')
         }
 
@@ -646,7 +696,7 @@ $(document).ready(function () {
         }
         if ($('#sendBody-mod').html().length > 0) {
             var btn = $(this);
-                $(this).attr('disabled', 'disabled')
+            $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -704,7 +754,7 @@ $(document).ready(function () {
         var $btn = $(this).button('loading');
         if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length > 0) {
             var btn = $(this);
-                $(this).attr('disabled', 'disabled')
+            $(this).attr('disabled', 'disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -802,27 +852,27 @@ $(document).ready(function () {
 
         switch (category) {
             case '맛집':
-                var sub = ['한식','양식','중식','패스트푸드','배달','술집','카페'];
+                var sub = ['한식', '양식', '중식', '패스트푸드', '배달', '술집', '카페'];
                 subwrite(sub);
                 break;
             case '주거':
-                var sub = ['원룸','하숙','고시원','오피스텔','기숙사'];
+                var sub = ['원룸', '하숙', '고시원', '오피스텔', '기숙사'];
                 subwrite(sub);
                 break;
             case '학업':
-                var sub = ['시험 후기','강의 후기','스터디 모집'];
+                var sub = ['시험 후기', '강의 후기', '스터디 모집'];
                 subwrite(sub);
                 break;
             case '장터':
-                var sub = ['교재장터','의류','잡화','디지털'];
+                var sub = ['교재장터', '의류', '잡화', '디지털'];
                 subwrite(sub);
                 break;
             case '홍보':
-                var sub = ['알바 구인','과외 구인','교내 홍보','교외 홍보'];
+                var sub = ['알바 구인', '과외 구인', '교내 홍보', '교외 홍보'];
                 subwrite(sub);
                 break;
             case '취업':
-                var sub = ['인턴','공채'];
+                var sub = ['인턴', '공채'];
                 subwrite(sub);
                 break;
         }
@@ -930,20 +980,20 @@ $(document).ready(function () {
 
     })
     //신고 동작
-    $(document).on('click','.itemReport', function () {
-        var thisitemID=$(this).parents()[5].id;
-        var btn=$(this);
-            $(this).removeClass('itemReport');
-        if(confirm('해당 게시물을 신고하시겠습니까?')){
+    $(document).on('click', '.itemReport', function () {
+        var thisitemID = $(this).parents()[5].id;
+        var btn = $(this);
+        $(this).removeClass('itemReport');
+        if (confirm('해당 게시물을 신고하시겠습니까?')) {
             $.ajax({
                 url: "/php/data/itemAct.php",
-                type:"POST",
-                data:{ID:thisitemID,token:token,action:"report",userID:mid},
-                dataType:'json',
+                type: "POST",
+                data: {ID: thisitemID, token: token, action: "report", userID: mid},
+                dataType: 'json',
                 success: function (res) {
-                    if(res['result']=='Y'){
+                    if (res['result'] == 'Y') {
                         alert('신고가 완료되었습니다. 해당 게시물이 일정 횟수 이상 신고되면 다른 사용자에게 보여지지 않게 됩니다.');
-                    }else if(res['reason']=='already'){
+                    } else if (res['reason'] == 'already') {
                         alert('이미 신고한 게시물입니다.')
                     }
                     btn.addClass('itemReport');

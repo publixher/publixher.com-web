@@ -17,7 +17,6 @@ $(document).ready(function () {
         if ($('#sendBody').html().length > 0) {
             var btn=$(this);
             $(this).attr('disabled','disabled');
-            console.log($('#sendBody').text())
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
