@@ -118,7 +118,7 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag,pin);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
                     $('#upform').after(write);
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
