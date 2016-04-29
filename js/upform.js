@@ -177,40 +177,28 @@ $(document).ready(function () {
         }
 
         switch (category) {
-            case '만화':
-                var sub = ['로맨스', '판타지', '개그', '미스터리', '호러', 'SF', '무협', '스포츠'];
-                subwrite(sub);
-                break;
-            case '사진':
-                var sub = ['일상', '모델', '행사', '자연', '여행', '동식물', '스포츠', '아트', '야경', '별사진'];
-                subwrite(sub);
-                break;
-            case '일러스트':
-                var sub = ['일반', '캐릭터'];
-                subwrite(sub);
-                break;
-            case 'e-book':
-                var sub = ['소설', '시', '에세이', '인문', '자기개발', '교육'];
-                subwrite(sub);
-                break;
-            case '매거진':
-                var sub = ['IT', '게임', '뷰티', '패션', '반려동물', '소품', 'DIY'];
-                subwrite(sub);
-                break;
-            case 'CAD':
-                var sub = ['3D프린팅'];
-                subwrite(sub);
-                break;
-            case 'VR':
-                var sub = ['일상', '행사', '자연', '여행', '스포츠', '야경'];
-                subwrite(sub);
-                break;
             case '맛집':
-                var sub = [];
+                var sub = ['한식','양식','중식','패스트푸드','배달','술집','카페'];
                 subwrite(sub);
                 break;
-            case '여행':
-                var sub = ['국내', '제주도', '일본', '동남아', '유럽', '남미', '북미', '동북아', '오세아니아', '아프리카', '극지방', '중앙아시아'];
+            case '주거':
+                var sub = ['원룸','하숙','고시원','오피스텔','기숙사'];
+                subwrite(sub);
+                break;
+            case '학업':
+                var sub = ['시험 후기','강의 후기','스터디 모집'];
+                subwrite(sub);
+                break;
+            case '장터':
+                var sub = ['교재장터','의류','잡화','디지털'];
+                subwrite(sub);
+                break;
+            case '홍보':
+                var sub = ['알바 구인','과외 구인','교내 홍보','교외 홍보'];
+                subwrite(sub);
+                break;
+            case '취업':
+                var sub = ['인턴','공채'];
                 subwrite(sub);
                 break;
         }

@@ -113,15 +113,12 @@
                                                     <span id="category-mod">분류</span> <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu" id="categorySelect-mod">
-                                                    <li><a>사진</a></li>
-                                                    <li><a>만화</a></li>
-                                                    <li><a>일러스트</a></li>
-                                                    <li><a>e-book</a></li>
-                                                    <li><a>매거진</a></li>
-                                                    <li><a>CAD</a></li>
-                                                    <li><a>VR</a></li>
                                                     <li><a>맛집</a></li>
-                                                    <li><a>여행</a></li>
+                                                    <li><a>주거</a></li>
+                                                    <li><a>학업</a></li>
+                                                    <li><a>장터</a></li>
+                                                    <li><a>홍보</a></li>
+                                                    <li><a>취업</a></li>
                                                 </ul>
                                             </div>
                                         </td>

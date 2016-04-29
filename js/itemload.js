@@ -17,13 +17,13 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
         write += date + '&nbsp;비분류&nbsp;';
     }
     switch (expose) {
-        case 0:
+        case "0":
             write += '나만보기';
             break;
-        case 1:
+        case "1":
             write += '친구에게 공개';
             break;
-        case 2:
+        case "2":
             write += '전체공개';
             break;
     }
@@ -62,7 +62,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     return write;
 }
 
-function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin) {
+function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,category,sub_category) {
     write = '<div class="item-for-sale card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -75,15 +75,24 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         write += date + '&nbsp;비분류&nbsp;';
     }
     switch (expose) {
-        case 0:
+        case "0":
             write += '나만보기';
             break;
-        case 1:
+        case "1":
             write += '친구에게 공개';
             break;
-        case 2:
+        case "2":
             write += '전체공개';
             break;
+    }
+    console.log(category)
+    console.log(sub_category)
+    //카테고리 표시부분
+    if(category!='SNS') {
+        write+=' '+category;
+        if(sub_category!=null){
+            write+=' >>> '+sub_category;
+        }
     }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
@@ -145,6 +154,7 @@ $(document).ready(function () {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
+            console.log(res)
             if (res.length == 0) {
                 write = '<div id="no-content">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
@@ -211,7 +221,7 @@ $(document).ready(function () {
                                 foldername = res[i]['FOLDER_NAME'];
                             }
                             var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin);
+                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY']);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
                             } else if ($('#upform').length > 0) {
@@ -316,7 +326,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin);
+                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY']);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                     } else {
