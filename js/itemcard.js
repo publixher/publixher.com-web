@@ -95,55 +95,57 @@ $(document).ready(function () {
                                                     'type': 'text'
                                                 })
                                                 .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
-                                                    var name = $(this).val();
-                                                    var spinner = $('<div>')
-                                                        .attr('data-loader', 'spinner')
-                                                        .addClass('load-item tag-load');
-                                                    var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                        .append(
-                                                            $('<li>')
-                                                                .append(spinner)
-                                                        );
-                                                    $.ajax({
-                                                        url: '/php/data/nameFind.php',
-                                                        type: 'GET',
-                                                        dataType: 'json',
-                                                        data: {target: 'friend', mid: mid, name: name},
-                                                        success: function (res) {
-                                                            console.log(res)
-                                                            ul.find('.rep-tag-friend,.tag-load').remove();
-                                                            for(var i=0;i<res.length;i++){
-                                                            ul.append(
+                                                    if ($(this).val().length > 0) {
+                                                        var name = $(this).val();
+                                                        var spinner = $('<div>')
+                                                            .attr('data-loader', 'spinner')
+                                                            .addClass('load-item tag-load');
+                                                        var ul = $(this).parents('ul')   //ul에 스피너 추가
+                                                            .append(
                                                                 $('<li>')
-                                                                    .addClass('rep-tag-friend')
-                                                                    .append(
-                                                                        $('<img>')
-                                                                            .attr('src', res[i]['PIC'])
-                                                                            .addClass('rep-tag-friend-pic')
-                                                                        , $('<span>')
-                                                                            .addClass('rep-tag-friend-name')
-                                                                            .attr('data-userID', res[i]['ID'])
-                                                                            .text(res[i]['USER_NAME'])
+                                                                    .append(spinner)
+                                                            );
+                                                        $.ajax({
+                                                            url: '/php/data/nameFind.php',
+                                                            type: 'GET',
+                                                            dataType: 'json',
+                                                            data: {target: 'friend', mid: mid, name: name},
+                                                            success: function (res) {
+                                                                console.log(res)
+                                                                ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                for (var i = 0; i < res.length; i++) {
+                                                                    ul.append(
+                                                                        $('<li>')
+                                                                            .addClass('rep-tag-friend')
+                                                                            .append(
+                                                                                $('<img>')
+                                                                                    .attr('src', res[i]['PIC'])
+                                                                                    .addClass('rep-tag-friend-pic')
+                                                                                , $('<span>')
+                                                                                    .addClass('rep-tag-friend-name')
+                                                                                    .attr('data-userID', res[i]['ID'])
+                                                                                    .text(res[i]['USER_NAME'])
+                                                                            )
+                                                                            .on('click', function () {
+                                                                                tab_comment.children('.commentReg').append(
+                                                                                    $('<span>')
+                                                                                        .addClass('rep-tag')
+                                                                                        .text(
+                                                                                            $(this).children('.rep-tag-friend-name').text()
+                                                                                        )
+                                                                                        .attr({
+                                                                                            'onclick': 'location.href="/profile/' + $(this).children('.rep-tag-friend-name').attr('data-userID') + '"',
+                                                                                            'contenteditable': 'false'
+                                                                                        })
+                                                                                        .css('cursor', 'pointer')
+                                                                                );
+                                                                                $(this).parents('ul').remove();
+                                                                            })
                                                                     )
-                                                                    .on('click', function () {
-                                                                        tab_comment.children('.commentReg').append(
-                                                                            $('<span>')
-                                                                                .addClass('rep-tag')
-                                                                                .text(
-                                                                                    $(this).children('.rep-tag-friend-name').text()
-                                                                                )
-                                                                                .attr({
-                                                                                    'onclick':'location.href="/profile/'+$(this).children('.rep-tag-friend-name').attr('data-userID')+'"',
-                                                                                    'contenteditable':'false'
-                                                                                })
-                                                                                .css('cursor','pointer')
-                                                                        );
-                                                                        $(this).parents('ul').remove();
-                                                                    })
-                                                            )
+                                                                }
                                                             }
-                                                        }
-                                                    })
+                                                        })
+                                                    }
                                                 })
                                         )
                                 )
@@ -419,7 +421,7 @@ $(document).ready(function () {
                                         .addClass('dropdown-menu rep_tag-ul')
                                         .attr({
                                             'role': 'menu',
-                                            'aria-labelledby': thispanelrep + '-rep-tag'
+                                            'aria-labelledby': thisitemID + '-rep-tag'
                                         })
                                         .append(
                                             $('<li>')
@@ -428,6 +430,59 @@ $(document).ready(function () {
                                                         .addClass('form-control rep-tag-input')
                                                         .attr({
                                                             'type': 'text'
+                                                        })
+                                                        .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
+                                                            if ($(this).val().length > 0) {
+                                                                var name = $(this).val();
+                                                                var spinner = $('<div>')
+                                                                    .attr('data-loader', 'spinner')
+                                                                    .addClass('load-item tag-load');
+                                                                var ul = $(this).parents('ul')   //ul에 스피너 추가
+                                                                    .append(
+                                                                        $('<li>')
+                                                                            .append(spinner)
+                                                                    );
+                                                                $.ajax({
+                                                                    url: '/php/data/nameFind.php',
+                                                                    type: 'GET',
+                                                                    dataType: 'json',
+                                                                    data: {target: 'friend', mid: mid, name: name},
+                                                                    success: function (res) {
+                                                                        console.log(res)
+                                                                        ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                        for (var i = 0; i < res.length; i++) {
+                                                                            ul.append(
+                                                                                $('<li>')
+                                                                                    .addClass('rep-tag-friend')
+                                                                                    .append(
+                                                                                        $('<img>')
+                                                                                            .attr('src', res[i]['PIC'])
+                                                                                            .addClass('rep-tag-friend-pic')
+                                                                                        , $('<span>')
+                                                                                            .addClass('rep-tag-friend-name')
+                                                                                            .attr('data-userID', res[i]['ID'])
+                                                                                            .text(res[i]['USER_NAME'])
+                                                                                    )
+                                                                                    .on('click', function () {
+                                                                                        subrep_list.children('.commentReg_sub').append(
+                                                                                            $('<span>')
+                                                                                                .addClass('rep-tag')
+                                                                                                .text(
+                                                                                                    $(this).children('.rep-tag-friend-name').text()
+                                                                                                )
+                                                                                                .attr({
+                                                                                                    'onclick': 'location.href="/profile/' + $(this).children('.rep-tag-friend-name').attr('data-userID') + '"',
+                                                                                                    'contenteditable': 'false'
+                                                                                                })
+                                                                                                .css('cursor', 'pointer')
+                                                                                        );
+                                                                                        $(this).parents('ul').remove();
+                                                                                    })
+                                                                            )
+                                                                        }
+                                                                    }
+                                                                })
+                                                            }
                                                         })
                                                 )
                                         )
