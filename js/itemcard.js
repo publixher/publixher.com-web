@@ -112,7 +112,7 @@ $(document).ready(function () {
                                                             dataType: 'json',
                                                             data: {target: 'friend', mid: mid, name: name},
                                                             success: function (res) {
-                                                                ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                ul.children(':not(.rep-tag-input-li)').remove();
                                                                 for (var i = 0; i < res.length; i++) {
                                                                     ul.append(
                                                                         $('<li>')
@@ -467,7 +467,7 @@ $(document).ready(function () {
                                                                     dataType: 'json',
                                                                     data: {target: 'friend', mid: mid, name: name},
                                                                     success: function (res) {
-                                                                        ul.find('.rep-tag-friend,.tag-load').remove();
+                                                                        ul.children(':not(.rep-tag-input-li)').remove();
                                                                         for (var i = 0; i < res.length; i++) {
                                                                             ul.append(
                                                                                 $('<li>')
