@@ -60,6 +60,7 @@ $(document).ready(function () {
             word += '    </div></div>'
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //댓글 태그기능
+            $('.dropdown-toggle').dropdown();
             tab_comment
                 .append(
                     $('<div>')
