@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/nameFind.php" afterPath="$PROJECT_DIR$/php/data/nameFind.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -123,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20940171">
-              <caret line="80" column="59" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="122" column="94" selection-start-line="122" selection-start-column="94" selection-end-line="122" selection-end-column="94" />
               <folding>
                 <marker date="1461921407000" expanded="true" signature="3205:3218" placeholder="..." />
                 <marker date="1461921407000" expanded="true" signature="3205:3249" placeholder="..." />
@@ -161,18 +161,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nameFind.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nameFind.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.875">
-              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.5973451">
+              <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
               <folding>
-                <marker date="1461920534000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
-                <marker date="1461920534000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
-                <marker date="1461920534000" expanded="true" signature="1002:1179" placeholder="SELECT COUNT... TBL_TAGS" />
-                <marker date="1461920534000" expanded="true" signature="1431:1669" placeholder="SELECT USER.... TBL_USER" />
-                <marker date="1461920534000" expanded="true" signature="1431:1716" placeholder="SELECT USER.... TBL_USER" />
-                <marker date="1461920534000" expanded="true" signature="1431:1736" placeholder="SELECT SQL_C... TBL_USER" />
+                <marker date="1461922456000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
+                <marker date="1461922456000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
+                <marker date="1461922456000" expanded="true" signature="1002:1179" placeholder="SELECT COUNT... TBL_TAGS" />
+                <marker date="1461922456000" expanded="true" signature="1431:1676" placeholder="SELECT USER.... TBL_USER" />
+                <marker date="1461922456000" expanded="true" signature="1431:1723" placeholder="SELECT USER.... TBL_USER" />
+                <marker date="1461922456000" expanded="true" signature="1431:1743" placeholder="SELECT SQL_C... TBL_USER" />
               </folding>
             </state>
           </provider>
@@ -262,9 +262,9 @@
         <option value="$PROJECT_DIR$/php/tagSearch.php" />
         <option value="$PROJECT_DIR$/js/upform.js" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
-        <option value="$PROJECT_DIR$/php/data/nameFind.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
+        <option value="$PROJECT_DIR$/php/data/nameFind.php" />
       </list>
     </option>
   </component>
@@ -615,12 +615,6 @@
       <option name="number" value="Default" />
       <updated>1461121523591</updated>
     </task>
-    <task id="LOCAL-00059" summary="네이버,페이스북 인증 뺀 후">
-      <created>1461733097055</created>
-      <option name="number" value="00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1461733097055</updated>
-    </task>
     <task id="LOCAL-00060" summary="로고 추가">
       <created>1461733330022</created>
       <option name="number" value="00060" />
@@ -909,7 +903,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461921777973</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="댓글 태그">
+      <created>1461922067208</created>
+      <option name="number" value="00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1461922067208</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TodoView">
@@ -962,7 +962,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="신고 10번미만만 보이기" />
     <MESSAGE value="오류 보고시 비활성화" />
     <MESSAGE value="버튼 비활성화 분리" />
     <MESSAGE value="대댓글 0나오는거 수정" />
@@ -987,7 +986,8 @@
     <MESSAGE value="댓글태그 기능 추가" />
     <MESSAGE value="댓글태그 수정" />
     <MESSAGE value="댓글태그 li 지우는거" />
-    <option name="LAST_COMMIT_MESSAGE" value="댓글태그 li 지우는거" />
+    <MESSAGE value="댓글 태그" />
+    <option name="LAST_COMMIT_MESSAGE" value="댓글 태그" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1492,21 +1492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.875">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-          <folding>
-            <marker date="1461920534000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
-            <marker date="1461920534000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
-            <marker date="1461920534000" expanded="true" signature="1002:1179" placeholder="SELECT COUNT... TBL_TAGS" />
-            <marker date="1461920534000" expanded="true" signature="1431:1669" placeholder="SELECT USER.... TBL_USER" />
-            <marker date="1461920534000" expanded="true" signature="1431:1716" placeholder="SELECT USER.... TBL_USER" />
-            <marker date="1461920534000" expanded="true" signature="1431:1736" placeholder="SELECT SQL_C... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1517,8 +1502,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20940171">
-          <caret line="80" column="59" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="94" selection-start-line="122" selection-start-column="94" selection-end-line="122" selection-end-column="94" />
           <folding>
             <marker date="1461921407000" expanded="true" signature="3205:3218" placeholder="..." />
             <marker date="1461921407000" expanded="true" signature="3205:3249" placeholder="..." />
@@ -1547,6 +1532,21 @@
             <marker date="1461921407000" expanded="true" signature="37463:37497" placeholder="..." />
             <marker date="1461921407000" expanded="true" signature="37514:37539" placeholder="..." />
             <marker date="1461921407000" expanded="true" signature="37874:37890" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/nameFind.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5973451">
+          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+          <folding>
+            <marker date="1461922456000" expanded="true" signature="188:340" placeholder="SELECT ID,US... TBL_USER" />
+            <marker date="1461922456000" expanded="true" signature="600:751" placeholder="SELECT ID,ID... TBL_CONTENT" />
+            <marker date="1461922456000" expanded="true" signature="1002:1179" placeholder="SELECT COUNT... TBL_TAGS" />
+            <marker date="1461922456000" expanded="true" signature="1431:1676" placeholder="SELECT USER.... TBL_USER" />
+            <marker date="1461922456000" expanded="true" signature="1431:1723" placeholder="SELECT USER.... TBL_USER" />
+            <marker date="1461922456000" expanded="true" signature="1431:1743" placeholder="SELECT SQL_C... TBL_USER" />
           </folding>
         </state>
       </provider>
