@@ -961,6 +961,11 @@ li a {
   float: left;
   list-style-type: none;
 }
+#now-hot-list li,
+#daily-hot-list li,
+#weekly-hot-list li{
+  list-style-type: none;
+}
 .hot-pic-wrap {
   width: 60px;
   height: 60px;
@@ -1012,6 +1017,16 @@ li a {
 .commentReg .dropdown ul {
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px), only screen and (min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min-resolution: 192dpi) and (min-width: 320px), only screen and (min-resolution: 2dppx) and (min-width: 320px) {
   #left,
   #right .market {
