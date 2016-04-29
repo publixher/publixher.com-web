@@ -89,6 +89,7 @@ $(document).ready(function () {
                                 })
                                 .append(
                                     $('<li>')
+                                        .addClass('rep-tag-input-li')
                                         .append(
                                             $('<input>')
                                                 .addClass('form-control rep-tag-input')
@@ -140,8 +141,7 @@ $(document).ready(function () {
                                                                                         })
                                                                                         .css('cursor', 'pointer')
                                                                                 );
-                                                                                $(this).parents('.dropdown').dropdown('toggle');
-                                                                                $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                $(this).parent().children(':not(.rep-tag-input-li)').remove();
                                                                             })
                                                                     )
                                                                 }
@@ -427,6 +427,7 @@ $(document).ready(function () {
                                         })
                                         .append(
                                             $('<li>')
+                                                .addClass('rep-tag-input-li')
                                                 .append(
                                                     $('<input>')
                                                         .addClass('form-control rep-tag-input')
@@ -478,8 +479,7 @@ $(document).ready(function () {
                                                                                                 })
                                                                                                 .css('cursor', 'pointer')
                                                                                         );
-                                                                                        $(this).parents('.dropdown').dropdown('toggle');
-                                                                                        $(this).parent().children('.rep-tag-friend,.tag-load').remove();
+                                                                                        $(this).parent().children(':not(.rep-tag-input-li)').remove();
                                                                                     })
                                                                             )
                                                                         }
