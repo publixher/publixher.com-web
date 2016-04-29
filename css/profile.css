@@ -172,6 +172,8 @@ body {
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img {
   max-width: 484px !important;
   max-height: 484px !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody {
   z-index: 1;
@@ -183,6 +185,8 @@ body {
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
   max-width: 484px !important;
   max-height: 484px !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0 0;
@@ -368,7 +372,7 @@ body {
   color: lightslategrey;
   float: left;
   height: 18px;
-  width: 300px;
+  width: 75%;
 }
 #wrap #middle .item .header .conf,
 #wrap #middle .item-for-sale .header .conf {
@@ -401,11 +405,14 @@ body {
 #wrap #middle .item-for-sale .body .BodyPic {
   max-width: 510px !important;
   max-height: 510px !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 #wrap #middle .item .body .thumbPic,
 #wrap #middle .item-for-sale .body .thumbPic {
   max-width: 100px;
   max-height: 100px;
+  margin-bottom: 5px;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -423,7 +430,7 @@ body {
   font-size: 12px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   background-color: #f4f4f4;
 }
 #wrap #middle .item .tail .badge,
