@@ -284,6 +284,8 @@ body {
   float: left;
   height: 18px;
   width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #wrap #middle .item .header .conf,
 #wrap #middle .item-for-sale .header .conf {
@@ -1017,6 +1019,12 @@ li a {
 .commentReg .dropdown ul {
   display: none;
 }
+
+
+
+
+
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px), only screen and (min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min-resolution: 192dpi) and (min-width: 320px), only screen and (min-resolution: 2dppx) and (min-width: 320px) {
   #left,
   #right .market {
@@ -1063,7 +1071,7 @@ li a {
   }
   #wrap #middle .item .header .writer,
   #wrap #middle .item-for-sale .header .writer {
-    width: 60% !important;
+    width: 65% !important;
   }
   #wrap #middle .item .header .title,
   #wrap #middle .item-for-sale .header .title {
