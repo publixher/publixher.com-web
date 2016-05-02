@@ -870,6 +870,83 @@ li a {
   width: 34px;
   height: 34px;
 }
+
+.caret,
+.caret-repbtn,
+.caret-repbtn_sub {
+  margin: 5px !important;
+  cursor: pointer !important;
+}
+.now-list-item,
+.daily-list-item,
+.weekly-list-item {
+  height: 60px;
+  width: 100%;
+  float: left;
+  list-style-type: none;
+}
+#now-hot-list li,
+#daily-hot-list li,
+#weekly-hot-list li {
+  list-style-type: none;
+}
+.hot-pic-wrap {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-left: -30px;
+}
+.hot-pic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hot-body {
+  display: block;
+  margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hot-knock,
+.hot-reply {
+  margin-left: 5px;
+}
+#wrap #middle .item .header .conf .btn-group button,
+#wrap #middle .item-for-sale .header .conf .btn-group button {
+  border: 0 !important;
+}
+#wrap #middle .item .header .writer a:first-child,
+#wrap #middle .item-for-sale .header .writer a:first-child {
+  float: left;
+}
+.content-date,
+.content-expose {
+  float: left;
+  margin-left: 1.5%;
+  font-size: 12px;
+  margin-top: 0.7%;
+}
+.content-folder a {
+  float: none !important;
+}
+.commentReg .dropdown button {
+  float: right;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  margin-right: 1%;
+  margin-top: -0.6%;
+}
+.commentReg .dropdown ul {
+  display: none;
+}
+
+
+
 #report-button {
   border: 1px solid #e3e3e3;
   padding: 2px;
@@ -950,76 +1027,7 @@ li a {
 #wrap #right .conf #controller .usrpic-wrap {
   margin: 3px;
 }
-.caret,
-.caret-repbtn,
-.caret-repbtn_sub {
-  margin: 5px !important;
-  cursor: pointer !important;
-}
-.now-list-item,
-.daily-list-item,
-.weekly-list-item {
-  height: 60px;
-  width: 100%;
-  float: left;
-  list-style-type: none;
-}
-#now-hot-list li,
-#daily-hot-list li,
-#weekly-hot-list li {
-  list-style-type: none;
-}
-.hot-pic-wrap {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  float: left;
-  margin-right: 10px;
-  margin-left: -30px;
-}
-.hot-pic {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.hot-body {
-  display: block;
-  margin-top: 10px;
-}
-.hot-knock,
-.hot-reply {
-  margin-left: 5px;
-}
-#wrap #middle .item .header .conf .btn-group button,
-#wrap #middle .item-for-sale .header .conf .btn-group button {
-  border: 0 !important;
-}
-#wrap #middle .item .header .writer a:first-child,
-#wrap #middle .item-for-sale .header .writer a:first-child {
-  float: left;
-}
-.content-date,
-.content-expose {
-  float: left;
-  margin-left: 1.5%;
-  font-size: 12px;
-  margin-top: 0.7%;
-}
-.content-folder a {
-  float: none !important;
-}
-.commentReg .dropdown button {
-  float: right;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  margin-right: 1%;
-  margin-top: -0.6%;
-}
-.commentReg .dropdown ul {
-  display: none;
-}
+
 
 
 
