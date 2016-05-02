@@ -1045,7 +1045,6 @@ li a {
 .commentReg .dropdown ul {
   display: none;
 }
-<<<<<<< HEAD
 
 
 
@@ -1054,31 +1053,24 @@ li a {
 
 
 
-
-
-#right .conf {
+#right .conf{
   width: 1024px !important;
   height: 40px !important;
   left: 50%;
   margin-left: -512px;
   background-color: #81C2C4 !important;
 }
-#middle,
-#left,
-#right {
+#middle, #left, #right{
   margin-top: 45px !important;
 }
-#controller {
+#controller{
   float: right !important;
-  width: 29% !important;
+  width:29% !important;
 }
 #gsearch {
   width: 530px !important;
   margin: 6px 0 6px 0 !important;
   height: 28px !important;
-}
-#wrap #right .market {
-  top: 5px !important;
 }
 #wrap #right .conf .dropdown ul {
   top: 40px !important;
@@ -1088,16 +1080,14 @@ li a {
   border-top-right-radius: 0 !important;
 }
 #wrap #right .conf #logo,
-#wrap #right .conf #logo img {
+#wrap #right .conf #logo img{
   margin: 0 !important;
   border-bottom-left-radius: 4px;
   cursor: pointer;
 }
-#wrap #right .conf #controller .usrpic-wrap {
+#wrap #right .conf #controller .usrpic-wrap{
   margin: 3px;
 }
-
-
 
 
 
@@ -1110,10 +1100,7 @@ only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 320px) {
-=======
-@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px), only screen and (min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min-resolution: 192dpi) and (min-width: 320px), only screen and (min-resolution: 2dppx) and (min-width: 320px) {
->>>>>>> 65fa6cb1d670239f278dbf471452a7f2912fb822
+only screen and (                min-resolution: 2dppx)  and (min-width: 320px){
   #left,
   #right .market {
     display: none;
