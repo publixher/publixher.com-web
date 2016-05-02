@@ -1045,6 +1045,7 @@ li a {
 .commentReg .dropdown ul {
   display: none;
 }
+<<<<<<< HEAD
 
 
 
@@ -1110,62 +1111,64 @@ only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
 only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
 only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px) {
+=======
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px), only screen and (min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min-resolution: 192dpi) and (min-width: 320px), only screen and (min-resolution: 2dppx) and (min-width: 320px) {
+>>>>>>> 65fa6cb1d670239f278dbf471452a7f2912fb822
   #left,
-  #right .market
-  {
+  #right .market {
     display: none;
   }
   #wrap #right #logo,
-  #wrap #right #gsearch{
+  #wrap #right #gsearch {
     display: none;
   }
-  #wrap #right #controller{
-    position:absolute;
+  #wrap #right #controller {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  #wrap #right #controller button{
+  #wrap #right #controller button {
     color: white !important;
   }
-  #wrap, #middle, #writing-pane, .item-for-sale, .item {
+  #wrap,
+  #middle,
+  #writing-pane,
+  .item-for-sale,
+  .item {
     width: 100% !important;
   }
-
-  #writing-pane, .item-for-sale, .item {
+  #writing-pane,
+  .item-for-sale,
+  .item {
     margin-left: 0 !important;
     margin-right: 0 !important;
     border-radius: 0 !important;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane #sendBody,
   #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle,
   #wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
     width: 96% !important;
     margin: 2% !important;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
     margin-bottom: -1px !important;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
     margin-top: 0 !important;
   }
-
-  #wrap #middle .item .header .writer, #wrap #middle .item-for-sale .header .writer {
+  #wrap #middle .item .header .writer,
+  #wrap #middle .item-for-sale .header .writer {
     width: 65% !important;
   }
-
-  #wrap #middle .item .header .title, #wrap #middle .item-for-sale .header .title {
+  #wrap #middle .item .header .title,
+  #wrap #middle .item-for-sale .header .title {
     width: 80% !important;
   }
-
-  #wrap #middle .item .header .conf, #wrap #middle .item-for-sale .header .conf {
+  #wrap #middle .item .header .conf,
+  #wrap #middle .item-for-sale .header .conf {
     float: right;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img,
   #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img,
   #wrap #middle .item .body .BodyPic,
@@ -1175,66 +1178,56 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px) 
     margin-top: 5px;
     margin-bottom: 5px;
   }
-
   #wrap #middle .item .body,
   #wrap #middle .item-for-sale .body {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
   }
-
   .tag-editor {
     width: 100%;
   }
-
-  #wrap #middle .item .commentReg, #wrap #middle .item-for-sale .commentReg {
+  #wrap #middle .item .commentReg,
+  #wrap #middle .item-for-sale .commentReg {
     width: 100% !important;
   }
-
-  #wrap #middle .item .header, #wrap #middle .item-for-sale .header {
+  #wrap #middle .item .header,
+  #wrap #middle .item-for-sale .header {
     width: 96%;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane .taginput,
   #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
     width: 50% !important;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group {
-    width: 100%
+    width: 100%;
   }
-
   #wrap #middle .item .header .conf .dropdown-menu,
   #wrap #middle .item-for-sale .header .conf .dropdown-menu {
-    left: -76px
+    left: -76px;
   }
-
-  #wrap #middle .item .subrep, #wrap #middle .item-for-sale .subrep {
-    width: 100%
+  #wrap #middle .item .subrep,
+  #wrap #middle .item-for-sale .subrep {
+    width: 100%;
   }
-
-  #wrap #middle .item .commentReg_sub, #wrap #middle .item-for-sale .commentReg_sub {
-    width: 86% !important
+  #wrap #middle .item .commentReg_sub,
+  #wrap #middle .item-for-sale .commentReg_sub {
+    width: 86% !important;
   }
-
   .item-profile-wrap {
     width: 12%;
     height: 80%;
   }
-
   #writing-pane .nav-tabs > li {
     width: 25% !important;
   }
-
   #writing-pane .nav-tabs li > .dropdown-menu {
     width: 98% !important;
     min-width: 98% !important;
   }
-
   #writing-pane .nav-tabs .dropdown-menu li {
     width: 100% !important;
   }
-
   #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .fileupform,
   #wrap #middle #writing-pane .tab-content .tab-pane .fileinput,
   #wrap #middle #writing-pane .tab-content .tab-pane .cateinput,
@@ -1243,8 +1236,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px) 
     width: 25% !important;
     text-align: center;
   }
-
-  #sendButton, #publixhButton,
+  #sendButton,
+  #publixhButton,
   #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn,
   #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn,
   #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
@@ -1252,7 +1245,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px) 
     width: 100% !important;
     text-align: center;
   }
-
   .tab-content table {
     width: 100% !important;
   }

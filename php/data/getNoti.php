@@ -156,7 +156,7 @@ if ($action == 'noticenter') {
     for ($i = 0; $i < count($notis); $i++) {
         if ($notis[$i]['ACT'] == '1' or $notis[$i]['ACT'] == '3' or $notis[$i]['ACT'] == '4') { //컨텐츠가 주체일때
             $notis[$i]=getTrigger($notis[$i],'ID_CONTENT', $db);
-        } elseif ($notis[$i]['ACT'] == '6' or $notis[$i]['ACT']=='7') {   //댓글이 주체일때
+        } elseif ($notis[$i]['ACT'] == '6' or $notis[$i]['ACT']=='7' or $notis[$i]['ACT']=='9') {   //댓글이 주체일때
             $notis[$i]=getTrigger($notis[$i],'ID_REPLY',$db);
         }elseif($notis[$i]['ACT']=='2'){
             $notis[$i]=getTrigger($notis[$i],'ID_ACTOR',$db);
