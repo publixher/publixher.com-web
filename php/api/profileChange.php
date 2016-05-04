@@ -24,7 +24,7 @@ if ($_POST['action'] == 'profilechange') {
             $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
             $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
         } else {
-            echo json_encode(array('result' => false, 'reason' => 'invalid pass'), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('status' => -2), JSON_UNESCAPED_UNICODE);
             exit;
         }
     }
@@ -40,7 +40,7 @@ if ($_POST['action'] == 'profilechange') {
     $preparein->bindValue(':ID', $userID);
     $preparein->execute();
     $result = $preparein->fetch(PDO::FETCH_ASSOC);
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    echo '{"status":1}';
 
 } elseif ($_POST['action'] == 'anonyregist') {
     //익명 적합성 검사
@@ -87,9 +87,13 @@ WHERE
         $preparein->bindValue(':ID', $userID);
         $preparein->execute();
         $result = $preparein->fetch(PDO::FETCH_ASSOC);
-        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        if(!$result) {
+            echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
     } else {
-        echo '{"result":-3,"reason":"nick invalid"}';
+        echo '{"status":-3}';
     }
 } elseif ($_GET['action'] == 'profileswap') {
     $isnick = $_GET['isNick'];
@@ -117,7 +121,11 @@ WHERE CONN.ID_ANONY = :ID";
         $prepare->bindValue(':ID', $userID);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        if(!$result) {
+            echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
         exit;
     } elseif ($isnick == false) {
         //실명일때 익명으로 새로 로그인
@@ -127,14 +135,18 @@ WHERE CONN.ID_ANONY = :ID";
         $prepare->execute();
         $anonyID = $prepare->fetchColumn();
         if (is_null($anonyID)) {
-            echo '{"result":-4,"reason":"anony not exist"}';
+            echo '{"result":-3}';
         } else {
             $sql2 = "SELECT ID,EMAIL,LEVEL,USER_NAME,PIC,IS_NICK,WRITEAUTH,EXPAUTH,BAN FROM publixher.TBL_USER WHERE ID=:ID";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID', $anonyID, PDO::PARAM_STR);
             $prepare2->execute();
             $result = $prepare2->fetchObject(User);
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            if(!$result) {
+                echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
         }
     }
 } elseif ($_POST['action'] == 'newfolder') {
@@ -146,6 +158,7 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('DIR', $_POST['folder'], PDO::PARAM_STR);
     $prepare->execute();
+    echo '{"status":1}';
 } elseif ($_POST['action'] == 'deletefolder') {
     $folderid = $_POST['folderID'];
     $sql = "DELETE FROM publixher.TBL_FOLDER WHERE ID=:ID";
@@ -158,17 +171,20 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':FOLDER', $folderid, PDO::PARAM_STR);
     $prepare->execute();
+    echo '{"status":1}';
 } elseif ($_POST['action'] == 'writeAuth') {
     $q = "UPDATE publixher.TBL_USER SET WRITEAUTH=:WRITEAUTH WHERE ID=:ID";
     $p = $db->prepare($q);
     $p->bindValue(':WRITEAUTH', $_POST['radioValue']);
     $p->bindValue(':ID', $_POST['userID']);
     $p->execute();
+    echo '{"status":1}';
 } elseif ($_POST['action'] == 'expAuth') {
     $q = "UPDATE publixher.TBL_USER SET EXPAUTH=:EXPAUTH WHERE ID=:ID";
     $p = $db->prepare($q);
     $p->bindValue(':EXPAUTH', $_POST['checkValue']);
     $p->bindValue(':ID', $_POST['userID']);
     $p->execute();
+    echo '{"status":1}';
 }
 ?>

@@ -10,5 +10,6 @@ if($action=='check'){
     $chkp->bindValue(':ID_MASTER',$_GET['mu']);
     $chkp->bindValue(':ID_SLAVE',$_GET['userID']);
     $chkp->execute();
+    echo '{"status":1}';
 }
 ?>

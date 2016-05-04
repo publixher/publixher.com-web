@@ -24,6 +24,10 @@ for($i=0;$i<$masCount;$i++){
     $masList[$i]['CONT_LIST']=$prepare->fetchAll(PDO::FETCH_ASSOC);
 }
 
-echo json_encode($masList,JSON_UNESCAPED_UNICODE);
+if(!$masList) {
+    echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+    exit;
+}
+echo json_encode(array('result'=>$masList,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 ?>
 

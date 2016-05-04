@@ -12,10 +12,12 @@ if ($action == 'ban') {
     $prepare->bindValue(':ID_MANAGER', $managerID);
     $prepare->bindValue(':DAYS', $_POST['days']);
     $prepare->execute();
+    echo '{"status":1}';
 } elseif ($action == 'release') {
     $sql = 'UPDATE publixher.TBL_USER SET BAN=NULL WHERE ID=:ID';
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $_POST['target']);
     $prepare->execute();
+    echo '{"status":1}';
 }
 ?>

@@ -388,5 +388,9 @@ for ($i = 0; $i < count($result); $i++) {
         }
     }
 }
-echo json_encode($result, JSON_UNESCAPED_UNICODE);
+if(!$result) {
+    echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+    exit;
+}
+echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 ?>

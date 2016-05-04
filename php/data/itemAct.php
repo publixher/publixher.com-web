@@ -98,31 +98,34 @@ if ($act == 'knock') {
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
-            $prepare2->execute();
-            $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
-            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
             $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
-            $result[$i]['PIC'] = $fetch['PIC'];
         }
         return $result;
     }
 
     function getBest($db, $ID, $index)
     {
-        $bestrep_sql = "SELECT \n"  //베스트댓글5개
-            . "	ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.'),ID_USER,KNOCK,SUB_REPLY,DEL \n"
-            . "FROM \n"
-            . "	publixher.TBL_CONTENT_REPLY REPLY \n"
-            . "WHERE \n"
-            . "	KNOCK + SUB_REPLY >= 10 \n"
-            . "	AND ID_CONTENT = :ID_CONTENT \n"
-            . "ORDER BY \n"
-            . "	KNOCK + SUB_REPLY DESC \n"
-            . "LIMIT \n"
-            . ":INDEX, 6";
+        //베스트댓글5개
+        $bestrep_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC
+FROM
+  publixher.TBL_CONTENT_REPLY REPLY
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE
+  KNOCK + SUB_REPLY >= 10
+  AND ID_CONTENT = :ID_CONTENT
+ORDER BY
+  KNOCK + SUB_REPLY DESC
+LIMIT
+  :INDEX, 6";
         $prepare1 = $db->prepare($bestrep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare1->bindValue(':INDEX', $index, PDO::PARAM_STR);
@@ -146,7 +149,21 @@ if ($act == 'knock') {
 
     function getTime($db, $ID, $index)
     {
-        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,ID_USER,KNOCK,SUB_REPLY,DEL FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC
+FROM publixher.TBL_CONTENT_REPLY AS REPLY
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE ID_CONTENT = :ID_CONTENT
+ORDER BY REPLY.SEQ DESC
+LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':INDEX', $index);
@@ -170,17 +187,27 @@ if ($act == 'knock') {
 
     function getFrie($db, $ID, $userID, $index)
     {
-        $friend_sql = "SELECT \n"
-            . "	REPLY.ID,REPLY.REPLY_DATE,IF(REPLY.DEL=0,REPLY.REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,REPLY.ID_USER,REPLY.KNOCK,REPLY.SUB_REPLY,DEL \n"
-            . "FROM \n"
-            . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND \n"
-            . "WHERE \n"
-            . "	FRIEND.ID_USER = :ID_USER \n"
-            . "	AND REPLY.ID_CONTENT = :ID_CONTENT \n"
-            . "ORDER BY \n"
-            . "	REPLY.ID DESC \n"
-            . "LIMIT \n"
-            . "	:INDEX, 6";
+        $friend_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC
+FROM
+  publixher.TBL_CONTENT_REPLY REPLY
+  INNER JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE
+  FRIEND.ID_USER = :ID_USER
+  AND REPLY.ID_CONTENT = :ID_CONTENT
+ORDER BY
+  REPLY.ID DESC
+LIMIT
+  :INDEX, 6";
         $prepare1 = $db->prepare($friend_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':ID_USER', $userID);

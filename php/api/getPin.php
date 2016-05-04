@@ -12,7 +12,11 @@ if($action=='loadpin'){
     $selpre->bindValue(':PAGE',$nowpage);
     $selpre->execute();
     $result=$selpre->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($result,JSON_UNESCAPED_UNICODE);
+    if(!$result) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
     $upPin="UPDATE publixher.TBL_PIN_LIST SET MODIFIED=0,KNOCK=0,REPLY=0,LAST_CHECK=NOW() WHERE ID_USER=:ID_USER";
     $uppre = $db->prepare($upPin);
     $uppre->bindValue(':ID_USER', $userID);

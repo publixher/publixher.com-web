@@ -17,7 +17,7 @@ if ($action == 'get_item') {
         $pr->execute();
         $data['DIR'] = $pr->fetchColumn();
     }
-    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    echo json_encode(array('status'=>1,'result'=>$data), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'mod_item') {
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
@@ -205,7 +205,8 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare5=$db->prepare($sql5);
     $prepare5->bindValue(':ID_CONTENT',$id);
     $prepare5->execute();
-    $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+
+    $result = json_encode(array("status"=>1,'result'=>$result), JSON_UNESCAPED_UNICODE);
     echo $result;
 }
 ?>

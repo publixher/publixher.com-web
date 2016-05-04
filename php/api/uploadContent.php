@@ -220,12 +220,15 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
             $prepare3->execute();
         }
-        $result = json_encode($result, JSON_UNESCAPED_UNICODE);
         $db->commit();
-        echo $result;
+        if(!$result) {
+            echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
     }catch(PDOException $e){
         $db->rollBack();
-        echo "<script>alert('동작중 문제가 생겼습니다. message : $e->getMessage()')";
+        echo '{"status":-1}';
         exit;
     }
 } else {

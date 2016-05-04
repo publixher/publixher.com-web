@@ -8,5 +8,5 @@ $prepare = $db->prepare($sql);
 $prepare->bindValue(':WRITER_ID',$id);
 $prepare->bindValue(':REPORT',$report);
 $prepare->execute();
-echo '{"result":"Y"}';
+echo '{"status":1}';
 ?>

@@ -176,7 +176,7 @@ $(document).ready(function () {
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
                             var date = res[i]['REPLY_DATE'];
-                            var reply = res[i]['REPLY'];
+                            var reply = res[i]['REP_BODY'];
                             var knock = res[i]['KNOCK'];
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
@@ -252,7 +252,7 @@ $(document).ready(function () {
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
-                        var reply = res[i]['REPLY'];
+                        var reply = res[i]['REP_BODY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';

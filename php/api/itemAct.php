@@ -36,7 +36,12 @@ if ($act == 'knock') {
         $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare3->execute();
         $result = $prepare3->fetch(PDO::FETCH_ASSOC);
-        echo json_encode(array('KNOCK'=>$result['KNOCK']), JSON_UNESCAPED_UNICODE);;
+        if(!$result) {
+            echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+
         //알람처리
         $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,4,:ID_ACTOR)";
         $prepare4 = $db->prepare($sql4);
@@ -49,8 +54,6 @@ if ($act == 'knock') {
         $prepare5 = $db->prepare($sql5);
         $prepare5->bindValue(':ID_CONTENT', $ID);
         $prepare5->execute();
-
-
         //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
@@ -78,7 +81,7 @@ if ($act == 'knock') {
 //            }
 //        }
     } else {
-        echo '{"result":"N","reason":"already"}';
+        echo '{"status":-3}';
     }
 } elseif ($act == 'comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
@@ -87,31 +90,34 @@ if ($act == 'knock') {
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
-            $prepare2->execute();
-            $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
-            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
             $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
-            $result[$i]['PIC'] = $fetch['PIC'];
         }
         return $result;
     }
 
     function getBest($db, $ID, $index)
     {
-        $bestrep_sql = "SELECT \n"  //베스트댓글5개
-            . "	ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.'),ID_USER,KNOCK,SUB_REPLY,DEL \n"
-            . "FROM \n"
-            . "	publixher.TBL_CONTENT_REPLY REPLY \n"
-            . "WHERE \n"
-            . "	KNOCK + SUB_REPLY >= 10 \n"
-            . "	AND ID_CONTENT = :ID_CONTENT \n"
-            . "ORDER BY \n"
-            . "	KNOCK + SUB_REPLY DESC \n"
-            . "LIMIT \n"
-            . ":INDEX, 6";
+        //베스트댓글5개
+        $bestrep_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop34') AS PIC
+FROM
+  publixher.TBL_CONTENT_REPLY REPLY
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE
+  KNOCK + SUB_REPLY >= 10
+  AND ID_CONTENT = :ID_CONTENT
+ORDER BY
+  KNOCK + SUB_REPLY DESC
+LIMIT
+  :INDEX, 6";
         $prepare1 = $db->prepare($bestrep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare1->bindValue(':INDEX', $index, PDO::PARAM_STR);
@@ -126,7 +132,11 @@ if ($act == 'knock') {
             } else {
                 $result['more'] = false;
             }
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            if(!$result) {
+                echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -135,7 +145,21 @@ if ($act == 'knock') {
 
     function getTime($db, $ID, $index)
     {
-        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,ID_USER,KNOCK,SUB_REPLY,DEL FROM publixher.TBL_CONTENT_REPLY WHERE ID_CONTENT=:ID_CONTENT ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop34') AS PIC
+FROM publixher.TBL_CONTENT_REPLY AS REPLY
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE ID_CONTENT = :ID_CONTENT
+ORDER BY REPLY.SEQ DESC
+LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':INDEX', $index);
@@ -150,7 +174,11 @@ if ($act == 'knock') {
             } else {
                 $result['more'] = false;
             }
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            if(!$result) {
+                echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -159,17 +187,27 @@ if ($act == 'knock') {
 
     function getFrie($db, $ID, $userID, $index)
     {
-        $friend_sql = "SELECT \n"
-            . "	REPLY.ID,REPLY.REPLY_DATE,IF(REPLY.DEL=0,REPLY.REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,REPLY.ID_USER,REPLY.KNOCK,REPLY.SUB_REPLY,DEL \n"
-            . "FROM \n"
-            . "	publixher.TBL_CONTENT_REPLY REPLY STRAIGHT_JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND \n"
-            . "WHERE \n"
-            . "	FRIEND.ID_USER = :ID_USER \n"
-            . "	AND REPLY.ID_CONTENT = :ID_CONTENT \n"
-            . "ORDER BY \n"
-            . "	REPLY.ID DESC \n"
-            . "LIMIT \n"
-            . "	:INDEX, 6";
+        $friend_sql = "SELECT
+  REPLY.ID,
+  REPLY.REPLY_DATE,
+  IF(REPLY.DEL = 0, REPLY.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  REPLY.ID_USER,
+  REPLY.KNOCK,
+  REPLY.SUB_REPLY,
+  REPLY.DEL,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop34') AS PIC
+FROM
+  publixher.TBL_CONTENT_REPLY REPLY
+  INNER JOIN publixher.TBL_FRIENDS FRIEND ON REPLY.ID_USER = FRIEND.ID_FRIEND
+  INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
+WHERE
+  FRIEND.ID_USER = :ID_USER
+  AND REPLY.ID_CONTENT = :ID_CONTENT
+ORDER BY
+  REPLY.ID DESC
+LIMIT
+  :INDEX, 6";
         $prepare1 = $db->prepare($friend_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
         $prepare1->bindValue(':ID_USER', $userID);
@@ -185,7 +223,11 @@ if ($act == 'knock') {
             } else {
                 $result['more'] = false;
             }
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            if(!$result) {
+                echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -200,23 +242,23 @@ if ($act == 'knock') {
         if (!$result) {
             $result = getTime($db, $ID, $index);
             if (!$result) {
-                echo '{"result":"NO"}';
+                echo '{"status":0}';
             }
         }
     } elseif ($sort == 'best') { //처음으로 로딩한게 아니라 각 탭을 보는거면 sort로 구분한다
         $result = getBest($db, $ID, $index);
         if (!$result) {
-            echo '{"result":"NO"}';
+            echo '{"status":0}';
         }
     } elseif ($sort == 'time') {
         $result = getTime($db, $ID, $index);
         if (!$result) {
-            echo '{"result":"NO"}';
+            echo '{"status":0}';
         }
     } elseif ($sort == 'frie') {
         $result = getFrie($db, $ID, $userID, $index);
         if (!$result) {
-            echo '{"result":"NO"}';
+            echo '{"status":0}';
         }
     }
 } elseif ($act == 'commentreg') {
@@ -266,7 +308,7 @@ if ($act == 'knock') {
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
-    $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+    $result = json_encode(array('status'=>1,'result'=>$result['COMMENT']), JSON_UNESCAPED_UNICODE);
     echo $result;
 
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
@@ -308,10 +350,10 @@ if ($act == 'knock') {
     $age = floor($nowday - $birthday); //만나이
 
     if ($price > $usercash) {
-        echo '{"buy":"f","reason":"not enough cash"}';
+        echo '{"status":-4}';
         exit;
     } else if ($age < 19) {
-        echo '{"buy":"f","reason":"age registration"}';
+        echo '{"status":-5}';
         exit;
     }
     //샀는지 확인
@@ -372,9 +414,10 @@ if ($act == 'knock') {
 //                $ip->execute();
 //            }
 //        }
+        echo '{status":1}';
         exit;
     }
-    echo '{"buy":"f","reason":"already bought"}';
+    echo '{"status":-6}';
     exit;
 } elseif ($act == 'more') {
     //링크를 타고 온게 아니라 진짜로 샀는지 확인
@@ -411,9 +454,9 @@ if ($act == 'knock') {
                 $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
                 $prepare2->execute();
                 $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-                echo json_encode($result, JSON_UNESCAPED_UNICODE);
+                echo json_encode(array('status'=>1,'result'=>$result), JSON_UNESCAPED_UNICODE);
             } else {
-                echo '{"result":"not bought"}';
+                echo '{"status":-7}';
             }
         }
     } else {
@@ -423,7 +466,7 @@ if ($act == 'knock') {
         $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        echo json_encode(array('status'=>1,'result'=>$result), JSON_UNESCAPED_UNICODE);
     }
 } elseif ($act == 'del') {
     $ID = $_POST['contID'];
@@ -455,8 +498,9 @@ if ($act == 'knock') {
         $prepare5 = $db->prepare($sql5);
         $prepare5->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare5->execute();
+        echo '{"status":1}';
     } else {
-        echo '{"result":"N","reason":"user not writer"}';
+        echo '{"status":-8}';
     }
 } elseif ($act == 'top') {
     //한번 확인해주고
@@ -465,7 +509,7 @@ if ($act == 'knock') {
     $prepare1->bindValue(':TOP_CONTENT', $_POST['contID'], PDO::PARAM_STR);
     $prepare1->bindValue(':ID', $_POST['userID'], PDO::PARAM_STR);
     $prepare1->execute();
-    echo '{"result":"Y"}';
+    echo '{"status":"1"}';
 } elseif ($act == 'repknock') {
     //댓글에 노크처리
     $userID = $_POST['userID'];
@@ -505,9 +549,9 @@ if ($act == 'knock') {
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
         $prepare4->execute();
-        echo '{"KNOCK":' . $target['KNOCK'] . '}';
+        echo json_encode(array('status'=>1,'result'=>array('KNOCK'=>$target['KNOCK'])),JSON_UNESCAPED_UNICODE);
     } else {
-        echo '{"result":"N","reason":"already"}';
+        echo '{"status":-3}';
     }
 } elseif ($act == 'sub_comment') {
     require_once '../../lib/passing_time.php';
@@ -516,21 +560,26 @@ if ($act == 'knock') {
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
-            $prepare2->execute();
-            $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
-            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
             $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
-            $result[$i]['PIC'] = $fetch['PIC'];
         }
         return $result;
     }
 
     function getTime($db, $repID, $index)
     {
-        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,DEL,ID_USER FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT
+  SUB_REP.ID,
+  SUB_REP.REPLY_DATE,
+  IF(SUB_REP.DEL = 0, SUB_REP.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  SUB_REP.DEL,
+  SUB_REP.ID_USER,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop34') AS PIC
+FROM publixher.TBL_CONTENT_SUB_REPLY AS SUB_REP
+  INNER JOIN publixher.TBL_USER AS USER ON SUB_REP.ID_USER=USER.ID
+WHERE SUB_REP.ID_REPLY = :ID_REPLY
+ORDER BY SUB_REP.SEQ DESC
+LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);
@@ -545,7 +594,11 @@ if ($act == 'knock') {
             } else {
                 $result['more'] = false;
             }
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            if(!$result) {
+                echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -554,7 +607,7 @@ if ($act == 'knock') {
 
     $result = getTime($db, $repID, $_GET['index']);
     if (!$result) {
-        echo '{"result":"NO"}';
+        echo '{"status":0}';
     }
 
 } elseif ($act == 'commentreg_sub') {
@@ -613,7 +666,7 @@ if ($act == 'knock') {
         $prepare6->execute();
     }
     $result = '{"SUB_REPLY":'.$result['SUB_REPLY'].'}';
-    echo $result;
+    echo json_encode(array('status' => 1, 'result' => array('SUB_REPLY' => $result['SUB_REPLY'])), JSON_UNESCAPED_UNICODE);
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
     $prepare5 = $db->prepare($sql5);
     $prepare5->bindValue(':ID_CONTENT', $ID);
@@ -630,7 +683,7 @@ if ($act == 'knock') {
     CONT.ID,
     :ID_USER,
     CONT.ID_WRITER,
-    IF(CONT.TITLE IS NOT NULL,CONT.TITLE,LEFT(CONT.BODY_TEXT, 20)),
+    IF(CONT.TITLE IS NOT NULL, CONT.TITLE, LEFT(CONT.BODY_TEXT, 20)),
     USER.PIC
   FROM publixher.TBL_CONTENT AS CONT INNER JOIN publixher.TBL_USER AS USER ON CONT.ID_WRITER = USER.ID
   WHERE CONT.ID = :ID_CONTENT";
@@ -648,12 +701,12 @@ if ($act == 'knock') {
         $prepare2->bindValue(':ID', $userID);
         $prepare2->execute();
         $db->commit();
+        echo '{"status":1}';
     } catch (PDOException $e) {
         $db->rollBack();
-        echo '{"result":"N"}';
+        echo '{"status":-1}';
         exit;
     }
-    echo '{"result":"Y"}';
 } elseif ($act == 'rep_del') {
     $id = $_POST['repID'];
     $userID = $_POST['userID'];
@@ -665,7 +718,7 @@ if ($act == 'knock') {
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
-        echo '{"result":"Y"}';
+        echo '{"status":1}';
     }
 } elseif ($act == 'report') {
     $id = $_POST['contID'];
@@ -676,10 +729,10 @@ if ($act == 'knock') {
     $prepare->bindValue(':CONTENT_ID', $id);
     try {
         $prepare->execute();
-        echo '{"result":"Y"}';
+        echo '{"status":1}';
         exit;
     } catch (PDOException $e) {
-        echo '{"reason":"already"}';
+        echo '{"status":-2}';
         exit;
     }
 }

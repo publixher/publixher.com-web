@@ -14,13 +14,22 @@ if($action=='point'){
     $prepare1->bindValue(':ID_TARGET', $userID, PDO::PARAM_STR);
     $prepare1->execute();
     $cash = $prepare1->fetch(PDO::FETCH_ASSOC);
-    echo json_encode($cash,JSON_UNESCAPED_UNICODE);
+    if(!$cash) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$cash,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 }elseif($action=='auth'){
     $w = "SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE ID=:ID";
     $p = $db->prepare($w);
     $p->bindValue(':ID', $userID);
     $p->execute();
     $auth = $p->fetch(PDO::FETCH_ASSOC);
+    if(!$auth) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$auth,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 }elseif($action=='friendList'){
     $sql3 = "SELECT FRIEND.ID_FRIEND AS ID,
   USER.USER_NAME,
@@ -32,6 +41,10 @@ WHERE ID_USER = :ID_USER AND ALLOWED = 'Y'";
     $prepare3->bindValue(':ID_USER', $userID);
     $prepare3->execute();
     $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($friends,JSON_UNESCAPED_UNICODE);
+    if(!$friends) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$friends,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 }
 ?>

@@ -25,10 +25,9 @@ if ($action == 'request') {
         $prepare4->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $myID, PDO::PARAM_STR);
         $prepare4->execute();
-        echo '{"result":1}';
+        echo '{"status":1}';
     } else {
-        $result=array('status'=>array('code'=>'-2','msg'=>'already'));
-        echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        echo '{"status":-3}';   //이미 친구
     }
 } elseif ($action == 'friendok') {
     //친구신청에 ok
@@ -45,14 +44,14 @@ if ($action == 'request') {
     $prepare2->bindValue(':ID_FRIEND', $targetID, PDO::PARAM_STR);
     $prepare2->bindValue(':ID_USER', $myID, PDO::PARAM_STR);
     $prepare2->execute();
-    echo '{"result":1}';
+    echo '{"status":1}';
 } elseif ($action == 'friendno') {
     $requestid = $_POST['requestid'];
     $sql1 = "DELETE FROM publixher.TBL_FRIENDS WHERE SEQ=:SEQ";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
     $prepare1->execute();
-    echo '{"result":1}';
+    echo '{"status":1}';
 } elseif ($action == 'endrelation') {
     $targetID = $_POST['targetID'];
     $userID = $_POST['myID'];
@@ -64,7 +63,7 @@ if ($action == 'request') {
     $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare2->bindValue(':ID_FRIEND2', $userID, PDO::PARAM_STR);
     $prepare2->execute();
-    echo '{"result":1}';
+    echo '{"status":1}';
 } elseif ($action == 'subscribe') {
     $targetID = $_POST['targetID'];
     $userID = $_POST['myID'];
@@ -73,7 +72,7 @@ if ($action == 'request') {
     $prepare3->bindValue(':ID_MASTER', $targetID);
     $prepare3->bindValue(':ID_SLAVE', $userID);
     $prepare3->execute();
-    echo '{"result":1}';
+    echo '{"status":1}';
 } elseif ($action == 'dis_subscribe') {
     $targetID = $_POST['targetID'];
     $userID = $_POST['myID'];
@@ -82,6 +81,6 @@ if ($action == 'request') {
     $prepare3->bindValue(':ID_MASTER', $targetID);
     $prepare3->bindValue(':ID_SLAVE', $userID);
     $prepare3->execute();
-    echo '{"result":1}';
+    echo '{"status":1}';
 }
 ?>

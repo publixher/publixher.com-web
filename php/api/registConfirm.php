@@ -43,15 +43,14 @@ if ($check_email && $check_pass) {
 <p>가입 절차 및 기타 문의는 cs@throughout.kr로 메일 주시기 바랍니다.</p>";
         $sendmail->send_mail($email, $from, $subject, $body);
         $db->commit();
-        $msg = '{"result":"reg"}';
-        echo $msg;
+        echo '{"status":1}';
     } catch (PDOException $e) {
         $db->rollBack();
-        $msg='{"result":"server error"}';
+        $msg='{"status":-1}';
         echo $msg;
     }
 } else {
-    $msg = '{"result":"check value"}';
+    $msg = '{"status":-2}';
     echo $msg;
 }
 ?>
