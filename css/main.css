@@ -870,8 +870,9 @@ li a {
   width: 34px;
   height: 34px;
 }
-
-.caret, .caret-repbtn, .caret-repbtn_sub{
+.caret,
+.caret-repbtn,
+.caret-repbtn_sub {
   margin: 5px !important;
   cursor: pointer !important;
 }
@@ -885,7 +886,7 @@ li a {
 }
 #now-hot-list li,
 #daily-hot-list li,
-#weekly-hot-list li{
+#weekly-hot-list li {
   list-style-type: none;
 }
 .hot-pic-wrap {
@@ -914,38 +915,34 @@ li a {
   margin-left: 5px;
 }
 #wrap #middle .item .header .conf .btn-group button,
-#wrap #middle .item-for-sale .header .conf .btn-group button{
+#wrap #middle .item-for-sale .header .conf .btn-group button {
   border: 0 !important;
 }
 #wrap #middle .item .header .writer a:first-child,
-#wrap #middle .item-for-sale .header .writer a:first-child{
+#wrap #middle .item-for-sale .header .writer a:first-child {
   float: left;
 }
 .content-date,
-.content-expose{
+.content-expose {
   float: left;
   margin-left: 1.5%;
   font-size: 12px;
-  margin-top: 0.7%
+  margin-top: 0.7%;
 }
-.content-folder a{
-  float: none !important
+.content-folder a {
+  float: none !important;
 }
-.commentReg .dropdown button{
+.commentReg .dropdown button {
   float: right;
   padding: 0;
   border: 0;
-  background-color:transparent;
+  background-color: transparent;
   margin-right: 1%;
   margin-top: -0.6%;
 }
-.commentReg .dropdown ul{
-  display: none
+.commentReg .dropdown ul {
+  display: none;
 }
-
-
-
-
 #report-button {
   border: 1px solid #e3e3e3;
   padding: 2px;
@@ -976,7 +973,7 @@ li a {
   color: #fff;
   outline: 0 !important;
 }
-#report{
+#report {
   float: left;
   width: 174px !important;
   margin-top: 10px;
@@ -989,19 +986,21 @@ li a {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-#right .conf{
+#right .conf {
   width: 1024px !important;
   height: 40px !important;
   left: 50%;
   margin-left: -512px;
   background-color: #81C2C4 !important;
 }
-#middle, #left, #right{
+#middle,
+#left,
+#right {
   margin-top: 45px !important;
 }
-#controller{
+#controller {
   float: right !important;
-  width:29% !important;
+  width: 29% !important;
 }
 #gsearch {
   width: 530px !important;
@@ -1016,17 +1015,14 @@ li a {
   border-top-right-radius: 0 !important;
 }
 #wrap #right .conf #logo,
-#wrap #right .conf #logo img{
+#wrap #right .conf #logo img {
   margin: 0 !important;
   border-bottom-left-radius: 4px;
   cursor: pointer;
 }
-#wrap #right .conf #controller .usrpic-wrap{
+#wrap #right .conf #controller .usrpic-wrap {
   margin: 3px;
 }
-
-
-
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px), only screen and (min-device-pixel-ratio: 2) and (min-width: 320px), only screen and (min-resolution: 192dpi) and (min-width: 320px), only screen and (min-resolution: 2dppx) and (min-width: 320px) {
   #left,
   #right .market {
