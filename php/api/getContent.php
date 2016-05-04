@@ -4,13 +4,12 @@ require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
 $nowpage = $_GET['nowpage'] * 10;
-session_start();
-if (!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
-$userID = $_SESSION['user']->getID();
+$userID = $_GET['userID'];
+$type=$_GET['type'];
 //콘텐츠 검색임시로 그냥 다 불러오기
-if ($_GET['profile']) {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
+if ($type=='profile') {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
     //내 프로필일때는 내가쓴것내가 타겟인것 전부 가져온다
-    if ($_GET['I'] == "true") {
+    if ($_GET['I'] == true) {
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -45,7 +44,7 @@ FROM publixher.TBL_CONTENT AS CONT
 WHERE (DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND REPORT < 10)
 ORDER BY WRITE_DATE DESC
 LIMIT " . $nowpage . ", 10;";
-    } elseif ($_GET['frelation'] == "true") {
+    } elseif ($_GET['frelation'] == true) {
         //친구관계일때
         $sql = "SELECT
   CONT.ID,
@@ -120,11 +119,11 @@ LIMIT " . $nowpage . ", 10;";
     }
 
     $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID_WRITER', $_GET['profile'], PDO::PARAM_STR);
-    $prepare->bindValue(':ID_TARGET', $_GET['profile'], PDO::PARAM_STR);
+    $prepare->bindValue(':ID_WRITER', $_GET['target'], PDO::PARAM_STR);
+    $prepare->bindValue(':ID_TARGET', $_GET['target'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif (isset($_GET['fid'])) { //폴더에선 폴더 내용물이 시간순 노출
+} elseif ($type=='folder') { //폴더에선 폴더 내용물이 시간순 노출
     //TODO:공개범위 설정 해야함
     $sql = "SELECT
   CONT.ID,
@@ -160,7 +159,7 @@ LIMIT " . $nowpage . ", 10";
     $prepare->bindValue(':FOLDER', $_GET['fid'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif (isset($_GET['buylist'])) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
+} elseif ($type=='buyList') { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
     //구매리스트의 번호를 찾아온다
     $sql = "SELECT
   CONT.ID,
@@ -199,7 +198,7 @@ LIMIT " . $nowpage . ", 10";
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif (isset($_GET['getItem'])) {  //한개만 특정 주소로 가서 찾는것
+} elseif ($type=='one') {  //한개만 특정 주소로 가서 찾는것
     $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -232,7 +231,7 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare->bindValue(':ID', $_GET['getItem'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif (isset($_GET['tag'])) {
+} elseif ($type=='tag') {
     $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -266,7 +265,7 @@ LIMIT " . $nowpage . ", 10";
     $prepare = $db->prepare($sql);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} elseif (isset($_GET['body'])) {
+} elseif ($type=='bodySearch') {
     $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -300,7 +299,7 @@ LIMIT " . $nowpage . ", 10";
     $prepare = $db->prepare($sql);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-} else {  //메인화면에서 노출시켜줄 순
+} elseif($type=='main') {  //메인화면에서 노출시켜줄 순
 
     $sql = "SELECT
   CONT.ID,
@@ -336,6 +335,39 @@ LIMIT :NOWPAGE, 10";
     $prepare->bindValue(':NOWPAGE', $nowpage);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+}elseif($type=='top'){
+    $sql = "SELECT
+  CONT.ID,
+  CONT.ID_WRITER,
+  CONT.TITLE,
+  CONT.EXPOSE,
+  CONT.KNOCK,
+  CONT.WRITE_DATE,
+  CONT.MODIFY_DATE,
+  CONT.FOR_SALE,
+  CONT.CATEGORY,
+  CONT.SUB_CATEGORY,
+  CONT.PRICE,
+  CONT.PREVIEW,
+  CONT.COMMENT,
+  CONT.SALE,
+  CONT.FOLDER,
+  CONT.CHANGED,
+  CONT.MORE,
+  CONT.TAG,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC,
+  FOLDER.DIR AS FOLDER_NAME
+FROM publixher.TBL_CONTENT AS CONT
+  INNER JOIN publixher.TBL_USER AS USER
+  ON USER.ID=CONT.ID_WRITER
+  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
+  ON CONT.FOLDER=FOLDER.ID
+WHERE (DEL = 'N' AND ID_TARGET IS NULL AND EXPOSE > 1 AND REPORT < 10 AND USER.ID=:USER_ID AND CONT.ID=USER.TOP_CONTENT)";
+    $prepare = $db->prepare($sql);
+    $prepare->bindValue(':USER_ID', $_GET['target']);
+    $prepare->execute();
+    $result=$prepare->fetch(PDO::FETCH_ASSOC);
 }
 
 

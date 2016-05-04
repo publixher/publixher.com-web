@@ -1,47 +1,36 @@
 <?php
 header("Content-Type:application/json");
-if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
-    exit('부정한 호출입니다.');
-}
 if (!empty($_POST)) {
     require_once '../../conf/database_conf.php';
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
-    require_once '../../lib/imagecrop.php';
-    require_once '../../lib/random_64.php';
-    require_once '../../lib/getImgFromUrl.php';
+    require_once'../../lib/imagecrop.php';
+    require_once'../../lib/random_64.php';
+    require_once'../../lib/getImgFromUrl.php';
 
-//토큰검사
-    session_start();
-    //CSRF검사
-    if (!isset($_POST['token']) AND !isset($_GET['token'])) {
-        exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
-    } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
-        exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
-    }
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
-    $body_text = $_POST['body_text'];
-    $for_sale = $_POST['for_sale'];
+    $body_text=$_POST['body_text'];
+    $for_sale=$_POST['for_sale'];
     $body = $purifier->purify($body);
-    $body_text = $purifier->purify($body_text);
+    $body_text=$purifier->purify($body_text);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
-    $imgcount = count($imgs[0]);
-    $croprex = "/^\\/img\\/crop\\//i";
+    $imgcount=count($imgs[0]);
+    $croprex="/^\\/img\\/crop\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
-    for ($i = 0; $i < $imgcount; $i++) {
-        if (!preg_match($croprex, $imgs[1][$i][0])) {
-            $originurl[$i] = $imgs[1][$i][0];
-            $savedurl[$i] = getImgFromUrl($imgs[1][$i][0], 'origin', 'crop', 510);
-            $imgs[1][$i][0] = $savedurl[$i];
-            $imgs[0][$i][0] = str_replace($originurl[$i], $savedurl[$i], $imgs[0][$i][0]);
-            $body = str_replace($originurl, $savedurl, $body);
+    for($i=0;$i<$imgcount;$i++) {
+        if (!preg_match($croprex,$imgs[1][$i][0])){
+            $originurl[$i]=$imgs[1][$i][0];
+            $savedurl[$i]=getImgFromUrl($imgs[1][$i][0],'origin','crop',510);
+            $imgs[1][$i][0]=$savedurl[$i];
+            $imgs[0][$i][0]=str_replace($originurl[$i],$savedurl[$i],$imgs[0][$i][0]);
+            $body=str_replace($originurl,$savedurl,$body);
         }
     }
     //링크로 덮는작업
@@ -55,17 +44,17 @@ if (!empty($_POST)) {
     }
     $previewimg = $imgs[1][0][0];
     //더보기가 있어야할지 검사
-    $bodylen = mb_strlen($body, 'utf-8');
-    if (!$previewimg and $bodylen <= 400) {
-        $more = 0;
-    } elseif ($previewimg and !$imgs[1][1] and $bodylen <= 200) {
-        if ($for_sale) {
-            $more = 1;
-        } else {
-            $more = 0;
+    $bodylen=mb_strlen($body,'utf-8');
+    if(!$previewimg and $bodylen<=400){
+        $more=0;
+    }elseif($previewimg and !$imgs[1][1] and $bodylen<=200){
+        if($for_sale){
+            $more=1;
+        }else{
+            $more=0;
         }
-    } else {
-        $more = 1;
+    }else{
+        $more=1;
     }
 
     $blured;//오타 아님 정의해야해서 하는
@@ -106,9 +95,9 @@ if (!empty($_POST)) {
         }
     }
     //사진 80으로 크롭시켜서 대표이미지로 등록
-    if ($previewimg and $for_sale) {
-        $imgsrc = __DIR__ . '/../..' . str_replace('crop', 'origin', $imgs[1][0][0]);
-        $imgout = str_replace('origin', 'crop80', $imgsrc);
+    if($previewimg and $for_sale){
+        $imgsrc=__DIR__.'/../..'.str_replace('crop','origin',$imgs[1][0][0]);
+        $imgout=str_replace('origin','crop80',$imgsrc);
         $img = new imaging;
         $img->set_img($imgsrc);
         $img->set_quality(100);
@@ -148,12 +137,12 @@ if (!empty($_POST)) {
             $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
             $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
             $prepare->bindValue(':IMG', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
-            if ($_POST['adult'] == "true") {
+            if ($_POST['adult'] == true) {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {
                 $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
             }
-            if ($_POST['ad'] == "true") {
+            if ($_POST['ad'] == true) {
                 $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
             } else {
                 $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
@@ -167,6 +156,7 @@ if (!empty($_POST)) {
             $folprepare->bindValue(':ID_MASTER', $ID_writer);
             $folprepare->execute();
         }
+        //id로 컨텐츠 테이블의 내용도 가져옴
         //id로 컨텐츠 테이블의 내용도 가져옴
         $sql = "SELECT
   CONT.ID,
@@ -233,7 +223,7 @@ FROM publixher.TBL_CONTENT AS CONT
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);
         $db->commit();
         echo $result;
-    } catch (PDOException $e) {
+    }catch(PDOException $e){
         $db->rollBack();
         echo "<script>alert('동작중 문제가 생겼습니다. message : $e->getMessage()')";
         exit;

@@ -2,7 +2,6 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
-session_start();
 $action = $_GET['action'] ? $_GET['action'] : $_POST['action'];
 $itemID = $_GET['itemID'] ? $_GET['itemID'] : $_POST['itemID'];
 if ($action == 'get_item') {
@@ -23,13 +22,6 @@ if ($action == 'get_item') {
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
-    //CSRF검사
-    if (!isset($_POST['token']) AND !isset($_GET['token'])) {
-        exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
-    } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
-        exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
-    }
-    //여기부턴 uploadContent.php와 같음
 
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
@@ -91,7 +83,7 @@ if ($action == 'get_item') {
         }
     }
     //content테이블에 넣음
-    $ID_writer = $_POST['ID_writer'];
+    $ID_writer = $_POST['userID'];
     $targetID = $_POST['targetID'];
     $id=$_POST['ID'];
 
@@ -103,9 +95,16 @@ if ($action == 'get_item') {
     $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
 
     if (!$_POST['for_sale']) {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT
+SET BODY    = :BODY, FOLDER = :FOLDER, EXPOSE = :EXPOSE, CHANGED = 1, PREVIEW = :PREVIEW, ORIGINAL = :ORIGINAL,
+  TAG       = :TAG, BODY_TEXT = :BODY_TEXT
+WHERE ID = :ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT
+SET BODY    = :BODY, FOLDER = :FOLDER, EXPOSE = :EXPOSE, CHANGED = 1, PREVIEW = :PREVIEW, ORIGINAL = :ORIGINAL,
+  PRICE     = :PRICE, CATEGORY = :CATEGORY, SUB_CATEGORY = :SUB_CATEGORY, TITLE = :TITLE, AGE = :AGE, AD = :AD,
+  TAG       = :TAG, BODY_TEXT = :BODY_TEXT
+WHERE ID = :ID";
     }
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $id);
@@ -122,12 +121,12 @@ if ($action == 'get_item') {
         $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
         $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
         $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-        if ($_POST['adult'] == "true") {
+        if ($_POST['adult'] == true) {
             $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
         } else {
             $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
         }
-        if ($_POST['ad'] == "true") {
+        if ($_POST['ad'] == true) {
             $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
         } else {
             $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
@@ -182,19 +181,26 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
         $prepare3 = $db->prepare($sql3);
         $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
         $prepare3->execute();
+        //폴더 이름 받아오기
+        $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
+        $prepare4 = $db->prepare($sql4);
+        $prepare4->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
+        $prepare4->execute();
+        $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
     }
-//태그 넣기
-    if ($_POST['tag']) {
-        $tags = json_decode($_POST['tag']);
+    //태그 넣기
+    if ($_POST['tags']) {
+        $tags = json_decode($_POST['tags']);
         $tagsql = "INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
         $tpr = $db->prepare($tagsql);
-        $tpr->bindValue(':ID_CONTENT', $id);
+        $tpr->bindValue(':ID_CONTENT', $uid);
         for ($i = 0; $i < count($tags); $i++) {
             $tpr->bindValue(':TAG', $tags[$i]);
             $tpr->execute();
         }
     }
 
+    //핀관리
     $sql5="UPDATE publixher.TBL_PIN_LIST SET MODIFIED=1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
     $prepare5=$db->prepare($sql5);
     $prepare5->bindValue(':ID_CONTENT',$id);

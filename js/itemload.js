@@ -12,7 +12,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
         write += '>>> <a href="/profile/' + targetID + '">' + targetname + '</a> '
     }
     if (folderID) {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a>에게 씀</span>&nbsp;';
     } else {
         write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder">비분류</span>&nbsp;';
     }
@@ -45,10 +45,11 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '</div></div> <div class="body">'
     write += preview + '</div>';
     if (tag) {
-        write += '<br><br>'
+        write += '<div class="content-body-rep-wrap">';
         for (var i = 0; i < tag.length; i++) {
             write += ' <a href="/tag/' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
+        write+='</div>';
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
@@ -112,10 +113,11 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '</div></div> <div class="body">'
     write += preview + '</div>';
     if (tag) {
-        write += '<br><br>'
+        write += '<div class="content-body-rep-wrap">';
         for (var i = 0; i < tag.length; i++) {
             write += ' <a href="/tag/' + tag[i] + '" class="body-tag">' + tag[i] + '</a>'
         }
+        write+='</div>'
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
@@ -181,8 +183,8 @@ $(document).ready(function () {
                             var pic = res[i]['PIC'];
                             var targetID = res[i]['ID_TARGET'];
                             var targetname = res[i]['TARGET_NAME'];
-                            var folderID = null;
-                            var foldername = null;
+                            var folderID = res[i]['TARGET_ID'];
+                            var foldername = res[i]['TARGET_NAME'];
                             var expose = res[i]['EXPOSE'];
                             var more = res[i]['MORE'];
                             if (res[i]['FOLDER'] != null) {
