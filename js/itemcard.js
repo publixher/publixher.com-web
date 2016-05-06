@@ -102,7 +102,7 @@ $(document).ready(function () {
                                                             .attr('data-loader', 'spinner')
                                                             .addClass('load-item tag-load');
                                                         var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                        if(!ul.find('.tag-load').length) {
+                                                        if (!ul.find('.tag-load').length) {
                                                             ul.append(
                                                                 $('<li>')
                                                                     .append(spinner)
@@ -161,6 +161,71 @@ $(document).ready(function () {
                                 )
                         )
                 );
+            tab_comment
+                .append(
+                    $('<div>')
+                        .addClass('dropdown')
+                        .append(
+                            $('<button>')
+                                .addClass('btn btn-default dropdown-toggle donate-btn')
+                                .attr({
+                                    'type': 'button',
+                                    'data-toggle': 'dropdown',
+                                    'aria-expanded': 'true',
+                                    'id': thisitemID + '-donate-btn'
+                                })
+                                .append(
+                                    $('<span>')
+                                        .addClass('pubico pico-24')
+                                )
+                            , $('<ul>')  //기부 금액 넣기
+                                .on('click', function (e) {
+                                    e.stopPropagation();
+                                })
+                                .addClass('dropdown-menu donate-input-ul')
+                                .attr({
+                                    'role': 'menu',
+                                    'aria-labelledby': thisitemID + '-donate-btn'
+                                })
+                                .append(
+                                    $('<li>')
+                                        .addClass('donate-input-li')
+                                        .append(
+                                            $('<input>')
+                                                .addClass('form-control donate-form')
+                                                .attr('type', 'text')
+                                                .on('keyup', function (e) {
+                                                    if (e.keyCode == 13 && $(this).val().length > 0) {
+                                                        var thisform = $(this);
+                                                        var point=$(this).val();
+                                                        var rex=/^\d+$/;
+                                                        //숫자인지 체크
+                                                        if (rex.test(point)) {
+                                                            $.ajax({
+                                                                url: "/php/data/donate.php",
+                                                                type: "POST",
+                                                                data: {
+                                                                    userID: mid,
+                                                                    thisitemID: thisitemID,
+                                                                    point: point,
+                                                                    token: token
+                                                                },
+                                                                dataType: 'json',
+                                                                success: function (res) {
+                                                                    thisform.val('');
+                                                                }
+                                                            })
+                                                        } else {
+                                                            alert('숫자만 입력해주세요.');
+                                                            return 1;
+                                                        }
+                                                    }
+
+                                                })
+                                        )
+                                )
+                        )
+                )
             tab_comment.append(word);
             $('#best-' + thisitemID).append(spinner);
             $.ajax({
@@ -460,7 +525,7 @@ $(document).ready(function () {
                                                                     .attr('data-loader', 'spinner')
                                                                     .addClass('load-item tag-load');
                                                                 var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                                if(!ul.find('.tag-load').length) {
+                                                                if (!ul.find('.tag-load').length) {
                                                                     ul.append(
                                                                         $('<li>')
                                                                             .append(spinner)
@@ -480,9 +545,9 @@ $(document).ready(function () {
                                                                                     .append(
                                                                                         $('<div>')
                                                                                             .append(
-                                                                                        $('<img>')
-                                                                                            .attr('src', res[i]['PIC'])
-                                                                                            .addClass('rep-tag-friend-pic')
+                                                                                                $('<img>')
+                                                                                                    .attr('src', res[i]['PIC'])
+                                                                                                    .addClass('rep-tag-friend-pic')
                                                                                             )
                                                                                             .addClass('rep-tag-friend-pic-wrap')
                                                                                         , $('<span>')

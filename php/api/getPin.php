@@ -1,7 +1,6 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-require_once '../../conf/User.php';
 $userID = $_GET['userID'];
 $action = $_GET['action'];
 $nowpage=$_GET['nowpage']*20;

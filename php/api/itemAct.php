@@ -365,24 +365,26 @@ LIMIT
     $result = $prepare1->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
         //안샀으면
-        $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-        $prepare2->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-        $prepare2->execute();
+        try {
+            $db->beginTransaction();
+            $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+            $prepare2->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+            $prepare2->execute();
 
-        $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
-        $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
-        $prepare3->execute();
+            $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
+            $prepare3->execute();
 
-        //알람처리
-        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
-        $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-        $prepare4->bindValue(':ID_TARGET', $writer, PDO::PARAM_STR);
-        $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-        $prepare4->execute();
+            //알람처리
+            $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
+            $prepare4 = $db->prepare($sql4);
+            $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+            $prepare4->bindValue(':ID_TARGET', $writer, PDO::PARAM_STR);
+            $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+            $prepare4->execute();
 //TODO:흥미처리해야함
 //        //흥미 처리
 //        $sql6 = "SELECT ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
@@ -414,8 +416,14 @@ LIMIT
 //                $ip->execute();
 //            }
 //        }
-        echo '{status":1}';
-        exit;
+            $db->commit();
+            echo '{status":1}';
+            exit;
+        }catch(PDOException $e){
+            $db->rollBack();
+            echo '{"status":-1}';
+            exit;
+        }
     }
     echo '{"status":-6}';
     exit;
