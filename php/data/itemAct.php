@@ -301,6 +301,62 @@ LIMIT
     $prepare3->execute();
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
+    //후원기능 시작
+    if(isset($_POST['donatelist'])) {
+        $point=0;
+        foreach($_POST['donatelist'] as $val){
+            $point=$point+$val;
+        }
+        $sql = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
+        $prepare = $db->prepare($sql);
+        $prepare->bindValue(':ID_ANONY', $userID);
+        $prepare->bindValue(':ID_USER', $userID);
+        $prepare->execute();
+        $cash=$prepare->fetchColumn();
+        if ($cash > $point) {
+            try {
+                $db->beginTransaction();
+                //내 포인트 깎기
+                $dsql = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT-:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+                $dprepare = $db->prepare($dsql);
+                $dprepare->bindValue(':POINT', $point);
+                $dprepare->bindValue(':ID_ANONY', $userID);
+                $dprepare->bindValue(':ID_USER', $userID);
+                $dprepare->execute();
+                //콘텐츠에 기부 올리기
+                $upsql = "UPDATE publixher.TBL_CONTENT SET DONATE=DONATE+:POINT WHERE ID=:ID";
+                $upprepare = $db->prepare($upsql);
+                $upprepare->bindValue(':ID', $ID);
+                $upprepare->bindValue(':POINT', $point);
+                $upprepare->execute();
+                //판매자의 포인트 올리기
+                $psql = "UPDATE publixher.TBL_CONNECTOR AS CONN
+  INNER JOIN publixher.TBL_CONTENT AS CONT
+  ON CONT.ID_WRITER =CONN.ID_USER OR CONT.ID_WRITER=CONN.ID_ANONY
+  SET CONN.CASH_POINT=CONN.CASH_POINT+:POINT WHERE CONT.ID=:ID";
+                $pprepare = $db->prepare($psql);
+                $pprepare->bindValue(':POINT', $point);
+                $pprepare->bindValue(':ID', $ID);
+                $pprepare->execute();
+                //기부 테이블에 추가
+                $isql = "INSERT INTO publixher.TBL_CONTENT_DONATE(ID_USER, ID_CONTENT,POINT) VALUES(:ID_USER,:ID_CONTENT,:POINT)";
+                $iprepare = $db->prepare($isql);
+                $iprepare->bindValue(':ID_USER', $userID);
+                $iprepare->bindValue(':ID_CONTENT', $ID);
+                $iprepare->bindValue(':POINT', $point);
+                $iprepare->execute();
+                $db->commit();
+            } catch (PDOException $e) {
+                $db->rollBack();
+                echo '{"status":-1}';
+                exit;
+            }
+        } else {
+            echo '{"status":-2}';
+            exit;
+        }
+    }
+
     //알람처리
     $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR)";
     $prepare4 = $db->prepare($sql4);
@@ -318,13 +374,16 @@ LIMIT
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
-    $result = json_encode(array('COMMENT'=>$result['COMMENT']), JSON_UNESCAPED_UNICODE);
-    echo $result;
-
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
     $prepare5 = $db->prepare($sql5);
     $prepare5->bindValue(':ID_CONTENT', $ID);
     $prepare5->execute();
+
+    $result = json_encode(array('COMMENT'=>$result['COMMENT']), JSON_UNESCAPED_UNICODE);
+    echo $result;
+
+
+
 } elseif ($act == 'share') {
 
 } elseif ($act == 'buy') {

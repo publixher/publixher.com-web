@@ -200,35 +200,17 @@ $(document).ready(function () {
                                                         var point=$(this).val();
                                                         var rex=/^\d+$/;
                                                         //숫자인지 체크
-                                                        if (rex.test(point)) {
-                                                            $.ajax({
-                                                                url: "/php/data/donate.php",
-                                                                type: "POST",
-                                                                data: {
-                                                                    userID: mid,
-                                                                    thisitemID: thisitemID,
-                                                                    point: point,
-                                                                    token: token
-                                                                },
-                                                                dataType: 'json',
-                                                                success: function (res) {
-                                                                    if(res['status']<0) {   //실패시
-                                                                        if (res['status'] == -2) {
-                                                                            alert('앗! 포인트가 모자라요.');
-                                                                            return;
-                                                                        }
-                                                                        if (res['status'] == -1) {
-                                                                            alert('앗! 서버오류에요. 다시한번만 해주실래요?');
-                                                                            return;
-                                                                        }
-                                                                    }
-                                                                    thisform.val('');
-                                                                    alert(point + '포인트를 후원했습니다.');
-
-                                                                }
-                                                            })
+                                                        if (rex.test(point) && point!=0) {
+                                                            tab_comment.children('.commentReg')
+                                                                .append(
+                                                                    $('<span>')
+                                                                        .addClass('donate-span')
+                                                                        .text(point)
+                                                                        .attr('contenteditable','false')
+                                                                )
+                                                            thisform.val('');
                                                         } else {
-                                                            alert('숫자만 입력해주세요.');
+                                                            alert('1이상 숫자만 입력해주세요.');
                                                             return 1;
                                                         }
                                                     }
@@ -423,6 +405,10 @@ $(document).ready(function () {
             form.children('.rep-tag').each(function () {
                 taglist.push($(this).attr('data-userid'))
             })
+            var donatelist=[];  //후원 리스트 추출
+            form.children('.donate-span').each(function (list) {
+                donatelist.push($(this).text())
+            })
             thisform.removeClass('commentReg');
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -433,7 +419,8 @@ $(document).ready(function () {
                     userID: mid,
                     comment: reply,
                     token: token,
-                    taglist: taglist
+                    taglist: taglist,
+                    donatelist:donatelist
                 },
                 dataType: 'json',
                 success: function (res) {
