@@ -12,7 +12,8 @@ $config->set('AutoFormat.Linkify', true);
 $config->set('HTML.MaxImgLength', null);
 $config->set('CSS.MaxImgLength', null);
 //이미지는 허용
-$config->set('HTML.Allowed','img[src|class],a[class],br,div,p');
+$config->set('HTML.Allowed','img[src|class],a[class],br,div,p,span[class]');
+$config->set('Attr.AllowedClasses',array('donate-span'=>true));
 
 // 다른 인코딩 지원 여부는 확인하지 않았습니다. EUC-KR인 경우 iconv로 UTF-8 변환후 사용하시는 게 좋습니다.
 $config->set('Core.Encoding', 'UTF-8');

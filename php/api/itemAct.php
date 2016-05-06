@@ -272,24 +272,6 @@ LIMIT
     $uid = uniqueid($db, 'reply');
     $taglist = $_POST['taglist'];
     $taglist_len = count($taglist);
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
-    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
-    $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
-    $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
-    $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-    $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-    $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
-    $prepare1->execute();
-
-    $prepare2 = $db->prepare($sql2);
-    $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
-    $prepare2->execute();
-
-    $prepare3 = $db->prepare($sql3);
-    $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
-    $prepare3->execute();
-    $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //후원기능 시작
     if(isset($_POST['donatelist'])) {
@@ -346,6 +328,25 @@ LIMIT
             exit;
         }
     }
+
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
+    $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
+    $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
+    $prepare1 = $db->prepare($sql1);
+    $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
+    $prepare1->execute();
+
+    $prepare2 = $db->prepare($sql2);
+    $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
+    $prepare2->execute();
+
+    $prepare3 = $db->prepare($sql3);
+    $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
+    $prepare3->execute();
+    $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
     $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR)";
