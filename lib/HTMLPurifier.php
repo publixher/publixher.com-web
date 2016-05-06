@@ -13,7 +13,7 @@ $config->set('HTML.MaxImgLength', null);
 $config->set('CSS.MaxImgLength', null);
 //이미지는 허용
 $config->set('HTML.Allowed','img[src|class],a[class],br,div,p,span[class]');
-$config->set('Attr.AllowedClasses',array('donate-span'=>true));
+$config->set('Attr.AllowedClasses',array('donate-span'=>true,'rep-tag'=>true));
 
 // 다른 인코딩 지원 여부는 확인하지 않았습니다. EUC-KR인 경우 iconv로 UTF-8 변환후 사용하시는 게 좋습니다.
 $config->set('Core.Encoding', 'UTF-8');
@@ -47,7 +47,6 @@ $config->set('URI.SafeIframeRegexp', '#^(?:https?:)?//(?:'.implode('|', array(
         'c\\.brightcove\\.com/',
         'www\\.slideshare\\.net/',
     )).')#');
-
 // 설정을 저장하고 필터링 라이브러리 초기화
 $purifier = new HTMLPurifier($config);
 ?>
