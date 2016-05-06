@@ -102,10 +102,12 @@ $(document).ready(function () {
                                                             .attr('data-loader', 'spinner')
                                                             .addClass('load-item tag-load');
                                                         var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                            .append(
+                                                        if(!ul.find('.tag-load')) {
+                                                            ul.append(
                                                                 $('<li>')
                                                                     .append(spinner)
                                                             );
+                                                        }
                                                         $.ajax({
                                                             url: '/php/data/nameFind.php',
                                                             type: 'GET',
@@ -458,10 +460,12 @@ $(document).ready(function () {
                                                                     .attr('data-loader', 'spinner')
                                                                     .addClass('load-item tag-load');
                                                                 var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                                    .append(
+                                                                if(!ul.find('.tag-load')) {
+                                                                    ul.append(
                                                                         $('<li>')
                                                                             .append(spinner)
                                                                     );
+                                                                }
                                                                 $.ajax({
                                                                     url: '/php/data/nameFind.php',
                                                                     type: 'GET',
