@@ -114,7 +114,6 @@ $(document).ready(function () {
                                                             dataType: 'json',
                                                             data: {target: 'friend', mid: mid, name: name},
                                                             success: function (res) {
-                                                                console.log(res)
                                                                 ul.children(':not(.rep-tag-input-li)').remove();
                                                                 for (var i = 0; i < res.length; i++) {
                                                                     ul.append(
@@ -645,7 +644,6 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     thisform.addClass('commentReg_sub').text('').css('height', '25px');
                     var subrep_list = $('#' + form.replace('form', 'sub'));
                     var thisreply = form.replace('-form', '');
@@ -1159,7 +1157,6 @@ $(document).ready(function () {
             data: {ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token},
             dataType: 'json',
             success: function (res) {
-                console.log(res)
                 if (res['result'] == 'N' && res['reason'] == 'already') {
                     alert('이미 노크하신 댓글입니다.');
                 }

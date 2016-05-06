@@ -7,7 +7,7 @@ $act = $_POST['action'];
 if (!$act) {
     $act = $_GET['action'];
 }
-//액션에 따라 동작이 달라짐 knock,comment,commentreg,share,buy
+//액션에 따라 동작이 달라짐
 if ($act == 'knock') {
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
