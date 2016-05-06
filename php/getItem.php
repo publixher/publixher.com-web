@@ -219,7 +219,8 @@
     <script>
         var iid = '<?=$iid?>';
         var userID = '<?=$userID?>';
-        var loadOption = {ID: userID, getItem: iid};
+        var page=0;
+        var loadOption = {ID: userID, getItem: iid,nowpage:page};
     </script>
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>

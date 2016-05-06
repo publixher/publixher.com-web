@@ -212,7 +212,20 @@ $(document).ready(function () {
                                                                 },
                                                                 dataType: 'json',
                                                                 success: function (res) {
+                                                                    console.log(res)
+                                                                    if(res['status']<0) {   //실패시
+                                                                        if (res['status'] == -2) {
+                                                                            alert('앗! 포인트가 모자라요.');
+                                                                            return;
+                                                                        }
+                                                                        if (res['status'] == -1) {
+                                                                            alert('앗! 서버오류에요. 다시한번만 해주실래요?');
+                                                                            return;
+                                                                        }
+                                                                    }
                                                                     thisform.val('');
+                                                                    alert(point + '를 이 게시물에 기부하셨네요. 돈도 많으셔라.');
+
                                                                 }
                                                             })
                                                         } else {

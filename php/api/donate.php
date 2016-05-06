@@ -36,7 +36,13 @@ if($prepare->fetchColumn()>$point) {
         $pprepare->bindValue(':POINT', $point);
         $pprepare->bindValue(':ID', $thisitemID);
         $pprepare->execute();
-
+        //기부 테이블에 추가
+        $isql="INSERT INTO publixher.TBL_CONTENT_DONATE(ID_USER, ID_CONTENT,POINT) VALUES(:ID_USER,:ID_CONTENT,:POINT)";
+        $iprepare = $db->prepare($isql);
+        $iprepare->bindValue(':ID_USER', $userID);
+        $iprepare->bindValue(':ID_CONTENT', $thisitemID);
+        $iprepare->bindValue(':POINT', $point);
+        $iprepare->execute();
         $db->commit();
         echo '{"status":1}';
     } catch (PDOException $e) {

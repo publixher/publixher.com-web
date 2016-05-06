@@ -200,6 +200,7 @@ LIMIT " . $nowpage . ", 10";
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif (isset($_GET['getItem'])) {  //한개만 특정 주소로 가서 찾는것
+    if($nowpage!=0) exit;   //첫번재 로드가 아니면 아무것도 안줌
     $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
