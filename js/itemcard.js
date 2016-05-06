@@ -102,7 +102,7 @@ $(document).ready(function () {
                                                             .attr('data-loader', 'spinner')
                                                             .addClass('load-item tag-load');
                                                         var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                        if(!ul.find('.tag-load')) {
+                                                        if(!ul.find('.tag-load').length) {
                                                             ul.append(
                                                                 $('<li>')
                                                                     .append(spinner)
@@ -460,7 +460,7 @@ $(document).ready(function () {
                                                                     .attr('data-loader', 'spinner')
                                                                     .addClass('load-item tag-load');
                                                                 var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                                if(!ul.find('.tag-load')) {
+                                                                if(!ul.find('.tag-load').length) {
                                                                     ul.append(
                                                                         $('<li>')
                                                                             .append(spinner)
