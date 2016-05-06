@@ -212,7 +212,6 @@ $(document).ready(function () {
                                                                 },
                                                                 dataType: 'json',
                                                                 success: function (res) {
-                                                                    console.log(res)
                                                                     if(res['status']<0) {   //실패시
                                                                         if (res['status'] == -2) {
                                                                             alert('앗! 포인트가 모자라요.');
@@ -224,7 +223,7 @@ $(document).ready(function () {
                                                                         }
                                                                     }
                                                                     thisform.val('');
-                                                                    alert(point + '를 이 게시물에 기부하셨네요. 돈도 많으셔라.');
+                                                                    alert(point + '포인트를 후원했습니다.');
 
                                                                 }
                                                             })
@@ -414,7 +413,6 @@ $(document).ready(function () {
             }
         })
     })
-    //코멘트 등록 동작
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).text().length > 0 && !e.shiftKey) {
             var thisform = $(this);
