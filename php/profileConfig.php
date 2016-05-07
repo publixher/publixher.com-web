@@ -52,7 +52,7 @@
     $userhschool = $userinfo->getHSCHOOL();
     $useruniv = $userinfo->getUNIV();
     $userpic = $userinfo->getPIC();
-
+    $usercom=$userinfo->getCOMMUNITY();
     $birth = date("Y-m-d", strtotime($target['BIRTH']));
     $birth=explode('-',$birth);
     if ($userinfo->getISNICK() == 'N') {
@@ -73,12 +73,13 @@
         var useryear='<?=$birth[0]?>';
         var usermonth='<?=$birth[1]?>';
         var userday='<?=$birth[2]?>';
-        console.log(usermonth)
     </script>
+    <?php
+    if($usercom==0){
+    ?>
     <form method='post' action='/php/data/profileChange.php' id="pf">
         <input type="hidden" name="action" value="profilechange">
         <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
-        <input type="hidden" name="age" value="<?=$_SESSION['age']?>">
         <table>
             <tr>
                 <td>아이디<br>(이메일)</td>
@@ -163,8 +164,9 @@
             </tr>
         </table>
     </form>
-    <?php
-    if ($userinfo->getISNICK() == 'N') { ?>
+    <?php }
+
+    if ($userinfo->getISNICK() == 'N' && $userinfo->getCOMMUNITY()==0) { ?>
         <form method='post' action='/php/data/profileChange.php'>
             <input type="hidden" name="action" value="anonyregist">
             <span>현재 익명 : </span><span><?= $nickname ?></span>

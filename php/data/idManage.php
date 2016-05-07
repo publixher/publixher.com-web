@@ -25,6 +25,11 @@ if ($action == 'ban') {
     $prepare->bindValue(':ID_MANAGER', $managerID);
     $prepare->bindValue(':DAYS', $_POST['days']);
     $prepare->execute();
+
+    $sqlu = "UPDATE publixher.TBL_USER SET WRITEAUTH=0 WHERE ID=:ID_TARGET";
+    $prepareu = $db->prepare($sqlu);
+    $prepareu->bindValue(':ID_TARGET', $_POST['target']);
+    $prepare->execute();
     echo '{"result":"Y"}';
 } elseif ($action == 'release') {
     $sql = 'UPDATE publixher.TBL_USER SET BAN=NULL WHERE ID=:ID';

@@ -27,6 +27,15 @@ class User
     private $EXPAUTH;
     private $PIN;
     private $BAN;
+    private $COMMUNITY;
+
+    /**
+     * @return mixed
+     */
+    public function getCOMMUNITY()
+    {
+        return $this->COMMUNITY;
+    }
 
     /**
      * @return mixed

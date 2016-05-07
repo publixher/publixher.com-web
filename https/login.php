@@ -92,9 +92,16 @@
                             style="width: 50px;display:inline"></select>
                 </td>
             </tr>
+            <tr>
+            <td>
+                <input type="checkbox" name="community">커뮤니티로 생성하기
+            </td>
+                </tr>
+            <tr>
             <td colspan="2"><input type="submit" value="가입하기" id="submit" class="btn btn-default" tabindex="13"
                                    class='form-control'></td>
             </tr>
+
         </table>
     </form>
 </div>
