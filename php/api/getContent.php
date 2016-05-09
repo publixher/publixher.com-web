@@ -300,8 +300,71 @@ LIMIT " . $nowpage . ", 10";
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif($type=='main') {  //메인화면에서 노출시켜줄 순
-
-    $sql = "SELECT
+    if(isset($_GET['category'])){
+        if(isset($_GET['sub_category'])){
+            $sql="SELECT
+  CONT.ID,
+  CONT.ID_WRITER,
+  CONT.TITLE,
+  CONT.EXPOSE,
+  CONT.KNOCK,
+  CONT.WRITE_DATE,
+  CONT.MODIFY_DATE,
+  CONT.FOR_SALE,
+  CONT.CATEGORY,
+  CONT.SUB_CATEGORY,
+  CONT.PRICE,
+  CONT.PREVIEW,
+  CONT.COMMENT,
+  CONT.SALE,
+  CONT.FOLDER,
+  CONT.CHANGED,
+  CONT.MORE,
+  CONT.TAG,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC,
+  FOLDER.DIR AS FOLDER_NAME
+FROM publixher.TBL_CONTENT AS CONT
+  INNER JOIN publixher.TBL_USER AS USER
+  ON USER.ID=CONT.ID_WRITER
+  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
+  ON CONT.FOLDER=FOLDER.ID
+WHERE (DEL = 'N' AND ID_TARGET IS NULL AND EXPOSE > 1 AND REPORT < 10 AND CATEGORY=:CATEGORY)
+ORDER BY WRITE_DATE DESC
+LIMIT :NOWPAGE, 10";
+        }else
+            $sql="SELECT
+  CONT.ID,
+  CONT.ID_WRITER,
+  CONT.TITLE,
+  CONT.EXPOSE,
+  CONT.KNOCK,
+  CONT.WRITE_DATE,
+  CONT.MODIFY_DATE,
+  CONT.FOR_SALE,
+  CONT.CATEGORY,
+  CONT.SUB_CATEGORY,
+  CONT.PRICE,
+  CONT.PREVIEW,
+  CONT.COMMENT,
+  CONT.SALE,
+  CONT.FOLDER,
+  CONT.CHANGED,
+  CONT.MORE,
+  CONT.TAG,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop50') AS PIC,
+  FOLDER.DIR AS FOLDER_NAME
+FROM publixher.TBL_CONTENT AS CONT
+  INNER JOIN publixher.TBL_USER AS USER
+  ON USER.ID=CONT.ID_WRITER
+  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
+  ON CONT.FOLDER=FOLDER.ID
+WHERE (DEL = 'N' AND ID_TARGET IS NULL AND EXPOSE > 1 AND REPORT < 10 AND CATEGORY=:CATEGORY AND SUB_CATEGORY=:SUB_CATEGORY)
+ORDER BY WRITE_DATE DESC
+LIMIT :NOWPAGE, 10";
+    }else
+        $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
   CONT.TITLE,
@@ -333,41 +396,12 @@ ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
+    if(isset($_GET['category'])){
+        $prepare->bindValue(':CATEGORY',$_GET['category']);
+        if(isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
+    }
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-}elseif($type=='top'){
-    $sql = "SELECT
-  CONT.ID,
-  CONT.ID_WRITER,
-  CONT.TITLE,
-  CONT.EXPOSE,
-  CONT.KNOCK,
-  CONT.WRITE_DATE,
-  CONT.MODIFY_DATE,
-  CONT.FOR_SALE,
-  CONT.CATEGORY,
-  CONT.SUB_CATEGORY,
-  CONT.PRICE,
-  CONT.PREVIEW,
-  CONT.COMMENT,
-  CONT.SALE,
-  CONT.FOLDER,
-  CONT.CHANGED,
-  CONT.MORE,
-  CONT.TAG,
-  USER.USER_NAME,
-  REPLACE(USER.PIC,'profile','crop50') AS PIC,
-  FOLDER.DIR AS FOLDER_NAME
-FROM publixher.TBL_CONTENT AS CONT
-  INNER JOIN publixher.TBL_USER AS USER
-  ON USER.ID=CONT.ID_WRITER
-  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
-  ON CONT.FOLDER=FOLDER.ID
-WHERE (DEL = 'N' AND ID_TARGET IS NULL AND EXPOSE > 1 AND REPORT < 10 AND USER.ID=:USER_ID AND CONT.ID=USER.TOP_CONTENT)";
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue(':USER_ID', $_GET['target']);
-    $prepare->execute();
-    $result=$prepare->fetch(PDO::FETCH_ASSOC);
 }
 
 

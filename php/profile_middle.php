@@ -365,12 +365,11 @@ ini_set("display_errors",1);
                                                 <span id="category">분류</span> <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu" id="categorySelect">
-                                                <li><a>맛집</a></li>
-                                                <li><a>주거</a></li>
-                                                <li><a>학업</a></li>
-                                                <li><a>장터</a></li>
-                                                <li><a>홍보</a></li>
-                                                <li><a>취업</a></li>
+                                                <li><a>매거진</a></li>
+                                                <li><a>뉴스</a></li>
+                                                <li><a>소설</a></li>
+                                                <li><a>만화</a></li>
+                                                <li><a>사진</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -500,12 +499,11 @@ ini_set("display_errors",1);
                                                 <span id="category-mod">분류</span> <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu" id="categorySelect-mod">
-                                                <li><a>맛집</a></li>
-                                                <li><a>주거</a></li>
-                                                <li><a>학업</a></li>
-                                                <li><a>장터</a></li>
-                                                <li><a>홍보</a></li>
-                                                <li><a>취업</a></li>
+                                                <li><a>매거진</a></li>
+                                                <li><a>뉴스</a></li>
+                                                <li><a>소설</a></li>
+                                                <li><a>만화</a></li>
+                                                <li><a>사진</a></li>
                                             </ul>
                                         </div>
                                     </td>

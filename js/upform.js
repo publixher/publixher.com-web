@@ -176,28 +176,24 @@ $(document).ready(function () {
         }
 
         switch (category) {
-            case '맛집':
-                var sub = ['한식','양식','중식','패스트푸드','배달','술집','카페'];
+            case '매거진':
+                var sub = ['IT','게임','여행-국내','여행-해외','뷰티','패션','반려동물'];
                 subwrite(sub);
                 break;
-            case '주거':
-                var sub = ['원룸','하숙','고시원','오피스텔','기숙사'];
+            case '뉴스':
+                var sub = ['일반','스포츠','연애','테크'];
                 subwrite(sub);
                 break;
-            case '학업':
-                var sub = ['시험 후기','강의 후기','스터디 모집'];
+            case '소설':
+                var sub = ['문학','에세이','인문','자기개발','교육'];
                 subwrite(sub);
                 break;
-            case '장터':
-                var sub = ['교재장터','의류','잡화','디지털'];
+            case '만화':
+                var sub = ['로맨스','판타지','개그','미스터리','호러','SF','무협','스포츠'];
                 subwrite(sub);
                 break;
-            case '홍보':
-                var sub = ['알바 구인','과외 구인','교내 홍보','교외 홍보'];
-                subwrite(sub);
-                break;
-            case '취업':
-                var sub = ['인턴','공채'];
+            case '사진':
+                var sub = ['일상','인물','자연','여행','동식물','pine_art','야경','GIF'];
                 subwrite(sub);
                 break;
         }
