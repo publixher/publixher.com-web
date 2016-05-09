@@ -297,7 +297,7 @@ body {
 }
 #wrap #middle .item .header .conf a:hover,
 #wrap #middle .item-for-sale .header .conf a:hover {
-  background-color: #777777;
+  text-decoration: none;
   cursor: pointer;
 }
 #wrap #middle .item .header .title,
@@ -918,6 +918,8 @@ li a {
 #wrap #middle .item .header .conf .btn-group button,
 #wrap #middle .item-for-sale .header .conf .btn-group button {
   border: 0 !important;
+  height: 28px;
+  margin-top: -3px
 }
 #wrap #middle .item .header .writer a:first-child,
 #wrap #middle .item-for-sale .header .writer a:first-child {
