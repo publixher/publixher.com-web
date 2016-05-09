@@ -6,8 +6,9 @@ function getImgFromUrl($url,$originpath,$path,$size,$opath=null,$osize=null,$sel
     $date = substr($tmp_file[0], 2, 6);
     $file_hash = $date.$url;
     $file_hash = md5($file_hash);
-    $fileurl = "/img/".$originpath."/${file_hash}.jpg" ;
-    $cropurl = "/img/".$path."/${file_hash}.jpg";
+    $ext=pathinfo($url, PATHINFO_EXTENSION);
+    $fileurl = "/img/".$originpath."/${file_hash}.".$ext ;
+    $cropurl = "/img/".$path."/${file_hash}.".$ext;
     $filepath=__DIR__.'/..'.$fileurl;
     $croppath=str_replace($originpath,$path,$filepath);
     copy($url,$filepath);

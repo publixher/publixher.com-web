@@ -15,14 +15,19 @@ if($prepare->fetchColumn()>$point) {
     try {
         $db->beginTransaction();
         //내 포인트 깎기
-        $dsql = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT-:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+        $dsql = "UPDATE publixher.TBL_CONNECTOR
+SET CASH_POINT = CASH_POINT - :POINT
+WHERE ID_USER = :ID_USER 
+      OR ID_ANONY = :ID_ANONY";
         $dprepare = $db->prepare($dsql);
         $dprepare->bindValue(':POINT', $point);
         $dprepare->bindValue(':ID_ANONY', $userID);
         $dprepare->bindValue(':ID_USER', $userID);
         $dprepare->execute();
         //콘텐츠에 기부 올리기
-        $upsql = "UPDATE publixher.TBL_CONTENT SET DONATE=DONATE+:POINT WHERE ID=:ID";
+        $upsql = "UPDATE publixher.TBL_CONTENT 
+SET DONATE=DONATE+:POINT 
+WHERE ID=:ID";
         $upprepare = $db->prepare($upsql);
         $upprepare->bindValue(':ID', $thisitemID);
         $upprepare->bindValue(':POINT', $point);
@@ -31,13 +36,16 @@ if($prepare->fetchColumn()>$point) {
         $psql="UPDATE publixher.TBL_CONNECTOR AS CONN
   INNER JOIN publixher.TBL_CONTENT AS CONT
   ON CONT.ID_WRITER =CONN.ID_USER OR CONT.ID_WRITER=CONN.ID_ANONY
-  SET CONN.CASH_POINT=CONN.CASH_POINT+:POINT WHERE CONT.ID=:ID";
+  SET CONN.CASH_POINT=CONN.CASH_POINT+:POINT 
+  WHERE CONT.ID=:ID";
         $pprepare = $db->prepare($psql);
         $pprepare->bindValue(':POINT', $point);
         $pprepare->bindValue(':ID', $thisitemID);
         $pprepare->execute();
         //기부 테이블에 추가
-        $isql="INSERT INTO publixher.TBL_CONTENT_DONATE(ID_USER, ID_CONTENT,POINT) VALUES(:ID_USER,:ID_CONTENT,:POINT)";
+        $isql="INSERT INTO publixher.TBL_CONTENT_DONATE(ID_USER, ID_CONTENT,POINT) VALUES(:ID_USER
+,:ID_CONTENT
+,:POINT)";
         $iprepare = $db->prepare($isql);
         $iprepare->bindValue(':ID_USER', $userID);
         $iprepare->bindValue(':ID_CONTENT', $thisitemID);
