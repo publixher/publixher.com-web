@@ -7,6 +7,7 @@ require_once '../../lib/Sendmail.php';
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 $name = $_POST['name'];
+$community = $_POST['community'];
 $msg='';
 $check_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL); //옵션에 따라 유효성검사하는거 틀리면 false리턴하고 맞으면 그걸 리턴하는거
 $check_pass = preg_match("/^[[:alnum:]]{6,16}$/", $pass);
@@ -19,7 +20,7 @@ if ($check_email && $check_pass) {
     $subject = "troughout 회원가입을 위한 인증 메일입니다.";
     try {
         $db->beginTransaction();
-        $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH)";
+        $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH,COMMUNITY) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH,:COMMUNITY)";
         $prepare = $db->prepare($sql);
         $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
@@ -28,6 +29,7 @@ if ($check_email && $check_pass) {
         $prepare->bindValue(':USER_NAME', $name, PDO::PARAM_STR);
         $prepare->bindValue(':SEX', $_POST['sex'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $_POST['byear'] . $_POST['bmonth'] . $_POST['bday'], PDO::PARAM_STR);
+        $prepare->bindValue(':COMMUNITY', $community);
         $prepare->execute();
         $seq=$db->lastInsertId();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";

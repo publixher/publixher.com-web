@@ -130,6 +130,12 @@ class imaging
         {
 
             $this->img_output = ImageCreateTrueColor($this->x_output, $this->y_output);
+            if($this->format=="PNG"){
+                $background = imagecolorallocate($this->img_output, 0, 0, 0);
+                imagecolortransparent($this->img_output, $background);
+                imagealphablending($this->img_output, false);
+                imagesavealpha($this->img_output, true);
+            }
             ImageCopyResampled($this->img_output, $this->img_input, 0, 0, 0, 0, $this->x_output, $this->y_output, $this->x_input, $this->y_input);
 
         }

@@ -280,7 +280,7 @@ LIMIT
     $comment=preg_replace($br,'<br><br>',$_POST['comment']);
     $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
-    $taglist=$_POST['taglist'];
+    $taglist=array_unique($_POST['taglist'],SORT_STRING);
     $taglist_len=count($taglist);
 
     //후원기능 시작

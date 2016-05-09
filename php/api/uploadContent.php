@@ -60,7 +60,7 @@ if (!empty($_POST)) {
     $blured;//오타 아님 정의해야해서 하는
     for ($i = 1; $i < $imgcount; $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
-        $blured[$i - 1] = blur($imgs[1][$i][0], 2, $ext);
+        $blured[$i - 1] = blur($imgs[1][$i][0], 2);
     }
     //이미지 있으면 프리뷰 길이가 150 없으면 400
     if ($previewimg) {

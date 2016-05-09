@@ -47,6 +47,12 @@ function blur($gdImageResource, $blurFactor = 3)
 
         // resize previous image to next size
         $nextImage = imagecreatetruecolor($nextWidth, $nextHeight);
+        if($ext=="PNG"){
+            $background = imagecolorallocate($nextImage, 0, 0, 0);
+            imagecolortransparent($nextImage, $background);
+            imagealphablending($nextImage, false);
+            imagesavealpha($nextImage, true);
+        }
         imagecopyresized($nextImage, $prevImage, 0, 0, 0, 0,
             $nextWidth, $nextHeight, $prevWidth, $prevHeight);
 
@@ -66,6 +72,12 @@ function blur($gdImageResource, $blurFactor = 3)
 
     //save image
     $bluredImg=ImageCreateTrueColor(100, 100);
+    if($ext=="PNG"){
+        $background = imagecolorallocate($bluredImg, 0, 0, 0);
+        imagecolortransparent($bluredImg, $background);
+        imagealphablending($bluredImg, false);
+        imagesavealpha($bluredImg, true);
+    }
     ImageCopyResampled($bluredImg, $gdImageResource, 0, 0, 0, 0, 100, 100, $originalWidth, $originalHeight);
     if($ext == "JPG" OR $ext == "JPEG"){
         imagejpeg($bluredImg,$outpath);

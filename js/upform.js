@@ -97,7 +97,6 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];

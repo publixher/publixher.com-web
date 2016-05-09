@@ -5,13 +5,10 @@ $userID = $_GET['userID'];
 $action = $_GET['action'];
 if($action=='point'){
     $isNick = $_GET['isNick'];
-    if ($isNick == false) {
-        $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_TARGET";
-    } else if ($isNick == true) {
-        $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_TARGET";
-    }
+        $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_TARGET OR ID_ANONY=:ID_ANONY";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID_TARGET', $userID, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_ANONY', $userID, PDO::PARAM_STR);
     $prepare1->execute();
     $cash = $prepare1->fetch(PDO::FETCH_ASSOC);
     if(!$cash) {

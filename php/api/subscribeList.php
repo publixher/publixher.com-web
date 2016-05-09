@@ -10,7 +10,7 @@ $sql= "SELECT
   FOLLOW.LAST_UPDATE
 FROM publixher.TBL_USER USER
   INNER JOIN publixher.TBL_FOLLOW FOLLOW ON FOLLOW.ID_MASTER = USER.ID
-WHERE FOLLOW.ID_SLAVE = 'T_c3kDKpip'";
+WHERE FOLLOW.ID_SLAVE = :ID_SLAVE";
 $prepare = $db->prepare($sql);
 $prepare->bindValue(':ID_SLAVE',$userID);
 $prepare->execute();
