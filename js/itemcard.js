@@ -246,6 +246,11 @@ $(document).ready(function () {
                             }
                             write += '</span></span></td></tr></table></div>';
                             list.append(write);
+                            if(res[i]['DEL']==1) {
+                                list.
+                                find('.reply-body').
+                                addClass('reply-del');
+                            }
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
                         }
@@ -455,7 +460,7 @@ $(document).ready(function () {
                     type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
                     if (res['result'] == 'Y') {
                         alert('삭제되었습니다.');
-                        $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.');
+                        $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.').addClass('reply-del');
                     }
                     else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
                 }
@@ -597,6 +602,9 @@ $(document).ready(function () {
                                 }
                                 write += '</td></tr></table></div>';
                                 subrep_list.append(write);
+                                if(res[i]['DEL']==1){
+                                    subrep_list.find('.reply-body').addClass('reply-del');
+                                }
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
                             }
@@ -1027,7 +1035,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
