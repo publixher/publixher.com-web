@@ -189,7 +189,7 @@ if (!empty($_POST)) {
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC,'profile','crop50') AS PIC,
-  FOLDER.DIR AS DIR,
+  FOLDER.DIR AS FOLDER_NAME,
   USER2.USER_NAME AS TARGET_NAME,
   USER2.ID AS TARGET_ID
 FROM publixher.TBL_CONTENT AS CONT
@@ -230,6 +230,8 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
             $prepare3->execute();
         }
+        //시간 형식 바꾸는것
+        $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);
         $db->commit();
         echo $result;

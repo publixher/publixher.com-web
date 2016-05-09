@@ -13,7 +13,12 @@
         var mid = myID;
     </script>
     <script src="/js/profile_left.js"></script>
-    <p id="name"><?php echo $target['USER_NAME'];if($target['IN_USE']=='N') echo '(삭제된 ID)' ?></p>
+    <p id="name"><?php
+        echo $target['USER_NAME'];
+        if($target['IN_USE']=='N') echo '<p class="alert alert-warning">(삭제된 ID)</p>';
+        if($target['BAN'] && $target['BAN']>date("Y-m-d H:i:s",time())) echo'<p class="alert alert-danger">(제한된 ID)</p>'
+        ?>
+    </p>
     <ul class="list-unstyled" id="profile">
         <li>생일 : <?= $birth ?></li>
         <li>대학교 : <?= $target['UNIV'] ?></li>

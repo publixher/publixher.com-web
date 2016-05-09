@@ -9,10 +9,10 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     if (targetID) {
-        write += '>>> <a href="/profile/' + targetID + '">' + targetname + '</a> '
+        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 씀 '
     }
     if (folderID) {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a>에게 씀</span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     } else {
         write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder">비분류</span>&nbsp;';
     }
@@ -157,6 +157,7 @@ $(document).ready(function () {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
+            console.log(res)
             if (res.length == 0) {
                 write = '<div id="no-content">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
@@ -181,10 +182,10 @@ $(document).ready(function () {
                             var comment = res[i]['COMMENT'];
                             var preview = res[i]['PREVIEW'];
                             var pic = res[i]['PIC'];
-                            var targetID = res[i]['ID_TARGET'];
+                            var targetID = res[i]['TARGET_ID'];
                             var targetname = res[i]['TARGET_NAME'];
-                            var folderID = res[i]['TARGET_ID'];
-                            var foldername = res[i]['TARGET_NAME'];
+                            var folderID = null;
+                            var foldername = null;
                             var expose = res[i]['EXPOSE'];
                             var more = res[i]['MORE'];
                             if (res[i]['FOLDER'] != null) {

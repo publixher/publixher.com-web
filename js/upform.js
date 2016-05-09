@@ -41,7 +41,7 @@ $(document).ready(function () {
                     var comment = res['COMMENT'];
                     var preview = res['PREVIEW'];
                     var pic = res['PIC'].replace('profile', 'crop50');
-                    var targetID = res['ID_TARGET'];
+                    var targetID = res['TARGET_ID'];
                     var targetname = res['TARGET_NAME'];
                     var folderID = null;
                     var foldername = null;
@@ -49,7 +49,7 @@ $(document).ready(function () {
                     var more = res['MORE']
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
-                        foldername = res['DIR'];
+                        foldername = res['FOLDER_NAME'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
@@ -114,7 +114,7 @@ $(document).ready(function () {
                     var more = res['MORE']
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
-                        foldername = res['DIR'];
+                        foldername = res['FOLDER_NAME'];
                     }
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
