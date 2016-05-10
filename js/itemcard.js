@@ -1252,6 +1252,7 @@ $(document).ready(function () {
         getCards();
 
     })
+    //구독,
 });
 
 //텍스트에이리어 입력시 자동 크기조정

@@ -1,7 +1,7 @@
 <div id="left">
     <script src="/js/left.js"></script>
     <div class="accordion" id="subslist">
-        <p>구독</p>
+        <p id="subcribe-btn">구독</p>
         <?php
         require_once '../conf/database_conf.php';
         $userinfo = $_SESSION['user'];
@@ -43,7 +43,7 @@
                     ?>
 
                     <div id="community" class="accordion">
-                        <p>커뮤니티</p>
+                        <p id="community-btn">커뮤니티</p>
                         <?php
                         $sql = "SELECT
   USER_NAME,
