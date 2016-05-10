@@ -1238,6 +1238,9 @@ $(document).ready(function () {
     $(document).on("dragstart", "img,a", function () {
         return false;
     });
+    //게시글의 카테고리 클릭시 게시글 카드 다 지우고 loadOption 다시작성해서 요청
+    
+    //게시글의 서브카테고리 클릭시에도 loadOption 고쳐서 다시 요청
 });
 
 //텍스트에이리어 입력시 자동 크기조정

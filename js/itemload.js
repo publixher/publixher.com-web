@@ -14,7 +14,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     if (folderID) {
         write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder">비분류</span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
     }
 
     switch (expose) {
@@ -74,7 +74,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     if (folderID) {
         write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class=content-folder">비분류</span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
     }
 
     switch (expose) {
@@ -90,9 +90,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     //카테고리 표시부분
     if(category!='SNS') {
-        write+=' <span class="content-category">'+category;
+        write+='<span class="content-category"><span class="group-category">'+category+'</span>';
         if(sub_category!=null){
-            write+=' >>> '+sub_category;
+            write+='<span class="pubico pico-kkuk"><span class="group-sub_category">'+sub_category+'</span>';
         }
         write+='</span>';
     }
