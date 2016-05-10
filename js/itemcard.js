@@ -1244,7 +1244,7 @@ $(document).ready(function () {
         var sub_category=$(this).hasClass('item-sub_category')?$(this).text():null;
         loadOption['nowpage']=0;
         loadOption['category']=category;
-        sub_category?loadOption['sub_category']=sub_category:null;  //loadOption 정의 끝
+        sub_category?loadOption['sub_category']=sub_category:delete loadOption['sub_category'];  //loadOption 정의 끝
         //모든카드 삭제 후 다시 로딩할것
         $('.card').each(function(){
             $(this).remove();
