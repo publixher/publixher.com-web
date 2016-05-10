@@ -36,11 +36,11 @@ if ($act == 'knock') {
         $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare3->execute();
         $result = $prepare3->fetch(PDO::FETCH_ASSOC);
-        if(!$result) {
+        if (!$result) {
             echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
             exit;
         }
-        echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
 
         //알람처리
         $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,4,:ID_ACTOR)";
@@ -133,11 +133,11 @@ LIMIT
             } else {
                 $result['more'] = false;
             }
-            if(!$result) {
+            if (!$result) {
                 echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
                 exit;
             }
-            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -176,11 +176,11 @@ LIMIT :INDEX, 6";
             } else {
                 $result['more'] = false;
             }
-            if(!$result) {
+            if (!$result) {
                 echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
                 exit;
             }
-            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -226,11 +226,11 @@ LIMIT
             } else {
                 $result['more'] = false;
             }
-            if(!$result) {
+            if (!$result) {
                 echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
                 exit;
             }
-            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -273,14 +273,14 @@ LIMIT
     $comment = preg_replace($br, '<br><br>', $_POST['comment']);
     $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
-    $taglist = array_unique($_POST['taglist'],SORT_STRING);
+    $taglist = array_unique($_POST['taglist'], SORT_STRING);
     $taglist_len = count($taglist);
 
     //후원기능 시작
-    if(isset($_POST['donatelist'])) {
-        $point=0;
-        foreach($_POST['donatelist'] as $val){
-            $point=$point+$val;
+    if (isset($_POST['donatelist'])) {
+        $point = 0;
+        foreach ($_POST['donatelist'] as $val) {
+            $point = $point + $val;
         }
         $sql = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
         $prepare = $db->prepare($sql);
@@ -332,7 +332,7 @@ LIMIT
         }
     }
 
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
@@ -340,6 +340,7 @@ LIMIT
     $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY_TEXT', strip_tags($comment), PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
@@ -352,14 +353,15 @@ LIMIT
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR,:ID_REPLY)";
     $prepare4 = $db->prepare($sql4);
     $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
     $prepare4->execute();
     //댓글에 태그된 사람도 알림처리
-    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,8,:ID_ACTOR,:ID_REPLY)";
     $prepare6 = $db->prepare($sql6);
     $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
@@ -368,7 +370,7 @@ LIMIT
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
-    $result = json_encode(array('status'=>1,'result'=>$result['COMMENT']), JSON_UNESCAPED_UNICODE);
+    $result = json_encode(array('status' => 1, 'result' => $result['COMMENT']), JSON_UNESCAPED_UNICODE);
     echo $result;
 
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
@@ -378,9 +380,8 @@ LIMIT
 } elseif ($act == 'share') {
 
 } elseif ($act == 'buy') {
-    //TODO:userbirth와 isNick 정의해야함
-    $userbirth =
-    $isnick =
+    //TODO:userbirth
+    $userbirth = $_POST['birth'];
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
     //가격은 db의 데이터로 정해져야함
@@ -392,16 +393,11 @@ LIMIT
     $price = $result['PRICE'];
     $writer = $result['ID_WRITER'];
     //유저 id로 커넥터에 접속해서 캐쉬정보 가져오기
-    if ($isnick == false) {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
-        $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-    } else {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY";
-        $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':ID_ANONY', $userID, PDO::PARAM_STR);
-    }
-    $prepare6->execute();
+    $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+    $prepare6 = $db->prepare($sql6);
+    $prepare6->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+
+    $prepare6->execute(array(':ID_USER'));
     $usercash = $prepare6->fetch(PDO::FETCH_ASSOC);
     $usercash = $usercash['CASH_POINT'];
     //나이구하기
@@ -437,6 +433,11 @@ LIMIT
             $prepare3 = $db->prepare($sql3);
             $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
             $prepare3->execute();
+
+            $sql4 = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT-:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+            $prepare4 = $db->prepare($sql4);
+            $prepare4->execute(array('POINT' => $price, 'ID_USER' => $userID, 'ID_ANONY' => $userID));
+
 
             //알람처리
             $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
@@ -479,7 +480,7 @@ LIMIT
             $db->commit();
             echo '{status":1}';
             exit;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             $db->rollBack();
             echo '{"status":-1}';
             exit;
@@ -522,7 +523,7 @@ LIMIT
                 $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
                 $prepare2->execute();
                 $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-                echo json_encode(array('status'=>1,'result'=>$result), JSON_UNESCAPED_UNICODE);
+                echo json_encode(array('status' => 1, 'result' => $result), JSON_UNESCAPED_UNICODE);
             } else {
                 echo '{"status":-7}';
             }
@@ -534,7 +535,7 @@ LIMIT
         $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-        echo json_encode(array('status'=>1,'result'=>$result), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array('status' => 1, 'result' => $result), JSON_UNESCAPED_UNICODE);
     }
 } elseif ($act == 'del') {
     $ID = $_POST['contID'];
@@ -617,7 +618,7 @@ LIMIT
         $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_CONTENT', $target['ID_CONTENT'], PDO::PARAM_STR);
         $prepare4->execute();
-        echo json_encode(array('status'=>1,'result'=>array('KNOCK'=>$target['KNOCK'])),JSON_UNESCAPED_UNICODE);
+        echo json_encode(array('status' => 1, 'result' => array('KNOCK' => $target['KNOCK'])), JSON_UNESCAPED_UNICODE);
     } else {
         echo '{"status":-3}';
     }
@@ -663,11 +664,11 @@ LIMIT :INDEX, 6";
             } else {
                 $result['more'] = false;
             }
-            if(!$result) {
+            if (!$result) {
                 echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
                 exit;
             }
-            echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
             return true;
         } else {
             return false;
@@ -691,7 +692,7 @@ LIMIT :INDEX, 6";
     $uid = uniqueid($db, 'sub_reply');
     $taglist = $_POST['taglist'];
     $taglist_len = count($taglist);
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
     $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE ID=:ID;";
@@ -701,6 +702,7 @@ LIMIT :INDEX, 6";
     $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY_TEXT', strip_tags($comment), PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
@@ -717,24 +719,26 @@ LIMIT :INDEX, 6";
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,7,:ID_ACTOR,:ID_REPLY)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY,ID_SUB_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,7,:ID_ACTOR,:ID_REPLY,:ID_SUB_REPLY)";
     $prepare4 = $db->prepare($sql4);
     $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_TARGET', $result['ID_USER'], PDO::PARAM_STR);
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_SUB_REPLY', $uid, PDO::PARAM_STR);
     $prepare4->execute();
     //댓글에 태그된 사람도 알림처리
-    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY,ID_SUB_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY,:ID_SUB_REPLY)";
     $prepare6 = $db->prepare($sql6);
     $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-    $prepare6->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_SUB_REPLY', $uid, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
     for ($i = 0; $i < $taglist_len; $i++) {
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
-    $result = '{"SUB_REPLY":'.$result['SUB_REPLY'].'}';
+    $result = '{"SUB_REPLY":' . $result['SUB_REPLY'] . '}';
     echo json_encode(array('status' => 1, 'result' => array('SUB_REPLY' => $result['SUB_REPLY'])), JSON_UNESCAPED_UNICODE);
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
     $prepare5 = $db->prepare($sql5);

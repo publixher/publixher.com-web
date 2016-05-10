@@ -593,7 +593,7 @@ $(document).ready(function () {
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
                                 var date = res[i]['REPLY_DATE'];
-                                var reply = res[i]['REPLY'];
+                                var reply = res[i]['REP_BODY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
