@@ -267,6 +267,10 @@ $(document).ready(function () {
     //무한스크롤
     var loading = false;
     $(document).scroll(function () {
+        //스피너
+        var spinner = $('<div>')
+            .attr('data-loader', 'spinner')
+            .addClass('load-item content-load')
         var maxHeight = $(document).height();
         var currentScroll = $(window).scrollTop() + $(window).height();
         if (maxHeight <= currentScroll + 400) {
