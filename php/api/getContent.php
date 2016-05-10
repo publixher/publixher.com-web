@@ -43,7 +43,7 @@ FROM publixher.TBL_CONTENT AS CONT
   ON USER2.ID=CONT.ID_TARGET
 WHERE DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     } elseif ($_GET['frelation'] == true) {
@@ -81,7 +81,7 @@ FROM publixher.TBL_CONTENT AS CONT
   ON USER2.ID=CONT.ID_TARGET
 WHERE DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND EXPOSE > 0 AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     } else {
@@ -119,17 +119,15 @@ FROM publixher.TBL_CONTENT AS CONT
   ON USER2.ID=CONT.ID_TARGET
 WHERE DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND EXPOSE > 1 AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     }
 
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->bindValue(':ID_WRITER', $_GET['target'], PDO::PARAM_STR);
     $prepare->bindValue(':ID_TARGET', $_GET['target'], PDO::PARAM_STR);
     $prepare->execute();
@@ -165,15 +163,13 @@ FROM publixher.TBL_CONTENT AS CONT
   ON CONT.FOLDER=FOLDER.ID
 WHERE DEL = 'N' AND FOLDER = :FOLDER AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->bindValue(':FOLDER', $_GET['fid'], PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -211,15 +207,13 @@ FROM publixher.TBL_BUY_LIST AS BUY_LIST
 WHERE BUY_LIST.ID_USER = :ID_USER
   AND CONT.DEL='N' AND REPORT<10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY BUY_LIST.SEQ DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -286,15 +280,13 @@ FROM publixher.TBL_CONTENT AS CONT
   ON CONT.FOLDER=FOLDER.ID
 WHERE DEL = 'N' AND MATCH(TAG) AGAINST('" . $_GET['tag'] . "') AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif ($type=='bodySearch') {
@@ -327,15 +319,13 @@ FROM publixher.TBL_CONTENT AS CONT
   ON CONT.FOLDER=FOLDER.ID
 WHERE DEL = 'N' AND MATCH(BODY_TEXT) AGAINST('*" . $_GET['body'] . "*' IN BOOLEAN MODE) AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 } elseif($type=='main') {  //메인화면에서 노출시켜줄 순
@@ -368,15 +358,13 @@ FROM publixher.TBL_CONTENT AS CONT
   ON CONT.FOLDER=FOLDER.ID
 WHERE DEL = 'N' AND ID_TARGET IS NULL AND EXPOSE > 1 AND REPORT < 10";
     isset($_GET['category']) ? $sql .= " AND CATEGORY=:CATEGORY" : null;
-    isset($_GET['category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
+    isset($_GET['sub_category']) ? $sql .= " AND SUB_CATEGORY=:SUB_CATEGORY" : null;
     $sql .= " ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':NOWPAGE', $nowpage);
-    if (isset($_GET['category'])) {
-        $prepare->bindValue(':CATEGORY', $_GET['category']);
-        if (isset($_GET['sub_category'])) $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']);
-    }
+    isset($_GET['category']) ? $prepare->bindValue(':CATEGORY',$_GET['category']):null;
+    isset($_GET['sub_category']) ? $prepare->bindValue(':SUB_CATEGORY',$_GET['sub_category']):null;
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 }

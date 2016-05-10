@@ -1239,8 +1239,19 @@ $(document).ready(function () {
         return false;
     });
     //게시글의 카테고리 클릭시 게시글 카드 다 지우고 loadOption 다시작성해서 요청
-    
-    //게시글의 서브카테고리 클릭시에도 loadOption 고쳐서 다시 요청
+    $(document).on('click','.item-category,.item-sub_category',function () {
+        var category=$(this).hasClass('item-category')?$(this).text():$(this).siblings('.item-category').text();
+        var sub_category=$(this).hasClass('item-sub_category')?$(this).text():null;
+        loadOption['nowpage']=0;
+        loadOption['category']=category;
+        sub_category?loadOption['sub_category']=sub_category:null;  //loadOption 정의 끝
+        //모든카드 삭제 후 다시 로딩할것
+        $('.card').each(function(){
+            $(this).remove();
+        })
+        getCards();
+
+    })
 });
 
 //텍스트에이리어 입력시 자동 크기조정
