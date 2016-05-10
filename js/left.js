@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('.accordion-toggle,.nameuser').on('click', function () {
         var mu;
         if($(this).hasClass('accordion-toggle')) {
-            mu = ($(this).attr('href')).replace('#collapse', '')
+            mu = ($(this).attr('href')).replace('#subscribe-collapse', '')
         }else{
             mu=($(this).attr('href')).replace('/profile/', '')
         }
