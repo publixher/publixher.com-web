@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/conf.js" afterPath="$PROJECT_DIR$/js/conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/notiCenter.js" afterPath="$PROJECT_DIR$/js/notiCenter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/getNoti.php" afterPath="$PROJECT_DIR$/php/data/getNoti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -115,6 +112,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/itemload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="667">
+              <caret line="282" column="24" selection-start-line="282" selection-start-column="24" selection-end-line="282" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -160,7 +167,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/conf.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="332">
@@ -176,30 +183,6 @@
             <state relative-caret-position="186">
               <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-              <folding>
-                <marker date="1462941296000" expanded="true" signature="415:1103" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="415:1183" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="1481:2264" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="2530:3313" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="4118:4724" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="5461:6162" placeholder="SELECT CONT.... TBL_BUY_LIST" />
-                <marker date="1462941296000" expanded="true" signature="6853:7456" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="7675:8307" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="8920:9577" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="10183:10916" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="11573:12421" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="13110:13732" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462941296000" expanded="true" signature="14643:14736" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -278,13 +261,13 @@
         <option value="/MySQL Fragment (getContent.php:13159).sql" />
         <option value="/MySQL Fragment (getContent.php:500).sql" />
         <option value="/MySQL Fragment (getContent.php:11793).sql" />
-        <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="$PROJECT_DIR$/php/api/getContent.php" />
         <option value="$PROJECT_DIR$/php/data/getContent.php" />
         <option value="$PROJECT_DIR$/php/data/getNoti.php" />
         <option value="$PROJECT_DIR$/php/conf.php" />
         <option value="$PROJECT_DIR$/js/conf.js" />
         <option value="$PROJECT_DIR$/js/notiCenter.js" />
+        <option value="$PROJECT_DIR$/js/itemload.js" />
       </list>
     </option>
   </component>
@@ -587,14 +570,7 @@
       <workItem from="1462764053581" duration="20351000" />
       <workItem from="1462850165726" duration="24700000" />
       <workItem from="1462890192704" duration="3156000" />
-      <workItem from="1462938415743" duration="3853000" />
-    </task>
-    <task id="LOCAL-00104" summary="댓글태그 기능 추가">
-      <created>1461920654143</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1461920654143</updated>
+      <workItem from="1462938415743" duration="3957000" />
     </task>
     <task id="LOCAL-00105" summary="댓글태그 수정">
       <created>1461920944736</created>
@@ -932,11 +908,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462947378350</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="노티센터">
+      <created>1462948791184</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1462948791184</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59349000" />
+    <option name="totallyTimeSpent" value="59453000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -988,7 +971,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="핀에서 제목 있으면 제목으로" />
     <MESSAGE value="api 초기버전" />
     <MESSAGE value="api 상태 코드" />
     <MESSAGE value="댓글 태그 스피너" />
@@ -1013,7 +995,8 @@
     <MESSAGE value="new 나오는거 픽스" />
     <MESSAGE value="밴당하면 WRITEAUTH=0" />
     <MESSAGE value="커뮤니티 모아보기, 구독 모아보기" />
-    <option name="LAST_COMMIT_MESSAGE" value="커뮤니티 모아보기, 구독 모아보기" />
+    <MESSAGE value="노티센터" />
+    <option name="LAST_COMMIT_MESSAGE" value="노티센터" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1496,14 +1479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="66" column="120" selection-start-line="66" selection-start-column="120" selection-end-line="66" selection-end-column="120" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1661,6 +1636,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="282" column="24" selection-start-line="282" selection-start-column="24" selection-end-line="282" selection-end-column="24" />
           <folding />
         </state>
       </provider>

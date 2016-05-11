@@ -280,7 +280,6 @@ $(document).ready(function () {
                 } else {
                     $('#prea').after(spinner);
                 }
-                console.log(loadOption)
                 $.ajax({
                     url: "/php/data/getContent.php",
                     type: "get",
