@@ -40,7 +40,7 @@
                 <span class="pubico pico-bell"></span>
             </button>
             <ul class="dropdown-menu" role="menu" id="notilist">
-                <li id="li-noticenter"><a href="/php/notiCenter.php?id=<?=$mid?>" style="text-align: center;">알림센터 바로가기</a></li>
+                <li id="li-noticenter"><a href="/notiCenter/<?=$mid?>" style="text-align: center;">알림센터 바로가기</a></li>
             </ul>
         </div>
         <!--핀버튼-->
