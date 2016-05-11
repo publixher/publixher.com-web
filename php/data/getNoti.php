@@ -72,7 +72,7 @@ LIMIT :NOWPAGE, 20";
     }
     echo json_encode($notis, JSON_UNESCAPED_UNICODE);
     //응답한다음 알림을 전부 읽은걸로 처리한다
-    $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' AND FOLLING='N' WHERE ID_TARGET=:ID_TARGET";
+    $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' WHERE ID_TARGET=:ID_TARGET";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_TARGET', $userID);
     $prepare->execute();

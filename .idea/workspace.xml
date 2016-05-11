@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="롱폴링 구현 취소">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/conf.js" afterPath="$PROJECT_DIR$/js/conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.php" afterPath="$PROJECT_DIR$/https/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/getNoti.php" afterPath="$PROJECT_DIR$/php/api/getNoti.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/getNoti.php" afterPath="$PROJECT_DIR$/php/data/getNoti.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
@@ -47,16 +48,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/itemload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2115">
-              <caret line="159" column="22" selection-start-line="159" selection-start-column="22" selection-end-line="159" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="market.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/market.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -67,16 +58,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <marker date="1462956356000" expanded="true" signature="397:523" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-                <marker date="1462956356000" expanded="true" signature="1699:2601" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
-                <marker date="1462956356000" expanded="true" signature="1699:2614" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-                <marker date="1462956356000" expanded="true" signature="3141:3233" placeholder="UPDATE publi... " />
+                <marker date="1462957394000" expanded="true" signature="397:523" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+                <marker date="1462957394000" expanded="true" signature="1699:2601" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
+                <marker date="1462957394000" expanded="true" signature="1699:2614" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+                <marker date="1462957394000" expanded="true" signature="3141:3217" placeholder="UPDATE publi... " />
               </folding>
             </state>
           </provider>
@@ -95,12 +86,12 @@
       <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/getNoti.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+            <state relative-caret-position="41">
+              <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
               <folding>
-                <marker date="1462953415000" expanded="true" signature="276:404" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-                <marker date="1462953415000" expanded="true" signature="1718:2615" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
-                <marker date="1462953415000" expanded="true" signature="2992:3084" placeholder="UPDATE publi... " />
+                <marker date="1462957114000" expanded="true" signature="276:402" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+                <marker date="1462957114000" expanded="true" signature="1716:2613" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
+                <marker date="1462957114000" expanded="true" signature="2990:3066" placeholder="UPDATE publi... " />
               </folding>
             </state>
           </provider>
@@ -152,11 +143,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/conf.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/https/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -210,7 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/profileConfig.php" />
         <option value="$PROJECT_DIR$/php/api/loginConfirm.php" />
         <option value="$PROJECT_DIR$/php/api/subscribeList.php" />
         <option value="$PROJECT_DIR$/php/api/subscribe.php" />
@@ -258,9 +258,10 @@
         <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="$PROJECT_DIR$/js/market.js" />
         <option value="/MySQL Fragment (getNoti.php:396).sql" />
+        <option value="$PROJECT_DIR$/js/conf.js" />
+        <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/api/getNoti.php" />
         <option value="$PROJECT_DIR$/php/data/getNoti.php" />
-        <option value="$PROJECT_DIR$/js/conf.js" />
       </list>
     </option>
   </component>
@@ -441,6 +442,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="publixherBoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="publixherBoot" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="https" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -471,13 +486,13 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="Console.TableResult.DefaultCopyAction" value="HTML Table" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="170" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="171" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="126" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="173" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="128" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="681" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="815" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="170" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
@@ -577,14 +592,7 @@
       <workItem from="1462764053581" duration="20351000" />
       <workItem from="1462850165726" duration="24700000" />
       <workItem from="1462890192704" duration="3156000" />
-      <workItem from="1462938415743" duration="11418000" />
-    </task>
-    <task id="LOCAL-00109" summary="댓글 태그">
-      <created>1461922460182</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1461922460182</updated>
+      <workItem from="1462938415743" duration="11940000" />
     </task>
     <task id="LOCAL-00110" summary="dropdown()">
       <created>1461922622265</created>
@@ -922,11 +930,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462954543051</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="롱폴링 구현 취소">
+      <created>1462956887489</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1462956887489</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66914000" />
+    <option name="totallyTimeSpent" value="67436000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -978,7 +993,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="기부 api 추가" />
     <MESSAGE value="기부 테이블 추가" />
     <MESSAGE value="기부 방식 바꿈" />
     <MESSAGE value="html purifier 바꿈" />
@@ -1003,7 +1017,8 @@
     <MESSAGE value="getNoti api올림" />
     <MESSAGE value="알림 롱폴링 구현" />
     <MESSAGE value="롱폴링 픽스" />
-    <option name="LAST_COMMIT_MESSAGE" value="롱폴링 픽스" />
+    <MESSAGE value="롱폴링 구현 취소" />
+    <option name="LAST_COMMIT_MESSAGE" value="롱폴링 구현 취소" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1040,13 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/https/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1640,44 +1648,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/getNoti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
-          <folding>
-            <marker date="1462953415000" expanded="true" signature="276:404" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-            <marker date="1462953415000" expanded="true" signature="1718:2615" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
-            <marker date="1462953415000" expanded="true" signature="2992:3084" placeholder="UPDATE publi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/passing_time.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/market.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <marker date="1462956356000" expanded="true" signature="397:523" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
-            <marker date="1462956356000" expanded="true" signature="1699:2601" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
-            <marker date="1462956356000" expanded="true" signature="1699:2614" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
-            <marker date="1462956356000" expanded="true" signature="3141:3233" placeholder="UPDATE publi... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1739,6 +1714,47 @@
         <state relative-caret-position="360">
           <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/https/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/passing_time.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/getNoti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+          <folding>
+            <marker date="1462957114000" expanded="true" signature="276:402" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+            <marker date="1462957114000" expanded="true" signature="1716:2613" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
+            <marker date="1462957114000" expanded="true" signature="2990:3066" placeholder="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1462957394000" expanded="true" signature="397:523" placeholder="SELECT COUNT... TBL_CONTENT_NOTI" />
+            <marker date="1462957394000" expanded="true" signature="1699:2601" placeholder="SELECT NOTI.... TBL_CONTENT_NOTI" />
+            <marker date="1462957394000" expanded="true" signature="1699:2614" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
+            <marker date="1462957394000" expanded="true" signature="3141:3217" placeholder="UPDATE publi... " />
+          </folding>
         </state>
       </provider>
     </entry>

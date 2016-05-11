@@ -7,7 +7,7 @@ $userID = $_GET['userID'];
 $action = $_GET['action'];
 
 if ($action == 'confonload') {
-    $notinumsql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_CONTENT_NOTI WHERE (ID_TARGET=:ID_TARGET AND CHECKED='N' AND NOT ID_ACTOR=:ID_ACTOR)";
+    $notinumsql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_CONTENT_NOTI WHERE ID_TARGET=:ID_TARGET AND CHECKED='N' AND NOT ID_ACTOR=:ID_ACTOR";
     $notinumpre = $db->prepare($notinumsql);
     $notinumpre->bindValue(':ID_TARGET', $userID);
     $notinumpre->bindValue(':ID_ACTOR', $userID);
@@ -65,7 +65,7 @@ LIMIT :NOWPAGE, 20";
 
     echo json_encode($notis, JSON_UNESCAPED_UNICODE);
     //응답한다음 알림을 전부 읽은걸로 처리한다
-    $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' AND FOLLING='Y' WHERE ID_TARGET=:ID_TARGET";
+    $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' WHERE ID_TARGET=:ID_TARGET";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_TARGET', $userID);
     $prepare->execute();
