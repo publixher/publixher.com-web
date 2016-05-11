@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="댓글 삭제 구현">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/sellManage.php" />
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/getContent.php" afterPath="$PROJECT_DIR$/php/data/getContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/profileChange.php" afterPath="$PROJECT_DIR$/php/data/profileChange.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_left.php" afterPath="$PROJECT_DIR$/php/profile_left.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.less" afterPath="$PROJECT_DIR$/css/main.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/profile.css" afterPath="$PROJECT_DIR$/css/profile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/profile.less" afterPath="$PROJECT_DIR$/css/profile.less" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -36,7 +36,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="getContent.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6958">
@@ -65,18 +65,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getOne.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/getOne.php">
+      <file leaf-file-name="profile.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/profile.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <marker date="1461228997000" expanded="true" signature="144:199" placeholder="SELECT TOP_C... TBL_USER" />
-                <marker date="1461228997000" expanded="true" signature="406:603" placeholder="SELECT ID,ID... TBL_CONTENT" />
-                <marker date="1461228997000" expanded="true" signature="873:965" placeholder="SELECT USER_... TBL_USER" />
-                <marker date="1461228997000" expanded="true" signature="1440:1489" placeholder="SELECT DIR F... TBL_FOLDER" />
-                <marker date="1461228997000" expanded="true" signature="2008:2101" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
-              </folding>
+            <state relative-caret-position="-15705">
+              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/profile.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="868">
+              <caret line="1236" column="4" selection-start-line="1072" selection-start-column="2" selection-end-line="1236" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.less" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/main.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="1040" column="52" selection-start-line="1040" selection-start-column="52" selection-end-line="1040" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,42 +182,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="135" column="63" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="63" />
-              <folding>
-                <marker date="1462962079000" expanded="true" signature="4186:4378" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1462962079000" expanded="true" signature="4418:4720" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1462962079000" expanded="true" signature="6759:6835" placeholder="UPDATE publi... " />
-                <marker date="1462962079000" expanded="true" signature="7073:7779" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462962079000" expanded="true" signature="8033:8117" placeholder="INSERT INTO publixher.TBL_SELL_LIST... " />
-                <marker date="1462962079000" expanded="true" signature="8473:8544" placeholder="INSERT INTO publixher.TBL_TAGS... " />
-                <marker date="1462962079000" expanded="true" signature="8879:8949" placeholder="UPDATE publi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="133" column="33" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
-              <folding>
-                <marker date="1462962128000" expanded="true" signature="4899:5091" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1462962128000" expanded="true" signature="5131:5433" placeholder="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1462962128000" expanded="true" signature="7476:7552" placeholder="UPDATE publi... " />
-                <marker date="1462962128000" expanded="true" signature="7759:8465" placeholder="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1462962128000" expanded="true" signature="8719:8803" placeholder="INSERT INTO publixher.TBL_SELL_LIST... " />
-                <marker date="1462962128000" expanded="true" signature="9159:9230" placeholder="INSERT INTO publixher.TBL_TAGS... " />
-                <marker date="1462962128000" expanded="true" signature="9565:9635" placeholder="UPDATE publi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -221,8 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/api/subscribe.php" />
-        <option value="$PROJECT_DIR$/php/api/profileInfo.php" />
         <option value="$PROJECT_DIR$/php/api/profileChange.php" />
         <option value="/MySQL Fragment (best.php:146).sql" />
         <option value="/MySQL Fragment (donate.php:536).sql" />
@@ -272,6 +248,8 @@
         <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/php/sellManage.php" />
         <option value="$PROJECT_DIR$/php/data/profileChange.php" />
+        <option value="$PROJECT_DIR$/css/profile.less" />
+        <option value="$PROJECT_DIR$/css/main.less" />
       </list>
     </option>
   </component>
@@ -450,6 +428,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="publixherBoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="publixherBoot" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -586,14 +578,7 @@
       <workItem from="1462764053581" duration="20351000" />
       <workItem from="1462850165726" duration="24700000" />
       <workItem from="1462890192704" duration="3156000" />
-      <workItem from="1462938415743" duration="16371000" />
-    </task>
-    <task id="LOCAL-00112" summary="태그 노티">
-      <created>1461933280040</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1461933280040</updated>
+      <workItem from="1462938415743" duration="16930000" />
     </task>
     <task id="LOCAL-00113" summary="태그 거슬리는거 지움">
       <created>1461936195054</created>
@@ -931,11 +916,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462961074545</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="ㅈ">
+      <created>1462967413473</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1462967413473</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71867000" />
+    <option name="totallyTimeSpent" value="72426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -987,7 +979,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="기부 방식 바꿈" />
     <MESSAGE value="html purifier 바꿈" />
     <MESSAGE value="바꿈" />
     <MESSAGE value="뭘 바꿈" />
@@ -1012,7 +1003,8 @@
     <MESSAGE value="롱폴링 픽스" />
     <MESSAGE value="롱폴링 구현 취소" />
     <MESSAGE value="댓글 삭제 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="댓글 삭제 구현" />
+    <MESSAGE value="ㅈ" />
+    <option name="LAST_COMMIT_MESSAGE" value="ㅈ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1031,28 +1023,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="1134" column="32" selection-start-line="1134" selection-start-column="32" selection-end-line="1134" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1768,6 +1738,30 @@
             <marker date="1462961437000" expanded="true" signature="13302:14142" placeholder="SELECT CONT.... TBL_CONTENT" />
             <marker date="1462961437000" expanded="true" signature="14835:14928" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15705">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/profile.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="1236" column="4" selection-start-line="1072" selection-start-column="2" selection-end-line="1236" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="1040" column="52" selection-start-line="1040" selection-start-column="52" selection-end-line="1040" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
