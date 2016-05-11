@@ -418,7 +418,7 @@ LIMIT :NOWPAGE, 10";
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 }else {  //메인화면에서 노출시켜줄 순
-    $sql = "explain SELECT
+    $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
   CONT.TITLE,
