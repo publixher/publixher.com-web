@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/conf.js" afterPath="$PROJECT_DIR$/js/conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/getNoti.php" afterPath="$PROJECT_DIR$/php/api/getNoti.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/getNoti.php" afterPath="$PROJECT_DIR$/php/data/getNoti.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -99,7 +95,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getNoti.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1140">
@@ -159,11 +155,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="conf.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="95" column="50" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
+            <state relative-caret-position="375">
+              <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -549,14 +545,7 @@
       <workItem from="1462764053581" duration="20351000" />
       <workItem from="1462850165726" duration="24700000" />
       <workItem from="1462890192704" duration="3156000" />
-      <workItem from="1462938415743" duration="8899000" />
-    </task>
-    <task id="LOCAL-00107" summary="댓글태그 li 지우는거">
-      <created>1461921777973</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1461921777973</updated>
+      <workItem from="1462938415743" duration="9362000" />
     </task>
     <task id="LOCAL-00108" summary="댓글 태그">
       <created>1461922067208</created>
@@ -894,11 +883,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462950134229</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="알림 롱폴링 구현">
+      <created>1462954054242</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1462954054242</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64395000" />
+    <option name="totallyTimeSpent" value="64858000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -950,7 +946,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="댓글 태그 스피너" />
     <MESSAGE value="댓글에 기부기능 추가" />
     <MESSAGE value="기부 api 추가" />
     <MESSAGE value="기부 테이블 추가" />
@@ -975,7 +970,8 @@
     <MESSAGE value="노티센터" />
     <MESSAGE value="itemload에 콘솔 찍는거 지움" />
     <MESSAGE value="getNoti api올림" />
-    <option name="LAST_COMMIT_MESSAGE" value="getNoti api올림" />
+    <MESSAGE value="알림 롱폴링 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="알림 롱폴링 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1670,14 +1666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="95" column="50" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -1689,6 +1677,14 @@
             <marker date="1462953415000" expanded="true" signature="1978:2893" placeholder="SELECT * FRO... TBL_CONTENT_NOTI" />
             <marker date="1462953415000" expanded="true" signature="3270:3362" placeholder="UPDATE publi... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
