@@ -10,19 +10,14 @@ $userID = $userinfo->getID();
 $action = $_GET['action'];
 
 if ($action == 'confonload') {
-    $notinumsql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_CONTENT_NOTI WHERE ID_TARGET=:ID_TARGET AND CHECKED='N' AND NOT ID_ACTOR=:ID_ACTOR AND FOLLING='N'";
+    $notinumsql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_CONTENT_NOTI WHERE ID_TARGET=:ID_TARGET AND CHECKED='N' AND NOT ID_ACTOR=:ID_ACTOR";
     $notinumpre = $db->prepare($notinumsql);
     $notinumpre->bindValue(':ID_TARGET', $userID);
     $notinumpre->bindValue(':ID_ACTOR', $userID);
     $notinumpre->execute();
     $number = $notinumpre->fetchColumn();
-    if ($number != 0) {
-        //롱폴링을 위해 숫자가 있을때만 답변을 보내게 한다
-        echo '{"COUNT":'.$number.'}';
-        $notisql="UPDATE publixher.TBL_CONTENT_NOTI SET FOLLING='Y' WHERE ID_TARGET=:ID_TARGET";
-        $prepare = $db->prepare($notisql);
-        $prepare->execute(array('ID_TARGET'=>$userID));
-    }
+
+    echo '{"COUNT":' . $number . '}';
 } elseif ($action == 'confnotireq') {
     $nowpage = $_GET['nowpage'] * 20;
     /* 1: 내 컨텐츠가 구매될때:(컨텐츠 ID, 구매자 ID) , (컨텐츠 ID,컨텐츠 SALE,구매자 ID,구매자 이름)
@@ -71,7 +66,10 @@ LIMIT :NOWPAGE, 20";
     $notireqpre->bindValue(':NOWPAGE', $nowpage);
     $notireqpre->execute();
     $notis = $notireqpre->fetchAll(PDO::FETCH_ASSOC);
-
+    $notisnum = count($notis);
+    for ($i = 0; $i < $notisnum; $i++) {
+        $notis[$i]['NOTI_DATE'] = passing_time($notis[$i]['NOTI_DATE']);
+    }
     echo json_encode($notis, JSON_UNESCAPED_UNICODE);
     //응답한다음 알림을 전부 읽은걸로 처리한다
     $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' AND FOLLING='N' WHERE ID_TARGET=:ID_TARGET";
