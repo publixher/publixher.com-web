@@ -9,7 +9,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     if (targetID) {
-        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 씀 '
+        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
     }
     if (folderID) {
         write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
@@ -161,7 +161,7 @@ function getCards() {
         success: function (res) {
             if (res.length == 0) {
                 spinner.detach();
-                write = '<div id="no-content">결과가 없네요 >,.<;;</div>'
+                write = '<div class="card item">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
                 } else if ($('#upform').length > 0) {
@@ -238,8 +238,7 @@ function getCards() {
                     }
                 }
             }
-            page = page + 1;
-            loadOption['nowpage'] = page;
+            loadOption['nowpage'] = loadOption['nowpage'] + 1;
         }, error: function (xhr, textStatus, errorThrown) {
             if (textStatus == 'timeout') {
                 this.tryCount++;
@@ -281,6 +280,7 @@ $(document).ready(function () {
                 } else {
                     $('#prea').after(spinner);
                 }
+                console.log(loadOption)
                 $.ajax({
                     url: "/php/data/getContent.php",
                     type: "get",
@@ -351,8 +351,7 @@ $(document).ready(function () {
                             }
                         }
                         loading = false;
-                        page = page + 1;
-                        loadOption['nowpage'] = page;
+                        loadOption['nowpage'] = loadOption['nowpage'] + 1;
                     }, error: function (xhr, textStatus, errorThrown) {
                         if (textStatus == 'timeout') {
                             this.tryCount++;

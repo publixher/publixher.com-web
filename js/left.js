@@ -24,4 +24,12 @@ $(document).ready(function(){
             btn.removeAttr('disabled');
         }})
     })
+    $(document).on('click','#subscribe-btn,#community-btn',function () {
+        loadOption={nowpage:0,userID:mid};
+        $(this).attr('id')=='subscribe-btn'?loadOption['subscribe']=true:loadOption['community']=true;
+        $('.card').each(function(){
+            $(this).remove();
+        })
+        getCards();
+    })
 });
