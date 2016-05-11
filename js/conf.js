@@ -79,17 +79,25 @@ $(document).ready(function () {
         location.href = '/body/' + search_body;
     })
     //페이지 로딩이 끝나면 알림의 개수를 받아온다
-    $.ajax({
-        url: "/php/data/getNoti.php",
-        type: "GET",
-        data: {action: "confonload"},
-        dataType: 'json',
-        success: function (res) {
-            if (res > 0) {
-                $('#notibtn').append('<span class="badge">' + res + '</span>');
-            }
-        }
-    })
+    function getNotiNum() {
+        $.ajax({
+            url: "/php/data/getNoti.php",
+            type: "GET",
+            data: {action: "confonload"},
+            dataType: 'json',
+            timeout:10000,
+            success: function (res) {
+                console.log(res)
+                var notibtn=$('#notibtn');
+                var badge = notibtn.find('.badge');
+                    badge.length>0?
+                       badge.text(badge.text()+res):
+                    notibtn.append('<span class="badge">' + res + '</span>');
+            },complete:setTimeout(getNotiNum,10000)
+        })
+    }
+
+    getNotiNum();
     //알림을 받아오는 함수
     var notiPage = 0;
     var notiLoading = false;
