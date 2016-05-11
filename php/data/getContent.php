@@ -11,7 +11,7 @@ $userID = $_SESSION['user']->getID();
 if (isset($_GET['profile'])) {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
     //내 프로필일때는 내가쓴것내가 타겟인것 전부 가져온다
     if ($_GET['I'] == "true") {
-        $sql = "explain SELECT
+        $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
   CONT.TITLE,
