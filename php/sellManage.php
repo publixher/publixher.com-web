@@ -22,13 +22,18 @@
     <script src="/plugins/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
+    <!--    달력 플러그인-->
+    <script src="/plugins/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/plugins/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.kr.min.js"></script>
+    <link rel="stylesheet" href="/plugins/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css">
+    <script src="/js/sellManage.js"></script>
     <script src="/js/plugins.js"></script>
 </head>
 <body>
 <div id="wrap">
     <?php
-    require_once'../conf/User.php';
-    require_once'../conf/database_conf.php';
+    require_once '../conf/User.php';
+    require_once '../conf/database_conf.php';
     session_start();
 
     require_once "../lib/loginchk.php";
@@ -36,11 +41,35 @@
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
-    $_GET['id']=$userID;
+    $_GET['id'] = $userID;
     require "profile_left.php";
     //중간
-    echo '<div id="middle"><span id="prea"></span>';
-    echo '</div>';
+    ?>
+    <div id="middle">
+        <!--        버튼 3개 선택-->
+        <div id="button-list">
+            <button class="btn btn-default" type="button" id="late-btn">최신순</button>
+            <button class="btn btn-default" type="button" id="sell-btn">판매순</button>
+            <button class="btn btn-default" type="button" id="money-btn">매출순</button>
+        </div>
+        <!--        정렬별 최고 순위-->
+        <div id="most-content">
+
+        </div>
+        <!--        기간별 cms-->
+        <div id="cms-date">
+            <!--            datepicker-->
+            <div class="span5 col-md-5" id="sandbox-container">
+                <div class="input-daterange input-group" id="datepicker">
+                    <input type="text" class="input-sm form-control" name="start" id="start_date">
+                    <span class="input-group-addon">to</span>
+                    <input type="text" class="input-sm form-control" name="end" id="end_date">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
     //오른쪽
     require "right.php";
     ?>
@@ -59,4 +88,14 @@
         ga('send', 'pageview');</script>
 </div>
 </body>
+<script>
+    //달력 소스
+    $('#sandbox-container .input-daterange').datepicker({
+        todayBtn: "linked",
+        language: "kr",
+        autoclose: true,
+        todayHighlight: true,
+        format:'yyyy년 mm월 dd일'
+    });
+</script>
 </html>
