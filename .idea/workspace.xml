@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="미디어쿼리 주석처리">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/sellManage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/data/cms.php" />
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="판매관리">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/cms.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/itemAct.php" afterPath="$PROJECT_DIR$/php/api/itemAct.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/cms.php" afterPath="$PROJECT_DIR$/php/data/cms.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/itemAct.php" afterPath="$PROJECT_DIR$/php/data/itemAct.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/sellManage.php" afterPath="$PROJECT_DIR$/php/sellManage.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
@@ -34,39 +39,15 @@
     <favorites_list name="publixherBoot" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.15711462">
+    <splitter split-orientation="vertical" split-proportion="0.9">
       <split-first>
         <leaf>
           <file leaf-file-name="sellManage.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/php/sellManage.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-462">
-                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                <state relative-caret-position="421">
+                  <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="middle.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/php/middle.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-600">
-                  <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-                  <folding>
-                    <marker date="1462779843000" expanded="true" signature="1776:1838" placeholder="SELECT ID,DI... TBL_FOLDER" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="foldercon.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/php/foldercon.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-75">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <marker date="1461908117000" expanded="true" signature="1795:1848" placeholder="SELECT ID_US... TBL_FOLDER" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -83,17 +64,34 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cms.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="cms.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/php/data/cms.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="634">
-                  <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+                <state relative-caret-position="120">
+                  <caret line="8" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="2" />
                   <folding>
-                    <marker date="1463052809000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463052809000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463052809000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463052809000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463052809000" expanded="true" signature="1155:1636" placeholder="SELECT COUNT... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="1169:1344" placeholder="SELECT COUNT... TBL_CONTENT" />
+                    <marker date="1463056140000" expanded="true" signature="1524:1762" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+                    <marker date="1463056140000" expanded="true" signature="2033:2437" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cms.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/php/api/cms.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+                  <folding>
+                    <marker date="1463056230000" expanded="true" signature="230:460" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463056230000" expanded="true" signature="1055:1230" placeholder="SELECT COUNT... TBL_CONTENT" />
+                    <marker date="1463056230000" expanded="true" signature="1410:1648" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+                    <marker date="1463056230000" expanded="true" signature="1919:2323" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
                   </folding>
                 </state>
               </provider>
@@ -185,8 +183,8 @@
           <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/sellManage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="557">
-                  <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
+                <state relative-caret-position="-109">
+                  <caret line="37" column="23" selection-start-line="35" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#52#0" expanded="false" />
                   </folding>
@@ -213,9 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/getImgFromUrl.php" />
-        <option value="$PROJECT_DIR$/lib/blur.php" />
-        <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/php/profile_middle.php" />
         <option value="/MySQL Fragment (best.php:229).sql" />
         <option value="$PROJECT_DIR$/php/api/best.php" />
@@ -229,8 +224,6 @@
         <option value="$PROJECT_DIR$/php/api/community.php" />
         <option value="/MySQL Fragment (getNoti.php:5144).sql" />
         <option value="/MySQL Fragment (getNoti.php:5148).sql" />
-        <option value="$PROJECT_DIR$/php/data/itemAct.php" />
-        <option value="$PROJECT_DIR$/php/api/itemAct.php" />
         <option value="/MySQL Fragment (getNoti.php:5971).sql" />
         <option value="$PROJECT_DIR$/php/data/idManage.php" />
         <option value="$PROJECT_DIR$/php/api/idManage.php" />
@@ -260,10 +253,15 @@
         <option value="$PROJECT_DIR$/css/main.less" />
         <option value="/MySQL Fragment (cms.php:317).sql" />
         <option value="/MySQL Fragment (cms.php:1153).sql" />
+        <option value="/MySQL Fragment (cms.php:1154).sql" />
+        <option value="/MySQL Fragment (cms.php:1500).sql" />
+        <option value="$PROJECT_DIR$/php/data/itemAct.php" />
+        <option value="$PROJECT_DIR$/php/api/itemAct.php" />
         <option value="$PROJECT_DIR$/php/sellManage.php" />
         <option value="$PROJECT_DIR$/js/sellManage.js" />
+        <option value="/MySQL Fragment (cms.php:2031).sql" />
         <option value="$PROJECT_DIR$/php/data/cms.php" />
-        <option value="/MySQL Fragment (cms.php:1154).sql" />
+        <option value="$PROJECT_DIR$/php/api/cms.php" />
       </list>
     </option>
   </component>
@@ -302,9 +300,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="2583" />
+    <option name="x" value="2085" />
     <option name="y" value="-280" />
-    <option name="width" value="617" />
+    <option name="width" value="1115" />
     <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -628,14 +626,7 @@
       <workItem from="1462938415743" duration="17117000" />
       <workItem from="1463023462421" duration="19000" />
       <workItem from="1463023500921" duration="30000" />
-      <workItem from="1463023544008" duration="14905000" />
-    </task>
-    <task id="LOCAL-00114" summary="태그 거슬리는거 지움">
-      <created>1461936217543</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1461936217543</updated>
+      <workItem from="1463023544008" duration="18244000" />
     </task>
     <task id="LOCAL-00115" summary="원래있던방식으로 바꾸고 태그 이름 찾는거에 distinct 추가">
       <created>1461936416839</created>
@@ -973,11 +964,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462968775574</updated>
     </task>
-    <option name="localTasksCounter" value="163" />
+    <task id="LOCAL-00163" summary="판매정리 해야함">
+      <created>1463052822634</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1463052822637</updated>
+    </task>
+    <option name="localTasksCounter" value="164" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87567000" />
+    <option name="totallyTimeSpent" value="90906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -989,20 +987,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2583" y="-280" width="617" height="1080" extended-state="6" />
+    <frame x="2085" y="-280" width="1115" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2243083" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41391304" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22376238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21155639" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.503231" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32632294" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27945206" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24407114" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24356435" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1029,7 +1027,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="바꿈" />
     <MESSAGE value="뭘 바꿈" />
     <MESSAGE value="api 추가" />
     <MESSAGE value="subscribeList 추가" />
@@ -1054,14 +1051,22 @@
     <MESSAGE value="댓글 삭제 구현" />
     <MESSAGE value="ㅈ" />
     <MESSAGE value="미디어쿼리 주석처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="미디어쿼리 주석처리" />
+    <MESSAGE value="판매정리 해야함" />
+    <option name="LAST_COMMIT_MESSAGE" value="판매정리 해야함" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/data/cms.php</url>
+          <line>72</line>
+          <option name="timeStamp" value="409" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="408" />
+      <option name="time" value="410" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -1073,13 +1078,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/conf/getTarget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/subscribe.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1105,13 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/itemAct.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="735" column="45" selection-start-line="735" selection-start-column="45" selection-end-line="735" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1389,71 +1380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/itemAct.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="307" column="79" selection-start-line="307" selection-start-column="79" selection-end-line="307" selection-end-column="79" />
-          <folding>
-            <marker date="1462869987000" expanded="true" signature="894:994" placeholder="SELECT SEQ F... TBL_KNOCK_LIST" />
-            <marker date="1462869987000" expanded="true" signature="1282:1367" placeholder="INSERT INTO publixher.TBL_KNOCK_LIST... " />
-            <marker date="1462869987000" expanded="true" signature="1388:1447" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="1468:1547" placeholder="SELECT KNOCK... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="2213:2329" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="2637:2731" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="4384:4836" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="5623:6032" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="6782:7311" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="10110:10201" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1462869987000" expanded="true" signature="10555:10663" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="10984:11050" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="11307:11517" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="11767:11870" placeholder="INSERT INTO publixher.TBL_CONTENT_DONATE... " />
-            <marker date="1462869987000" expanded="true" signature="12409:12540" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY... " />
-            <marker date="1462869987000" expanded="true" signature="12557:12620" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="12637:12701" placeholder="SELECT COMME... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="13408:13543" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="13910:14045" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="14439:14533" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="15082:15144" placeholder="SELECT PRICE... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="15427:15518" placeholder="SELECT CASH_... TBL_CONNECTOR" />
-            <marker date="1462869987000" expanded="true" signature="16130:16225" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
-            <marker date="1462869987000" expanded="true" signature="16573:16656" placeholder="INSERT INTO publixher.TBL_BUY_LIST... " />
-            <marker date="1462869987000" expanded="true" signature="16902:16959" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="17126:17234" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="17427:17543" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="19435:19500" placeholder="SELECT FOR_S... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="19803:19854" placeholder="SELECT BODY TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="20184:20279" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
-            <marker date="1462869987000" expanded="true" signature="20613:20664" placeholder="SELECT BODY TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="21088:21139" placeholder="SELECT BODY TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="21523:21579" placeholder="SELECT ID_WR... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="21831:21884" placeholder="SELECT FOLDE... TBL_CONTENT" />
-            <marker date="1462869987000" expanded="true" signature="22114:22179" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="22346:22416" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="22601:22665" placeholder="DELETE FROM " />
-            <marker date="1462869987000" expanded="true" signature="22968:23035" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="23376:23481" placeholder="SELECT SEQ F... TBL_CONTENT_REPLY_KNOCK" />
-            <marker date="1462869987000" expanded="true" signature="23759:23872" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK... " />
-            <marker date="1462869987000" expanded="true" signature="23893:23958" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="23979:24056" placeholder="SELECT ID_US... TBL_CONTENT_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="24744:24879" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="25875:26283" placeholder="SELECT SUB_R... TBL_CONTENT_SUB_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="27724:27878" placeholder="INSERT INTO publixher.TBL_CONTENT_SUB_REPLY... " />
-            <marker date="1462869987000" expanded="true" signature="27895:27958" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="27975:28045" placeholder="SELECT SUB_R... TBL_CONTENT_REPLY" />
-            <marker date="1462869987000" expanded="true" signature="28062:28135" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="29021:29183" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="29615:29777" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-            <marker date="1462869987000" expanded="true" signature="30316:30410" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="31226:31310" placeholder="DELETE FROM " />
-            <marker date="1462869987000" expanded="true" signature="31656:31736" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="32253:32310" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="32334:32395" placeholder="UPDATE publi... " />
-            <marker date="1462869987000" expanded="true" signature="32643:32732" placeholder="INSERT INTO publixher.TBL_CONTENT_REPORT... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/getNoti.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
@@ -1523,34 +1449,179 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/sellManage.php">
+    <entry file="file://$PROJECT_DIR$/php/api/itemAct.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="587">
+          <caret line="428" column="49" selection-start-line="428" selection-start-column="49" selection-end-line="428" selection-end-column="49" />
+          <folding>
+            <marker date="1463055064000" expanded="true" signature="309:409" placeholder="SELECT SEQ F... TBL_KNOCK_LIST" />
+            <marker date="1463055064000" expanded="true" signature="697:782" placeholder="INSERT INTO publixher.TBL_KNOCK_LIST... " />
+            <marker date="1463055064000" expanded="true" signature="803:862" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="883:962" placeholder="SELECT KNOCK... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="1824:1940" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="2248:2342" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="3951:4410" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="5409:5825" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="6787:7323" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="9716:9807" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1463055064000" expanded="true" signature="10138:10246" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="10567:10633" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="10890:11100" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="11350:11453" placeholder="INSERT INTO publixher.TBL_CONTENT_DONATE... " />
+            <marker date="1463055064000" expanded="true" signature="12030:12161" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY... " />
+            <marker date="1463055064000" expanded="true" signature="12178:12241" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="12258:12322" placeholder="SELECT COMME... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="13021:13156" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="13523:13658" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="14176:14270" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="14571:14633" placeholder="SELECT PRICE... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="14916:15007" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1463055064000" expanded="true" signature="15572:15667" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
+            <marker date="1463055064000" expanded="true" signature="16015:16111" placeholder="INSERT INTO publixher.TBL_BUY_LIST... " />
+            <marker date="1463055064000" expanded="true" signature="16425:16482" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="16649:16757" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="16950:17066" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="18938:19003" placeholder="SELECT FOR_S... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="19306:19357" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="19687:19782" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
+            <marker date="1463055064000" expanded="true" signature="20116:20167" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="20615:20666" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21051:21107" placeholder="SELECT ID_WR... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21359:21412" placeholder="SELECT FOLDE... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21642:21707" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="21874:21944" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="22129:22193" placeholder="DELETE FROM " />
+            <marker date="1463055064000" expanded="true" signature="22466:22533" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="22887:22992" placeholder="SELECT SEQ F... TBL_CONTENT_REPLY_KNOCK" />
+            <marker date="1463055064000" expanded="true" signature="23270:23383" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK... " />
+            <marker date="1463055064000" expanded="true" signature="23404:23469" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="23490:23567" placeholder="SELECT ID_US... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="24251:24386" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="25378:25786" placeholder="SELECT SUB_R... TBL_CONTENT_SUB_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="27259:27413" placeholder="INSERT INTO publixher.TBL_CONTENT_SUB_REPLY... " />
+            <marker date="1463055064000" expanded="true" signature="27430:27493" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="27510:27580" placeholder="SELECT SUB_R... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="27597:27670" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="28556:28718" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="29150:29312" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="29957:30051" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="30793:30877" placeholder="DELETE FROM " />
+            <marker date="1463055064000" expanded="true" signature="31127:31207" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="31721:31778" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="31802:31863" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="32113:32202" placeholder="INSERT INTO publixher.TBL_CONTENT_REPORT... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/cms.php">
+    <entry file="file://$PROJECT_DIR$/php/data/itemAct.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        <state relative-caret-position="557">
+          <caret line="438" column="49" selection-start-line="438" selection-start-column="49" selection-end-line="438" selection-end-column="49" />
           <folding>
-            <marker date="1463052809000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463052809000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463052809000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463052809000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463052809000" expanded="true" signature="1155:1636" placeholder="SELECT COUNT... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="894:994" placeholder="SELECT SEQ F... TBL_KNOCK_LIST" />
+            <marker date="1463055064000" expanded="true" signature="1282:1367" placeholder="INSERT INTO publixher.TBL_KNOCK_LIST... " />
+            <marker date="1463055064000" expanded="true" signature="1388:1447" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="1468:1547" placeholder="SELECT KNOCK... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="2213:2329" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="2637:2731" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="4384:4836" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="5623:6032" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="6782:7311" placeholder="SELECT REPLY... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="10110:10201" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1463055064000" expanded="true" signature="10555:10663" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="10984:11050" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="11307:11517" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="11767:11870" placeholder="INSERT INTO publixher.TBL_CONTENT_DONATE... " />
+            <marker date="1463055064000" expanded="true" signature="12409:12540" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY... " />
+            <marker date="1463055064000" expanded="true" signature="12557:12620" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="12637:12701" placeholder="SELECT COMME... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="13408:13543" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="13910:14045" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="14439:14533" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="15082:15144" placeholder="SELECT PRICE... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="15427:15518" placeholder="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1463055064000" expanded="true" signature="16130:16225" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
+            <marker date="1463055064000" expanded="true" signature="16573:16669" placeholder="INSERT INTO publixher.TBL_BUY_LIST... " />
+            <marker date="1463055064000" expanded="true" signature="16983:17040" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="17207:17315" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="17508:17624" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="19516:19581" placeholder="SELECT FOR_S... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="19884:19935" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="20265:20360" placeholder="SELECT BUY_D... TBL_BUY_LIST" />
+            <marker date="1463055064000" expanded="true" signature="20694:20745" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21169:21220" placeholder="SELECT BODY TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21604:21660" placeholder="SELECT ID_WR... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="21912:21965" placeholder="SELECT FOLDE... TBL_CONTENT" />
+            <marker date="1463055064000" expanded="true" signature="22195:22260" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="22427:22497" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="22682:22746" placeholder="DELETE FROM " />
+            <marker date="1463055064000" expanded="true" signature="23049:23116" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="23457:23562" placeholder="SELECT SEQ F... TBL_CONTENT_REPLY_KNOCK" />
+            <marker date="1463055064000" expanded="true" signature="23840:23953" placeholder="INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK... " />
+            <marker date="1463055064000" expanded="true" signature="23974:24039" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="24060:24137" placeholder="SELECT ID_US... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="24825:24960" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="25956:26364" placeholder="SELECT SUB_R... TBL_CONTENT_SUB_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="27805:27959" placeholder="INSERT INTO publixher.TBL_CONTENT_SUB_REPLY... " />
+            <marker date="1463055064000" expanded="true" signature="27976:28039" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="28056:28126" placeholder="SELECT SUB_R... TBL_CONTENT_REPLY" />
+            <marker date="1463055064000" expanded="true" signature="28143:28216" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="29102:29264" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="29696:29858" placeholder="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
+            <marker date="1463055064000" expanded="true" signature="30397:30491" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="31307:31391" placeholder="DELETE FROM " />
+            <marker date="1463055064000" expanded="true" signature="31737:31817" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="32334:32391" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="32415:32476" placeholder="UPDATE publi... " />
+            <marker date="1463055064000" expanded="true" signature="32724:32813" placeholder="INSERT INTO publixher.TBL_CONTENT_REPORT... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/sellManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sellManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
+        <state relative-caret-position="397">
+          <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
           <folding>
             <element signature="e#0#52#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/cms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="2" />
+          <folding>
+            <marker date="1463056140000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463056140000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463056140000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463056140000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463056140000" expanded="true" signature="1169:1344" placeholder="SELECT COUNT... TBL_CONTENT" />
+            <marker date="1463056140000" expanded="true" signature="1524:1762" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+            <marker date="1463056140000" expanded="true" signature="2033:2437" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/cms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <marker date="1463056230000" expanded="true" signature="230:460" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463056230000" expanded="true" signature="1055:1230" placeholder="SELECT COUNT... TBL_CONTENT" />
+            <marker date="1463056230000" expanded="true" signature="1410:1648" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+            <marker date="1463056230000" expanded="true" signature="1919:2323" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
           </folding>
         </state>
       </provider>

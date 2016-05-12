@@ -380,7 +380,6 @@ LIMIT
 } elseif ($act == 'share') {
 
 } elseif ($act == 'buy') {
-    //TODO:userbirth
     $userbirth = $_POST['birth'];
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
@@ -423,10 +422,11 @@ LIMIT
         //안샀으면
         try {
             $db->beginTransaction();
-            $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+            $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT,PRICE) VALUES(:ID_USER,:ID_CONTENT,:PRICE);";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
             $prepare2->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+            $prepare2->bindValue(':PRICE', $price, PDO::PARAM_STR);
             $prepare2->execute();
 
             $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";

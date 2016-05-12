@@ -66,7 +66,9 @@
                     <input type="text" class="input-sm form-control" name="end" id="end_date">
                 </div>
             </div>
-
+            <div id="cms-result">
+    
+            </div>
         </div>
     </div>
     <?php
@@ -95,7 +97,7 @@
         language: "kr",
         autoclose: true,
         todayHighlight: true,
-        format:'yyyy년 mm월 dd일'
+        format: 'yyyy년 mm월 dd일'
     });
 </script>
 </html>

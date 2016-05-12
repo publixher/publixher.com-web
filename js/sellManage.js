@@ -114,7 +114,7 @@ $(document).ready(function () {
             retryLimit: 3,
             success: function (res) {
                 console.log(res)
-                var cms_date = $('#cms-date');
+                var cms_date = $('#cms-result');
                 cms_date.detach(spinner);
 
                 var total_publixh = res['TOTAL_PUBLIXH'];
@@ -177,6 +177,7 @@ $(document).ready(function () {
 
     //날짜 바꾸면 바뀐날짜로 다시 통계 얻어오기
     $('#sandbox-container .input-daterange').on('changeDate',function(){
+        $('#cms-result').html('');
         var start_date=$('#start_date');
         var end_date=$('#end_date');
         var start = start_date.datepicker('getDate');

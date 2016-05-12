@@ -1,11 +1,7 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-require_once '../../conf/User.php';
-session_start();
-$action = $_GET['action'];
-$userinfo = $_SESSION['user'];
-$userID = $userinfo->getID();
+$userID = $_GET['userID'];
 if ($action == 'most') {
     $sort = $_GET['sort'];
     $SORT = '';
