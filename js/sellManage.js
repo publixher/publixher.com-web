@@ -117,7 +117,7 @@ $(document).ready(function () {
             success: function (res) {
                 console.log(res)
                 var cms_date = $('#cms-result');
-                cms_date.detach(spinner);
+                spinner.detach();
 
                 var total_publixh = res['TOTAL_PUBLIXH'];
                 var total_sale = res['TOTAL_SALE'];
