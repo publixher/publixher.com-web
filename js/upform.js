@@ -168,6 +168,8 @@ $(document).ready(function () {
         category = $(this).text();
         function subwrite(sub) {
             $('#subcategorySelect').html('');
+            $('#sub-category').text('하위 분류');
+            sub_category=null;
             var write = '';
             for (var i = 0; i < sub.length; i++) {
                 write += '<li><a>' + sub[i] + '</a></li>'

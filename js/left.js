@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('.accordion-toggle,.nameuser').on('click', function () {
         var mu;
         if($(this).hasClass('accordion-toggle')) {
-            mu = ($(this).attr('href')).replace('#collapse', '')
+            mu = ($(this).attr('href')).replace('#subscribe-collapse', '')
         }else{
             mu=($(this).attr('href')).replace('/profile/', '')
         }
@@ -23,5 +23,13 @@ $(document).ready(function(){
             $('#report').val('');
             btn.removeAttr('disabled');
         }})
+    })
+    $(document).on('click','#subscribe-btn,#community-btn',function () {
+        loadOption={nowpage:0,userID:mid};
+        $(this).attr('id')=='subscribe-btn'?loadOption['subscribe']=true:loadOption['community']=true;
+        $('.card').each(function(){
+            $(this).remove();
+        })
+        getCards();
     })
 });

@@ -85,8 +85,8 @@ $(document).ready(function () {
         data: {action: "confonload"},
         dataType: 'json',
         success: function (res) {
-            if (res > 0) {
-                $('#notibtn').append('<span class="badge">' + res + '</span>');
+            if (res['COUNT'] > 0) {
+                $('#notibtn').append('<span class="badge">' + res['COUNT'] + '</span>');
             }
         }
     })
@@ -112,30 +112,32 @@ $(document).ready(function () {
                     for (var i = 0; i < res.length; i++) {
                         switch (res[i]['ACT']) {
                             case '1':
-                                var word = "" + res[i]['TITLE'] + " 게시물에 신규 구매가 있습니다.";
-                                $('#notilist li:last-child').after('<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
+                                var word = res[i]['USER_NAME']+"님이 당신의 \""+res[i]['TITLE']+"\"게시물을 구매했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                                 break;
                             case '2':
                                 var word = res[i]['USER_NAME'] + '님이 회원님과 친구가 되고싶어 합니다.';
-                                $('#notilist li:last-child').after('<li><a href="/profile/' + mid + '">' + word + '</a></li>');
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/profile/' + mid + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                                 break;
                             case '3':
-                                res[i]['TITLE'] = res[i]['TITLE'] ? res[i]['TITLE'] : '회원님의';
-                                var word = "" + res[i]['TITLE'] + " 게시물에 새로운 댓글이 있습니다.";
-                                $('#notilist li:last-child').after('<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
+                                var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 새로운 댓글을 달았습니다.\""+res[i]['REPLY']+"\"";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                                 break;
                             case '4':
-                                res[i]['TITLE'] = res[i]['TITLE'] ? res[i]['TITLE'] : '회원님의';
-                                var word = "" + res[i]['TITLE'] + " 게시물에 새로운 노크가 있습니다.";
-                                $('#notilist li:last-child').after('<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
-                                break;
-                            case '6':
-                                var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 노크가 있습니다.";
-                                $('#notilist li:last-child').after('<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
+                                var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 노크 했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                                 break;
                             case '7':
-                                var word = "회원님의 '" + res[i]['REPLY'] + "' 댓글에 새로운 대댓글이 있습니다.";
-                                $('#notilist li:last-child').after('<li><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a></li>');
+                                var word = "회원님이 다신 \""+res[i]['REPLY']+"\" 댓글에 "+res[i]['USER_NAME']+"님이 \""+res[i]['SUB_REPLY']+"\" 라고 댓글을 달았습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                break;
+                            case '8':
+                                var word = res[i]['USER_NAME']+"님이 \""+res[i]['TITLE']+"\" 게시물에 회원님을 소환했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                break;
+                            case '9':
+                                var word=res[i]['USER_NAME']+"님이 \""+res[i]['REPLY']+"\" 댓글에 회원님을 소환했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                                 break;
                         }
                     }

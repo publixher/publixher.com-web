@@ -8,75 +8,47 @@ $(document).ready(function () {
         $.ajax({
             url: "/php/data/getNoti.php",
             type: "GET",
-            data: {action: "noticenter",nowpage:page},
+            data: {action: "confnotireq",nowpage:page},
             dataType: 'json',
             success: function (res) {
-                var listul = $('#listul');
-                var snsreg = /SNS-[0-9]*/;
                 //알림문장
-                if (res[1]) {
-                    var title = Object.keys(res[1]);
-                    for (var i = 0; i < title.length; i++) {
-                        var word = "'" + title[i] + "' 게시물에 " + res[1][title[i]]['count'] + '회의 신규 구매가 있었습니다.'
-                        listul.append('<li><a href="/content/' + res[1][title[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[1][title[i]]['date']+'</span></li>');
+                for (var i = 0; i < res.length; i++) {
+                    switch (res[i]['ACT']) {
+                        case '1':
+                            var word = res[i]['USER_NAME']+"님이 당신의 \""+res[i]['TITLE']+"\"게시물을 구매했습니다.";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
+                        case '2':
+                            var word = res[i]['USER_NAME'] + '님이 회원님과 친구가 되고싶어 합니다.';
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/profile/' + mid + '">' + word + '</a></li>');
+                            break;
+                        case '3':
+                            var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 새로운 댓글을 달았습니다.\""+res[i]['REPLY']+"\"";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
+                        case '4':
+                            var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 노크 했습니다.";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
+                        case '7':
+                            var word = "회원님이 다신 \""+res[i]['REPLY']+"\" 댓글에 "+res[i]['USER_NAME']+"님이 \""+res[i]['SUB_REPLY']+"\" 라고 댓글을 달았습니다.";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
+                        case '8':
+                            var word = res[i]['USER_NAME']+"님이 \""+res[i]['TITLE']+"\" 게시물에 회원님을 소환했습니다.";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
+                        case '9':
+                            var word=res[i]['USER_NAME']+"님이 \""+res[i]['REPLY']+"\" 댓글에 회원님을 소환했습니다.";
+                            $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                            break;
                     }
                 }
-                if (res[2]) {
-                    for (var i = 0; i < res[2].length; i++) {
-                        var word = res[2][i]['USER_NAME'] + '님이 회원님과 친구가 되고싶어 합니다.'
-                        listul.append('<li><a href="/profile/'+mid+'">' + word + '</a></li>')
-                    }
-                }
-                if (res[3]) {
-                    var title = Object.keys(res[3]);
-                    for (var i = 0; i < title.length; i++) {
-                        if (snsreg.test(title[i])) {
-                            var word = '회원님의 게시물에 ' + res[3][title[i]]['count'] + '개의 신규 댓글이 있습니다.'
-                        } else {
-                            var word = "'" + title[i] + "' 게시물에 " + res[3][title[i]]['count'] + '개의 신규 댓글이 있습니다.'
-                        }
-                        listul.append('<li><a href="/content/' + res[3][title[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[3][title[i]]['date']+'</span></li>');
-                    }
-                }
-                if (res[4]) {
-                    var title = Object.keys(res[4]);
-                    for (var i = 0; i < title.length; i++) {
-                        if (snsreg.test(title[i])) {
-                            var word = '회원님의 게시물에 ' + res[4][title[i]]['count'] + '개의 신규 노크가 있습니다.'
-                        } else {
-                            var word = "'" + title[i] + "' 게시물에 " + res[4][title[i]]['count'] + '개의 신규 노크가 있습니다.'
-                        }
-                        listul.append('<li><a href="/content/' + res[4][title[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[4][title[i]]['date']+'</span></li>');
-                    }
-                }
-                if (res[6]) {
-                    var reply = Object.keys(res[6]);
-                    for (var i = 0; i < reply.length; i++) {
-                        var word = "회원님의 '" + reply[i] + "' 댓글에 " + res[6][reply[i]]['count'] + '개의 신규 노크가 있습니다.';
-                        listul.append('<li><a href="/content/'+ res[6][reply[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[6][reply[i]]['date']+'</span></li>');
-                    }
-                }
-                if (res[7]) {
-                    var reply = Object.keys(res[7]);
-                    for (var i = 0; i < reply.length; i++) {
-                        var word = "회원님의 '" + reply[i] + "' 댓글에 " + res[7][reply[i]]['count'] + '개의 새로운 대댓글이 있습니다.';
-                        listul.append('<li><a href="/content/'+ res[7][reply[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[7][reply[i]]['date']+'</span></li>');
-                    }
-                }
-                if (res[9]) {
-                    console.log(res)
-                    var reply = Object.keys(res[9]);
-                    console.log(reply)
-                    for (var i = 0; i < reply.length; i++) {
-                        var word = "회원님의 '" + reply[i] + "' 댓글에 " + res[9][reply[i]]['count'] + '태그되었습니다.';
-                        listul.append('<li><a href="/content/'+ res[9][reply[i]][0]['ID_CONTENT'] + '">' + word + '</a><span class="notidate">'+res[9][reply[i]]['date']+'</span></li>');
-                    }
-                }
-                page=page+1;
+                page = page + 1;
             }
         })
     }
-    //로딩 끝나면 알림 받아오기(100개 단위)
+    //로딩 끝나면 알림 받아오기
     getnoti();
     $('#notimore').on('click', function () {
         getnoti();

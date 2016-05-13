@@ -98,6 +98,7 @@ WHERE
     $isnick = $userinfo->getISNICK();
     $referer=$_SERVER['HTTP_REFERER'];
     if ($isnick == 'Y') {
+        $date=date("Y-m-d H:i:s",time());
         //익명일때 실명으로 새로 로그인
         $sql= "SELECT
   ID,
@@ -121,6 +122,13 @@ WHERE CONN.ID_ANONY = :ID";
         $prepare->bindValue(':ID', $userID);
         $prepare->execute();
         $result = $prepare->fetchObject(User);
+
+        $bandate=$result->getBAN(); //로그인 제한되었으면 튕기기
+//TODO:클라이언트 레벨에서 로그인 실패 동작 처리해야함
+        if($bandate && $bandate>$date){
+            echo '"result":"N","reason":"banned","date":"'.$bandate.'"}';
+            exit;
+        }
         $_SESSION['user'] = $result;
         setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
     } elseif ($isnick == 'N') {

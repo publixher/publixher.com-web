@@ -196,16 +196,16 @@ $(document).ready(function () {
                                                 .on('keyup', function (e) {
                                                     if (e.keyCode == 13 && $(this).val().length > 0) {
                                                         var thisform = $(this);
-                                                        var point=$(this).val();
-                                                        var rex=/^\d+$/;
+                                                        var point = $(this).val();
+                                                        var rex = /^\d+$/;
                                                         //숫자인지 체크
-                                                        if (rex.test(point) && point!=0) {
+                                                        if (rex.test(point) && point != 0) {
                                                             tab_comment.children('.commentReg')
                                                                 .append(
                                                                     $('<span>')
                                                                         .addClass('donate-span')
                                                                         .text(point)
-                                                                        .attr('contenteditable','false')
+                                                                        .attr('contenteditable', 'false')
                                                                 )
                                                             thisform.val('');
                                                         } else {
@@ -246,10 +246,8 @@ $(document).ready(function () {
                             }
                             write += '</span></span></td></tr></table></div>';
                             list.append(write);
-                            if(res[i]['DEL']==1) {
-                                list.
-                                find('.reply-body').
-                                addClass('reply-del');
+                            if (res[i]['DEL'] == 1) {
+                                list.find('.reply-body').addClass('reply-del');
                             }
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
@@ -290,6 +288,13 @@ $(document).ready(function () {
                 }
             })
             tail.addClass('opend-comment');
+        } else {
+            //댓글창 열려있으면 닫기
+            var tail = $(this).parents('.tail')
+                .removeClass('opend-comment')
+                .removeAttr('style');
+            tail.find('.tcomment').removeAttr('style');
+            tail.find('.tab-comment').remove();
         }
     });
     //댓글 네비게이션에 각 탭 누를때의 동작
@@ -409,7 +414,7 @@ $(document).ready(function () {
             form.children('.rep-tag').each(function () {
                 taglist.push($(this).attr('data-userid'))
             })
-            var donatelist=[];  //후원 리스트 추출
+            var donatelist = [];  //후원 리스트 추출
             form.children('.donate-span').each(function (list) {
                 donatelist.push($(this).text())
             })
@@ -424,7 +429,7 @@ $(document).ready(function () {
                     comment: reply,
                     token: token,
                     taglist: taglist,
-                    donatelist:donatelist
+                    donatelist: donatelist
                 },
                 dataType: 'json',
                 success: function (res) {
@@ -593,7 +598,7 @@ $(document).ready(function () {
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
                                 var date = res[i]['REPLY_DATE'];
-                                var reply = res[i]['REPLY'];
+                                var reply = res[i]['REP_BODY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
                                 write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
@@ -602,7 +607,7 @@ $(document).ready(function () {
                                 }
                                 write += '</td></tr></table></div>';
                                 subrep_list.append(write);
-                                if(res[i]['DEL']==1){
+                                if (res[i]['DEL'] == 1) {
                                     subrep_list.find('.reply-body').addClass('reply-del');
                                 }
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
@@ -1035,7 +1040,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['DIR'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
                     $('#' + itemID_mod).replaceWith(write)
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
@@ -1090,23 +1095,23 @@ $(document).ready(function () {
 
         switch (category) {
             case '매거진':
-                var sub = ['IT','게임','여행-국내','여행-해외','뷰티','패션','반려동물'];
+                var sub = ['IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물'];
                 subwrite(sub);
                 break;
             case '뉴스':
-                var sub = ['일반','스포츠','연애','테크'];
+                var sub = ['일반', '스포츠', '연애', '테크'];
                 subwrite(sub);
                 break;
             case '소설':
-                var sub = ['문학','에세이','인문','자기개발','교육'];
+                var sub = ['문학', '에세이', '인문', '자기개발', '교육'];
                 subwrite(sub);
                 break;
             case '만화':
-                var sub = ['로맨스','판타지','개그','미스터리','호러','SF','무협','스포츠'];
+                var sub = ['로맨스', '판타지', '개그', '미스터리', '호러', 'SF', '무협', '스포츠'];
                 subwrite(sub);
                 break;
             case '사진':
-                var sub = ['일상','인물','자연','여행','동식물','pine_art','야경','GIF'];
+                var sub = ['일상', '인물', '자연', '여행', '동식물', 'pine_art', '야경', 'GIF'];
                 subwrite(sub);
                 break;
         }
@@ -1238,6 +1243,20 @@ $(document).ready(function () {
     $(document).on("dragstart", "img,a", function () {
         return false;
     });
+    //게시글의 카테고리 클릭시 게시글 카드 다 지우고 loadOption 다시작성해서 요청
+    $(document).on('click', '.item-category,.item-sub_category', function () {
+        var category = $(this).hasClass('item-category') ? $(this).text() : $(this).siblings('.item-category').text();
+        var sub_category = $(this).hasClass('item-sub_category') ? $(this).text() : null;
+        loadOption['nowpage'] = 0;
+        loadOption['category'] = category;
+        sub_category ? loadOption['sub_category'] = sub_category : delete loadOption['sub_category'];  //loadOption 정의 끝
+        //모든카드 삭제 후 다시 로딩할것
+        $('.card').each(function () {
+            $(this).remove();
+        })
+        getCards();
+
+    })
 });
 
 //텍스트에이리어 입력시 자동 크기조정

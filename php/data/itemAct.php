@@ -18,7 +18,6 @@ $act = $_POST['action'];
 if (!$act) {
     $act = $_GET['action'];
 }
-//액션에 따라 동작이 달라짐 knock,comment,commentreg,share,buy
 if ($act == 'knock') {
     $ID = $_POST['ID'];
     $userID = $_POST['userID'];
@@ -277,24 +276,24 @@ LIMIT
     $br = "/(\<br\>){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
-    $comment=preg_replace($br,'<br><br>',$_POST['comment']);
+    $comment = preg_replace($br, '<br><br>', $_POST['comment']);
     $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
-    $taglist=array_unique($_POST['taglist'],SORT_STRING);
-    $taglist_len=count($taglist);
+    $taglist = array_unique($_POST['taglist'], SORT_STRING);
+    $taglist_len = count($taglist);
 
     //후원기능 시작
-    if(isset($_POST['donatelist'])) {
-        $point=0;
-        foreach($_POST['donatelist'] as $val){
-            $point=$point+$val;
+    if (isset($_POST['donatelist'])) {
+        $point = 0;
+        foreach ($_POST['donatelist'] as $val) {
+            $point = $point + $val;
         }
         $sql = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID_ANONY', $userID);
         $prepare->bindValue(':ID_USER', $userID);
         $prepare->execute();
-        $cash=$prepare->fetchColumn();
+        $cash = $prepare->fetchColumn();
         if ($cash > $point) {
             try {
                 $db->beginTransaction();
@@ -338,7 +337,7 @@ LIMIT
             exit;
         }
     }
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY);";
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
     $prepare1 = $db->prepare($sql1);
@@ -346,6 +345,7 @@ LIMIT
     $prepare1->bindValue(':ID_USER', $_POST['userID'], PDO::PARAM_STR);
     $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY_TEXT', strip_tags($comment), PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
@@ -357,19 +357,20 @@ LIMIT
     $prepare3->execute();
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,3,:ID_ACTOR,:ID_REPLY)";
     $prepare4 = $db->prepare($sql4);
     $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
     $prepare4->execute();
     //댓글에 태그된 사람도 알림처리
-    $sql6="INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,8,:ID_ACTOR,:ID_REPLY)";
     $prepare6 = $db->prepare($sql6);
     $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare6->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
-    for($i=0;$i<$taglist_len;$i++){
+    for ($i = 0; $i < $taglist_len; $i++) {
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
@@ -378,9 +379,8 @@ LIMIT
     $prepare5->bindValue(':ID_CONTENT', $ID);
     $prepare5->execute();
 
-    $result = json_encode(array('COMMENT'=>$result['COMMENT']), JSON_UNESCAPED_UNICODE);
+    $result = json_encode(array('COMMENT' => $result['COMMENT']), JSON_UNESCAPED_UNICODE);
     echo $result;
-
 
 
 } elseif ($act == 'share') {
@@ -402,18 +402,13 @@ LIMIT
     $price = $result['PRICE'];
     $writer = $result['ID_WRITER'];
     //유저 id로 커넥터에 접속해서 캐쉬정보 가져오기
-    if ($isnick == 'N') {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
-        $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-    } else {
-        $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY";
-        $prepare6 = $db->prepare($sql6);
-        $prepare6->bindValue(':ID_ANONY', $userID, PDO::PARAM_STR);
-    }
+    $sql6 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+    $prepare6 = $db->prepare($sql6);
+    $prepare6->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_ANONY', $userID, PDO::PARAM_STR);
+
     $prepare6->execute();
-    $usercash = $prepare6->fetch(PDO::FETCH_ASSOC);
-    $usercash = $usercash['CASH_POINT'];
+    $usercash = $prepare6->fetchColumn();
     //나이구하기
     $birthday = date("Y", strtotime($userbirth)); //생년월일
     $nowday = date('Y'); //현재날짜
@@ -437,16 +432,22 @@ LIMIT
         //안샀으면
         try {
             $db->beginTransaction();
-            $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+            $sql2 = "INSERT INTO publixher.TBL_BUY_LIST(ID_USER,ID_CONTENT,PRICE) VALUES(:ID_USER,:ID_CONTENT,:PRICE);";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
             $prepare2->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+            $prepare2->bindValue(':PRICE', $price, PDO::PARAM_STR);
             $prepare2->execute();
 
             $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
             $prepare3 = $db->prepare($sql3);
             $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
             $prepare3->execute();
+
+            $sql4 = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT-:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+            $prepare4 = $db->prepare($sql4);
+            $prepare4->execute(array('POINT' => $price, 'ID_USER' => $userID, 'ID_ANONY' => $userID));
+
 
             //알람처리
             $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
@@ -489,7 +490,7 @@ LIMIT
 //        }
             $db->commit();
             exit;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             $db->rollBack();
             echo '{"status":-1}';
             exit;
@@ -640,21 +641,27 @@ LIMIT
     function getWriter($result, $db)
     {
         for ($i = 0; $i < count($result); $i++) {   //각 댓글별로 쓴사람과 사진 가져오기
-            $sql2 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID', $result[$i]['ID_USER'], PDO::PARAM_STR);
-            $prepare2->execute();
-            $fetch = $prepare2->fetch(PDO::FETCH_ASSOC);
-            $result[$i]['USER_NAME'] = $fetch['USER_NAME'];
             $result[$i]['REPLY_DATE'] = passing_time($result[$i]['REPLY_DATE']);
-            $result[$i]['PIC'] = $fetch['PIC'];
         }
         return $result;
     }
 
     function getTime($db, $repID, $index)
     {
-        $timerep_sql = "SELECT ID,REPLY_DATE,IF(DEL=0,REPLY,'해당 댓글은 삭제되었습니다.') AS REPLY,DEL,ID_USER FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID_REPLY=:ID_REPLY ORDER BY SEQ DESC LIMIT :INDEX,6";
+        $timerep_sql = "SELECT
+  SUB_REP.ID,
+  SUB_REP.REPLY_DATE,
+  IF(SUB_REP.DEL = 0, SUB_REP.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  SUB_REP.DEL,
+  SUB_REP.ID_USER,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile','crop34') AS PIC,
+  DEL
+FROM publixher.TBL_CONTENT_SUB_REPLY AS SUB_REP
+  INNER JOIN publixher.TBL_USER AS USER ON SUB_REP.ID_USER=USER.ID
+WHERE SUB_REP.ID_REPLY = :ID_REPLY
+ORDER BY SUB_REP.SEQ DESC
+LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
         $prepare1->bindValue(':INDEX', $index);
@@ -694,13 +701,13 @@ LIMIT
     $br = "/(\<br\>){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['ID'];
-    $comment=preg_replace($br,'<br><br>',$_POST['comment']);
+    $comment = preg_replace($br, '<br><br>', $_POST['comment']);
     $comment = $purifier->purify($comment);
     $repID = $_POST['repID'];
     $uid = uniqueid($db, 'sub_reply');
-    $taglist=$_POST['taglist'];
-    $taglist_len=count($taglist);
-    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY);";
+    $taglist = $_POST['taglist'];
+    $taglist_len = count($taglist);
+    $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT SUB_REPLY,ID_USER FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID;";
     $sql4 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY+1 WHERE ID=:ID;";
@@ -710,6 +717,7 @@ LIMIT
     $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare1->bindValue(':REPLY', $comment, PDO::PARAM_STR);
     $prepare1->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
+    $prepare1->bindValue(':REPLY_TEXT', strip_tags($comment), PDO::PARAM_STR);
     $prepare1->execute();
 
     $prepare2 = $db->prepare($sql2);
@@ -726,24 +734,26 @@ LIMIT
     $result = $prepare3->fetch(PDO::FETCH_ASSOC);
 
     //알람처리
-    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,7,:ID_ACTOR,:ID_REPLY)";
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY,ID_SUB_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,7,:ID_ACTOR,:ID_REPLY,:ID_SUB_REPLY)";
     $prepare4 = $db->prepare($sql4);
     $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_TARGET', $result['ID_USER'], PDO::PARAM_STR);
     $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
     $prepare4->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_SUB_REPLY', $uid, PDO::PARAM_STR);
     $prepare4->execute();
     //댓글에 태그된 사람도 알림처리
-    $sql6="INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY)";
+    $sql6 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR,ID_REPLY,ID_SUB_REPLY) VALUES(:ID_CONTENT,:ID_TARGET,9,:ID_ACTOR,:ID_REPLY,:ID_SUB_REPLY)";
     $prepare6 = $db->prepare($sql6);
     $prepare6->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
     $prepare6->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-    $prepare6->bindValue(':ID_REPLY', $uid, PDO::PARAM_STR);
-    for($i=0;$i<$taglist_len;$i++){
+    $prepare6->bindValue(':ID_SUB_REPLY', $uid, PDO::PARAM_STR);
+    $prepare6->bindValue(':ID_REPLY', $repID, PDO::PARAM_STR);
+    for ($i = 0; $i < $taglist_len; $i++) {
         $prepare6->bindValue(':ID_TARGET', $taglist[$i], PDO::PARAM_STR);
         $prepare6->execute();
     }
-    $result = '{"SUB_REPLY":'.$result['SUB_REPLY'].'}';
+    $result = '{"SUB_REPLY":' . $result['SUB_REPLY'] . '}';
     echo $result;
     $sql5 = "UPDATE publixher.TBL_PIN_LIST SET REPLY=REPLY+1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
     $prepare5 = $db->prepare($sql5);

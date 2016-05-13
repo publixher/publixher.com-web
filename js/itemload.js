@@ -9,12 +9,12 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     if (targetID) {
-        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 씀 '
+        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
     }
     if (folderID) {
         write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder">비분류</span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
     }
 
     switch (expose) {
@@ -74,7 +74,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     if (folderID) {
         write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class=content-folder">비분류</span>&nbsp;';
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
     }
 
     switch (expose) {
@@ -90,9 +90,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     //카테고리 표시부분
     if(category!='SNS') {
-        write+=' <span class="content-category">'+category;
+        write+='<span class="content-category"><span class="item-category">'+category+'</span>';
         if(sub_category!=null){
-            write+=' >>> '+sub_category;
+            write+='<span class="pubico pico-kkuk"></span><span class="item-sub_category">'+sub_category+'</span>';
         }
         write+='</span>';
     }
@@ -136,7 +136,8 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     return write;
 }
-$(document).ready(function () {
+
+function getCards() {
     //스피너
     var spinner = $('<div>')
         .attr('data-loader', 'spinner')
@@ -154,12 +155,13 @@ $(document).ready(function () {
         type: "get",
         data: loadOption,
         dataType: 'json',
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
-            console.log(res)
             if (res.length == 0) {
-                write = '<div id="no-content">결과가 없네요 >,.<;;</div>'
+                spinner.detach();
+                write = '<div class="card item">결과가 없네요 >,.<;;</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
                 } else if ($('#upform').length > 0) {
@@ -224,7 +226,7 @@ $(document).ready(function () {
                                 foldername = res[i]['FOLDER_NAME'];
                             }
                             var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY']);
+                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res[i]['CATEGORY'], res[i]['SUB_CATEGORY']);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
                             } else if ($('#upform').length > 0) {
@@ -236,8 +238,7 @@ $(document).ready(function () {
                     }
                 }
             }
-            page = page + 1;
-            loadOption['nowpage'] = page;
+            loadOption['nowpage'] = loadOption['nowpage'] + 1;
         }, error: function (xhr, textStatus, errorThrown) {
             if (textStatus == 'timeout') {
                 this.tryCount++;
@@ -246,19 +247,29 @@ $(document).ready(function () {
                     $.ajax(this);
                     return;
                 }
+                spinner.detach();
                 return;
             }
             if (xhr.status == 500) {
+                spinner.detach();
                 console.log('서버 오류! 관리자에게 문의하기')
             } else {
+                spinner.detach();
                 console.log('몰랑몰랑')
             }
         }
     })
+}
 
+$(document).ready(function () {
+    getCards();
     //무한스크롤
     var loading = false;
     $(document).scroll(function () {
+        //스피너
+        var spinner = $('<div>')
+            .attr('data-loader', 'spinner')
+            .addClass('load-item content-load')
         var maxHeight = $(document).height();
         var currentScroll = $(window).scrollTop() + $(window).height();
         if (maxHeight <= currentScroll + 400) {
@@ -339,8 +350,7 @@ $(document).ready(function () {
                             }
                         }
                         loading = false;
-                        page = page + 1;
-                        loadOption['nowpage'] = page;
+                        loadOption['nowpage'] = loadOption['nowpage'] + 1;
                     }, error: function (xhr, textStatus, errorThrown) {
                         if (textStatus == 'timeout') {
                             this.tryCount++;

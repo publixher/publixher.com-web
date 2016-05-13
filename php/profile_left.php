@@ -47,7 +47,7 @@
             <li><a><?= $cash ?> pigs</a></li>
             <li><a>충전 &middot 결제정보</a></li>
             <li><a href="/buyList/<?= $userID ?>">구매목록</a></li>
-            <li><a>판매관리</a></li>
+            <li><a href="/sellManage/<?=$userID?>">판매관리</a></li>
         </ul>
         <?php
     }
