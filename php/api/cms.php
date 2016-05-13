@@ -1,12 +1,14 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
+$action = $_GET['action'];
 $userID = $_GET['userID'];
 if ($action == 'most') {
     $sort = $_GET['sort'];
     $SORT = '';
     $page = $_GET['page'] * 5;
     $sql = "SELECT
+ID,
   TITLE,
   PRICE,
   CATEGORY,
@@ -38,7 +40,6 @@ LIMIT :PAGE,5";
 } elseif ($action == 'monthly') {
     $start = $_GET['start'];
     $end = $_GET['end'];
-//pFWcNUkmip
     $sql = "SELECT COUNT(*) AS TOTAL_PUBLIXH,AVG(PRICE) AS AVG_PRICE
 FROM publixher.TBL_CONTENT 
 WHERE ID_WRITER = :ID_WRITER AND WRITE_DATE >=:START AND WRITE_DATE<=:END AND FOR_SALE='Y'";
@@ -55,18 +56,28 @@ GROUP BY ID_CONTENT";
     $prepare = $db->prepare($sql);
     $prepare->execute(array('ID_WRITER'=>$userID,'START'=>$start,'END'=>$end));
     $sale=$prepare->fetchAll();
-    $result['TOTAL_SALE']=array_sum($sale);
-    $result['SALE_PER_ITEM']=$result['TOTAL_SALE']/count($sale);
-
+    $count=count($sale);
+    for($i=0;$i<$count;$i++){
+        $result['TOTAL_SALE']+=$sale[$i]['TOTAL_SALE'];
+    }
+    $result['SALE_PER_ITEM']=$result['TOTAL_SALE']/$count;
+    //TODO:기부를 안받았으면 목록을 찾지 못함
     $sql= "SELECT SUM(BUY_LIST.PRICE)+SUM(DONATE.POINT) AS TOTAL_REVENUE
 FROM publixher.TBL_BUY_LIST AS BUY_LIST
-INNER JOIN publixher.TBL_CONTENT AS CONT
-ON CONT.ID=BUY_LIST.ID_CONTENT
-INNER JOIN publixher.TBL_CONTENT_DONATE AS DONATE
-ON CONT.ID=DONATE.ID_CONTENT
-WHERE CONT.ID_WRITER=:ID_WRITER AND ((BUY_DATE >=:START1 AND BUY_DATE<=:END1) OR (BUY_DATE >=:START2 AND BUY_DATE<=:END2))
+  INNER JOIN publixher.TBL_CONTENT AS CONT
+    ON CONT.ID = BUY_LIST.ID_CONTENT
+  INNER JOIN publixher.TBL_CONTENT_DONATE AS DONATE
+    ON CONT.ID = DONATE.ID_CONTENT
+WHERE CONT.ID_WRITER = :ID_WRITER AND
+      ((BUY_DATE >= :START1 AND BUY_DATE <= :END1) OR (DONATE_DATE >= :START2 AND DONATE_DATE <= :END2))
 GROUP BY BUY_LIST.ID_CONTENT";
-    $result['TOTAL_REVENUE']=$prepare->fetchColumn();
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('ID_WRITER'=>$userID,'START1'=>$start,'END1'=>$end,'START2'=>$start,'END2'=>$end));
+    $total = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    $count = count($total);
+    for($i=0;$i<$count;$i++){
+        $result['TOTAL_REVENUE']+=$total[$i]['TOTAL_REVENUE'];
+    }
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
 ?>

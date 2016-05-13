@@ -26,7 +26,13 @@
     <script src="/plugins/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/plugins/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.kr.min.js"></script>
     <link rel="stylesheet" href="/plugins/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css">
-
+<!--그래프 플러그인-->
+    <script src="/plugins/jqPlot-master/src/jquery.jqplot.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.dateAxisRenderer.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.cursor.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.highlighter.js"></script>
+    <link rel="stylesheet" href="/plugins/jqPlot-master/src/jquery.jqplot.css">
+    
     <script src="/js/sellManage.js"></script>
     <script src="/js/plugins.js"></script>
 </head>
@@ -56,6 +62,10 @@
         <!--        정렬별 최고 순위-->
         <div id="most-content">
 
+        </div>
+<!--        아이템 한개 세부 판매내역-->
+        <div id="cms-item">
+            
         </div>
         <!--        기간별 cms-->
         <div id="cms-date">
