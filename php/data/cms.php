@@ -61,9 +61,12 @@ GROUP BY ID_CONTENT";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
     $prepare->execute();
-    $sale=$prepare->fetchColumn();
-    $result['TOTAL_SALE']=array_sum($sale);
-    $result['SALE_PER_ITEM']=$result['TOTAL_SALE']/count($sale);
+    $sale=$prepare->fetchAll();
+    $count=count($sale);
+    for($i=0;$i<$count;$i++){
+        $result['TOTAL_SALE']+=$sale[$i]['TOTAL_SALE'];
+    }
+    $result['SALE_PER_ITEM']=$result['TOTAL_SALE']/$count;
 
     $sql= "SELECT SUM(BUY_LIST.PRICE)+SUM(DONATE.POINT) AS TOTAL_REVENUE
 FROM publixher.TBL_BUY_LIST AS BUY_LIST
