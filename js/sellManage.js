@@ -197,7 +197,8 @@ $(document).ready(function () {
                     price.push([res['PRICE'][i]['DATE'],res['PRICE'][i]['PRICE']])
                 }
 
-                var plot=$.jqplot('cms-item',[donate,price],opts)
+                opts.axes.yaxis.max=ymax;
+                var plot=$.jqplot('cms-item',[donate.length>0?donate:null,price.length>0?price:null],opts)
 
 
             },
