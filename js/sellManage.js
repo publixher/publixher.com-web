@@ -9,12 +9,12 @@ $(document).ready(function () {
         var span_title = $('<span>').addClass('item-sale-title').text(title);
         var span_price = $('<span>').addClass('item-sale-price').text(price);
         var span_category = $('<span>').addClass('item-sale-category').text(category);
-        var span_sub_category = $('<span>').addClass('item-sale-sub_category').text(sub_category);
+        var span_sub_category = sub_category?$('<span>').addClass('item-sale-sub_category').text(sub_category):'';
         var span_knock = $('<span>').addClass('item-sale-knock').text(knock);
         var span_comment = $('<span>').addClass('item-sale-comment').text(comment);
         var span_report = $('<span>').addClass('item-sale-report').text(report);
         var kkuk=sub_category?$('<span>').addClass('pubico pico-kkuk'):'';
-        var span_sale = sub_category?$('<span>').addClass('item-sale-sale').text(sale):'';
+        var span_sale = $('<span>').addClass('item-sale-sale').text(sale);
         var span_revenue = $('<span>').addClass('item-sale-revenue').text(revenue);
 
         card.append(span_title, span_price, span_category,kkuk, span_sub_category, span_knock,
