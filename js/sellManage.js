@@ -188,7 +188,8 @@ $(document).ready(function () {
                 console.log(res)
                 var donate=[];
                 var price=[];
-                var ymax;
+                var data=[];
+                var ymax=1000;
 
                 for(var i=0;i<res['DONATE'].length;i++){
                     donate.push([res['DONATE'][i]['DATE'],res['DONATE'][i]['DONATE']])
@@ -196,9 +197,11 @@ $(document).ready(function () {
                 for(var i=0;i<res['PRICE'].length;i++){
                     price.push([res['PRICE'][i]['DATE'],res['PRICE'][i]['PRICE']])
                 }
+                donate.length>0?data.push(donate):null;
+                price.length>0?data.push(price):null;
 
                 opts.axes.yaxis.max=ymax;
-                var plot=$.jqplot('cms-item',[donate.length>0?donate:null,price.length>0?price:null],opts)
+                var plot=$.jqplot('cms-item',data,opts)
 
 
             },
