@@ -78,16 +78,16 @@
           <file leaf-file-name="cms.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/php/data/cms.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="453">
-                  <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+                <state relative-caret-position="157">
+                  <caret line="69" column="64" selection-start-line="69" selection-start-column="64" selection-end-line="69" selection-end-column="64" />
                   <folding>
-                    <marker date="1463110816000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463110816000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463110816000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463110816000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
-                    <marker date="1463110816000" expanded="true" signature="1186:1361" placeholder="SELECT COUNT... TBL_CONTENT" />
-                    <marker date="1463110816000" expanded="true" signature="1616:1854" placeholder="SELECT COUNT... TBL_BUY_LIST" />
-                    <marker date="1463110816000" expanded="true" signature="2200:2604" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
+                    <marker date="1463111094000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463111094000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463111094000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463111094000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1463111094000" expanded="true" signature="1186:1365" placeholder="SELECT COUNT... TBL_CONTENT" />
+                    <marker date="1463111094000" expanded="true" signature="1620:1862" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+                    <marker date="1463111094000" expanded="true" signature="2208:2620" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
                   </folding>
                 </state>
               </provider>
@@ -641,14 +641,7 @@
       <workItem from="1463023462421" duration="19000" />
       <workItem from="1463023500921" duration="30000" />
       <workItem from="1463023544008" duration="18360000" />
-      <workItem from="1463108919719" duration="1820000" />
-    </task>
-    <task id="LOCAL-00121" summary="api 상태 코드">
-      <created>1462349786066</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1462349786067</updated>
+      <workItem from="1463108919719" duration="2096000" />
     </task>
     <task id="LOCAL-00122" summary="댓글 태그 스피너">
       <created>1462509111788</created>
@@ -986,11 +979,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463109941522</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="cms.php 수정">
+      <created>1463110832951</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1463110832951</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92842000" />
+    <option name="totallyTimeSpent" value="93118000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1015,7 +1015,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14109589" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39178082" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1042,7 +1042,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="subscribeList 추가" />
     <MESSAGE value="포인트 충전 추가" />
     <MESSAGE value="png 수정" />
     <MESSAGE value="50 -&gt; 34" />
@@ -1067,7 +1066,8 @@
     <MESSAGE value="판매정리 해야함" />
     <MESSAGE value="판매관리" />
     <MESSAGE value="꺽쇠" />
-    <option name="LAST_COMMIT_MESSAGE" value="꺽쇠" />
+    <MESSAGE value="cms.php 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="cms.php 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1602,16 +1602,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/cms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+        <state relative-caret-position="157">
+          <caret line="69" column="64" selection-start-line="69" selection-start-column="64" selection-end-line="69" selection-end-column="64" />
           <folding>
-            <marker date="1463110816000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463110816000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463110816000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463110816000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1463110816000" expanded="true" signature="1186:1361" placeholder="SELECT COUNT... TBL_CONTENT" />
-            <marker date="1463110816000" expanded="true" signature="1616:1854" placeholder="SELECT COUNT... TBL_BUY_LIST" />
-            <marker date="1463110816000" expanded="true" signature="2200:2604" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
+            <marker date="1463111094000" expanded="true" signature="344:511" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463111094000" expanded="true" signature="344:537" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463111094000" expanded="true" signature="344:574" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463111094000" expanded="true" signature="344:593" placeholder="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1463111094000" expanded="true" signature="1186:1365" placeholder="SELECT COUNT... TBL_CONTENT" />
+            <marker date="1463111094000" expanded="true" signature="1620:1862" placeholder="SELECT COUNT... TBL_BUY_LIST" />
+            <marker date="1463111094000" expanded="true" signature="2208:2620" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
           </folding>
         </state>
       </provider>
