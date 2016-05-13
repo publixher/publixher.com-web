@@ -50,6 +50,7 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
+                console.log(res)
                 var most_content = $('#most-content');
                 spinner.detach();
                 if (res.length == 0) {
@@ -146,6 +147,9 @@ $(document).ready(function () {
                     spinner.detach();
                     console.log('몰랑몰랑')
                 }
+            },complete:function(){
+                $('#start_date').removeAttr('disabled');
+                $('#end_date').removeAttr('disabled');
             }
         })
     }
@@ -185,8 +189,8 @@ $(document).ready(function () {
         start=start.getFullYear()+'/'+start.getMonth()+'/'+start.getDay();
         end=end.getFullYear()+'/'+end.getMonth()+'/'+end.getDay();
         start_date.attr('disabled','disabled');
+        end_date.attr('disabled','disabled');
         getMonthly(start,end);
-        start_date.removeAttr('disabled');
     })
 
 });
