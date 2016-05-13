@@ -46,11 +46,9 @@ LIMIT :PAGE,5";
     //BTTKn0sCHs
     $sql = "SELECT COUNT(*) AS TOTAL_PUBLIXH,AVG(PRICE) AS AVG_PRICE
 FROM publixher.TBL_CONTENT 
-WHERE ID_WRITER = :ID_WRITER AND WRITE_DATE >=':START' AND WRITE_DATE<=':END' AND FOR_SALE='Y'";
+WHERE ID_WRITER = :ID_WRITER AND WRITE_DATE >='".$start."' AND WRITE_DATE<='".$end."' AND FOR_SALE='Y'";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
-    $prepare->bindValue(':START', $start);
-    $prepare->bindValue(':END', $end);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
 
@@ -58,12 +56,10 @@ WHERE ID_WRITER = :ID_WRITER AND WRITE_DATE >=':START' AND WRITE_DATE<=':END' AN
 FROM publixher.TBL_BUY_LIST AS BUY_LIST
 INNER JOIN publixher.TBL_CONTENT AS CONT
 ON CONT.ID=BUY_LIST.ID_CONTENT
-WHERE CONT.ID_WRITER = :ID_WRITER AND BUY_DATE >=':START' AND BUY_DATE<=':END'
+WHERE CONT.ID_WRITER = :ID_WRITER AND BUY_DATE >='".$start."' AND BUY_DATE<='".$end."'
 GROUP BY ID_CONTENT";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
-    $prepare->bindValue(':START', $start);
-    $prepare->bindValue(':END', $end);
     $prepare->execute();
     $sale=$prepare->fetchAll();
     $result['TOTAL_SALE']=array_sum($sale);
@@ -75,14 +71,10 @@ INNER JOIN publixher.TBL_CONTENT AS CONT
 ON CONT.ID=BUY_LIST.ID_CONTENT
 INNER JOIN publixher.TBL_CONTENT_DONATE AS DONATE
 ON CONT.ID=DONATE.ID_CONTENT
-WHERE CONT.ID_WRITER=:ID_WRITER AND ((BUY_DATE >=':START1' AND BUY_DATE<=':END1') OR (BUY_DATE >=':START2' AND BUY_DATE<=':END2'))
+WHERE CONT.ID_WRITER=:ID_WRITER AND ((BUY_DATE >='".$start."' AND BUY_DATE<='".$end."') OR (BUY_DATE >='".$start."' AND BUY_DATE<='".$end."'))
 GROUP BY BUY_LIST.ID_CONTENT";
     $prepare=$db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
-    $prepare->bindValue(':START1', $start);
-    $prepare->bindValue(':END1', $end);
-    $prepare->bindValue(':START2', $start);
-    $prepare->bindValue(':END2', $end);
     $prepare->execute();
     $result['TOTAL_REVENUE']=$prepare->fetchColumn();
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
