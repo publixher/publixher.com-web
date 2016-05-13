@@ -13,10 +13,11 @@ $(document).ready(function () {
         var span_knock = $('<span>').addClass('item-sale-knock').text(knock);
         var span_comment = $('<span>').addClass('item-sale-comment').text(comment);
         var span_report = $('<span>').addClass('item-sale-report').text(report);
-        var span_sale = $('<span>').addClass('item-sale-sale').text(sale);
+        var kkuk=sub_category?$('<span>').addClass('pubico pico-kkuk'):null;
+        var span_sale = sub_category?$('<span>').addClass('item-sale-sale').text(sale):null;
         var span_revenue = $('<span>').addClass('item-sale-revenue').text(revenue);
 
-        card.append(span_title, span_price, span_category, span_sub_category, span_knock,
+        card.append(span_title, span_price, span_category,kkuk, span_sub_category, span_knock,
             span_comment, span_report, span_sale, span_revenue);
         return card;
     }
