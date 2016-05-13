@@ -1049,6 +1049,32 @@ li a {
 .commentReg .dropdown ul {
   display: none;
 }
+#community{
+  float: left;
+}
+.noti-img-wrap,
+.pin-pin-wrap{
+  width: 50px;
+  height: 50px;
+  float: left;
+  position: relative;
+}
+.noti-img,
+.pin-pic{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#notilist li a,
+.pin-list a{
+  display: inline-block !important;
+  width: 230px !important;
+  min-height:50px !important;
+}
+
+
+
 #right .conf {
   width: 1024px !important;
   height: 40px !important;
