@@ -185,10 +185,12 @@ $(document).ready(function () {
         $('#cms-result').html('');
         var start_date=$('#start_date');
         var end_date=$('#end_date');
-        var start = start_date.datepicker('getDate');
-        var end=end_date.datepicker('getDate');
-        start=start.getFullYear()+'/'+start.getMonth()+'/'+start.getDay();
-        end=end.getFullYear()+'/'+end.getMonth()+'/'+end.getDay();
+        console.log(start_date.datepicker('getUTCDate'))
+        console.log(end_date.datepicker('getUTCDate'))
+        var start = start_date.datepicker('getUTCDate').toISOString().slice(0,10);
+        var end=end_date.datepicker('getUTCDate').toISOString().slice(0,10);
+        console.log(start)
+        console.log(end)
         start_date.attr('disabled','disabled');
         end_date.attr('disabled','disabled');
         getMonthly(start,end);

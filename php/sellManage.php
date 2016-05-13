@@ -26,6 +26,7 @@
     <script src="/plugins/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/plugins/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.kr.min.js"></script>
     <link rel="stylesheet" href="/plugins/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css">
+
     <script src="/js/sellManage.js"></script>
     <script src="/js/plugins.js"></script>
 </head>
