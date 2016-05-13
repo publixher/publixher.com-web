@@ -61,7 +61,7 @@ GROUP BY ID_CONTENT";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
     $prepare->execute();
-    $sale=$prepare->fetchAll();
+    $sale=$prepare->fetchColumn();
     $result['TOTAL_SALE']=array_sum($sale);
     $result['SALE_PER_ITEM']=$result['TOTAL_SALE']/count($sale);
 
