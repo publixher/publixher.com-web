@@ -22,15 +22,14 @@ $(document).ready(function () {
         return card;
     }
     //매출 결과 작성
-    function loadCMS(total_publixh,total_sale,total_revenue,avg_price,sale_per_item,revenue_per_item){
+    function loadCMS(total_publixh,total_sale,total_revenue,avg_price,sale_per_item){
         var result=$('<div>').addClass('cms-result');
         var result_table = $('<table>').addClass('cms-result-table');
         $('<tr>').append($('<td>').text('총 출판'), $('<td>').text(total_publixh+' 회')).appendTo(result_table);
-        $('<tr>').append($('<td>').text('총 판매'), $('<td>').text(total_sale)).appendTo(result_table);
-        $('<tr>').append($('<td>').text('총 매출'), $('<td>').text(total_revenue)).appendTo(result_table);
-        $('<tr>').append($('<td>').text('편균 판매 가격'), $('<td>').text(avg_price)).appendTo(result_table);
-        $('<tr>').append($('<td>').text('출판당 평균 판매'), $('<td>').text(sale_per_item)).appendTo(result_table);
-        $('<tr>').append($('<td>').text('출판당 평균 매출'), $('<td>').text(revenue_per_item)).appendTo(result_table);
+        $('<tr>').append($('<td>').text('총 판매'), $('<td>').text(total_sale+' 회')).appendTo(result_table);
+        $('<tr>').append($('<td>').text('총 매출'), $('<td>').text(total_revenue+' pigs')).appendTo(result_table);
+        $('<tr>').append($('<td>').text('편균 판매 가격'), $('<td>').text(avg_price+' pigs')).appendTo(result_table);
+        $('<tr>').append($('<td>').text('출판당 평균 판매'), $('<td>').text(sale_per_item+' 회')).appendTo(result_table);
         result.append(result_table);
         return result;
     }
@@ -122,12 +121,11 @@ $(document).ready(function () {
                 var total_publixh = res['TOTAL_PUBLIXH'];
                 var total_sale = res['TOTAL_SALE'];
                 var total_revenue = res['TOTAL_REVENUE'];
-                var avg_price = res['AVG_PRICE'];
-                var sale_per_item = res['SALE_PER_ITEM'];
-                var revenue_per_item = res['REVENUE_PER_ITEM'];
+                var avg_price = Math.round(res['AVG_PRICE']);
+                var sale_per_item = Math.round(res['SALE_PER_ITEM']);
 
                 var result=loadCMS(total_publixh,total_sale,total_revenue,avg_price,
-                sale_per_item,revenue_per_item);
+                sale_per_item);
                 cms_date.append(result);
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -182,6 +180,7 @@ $(document).ready(function () {
 
     //날짜 바꾸면 바뀐날짜로 다시 통계 얻어오기
     $('#sandbox-container .input-daterange').on('changeDate',function(){
+        console.log('w')
         $('#cms-result').html('');
         var start_date=$('#start_date');
         var end_date=$('#end_date');

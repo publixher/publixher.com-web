@@ -94,7 +94,6 @@
 <script>
     //달력 소스
     $('#sandbox-container .input-daterange').datepicker({
-        todayBtn: "linked",
         language: "kr",
         autoclose: true,
         todayHighlight: true,
