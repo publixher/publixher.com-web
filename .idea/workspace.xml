@@ -4,8 +4,6 @@
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/cms.php" afterPath="$PROJECT_DIR$/php/data/cms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/sellManage.php" afterPath="$PROJECT_DIR$/php/sellManage.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -53,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sellManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="123" column="43" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="43" />
+            <state relative-caret-position="240">
+              <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
               <folding>
                 <element signature="e#0#52#0" expanded="false" />
               </folding>
@@ -159,18 +157,18 @@
       <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3960">
+            <state relative-caret-position="480">
               <caret line="264" column="15" selection-start-line="264" selection-start-column="15" selection-end-line="264" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sellManage.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sellManage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/sellManage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
+            <state relative-caret-position="222">
+              <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -242,8 +240,8 @@
         <option value="/MySQL Fragment (cms.php:1540).sql" />
         <option value="/MySQL Fragment (cms.php:2116).sql" />
         <option value="$PROJECT_DIR$/php/data/cms.php" />
-        <option value="$PROJECT_DIR$/js/sellManage.js" />
         <option value="$PROJECT_DIR$/php/sellManage.php" />
+        <option value="$PROJECT_DIR$/js/sellManage.js" />
       </list>
     </option>
   </component>
@@ -608,14 +606,7 @@
       <workItem from="1463023462421" duration="19000" />
       <workItem from="1463023500921" duration="30000" />
       <workItem from="1463023544008" duration="18360000" />
-      <workItem from="1463108919719" duration="7295000" />
-    </task>
-    <task id="LOCAL-00128" summary="기부 방식 바꿈">
-      <created>1462537429205</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1462537429205</updated>
+      <workItem from="1463108919719" duration="7338000" />
     </task>
     <task id="LOCAL-00129" summary="html purifier 바꿈">
       <created>1462538818317</created>
@@ -953,11 +944,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463117414419</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="cms">
+      <created>1463120010268</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1463120010268</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98317000" />
+    <option name="totallyTimeSpent" value="98360000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1009,7 +1007,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="getContent 카테고리서브 카테고리 잡게 수정" />
     <MESSAGE value="카테고리,서브카테고리 별 검색" />
     <MESSAGE value="서브카테고리 버그픽스" />
     <MESSAGE value="new 나오는거 픽스" />
@@ -1034,7 +1031,8 @@
     <MESSAGE value="cms.detach(spinner)-&gt;spinner.detach()" />
     <MESSAGE value="cms.detach(spinner)-&gt;spinner.detach()ww" />
     <MESSAGE value="total_sale" />
-    <option name="LAST_COMMIT_MESSAGE" value="total_sale" />
+    <MESSAGE value="cms" />
+    <option name="LAST_COMMIT_MESSAGE" value="cms" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1303,6 +1301,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-75">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1461908117000" expanded="true" signature="1795:1848" placeholder="SELECT ID_US... TBL_FOLDER" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1388,14 +1389,6 @@
             <marker date="1462782455000" expanded="true" signature="2968:3276" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
             <marker date="1462782455000" expanded="true" signature="3297:3473" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3960">
-          <caret line="264" column="15" selection-start-line="264" selection-start-column="15" selection-end-line="264" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1585,21 +1578,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
+    <entry file="file://$PROJECT_DIR$/php/sellManage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="123" column="43" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#52#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="222">
+          <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/sellManage.php">
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
+        <state relative-caret-position="480">
+          <caret line="264" column="15" selection-start-line="264" selection-start-column="15" selection-end-line="264" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

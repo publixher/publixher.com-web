@@ -114,7 +114,6 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
-                console.log(res)
                 var cms_date = $('#cms-result');
                 spinner.detach();
 
@@ -127,25 +126,6 @@ $(document).ready(function () {
                 var result=loadCMS(total_publixh,total_sale,total_revenue,avg_price,
                 sale_per_item);
                 cms_date.append(result);
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                if (textStatus == 'timeout') {
-                    this.tryCount++;
-                    if (this.tryCount <= this.retryLimit) {
-                        //try again
-                        $.ajax(this);
-                        return;
-                    }
-                    spinner.detach();
-                    return;
-                }
-                if (xhr.status == 500) {
-                    spinner.detach();
-                    console.log('서버 오류! 관리자에게 문의하기')
-                } else {
-                    spinner.detach();
-                    console.log('몰랑몰랑')
-                }
             },complete:function(){
                 $('#start_date').removeAttr('disabled');
                 $('#end_date').removeAttr('disabled');
