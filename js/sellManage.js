@@ -50,7 +50,6 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
-                console.log(res)
                 var most_content = $('#most-content');
                 spinner.detach();
                 if (res.length == 0) {
@@ -160,16 +159,11 @@ $(document).ready(function () {
 
     //날짜 바꾸면 바뀐날짜로 다시 통계 얻어오기
     $('#sandbox-container .input-daterange').on('changeDate',function(){
-        console.log('w')
         $('#cms-result').html('');
         var start_date=$('#start_date');
         var end_date=$('#end_date');
-        console.log(start_date.datepicker('getUTCDate'))
-        console.log(end_date.datepicker('getUTCDate'))
         var start = start_date.datepicker('getUTCDate').toISOString().slice(0,10);
         var end=end_date.datepicker('getUTCDate').toISOString().slice(0,10);
-        console.log(start)
-        console.log(end)
         start_date.attr('disabled','disabled');
         end_date.attr('disabled','disabled');
         getMonthly(start,end);
