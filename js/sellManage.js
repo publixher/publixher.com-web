@@ -7,12 +7,8 @@ $(document).ready(function () {
     //jqplot 옵션 초기화
     var opts = {
         series: [{
-            neighborThreshold: 0,
-            // fill:true,
-            label: '후원'
-        },{
-                label: '구매'
-            }],
+            neighborThreshold: 0
+        },{}],
         axesDefaults: {
             tickOptions: {
                 fontFamily: 'Helvetica',
@@ -225,10 +221,21 @@ $(document).ready(function () {
                 for (var i = 0; i < res['PRICE'].length; i++) {
                     price.push([res['PRICE'][i]['DATE'], res['PRICE'][i]['PRICE']])
                 }
+                console.log(opts)
                 console.log(donate)
                 console.log(price)
-                donate.length > 0 ? data.push(donate) : null;
-                price.length > 0 ? data.push(price) : null;
+
+                if(donate.length > 0){
+                    data.push(donate);
+                    opts.series[0].label='후원';
+                }
+
+                if(price.length > 0){
+                    data.push(price);
+                    opts.series[0].label?
+                        opts.series[1].label='구매':
+                        opts.series[0].label='구매';
+                }
                 console.log(data)
                 if (data.length < 1) {
                     $('#cms-item').append(
