@@ -234,6 +234,9 @@ FROM publixher.TBL_CONTENT AS CONT
         $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);
         $db->commit();
+
+        //폴더 쿠키설정
+        setcookie('fid',$_POST['folder'],time() + 3600 * 24 * 365, '/');
         echo $result;
     } catch (PDOException $e) {
         $db->rollBack();

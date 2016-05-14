@@ -209,7 +209,6 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
-                console.log(res)
                 var donate = [];
                 var price = [];
                 var data = [];
@@ -221,10 +220,6 @@ $(document).ready(function () {
                 for (var i = 0; i < res['PRICE'].length; i++) {
                     price.push([res['PRICE'][i]['DATE'], res['PRICE'][i]['PRICE']])
                 }
-                console.log(opts)
-                console.log(donate)
-                console.log(price)
-
                 if(donate.length > 0){
                     data.push(donate);
                     opts.series[0].label='후원';
@@ -236,7 +231,7 @@ $(document).ready(function () {
                         opts.series[1].label='구매':
                         opts.series[0].label='구매';
                 }
-                console.log(data)
+
                 if (data.length < 1) {
                     $('#cms-item').append(
                         $('<div>').addClass('no-data').text('아직 아무도 구매나 후원하지 않았네요;;')
