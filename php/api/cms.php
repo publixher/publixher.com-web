@@ -7,6 +7,13 @@ if ($action == 'most') {
     $sort = $_GET['sort'];
     $SORT = '';
     $page = $_GET['page'] * 5;
+    if ($sort == 'late') {
+        $SORT = 'WRITE_DATE';
+    } elseif ($sort == 'sell') {
+        $SORT = 'SALE';
+    } elseif ($sort == 'money') {
+        $SORT = 'REVENUE';
+    }
     $sql = "SELECT
 ID,
   TITLE,
@@ -18,25 +25,18 @@ ID,
   REPORT,
   SALE,
   SUM(BUY_LIST.PRICE)+DONATE AS REVENUE,
-  DONATE
+  DONATE,
+  WRITE_DATE
 FROM publixher.TBL_CONTENT AS CONTENT
 INNER JOIN publixher.TBL_BUY_LIST AS BUY_LIST
 ON BUY_LIST.ID_CONTENT=CONTENT.ID
 WHERE ID_WRITER = :ID_WRITER AND FOR_SALE='Y'
   GROUP BY CONTENT.ID
-ORDER BY :SORT DESC
+ORDER BY $SORT DESC
 LIMIT :PAGE,5";
-    if ($sort == 'late') {
-        $SORT = 'WRITE_DATE';
-    } elseif ($sort == 'sell') {
-        $SORT = 'SALE';
-    } elseif ($sort == 'money') {
-        $SORT = 'REVENUE';
-    }
 
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_WRITER', $userID);
-    $prepare->bindValue(':SORT', $SORT);
     $prepare->bindValue(':PAGE', $page);
     $prepare->execute();
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);

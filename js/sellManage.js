@@ -110,6 +110,7 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
+                console.log(res)
                 var most_content = $('#most-content');
                 if (res.length == 0) {
                     $('<div>').text('검색 결과가 없습니다')
