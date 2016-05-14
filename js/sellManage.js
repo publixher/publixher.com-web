@@ -7,12 +7,8 @@ $(document).ready(function () {
     //jqplot 옵션 초기화
     var opts = {
         series: [{
-            neighborThreshold: 0,
-            // fill:true,
-            label: '후원'
-        },{
-                label: '구매'
-            }],
+            neighborThreshold: 0
+        }],
         axesDefaults: {
             tickOptions: {
                 fontFamily: 'Helvetica',
