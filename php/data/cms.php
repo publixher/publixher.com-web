@@ -87,7 +87,7 @@ GROUP BY CONT.ID";
 }elseif($action=='item'){
     $contentID = $_GET['contentID'];
     //날짜와 그날 총 팔린 금액
-    $sql= "SELECT DATE_FORMAT(BUY_DATE, '%Y/%m/%d') AS DATE,
+    $sql= "SELECT DATE_FORMAT(BUY_DATE, '%Y/%m/%d %h:%i:%s') AS DATE,
   SUM(PRICE) AS PRICE
 FROM publixher.TBL_BUY_LIST
 WHERE ID_CONTENT = :ID_CONTENT
@@ -97,7 +97,7 @@ GROUP BY DATE";
     $price = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
     //날짜와 그날 총 후원된 금액
-    $sql= "SELECT DATE_FORMAT(DONATE_DATE,'%Y/%m/%d') AS DATE,
+    $sql= "SELECT DATE_FORMAT(DONATE_DATE,'%Y/%m/%d %h:%i:%s') AS DATE,
     SUM(POINT) AS DONATE
     FROM publixher.TBL_CONTENT_DONATE
     WHERE ID_CONTENT=:ID_CONTENT

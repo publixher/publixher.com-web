@@ -7,19 +7,44 @@ $(document).ready(function () {
     //jqplot 옵션 초기화
     var opts = {
         series: [{
-            neighborThreshold: 0
-        }],
-        axes: {
+            neighborThreshold: 0,
+            // fill:true,
+            label:'후원'
+        },
+            {
+                label:'구매'
+            }],
+        axesDefaults:{
+            tickOptions:{
+                fontFamily:'Helvetica',
+                fontSize:'10pt',
+                angle:-30
+            }
+        }
+        ,axes: {
             xaxis: {
                 renderer:$.jqplot.DateAxisRenderer,
-                tickOptions:{formatString:"%Y년%#m월%#d일"},
-                max:Date.now(),
+                tickOptions:{formatString:"%#m월%#d일 %H:%M"},
+                max:Date.now()
             },
             yaxis: {
-                // renderer: $.jqplot.LogAxisRenderer,
+                renderer: $.jqplot.LogAxisRenderer,
                 tickOptions:{suffix: ' pigs'},
                 min:0
             }
+        },
+        legend:{
+            show:true,
+            placement:'outside'
+        },
+        seriesDefaults:{
+            rendererOptions:{
+                smooth:true,
+                animation:{
+                    show:true
+                }
+            }
+            // ,showMarker:false
         },
         cursor:{zoom:true}
     };
@@ -34,7 +59,7 @@ $(document).ready(function () {
     var page=0;
     //맨위 컨텐츠 세일 카드 작성하는 함수
     function loadSaleCard(id,title, price, category, sub_category, knock, comment, report, sale, revenue) {
-        var card = $('<div>').addClass('item-sale-card').on('click',getItemCms(id))
+        var card = $('<div>').addClass('item-sale-card').attr('data-itemID',id);
         var span_title = $('<span>').addClass('item-sale-title').text(title);
         var span_price = $('<span>').addClass('item-sale-price').text(price);
         var span_category = $('<span>').addClass('item-sale-category').text(category);
@@ -46,7 +71,7 @@ $(document).ready(function () {
         var span_sale = $('<span>').addClass('item-sale-sale').text(sale);
         var span_revenue = $('<span>').addClass('item-sale-revenue').text(revenue);
 
-        card.append(span_title, span_price, span_category,kkuk, span_sub_category, span_knock,
+        card.append(span_title, span_price, span_category, kkuk, span_sub_category, span_knock,
             span_comment, span_report, span_sale, span_revenue)
 
         return card;
@@ -168,9 +193,10 @@ $(document).ready(function () {
         })
     }
 
+    //plot을 전역으로 써준다
+    var plot;
     function getItemCms(id){
         var cms_item=$('#cms_item');
-        cms_item.html('');
         var spinner = $('<div>')
             .attr('data-loader', 'spinner')
             .addClass('load-item content-load');
@@ -185,11 +211,10 @@ $(document).ready(function () {
             tryCount: 0,
             retryLimit: 3,
             success: function (res) {
-                console.log(res)
                 var donate=[];
                 var price=[];
                 var data=[];
-                var ymax=1000;
+                var ymax=0;
 
                 for(var i=0;i<res['DONATE'].length;i++){
                     donate.push([res['DONATE'][i]['DATE'],res['DONATE'][i]['DONATE']])
@@ -200,9 +225,19 @@ $(document).ready(function () {
                 donate.length>0?data.push(donate):null;
                 price.length>0?data.push(price):null;
 
+                //y최대값 구하고 그걸로 tick구하기
+                for(var i=0;i<donate.length;i++){
+                    ymax<donate[i][1]?ymax=donate[i][1]:null;
+                }
+                for(var i=0;i<price.length;i++){
+                    ymax<price[i][1]?ymax=price[i][1]:null;
+                }
+                ymax=parseInt(ymax)+parseInt(ymax)*0.1;
                 opts.axes.yaxis.max=ymax;
-                var plot=$.jqplot('cms-item',data,opts)
+                opts.axes.yaxis.tickInterval=ymax/4;
+                if(plot)    plot.destroy();
 
+                plot=$.jqplot('cms-item',data,opts)
 
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -262,6 +297,12 @@ $(document).ready(function () {
         start_date.attr('disabled','disabled');
         end_date.attr('disabled','disabled');
         getMonthly(start,end);
+    })
+
+    //그래프 그리기
+    $(document).on('click','.item-sale-card',function(){
+        var itemId=$(this).attr('data-itemid');
+        getItemCms(itemId);
     })
 
 });
