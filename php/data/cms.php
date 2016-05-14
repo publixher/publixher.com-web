@@ -13,16 +13,20 @@ if ($action == 'most') {
     $sql = "SELECT
 ID,
   TITLE,
-  PRICE,
+  CONTENT.PRICE,
   CATEGORY,
   SUB_CATEGORY,
   KNOCK,
   COMMENT,
   REPORT,
   SALE,
-  (SALE*PRICE)+DONATE AS REVENUE
-FROM publixher.TBL_CONTENT
+  SUM(BUY_LIST.PRICE)+DONATE AS REVENUE,
+  DONATE
+FROM publixher.TBL_CONTENT AS CONTENT
+INNER JOIN publixher.TBL_BUY_LIST AS BUY_LIST
+ON BUY_LIST.ID_CONTENT=CONTENT.ID
 WHERE ID_WRITER = :ID_WRITER AND FOR_SALE='Y'
+  GROUP BY CONTENT.ID
 ORDER BY :SORT DESC
 LIMIT :PAGE,5";
     if ($sort == 'late') {
@@ -87,7 +91,7 @@ GROUP BY CONT.ID";
 }elseif($action=='item'){
     $contentID = $_GET['contentID'];
     //날짜와 그날 총 팔린 금액
-    $sql= "SELECT DATE_FORMAT(BUY_DATE, '%Y/%m/%d %h:%i:%s') AS DATE,
+    $sql= "SELECT DATE_FORMAT(BUY_DATE, '%Y/%m/%d %h') AS DATE,
   SUM(PRICE) AS PRICE
 FROM publixher.TBL_BUY_LIST
 WHERE ID_CONTENT = :ID_CONTENT
@@ -97,7 +101,7 @@ GROUP BY DATE";
     $price = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
     //날짜와 그날 총 후원된 금액
-    $sql= "SELECT DATE_FORMAT(DONATE_DATE,'%Y/%m/%d %h:%i:%s') AS DATE,
+    $sql= "SELECT DATE_FORMAT(DONATE_DATE,'%Y/%m/%d %h') AS DATE,
     SUM(POINT) AS DONATE
     FROM publixher.TBL_CONTENT_DONATE
     WHERE ID_CONTENT=:ID_CONTENT

@@ -24,7 +24,7 @@ $(document).ready(function () {
         ,axes: {
             xaxis: {
                 renderer:$.jqplot.DateAxisRenderer,
-                tickOptions:{formatString:"%#m월%#d일 %H:%M"},
+                tickOptions:{formatString:"%#m월%#d일 %H시"},
                 max:Date.now()
             },
             yaxis: {
