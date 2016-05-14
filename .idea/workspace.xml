@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="정렬 고침">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/cms.php" afterPath="$PROJECT_DIR$/php/api/cms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/cms.php" afterPath="$PROJECT_DIR$/php/data/cms.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sellManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="295" column="8" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
+            <state relative-caret-position="39">
+              <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
               <folding>
                 <element signature="e#0#52#0" expanded="false" />
               </folding>
@@ -211,7 +209,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cms.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cms.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/cms.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
@@ -298,9 +296,9 @@
         <option value="$PROJECT_DIR$/php/sellManage.php" />
         <option value="$PROJECT_DIR$/php/api/getNoti.php" />
         <option value="/MySQL Fragment (cms.php:256).sql" />
-        <option value="$PROJECT_DIR$/js/sellManage.js" />
         <option value="$PROJECT_DIR$/php/data/cms.php" />
         <option value="$PROJECT_DIR$/php/api/cms.php" />
+        <option value="$PROJECT_DIR$/js/sellManage.js" />
       </list>
     </option>
   </component>
@@ -669,14 +667,7 @@
       <workItem from="1463023544008" duration="18360000" />
       <workItem from="1463108919719" duration="18704000" />
       <workItem from="1463190629491" duration="51000" />
-      <workItem from="1463192284519" duration="9624000" />
-    </task>
-    <task id="LOCAL-00138" summary="png 수정">
-      <created>1462774731337</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1462774731337</updated>
+      <workItem from="1463192284519" duration="9726000" />
     </task>
     <task id="LOCAL-00139" summary="50 -&gt; 34">
       <created>1462778901737</created>
@@ -1014,11 +1005,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463207516892</updated>
     </task>
-    <option name="localTasksCounter" value="187" />
+    <task id="LOCAL-00187" summary="정렬 고침">
+      <created>1463208485990</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1463208485990</updated>
+    </task>
+    <option name="localTasksCounter" value="188" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119401000" />
+    <option name="totallyTimeSpent" value="119503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1070,7 +1068,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="커뮤니티 모아보기, 구독 모아보기" />
     <MESSAGE value="노티센터" />
     <MESSAGE value="itemload에 콘솔 찍는거 지움" />
     <MESSAGE value="getNoti api올림" />
@@ -1095,7 +1092,8 @@
     <MESSAGE value="item cms jqplot 사용" />
     <MESSAGE value="cms-item 아직 아무도..." />
     <MESSAGE value="api 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="api 작성" />
+    <MESSAGE value="정렬 고침" />
+    <option name="LAST_COMMIT_MESSAGE" value="정렬 고침" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1484,16 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="295" column="8" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#52#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/itemAct.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-352">
@@ -1590,6 +1578,16 @@
             <marker date="1463208434000" expanded="true" signature="2390:2611" placeholder="SELECT SUM(B... TBL_BUY_LIST" />
             <marker date="1463208434000" expanded="true" signature="3197:3344" placeholder="SELECT DATE_... TBL_BUY_LIST" />
             <marker date="1463208434000" expanded="true" signature="3523:3691" placeholder="SELECT DATE_... TBL_CONTENT_DONATE" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
           </folding>
         </state>
       </provider>
