@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="정렬 고침">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
     </list>
@@ -36,8 +36,8 @@
       <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sellManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+            <state relative-caret-position="150">
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
               <folding>
                 <element signature="e#0#52#0" expanded="false" />
               </folding>
@@ -667,14 +667,7 @@
       <workItem from="1463023544008" duration="18360000" />
       <workItem from="1463108919719" duration="18704000" />
       <workItem from="1463190629491" duration="51000" />
-      <workItem from="1463192284519" duration="9726000" />
-    </task>
-    <task id="LOCAL-00139" summary="50 -&gt; 34">
-      <created>1462778901737</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1462778901737</updated>
+      <workItem from="1463192284519" duration="9893000" />
     </task>
     <task id="LOCAL-00140" summary="api 및 데이터에 카테고리서브 카테고리 추가">
       <created>1462783031578</created>
@@ -1012,11 +1005,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463208485990</updated>
     </task>
-    <option name="localTasksCounter" value="188" />
+    <task id="LOCAL-00188" summary="힝 외않된데?">
+      <created>1463208637966</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1463208637966</updated>
+    </task>
+    <option name="localTasksCounter" value="189" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119503000" />
+    <option name="totallyTimeSpent" value="119670000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1041,7 +1041,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35841584" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35841584" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1068,7 +1068,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="노티센터" />
     <MESSAGE value="itemload에 콘솔 찍는거 지움" />
     <MESSAGE value="getNoti api올림" />
     <MESSAGE value="알림 롱폴링 구현" />
@@ -1093,7 +1092,8 @@
     <MESSAGE value="cms-item 아직 아무도..." />
     <MESSAGE value="api 작성" />
     <MESSAGE value="정렬 고침" />
-    <option name="LAST_COMMIT_MESSAGE" value="정렬 고침" />
+    <MESSAGE value="힝 외않된데?" />
+    <option name="LAST_COMMIT_MESSAGE" value="힝 외않된데?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1584,8 +1584,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sellManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+        <state relative-caret-position="150">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding>
             <element signature="e#0#52#0" expanded="false" />
           </folding>
