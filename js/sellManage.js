@@ -57,6 +57,8 @@ $(document).ready(function () {
         constrainOutsideZoom: false
     };
     var page=0;
+    //plot을 전역으로 써준다
+    var plot;
     //맨위 컨텐츠 세일 카드 작성하는 함수
     function loadSaleCard(id,title, price, category, sub_category, knock, comment, report, sale, revenue) {
         var card = $('<div>').addClass('item-sale-card').attr('data-itemID',id);
@@ -193,8 +195,7 @@ $(document).ready(function () {
         })
     }
 
-    //plot을 전역으로 써준다
-    var plot;
+    //그래프를 그려보자 >,.<
     function getItemCms(id){
         var cms_item=$('#cms_item');
         var spinner = $('<div>')
@@ -224,7 +225,12 @@ $(document).ready(function () {
                 }
                 donate.length>0?data.push(donate):null;
                 price.length>0?data.push(price):null;
-
+                if(data.length<1){
+                    $('#cms-item').append(
+                        $('<div>').addClass('no-data').text('아직 아무도 구매나 후원하지 않았네요;;')
+                    )
+                    return false;
+                }
                 //y최대값 구하고 그걸로 tick구하기
                 for(var i=0;i<donate.length;i++){
                     ymax<donate[i][1]?ymax=donate[i][1]:null;
@@ -235,8 +241,8 @@ $(document).ready(function () {
                 ymax=parseInt(ymax)+parseInt(ymax)*0.1;
                 opts.axes.yaxis.max=ymax;
                 opts.axes.yaxis.tickInterval=ymax/4;
+                //그려보자 ^^
                 if(plot)    plot.destroy();
-
                 plot=$.jqplot('cms-item',data,opts)
 
             },
@@ -280,6 +286,11 @@ $(document).ready(function () {
         }
         //정렬별 최고 순위 내용물 없애고 새로 로딩함
         $('#most-content').html('');
+        //그래프도 삭제
+        if(plot){
+            plot.destroy();
+            $('#cms-item').removeAttr('style')
+        }
         page=0;
         getmost(sort,page);
     });
@@ -302,6 +313,7 @@ $(document).ready(function () {
     //그래프 그리기
     $(document).on('click','.item-sale-card',function(){
         var itemId=$(this).attr('data-itemid');
+        $('#cms-item').children('.no-data').remove();
         getItemCms(itemId);
     })
 
