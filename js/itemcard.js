@@ -43,7 +43,7 @@ $(document).ready(function () {
                 $('#' + thisitemID + ' .tail .tshare').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
-            tail.append('<div class="tab-comment"></div>');
+            tail.append($('<div>').addClass('tab-comment'));
             var tab_comment = $('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
@@ -404,6 +404,7 @@ $(document).ready(function () {
             }
         })
     })
+    //댓글 달기
     $(document).on("keydown", ".commentReg", function (e) {
         if (e.keyCode == 13 && $(this).text().length > 0 && !e.shiftKey) {
             var thisform = $(this);
@@ -807,8 +808,9 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
-                    $('#' + thisitemID).remove();
-                    alert('게시물이 삭제되었습니다.');
+                    $('#' + thisitemID).fadeOut("normal",function(){
+                        $(this).remove();
+                    });
                 } else {
                     alert('게시물이 삭제되는 도중 오류가 생겼습니다. 관리자에게 문의해 주세요.');
                 }
@@ -977,7 +979,9 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
-                    $('#' + itemID_mod).replaceWith(write)
+                    $('#' + itemID_mod).fadeOut(500,function(){
+                        $(this).replaceWith(write).fadeIn(500);
+                    })
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
                     btn.removeAttr('disabled')
@@ -1041,7 +1045,9 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
-                    $('#' + itemID_mod).replaceWith(write)
+                    $('#' + itemID_mod).fadeOut(500,function(){
+                        $(this).replaceWith(write).fadeIn(500);
+                    })
                     $('#saleTitle-mod').val("");
                     $('#contentCost-mod').val("");
                     $('#publiBody-mod').html("").trigger('keyup');

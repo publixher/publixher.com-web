@@ -73,7 +73,8 @@ $(document).ready(function () {
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
                     $('#upform').after(write);
-                    $('#sendBody').html("").trigger('input').trigger('keyup');
+                    $('#'+ID).hide().fadeIn();
+                    $('#sendBody').html('')
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
                         $('#send-tag').tagEditor('removeTag',tags[i]);
@@ -138,9 +139,11 @@ $(document).ready(function () {
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
                     $('#upform').after(write);
+                    $('#'+ID).hide().fadeIn();
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
-                    $('#publiBody').html("").trigger('input').trigger('keyup');
+                    $('#publiBody').html('');
+
                     var tags=$('#publi-tag').tagEditor('getTags')[0].tags;
                     for(var i=0;i<tags.length;i++){
                         $('#publi-tag').tagEditor('removeTag',tags[i]);
@@ -318,6 +321,7 @@ $(document).ready(function () {
                         form.parent().before(
                             $('<li>').attr('folderid',res['ID']).append(
                                 $('<a>').attr('href','#').text(folderName))
+                                .fadeIn()
                         )
                     },complete:form.val('')
 

@@ -198,10 +198,13 @@ function getCards() {
                             write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
+                                $('#'+ID).hide().fadeIn();
                             } else if ($('#upform').length > 0) {
                                 $('#upform').after(write);
+                                $('#'+ID).hide().fadeIn();
                             } else {
                                 $('#prea').after(write);
+                                $('#'+ID).hide().fadeIn();
                             }
 
                         } else {
@@ -229,10 +232,13 @@ function getCards() {
                             write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res[i]['CATEGORY'], res[i]['SUB_CATEGORY']);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
+                                $('#'+ID).hide().fadeIn();
                             } else if ($('#upform').length > 0) {
                                 $('#upform').after(write);
+                                $('#'+ID).hide().fadeIn();
                             } else {
                                 $('#prea').after(write);
+                                $('#'+ID).hide().fadeIn();
                             }
                         }
                     }
@@ -315,8 +321,10 @@ $(document).ready(function () {
                                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
+                                        $('#'+ID).hide().fadeIn();
                                     } else {
                                         $('#prea').after(write);
+                                        $('#'+ID).hide().fadeIn();
                                     }
                                 } else {
                                     var write = '';
@@ -343,8 +351,10 @@ $(document).ready(function () {
                                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY']);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
+                                        $('#'+ID).hide().fadeIn();
                                     } else {
                                         $('#prea').after(write);
+                                        $('#'+ID).hide().fadeIn();
                                     }
                                 }
                             }
