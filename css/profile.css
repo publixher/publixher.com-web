@@ -1097,10 +1097,10 @@ li a {
 }
 .accordion-inner div {
   margin: 5px 0 5px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-<<<<<<< HEAD
 .content-category{
   font-size: 12px
 }
-=======
->>>>>>> 577b61fbc0b221e38f73f8a0990fe35d7c0bc22a
