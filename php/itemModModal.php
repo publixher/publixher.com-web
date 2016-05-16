@@ -18,9 +18,9 @@
                         </li>
                         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                     role="button" aria-expanded="false">
-                                <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
+                                <span id="directorySettingSub-mod">미분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu hasInput" role="menu" id="dirSublist-mod">
-                                <li><a>비분류</a></li>
+                                <li><a>미분류</a></li>
                                 <?php
                                 for ($i = 0; $i < count($FOLDER); $i++) {
                                     echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
@@ -74,6 +74,7 @@
                                                 <li><a>소설</a></li>
                                                 <li><a>만화</a></li>
                                                 <li><a>사진</a></li>
+                                                <li><a>맛집</a></li>
                                             </ul>
                                         </div>
                                     </td>

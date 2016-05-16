@@ -57,7 +57,6 @@ ini_set("display_errors",1);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
-                    <li><input type="text" class="form-control"></li>
                 </ul>
             </div>
             <!--            구독목록-->
@@ -302,9 +301,9 @@ ini_set("display_errors",1);
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
-                            <span id="directorySettingSub">비분류</span><span class="caret"></span></a>
+                            <span id="directorySettingSub">미분류</span><span class="caret"></span></a>
                         <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
-                            <li><a>비분류</a></li>
+                            <li><a>미분류</a></li>
                             <?php
                             require_once '../conf/database_conf.php';
                             require_once '../conf/User.php';
@@ -373,6 +372,7 @@ ini_set("display_errors",1);
                                                 <li><a>소설</a></li>
                                                 <li><a>만화</a></li>
                                                 <li><a>사진</a></li>
+                                                <li><a>맛집</a></li>
                                             </ul>
                                         </div>
                                     </td>

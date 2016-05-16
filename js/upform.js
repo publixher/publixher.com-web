@@ -17,7 +17,7 @@ function getCookie(cName) {
 }
 $(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
-    $('.hasInput,.hasSelect').click(function (e) {
+    $('.hasInput .form-control').click(function (e) {
         e.stopPropagation();
     });
 
@@ -176,10 +176,11 @@ $(document).ready(function () {
     })
     //폴더설정 버튼
     var $folderID;
-    $('#dirSublist li').click(function () {
+    $('#dirSublist').on('click','li',function(){
         $('#directorySettingSub').text($(this).text());
         $folderID = $(this).attr('folderid');
     })
+
     //카테고리 리스트 버튼
     var category = null;
     $('#categorySelect li').click(function () {
