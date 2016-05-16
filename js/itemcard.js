@@ -43,7 +43,7 @@ $(document).ready(function () {
                 $('#' + thisitemID + ' .tail .tshare').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
-            tail.append($('<div>').addClass('tab-comment'));
+            tail.append($('<div>').addClass('tab-comment').hide().fadeIn());
             var tab_comment = $('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
@@ -294,7 +294,9 @@ $(document).ready(function () {
                 .removeClass('opend-comment')
                 .removeAttr('style');
             tail.find('.tcomment').removeAttr('style');
-            tail.find('.tab-comment').remove();
+            tail.find('.tab-comment').fadeOut(function(){
+                tail.find('.tab-comment').remove();
+            })
         }
     });
     //댓글 네비게이션에 각 탭 누를때의 동작
@@ -380,7 +382,7 @@ $(document).ready(function () {
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
-                        var reply = res[i]['REPLY'];
+                        var reply = res[i]['REP_BODY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
@@ -466,7 +468,10 @@ $(document).ready(function () {
                     type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
                     if (res['result'] == 'Y') {
                         alert('삭제되었습니다.');
-                        $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.').addClass('reply-del');
+                        $('#' + thisrep + ' .reply-body').fadeOut(function(){
+                            $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.').addClass('reply-del').fadeIn();
+                        })
+
                     }
                     else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
                 }
@@ -489,7 +494,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
-                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
+                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>').hide().fadeIn();
                     //대댓글 태그기능
                     subrep_list
                         .append(
@@ -590,6 +595,7 @@ $(document).ready(function () {
                                                 )
                                         )
                                 )
+                                .fadeIn()
                         )
                     if (res['result'] != 'NO') {
                         function registRep(res) {
@@ -697,11 +703,12 @@ $(document).ready(function () {
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
                         var date = res[i]['REPLY_DATE'];
-                        var reply = res[i]['REPLY'];
+                        var reply = res[i]['REP_BODY'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
                         btn.before(write);
+                        $('#'+ where + '-rep-' + ID).hide().fadeIn();
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
@@ -778,7 +785,9 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
-                    body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>');
+                    body.fadeOut(function(){
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn();
+                    });
                     priceSpan.html('<a>접기</a>');
                     priceSpan.removeClass('bought').addClass('expanded');
                 }
@@ -789,7 +798,9 @@ $(document).ready(function () {
         } else if (priceSpan.hasClass('expanded')) {
             //확장된상태에서는 접기역할을 함
             var body = $('#' + thisitemID + ' .body');
-            body.html(previewarr['' + thisitemID]);
+            body.fadeOut(function(){
+                body.html(previewarr['' + thisitemID]).fadeIn();
+            });
             priceSpan.html('<a>더보기</a>');
             priceSpan.removeClass('expanded').addClass('bought');
         } else {

@@ -328,7 +328,7 @@ body {
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:focus,
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:hover,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a:hover {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f9f9f9;
   outline: 0;
 }
 #wrap #middle .item .commentReg_sub,
@@ -624,6 +624,7 @@ body {
   width: 96%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  border-radius: 4px;
   border-radius: 2px;
   font-size: 14px;
   padding: 2px 2px 2px 2px;
@@ -797,7 +798,7 @@ li a {
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
   border: 1px solid #ddd;
-  border-bottom: 1px solid #f9f9f9;
+  border-bottom: 1px solid #f4f4f4;
   border-top: 1px solid transparent;
 }
 .blank {
@@ -998,7 +999,7 @@ li a {
 #daily-hot-list li,
 #weekly-hot-list li {
   list-style-type: none;
-  font-size: 12px
+  font-size: 12px;
 }
 .hot-pic-wrap {
   width: 50px;
@@ -1108,7 +1109,7 @@ li a {
   overflow: hidden;
 }
 .content-category,
-.content-folder{
+.content-folder {
   font-size: 12px;
 }
 .tab-comment>div:nth-child(2){

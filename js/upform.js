@@ -74,7 +74,7 @@ $(document).ready(function () {
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
                     $('#upform').after(write);
                     $('#'+ID).hide().fadeIn();
-                    $('#sendBody').html('')
+                    $('#sendBody').html('').removeAttr('style')
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
                         $('#send-tag').tagEditor('removeTag',tags[i]);
@@ -142,7 +142,7 @@ $(document).ready(function () {
                     $('#'+ID).hide().fadeIn();
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
-                    $('#publiBody').html('');
+                    $('#publiBody').html('').removeAttr('style');
 
                     var tags=$('#publi-tag').tagEditor('getTags')[0].tags;
                     for(var i=0;i<tags.length;i++){

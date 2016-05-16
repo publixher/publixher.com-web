@@ -35,6 +35,7 @@ $(document).ready(function(){
     //폴더 삭제
     $(document).on("click", ".deletefolder", function (e) {
         var folderName=$(this).siblings('a').text();
+        var li=$(this).parent();
         if(confirm('정말 '+folderName+' 폴더를 삭제 하시겠습니까? (폴더 안의 내용물들은 전부 비분류 처리됩니다).')) {
             var thisfolder = $(this).attr('data-folderid');
             $.ajax({
@@ -43,8 +44,9 @@ $(document).ready(function(){
                 data: {action: "deletefolder", userID: mid, folderid: thisfolder},
                 dataType: 'json',
                 success: function (res) {
-                    alert(res['message']);
-                    location.reload();
+                    li.fadeOut(function(){
+                        $(li).remove();
+                    })
                 }, error: function (request) {
                     alert(request.responseText);
                 }
