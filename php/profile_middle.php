@@ -57,6 +57,7 @@ ini_set("display_errors",1);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
+                    <li><input type="text" class="form-control"></li>
                 </ul>
             </div>
             <!--            구독목록-->
@@ -302,7 +303,8 @@ ini_set("display_errors",1);
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="directorySettingSub">비분류</span><span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu" id="dirSublist">
+                        <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
+                            <li><a>비분류</a></li>
                             <?php
                             require_once '../conf/database_conf.php';
                             require_once '../conf/User.php';
@@ -318,6 +320,7 @@ ini_set("display_errors",1);
                                 echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                             }
                             ?>
+                            <li><input type="text" class="form-control new-folder"></li>
                         </ul>
                     </li>
                 </ul>
@@ -423,136 +426,6 @@ ini_set("display_errors",1);
     <div id="topcon"></div>
 
     <!--    각 카드가 하나의 아이템-->
-</div>
-<!--    수정을 위한 모달-->
-<div id="itemModModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="/php/data/uploadContent.php" method="post" enctype="multipart/form-data" id="mod-form">
-                <div role="tabpanel" id="mod-pane">
-                    <!-- 위탭 -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"></li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                    href="#"
-                                                                    role="button" aria-expanded="false">
-                                <span id="exposeSetting-mod">전체공개</span> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" id="expSublist-mod">
-                                <li><a>나만보기</a></li>
-                                <li><a>친구에게 공개</a></li>
-                                <li><a>전체 공개</a></li>
-                            </ul>
-                        </li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                    href="#"
-                                                                    role="button" aria-expanded="false">
-                                <span id="directorySettingSub-mod">비분류</span><span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" id="dirSublist-mod">
-                                <?php
-                                for ($i = 0; $i < count($FOLDER); $i++) {
-                                    echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
-                                }
-                                ?>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- 똥싸기와 용돈벌기 내용 -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane" id="send-mod">
-                            <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)"
-                                 onkeyup="resize(this)"></div>
-                            <hr>
-                            <table>
-                                <tr>
-                                    <td class="fileinput">
-                                        <span><span class="pubico pico-file-plus"></span>파일선택</span>
-                                        <input id="fileuploads-mod" name="fileuploads[]" accept="image/*"
-                                               data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
-                                    </td>
-                                    <td class="taginput" colspan="2">
-                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag-mod">
-                                    </td>
-                                    <td class="regbtn">
-                                        <button type="button" id="sendButton-mod" data-loading-text="싸는중..."
-                                                class="btn btn-primary">
-                                            <span class="pubico pico-pen2">보내기</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!--여기부턴 용돈벌기 내용-->
-                        <div role="tabpanel" class="tab-pane" id="publixh-mod">
-                            <div>
-                                <input type="text" class="form-control" id="saleTitle-mod">
-                                <div contenteditable="true" class="form-control" id="publiBody-mod"
-                                     oninput="resize(this)" onkeyup="resize(this)"></div>
-                            </div>
-                            <hr>
-                            <table>
-                                <tr>
-                                    <td class="cateinput">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle"
-                                                    data-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                <span id="category-mod">분류</span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu" id="categorySelect-mod">
-                                                <li><a>매거진</a></li>
-                                                <li><a>뉴스</a></li>
-                                                <li><a>소설</a></li>
-                                                <li><a>만화</a></li>
-                                                <li><a>사진</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="subcateinput">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle"
-                                                    data-toggle="dropdown"
-                                                    aria-expanded="false"><span id="sub-category-mod">하위 분류</span><span
-                                                    class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu" id="subcategorySelect-mod">
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="priceinput" colspan="2">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">PIK</div>
-                                                <input type="text" class="form-control" id="contentCost-mod"
-                                                       placeholder="여기에 가격을 입력하세요."
-                                                       pattern="[0-9]">
-                                                <div class="input-group-addon"><img src="../img/icon.png"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fileinput">
-                                <span><span class="pubico pico-file-plus">파일선택</span>
-                                <input id="fileuploadp-mod" name="fileuploadp[]" accept="image/*"
-                                       data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
-                                    </td>
-                                    <td class="taginput" colspan="2">
-                                        <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag-mod">
-                                    </td>
-                                    <td class="regbtn">
-                                        <button type="button" id="publixhButton-mod" data-loading-text="싸는중..."
-                                                class="btn btn-primary" autocomplete="off">
-                                            <span class="pubico pico-pen2">출판하기</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 <script>
     var page = 0;

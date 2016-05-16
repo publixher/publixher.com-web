@@ -158,7 +158,7 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare->bindValue('DIR', $_POST['folder'], PDO::PARAM_STR);
     $prepare->execute();
-    echo '{"status":1}';
+    echo '{"status":1,"result":{"ID":"'.$fuid.'"}}';
 } elseif ($_POST['action'] == 'deletefolder') {
     $folderid = $_POST['folderID'];
     $sql = "DELETE FROM publixher.TBL_FOLDER WHERE ID=:ID";

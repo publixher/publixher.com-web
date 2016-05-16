@@ -27,7 +27,7 @@
 <body>
 <script>
     $(document).on("click", ".deletefolder", function (e) {
-        var thisfolder = $(this).attr('folderid');
+        var thisfolder = $(this).attr('data-folderid');
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
