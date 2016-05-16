@@ -16,6 +16,11 @@ function getCookie(cName) {
     return encodeURIComponent(cValue);
 }
 $(document).ready(function () {
+    //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
+    $('.hasInput,.hasSelect').click(function (e) {
+        e.stopPropagation();
+    });
+
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
@@ -297,6 +302,22 @@ $(document).ready(function () {
             .find("[folderid='"+fid+"']")
             .trigger('click');
     }
+    //새 폴더 생성
+    $('.new-folder').on('keyup',function(){
+        if(e.keyCode == 13 && $(this).val().length > 0){
+            var folderName=$(this).val();
+            if(/^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{1,15}$/.test(folderName)){
+                $.ajax({
+                    url:"/php/data/profileChange.php",
+                    dataType:'json',
+                    type:"GET",
+                    data:
+                })
+            }else{
+                alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
+            }
+        }
+    })
 });
 
 //텍스트에이리어 입력시 자동 크기조정
