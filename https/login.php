@@ -119,15 +119,16 @@
     <form method='post' action='/https/loginConfirm.php'>
         <table>
             <tr>
-                <td>아이디</td>
                 <td>
-                        <input type='text' name='email' tabindex='1' class='form-control'/>
-                    </td>
-                <td><input type='submit' tabindex='3' value='로그인' class="btn btn-default"/></td>
+                    <input type='text' name='email' tabindex='1' class='form-control' placeholder="email"/>
+                </td>
+
             </tr>
             <tr>
-                <td>비밀번호</td>
-                <td><input type='password' name='pass' tabindex='2' class='form-control'/></td>
+                <td><input type='password' name='pass' tabindex='2' class='form-control' placeholder="password"/></td>
+            </tr>
+            <tr>
+                <td><input type='submit' tabindex='3' value='로그인' class="btn btn-default"/></td>
             </tr>
         </table>
     </form>
@@ -182,13 +183,13 @@
                 </td>
             </tr>
             <tr>
-            <td>
-                <input type="checkbox" name="community">커뮤니티로 생성하기
-            </td>
-                </tr>
+                <td>
+                    <input type="checkbox" name="community">커뮤니티로 생성하기
+                </td>
+            </tr>
             <tr>
-            <td colspan="2"><input type="submit" value="가입하기" id="submit" class="btn btn-default" tabindex="13"
-                                   class='form-control'></td>
+                <td colspan="2"><input type="submit" value="가입하기" id="submit" class="btn btn-default" tabindex="13"
+                                       class='form-control'></td>
             </tr>
 
         </table>
@@ -197,7 +198,7 @@
     <script>
         var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");
         naver_id_login.setButton("white", 3, 40)
-//        naver_id_login.setPopup();
+        //        naver_id_login.setPopup();
         naver_id_login.setDomain(".publixher.com");
         naver_id_login.setState("abcdefghijklmnoqstuv");
         naver_id_login.init_naver_id_login();
