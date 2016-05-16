@@ -235,7 +235,7 @@ $(document).ready(function () {
                 if (data.length < 1) {
                     $('#cms-item').append(
                         $('<div>').addClass('no-data').text('아직 아무도 구매나 후원하지 않았네요;;')
-                    )
+                    );
                     return false;
                 }
                 //y최대값 구하고 그걸로 tick구하기
