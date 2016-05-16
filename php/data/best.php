@@ -5,7 +5,7 @@ $action=$_GET['act'];
 if($action=='now') {
     if (isset($_GET['category'])) {
         if (isset($_GET['sub_category'])) {
-            $sql = "SELECT SQL_CACHE
+            $sql = "SELECT 
   COMMENT,
   KNOCK,
   ID_CONTENT,
@@ -20,7 +20,7 @@ FROM publixher.TBL_NOW_HOT AS NOW
 ORDER BY SEQ DESC
 LIMIT 5";
         }else 
-        $sql = "SELECT SQL_CACHE
+        $sql = "SELECT 
   COMMENT,
   KNOCK,
   ID_CONTENT,
@@ -41,7 +41,7 @@ LIMIT 5";
 }elseif($action=='daily'){
     if (isset($_GET['category'])) {
         if (isset($_GET['sub_category'])) {
-            $sql = "SELECT SQL_CACHE
+            $sql = "SELECT 
   COMMENT,
   KNOCK,
   ID_CONTENT,
@@ -56,7 +56,7 @@ FROM publixher.TBL_DAILY_HOT AS DAILY
 ORDER BY SEQ DESC
 LIMIT 5";
         }else 
-        $sql = "SELECT SQL_CACHE
+        $sql = "SELECT 
   COMMENT,
   KNOCK,
   ID_CONTENT,
