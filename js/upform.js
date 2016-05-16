@@ -1,6 +1,20 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
+// 쿠키 가져오기
+function getCookie(cName) {
+    cName = cName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cName);
+    var cValue = '';
+    if(start != -1){
+        start += cName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cValue = cookieData.substring(start, end);
+    }
+    return encodeURIComponent(cValue);
+}
 $(document).ready(function () {
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
@@ -276,6 +290,13 @@ $(document).ready(function () {
         delimiter:', ',
         maxLength:50
     });
+    //fid쿠키의 폴더가 폴더리스트에 있으면 선택되게하는거
+    var fid=getCookie('fid');
+    if(fid){
+        $('#dirSublist')
+            .find("[folderid='"+fid+"']")
+            .trigger('click');
+    }
 });
 
 //텍스트에이리어 입력시 자동 크기조정

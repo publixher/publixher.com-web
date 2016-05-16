@@ -13,7 +13,11 @@ if ($action == 'confonload') {
     $notinumpre->bindValue(':ID_ACTOR', $userID);
     $notinumpre->execute();
     $number = $notinumpre->fetchColumn();
-    echo json_encode($number, JSON_UNESCAPED_UNICODE);
+    if(!$number) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$number,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'confnotireq') {
     $nowpage = $_GET['nowpage'] * 20;
     /* 1: 내 컨텐츠가 구매될때:(컨텐츠 ID, 구매자 ID) , (컨텐츠 ID,컨텐츠 SALE,구매자 ID,구매자 이름)
@@ -63,7 +67,11 @@ LIMIT :NOWPAGE, 20";
     $notireqpre->execute();
     $notis = $notireqpre->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($notis, JSON_UNESCAPED_UNICODE);
+    if(!$notis) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result'=>$notis,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
     //응답한다음 알림을 전부 읽은걸로 처리한다
     $sql = "UPDATE publixher.TBL_CONTENT_NOTI SET CHECKED='Y' WHERE ID_TARGET=:ID_TARGET";
     $prepare = $db->prepare($sql);

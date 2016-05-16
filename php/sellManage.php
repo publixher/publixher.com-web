@@ -26,6 +26,12 @@
     <script src="/plugins/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/plugins/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.kr.min.js"></script>
     <link rel="stylesheet" href="/plugins/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css">
+    <!--그래프 플러그인-->
+    <script src="/plugins/jqPlot-master/src/jquery.jqplot.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.dateAxisRenderer.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.cursor.js"></script>
+    <script src="/plugins/jqPlot-master/src/plugins/jqplot.highlighter.js"></script>
+    <link rel="stylesheet" href="/plugins/jqPlot-master/src/jquery.jqplot.css">
 
     <script src="/js/sellManage.js"></script>
     <script src="/js/plugins.js"></script>
@@ -57,18 +63,24 @@
         <div id="most-content">
 
         </div>
+        <!--        아이템 한개 세부 판매내역-->
+        <div id="cms-item">
+
+        </div>
         <!--        기간별 cms-->
-        <div id="cms-date">
-            <!--            datepicker-->
-            <div class="span5 col-md-5" id="sandbox-container">
-                <div class="input-daterange input-group" id="datepicker">
-                    <input type="text" class="input-sm form-control" name="start" id="start_date">
-                    <span class="input-group-addon">to</span>
-                    <input type="text" class="input-sm form-control" name="end" id="end_date">
+        <div id="cms-date-wrapper">
+            <div id="cms-date">
+                <!--            datepicker-->
+                <div class="span5 col-md-5" id="sandbox-container">
+                    <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="input-sm form-control" name="start" id="start_date">
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="input-sm form-control" name="end" id="end_date">
+                    </div>
                 </div>
-            </div>
-            <div id="cms-result">
-    
+                <div id="cms-result">
+
+                </div>
             </div>
         </div>
     </div>
