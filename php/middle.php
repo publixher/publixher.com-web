@@ -18,9 +18,9 @@
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
-                        <span id="directorySettingSub">비분류</span><span class="caret"></span></a>
+                        <span id="directorySettingSub">미분류</span><span class="caret"></span></a>
                     <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
-                        <li><a>비분류</a></li>
+                        <li><a>미분류</a></li>
                         <?php
                         require_once '../conf/database_conf.php';
                         $userinfo = $_SESSION['user'];
@@ -85,6 +85,7 @@
                                         <li><a>소설</a></li>
                                         <li><a>만화</a></li>
                                         <li><a>사진</a></li>
+                                        <li><a>맛집</a></li>
                                     </ul>
                                 </div>
                             </td>

@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
-    $('.hasInput,.hasSelect').click(function (e) {
+    $('.hasInput .form-control,.hasSelect').click(function (e) {
         e.stopPropagation();
     });
     //드롭다운 안에 검색목록의 동작
