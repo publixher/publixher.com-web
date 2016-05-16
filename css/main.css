@@ -40,15 +40,15 @@ body {
   -moz-border-radius: 4px;
   border-radius: 4px;
   margin: 5px 10px 10px 10px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+  border: 1px solid #e3e3e3;
 }
 #wrap #middle #writing-pane ul {
   padding-left: 2px;
   font-size: 12px;
 }
 #wrap #middle #writing-pane ul li {
-  width: 132px;
+  width: 25%;
   height: 28px;
   padding: 2px 0 2px 0;
 }
@@ -224,8 +224,8 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
+  border: 1px solid #e3e3e3;
 }
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
@@ -268,7 +268,7 @@ body {
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
   float: left;
-  margin: 10px 10px 0 10px;
+  margin: 10px 9px 0 9px;
   width: 510px;
   height: 50px;
 }
@@ -312,8 +312,8 @@ body {
 #wrap #middle .item .body,
 #wrap #middle .item-for-sale .body {
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 9px;
+  margin-right: 9px;
   width: 510px;
   word-break: break-all;
 }
@@ -348,10 +348,10 @@ body {
 #wrap #middle .item-for-sale .tail {
   float: left;
   font-size: 12px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 9px;
+  margin-right: 9px;
   margin-top: 5px;
-  background-color: #F4F4F4;
+  background-color: #F9F9F9;
 }
 #wrap #middle .item .tail .badge,
 #wrap #middle .item-for-sale .tail .badge {
@@ -531,7 +531,6 @@ body {
   width: 96%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
   border-radius: 2px;
   font-size: 14px;
   padding: 2px 2px 2px 2px;
@@ -567,9 +566,7 @@ body {
   width: 300px;
   height: auto;
   position: relative;
-  background-color: #f5f5f5;
   z-index: 1;
-  border: 1px solid #e3e3e3;
   overflow: hidden;
 }
 #wrap #right .market #market-nav {
@@ -729,7 +726,7 @@ li a {
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
   border: 1px solid #ddd;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f9f9f9;
   border-top: 1px solid transparent;
 }
 .blank {
@@ -887,31 +884,33 @@ li a {
   height: 50px;
   width: 100%;
   float: left;
-  list-style-type: none;
-  background-color: white;
+  background-color: #f9f9f9;
   border: 1px solid #e3e3e3;
+  margin: 5px 0 5px 0;
 }
 #now-hot-list li,
 #daily-hot-list li,
 #weekly-hot-list li {
   list-style-type: none;
+  font-size: 12px
 }
 .hot-pic-wrap {
   width: 50px;
   height: 50px;
   position: relative;
   float: left;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .hot-pic {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 40px;
 }
 .hot-body {
   display: block;
-  margin-top: 5px;
+  margin-top: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1002,9 +1001,12 @@ li a {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.content-category {
+.content-category,
+.content-folder{
   font-size: 12px;
 }
+
+
 #report-button {
   border: 1px solid #e3e3e3;
   padding: 2px;
