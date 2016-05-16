@@ -61,10 +61,7 @@
     for ($i = 0; $i < count($FOLDER); $i++) {
         echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
     }
-
-    if ($userID == $targetid) {
-        echo "<a href='/folderManage/${targetid}'>폴더 관리</a></ul>";
-    } else echo '</ul>';
+    echo '</ul>';
     if ($userinfo->getLEVEL() == 99) {
         echo <<<END
 <hr>관리자 권한

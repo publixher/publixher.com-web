@@ -303,15 +303,23 @@ $(document).ready(function () {
             .trigger('click');
     }
     //새 폴더 생성
-    $('.new-folder').on('keyup',function(){
+    $('.new-folder').on('keyup',function(e){
         if(e.keyCode == 13 && $(this).val().length > 0){
+            var form=$(this);
             var folderName=$(this).val();
             if(/^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{1,15}$/.test(folderName)){
                 $.ajax({
                     url:"/php/data/profileChange.php",
                     dataType:'json',
-                    type:"GET",
-                    data:
+                    type:"POST",
+                    data:{folder:folderName,action:"newfolder"},
+                    success:function(res){
+                        form.parent().before(
+                            $('<li>').attr('folderid',res['ID']).append(
+                                $('<a>').attr('href','#').text(folderName))
+                        )
+                    },complete:form.val('')
+
                 })
             }else{
                 alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
