@@ -18,7 +18,7 @@
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
-                        <span id="directorySettingSub">미분류</span><span class="caret"></span></a>
+                        <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span class="caret"></span></a>
                     <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
                         <li><a>미분류</a></li>
                         <?php
@@ -35,7 +35,7 @@
                             echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                         }
                         ?>
-                        <li><input type="text" class="form-control new-folder"></li>
+                        <li><span class="pubico pico-folder-plus"></span><input type="text" class="form-control new-folder"></li>
                     </ul>
                 </li>
             </ul>
@@ -106,7 +106,7 @@
                                         <input type="text" class="form-control" id="contentCost"
                                                placeholder="여기에 가격을 입력하세요."
                                                pattern="[0-9]">
-                                        <div class="input-group-addon"><img src="../img/icon.png"></div>
+                                        <div class="input-group-addon"><span class="pubico pico-24"></span></div>
                                     </div>
                                 </div>
                             </td>

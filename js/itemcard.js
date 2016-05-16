@@ -734,7 +734,7 @@ $(document).ready(function () {
                 $('#' + thisitemID + ' .tail .tcomment').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
-            tail.append('<div class="tab-share"></div>')
+            tail.append($('<div>').addClass('tab-share').hide().fadeIn());
             var tab_share = $('#' + thisitemID + ' .tail .tab-share');
             var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div>';
             tab_share.append(text)
@@ -788,7 +788,10 @@ $(document).ready(function () {
                     body.fadeOut(function(){
                         body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn();
                     });
-                    priceSpan.html('<a>접기</a>');
+                    priceSpan.fadeOut(function(){
+                        priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
+                    })
+
                     priceSpan.removeClass('bought').addClass('expanded');
                 }
                 , error: function (request) {
@@ -801,7 +804,9 @@ $(document).ready(function () {
             body.fadeOut(function(){
                 body.html(previewarr['' + thisitemID]).fadeIn();
             });
-            priceSpan.html('<a>더보기</a>');
+            priceSpan.fadeOut(function(){
+                priceSpan.html('<a><span class="pubico pico-down-tri"></span></a>').fadeIn();
+            })
             priceSpan.removeClass('expanded').addClass('bought');
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음

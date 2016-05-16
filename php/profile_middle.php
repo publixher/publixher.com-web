@@ -301,7 +301,7 @@ ini_set("display_errors",1);
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
-                            <span id="directorySettingSub">미분류</span><span class="caret"></span></a>
+                            <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span class="caret"></span></a>
                         <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
                             <li><a>미분류</a></li>
                             <?php
@@ -319,7 +319,7 @@ ini_set("display_errors",1);
                                 echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                             }
                             ?>
-                            <li><input type="text" class="form-control new-folder"></li>
+                            <li><span class="pubico pico-folder-plus"></span><input type="text" class="form-control new-folder"></li>
                         </ul>
                     </li>
                 </ul>
@@ -332,7 +332,7 @@ ini_set("display_errors",1);
                         <table>
                             <tr>
                                 <td class="fileinput">
-                                    <span>파일선택</span>
+                                    <span class="pubico pico-file-plus"><span>파일선택</span>
                                     <input id="fileuploads" name="fileuploads[]" accept="image/*"
                                            data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                 </td>
@@ -342,7 +342,7 @@ ini_set("display_errors",1);
                                 <td class="regbtn">
                                     <button type="button" id="sendButton" data-loading-text="싸는중..."
                                             class="btn btn-primary"
-                                            autocomplete="off">
+                                            autocomplete="off"><span class="pubico pico-pen2">
                                         보내기
                                     </button>
                                 </td>
@@ -394,14 +394,14 @@ ini_set("display_errors",1);
                                                 <input type="text" class="form-control" id="contentCost"
                                                        placeholder="여기에 가격을 입력하세요."
                                                        pattern="[0-9]">
-                                                <div class="input-group-addon"><img src="../img/IMG_1795.png"></div>
+                                                <div class="input-group-addon"><span class="pubico pico-24"></span></div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="fileinput">
-                                        <span>파일선택</span>
+                                        <span class="pubico pico-file-plus"><span>파일선택</span>
                                         <input id="fileuploadp" name="fileuploadp[]" accept="image/*"
                                                data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                     </td>
@@ -412,7 +412,7 @@ ini_set("display_errors",1);
                                     <td class="regbtn">
                                         <button type="button" id="publixhButton" data-loading-text="싸는중..."
                                                 class="btn btn-primary"
-                                                autocomplete="off">
+                                                autocomplete="off"><span class="pubico pico-pen2">
                                             출판하기
                                         </button>
                                     </td>

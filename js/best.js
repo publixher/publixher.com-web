@@ -31,8 +31,8 @@ $(document).ready(function () {
                                 .append(
                                     $('<a>').addClass('hot-body').attr('href', '/content/' + res[i]['ID_CONTENT']).text(res[i]['BODY'])
                                     , $('<a>').attr('href', '/profile/' + res[i]['ID_WRITER']).text(res[i]['USER_NAME']).addClass('hot-data')
-                                    , $('<span>').addClass('hot-knock').text(res[i]['KNOCK'])
-                                    , $('<span>').addClass('hot-reply').text(res[i]['COMMENT'])
+                                    , $('<span>').addClass('hot-knock').append('<span class="pubico pico-knock"></span>').text(res[i]['KNOCK'])
+                                    , $('<span>').addClass('hot-reply').append('<span class="pubico pico-comment"></span>').text(res[i]['COMMENT'])
                                 )
                         )
 

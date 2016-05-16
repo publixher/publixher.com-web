@@ -37,9 +37,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span> </button> '
 
     if (mid == writer || level == 99) {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod"><span class="pubico pico-content-edit"></span>수정</a></li><li><a class="itemDel"><span class="pubico pico-content-remove"></span>삭제</a></li><li><a class="itemTop"><span class="pubico pico-kkuk-up"></span>최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
 
     write += '</div></div> <div class="body">'
@@ -53,11 +53,11 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
-    write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
+    write += '</span></span></td> <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
-    write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
+    write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
     if (more == '1') {
-        write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+        write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span></a></span></td></tr></table></div> </div>';
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
     }
@@ -104,9 +104,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span> </button> '
     if (mid == writer || level == 99) {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod">수정</a></li><li><a class="itemDel">삭제</a></li><li><a class="itemTop">최상단 컨텐츠로</a></li> </ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod"><span class="pubico pico-content-edit"></span>수정</a></li><li><a class="itemDel"><span class="pubico pico-content-remove"></span>삭제</a></li><li><a class="itemTop"><span class="pubico pico-kkuk-up"></span>최상단 컨텐츠로</a></li> </ul></div><br>'
     } else {
-        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport">신고</a></li></ul></div><br>'
+        write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
     write += '</div><div class="title">';
     write += title;
@@ -121,12 +121,12 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
-    write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
+    write += '</span></span></td> <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
-    write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
+    write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
     if (bought) {
         if (more == '1') {
-            write += '<td class="tprice"><span class="price bought"><a>더보기</a></span></td></tr></table></div> </div>';
+            write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span></a></span></td></tr></table></div> </div>';
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
         }

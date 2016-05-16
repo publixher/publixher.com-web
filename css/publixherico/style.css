@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'publixherico';
-    src:    url('fonts/publixherico.eot?r3psox');
-    src:    url('fonts/publixherico.eot?r3psox#iefix') format('embedded-opentype'),
-        url('fonts/publixherico.ttf?r3psox') format('truetype'),
-        url('fonts/publixherico.woff?r3psox') format('woff'),
-        url('fonts/publixherico.svg?r3psox#publixherico') format('svg');
+    src:    url('fonts/publixherico.eot?xkv583');
+    src:    url('fonts/publixherico.eot?xkv583#iefix') format('embedded-opentype'),
+        url('fonts/publixherico.ttf?xkv583') format('truetype'),
+        url('fonts/publixherico.woff?xkv583') format('woff'),
+        url('fonts/publixherico.svg?xkv583#publixherico') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,11 +24,20 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.pico-kkuk-up:before {
+    content: "\e90a";
+}
+.pico-down-tri:before {
+    content: "\e91e";
+}
+.pico-share:before {
+    content: "\e900";
+}
+.pico-comment:before {
+    content: "\e904";
+}
 .pico-knock:before {
     content: "\e901";
-}
-.pico-arrow:before {
-    content: "\e900";
 }
 .pico-edit:before {
     content: "\e902";
@@ -51,9 +60,6 @@
 .pico-plus:before {
     content: "\e90b";
 }
-.pico-comment:before {
-    content: "\e90c";
-}
 .pico-content-edit:before {
     content: "\e90f";
 }
@@ -71,9 +77,6 @@
 }
 .pico-swap:before {
     content: "\e914";
-}
-.pico-down-tri:before {
-    content: "\e916";
 }
 .pico-up-tri:before {
     content: "\e91b";
