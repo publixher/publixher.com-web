@@ -18,7 +18,7 @@ $(document).ready(function () {
                 spinner.detach();
                 for (var i = 0; i < res.length; i++) {
                     var img = '';
-                    if (res['i']['IMG']) {
+                    if (res['i']['WRITER_PIC']) {
                         img = $('<img>').attr({
                             src: res[i]['WRITER_PIC'],
                             onclick: 'location.href="/content/"' + res[i]['ID_CONTENT'] + '"'
