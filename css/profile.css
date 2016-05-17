@@ -1153,7 +1153,7 @@ li a {
 .pico-pen2:before,
 .pico-comment,
 .pico-share {
-  padding: 5px !important;
+  padding-right: 5px !important
 }
 .pico-search {
   display: inline-block;
@@ -1165,11 +1165,34 @@ li a {
   height: 40px;
   padding: 9px;
 }
-#search-body {
+#searchResult li li:hover,
+#searchResult li li:active,
+#searchResult li li:focus{
+  background-color: #f4f4f4 !important;
+  border-radius: 2px;
+}
+#search-body{
   text-align: center;
 }
 #search-body:hover,
 #search-body:active,
 #search-body:focus {
   border-radius: 2px;
+}
+.commentReply td{
+  float:left
+}
+#searchResult .menu li>div{
+  height: 34px;
+  width: 34px;
+  position: relative;
+  float:left;
+  top: -6px;
+  margin-right: 6px
+}
+#searchResult .menu li>div img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
