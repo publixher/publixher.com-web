@@ -238,6 +238,8 @@ FROM publixher.TBL_CONTENT AS CONT
 
         //폴더 쿠키설정
         setcookie('fid',$_POST['folder'],time() + 3600 * 24 * 365, '/');
+        //공개대상 쿠키 설정
+        setcookie('exp',$_POST['expose'],time() + 3600 * 24 * 365, '/');
         echo $result;
     } catch (PDOException $e) {
         $db->rollBack();

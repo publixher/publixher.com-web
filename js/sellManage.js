@@ -213,7 +213,7 @@ $(document).ready(function () {
                 var price = [];
                 var data = [];
                 var ymax = 0;
-
+                opts.series[0].label=opts.series[1].label=undefined;
                 for (var i = 0; i < res['DONATE'].length; i++) {
                     donate.push([res['DONATE'][i]['DATE'], res['DONATE'][i]['DONATE']])
                 }
