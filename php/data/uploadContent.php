@@ -11,7 +11,7 @@ if (!empty($_POST)) {
     require_once '../../lib/imagecrop.php';
     require_once '../../lib/random_64.php';
     require_once '../../lib/getImgFromUrl.php';
-
+    require_once '../../lib/banchk.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -20,6 +20,8 @@ if (!empty($_POST)) {
     } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
         exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
     }
+
+    banCheck($_POST['ID_writer'],$db,-2 );
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";

@@ -271,6 +271,8 @@ LIMIT
         }
     }
 } elseif ($act == 'commentreg') {
+    require_once '../../lib/banchk.php';
+    banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/(\<br\>){3,}/i";
@@ -556,7 +558,7 @@ LIMIT
     $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['ID_WRITER'] == $userID) {
+    if ($result1['ID_WRITER'] == $userID OR $userinfo->getLEVEL()>=99) {
         //폴더 시퀀스 찾기
         $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
@@ -696,6 +698,8 @@ LIMIT :INDEX, 6";
     }
 
 } elseif ($act == 'commentreg_sub') {
+    require_once '../../lib/banchk.php';
+    banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/(\<br\>){3,}/i";

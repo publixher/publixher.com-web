@@ -265,6 +265,8 @@ LIMIT
         }
     }
 } elseif ($act == 'commentreg') {
+    require_once '../../lib/banchk.php';
+    banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/(\<br\>){3,}/i";
@@ -681,6 +683,8 @@ LIMIT :INDEX, 6";
     }
 
 } elseif ($act == 'commentreg_sub') {
+    require_once '../../lib/banchk.php';
+    banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/(\<br\>){3,}/i";

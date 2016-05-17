@@ -436,6 +436,10 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    if(res['status']==-9){
+                        alert('해당 유저는 '+res['result']['BAN']+' 까지 댓글 작성이 제한된 유저입니다.');
+                        return false;
+                    }
                     thisform.addClass('commentReg').text('').css('height', '25px');
                     $('#' + thisitemID + ' .comment .badgea').text(res['COMMENT']);
                     //시간순 댓글의 내용을 지우고 인덱스를 0으로 만들고(이러면 새로 로딩됨) 버튼을 누른 상태로 만든다
@@ -664,6 +668,10 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    if(res['status']==-9){
+                        alert('해당 유저는 '+res['result']['BAN']+' 까지 댓글 작성이 제한된 유저입니다.');
+                        return false;
+                    }
                     thisform.addClass('commentReg_sub').text('').css('height', '25px');
                     var subrep_list = $('#' + form.replace('form', 'sub'));
                     var thisreply = form.replace('-form', '');

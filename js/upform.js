@@ -51,6 +51,10 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    if(res['status']==-2){
+                        alert('해당 계정은 '+res['result']['BAN']+' 까지 글 작성이 제한되었습니다.');
+                        return false;
+                    }
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];
@@ -117,6 +121,10 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    if(res['status']==-2){
+                        alert('해당 계정은 '+res['result']['BAN']+' 까지 글 작성이 제한되었습니다.');
+                        return false;
+                    }
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];
