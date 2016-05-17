@@ -306,6 +306,12 @@ $(document).ready(function () {
             .find("[folderid='"+fid+"']")
             .trigger('click');
     }
+    //공개대상 쿠키에서 받아와 선택되게함
+    var exp = getCookie('exp');
+    if(exp){
+        $('#expSublist')
+            .find('li:nth-child('+(parseInt(exp)+1)+')').trigger('click');
+    }
     //새 폴더 생성
     $('.new-folder').on('keyup',function(e){
         if(e.keyCode == 13 && $(this).val().length > 0){
