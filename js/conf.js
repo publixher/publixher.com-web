@@ -8,7 +8,7 @@ $(document).ready(function () {
         //통합검색
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {
-                $('#searchResult').css('display', 'block').append(spinner);
+            $('#searchResult').css('display', 'block').append(spinner);
             function search(target) {
                 $.ajax({
                     url: "/php/data/nameFind.php",
@@ -16,7 +16,6 @@ $(document).ready(function () {
                     data: {searchword: search_word, target: target},
                     dataType: 'json',
                     success: function (res) {
-                        console.log(res)
                         var Result;
                         switch (target) {
                             case 'name':
@@ -36,13 +35,13 @@ $(document).ready(function () {
                             for (var i = 0; i < res.length; i++) {
                                 switch (target) {
                                     case 'name':
-                                        if(res[i]['COMMUNITY']==1){
+                                        if (res[i]['COMMUNITY'] == 1) {
                                             if (res[i]['IS_NICK'] == 'Y') {
                                                 SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>커뮤니티 익명</a></li>';
                                             } else {
                                                 SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>커뮤니티</a></li>';
                                             }
-                                        }else {
+                                        } else {
                                             if (res[i]['IS_NICK'] == 'Y') {
                                                 SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>익명</a></li>';
                                             } else {
@@ -52,7 +51,7 @@ $(document).ready(function () {
                                         break;
                                     case 'title':
                                         for (var i = 0; i < res.length; i++) {
-                                            SearchRes += '<li><div><img src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID'] + '">' + res[i]['TITLE'] + '>>>>아이템</a></li>';
+                                            SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID'] + '">' + res[i]['TITLE'] + '>>>>아이템</a></li>';
                                         }
                                         break;
                                     case 'tag':
@@ -121,32 +120,32 @@ $(document).ready(function () {
                     for (var i = 0; i < res.length; i++) {
                         switch (res[i]['ACT']) {
                             case '1':
-                                var word = res[i]['USER_NAME']+"님이 당신의 \""+res[i]['TITLE']+"\"게시물을 구매했습니다.";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = res[i]['USER_NAME'] + "님이 당신의 \"" + res[i]['TITLE'] + "\"게시물을 구매했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '2':
                                 var word = res[i]['USER_NAME'] + '님이 회원님과 친구가 되고싶어 합니다.';
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/profile/' + mid + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/profile/' + mid + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '3':
-                                var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 새로운 댓글을 달았습니다.\""+res[i]['REPLY']+"\"";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = res[i]['USER_NAME'] + "님이 \"" + res[i]['TITLE'] + "\" 게시물에 새로운 댓글을 달았습니다.\"" + res[i]['REPLY'] + "\"";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '4':
-                                var word = res[i]['USER_NAME']+"님이 \"" + res[i]['TITLE'] + "\" 게시물에 노크 했습니다.";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = res[i]['USER_NAME'] + "님이 \"" + res[i]['TITLE'] + "\" 게시물에 노크 했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '7':
-                                var word = "회원님이 다신 \""+res[i]['REPLY']+"\" 댓글에 "+res[i]['USER_NAME']+"님이 \""+res[i]['SUB_REPLY']+"\" 라고 댓글을 달았습니다.";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = "회원님이 다신 \"" + res[i]['REPLY'] + "\" 댓글에 " + res[i]['USER_NAME'] + "님이 \"" + res[i]['SUB_REPLY'] + "\" 라고 댓글을 달았습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '8':
-                                var word = res[i]['USER_NAME']+"님이 \""+res[i]['TITLE']+"\" 게시물에 회원님을 소환했습니다.";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = res[i]['USER_NAME'] + "님이 \"" + res[i]['TITLE'] + "\" 게시물에 회원님을 소환했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '9':
-                                var word=res[i]['USER_NAME']+"님이 \""+res[i]['REPLY']+"\" 댓글에 회원님을 소환했습니다.";
-                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
+                                var word = res[i]['USER_NAME'] + "님이 \"" + res[i]['REPLY'] + "\" 댓글에 회원님을 소환했습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                         }
                     }
@@ -203,43 +202,49 @@ $(document).ready(function () {
                 success: function (res) {
                     spinner.detach();
                     for (var i = 0; i < res.length; i++) {
-                        $('<li>')
-                            .addClass('pin-list')
-                            .append(
-                                $('<div>')
-                                    .append(
-                                        $('<img>')
-                                            .attr({
-                                                src: res[i]['WRITER_PIC'],
-                                                onclick: 'location.href="/profile/' + res[i]['ID_WRITER'] + '"'
-                                            })
-                                            .addClass('pin-pic')
-                                    )
-                                    .addClass('pin-pin-wrap')
-                                , $('<a>')
-                                    .addClass('pin-body')
-                                    .attr('href', '/content/' + res[i]['ID_CONTENT'])
-                                    .text(res[i]['BODY'])
-                                , $('<span>')
-                                    .text(res[i]['KNOCK'])
-                                    .addClass('pin-knock')
-                                , $('<span>')
-                                    .text(res[i]['REPLY'])
-                                    .addClass('pin-reply')
-                            )
-                            .insertAfter($('#pinlist li:last-child'))
+                        $('<li>').addClass('pin-list').append(
+                            $('<div>').append(
+                                $('<img>').attr({
+                                    src: res[i]['WRITER_PIC'],
+                                    onclick: 'location.href="/profile/' + res[i]['ID_WRITER'] + '"'
+                                }).addClass('pin-pic')).addClass('pin-pin-wrap')
+                            , $('<a>').addClass('pin-body').attr('href', '/content/' + res[i]['ID_CONTENT']).text(res[i]['BODY'])
+                            , $('<span>').text(res[i]['KNOCK']).addClass('pin-knock')
+                            , $('<span>').text(res[i]['REPLY']).addClass('pin-reply')
+                            , $('<span>').addClass('pubico pico-pin2 del-pin')
+                        ).insertAfter($('#pinlist li:last-child'))
+                        pinPage = pinPage + 1;
                     }
                     if (!$('#pinlist').hasClass('loaded')) {
                         $('#pinlist').addClass('loaded');
                     }
-
-                    pinPage = pinPage + 1;
                     pinLoading = false;
                 }
             })
         }
     }
 
+    //핀 리스트에서 del-pin 클릭시 핀 리스트에서 삭제
+    $(document).on('click','.del-pin',function(e){
+        e.stopPropagation();
+        var ID=$(this).siblings('a').attr('href').replace('/content/','');
+        var li=$(this).parent();
+        $.ajax({
+            url: "/php/data/itemAct.php",
+            type: "POST",
+            data: {ID: ID, token: token, action: "delPin", userID: mid},
+            dataType: 'json',
+            success: function (res) {
+                if (res['result'] == 'Y') {
+                    li.fadeOut(function(){
+                        li.remove();
+                    })
+                } else {
+                    alert('작업중 문제가 생겼습니다.')
+                }
+            }
+        })
+    });
     //핀리스트
     $('#pinbtn').on('click', function () {
         if (!$('#pinlist').hasClass('loaded')) {
