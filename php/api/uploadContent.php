@@ -139,7 +139,7 @@ if (!empty($_POST)) {
             $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
             $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
             $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-            $prepare->bindValue(':IMG', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
+            $prepare->bindValue(':IMG', $previewimg?$previewimg : null, PDO::PARAM_STR);
             if ($_POST['adult'] == true) {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {
