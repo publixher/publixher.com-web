@@ -58,7 +58,7 @@
             <span class="pubico pico-cog"></span>
         </button>
     </div>
-    <input id="gsearch" type="text" placeholder="사람,커뮤니티,익명,컨텐츠를 검색해 보세요...">
+    <input id="gsearch" type="text" placeholder="사람, 커뮤니티, 컨텐츠를 검색해 보세요.">
     <span class="pubico pico-search"></span>
     <div class="dropdown">
         <button type="button" id="searchbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
