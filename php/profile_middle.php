@@ -1,7 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set("display_errors",1);
-?>
 <div id="middle">
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <?php
@@ -295,8 +291,9 @@ ini_set("display_errors",1);
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
-                            <?php if (strpos($expauth, 'b') !== false OR $I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>" ?>
-                            <?php if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>' ?>
+                            <?php if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>";
+                            elseif(strpos($expauth, 'b') !== false and $I) echo "<li><a>친구에게 공개</a></li>";
+                             if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>'; ?>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
