@@ -1152,8 +1152,20 @@ li a {
 .pico-file-plus,
 .pico-pen2:before,
 .pico-comment,
-.pico-share {
-  padding-right: 5px !important
+.pico-share{
+  padding-right: 5px !important;
+}
+.itemMod,
+.itemDel,
+.itemTop,
+.itemReport{
+  text-align:center;
+}
+.pico-content-edit,
+.pico-content-remove,
+.pico-kkuk-up,
+.pico-alert{
+  float:left;
 }
 .pico-search {
   display: inline-block;
