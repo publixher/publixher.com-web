@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/best.php" afterPath="$PROJECT_DIR$/php/data/best.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/best.js" afterPath="$PROJECT_DIR$/js/best.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -35,7 +33,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2155">
@@ -49,6 +47,16 @@
                 <marker date="1463479306000" expanded="true" signature="8880:8951" placeholder="INSERT INTO publixher.TBL_TAGS... " />
                 <marker date="1463479306000" expanded="true" signature="9286:9356" placeholder="UPDATE publi... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="best.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/best.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,16 +75,6 @@
                 <marker date="1463479306000" expanded="true" signature="8569:8640" placeholder="INSERT INTO publixher.TBL_TAGS... " />
                 <marker date="1463479306000" expanded="true" signature="8975:9045" placeholder="UPDATE publi... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -116,8 +114,8 @@
       <file leaf-file-name="best.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/best.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="36" />
+            <state relative-caret-position="135">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
               <folding>
                 <marker date="1462782455000" expanded="true" signature="240:581" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
                 <marker date="1462782455000" expanded="true" signature="614:917" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
@@ -226,7 +224,6 @@
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/js/topcon.js" />
         <option value="$PROJECT_DIR$/js/profile_left.js" />
-        <option value="$PROJECT_DIR$/js/best.js" />
         <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/php/conf.php" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
@@ -245,6 +242,7 @@
         <option value="$PROJECT_DIR$/php/data/best.php" />
         <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
         <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
+        <option value="$PROJECT_DIR$/js/best.js" />
       </list>
     </option>
   </component>
@@ -609,14 +607,7 @@
       <workItem from="1463192284519" duration="14842000" />
       <workItem from="1463358081425" duration="21928000" />
       <workItem from="1463445501341" duration="4141000" />
-      <workItem from="1463457970666" duration="7584000" />
-    </task>
-    <task id="LOCAL-00173" summary="날짜형식 변경">
-      <created>1463116719265</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1463116719265</updated>
+      <workItem from="1463457970666" duration="8131000" />
     </task>
     <task id="LOCAL-00174" summary="cms.detach(spinner)-&gt;spinner.detach()">
       <created>1463116867424</created>
@@ -954,11 +945,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463468420931</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="대표이미지 등록">
+      <created>1463479576047</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1463479576047</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158272000" />
+    <option name="totallyTimeSpent" value="158819000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1011,7 +1009,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="item cms" />
     <MESSAGE value="item cms jqplot 사용" />
     <MESSAGE value="cms-item 아직 아무도..." />
     <MESSAGE value="api 작성" />
@@ -1036,7 +1033,8 @@
     <MESSAGE value="프로필 사진 검색 됨" />
     <MESSAGE value="자기 프로필 ~의 친구에게 -&gt; 친구에게" />
     <MESSAGE value="ban 로그인 제한&gt;게시글댓글대댓글 작성 제한" />
-    <option name="LAST_COMMIT_MESSAGE" value="ban 로그인 제한&gt;게시글댓글대댓글 작성 제한" />
+    <MESSAGE value="대표이미지 등록" />
+    <option name="LAST_COMMIT_MESSAGE" value="대표이미지 등록" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1180,13 +1178,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/best.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="113" selection-start-line="34" selection-start-column="113" selection-end-line="34" selection-end-column="113" />
         </state>
       </provider>
     </entry>
@@ -1608,24 +1599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/best.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <marker date="1462782455000" expanded="true" signature="240:581" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1462782455000" expanded="true" signature="614:917" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1462782455000" expanded="true" signature="938:1111" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1462782455000" expanded="true" signature="1594:1941" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1462782455000" expanded="true" signature="1975:2284" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1462782455000" expanded="true" signature="2305:2480" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1462782455000" expanded="true" signature="2963:3309" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
-            <marker date="1462782455000" expanded="true" signature="3343:3651" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
-            <marker date="1462782455000" expanded="true" signature="3672:3848" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/best.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1673,6 +1646,32 @@
             <marker date="1463479306000" expanded="true" signature="8880:8951" placeholder="INSERT INTO publixher.TBL_TAGS... " />
             <marker date="1463479306000" expanded="true" signature="9286:9356" placeholder="UPDATE publi... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/best.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <marker date="1462782455000" expanded="true" signature="240:581" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1462782455000" expanded="true" signature="614:917" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1462782455000" expanded="true" signature="938:1111" placeholder="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1462782455000" expanded="true" signature="1594:1941" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1462782455000" expanded="true" signature="1975:2284" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1462782455000" expanded="true" signature="2305:2480" placeholder="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1462782455000" expanded="true" signature="2963:3309" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1462782455000" expanded="true" signature="3343:3651" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1462782455000" expanded="true" signature="3672:3848" placeholder="SELECT SQL_C... TBL_WEEKLY_HOT" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/best.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
