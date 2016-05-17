@@ -1148,9 +1148,11 @@ li a {
   height: 40px;
   padding: 9px
 }
-#searchResult li li:hover,
-#searchResult li li:active,
-#searchResult li li:focus{
-  background-color: #f4f4f4 !important;
+#search-body{
+  text-align: center;
+}
+#search-body:hover,
+#search-body:active,
+#search-body:focus{
   border-radius: 2px;
 }
