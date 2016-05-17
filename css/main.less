@@ -502,13 +502,12 @@ body {
         }
       }
       #gsearch {
-        float: left;
         width: 96%;
         height: 28px;
         .roundborder();
         border-radius: 2px;
         font-size: 14px;
-        padding: 2px 2px 2px 2px;
+        padding: 2px 30px 2px 2px;
         margin-left: 6px;
         margin-top: 2px;
         border: 0;
@@ -516,8 +515,7 @@ body {
       }
       .dropdown {
         ul {
-          padding: 0 0 0 0;
-          top: 55px;
+          padding: 0;
           left: 2px;
           width: 295px;
           li li {
@@ -1019,16 +1017,16 @@ li a {
 }
 .new-folder{
   margin-top: -22px;
-  box-shadow:  0 0 0;
   border: 1px solid #e3e3e3 !important;
   box-shadow: inset 0 0 0 !important;
+  padding: 6px 24px 6px 6px;
 }
 .pico-folder-plus{
   color: gray;
   display: inline-block;
   position: relative;
   left: 104px;
-  top: 4px;
+  top: 6px;
 }
 .pico-folder,
 .pico-file-plus,
@@ -1037,8 +1035,30 @@ li a {
 .pico-share{
   padding: 5px !important
 }
-
-
+.pico-search{
+  display: inline-block;
+  position: relative;
+  top: -21px;
+  left: 270px;
+}
+#searchResult li li{
+  height: 40px;
+  padding: 9px
+}
+#searchResult li li:hover,
+#searchResult li li:active,
+#searchResult li li:focus{
+  background-color: #f4f4f4 !important;
+  border-radius: 2px;
+}
+#search-body{
+text-align: center;
+}
+#search-body:hover,
+#search-body:active,
+#search-body:focus{
+  border-radius: 2px;
+}
 
 //여기부터 report CSS
 #report-button {
