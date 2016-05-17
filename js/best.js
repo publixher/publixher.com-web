@@ -21,10 +21,10 @@ $(document).ready(function () {
                     if (res[i]['WRITER_PIC']) {
                         img = $('<img>').attr({
                             src: res[i]['WRITER_PIC'],
-                            onclick: 'location.href="/content/"' + res[i]['ID_CONTENT'] + '"'
+                            onclick: 'location.href="/content/' + res[i]['ID_CONTENT'] + '"'
                         }).addClass('hot-pic')
                     } else {
-                        img = $('<div>').addClass('hot-no-img').attr('onclick', 'location.href="/content/"' + res[i]['ID_CONTENT'] + '"');
+                        img = $('<div>').addClass('hot-no-img').attr('onclick', 'location.href="/content/' + res[i]['ID_CONTENT'] + '"');
                     }
                     $('<li>')
                         .appendTo($('#' + action + '-hot-list'))
