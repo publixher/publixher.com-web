@@ -4,14 +4,14 @@ if (!empty($_GET)) {
     require_once '../../conf/database_conf.php';
     $target=$_GET['target'];
     if($target=='name') {
-        $sql = "SELECT ID,USER_NAME,IS_NICK,PIC FROM publixher.TBL_USER WHERE (MATCH(USER_NAME) AGAINST('*" . $_GET['searchword'] . "*' IN BOOLEAN MODE) AND IN_USE='Y')";
+        $sql = "SELECT ID,USER_NAME,IS_NICK,REPLACE(PIC,'profile','crop34') AS PIC,COMMUNITY FROM publixher.TBL_USER WHERE (MATCH(USER_NAME) AGAINST('*" . $_GET['searchword'] . "*' IN BOOLEAN MODE) AND IN_USE='Y')";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);
         echo $result;
     }elseif($target=='title'){
-        $sql = "SELECT ID,ID_WRITER,TITLE FROM publixher.TBL_CONTENT WHERE (MATCH(TITLE) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE) AND DEL='N' AND EXPOSE>1)";
+        $sql = "SELECT CONT.ID,ID_WRITER,CONT.TITLE,REPLACE(USER.PIC,'profile','crop34') AS PIC FROM publixher.TBL_CONTENT AS CONT INNER JOIN publixher.TBL_USER AS USER ON USER.ID=CONT.ID_WRITER WHERE (MATCH(TITLE) AGAINST('*".$_GET['searchword']."*' IN BOOLEAN MODE) AND DEL='N' AND EXPOSE>1)";
         $prepare=$db->prepare($sql);
         $prepare->execute();
         $result=$prepare->fetchALL(PDO::FETCH_ASSOC);

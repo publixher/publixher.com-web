@@ -8,7 +8,7 @@ $(document).ready(function () {
         //통합검색
         var search_word = $('#gsearch').val();
         if (search_word.length > 1) {
-            $('#searchResult').css('display', 'block').append(spinner);
+                $('#searchResult').css('display', 'block').append(spinner);
             function search(target) {
                 $.ajax({
                     url: "/php/data/nameFind.php",
@@ -16,6 +16,7 @@ $(document).ready(function () {
                     data: {searchword: search_word, target: target},
                     dataType: 'json',
                     success: function (res) {
+                        console.log(res)
                         var Result;
                         switch (target) {
                             case 'name':
@@ -35,15 +36,23 @@ $(document).ready(function () {
                             for (var i = 0; i < res.length; i++) {
                                 switch (target) {
                                     case 'name':
-                                        if (res[i]['IS_NICK'] == 'Y') {
-                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>익명</a></li>';
-                                        } else {
-                                            SearchRes += '<li><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>이름</a></li>';
+                                        if(res[i]['COMMUNITY']==1){
+                                            if (res[i]['IS_NICK'] == 'Y') {
+                                                SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>커뮤니티 익명</a></li>';
+                                            } else {
+                                                SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>커뮤니티</a></li>';
+                                            }
+                                        }else {
+                                            if (res[i]['IS_NICK'] == 'Y') {
+                                                SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>익명</a></li>';
+                                            } else {
+                                                SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>이름</a></li>';
+                                            }
                                         }
                                         break;
                                     case 'title':
                                         for (var i = 0; i < res.length; i++) {
-                                            SearchRes += '<li><a href="/content/' + res[i]['ID'] + '">' + res[i]['TITLE'] + '>>>>아이템</a></li>';
+                                            SearchRes += '<li><div><img src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID'] + '">' + res[i]['TITLE'] + '>>>>아이템</a></li>';
                                         }
                                         break;
                                     case 'tag':
