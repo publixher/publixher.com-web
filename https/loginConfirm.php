@@ -8,7 +8,6 @@ require_once 'User.php';
 if (!isset($_POST['email'])) exit;
 $email = $_POST['email'];
 $pass = $_POST['pass'];
-$date=date("Y-m-d H:i:s",time());
 $result=array();
 //쿼리
 $sql = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
@@ -26,12 +25,7 @@ if (!password_verify($pass, $result->getPASSWORD())) {
     echo "<script>alert('아이디 또는 패스워드가 잘못되었습니다.');history.back();</script>";
     exit;
 }
-$bandate=$result->getBAN(); //로그인 제한되었으면 튕기기
-//TODO:클라이언트 레벨에서 로그인 실패 동작 처리해야함
-if($bandate && $bandate>$date){
-    echo '"result":"N","reason":"banned","date":"'.$bandate.'"}';
-    exit;
-}
+
 $level=$result->getLEVEL();
 if($level==0){
     echo '{"result":"N","reason":"not valid"}';

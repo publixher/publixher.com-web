@@ -8,6 +8,8 @@ if (!empty($_POST)) {
     require_once'../../lib/imagecrop.php';
     require_once'../../lib/random_64.php';
     require_once'../../lib/getImgFromUrl.php';
+    require_once'../../lib/banchk.php';
+    banCheck($_POST['ID_writer'],$db,-2 );
 
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
@@ -137,7 +139,7 @@ if (!empty($_POST)) {
             $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
             $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
             $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-            $prepare->bindValue(':IMG', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
+            $prepare->bindValue(':IMG', $previewimg?$previewimg : null, PDO::PARAM_STR);
             if ($_POST['adult'] == true) {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {

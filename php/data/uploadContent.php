@@ -11,7 +11,7 @@ if (!empty($_POST)) {
     require_once '../../lib/imagecrop.php';
     require_once '../../lib/random_64.php';
     require_once '../../lib/getImgFromUrl.php';
-
+    require_once '../../lib/banchk.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -20,6 +20,8 @@ if (!empty($_POST)) {
     } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
         exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
     }
+
+    banCheck($_POST['ID_writer'],$db,-2 );
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
@@ -106,16 +108,6 @@ if (!empty($_POST)) {
             $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
         }
     }
-    //사진 80으로 크롭시켜서 대표이미지로 등록
-    if ($previewimg and $for_sale) {
-        $imgsrc = __DIR__ . '/../..' . str_replace('crop', 'origin', $imgs[1][0][0]);
-        $imgout = str_replace('origin', 'crop80', $imgsrc);
-        $img = new imaging;
-        $img->set_img($imgsrc);
-        $img->set_quality(100);
-        $img->set_size(80, 80);
-        $img->save_img($imgout);
-    }
     //content테이블에 넣음
     try {
         $db->beginTransaction();
@@ -148,7 +140,7 @@ if (!empty($_POST)) {
             $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
             $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
             $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
-            $prepare->bindValue(':IMG', $imgout ? str_replace('crop', 'crop80', $imgs[1][0][0]) : '/img/alt_img.jpg', PDO::PARAM_STR);
+            $prepare->bindValue(':IMG', $previewimg?$previewimg : null, PDO::PARAM_STR);
             if ($_POST['adult'] == "true") {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {
