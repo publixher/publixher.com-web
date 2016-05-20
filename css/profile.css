@@ -958,6 +958,7 @@ li a {
   height: 34px;
   margin: 0 5px 0 5px;
   vertical-align: top;
+  overflow: hidden;
 }
 #wrap #middle .item .tail .opend-comment > table,
 #wrap #middle .item-for-sale .tail .opend-comment > table {
@@ -974,6 +975,8 @@ li a {
 .usrpic-wrap img {
   width: 34px;
   height: 34px;
+  position: relative;
+  overflow: hidden;
 }
 .caret,
 .caret-repbtn,
