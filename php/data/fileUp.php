@@ -40,6 +40,7 @@ if ($_FILES) {
         $img->set_quality(100);
         if (strpos($referer, 'profileConfig.php')) {
             //요청이 들어온 페이지가 프로필 수정페이지면 160으로 크롭하고 유저 테이블에 저장도 하세기!
+            $img->set_order(1);
             $img->set_size(160, 160);
             $img->save_img($uploadDir . "profile/" . $filepath);
             //34짜리와 50짜리도 크롭 하세기!

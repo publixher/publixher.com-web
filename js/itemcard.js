@@ -57,8 +57,7 @@ $(document).ready(function () {
             word += '      <div role="tabpanel" class="tab-pane active" id="best-' + thisitemID + '"></div>'
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
-            word += '    </div></div>'
-            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
+            word += '    </div></div>';
             //댓글 태그기능
             tab_comment
                 .append(
@@ -204,6 +203,7 @@ $(document).ready(function () {
                         )
                 )
             tab_comment.append(word);
+            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             $('#best-' + thisitemID).append(spinner);
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -211,14 +211,11 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     spinner.detach();
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
                         for (var i = Object.keys(res).length-3; i >-1; i--) {
-                            console.log(i)
-                            console.log(res[i])
                             var write = '';
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
