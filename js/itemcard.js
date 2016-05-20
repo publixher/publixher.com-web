@@ -65,36 +65,20 @@ $(document).ready(function () {
                     $('<div>')  //드롭다운 div
                         .addClass('dropdown')
                         .append(
-                            $('<button>')
-                                .addClass('btn btn-default dropdown-toggle reply-tag-btn')
-                                .attr({
+                            $('<button>').addClass('btn btn-default dropdown-toggle reply-tag-btn').attr({
                                     'type': 'button',
                                     'data-toggle': 'dropdown',
                                     'aria-expanded': 'true',
                                     'id': thisitemID + '-rep-tag'
-                                })
-                                .append(
-                                    $('<span>')
-                                        .addClass('pubico pico-person-plus')
-                                )
+                                }).append($('<span>').addClass('pubico pico-person-plus'))
                             , $('<ul>') //태그 리스트 안에 input이 들어간다
-                                .on('click', function (e) {
-                                    e.stopPropagation();
-                                })
-                                .addClass('dropdown-menu rep_tag-ul')
+                                .on('click', function (e) {e.stopPropagation();}).addClass('dropdown-menu rep_tag-ul')
                                 .attr({
                                     'role': 'menu',
                                     'aria-labelledby': thisitemID + '-rep-tag'
-                                })
-                                .append(
-                                    $('<li>')
-                                        .addClass('rep-tag-input-li')
-                                        .append(
-                                            $('<input>')
-                                                .addClass('form-control rep-tag-input')
-                                                .attr({
-                                                    'type': 'text'
-                                                })
+                                }).append(
+                                    $('<li>').addClass('rep-tag-input-li').append(
+                                            $('<input>').addClass('form-control rep-tag-input').attr({'type': 'text'})
                                                 .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
                                                     if ($(this).val().length > 0) {
                                                         var name = $(this).val();
@@ -227,11 +211,14 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     spinner.detach();
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
-                        for (var i = 0; i < Object.keys(res).length - 2; i++) {
+                        for (var i = Object.keys(res).length-3; i >-1; i--) {
+                            console.log(i)
+                            console.log(res[i])
                             var write = '';
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
@@ -319,7 +306,7 @@ $(document).ready(function () {
                 spinner.detach();
                 function registRep(res, where) {
                     var list = $('#' + where);
-                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
+                    for (var i = Object.keys(res).length-3; i >-1; i--) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -603,8 +590,8 @@ $(document).ready(function () {
                         )
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            var repnum = Object.keys(res).length - 2;
-                            for (var i = 0; i < repnum; i++) {
+                            var repnum = Object.keys(res).length - 3;
+                            for (var i = repnum; i >-1; i--) {
                                 var write = '';
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
