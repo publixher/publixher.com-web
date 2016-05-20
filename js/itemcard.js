@@ -216,13 +216,18 @@ $(document).ready(function () {
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
-                        for (var i = 0; i <Object.keys(res).length-2; i++) {
+                        var repnum=Object.keys(res).length-3;
+                        if (res['more'] == 1) {
+                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                        }
+                        for (var i =repnum; i >-1; i--) {
                             var write = '';
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
                             var date = res[i]['REPLY_DATE'];
                             var reply = res[i]['REP_BODY'];
                             var knock = res[i]['KNOCK'];
+
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
@@ -236,9 +241,6 @@ $(document).ready(function () {
                             }
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
-                        }
-                        if (res['more'] == 1) {
-                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                         }
                     }
 
@@ -304,7 +306,11 @@ $(document).ready(function () {
                 spinner.detach();
                 function registRep(res, where) {
                     var list = $('#' + where);
-                    for (var i = 0; i <Object.keys(res).length-2; i++) {
+                    var repnum=Object.keys(res).length-3;
+                    if (res['more'] == 1) {
+                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                    }
+                    for (var i =repnum; i >-1; i--) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -322,9 +328,7 @@ $(document).ready(function () {
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
-                    if (res['more'] == 1) {
-                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
-                    }
+
                 }
 
                 if (parseInt(index) == 0 && res['result'] != 'NO') {
@@ -361,8 +365,8 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
 
-                    var numrep = Object.keys(res).length - 2;
-                    for (var i = 0; i < numrep; i++) {
+                    var repnum=Object.keys(res).length-2;
+                    for (var i =0; i <repnum; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -376,7 +380,7 @@ $(document).ready(function () {
                             write += ' <a class="repdel">삭제</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
-                        btn.before(write);
+                        btn.after(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
@@ -485,8 +489,11 @@ $(document).ready(function () {
                     var subrep_list = $('#' + thispanelrep + '-sub');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            var repnum = Object.keys(res).length - 2;
-                            for (var i = 0; i<repnum; i++) {
+                            var repnum=Object.keys(res).length-3;
+                            if (res['more'] == 1) {
+                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                            }
+                            for (var i =repnum; i >-1; i--) {
                                 var write = '';
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
@@ -506,9 +513,7 @@ $(document).ready(function () {
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
                             }
-                            if (res['more'] == 1) {
-                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
-                            }
+
                         }
 
                         //인덱스 붙이기
@@ -623,6 +628,8 @@ $(document).ready(function () {
 
                 }
             });
+        }else{
+            subrep_list.remove();
         }
     });
 //대댓글 등록 동작
@@ -692,7 +699,8 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + caret);
                     var btn = $('#' + caret + ' .cursor');
-                    for (var i = 0; i < Object.keys(res).length - 2; i++) {
+                    var repnum=Object.keys(res).length-3;
+                    for (var i =0; i <repnum; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -700,8 +708,12 @@ $(document).ready(function () {
                         var reply = res[i]['REP_BODY'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                         write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
-                        write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span></td></tr></table></div>';
-                        btn.before(write);
+                        write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span>'
+                        if (mid == res[i]['ID_USER'] || level == 99) {
+                            write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
+                        }
+                         write+='</td></tr></table></div>';
+                        btn.after(write);
                         $('#'+ where + '-rep-' + ID).hide().fadeIn();
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
