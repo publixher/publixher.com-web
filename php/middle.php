@@ -4,8 +4,8 @@
         <div role="tabpanel" id="writing-pane">
             <!-- 위탭 -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab" data-toggle="tab">똥싸기</a></li>
-                <li role="presentation"><a href="#publixh" aria-controls="profile" role="tab" data-toggle="tab">용돈벌기</a>
+                <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab" data-toggle="tab">보내기</a></li>
+                <li role="presentation"><a href="#publixh" aria-controls="profile" role="tab" data-toggle="tab">출판하기</a>
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
