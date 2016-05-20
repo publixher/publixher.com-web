@@ -737,8 +737,16 @@ li a {
   background-color: #eee;
   outline: 0;
 }
-.dropdown-menu {
-  min-width: 180px;
+#dirSublist{
+  min-width: 100px !important;
+  box-shadow: 0 0 0;
+  border-top: 0;
+}
+#dirSublist li:last-child{
+  margin-top: 5px
+}
+#middle .conf .dropdown-menu {
+  width: 100%;
   box-shadow: 0 0 0;
 }
 
@@ -934,10 +942,7 @@ li a {
 }
 #profile-middle-nav button {
   width: 100% !important;
-  border: 1px solid #eee !important;
-  background-color: #eee;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
+  margin-top: 10px;
 }
 .profile-wrap {
   position: relative;

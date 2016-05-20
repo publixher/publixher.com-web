@@ -663,8 +663,16 @@ li a {
   margin-top: 11px;
   margin-left: 4px;
 }
-.dropdown-menu {
-  min-width: 180px;
+#dirSublist{
+  min-width: 100px !important;
+  box-shadow: 0 0 0;
+  border-top: 0;
+}
+#dirSublist li:last-child{
+  margin-top: 5px
+}
+#middle .conf .dropdown-menu {
+  width: 100%;
   box-shadow: 0 0 0;
 }
 
