@@ -1241,12 +1241,15 @@ a:hover{
   background-color: #f4f4f4;
   border: 0;
 }
+#writing-pane .active>a:hover{
+  border: 0;
+}
 #writing-pane ul li a:hover{
   background-color: #f4f4f4;
   border-bottom: 1px solid #f4f4f4;
 }
 #writing-pane .nav-tabs{
-  border-bottom: 1px solid #f4f4f4 !important;
+  border-bottom: 1px solid #e3e3e3 !important;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody{
   border: 0
