@@ -161,7 +161,7 @@ LIMIT
 FROM publixher.TBL_CONTENT_REPLY AS REPLY
   INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
 WHERE ID_CONTENT = :ID_CONTENT
-ORDER BY REPLY.SEQ DESC
+ORDER BY REPLY.SEQ ASC
 LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_CONTENT', $ID);
@@ -204,7 +204,7 @@ WHERE
   FRIEND.ID_USER = :ID_USER
   AND REPLY.ID_CONTENT = :ID_CONTENT
 ORDER BY
-  REPLY.ID DESC
+  REPLY.SEQ ASC
 LIMIT
   :INDEX, 6";
         $prepare1 = $db->prepare($friend_sql);
@@ -662,7 +662,7 @@ LIMIT
 FROM publixher.TBL_CONTENT_SUB_REPLY AS SUB_REP
   INNER JOIN publixher.TBL_USER AS USER ON SUB_REP.ID_USER=USER.ID
 WHERE SUB_REP.ID_REPLY = :ID_REPLY
-ORDER BY SUB_REP.SEQ DESC
+ORDER BY SUB_REP.SEQ ASC
 LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
         $prepare1->bindValue(':ID_REPLY', $repID);
