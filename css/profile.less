@@ -919,6 +919,7 @@ li a {
   width: 160px;
   height: 160px;
   margin-top: 5px;
+  overflow: hidden;
 }
 .item-profile-wrap{
   float: left;
@@ -934,6 +935,7 @@ li a {
   height: 34px;
   margin: 0 5px 0 5px;
   vertical-align: top;
+  overflow: hidden;
 }
 #wrap #middle .item .tail .opend-comment>table,
 #wrap #middle .item-for-sale .tail .opend-comment>table{
@@ -947,10 +949,20 @@ li a {
   font-size: 18px;
   margin-right: 5px
 }
-.usrpic-wrap img{
+.usrpic-wrap{
+  position: relative;
+  overflow: hidden;
   width: 34px;
   height: 34px;
 }
+.usrpic-wrap img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
 .caret, .caret-repbtn, .caret-repbtn_sub{
   margin: 5px !important;
   cursor: pointer !important;
@@ -1092,29 +1104,29 @@ li a {
 .content-folder{
   font-size: 12px
 }
-.tab-comment>div:nth-child(2){
+.reply-tag-btn {
   float: right;
   margin-top: -33px;
 }
-.tab-comment>div:nth-child(3){
+.donate-btn {
   float: right;
   margin-top: -33px;
 }
-.tab-comment>div:nth-child(2) button,
-.tab-comment>div:nth-child(3) button{
+.reply-tag-btn,
+.donate-btn {
   background-color: transparent !important;
   border-color: transparent !important;
   outline: 0 !important;
   color: gray;
 }
-.tab-comment>div:nth-child(2) button:active,
-.tab-comment>div:nth-child(2) button:focus,
-.tab-comment>div:nth-child(3) button:active,
-.tab-comment>div:nth-child(3) button:focus{
+.reply-tag-btn:active,
+.reply-tag-btn:focus,
+.donate-btn:active,
+.donate-btn:focus {
   background-color: transparent !important;
   border-color: transparent !important;
   outline: 0 !important;
-  box-shadow: 0 0 0 !important
+  box-shadow: 0 0 0 !important;
 }
 .new-folder{
   margin-top: -22px;
