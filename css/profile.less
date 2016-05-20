@@ -507,7 +507,7 @@ body {
       width: 300px;
       height: 120px;
       top: 0;
-      z-index: 2;
+      z-index: 100000;
       background-color: #434343;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
@@ -712,9 +712,8 @@ li a {
   outline: 0;
 }
 .dropdown-menu{
-  min-width: 130px;
-  width: 130px;
-  border-top: 1px solid transparent;
+  min-width: 180px;
+  box-shadow: 0 0 0;
 }
 #wrap #middle #writing-pane .dropdown-toggle{
   border: 1px solid transparent;
@@ -994,7 +993,8 @@ li a {
   transform: translate(-50%, -50%);
   width: 288px;
 }
-.hot-body {
+.hot-body,
+.hot-data{
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -1190,7 +1190,27 @@ li a {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.deletefolder{
+  background-color: transparent;
+  border: 0;
+  font-size: 10px;
+  color: black;
+  right: 0 !important;
+}
+.deletefolder:hover,
+.deletefolder:active,
+.deletefolder:focus{
+  background-color: #434343;
+}
+#sandbox-container{
+  width:100% !important;
+}
+#button-list button{
+  width:32%;
+}
+a:hover{
+  text-decoration: none !important;
+}
 
 
 //여기부터 throughout CSS
