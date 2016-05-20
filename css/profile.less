@@ -461,21 +461,17 @@ body {
           width: 127.5px;
           text-align: center;
           background-color: white;
-          border-top: 1px solid #eee;
-          border-left: 1px solid #eee
         }
         .cateinput, .subcateinput, .priceinput, .fileinput, .taginput, .regbtn, .tcomment, .tshare {
           width: 127.5px;
           text-align: center;
           background-color: white;
-          border-top: 1px solid #eee;
           height: 22px
         }
         .tprice {
           width: 127.5px;
           text-align: center;
           background-color: white;
-          border-top: 1px solid white;
         }
         .commentReply {
           .profilepic {
@@ -711,8 +707,19 @@ li a {
   background-color: #eee;
   outline: 0;
 }
-.dropdown-menu{
-  min-width: 180px;
+#dirSublist,
+#expSublist,
+#categorySelect,
+#subcategorySelect{
+  min-width: 100px !important;
+  box-shadow: 0 0 0;
+  border-top: 0;
+}
+#dirSublist li:last-child{
+  margin-top: 5px
+}
+#middle .conf .dropdown-menu {
+  width: 100%;
   box-shadow: 0 0 0;
 }
 
@@ -760,10 +767,7 @@ li a {
   margin-left: 2px;
   border-top: 1px solid transparent;
 }
-#wrap #middle .item .tail .tshare,
-#wrap #middle .item-for-sale .tail .tshare{
-  border-right: 1px solid #eee;
-}
+
 #repnav-.nav-tabs>li.active>a,
 #repnav-.nav-tabs>li.active>a:focus,
 #repnav-.nav-tabs>li.active>a:hover{
@@ -908,10 +912,7 @@ li a {
 }
 #profile-middle-nav button {
   width: 100% !important;
-  border: 1px solid #eee !important;
-  background-color: #eee;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
+  margin-top: 10px;
 }
 .profile-wrap{
   position: relative;
@@ -925,6 +926,7 @@ li a {
   width: 50px;
   height: 50px;
   margin-right: 10px;
+  overflow: hidden;
 }
 .rep-profilepic-wrap{
   position: relative;

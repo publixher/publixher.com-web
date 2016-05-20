@@ -372,8 +372,6 @@ body {
   width: 127.5px;
   text-align: center;
   background-color: white;
-  border-top: 1px solid #eee;
-  border-left: 1px solid #eeeeee;
 }
 #wrap #middle .item .tail .cateinput,
 #wrap #middle .item-for-sale .tail .cateinput,
@@ -394,7 +392,6 @@ body {
   width: 127.5px;
   text-align: center;
   background-color: white;
-  border-top: 1px solid #eee;
   height: 22px;
 }
 #wrap #middle .item .tail .tprice,
@@ -402,7 +399,6 @@ body {
   width: 127.5px;
   text-align: center;
   background-color: white;
-  border-top: 1px solid white;
 }
 #wrap #middle .item .tail .commentReply .profilepic,
 #wrap #middle .item-for-sale .tail .commentReply .profilepic {
@@ -663,8 +659,19 @@ li a {
   margin-top: 11px;
   margin-left: 4px;
 }
-.dropdown-menu {
-  min-width: 180px;
+#dirSublist,
+#expSublist,
+#categorySelect,
+#subcategorySelect{
+  min-width: 100px !important;
+  box-shadow: 0 0 0;
+  border-top: 0;
+}
+#dirSublist li:last-child{
+  margin-top: 5px
+}
+#middle .conf .dropdown-menu {
+  width: 100%;
   box-shadow: 0 0 0;
 }
 #wrap #middle #writing-pane ul li ul li {
@@ -714,10 +721,7 @@ li a {
 .accordion-inner {
   overflow: hidden;
 }
-#wrap #middle .item .tail .tshare,
-#wrap #middle .item-for-sale .tail .tshare {
-  border-right: 1px solid #eee;
-}
+
 #repnav-.nav-tabs > li.active > a,
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
@@ -836,6 +840,7 @@ li a {
   width: 50px;
   height: 50px;
   margin-right: 10px;
+  overflow: hidden;
 }
 .rep-profilepic-wrap {
   position: relative;
