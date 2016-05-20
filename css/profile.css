@@ -190,20 +190,20 @@ body {
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f4f4f4;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .form-group .input-group .input-group-addon img {
   width: 20px;
   height: 20px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput {
-  width: 133px;
+  width: 25%;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .btn {
   position: relative;
   float: left;
-  width: 133px !important;
-  height: 22px;
+  width: 25% !important;
+  height: 30px;
   overflow: hidden;
   cursor: pointer;
   padding: 0 0 0 0;
@@ -215,9 +215,9 @@ body {
   display: inline-block;
   position: absolute;
   margin-left: -96px;
-  margin-top: -3px;
+  margin-top: -6px;
   width: 133px;
-  height: 22px;
+  height: 30px;
   filter: alpha(opacity=0);
   opacity: 0;
   -moz-opacity: 0;
@@ -225,7 +225,7 @@ body {
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .taginput {
   width: 50%;
-  height: 22px;
+  height: 30px;
   align-items: center;
   margin: 0 5px 0 5px;
 }
@@ -741,7 +741,6 @@ li a {
   min-width: 180px;
   box-shadow: 0 0 0;
 }
-
 #wrap #middle #writing-pane ul li ul li {
   width: 124px;
 }
@@ -999,7 +998,7 @@ li a {
 }
 .now-list-item span,
 .daily-list-item span,
-.weekly-list-item span{
+.weekly-list-item span {
   text-align: center;
   display: block;
   margin-top: -40px;
@@ -1020,7 +1019,7 @@ li a {
   width: 288px;
 }
 .hot-body,
-.hot-data{
+.hot-data {
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -1216,7 +1215,7 @@ li a {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.deletefolder{
+.deletefolder {
   background-color: transparent;
   border: 0;
   font-size: 10px;
@@ -1225,50 +1224,67 @@ li a {
 }
 .deletefolder:hover,
 .deletefolder:active,
-.deletefolder:focus{
+.deletefolder:focus {
   background-color: #434343;
 }
-#sandbox-container{
-  width:100% !important;
+#sandbox-container {
+  width: 100% !important;
 }
-#button-list button{
-  width:32%;
+#button-list button {
+  width: 32%;
 }
+a:hover {
+  text-decoration: none !important;
+}
+<<<<<<< HEAD
 a:hover{
    text-decoration: none !important;
  }
 <<<<<<< HEAD
 =======
 #writing-pane .active>a{
+=======
+#writing-pane .active > a {
+>>>>>>> d3a5fbe743ab93f00602d64e6a56a1d496248236
   background-color: #f4f4f4;
-  border: 0;
-}
-#writing-pane ul li a:hover{
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #f4f4f4;
-}
-#writing-pane .nav-tabs{
-  border-bottom: 1px solid #f4f4f4 !important;
-}
-#wrap #middle #writing-pane .tab-content .tab-pane #sendBody{
-  border: 0
-}
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
-  border:0;
-  background-color: #f4f4f4;
-}
-.nav>li>a{
-  border: 0;
-}
-.nav>li>a:focus, .nav>li>a:hover{
-  border: 0;
-  background-color: #f4f4f4;
-}
-#wrap #middle #writing-pane .tab-content .tab-pane #saleTitle{
   border: 0;
   border-bottom: 1px solid #f4f4f4;
 }
-#wrap #middle #writing-pane .tab-content .tab-pane #publiBody{
+#writing-pane .active > a:hover {
   border: 0;
 }
+#writing-pane ul li a:hover {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+}
+#writing-pane .nav-tabs {
+  border-bottom: 1px solid #e3e3e3 !important;
+}
+#wrap #middle #writing-pane .tab-content .tab-pane #sendBody {
+  border: 0;
+}
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+  border: 0;
+  background-color: #f4f4f4;
+}
+.nav > li > a {
+  border: 0;
+}
+.nav > li > a:focus,
+.nav > li > a:hover {
+  border: 0;
+  background-color: #f4f4f4;
+}
+#wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
+  border: 0;
+  border-bottom: 1px solid #f4f4f4;
+}
+#wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
+  border: 0;
+}
+<<<<<<< HEAD
 >>>>>>> cc8d5ca9a897d79f2e9f47d324c60a8eb53fb754
+=======
+>>>>>>> d3a5fbe743ab93f00602d64e6a56a1d496248236
