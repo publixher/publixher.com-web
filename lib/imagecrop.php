@@ -86,8 +86,6 @@ class imaging
         // Resize
         if($this->x_input > $sizeW OR $this->y_input > $sizeH)
         {
-
-            if($this->order==0)
             // Wide
             if(($this->order==0 and $this->x_input >= $this->y_input) or ($this->order==1 and $this->x_input<=$this->y_input))
             {

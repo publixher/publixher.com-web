@@ -38,7 +38,7 @@ if ($_FILES) {
         $img = new imaging;
         $img->set_img($src);
         $img->set_quality(100);
-        if (strpos($referer, 'profileConfig.php')) {
+        if (strpos($referer, 'profileConfig')) {
             //요청이 들어온 페이지가 프로필 수정페이지면 160으로 크롭하고 유저 테이블에 저장도 하세기!
             $img->set_order(1);
             $img->set_size(160, 160);
@@ -78,7 +78,7 @@ if ($_FILES) {
 
         $prepare->execute();
 
-        if (strpos($referer, 'profileConfig.php')) {
+        if (strpos($referer, 'profileConfig')) {
             $result = array('files' => array('file_name' => $name, 'file_profile' => "profile/" . $filepath, 'file_origin' => 'origin/' . $filepath, 'file_height' => $out_height, 'file_width' => $out_width));
         } else {
             $result = array('files' => array('file_name' => $name, 'file_crop' => "crop/" . $filepath, 'file_origin' => 'origin/' . $filepath, 'file_height' => $out_height, 'file_width' => $out_width));
