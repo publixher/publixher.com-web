@@ -6,7 +6,7 @@
         require_once '../conf/database_conf.php';
         $userinfo = $_SESSION['user'];
         $userID = $userinfo->getID();
-        $sql4 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC,USER.ID,FOLLOW.LAST_CHECK,FOLLOW.LAST_UPDATE FROM publixher.TBL_USER USER INNER JOIN publixher.TBL_FOLLOW FOLLOW ON FOLLOW.ID_MASTER=USER.ID WHERE FOLLOW.ID_SLAVE=:ID_SLAVE";
+        $sql4 = "SELECT USER_NAME,REPLACE(PIC,'profile','crop24') AS PIC,USER.ID,FOLLOW.LAST_CHECK,FOLLOW.LAST_UPDATE FROM publixher.TBL_USER USER INNER JOIN publixher.TBL_FOLLOW FOLLOW ON FOLLOW.ID_MASTER=USER.ID WHERE FOLLOW.ID_SLAVE=:ID_SLAVE";
         $prepare4 = $db->prepare($sql4);
         $prepare4->bindValue(':ID_SLAVE', $userID);
         $prepare4->execute();
@@ -47,7 +47,7 @@
                         <?php
                         $sql = "SELECT
   USER_NAME,
-  REPLACE(PIC, 'profile', 'crop34') AS PIC,
+  REPLACE(PIC, 'profile', 'crop24') AS PIC,
   USER.ID
 FROM publixher.TBL_USER AS USER 
 INNER JOIN publixher.TBL_FRIENDS AS COMM 
