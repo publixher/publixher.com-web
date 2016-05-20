@@ -15,6 +15,13 @@ class imaging
     private $x_output;
     private $y_output;
     private $resize;
+    private $order=0;
+
+    //Set order
+    public function set_order($order){
+        //0은 긴축기준 1은 짧은축 기준
+        $this->order=$order;
+    }
 
     // Set image
     public function set_img($img)
@@ -79,9 +86,8 @@ class imaging
         // Resize
         if($this->x_input > $sizeW OR $this->y_input > $sizeH)
         {
-
             // Wide
-            if($this->x_input >= $this->y_input)
+            if(($this->order==0 and $this->x_input >= $this->y_input) or ($this->order==1 and $this->x_input<=$this->y_input))
             {
 
                 $this->x_output = $sizeW;

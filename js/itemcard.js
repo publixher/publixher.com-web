@@ -58,6 +58,7 @@ $(document).ready(function () {
             word += '   <div role="tabpanel" class="tab-pane" id="time-' + thisitemID + '"></div>'
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
+            tab_comment.append(word);
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //댓글 태그기능
             tab_comment
@@ -203,7 +204,7 @@ $(document).ready(function () {
                                 )
                         )
                 )
-            tab_comment.append(word);
+
             $('#best-' + thisitemID).append(spinner);
             $.ajax({
                 url: "/php/data/itemAct.php",
@@ -211,14 +212,11 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     spinner.detach();
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
-                        for (var i = Object.keys(res).length-3; i >-1; i--) {
-                            console.log(i)
-                            console.log(res[i])
+                        for (var i = 0; i <Object.keys(res).length-2; i++) {
                             var write = '';
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
@@ -306,7 +304,7 @@ $(document).ready(function () {
                 spinner.detach();
                 function registRep(res, where) {
                     var list = $('#' + where);
-                    for (var i = Object.keys(res).length-3; i >-1; i--) {
+                    for (var i = 0; i <Object.keys(res).length-2; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -485,6 +483,40 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     var subrep_list = $('#' + thispanelrep + '-sub');
+                    if (res['result'] != 'NO') {
+                        function registRep(res) {
+                            var repnum = Object.keys(res).length - 2;
+                            for (var i = 0; i<repnum; i++) {
+                                var write = '';
+                                var ID = res[i]['ID'];
+                                var name = res[i]['USER_NAME'];
+                                var date = res[i]['REPLY_DATE'];
+                                var reply = res[i]['REP_BODY'];
+                                write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
+                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
+                                write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
+                                if (mid == res[i]['ID_USER'] || level == 99) {
+                                    write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
+                                }
+                                write += '</td></tr></table></div>';
+                                subrep_list.append(write);
+                                if (res[i]['DEL'] == 1) {
+                                    subrep_list.find('.reply-body').addClass('reply-del');
+                                }
+                                var ind = parseInt(subrep_list.attr('index')) + 1;
+                                subrep_list.attr('index', ind);
+                            }
+                            if (res['more'] == 1) {
+                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                            }
+                        }
+
+                        //인덱스 붙이기
+                        if (!subrep_list.attr('index')) {
+                            subrep_list.attr('index', '0');
+                        }
+                        registRep(res);
+                    }
                     subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>').hide().fadeIn();
                     //대댓글 태그기능
                     subrep_list
@@ -588,40 +620,7 @@ $(document).ready(function () {
                                 )
                                 .fadeIn()
                         )
-                    if (res['result'] != 'NO') {
-                        function registRep(res) {
-                            var repnum = Object.keys(res).length - 3;
-                            for (var i = repnum; i >-1; i--) {
-                                var write = '';
-                                var ID = res[i]['ID'];
-                                var name = res[i]['USER_NAME'];
-                                var date = res[i]['REPLY_DATE'];
-                                var reply = res[i]['REP_BODY'];
-                                write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
-                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
-                                write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
-                                if (mid == res[i]['ID_USER'] || level == 99) {
-                                    write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
-                                }
-                                write += '</td></tr></table></div>';
-                                subrep_list.append(write);
-                                if (res[i]['DEL'] == 1) {
-                                    subrep_list.find('.reply-body').addClass('reply-del');
-                                }
-                                var ind = parseInt(subrep_list.attr('index')) + 1;
-                                subrep_list.attr('index', ind);
-                            }
-                            if (res['more'] == 1) {
-                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
-                            }
-                        }
 
-                        //인덱스 붙이기
-                        if (!subrep_list.attr('index')) {
-                            subrep_list.attr('index', '0');
-                        }
-                        registRep(res);
-                    }
                 }
             });
         }
