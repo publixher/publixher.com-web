@@ -566,6 +566,8 @@ body {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  background-color: white;
+  border: 1px solid #e3e3e3;
 }
 #wrap #right .market #market-nav {
   width: 100%;
@@ -1167,6 +1169,19 @@ a:hover {
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
   border: 0;
 }
+#wrap #right .conf #logo{
+  display: none !important;
+}
+.usrpic-wrap{
+  display: none !important;
+}
+#wrap #right .conf{
+  top: 5px !important;
+  border-radius: 4px !important;
+}
+
+
+
 #report-button {
   border: 1px solid #e3e3e3;
   padding: 2px;
@@ -1210,3 +1225,4 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
