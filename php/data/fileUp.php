@@ -48,6 +48,8 @@ if ($_FILES) {
             $img->save_img($uploadDir."crop34/".$filepath);
             $img->set_size(50,50);
             $img->save_img($uploadDir."crop50/".$filepath);
+            $img->set_size(24,24);
+            $img->save_img($uploadDir."crop24/".$filepath);
             include_once '../../conf/User.php';
             session_start();
             $userinfo = $_SESSION['user'];
