@@ -772,7 +772,7 @@ $(document).ready(function () {
                     if (res['buy'] == 'f') {
                         alert('구매 실패 : ' + res['reason']);
                     } else {
-                        priceSpan.html('<a>더보기</a>');
+                        priceSpan.html('<span class="pubico pico-down-tri"></span>');
                         priceSpan.removeClass('buyConfirm').addClass('bought');
                     }
                 }

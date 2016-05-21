@@ -46,7 +46,7 @@
                         $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
                         $friprepare->execute();
                         $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${friend['PIC']}'><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='friend-list-pic-wrap'><img src='${friend['PIC']}'></div><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
                     unset($friprepare);
@@ -80,7 +80,7 @@
                         $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
                         $mriprepare->execute();
                         $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${master['PIC']}'><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='subs-list-pic-wrap'><img src='${master['PIC']}'></div><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
                     unset($mriprepare);
@@ -118,7 +118,7 @@
                             $fprepare->bindValue(':ID', $friendrequest[$i]['ID_USER'], PDO::PARAM_STR);
                             $fprepare->execute();
                             $reqname = $fprepare->fetch(PDO::FETCH_ASSOC);
-                            echo "<li><img src='${reqname['PIC']}'><a href='/profile/" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
+                            echo "<li><div class='freq-list-pic-wrap'><img src='${reqname['PIC']}'></div><a href='/profile/" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
                             $arr[] = $reqname;
                         }
                         unset($fprepare);
@@ -198,7 +198,7 @@
                         $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
                         $friprepare->execute();
                         $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${friend['PIC']}'><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='friend-list-pic-wrap'><img src='${friend['PIC']}'></div><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
                         $arr[] = $friend['USER_NAME'];
                     }
                     unset($friprepare);
@@ -232,7 +232,7 @@
                         $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
                         $mriprepare->execute();
                         $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><img src='${master['PIC']}'><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='subs-list-pic-wrap'><img src='${master['PIC']}'></div><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
                         $arr[] = $master['USER_NAME'];
                     }
                     unset($mriprepare);
