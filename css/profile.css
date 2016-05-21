@@ -406,16 +406,14 @@ body {
   width: 510px;
   word-break: break-all;
   margin-top: 10px;
+  line-height: 22px;
 }
 #wrap #middle .item .body .BodyPic,
 #wrap #middle .item-for-sale .body .BodyPic {
   max-width: 510px !important;
   max-height: 510px !important;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: -30px;
 }
 #wrap #middle .item .body .thumbPic,
 #wrap #middle .item-for-sale .body .thumbPic {
@@ -443,7 +441,7 @@ body {
   font-size: 12px;
   margin-left: 9px;
   margin-right: 9px;
-  margin-top: 5px;
+  margin-top: 10px;
   background-color: #f9f9f9;
 }
 #wrap #middle .item .tail .badge,
