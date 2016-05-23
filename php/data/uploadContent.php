@@ -35,7 +35,7 @@ if (!empty($_POST)) {
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
     $imgcount = count($imgs[0]);
-    $croprex = "/^\\/img\\/crop\\//i";
+    $croprex = "/^\\/img\\/crop_origin\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for ($i = 0; $i < $imgcount; $i++) {
         str_replace('https://throughout.kr','',$imgs[1][$i][0]);
@@ -55,13 +55,13 @@ if (!empty($_POST)) {
         for ($i = 0; $i < $imgcount; $i++) {
             $path=$imgs[1][$i][0];
             if(strpos($imgs[0][$i][0],'class="gif"'))$path=str_replace('.png','.gif',$path);
-            $originSource = str_replace("crop", "origin",$path);
+            $originSource = str_replace("crop_origin", "origin",$path);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
         }
         $body = preg_replace($not_covered, $a_covered, $body);
     }
-    $previewimg = $imgs[1][0][0];
+    $previewimg = str_replace('crop_origin','crop',$imgs[1][0][0]);
     //더보기가 있어야할지 검사
     $bodylen = mb_strlen($body, 'utf-8');
     if (!$previewimg and $bodylen <= 400) {
