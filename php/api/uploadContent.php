@@ -24,7 +24,8 @@ if (!empty($_POST)) {
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
     $imgcount=count($imgs[0]);
-    $croprex="/^(https://throughout.kr)?\\/img\\/crop\\//i";
+    //TODO: croprex에서 도메인에따라 바뀌어야함
+    $croprex="/^(https\\:\\/\\/throughout.kr)?\\/img\\/crop\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for($i=0;$i<$imgcount;$i++) {
         if (!preg_match($croprex,$imgs[1][$i][0])){
