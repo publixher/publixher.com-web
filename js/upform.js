@@ -262,7 +262,7 @@ $(document).ready(function () {
     //파일 업로드시 동작
     $('#fileuploads,#fileuploadp').fileupload({
         dataType: 'json',
-        IDuentialUploads: true,
+        sequentialUploads: true,
         add: function (e, data) {
             var uploadFile = data.files[0];
             var isValid = true;
