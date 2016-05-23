@@ -792,11 +792,12 @@ $(document).ready(function () {
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function(){
-                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn();
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn().
+                            find('.gif').gifplayer({playOn:'hover',wait:true})  //gif 재생
                     });
                     priceSpan.fadeOut(function(){
                         priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
-                    })
+                    });
 
                     priceSpan.removeClass('bought').addClass('expanded');
                 }
@@ -813,6 +814,7 @@ $(document).ready(function () {
             priceSpan.fadeOut(function(){
                 priceSpan.html('<a><span class="pubico pico-down-tri"></span></a>').fadeIn();
             })
+            document.location.href='#'+thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음

@@ -77,13 +77,16 @@ $(document).ready(function () {
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
                     $('#upform').after(write);
-                    $('#'+ID).hide().fadeIn();
+                    $('#'+ID).hide().fadeIn()
+                        .find('.gif').gifplayer({wait:true});
                     $('#sendBody').html('').removeAttr('style')
                     var tags=$('#send-tag').tagEditor('getTags')[0].tags
                     for(var i=0;i<tags.length;i++){
                         $('#send-tag').tagEditor('removeTag',tags[i]);
                     }
                     btn.removeAttr('disabled')
+
+                    document.location.href='#'+ID;
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -147,7 +150,8 @@ $(document).ready(function () {
                     var tag=res['TAG']?res['TAG'].split(' '):null;
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more,tag,pin,res['CATEGORY'],res['SUB_CATEGORY']);
                     $('#upform').after(write);
-                    $('#'+ID).hide().fadeIn();
+                    $('#'+ID).hide().fadeIn()
+                        .find('.gif').gifplayer({wait:true});
                     $('#saleTitle').val("");
                     $('#contentCost').val("");
                     $('#publiBody').html('').removeAttr('style');
@@ -157,6 +161,7 @@ $(document).ready(function () {
                         $('#publi-tag').tagEditor('removeTag',tags[i]);
                     }
                     btn.removeAttr('disabled')
+                    document.location.href='#'+ID;
                 },
                 error: function (request, status, error) {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -289,13 +294,16 @@ $(document).ready(function () {
                 publiBody.html(publiBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             }
         }, done: function (e, data) {
+            var gif=data.files[0].type=='image/gif'?true:false;
+            var img=$('<img>').attr('src','/img/' + data.result['files']['file_crop']).addClass('BodyPic');
+            if(gif) img.addClass('gif');
             if (this == $('#fileuploads')[0]) {
                 var sendBody = $('#sendBody');
-                sendBody.html(sendBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                sendBody.append(img,'<br><br>');
                 sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp')[0]) {
                 var publiBody = $('#publiBody')
-                publiBody.html(publiBody.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                publiBody.append(img,'<br><br>')
                 publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {

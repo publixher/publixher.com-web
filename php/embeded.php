@@ -44,6 +44,10 @@
     <script src="/js/itemcard.js"></script>
     <script src="/js/itemload.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
+
+    <!--gif 플레이-->
+    <link rel="stylesheet" href="/plugins/gifplayer-master/dist/gifplayer.css">
+    <script src="/plugins/gifplayer-master/dist/jquery.gifplayer.js"></script>
     <!--    구글 애널리틱스-->
     <script>(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;

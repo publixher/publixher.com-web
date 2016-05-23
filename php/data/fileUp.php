@@ -68,6 +68,8 @@ if ($_FILES) {
         }else {
             $img->set_size(510, 510);
             $img->save_img($uploadDir . "crop/" . $filepath);
+            //gif면 jpg를 리턴함
+            $filepath=str_replace('.gif','.png',$filepath);
         }
         $out_height = $img->get_out_height();
         $out_width = $img->get_out_width();

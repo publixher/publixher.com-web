@@ -168,8 +168,14 @@ class imaging
         elseif($this->format == "GIF")
         {
 
-            if($this->resize) { imageGIF($this->img_output, $path); }
-            else { copy($this->img_src, $path); }
+            if($this->resize) {
+                imagepng($this->img_output, str_replace('.gif','.png',$path));
+                imageGIF($this->img_output, $path); 
+            }
+            else {
+                imagepng($this->img_input, str_replace('.gif','.png',$path));
+                copy($this->img_src, $path); 
+            }
 
         }
 

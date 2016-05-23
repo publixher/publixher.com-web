@@ -46,6 +46,11 @@
     require_once "ImageGallery.php";
     ?>
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
+
+    <!--gif 플레이-->
+    <link rel="stylesheet" href="/plugins/gifplayer-master/dist/gifplayer.css">
+    <script src="/plugins/gifplayer-master/dist/jquery.gifplayer.js"></script>
+    
     <script>
         var page = 0;
         var loadOption={ID:mid,nowpage:page,buylist:"Y"};

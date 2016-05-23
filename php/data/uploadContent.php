@@ -47,10 +47,14 @@ if (!empty($_POST)) {
             $body = str_replace($originurl, $savedurl, $body);
         }
     }
+    //gif인지 검사
+    $gif=strpos($imgs[0][0][0],'class="gif"');
     //링크로 덮는작업
     if (isset($imgs[0][0])) {
         for ($i = 0; $i < $imgcount; $i++) {
-            $originSource = str_replace("crop", "origin", $imgs[1][$i][0]);
+            $path=$imgs[1][$i][0];
+            if(strpos($imgs[0][$i][0],'class="gif"'))$path=str_replace('.png','.gif',$path);
+            $originSource = str_replace("crop", "origin",$path);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
         }
@@ -91,9 +95,13 @@ if (!empty($_POST)) {
         $previewtxt = mb_substr($previewtxt, 0, $previewlength);
     }
     if (strlen($previewtxt) > 0 && $previewimg) {
-        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else if ($previewimg) {
-        $preview = "<img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview ="<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else {
         $preview = $previewtxt;
     }
