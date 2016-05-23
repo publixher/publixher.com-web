@@ -261,7 +261,7 @@ body {
             width: 133px;
             height: 100%;
             button {
-              width: 133px;
+              width: 131px;
               padding: 0 0 0 0;
               text-align: center;
               border-radius: 0;
@@ -333,7 +333,6 @@ body {
         width: 469px;
         margin-left: 39px;
         border-left: 2px solid rgb(215, 215, 215);
-        padding-bottom: 5px
       }
       .item-for-sale .tail .nav-tabs > li.active > a,
       .item-for-sale .tail .nav-tabs > li.active > a:focus,
@@ -359,9 +358,8 @@ body {
         padding: 5px 0 4px 10px;
         font-size: 12px;
         border: 1px solid #ddd;
-        border-left: 0;
-        border-right: 0;
         min-height: 32px;
+        margin-top: 10px;
       }
       .header {
         float: left;
@@ -411,14 +409,12 @@ body {
         width: 510px;
         word-break: break-all;
         margin-top: 10px;
+        line-height: 22px;
         .BodyPic {
           max-width: 510px !important;
           max-height: 510px !important;
-          margin-top: 5px;
-          margin-bottom: 5px;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
+          margin-top: 10px;
+          margin-bottom: -30px;
         }
         .thumbPic {
           max-width: 60px;
@@ -443,8 +439,7 @@ body {
         font-size: 12px;
         margin-left: 9px;
         margin-right: 9px;
-        margin-top: 5px;
-        background-color: #f9f9f9;
+        margin-top: 10px;
         .badge {
           cursor: pointer;
         }
@@ -487,7 +482,10 @@ body {
             vertical-align: top;
             font-size: 13px;
             .timeago {
-              font-size: 12px;
+              font-size: 10px;
+              color: gray;
+              margin-left: -2px;
+              vertical-align: text-bottom;
             }
             .repaction {
               float: right;
@@ -631,12 +629,14 @@ body {
     }
     .market {
       .roundborder();
-      top: 135px;
+      top: 95px;
       width: 300px;
       height: auto;
       position: relative;
       z-index: 1;
       overflow: hidden;
+      background-color: white;
+      border: 1px solid #e3e3e3;
       .catalog {
         float: left;
         margin: 5px;
@@ -815,10 +815,6 @@ li a {
 .bestrep{
   border-left: 0px !important;
 }
-.tab-comment{
-  border: 1px solid #ddd;
-  border-top: 0;
-}
 .load-item {
   margin: auto;
 }
@@ -938,9 +934,8 @@ li a {
   vertical-align: top;
   overflow: hidden;
 }
-#wrap #middle .item .tail .opend-comment>table,
-#wrap #middle .item-for-sale .tail .opend-comment>table{
-  margin-bottom: -1px !important;
+.opend-comment>table{
+  border-bottom: 1px solid #e3e3e3
 }
 .form-control{
   border: 1px solid #e3e3e3;
@@ -1059,6 +1054,7 @@ li a {
   height: 50px;
   float: left;
   position: relative;
+  overflow: hidden;
 }
 .noti-img,
 .pin-pic{
@@ -1229,13 +1225,6 @@ a:hover{
   border: 0;
   border-bottom: 1px solid #f4f4f4;
 }
-#writing-pane .active>a:hover{
-  border: 0;
-}
-#writing-pane ul li a:hover{
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #f4f4f4;
-}
 #writing-pane .nav-tabs{
   border-bottom: 1px solid #e3e3e3 !important;
 }
@@ -1260,6 +1249,22 @@ a:hover{
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody{
   border: 0;
 }
+//임시
+#wrap #right .conf #logo{
+  display: none !important;
+}
+.usrpic-wrap{
+  display: none !important;
+}
+#wrap #right .conf{
+  top: 5px !important;
+  border-radius: 4px !important;
+  height:70px !important;
+}
+
+
+
+
 //여기부터 throughout CSS
 //#right .conf{
 //  width: 1024px !important;
