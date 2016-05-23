@@ -170,7 +170,7 @@ class imaging
 
             if($this->resize) {
                 imagepng($this->img_output, str_replace('.gif','.png',$path));
-                imageGIF($this->img_output, $path); 
+                copy($this->img_src, $path);
             }
             else {
                 imagepng($this->img_input, str_replace('.gif','.png',$path));
