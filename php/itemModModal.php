@@ -34,6 +34,15 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane" id="send-mod">
                             <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span class="pubico pico-youtube"></span>
+                                </button>
+                                <ul class="dropdown-menu hasInput" role="menu">
+                                    <li><input type="text" class="form-control youtube-iframe"></li>
+                                </ul>
+                            </div>
                             <hr>
                             <table>
                                 <tr>
@@ -58,6 +67,15 @@
                             <div>
                                 <input type="text" class="form-control" id="saleTitle-mod">
                                 <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        <span class="pubico pico-youtube"></span>
+                                    </button>
+                                    <ul class="dropdown-menu hasInput" role="menu">
+                                        <li><input type="text" class="form-control youtube-iframe"></li>
+                                    </ul>
+                                </div>
                             </div>
                             <hr>
                             <table>

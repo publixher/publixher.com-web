@@ -352,7 +352,26 @@ $(document).ready(function () {
                 alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
             }
         }
+    });
+    //유튜브 태그 넣기
+    $('.youtube-iframe').on('keyup',function(e){
+        if (e.keyCode == 13 && $(this).val().length > 0) {
+            var iframerex=/^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
+            var tag=$(this).val();
+            if(iframerex.test(tag)){
+                tag=$(tag).attr({
+                    width:510,
+                    height:280
+                });
+                $(this).val('');
+                var body=$(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
+                    body.append(tag).trigger('keyup');
+            }else{
+                alert('소스코드는 <iframe width="560" height="315" src="https://www.youtube.com/embed/XXXXXXXXXXX" frameborder="0" allowfullscreen></iframe> 형식으로 써집니다')
+            }
+        }
     })
+
 });
 
 //텍스트에이리어 입력시 자동 크기조정

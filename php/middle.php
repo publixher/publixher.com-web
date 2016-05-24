@@ -4,7 +4,8 @@
         <div role="tabpanel" id="writing-pane">
             <!-- 위탭 -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab" data-toggle="tab">보내기</a></li>
+                <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab"
+                                                          data-toggle="tab">보내기</a></li>
                 <li role="presentation"><a href="#publixh" aria-controls="profile" role="tab" data-toggle="tab">출판하기</a>
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -18,7 +19,8 @@
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
-                        <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span class="caret"></span></a>
+                        <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span
+                            class="caret"></span></a>
                     <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
                         <li><a>미분류</a></li>
                         <?php
@@ -35,15 +37,27 @@
                             echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                         }
                         ?>
-                        <li><span class="pubico pico-folder-plus"></span><input type="text" class="form-control new-folder"></li>
+                        <li><span class="pubico pico-folder-plus"></span><input type="text"
+                                                                                class="form-control new-folder"></li>
                     </ul>
                 </li>
             </ul>
             <!-- 똥싸기와 용돈벌기 내용 -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="send">
-                    <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)" onkeyup="resize(this)"></div>
-                    <!--                    <div class="form-control" id="sendtag" contenteditable="true"></div>-->
+                    <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)"
+                         onkeyup="resize(this)"></div>
+
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                            <span class="pubico pico-youtube"></span>
+                        </button>
+                        <ul class="dropdown-menu hasInput" role="menu">
+                            <li><input type="text" class="form-control youtube-iframe"></li>
+                        </ul>
+                    </div>
+
                     <hr>
                     <table>
                         <tr>
@@ -57,7 +71,8 @@
                             </td>
 
                             <td class="regbtn">
-                                <button type="button" id="sendButton" data-loading-text="싸는중..." class="btn btn-primary">
+                                <button type="button" id="sendButton" data-loading-text="싸는중..."
+                                        class="btn btn-primary">
                                     <span class="pubico pico-pen2">보내기</span>
                                 </button>
                             </td>
@@ -68,7 +83,17 @@
                 <div role="tabpanel" class="tab-pane" id="publixh">
                     <div>
                         <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
-                        <div contenteditable="true" class="form-control" id="publiBody" oninput="resize(this)" onkeyup="resize(this)"></div>
+                        <div contenteditable="true" class="form-control" id="publiBody" oninput="resize(this)"
+                             onkeyup="resize(this)"></div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <span class="pubico pico-youtube"></span>
+                            </button>
+                            <ul class="dropdown-menu hasInput" role="menu">
+                                <li><input type="text" class="form-control youtube-iframe"></li>
+                            </ul>
+                        </div>
                     </div>
                     <hr>
                     <table>
@@ -138,8 +163,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
 <script>
     var page = 0;
-    var mid='<?=$userID?>';
-    var targetID=null;
+    var mid = '<?=$userID?>';
+    var targetID = null;
     var loadOption = {ID: mid, nowpage: page};
 </script>
 <!--    해시 태그-->

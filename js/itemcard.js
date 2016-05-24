@@ -62,88 +62,88 @@ $(document).ready(function () {
             tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
             //댓글 태그기능
             tab_comment
-                .append(
-                    $('<div>')  //드롭다운 div
-                        .addClass('dropdown')
-                        .append(
-                            $('<button>').addClass('btn btn-default dropdown-toggle reply-tag-btn').attr({
-                                    'type': 'button',
-                                    'data-toggle': 'dropdown',
-                                    'aria-expanded': 'true',
-                                    'id': thisitemID + '-rep-tag'
-                                }).append($('<span>').addClass('pubico pico-person-plus'))
-                            , $('<ul>') //태그 리스트 안에 input이 들어간다
-                                .on('click', function (e) {e.stopPropagation();}).addClass('dropdown-menu rep_tag-ul')
-                                .attr({
-                                    'role': 'menu',
-                                    'aria-labelledby': thisitemID + '-rep-tag'
-                                }).append(
-                                    $('<li>').addClass('rep-tag-input-li').append(
-                                            $('<input>').addClass('form-control rep-tag-input').attr({'type': 'text'})
-                                                .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
-                                                    if ($(this).val().length > 0) {
-                                                        var name = $(this).val();
-                                                        var spinner = $('<div>')
-                                                            .attr('data-loader', 'spinner')
-                                                            .addClass('load-item tag-load');
-                                                        var ul = $(this).parents('ul')   //ul에 스피너 추가
-                                                        if (!ul.find('.tag-load').length) {
+                .append($('<div>')  //드롭다운 div
+                    .addClass('dropdown').append(
+                        $('<button>').addClass('btn btn-default dropdown-toggle reply-tag-btn').attr({
+                            'type': 'button',
+                            'data-toggle': 'dropdown',
+                            'aria-expanded': 'true',
+                            'id': thisitemID + '-rep-tag'
+                        }).append($('<span>').addClass('pubico pico-person-plus'))
+                        , $('<ul>') //태그 리스트 안에 input이 들어간다
+                            .on('click', function (e) {
+                                e.stopPropagation();
+                            }).addClass('dropdown-menu rep_tag-ul')
+                            .attr({
+                                'role': 'menu',
+                                'aria-labelledby': thisitemID + '-rep-tag'
+                            }).append(
+                                $('<li>').addClass('rep-tag-input-li').append(
+                                    $('<input>').addClass('form-control rep-tag-input').attr({'type': 'text'})
+                                        .on('input', function (e) {    //태그칸에 글 입력하면 이름 불러옴
+                                            if ($(this).val().length > 0) {
+                                                var name = $(this).val();
+                                                var spinner = $('<div>')
+                                                    .attr('data-loader', 'spinner')
+                                                    .addClass('load-item tag-load');
+                                                var ul = $(this).parents('ul')   //ul에 스피너 추가
+                                                if (!ul.find('.tag-load').length) {
+                                                    ul.append(
+                                                        $('<li>')
+                                                            .append(spinner)
+                                                    );
+                                                }
+                                                $.ajax({
+                                                    url: '/php/data/nameFind.php',
+                                                    type: 'GET',
+                                                    dataType: 'json',
+                                                    data: {target: 'friend', mid: mid, name: name},
+                                                    success: function (res) {
+                                                        ul.children(':not(.rep-tag-input-li)').remove();
+                                                        for (var i = 0; i < res.length; i++) {
                                                             ul.append(
                                                                 $('<li>')
-                                                                    .append(spinner)
-                                                            );
-                                                        }
-                                                        $.ajax({
-                                                            url: '/php/data/nameFind.php',
-                                                            type: 'GET',
-                                                            dataType: 'json',
-                                                            data: {target: 'friend', mid: mid, name: name},
-                                                            success: function (res) {
-                                                                ul.children(':not(.rep-tag-input-li)').remove();
-                                                                for (var i = 0; i < res.length; i++) {
-                                                                    ul.append(
-                                                                        $('<li>')
-                                                                            .addClass('rep-tag-friend')
+                                                                    .addClass('rep-tag-friend')
+                                                                    .append(
+                                                                        $('<div>')
                                                                             .append(
-                                                                                $('<div>')
-                                                                                    .append(
-                                                                                        $('<img>')
-                                                                                            .attr('src', res[i]['PIC'])
-                                                                                            .addClass('rep-tag-friend-pic')
-                                                                                    )
-                                                                                    .addClass('rep-tag-friend-pic-wrap')
-                                                                                , $('<span>')
-                                                                                    .addClass('rep-tag-friend-name')
-                                                                                    .attr('data-userID', res[i]['ID'])
-                                                                                    .text(res[i]['USER_NAME'])
+                                                                                $('<img>')
+                                                                                    .attr('src', res[i]['PIC'])
+                                                                                    .addClass('rep-tag-friend-pic')
                                                                             )
-                                                                            .on('click', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
-                                                                                var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
-                                                                                tab_comment.children('.commentReg').append(
-                                                                                    $('<span>')
-                                                                                        .addClass('rep-tag')
-                                                                                        .text(
-                                                                                            $(this).children('.rep-tag-friend-name').text()
-                                                                                        )
-                                                                                        .attr({
-                                                                                            'onclick': 'location.href="/profile/' + tagId + '"',
-                                                                                            'contenteditable': 'false',
-                                                                                            'data-userid': tagId
-                                                                                        })
-                                                                                        .css('cursor', 'pointer')
-                                                                                );
-                                                                                $(this).parent().children(':not(.rep-tag-input-li)').remove();  //리스트 전부 삭제
-                                                                                ul.find('input').val('');  //입력 내용도 삭제
-                                                                            })
+                                                                            .addClass('rep-tag-friend-pic-wrap')
+                                                                        , $('<span>')
+                                                                            .addClass('rep-tag-friend-name')
+                                                                            .attr('data-userID', res[i]['ID'])
+                                                                            .text(res[i]['USER_NAME'])
                                                                     )
-                                                                }
-                                                            }
-                                                        })
+                                                                    .on('click', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
+                                                                        var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
+                                                                        tab_comment.children('.commentReg').append(
+                                                                            $('<span>')
+                                                                                .addClass('rep-tag')
+                                                                                .text(
+                                                                                    $(this).children('.rep-tag-friend-name').text()
+                                                                                )
+                                                                                .attr({
+                                                                                    'onclick': 'location.href="/profile/' + tagId + '"',
+                                                                                    'contenteditable': 'false',
+                                                                                    'data-userid': tagId
+                                                                                })
+                                                                                .css('cursor', 'pointer')
+                                                                        );
+                                                                        $(this).parent().children(':not(.rep-tag-input-li)').remove();  //리스트 전부 삭제
+                                                                        ul.find('input').val('');  //입력 내용도 삭제
+                                                                    })
+                                                            )
+                                                        }
                                                     }
                                                 })
-                                        )
+                                            }
+                                        })
                                 )
-                        )
+                            )
+                    )
                 );
             tab_comment
                 .append(
@@ -216,11 +216,11 @@ $(document).ready(function () {
                     function registRep(res, where) {
                         var list = $('#' + where);
                         list.html('');
-                        var repnum=Object.keys(res).length-3;
+                        var repnum = Object.keys(res).length - 3;
                         if (res['more'] == 1) {
                             list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                         }
-                        for (var i =repnum; i >-1; i--) {
+                        for (var i = repnum; i > -1; i--) {
                             var write = '';
                             var ID = res[i]['ID'];
                             var name = res[i]['USER_NAME'];
@@ -281,7 +281,7 @@ $(document).ready(function () {
                 .removeClass('opend-comment')
                 .removeAttr('style');
             tail.find('.tcomment').removeAttr('style');
-            tail.find('.tab-comment').fadeOut(function(){
+            tail.find('.tab-comment').fadeOut(function () {
                 tail.find('.tab-comment').remove();
             })
         }
@@ -306,11 +306,11 @@ $(document).ready(function () {
                 spinner.detach();
                 function registRep(res, where) {
                     var list = $('#' + where);
-                    var repnum=Object.keys(res).length-3;
+                    var repnum = Object.keys(res).length - 3;
                     if (res['more'] == 1) {
                         list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
                     }
-                    for (var i =repnum; i >-1; i--) {
+                    for (var i = repnum; i > -1; i--) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -365,8 +365,8 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + num + ' .tail ' + '#' + where);
 
-                    var repnum=Object.keys(res).length-2;
-                    for (var i =0; i <repnum; i++) {
+                    var repnum = Object.keys(res).length - 2;
+                    for (var i = 0; i < repnum; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -425,8 +425,8 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    if(res['status']==-9){
-                        alert('해당 유저는 '+res['result']['BAN']+' 까지 댓글 작성이 제한된 유저입니다.');
+                    if (res['status'] == -9) {
+                        alert('해당 유저는 ' + res['result']['BAN'] + ' 까지 댓글 작성이 제한된 유저입니다.');
                         return false;
                     }
                     thisform.addClass('commentReg').text('').css('height', '25px');
@@ -461,7 +461,7 @@ $(document).ready(function () {
                     type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
                     if (res['result'] == 'Y') {
                         alert('삭제되었습니다.');
-                        $('#' + thisrep + ' .reply-body').fadeOut(function(){
+                        $('#' + thisrep + ' .reply-body').fadeOut(function () {
                             $('#' + thisrep + ' .reply-body').text('해당 댓글은 삭제되었습니다.').addClass('reply-del').fadeIn();
                         })
 
@@ -489,11 +489,11 @@ $(document).ready(function () {
                     var subrep_list = $('#' + thispanelrep + '-sub');
                     if (res['result'] != 'NO') {
                         function registRep(res) {
-                            var repnum=Object.keys(res).length-3;
+                            var repnum = Object.keys(res).length - 3;
                             if (res['more'] == 1) {
                                 subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
                             }
-                            for (var i =repnum; i >-1; i--) {
+                            for (var i = repnum; i > -1; i--) {
                                 var write = '';
                                 var ID = res[i]['ID'];
                                 var name = res[i]['USER_NAME'];
@@ -628,7 +628,7 @@ $(document).ready(function () {
 
                 }
             });
-        }else{
+        } else {
             subrep_list.remove();
         }
     });
@@ -661,8 +661,8 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
-                    if(res['status']==-9){
-                        alert('해당 유저는 '+res['result']['BAN']+' 까지 댓글 작성이 제한된 유저입니다.');
+                    if (res['status'] == -9) {
+                        alert('해당 유저는 ' + res['result']['BAN'] + ' 까지 댓글 작성이 제한된 유저입니다.');
                         return false;
                     }
                     thisform.addClass('commentReg_sub').text('').css('height', '25px');
@@ -699,8 +699,8 @@ $(document).ready(function () {
                 function registRep(res, where) {
                     var list = $('#' + caret);
                     var btn = $('#' + caret + ' .cursor');
-                    var repnum=Object.keys(res).length-3;
-                    for (var i =0; i <repnum; i++) {
+                    var repnum = Object.keys(res).length - 3;
+                    for (var i = 0; i < repnum; i++) {
                         var write = '';
                         var ID = res[i]['ID'];
                         var name = res[i]['USER_NAME'];
@@ -712,9 +712,9 @@ $(document).ready(function () {
                         if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
                         }
-                         write+='</td></tr></table></div>';
+                        write += '</td></tr></table></div>';
                         btn.after(write);
-                        $('#'+ where + '-rep-' + ID).hide().fadeIn();
+                        $('#' + where + '-rep-' + ID).hide().fadeIn();
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
                     }
@@ -745,6 +745,10 @@ $(document).ready(function () {
             var text = '이 게시물의 url<br><div class="form-control linkurl">' + linkstr + '</div>';
             tab_share.append(text)
             tail.addClass('opend-share')
+        } else {
+            $('#' + thisitemID).find('.tab-share').remove();
+            tail.removeClass('opend-share');
+            tail.find('.tshare').css('background-color', 'white');
         }
 
     });
@@ -791,11 +795,13 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
-                    body.fadeOut(function(){
-                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn().
-                            find('.gif').gifplayer({playOn:'hover',wait:true})  //gif 재생
+                    body.fadeOut(function () {
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn().find('.gif').gifplayer({
+                            playOn: 'hover',
+                            wait: true
+                        })  //gif 재생
                     });
-                    priceSpan.fadeOut(function(){
+                    priceSpan.fadeOut(function () {
                         priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
                     });
 
@@ -808,13 +814,13 @@ $(document).ready(function () {
         } else if (priceSpan.hasClass('expanded')) {
             //확장된상태에서는 접기역할을 함
             var body = $('#' + thisitemID + ' .body');
-            body.fadeOut(function(){
+            body.fadeOut(function () {
                 body.html(previewarr['' + thisitemID]).fadeIn();
             });
-            priceSpan.fadeOut(function(){
+            priceSpan.fadeOut(function () {
                 priceSpan.html('<a><span class="pubico pico-down-tri"></span></a>').fadeIn();
             })
-            document.location.href='#'+thisitemID;
+            document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
@@ -832,7 +838,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
-                    $('#' + thisitemID).fadeOut("normal",function(){
+                    $('#' + thisitemID).fadeOut("normal", function () {
                         $(this).remove();
                     });
                 } else {
@@ -1003,7 +1009,7 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
-                    $('#' + itemID_mod).fadeOut(500,function(){
+                    $('#' + itemID_mod).fadeOut(500, function () {
                         $(this).replaceWith(write).fadeIn(500);
                     })
                     $('#sendBody-mod').html("").trigger('keyup');
@@ -1069,7 +1075,7 @@ $(document).ready(function () {
                         foldername = res['DIR'];
                     }
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
-                    $('#' + itemID_mod).fadeOut(500,function(){
+                    $('#' + itemID_mod).fadeOut(500, function () {
                         $(this).replaceWith(write).fadeIn(500);
                     })
                     $('#saleTitle-mod').val("");
@@ -1223,6 +1229,7 @@ $(document).ready(function () {
                         pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
                         pin_a.removeClass('pinned')
                         pin = pin.replace(' ' + thisitemID, '');
+                        $('.pin-list a[href="/content/' + thisitemID + '"]').parents('li').remove();
                     } else {
                         alert('작업중 문제가 생겼습니다.')
                     }
@@ -1236,8 +1243,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     if (res['result'] == 'Y') {
-                        pin_a.addClass('pin-a').addClass('pubico').addClass('pico-pin2');
-                        pin_a.addClass('pinned');
+                        pin_a.addClass('pin-a pubico pico-pin2 pinned');
 
                         pin = pin + ' ' + thisitemID;
                     } else {
