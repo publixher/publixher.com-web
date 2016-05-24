@@ -910,6 +910,9 @@ li a {
   display: block;
   margin-top: -40px;
   position: relative;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hot-pic-wrap {
   width: 288px;
@@ -1184,22 +1187,6 @@ a:hover {
   vertical-align: middle;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-#report-button:hover {
-  border: 1px solid #e3e3e3;
-  background: #e3e3e3;
-  color: #fff;
-}
-#report-button:active {
-  border: 1px solid #e3e3e3;
-  background: #e3e3e3;
-  color: #fff;
-  outline: 0 !important;
-}
-#report-button:focus {
-  border: 1px solid #e3e3e3;
-  background: #e3e3e3;
-  color: #fff;
   outline: 0 !important;
 }
 #report {
