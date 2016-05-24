@@ -16,6 +16,14 @@ class imaging
     private $y_output;
     private $resize;
     private $order=0;
+    private $origin=false;
+    private $exif;
+
+    //Set order
+    public function set_origin($boolean){
+        //크롭할때 원본비율을 무시하고 저장할때
+        $this->origin=$boolean;
+    }
 
     //Set order
     public function set_order($order){
@@ -29,7 +37,7 @@ class imaging
 
         // Find format
         $ext = strtoupper(pathinfo($img, PATHINFO_EXTENSION));
-        $exif=exif_read_data($img);
+        $this->exif=exif_read_data($img);
 
         // JPEG image
         if(is_file($img) && ($ext == "JPG" OR $ext == "JPEG"))
@@ -60,8 +68,8 @@ class imaging
             $this->img_src = $img;
 
         }
-        if(!empty($exif['Orientation'])) {
-            switch ($exif['Orientation']) {
+        if(!empty($this->exif['Orientation'])) {
+            switch ($this->exif['Orientation']) {
                 case 8:
                     $this->img_input = imagerotate($this->img_input, 90, 0);
                     break;
@@ -84,7 +92,7 @@ class imaging
     {
 
         // Resize
-        if($this->x_input > $sizeW OR $this->y_input > $sizeH)
+        if((!$this->origin AND ($this->x_input > $sizeW OR $this->y_input > $sizeH)) or ($this->origin and $this->x_input>$sizeW))
         {
             // Wide
             if(($this->order==0 and $this->x_input >= $this->y_input) or ($this->order==1 and $this->x_input<=$this->y_input))
@@ -98,10 +106,13 @@ class imaging
             // Tall
             else
             {
-
-                $this->y_output = $sizeH;
-                $this->x_output = ($this->y_output / $this->y_input) * $this->x_input;
-
+                if($this->origin==true){
+                    $this->x_output=$sizeW;
+                    $this->y_output=($this->x_output / $this->x_input) * $this->y_input;
+                }else {
+                    $this->y_output = $sizeH;
+                    $this->x_output = ($this->y_output / $this->y_input) * $this->x_input;
+                }
             }
 
             // Ready
@@ -168,8 +179,14 @@ class imaging
         elseif($this->format == "GIF")
         {
 
-            if($this->resize) { imageGIF($this->img_output, $path); }
-            else { copy($this->img_src, $path); }
+            if($this->resize) {
+                imagepng($this->img_output, str_replace('.gif','.png',$path));
+                copy($this->img_src, $path);
+            }
+            else {
+                imagepng($this->img_input, str_replace('.gif','.png',$path));
+                copy($this->img_src, $path); 
+            }
 
         }
 

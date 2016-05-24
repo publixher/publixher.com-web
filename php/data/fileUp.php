@@ -68,6 +68,11 @@ if ($_FILES) {
         }else {
             $img->set_size(510, 510);
             $img->save_img($uploadDir . "crop/" . $filepath);
+            $img->set_origin(true);
+            $img->set_size(510);
+            $img->save_img($uploadDir . "crop_origin/" . $filepath);
+            //gif면 jpg를 리턴함
+            $filepath=str_replace('.gif','.png',$filepath);
         }
         $out_height = $img->get_out_height();
         $out_width = $img->get_out_width();
@@ -83,7 +88,7 @@ if ($_FILES) {
         if (strpos($referer, 'profileConfig')) {
             $result = array('files' => array('file_name' => $name, 'file_profile' => "profile/" . $filepath, 'file_origin' => 'origin/' . $filepath, 'file_height' => $out_height, 'file_width' => $out_width));
         } else {
-            $result = array('files' => array('file_name' => $name, 'file_crop' => "crop/" . $filepath, 'file_origin' => 'origin/' . $filepath, 'file_height' => $out_height, 'file_width' => $out_width));
+            $result = array('files' => array('file_name' => $name, 'file_crop' => "crop_origin/" . $filepath, 'file_origin' => 'origin/' . $filepath, 'file_height' => $out_height, 'file_width' => $out_width));
         }
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else echo "<script>alert('이미지파일을 업로드 해 주세요.')</script>";

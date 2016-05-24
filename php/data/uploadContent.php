@@ -35,9 +35,10 @@ if (!empty($_POST)) {
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
     $imgcount = count($imgs[0]);
-    $croprex = "/^\\/img\\/crop\\//i";
+    $croprex = "/^\\/img\\/crop_origin\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for ($i = 0; $i < $imgcount; $i++) {
+        str_replace('https://throughout.kr','',$imgs[1][$i][0]);
         if (!preg_match($croprex, $imgs[1][$i][0])) {
             $originurl[$i] = $imgs[1][$i][0];
             $originurl[$i]=explode('?',$originurl[$i])[0];
@@ -47,16 +48,20 @@ if (!empty($_POST)) {
             $body = str_replace($originurl, $savedurl, $body);
         }
     }
+    //gif인지 검사
+    $gif=strpos($imgs[0][0][0],'class="gif"');
     //링크로 덮는작업
     if (isset($imgs[0][0])) {
         for ($i = 0; $i < $imgcount; $i++) {
-            $originSource = str_replace("crop", "origin", $imgs[1][$i][0]);
+            $path=$imgs[1][$i][0];
+            if(strpos($imgs[0][$i][0],'class="gif"'))$path=str_replace('.png','.gif',$path);
+            $originSource = str_replace("crop_origin", "origin",$path);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
         }
         $body = preg_replace($not_covered, $a_covered, $body);
     }
-    $previewimg = $imgs[1][0][0];
+    $previewimg = str_replace('crop_origin','crop',$imgs[1][0][0]);
     //더보기가 있어야할지 검사
     $bodylen = mb_strlen($body, 'utf-8');
     if (!$previewimg and $bodylen <= 400) {
@@ -91,9 +96,13 @@ if (!empty($_POST)) {
         $previewtxt = mb_substr($previewtxt, 0, $previewlength);
     }
     if (strlen($previewtxt) > 0 && $previewimg) {
-        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else if ($previewimg) {
-        $preview = "<img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview ="<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else {
         $preview = $previewtxt;
     }
