@@ -9,6 +9,7 @@ if (!empty($_POST)) {
     require_once'../../lib/random_64.php';
     require_once'../../lib/getImgFromUrl.php';
     require_once'../../lib/banchk.php';
+    require_once '../../lib/iFrameCrop.php';
     banCheck($_POST['ID_writer'],$db,-2 );
 
     //이미지 소스만 가져오기
@@ -20,6 +21,7 @@ if (!empty($_POST)) {
     $for_sale=$_POST['for_sale'];
     $body = $purifier->purify($body);
     $body_text=$purifier->purify($body_text);
+    $body=iframe_crop($body);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
