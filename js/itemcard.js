@@ -799,7 +799,9 @@ $(document).ready(function () {
                         body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn().find('.gif').gifplayer({
                             playOn: 'hover',
                             wait: true
-                        })  //gif 재생
+                        });  //gif 재생
+                        //확장된 순간부터 해당 게시물 읽은 시간을 기록한다
+                        window[''+thisitemID+'_start']=new Date();
                     });
                     priceSpan.fadeOut(function () {
                         priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
@@ -819,9 +821,13 @@ $(document).ready(function () {
             });
             priceSpan.fadeOut(function () {
                 priceSpan.html('<a><span class="pubico pico-down-tri"></span></a>').fadeIn();
-            })
+            });
             document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');
+            //접는 순간 해당 게시물 읽은 시간을 구한다
+            var now=new Date();
+            var gap=(now.getTime()-window[thisitemID+'_start'].getTime())/1000;
+            window[thisitemID+'_start']=null;
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
             priceSpan.append('&nbsp;<a>구매하기?</a>')
@@ -1174,7 +1180,7 @@ $(document).ready(function () {
         } else {
             costvali_mod = true;
         }
-    })
+    });
 //최상단컨텐츠 버튼 동작
     $(document).on("click", ".itemTop", function (e) {
         var thisitemID = $(this).parents()[5].id;
@@ -1253,7 +1259,7 @@ $(document).ready(function () {
             })
         }
 
-    })
+    });
     //신고 동작
     $(document).on('click', '.itemReport', function () {
         var thisitemID = $(this).parents()[5].id;

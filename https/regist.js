@@ -170,32 +170,73 @@ $(document).ready(function () {
         var pwcheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,16}$/;
         var regHName = /^[가-힣ㄱ-ㅎㅏ-ㅣ]{2,5}$/;
         var regEName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-        if(regEmail.test(mid.val())) idvali = true;
+        if (regEmail.test(mid.val())) idvali = true;
         if ((mpass.val() == mpassCheck.val()) && pwcheck.test(mpass.val())) pwvali = true;
-        if (regHName.test(mname.val())) {namevali = true;} else if (regEName.test(mname.val())) {namevali = true;}
-        else {namevali = true;}
-        if(idvali&&dupidchk&&pwvali&&namevali) {
+        if (regHName.test(mname.val())) {
+            namevali = true;
+        } else if (regEName.test(mname.val())) {
+            namevali = true;
+        }
+        else {
+            namevali = true;
+        }
+        if (idvali && dupidchk && pwvali && namevali) {
             e.preventDefault();
-            var formData=$('#rf').serialize();
+            var formData = $('#rf').serialize();
             $.ajax({
                 url: "/php/data/registConfirm.php",
                 type: "POST",
                 data: formData,
                 dataType: 'json',
                 success: function (res) {
-                    if(res['result']=='reg'){
+                    if (res['result'] == 'reg') {
                         alert('회원가입이 완료되었습니다.이메일의 링크를 눌러 인증을 해주세요.');
-                    }else if(res['result']=='server error'){
+                    } else if (res['result'] == 'server error') {
                         alert('서버 에러입니다. 다시 시도해 주세요')
-                    }else if(res['result']=='check value'){
+                    } else if (res['result'] == 'check value') {
                         alert('입력값이 잘못되었습니다. 입력값을 확인해 주세요')
                     }
                 }
             })
-        }else{
+        } else {
             alert('아이디,비밀번호,이름을 확인해 주세요');
             return false;
         }
-        $('#rf').replaceWith('<div>인증메일을 보냈습니다.<br> 메일을 통해 ID를 인증해주세요.</div>');
+        $('#rf').fadeOut(function () {
+            $('#rf').replaceWith('<div>인증메일을 보냈습니다.<br> 메일을 통해 ID를 인증해주세요.</div>').fadeIn();
+        })
+    });
+
+    //비밀번호 찾기 버튼
+    $('#find-id').click(function () {
+        $('#r-div').fadeOut(function () {
+            $('#r-div').remove();
+            var findBtn = $('#find-id');
+            findBtn.after(
+                $('<div>').attr('id', 'find-id-div').append(
+                    $('<p>').addClass('alert alert-info').text('email을 입력하세요')
+                    , $('<input>').attr('type', 'text').addClass('form-control')
+                    , $('<button>').addClass('btn btn-default pass-find-btn').text('확인').attr('type','button').on('click', function () {
+                        $.ajax({
+                            url:'/php/api/findUser.php',
+                            dataType:'json',
+                            type:'POST',
+                            data:{email:$(this).siblings('input').val(),action:"find_pass"},
+                            success:function(res){
+                                console.log(res);
+                                if(res['status']==1) {
+                                    alert('입력된 이메일로 임시 비밀번호가 발급되었습니다.');
+                                }else if(res['status']==-2){
+                                    alert('이메일을 입력해 주세요.');
+                                }else if(res['status']==0){
+                                    alert('해당 이메일로 가입한 회원이 없습니다.');
+                                }
+                                window.location.reload()
+                            }
+                        })
+                    })
+                ).fadeIn()
+            )
+        })
     });
 });
