@@ -355,6 +355,7 @@ $(document).ready(function () {
     });
     //유튜브 태그 넣기
     var iframerex = /^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
+    var you_short=/^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
     $('.youtube-iframe').on('keyup', function (e) {
         var tag = $(this).val();
         if (iframerex.test(tag)) {
@@ -365,6 +366,8 @@ $(document).ready(function () {
             $(this).val('');
             var body = $(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
             body.append(tag).trigger('keyup');
+        }else if(you_short.test(tag)){
+            
         }
     })
 
