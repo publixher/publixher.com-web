@@ -33,6 +33,9 @@ if (!empty($_POST)) {
     $for_sale = $_POST['for_sale'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
+    /*$words=explode(' ',$body_text);
+    $words=array_count_values($words);
+    arsort($words);*/
     $body=iframe_crop($body);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 동영상의 길이를 통해 최대 크기를 치환
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기

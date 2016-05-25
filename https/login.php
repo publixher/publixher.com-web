@@ -132,78 +132,81 @@
             </tr>
         </table>
     </form>
+    <button type="button" id="find-id" class="btn btn-default">비밀번호 찾기</button>
     <br>
-    <form method='post' action='/php/data/registConfirm.php' id="rf">
-        <table>
-            <tr>
-                <td>아이디<br>(이메일)</td>
-                <td><input type='text' name='email' tabindex='5' id="mid" class='form-control'/></td>
-                <td>
-                    <div class="alert alert-danger" role="alert" id="idwrong"></div>
+    <div id="r-div">
+        <form method='post' action='/php/data/registConfirm.php' id="rf">
+            <table>
+                <tr>
+                    <td>아이디<br>(이메일)</td>
+                    <td><input type='text' name='email' tabindex='5' id="mid" class='form-control'/></td>
+                    <td>
+                        <div class="alert alert-danger" role="alert" id="idwrong"></div>
 
-                </td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type='password' name='pass' tabindex='6' id="mpass" class='form-control'/></td>
-                <td>
-                    <div class="alert alert-danger" role="alert" id="pwwrong"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>비밀번호 확인</td>
-                <td><input type="password" id="mpasscheck" tabindex="7" class='form-control'></td>
-                <td>
-                    <div class="alert alert-danger" role="alert" id="pwcheckwrong"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td><input type='text' name='name' tabindex='8' id="mname" class='form-control'/></td>
-                <td>
-                    <div class="alert alert-danger" role="alert" id="namewrong"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>성별</td>
-                <td><select name='sex' tabindex="9" class='form-control'>
-                        <option value="M">남자</option>
-                        <option value="F">여자</option>
-                    </select></td>
-            </tr>
-            <tr>
-                <td>생년월일<br>
-                    <p style="font-size: 10px;">ex)19920318</p></td>
-                <td><select name="byear" tabindex="10" id="years" class='form-control'
-                            style="width: 65px;display:inline"></select>
-                    <select name="bmonth" tabindex="11" id="months" class='form-control'
-                            style="width: 50px;display:inline"></select>
-                    <select name="bday" tabindex="12" id="days" class='form-control'
-                            style="width: 50px;display:inline"></select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="community">커뮤니티로 생성하기
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="가입하기" id="submit" class="btn btn-default" tabindex="13"
-                                       class='form-control'></td>
-            </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type='password' name='pass' tabindex='6' id="mpass" class='form-control'/></td>
+                    <td>
+                        <div class="alert alert-danger" role="alert" id="pwwrong"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" id="mpasscheck" tabindex="7" class='form-control'></td>
+                    <td>
+                        <div class="alert alert-danger" role="alert" id="pwcheckwrong"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type='text' name='name' tabindex='8' id="mname" class='form-control'/></td>
+                    <td>
+                        <div class="alert alert-danger" role="alert" id="namewrong"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td><select name='sex' tabindex="9" class='form-control'>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>생년월일<br>
+                        <p style="font-size: 10px;">ex)19920318</p></td>
+                    <td><select name="byear" tabindex="10" id="years" class='form-control'
+                                style="width: 65px;display:inline"></select>
+                        <select name="bmonth" tabindex="11" id="months" class='form-control'
+                                style="width: 50px;display:inline"></select>
+                        <select name="bday" tabindex="12" id="days" class='form-control'
+                                style="width: 50px;display:inline"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="community">커뮤니티로 생성하기
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="가입하기" id="submit" class="btn btn-default" tabindex="13"
+                                           class='form-control'></td>
+                </tr>
 
-        </table>
-    </form>
-    <div id="naver_id_login"></div>
-    <script>
-        var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");
-        naver_id_login.setButton("white", 3, 40)
-        //        naver_id_login.setPopup();
-        naver_id_login.setDomain(".publixher.com");
-        naver_id_login.setState("abcdefghijklmnoqstuv");
-        naver_id_login.init_naver_id_login();
-    </script>
-    <div onclick="facebooklogin()"><img src="/img/sorry.jpeg"></div>
+            </table>
+        </form>
+        <div id="naver_id_login"></div>
+        <script>
+            var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");
+            naver_id_login.setButton("white", 3, 40)
+            //        naver_id_login.setPopup();
+            naver_id_login.setDomain(".publixher.com");
+            naver_id_login.setState("abcdefghijklmnoqstuv");
+            naver_id_login.init_naver_id_login();
+        </script>
+        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>
+    </div>
 </div>
 </body>
 </html>
