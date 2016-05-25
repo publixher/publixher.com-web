@@ -325,6 +325,15 @@
                     <div role="tabpanel" class="tab-pane active" id="send">
                         <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)"
                              onkeyup="resize(this)"></div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <span class="pubico pico-youtube"></span>
+                            </button>
+                            <ul class="dropdown-menu hasInput" role="menu">
+                                <li><input type="text" class="form-control youtube-iframe"></li>
+                            </ul>
+                        </div>
                         <hr>
                         <table>
                             <tr>
@@ -352,6 +361,15 @@
                                 <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
                                 <div contenteditable="true" class="form-control" id="publiBody"
                                      oninput="resize(this)" onkeyup="resize(this)"></div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        <span class="pubico pico-youtube"></span>
+                                    </button>
+                                    <ul class="dropdown-menu hasInput" role="menu">
+                                        <li><input type="text" class="form-control youtube-iframe"></li>
+                                    </ul>
+                                </div>
                             </div>
                             <hr>
                             <table>

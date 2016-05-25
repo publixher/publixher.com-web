@@ -3,7 +3,7 @@ require_once __DIR__.'/htmlpurifier-4.7.0/library/HTMLPurifier.auto.php';
 // 기본 설정을 불러온 후 적당히 커스터마이징을 해줍니다.
 $config = HTMLPurifier_Config::createDefault();
 $config->set('Attr.EnableID', false);
-$config->set('Attr.DefaultImageAlt', '/img/alt_img.jpg');
+$config->set('Attr.DefaultImageAlt', '/img/alt_img.png');
 
 // 인터넷 주소를 자동으로 링크로 바꿔주는 기능
 $config->set('AutoFormat.Linkify', true);
@@ -12,7 +12,7 @@ $config->set('AutoFormat.Linkify', true);
 $config->set('HTML.MaxImgLength', null);
 $config->set('CSS.MaxImgLength', null);
 //이미지는 허용
-$config->set('HTML.Allowed','img[src|class],a[class],br,div,p,span[class]');
+$config->set('HTML.Allowed','img[src|class],a[class],br,div,p,span[class],iframe[src|allowfullscreen|width|height|frameborder]');
 $config->set('Attr.AllowedClasses',array('donate-span'=>true,'rep-tag'=>true,'gif'=>true));
 
 // 다른 인코딩 지원 여부는 확인하지 않았습니다. EUC-KR인 경우 iconv로 UTF-8 변환후 사용하시는 게 좋습니다.
@@ -22,6 +22,8 @@ $config->set('Core.Encoding', 'UTF-8');
 $config->set('HTML.Doctype', 'XHTML 1.0 Transitional');
 
 // 최근 많이 사용하는 iframe 동영상 삽입 허용
+$config->set('HTML.SafeIframe', true);
+$config->set('Filter.YouTube', true);
 $config->set('URI.SafeIframeRegexp', '#^(?:https?:)?//(?:'.implode('|', array(
         'www\\.youtube(?:-nocookie)?\\.com/',
         'maps\\.google\\.com/',
@@ -48,5 +50,9 @@ $config->set('URI.SafeIframeRegexp', '#^(?:https?:)?//(?:'.implode('|', array(
         'www\\.slideshare\\.net/',
     )).')#');
 // 설정을 저장하고 필터링 라이브러리 초기화
+$def = $config->getHTMLDefinition(true);
+
+$def->addAttribute('iframe', 'allowfullscreen', 'Bool');
+
 $purifier = new HTMLPurifier($config);
 ?>
