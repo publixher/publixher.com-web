@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/findUser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/profile.css" afterPath="$PROJECT_DIR$/css/profile.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.php" afterPath="$PROJECT_DIR$/https/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/regist.js" afterPath="$PROJECT_DIR$/https/regist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/upform.js" afterPath="$PROJECT_DIR$/js/upform.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/registConfirm.php" afterPath="$PROJECT_DIR$/php/data/registConfirm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/left.php" afterPath="$PROJECT_DIR$/php/left.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -142,15 +133,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
+            <state relative-caret-position="463">
               <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
               <folding>
                 <marker date="1464166210000" expanded="true" signature="737:880" placeholder="INSERT INTO publixher.TBL_USER... " />
                 <marker date="1464166210000" expanded="true" signature="1558:1619" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="587">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -180,18 +181,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="random_64.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/random_64.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1461566038000" expanded="true" signature="522:572" placeholder="SELECT ID FR... TBL_$" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -209,7 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/api/cms.php" />
         <option value="dbtable:/2c6f089c/97bdcd9a-9306-4506-87e5-4764f0d460c4/publixher.TBL_BUY_LIST" />
         <option value="$PROJECT_DIR$/php/api/getContent.php" />
         <option value="$PROJECT_DIR$/php/folderConfig.php" />
@@ -260,6 +248,7 @@
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/https/regist.js" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -623,21 +612,7 @@
       <workItem from="1463973675301" duration="16412000" />
       <workItem from="1464048373277" duration="2346000" />
       <workItem from="1464070597572" duration="10230000" />
-      <workItem from="1464135025112" duration="9004000" />
-    </task>
-    <task id="LOCAL-00201" summary="sql cache 지움">
-      <created>1463379855583</created>
-      <option name="number" value="00201" />
-      <option name="presentableId" value="LOCAL-00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1463379855583</updated>
-    </task>
-    <task id="LOCAL-00202" summary="로그인창 바꿈 hh">
-      <created>1463380095236</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1463380095236</updated>
+      <workItem from="1464135025112" duration="9154000" />
     </task>
     <task id="LOCAL-00203" summary="애니메이션 추가">
       <created>1463385399147</created>
@@ -968,11 +943,25 @@
       <option name="project" value="LOCAL" />
       <updated>1464084827158</updated>
     </task>
-    <option name="localTasksCounter" value="250" />
+    <task id="LOCAL-00250" summary="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중">
+      <created>1464166236123</created>
+      <option name="number" value="00250" />
+      <option name="presentableId" value="LOCAL-00250" />
+      <option name="project" value="LOCAL" />
+      <updated>1464166236124</updated>
+    </task>
+    <task id="LOCAL-00251" summary="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중">
+      <created>1464166266254</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1464166266254</updated>
+    </task>
+    <option name="localTasksCounter" value="252" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210133000" />
+    <option name="totallyTimeSpent" value="210283000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,12 +980,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.503231" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32552505" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2752475" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2752475" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251366" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30792078" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30792078" sideWeight="0.49676898" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1025,7 +1014,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ㅔㅔㅔ" />
     <MESSAGE value="노출권한 쿠키, 판매관리 스크립트 수정" />
     <MESSAGE value="Merge branch 'master' of github.com:publixher/publixher.com-web&#10;&#10;# Conflicts:&#10;#&#9;css/main.css&#10;#&#9;css/profile.css&#10;" />
     <MESSAGE value="프로필 사진 검색 됨" />
@@ -1050,7 +1038,8 @@
     <MESSAGE value="긴 컨텐츠는 오리지널은 길게" />
     <MESSAGE value="유튜브 넣기" />
     <MESSAGE value="엔터 안쳐도 되게" />
-    <option name="LAST_COMMIT_MESSAGE" value="엔터 안쳐도 되게" />
+    <MESSAGE value="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중" />
+    <option name="LAST_COMMIT_MESSAGE" value="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1069,13 +1058,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/best.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1606,12 +1588,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="463">
           <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
           <folding>
             <marker date="1464166210000" expanded="true" signature="737:880" placeholder="INSERT INTO publixher.TBL_USER... " />
             <marker date="1464166210000" expanded="true" signature="1558:1619" placeholder="INSERT INTO publixher.TBL_CONNECTOR... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
