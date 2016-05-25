@@ -11,14 +11,14 @@ if ($action == 'find_pass') {
         $prepare->execute(array('EMAIL' => $email));
         $idExist = $prepare->fetch(PDO::FETCH_ASSOC);
         //email이 있는지 확인
-        if ($idExist) {
+        if ($idExist['COUNT']>0) {
             require_once '../../lib/random_64.php';
             require_once '../../lib/Sendmail.php';
 
             $from = "publixher.com";
             $subject = 'publixher.com의 임시 비밀번호 입니디.';
             $tmp_pass = rand64(15);
-            $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+            $hash = password_hash($tmp_pass, PASSWORD_DEFAULT);
             $sendmail = new Sendmail();   //기본설정을 사용
             $body = "
     <p>publixher의 임시 비밀번호입니다.</p>
@@ -30,13 +30,15 @@ if ($action == 'find_pass') {
             $prepare = $db->prepare($sql);
             $prepare->execute(array('PASSWORD' => $hash, 'EMAIL' => $email));
             $sendmail->send_mail($email, $from, $subject, $body);
-            $result = array('status' => 1);
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            echo json_encode(array('status' => 1), JSON_UNESCAPED_UNICODE);
+            exit;
         } else {
             echo json_encode(array('status' => 0), JSON_UNESCAPED_UNICODE);
+            exit;
         }
     } else {
         echo json_encode(array('status' => -2), JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }
 ?>
