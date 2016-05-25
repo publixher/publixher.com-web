@@ -223,7 +223,6 @@ $(document).ready(function () {
                             type:'POST',
                             data:{email:$(this).siblings('input').val(),action:"find_pass"},
                             success:function(res){
-                                console.log(res);
                                 if(res['status']==1) {
                                     alert('입력된 이메일로 임시 비밀번호가 발급되었습니다.');
                                 }else if(res['status']==-2){
