@@ -74,9 +74,7 @@
         var usermonth='<?=$birth[1]?>';
         var userday='<?=$birth[2]?>';
     </script>
-    <?php
-    if($usercom==0){
-    ?>
+
     <form method='post' action='/php/data/profileChange.php' id="pf">
         <input type="hidden" name="action" value="profilechange">
         <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
@@ -164,8 +162,7 @@
             </tr>
         </table>
     </form>
-    <?php }
-
+<?php
     if ($userinfo->getISNICK() == 'N' && $userinfo->getCOMMUNITY()==0) { ?>
         <form method='post' action='/php/data/profileChange.php'>
             <input type="hidden" name="action" value="anonyregist">
