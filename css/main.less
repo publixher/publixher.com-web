@@ -87,10 +87,13 @@ body {
             border: 0;
             padding: 6px 0;
             img {
-              max-width: 484px !important;
-              max-height: 484px !important;
+              max-width: 510px !important;
+              max-height: 510px !important;
               margin-top: 5px;
               margin-bottom: 5px;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
             }
           }
           #sendBody {
@@ -102,10 +105,13 @@ body {
             border: 0;
             padding: 6px 0;
             img {
-              max-width: 484px !important;
-              max-height: 484px !important;
+              max-width: 510px !important;
+              max-height: 510px !important;
               margin-top: 5px;
               margin-bottom: 5px;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
             }
           }
           hr {
@@ -247,15 +253,14 @@ body {
       }
       .subrep {
         width: 469px;
-        margin-left: 39px;
-        border-left: 2px solid rgb(215, 215, 215);
+        margin-left: 42px;
       }
       .commentReg_sub {
         width: 460px !important;
         margin-left: 4px;
         border-radius: 0;
         box-shadow: inset 0 0 0;
-        padding: 4px 0 4px 10px;
+        padding: 5px 10px 5px 10px;
         font-size: 12px;
         border: 1px solid #ddd;
         min-height: 32px;
@@ -264,7 +269,7 @@ body {
         width: 508px !important;
         border-radius: 0;
         box-shadow: inset 0 0 0;
-        padding: 5px 0 4px 10px;
+        padding: 5px 10px 5px 10px;
         font-size: 12px;
         border: 1px solid #ddd;
         min-height: 32px;
@@ -281,7 +286,6 @@ body {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          border-radius: 50%;
         }
         .writer {
           font-size: 14px;
@@ -359,7 +363,7 @@ body {
           cursor: pointer;
           padding: 6px 3px 6px 0;
           border-radius: 0;
-          width: 90px;
+          width: 100%;
           background-color: transparent;
           text-align: center;
         }
@@ -385,7 +389,6 @@ body {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border-radius: 50%;
           }
           .rep {
             width: 452px;
@@ -719,9 +722,7 @@ li a {
 #repnav-.nav-tabs > li.active > a,
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
-  border: 1px solid #ddd;
-  border-bottom: 1px solid #f9f9f9;
-  border-top: 1px solid transparent;
+  border: 0;
 }
 
 .blank {
@@ -762,10 +763,6 @@ li a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: -1px;
-}
-
-.bestrep {
-  border-left: 0px !important;;
 }
 
 .load-item {
@@ -843,6 +840,9 @@ li a {
   height: 50px;
   margin-right: 10px;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .rep-profilepic-wrap{
   position: relative;
@@ -851,6 +851,9 @@ li a {
   margin: 0 5px 0 5px;
   vertical-align: top;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .subpic-wrap{
   width: 26px;
@@ -860,6 +863,9 @@ li a {
   float: left;
   position: relative;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .opend-comment>table{
   border-bottom: 1px solid #e3e3e3
@@ -986,6 +992,9 @@ li a {
   float: left;
   position: relative;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .noti-img,
 .pin-pic{
@@ -1035,10 +1044,12 @@ li a {
 .reply-tag-btn {
   float: right;
   margin-top: -33px;
+  padding: 6px 12px 6px 6px !important;
 }
 .donate-btn {
   float: right;
   margin-top: -33px;
+  padding: 6px 6px !important;
 }
 .reply-tag-btn,
 .donate-btn {
@@ -1055,6 +1066,28 @@ li a {
   border-color: transparent !important;
   outline: 0 !important;
   box-shadow: 0 0 0 !important;
+}
+.donate-form,
+.rep-tag-input{
+  border: 0 !important;
+  box-shadow: inset 0 0 0 !important;
+}
+.rep_tag-ul,
+.donate-input-ul{
+  left: 60%;
+  right:0;
+  padding: 0;
+  height:36px;
+}
+.donate-span{
+  color: #C35D5B;
+  background: #FFDBDB;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 4px;
+  line-height:1.8em;
+  margin-right: 5px;
 }
 .new-folder{
   margin-top: -22px;
@@ -1155,6 +1188,15 @@ a:hover{
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle{
   border: 0;
   border-bottom: 1px solid #f4f4f4;
+}
+#repnav-{
+  border: 0;
+}
+#repnav->li{
+  width: 33%
+}
+.subrep .rep{
+  width: 410px !important;
 }
 //gif
 .gifplayer-ready{
