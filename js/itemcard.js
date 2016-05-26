@@ -2,6 +2,16 @@
  * Created by gangdong-gyun on 2016. 3. 30..
  */
 $(document).ready(function () {
+    //아이템이 접히거나 다 봤을때 정보를 수집하기
+    function readDone(item,user,time){
+        $.ajax({
+            url:'/php/api/actionData.php',
+            dataType:'json',
+            type:'POST',
+            data:{itemID:item,userID:user,time:time,action:"readDone"}
+        })
+    }
+    
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);
@@ -753,6 +763,7 @@ $(document).ready(function () {
 
     });
     //구매버튼(가격표시)동작
+    var itemPool=window['item_pool']=new Array();
     var previewarr = [];
     $(document).on("click", ".price", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -796,12 +807,14 @@ $(document).ready(function () {
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function () {
-                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn().find('.gif').gifplayer({
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function(){
+                            //확장된 순간부터 해당 게시물 읽은 시간을 기록한다
+                            itemPool.push({'time':new Date(),'scroll_end':$('#'+thisitemID).position().top+$('#'+thisitemID).height(),'ID':thisitemID});
+                        }).find('.gif').gifplayer({
                             playOn: 'hover',
                             wait: true
                         });  //gif 재생
-                        //확장된 순간부터 해당 게시물 읽은 시간을 기록한다
-                        window[''+thisitemID+'_start']=new Date();
+
                     });
                     priceSpan.fadeOut(function () {
                         priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
@@ -826,8 +839,10 @@ $(document).ready(function () {
             priceSpan.removeClass('expanded').addClass('bought');
             //접는 순간 해당 게시물 읽은 시간을 구한다
             var now=new Date();
-            var gap=(now.getTime()-window[thisitemID+'_start'].getTime())/1000;
-            window[thisitemID+'_start']=null;
+            var itemIndex=findIndex(itemPool,'ID',thisitemID);
+            var gap=(now.getTime()-itemPool[itemIndex]['time'].getTime())/1000;
+            readDone(thisitemID,mid,gap);
+            itemPool.splice(itemIndex,1);
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
             priceSpan.append('&nbsp;<a>구매하기?</a>')
@@ -1299,8 +1314,30 @@ $(document).ready(function () {
         getCards();
 
     })
+    //스크롤할때 열린 아이템보다 스크롤이 아래 있으면 스크롤 추적 끝내고 해당 시간변수 삭제
+    $(document).scroll(function(){
+        var scrollTop=$(document).scrollTop()+300;
+        $.each(itemPool,function(index,val){
+            if(scrollTop>val.scroll_end){
+                //사람이 다 봤으면 데이터 보내기 시작
+                var now=new Date();
+                var gap=(now.getTime()-itemPool[findIndex(itemPool,'ID',val.ID)]['time'].getTime())/1000;
+                readDone(val.ID,mid,gap);
+                itemPool.splice(index,1);
+            }
+        })
+    })
 });
 
+//오브젝트 안에서 키의 값이 특정값인 인덱스 찾기(한개만)
+function findIndex(array,attr,val){
+    var len=array.length;
+    for(var i=0;i<len;i++){
+        if(array[i][attr]===val){
+            return i;
+        }
+    }
+}
 //텍스트에이리어 입력시 자동 크기조정
 function resize(obj) {
     obj.style.height = "1px";
