@@ -18,6 +18,12 @@ class imaging
     private $order=0;
     private $origin=false;
     private $exif;
+    private $gif_crop=false;
+
+    //set git crop
+    public function set_gifCrop($boolean){
+        $this->gif_crop=$boolean;
+    }
 
     //Set order
     public function set_origin($boolean){
@@ -181,11 +187,13 @@ class imaging
 
             if($this->resize) {
                 imagepng($this->img_output, str_replace('.gif','.png',$path));
-                copy($this->img_src, $path);
+                if($this->gif_crop) imagegif($this->img_output, $path);
+                else copy($this->img_src, $path);
             }
             else {
                 imagepng($this->img_input, str_replace('.gif','.png',$path));
-                copy($this->img_src, $path); 
+                if($this->gif_crop) imagegif($this->img_input, $path);
+                else copy($this->img_src, $path);
             }
 
         }
