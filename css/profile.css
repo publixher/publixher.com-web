@@ -1146,10 +1146,12 @@ li a {
 .reply-tag-btn {
   float: right;
   margin-top: -33px;
+  padding: 6px 12px 6px 6px !important;
 }
 .donate-btn {
   float: right;
   margin-top: -33px;
+  padding: 6px 6px !important;
 }
 .reply-tag-btn,
 .donate-btn {
@@ -1295,7 +1297,7 @@ a:hover {
   width: 33%
 }
 .subrep .rep{
-  width: 460px;
+  width: 410px !important;
 }
 .gifplayer-ready {
   margin-top: 0 !important;
