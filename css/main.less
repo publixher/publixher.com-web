@@ -364,7 +364,7 @@ body {
           cursor: pointer;
           padding: 6px 3px 6px 0;
           border-radius: 0;
-          width: 90px;
+          width: 100%;
           background-color: transparent;
           text-align: center;
         }
@@ -723,9 +723,7 @@ li a {
 #repnav-.nav-tabs > li.active > a,
 #repnav-.nav-tabs > li.active > a:focus,
 #repnav-.nav-tabs > li.active > a:hover {
-  border: 1px solid #ddd;
-  border-bottom: 1px solid #f9f9f9;
-  border-top: 1px solid transparent;
+  border: 0;
 }
 
 .blank {
@@ -766,10 +764,6 @@ li a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: -1px;
-}
-
-.bestrep {
-  border-left: 0px !important;;
 }
 
 .load-item {
@@ -1171,6 +1165,12 @@ a:hover{
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle{
   border: 0;
   border-bottom: 1px solid #f4f4f4;
+}
+#repnav-{
+  border: 0;
+}
+#repnav->li{
+  width: 33%
 }
 //gif
 .gifplayer-ready{
