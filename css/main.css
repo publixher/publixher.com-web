@@ -83,10 +83,13 @@ body {
   padding: 6px 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img {
-  max-width: 484px !important;
-  max-height: 484px !important;
+  max-width: 510px !important;
+  max-height: 510px !important;
   margin-top: 5px;
   margin-bottom: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody {
   z-index: 1;
@@ -98,10 +101,13 @@ body {
   padding: 6px 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
-  max-width: 484px !important;
-  max-height: 484px !important;
+  max-width: 510px !important;
+  max-height: 510px !important;
   margin-top: 5px;
   margin-bottom: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0 0;
@@ -279,7 +285,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
 }
 #wrap #middle .item .header .writer,
 #wrap #middle .item-for-sale .header .writer {
@@ -409,7 +414,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
 }
 #wrap #middle .item .tail .commentReply .rep,
 #wrap #middle .item-for-sale .tail .commentReply .rep {
@@ -845,6 +849,9 @@ li a {
   height: 50px;
   margin-right: 10px;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .rep-profilepic-wrap {
   position: relative;
@@ -853,6 +860,9 @@ li a {
   margin: 0 5px 0 5px;
   vertical-align: top;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .subpic-wrap {
   width: 26px;
@@ -862,6 +872,9 @@ li a {
   float: left;
   position: relative;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .opend-comment > table {
   border-bottom: 1px solid #e3e3e3;
@@ -987,6 +1000,9 @@ li a {
   float: left;
   position: relative;
   overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .noti-img,
 .pin-pic {
