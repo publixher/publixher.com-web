@@ -6,38 +6,28 @@ if ($action == 'find_pass') {
     $check_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     if ($check_email) {
         $email = $_POST['email'];
-        $sql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
+        $sql = "SELECT SUBSTRING(PASSWORD,20,8) FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $prepare = $db->prepare($sql);
         $prepare->execute(array('EMAIL' => $email));
-        $idExist = $prepare->fetch(PDO::FETCH_ASSOC);
+        $key = $prepare->fetchColumn();
         //email이 있는지 확인
-        if ($idExist['COUNT']>0) {
-            require_once '../../lib/random_64.php';
+        if ($key) {
             require_once '../../lib/Sendmail.php';
 
             $from = "publixher.com";
-            $subject = 'publixher.com의 임시 비밀번호 입니디.';
-            $tmp_pass = rand64(15);
-            $hash = password_hash($tmp_pass, PASSWORD_DEFAULT);
+            $subject = 'publixher.com 회원 인증번호 입니다.';
             $sendmail = new Sendmail();   //기본설정을 사용
-            $body = "
-    <p>publixher의 임시 비밀번호입니다.</p>
-    <p><b>임시 비밀번호</b> : ${tmp_pass}</p>
-    <p>로그인 후 회원정보에서 비밀번호를 수정하라냥.</p>
-    ";
-
-            $sql = "UPDATE publixher.TBL_USER SET PASSWORD=:PASSWORD WHERE EMAIL=:EMAIL";
-            $prepare = $db->prepare($sql);
-            $prepare->execute(array('PASSWORD' => $hash, 'EMAIL' => $email));
+            $body = "<p>publixher의 회원 인증번호 입니다.</p>
+    <p><b>인증번호</b> : ${key}</p>";
             $sendmail->send_mail($email, $from, $subject, $body);
-            echo json_encode(array('status' => 1), JSON_UNESCAPED_UNICODE);
+            echo '{"status":1}';
             exit;
         } else {
-            echo json_encode(array('status' => 0), JSON_UNESCAPED_UNICODE);
+            echo '{"status":0}';
             exit;
         }
     } else {
-        echo json_encode(array('status' => -2), JSON_UNESCAPED_UNICODE);
+        echo '{"status":-2}';
         exit;
     }
 }
