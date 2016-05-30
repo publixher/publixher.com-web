@@ -1,4 +1,4 @@
-<script src="../js/market.js"></script>
+<script src="/js/best.js"></script>
 <div class="market">
     <div id="market-nav">
         <div id="market-nav-carousel" class="carousel slide" data-ride="carousel" data-pause="hover">
@@ -13,15 +13,9 @@
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="now">
-                                <div class="market-item">
-                                    <div class="market-itemimg-container"><img src="/img/r_cheer.jpg"></div>
-                                    <span class="item-title">타이틀</span>
-                                    <span class="item-writer">이름</span>
-                                    <span class="item-category">카테고리</span>
-                                </div>
+                            <div role="tabpanel" class="tab-pane active" id="now-hot-list">
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="daily">핫핫</div>
+                            <div role="tabpanel" class="tab-pane" id="daily-hot-list"></div>
                         </div>
                     </div>
                 </div>
@@ -34,8 +28,8 @@
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="monthly">호이호이</div>
-                            <div role="tabpanel" class="tab-pane" id="your">너무 뜨거워!</div>
+                            <div role="tabpanel" class="tab-pane active" id="monthly-hot-list"></div>
+                            <div role="tabpanel" class="tab-pane" id="your"></div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <div id="right">
     <?php
     require "conf.php";
-    require "best.php";
+    require "market.php";
     ?>
 </div>

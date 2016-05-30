@@ -223,14 +223,16 @@ $(document).ready(function () {
                             type:'POST',
                             data:{email:$(this).siblings('input').val(),action:"find_pass"},
                             success:function(res){
+                                console.log(res);
                                 if(res['status']==1) {
-                                    alert('입력된 이메일로 임시 비밀번호가 발급되었습니다.');
+                                    var p=$('<p>').text('입력한 메일로 보내진 인증번호를 입력하세요');
+                                    var i=$('<input>').addClass('form-control');
+                                    $('#find-id-div').html(p,i);
                                 }else if(res['status']==-2){
                                     alert('이메일을 입력해 주세요.');
                                 }else if(res['status']==0){
                                     alert('해당 이메일로 가입한 회원이 없습니다.');
                                 }
-                                window.location.reload()
                             }
                         })
                     })
