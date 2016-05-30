@@ -511,15 +511,15 @@ body {
 }
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
-  padding-top: 0;
+  padding: 5px;
 }
 #wrap #right .conf #controller .btn-group ul li:hover {
   background-color: #f4f4f4;
 }
 #wrap #right .conf #controller .btn-group ul li a {
-  width: 100%;
+  width: 81%;
   text-decoration: none;
-  color: #444;
+  color: #434343;
   font-size: 12px;
 }
 #wrap #right .conf #controller #usrpic {
@@ -1015,7 +1015,6 @@ li a {
 #notilist li a,
 .pin-list a {
   display: inline-block !important;
-  width: 230px !important;
   min-height: 50px !important;
   white-space: normal;
   padding: 3px 10px !important;

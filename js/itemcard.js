@@ -27,7 +27,8 @@ $(document).ready(function () {
                 if (res['result'] != 'N') {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                 } else if (res['reason'] == 'already') {
-                    alert('이미 노크하신 게시물입니다.');
+                    alert('노크를 취소했습니다.');
+                    $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                 }
             }, error: function (request, status, error) {
                 alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -1189,7 +1190,7 @@ $(document).ready(function () {
             alert('가격은 숫자로 입력해 주세요.');
             $('#contentCost-mod').focus();
             costvali_mod = false;
-        } else if (contentCost.val().parseint > 65535) {
+        } else if (parseInt(contentCost.val())> 65535) {
             alert('65535픽 이상은 입력되지 않습니다.');
             costvali_mod = false;
         } else {
