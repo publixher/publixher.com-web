@@ -191,6 +191,7 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_ANONY', $userID);
     $prepare->bindValue(':ID_USER', $userID);
+    $prepare->bindValue(':POINT', $_POST['point']);
     $prepare->execute();
     echo '{"status":1}';
 }

@@ -25,19 +25,14 @@
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.1-min.js"></script>
     <script src="/js/plugins.js"></script>
-    <!--움직이는 svg아이콘-->
-    <script src="/plugins/AnimatedSVGIcons-master/js/snap.svg-min.js"></script>
-    <script src="/plugins/AnimatedSVGIcons-master/js/svgicons-config.js"></script>
-    <script src="/plugins/AnimatedSVGIcons-master/js/svgicons.js"></script>
-    <link href="/plugins/AnimatedSVGIcons-master/css/component.css" rel="stylesheet">
 </head>
 <body>
+
 <div id="wrap">
     <?php
     require_once "../conf/User.php";
     session_start();
     require_once "../lib/loginchk.php";
-
     require "left.php";
     require "middle.php";
     require "right.php";

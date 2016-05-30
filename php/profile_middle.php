@@ -460,13 +460,3 @@
 <script src="/js/upform.js"></script>
 <script src="/js/topcon.js"></script>
 <script src="/js/profilenav.js"></script>
-<!--움직이는 svg아이콘-->
-<script src="/plugins/AnimatedSVGIcons-master/js/snap.svg-min.js"></script>
-<script src="/plugins/AnimatedSVGIcons-master/js/svgicons-config.js"></script>
-<script src="/plugins/AnimatedSVGIcons-master/js/svgicons.js"></script>
-<link href="/plugins/AnimatedSVGIcons-master/css/component.css" rel="stylesheet">
-<script>
-    [].slice.call(document.querySelectorAll('.si-icon')).forEach(function (el) {
-        var svgicon = new svgIcon(el, svgIconConfig);
-    });
-</script>
