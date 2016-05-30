@@ -701,7 +701,7 @@ li a {
   box-shadow: inset 0 0 0;
   width: 96%;
   margin-left: 2%;
-  margin-top: 5px
+  margin-top: 5px;
   padding: 0;
 }
 #publiBody-mod {
@@ -758,7 +758,7 @@ li a {
 #subcategorySelect,
 #categorySelect-mod,
 #subcategorySelect-mod {
-  margin-top: 0px;
+  margin-top: 0;
   width: 133px;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
@@ -1217,6 +1217,7 @@ a:hover {
 .gifplayer-ready {
   margin-top: 0 !important;
 }
+#mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
   border: 0;
