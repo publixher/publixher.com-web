@@ -1,5 +1,9 @@
 body {
-    background-color: #e5e5e5;
+    background-image: url("/img/origin/295b6704edba269215fbfb556309a905.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
@@ -13,13 +17,38 @@ body {
 
 #center {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 20%;
+    left: 5%;
     overflow: hidden;
-    margin-top: -150px;
-    margin-left: -160px;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 10px;
 }
-
+#center form table{
+    width: 70%;
+    margin: 0 auto;
+}
+#center form table tbody tr:first-child td input{
+    margin-top: 5%;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#center form table tbody tr:nth-child(2) td input{
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#center form table .btn-default{
+    width: 100%;
+    border: 0;
+}
+#find-id{
+    width: 70%;
+    display:block;
+    margin: 0 auto;
+    border: 0;
+}
 #years{
     width: 80px !important;
 }
