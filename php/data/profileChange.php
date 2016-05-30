@@ -191,5 +191,13 @@ WHERE CONN.ID_ANONY = :ID";
     $p->bindValue(':EXPAUTH',$_POST['checkValue']);
     $p->bindValue(':ID',$_POST['userID']);
     $p->execute();
+}elseif($_POST['action']=='charge'){
+    $sql="UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT+:POINT WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
+    $prepare = $db->prepare($sql);
+    $prepare->bindValue(':ID_ANONY', $userID);
+    $prepare->bindValue(':ID_USER', $userID);
+    $prepare->bindValue(':POINT', $_POST['point']);
+    $prepare->execute();
+    echo '{"status":1}';
 }
 ?>

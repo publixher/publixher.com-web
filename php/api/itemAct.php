@@ -81,7 +81,17 @@ if ($act == 'knock') {
 //            }
 //        }
     } else {
-        echo '{"status":-3}';
+        $prepare=$db->prepare("DELETE FROM publixher.TBL_KNOCK_LIST WHERE ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT");
+        $prepare->execute(array('ID_USER'=>$userID,'ID_CONTENT'=>$ID));
+        $prepare=$db->prepare("UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK-1 WHERE ID=:ID");
+        $prepare->execute(array('ID'=>$ID));
+        $prepare=$db->prepare("DELETE FROM publixher.TBL_CONTENT_NOTI WHERE ID_CONTENT=:ID_CONTENT AND ID_ACTOR=:ID_ACTOR AND ACT=4");
+        $prepare->execute(array('ID_CONTENT'=>$ID,'ID_ACTOR'=>$userID));
+        $prepare=$db->prepare("UPDATE publixher.TBL_PIN_LIST SET KNOCK=IF(KNOCK>0,KNOCK-1,0) WHERE ID_CONTENT=:ID_CONTENT");
+        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $prepare=$db->prepare("SELECT KNOCK FROM publixher.TBL_CONTENT WHERE ID=:ID");
+        $prepare->execute(array('ID'=>$ID));
+        echo '{"status":-3,"KNOCK":'.$prepare->fetchColumn().'}';
     }
 } elseif ($act == 'comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
