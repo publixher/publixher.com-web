@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 body {
     background-image: url("/img/origin/295b6704edba269215fbfb556309a905.jpg");
     background-repeat: no-repeat;
@@ -23,7 +21,7 @@ body {
     overflow: hidden;
     background-color: white;
     opacity: 0.9;
-    width: 300px;
+    width: 400px;
     height: 100%;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -62,75 +60,6 @@ body {
 #years{
     width: 80px !important;
 }
-<<<<<<< HEAD
-#months, #days {
-    width: 70px !important;
-}
->>>>>>> 6009081a49836f989ea2b497eb3afd1e0a750910
-body {
-    background-image: url("/img/origin/295b6704edba269215fbfb556309a905.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-
-#idwrong, #pwwrong, #pwcheckwrong, #namewrong {
-    display: none;
-    height: 26px;
-    width: 340px;
-    text-align: center;
-    margin: 0;
-    padding: 5px 5px 5px 5px;
-}
-
-#center {
-    position: absolute;
-    right: 0;
-    overflow: hidden;
-    background-color: white;
-    opacity: 0.9;
-    width: 300px;
-    height: 100%;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
-}
-#center form table{
-    width: 80%;
-    margin: 0 auto;
-}
-#center form table tbody tr:first-child td input{
-    margin-top: 5%;
-    border-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    box-shadow: inset 0 0 0;
-}
-#center form table tbody tr:nth-child(2) td input{
-    border-top: 1px solid #e3e3e3;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    box-shadow: inset 0 0 0;
-}
-#center form table tbody tr td input,
-#center form table tbody tr td select{
-    box-shadow: inset 0 0 0;
-    border: 1px solid #e3e3e3
-}
-#center form table .btn-default{
-    width: 100%;
-    border: 0;
-}
-#find-id{
-    width: 80%;
-    display:block;
-    margin: 0 auto;
-    border: 0;
-}
-#years{
-    width: 80px !important;
-}
-=======
->>>>>>> 6919c424980d67b5c6baf38377be5762ffc66ab9
 #months, #days{
     width: 70px !important;
 }
