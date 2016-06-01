@@ -1315,9 +1315,6 @@ $(document).ready(function () {
             });
         }
     })
-    $(document).on("dragstart", "img,a", function () {
-        return false;
-    });
     //게시글의 카테고리 클릭시 게시글 카드 다 지우고 loadOption 다시작성해서 요청
     $(document).on('click', '.item-category,.item-sub_category', function () {
         var category = $(this).hasClass('item-category') ? $(this).text() : $(this).siblings('.item-category').text();
