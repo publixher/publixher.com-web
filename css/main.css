@@ -726,12 +726,19 @@ li a {
 }
 #mod-form #mod-pane .dropdown .dropdown-toggle {
   text-align: center;
-  width: 130px;
-  margin-left: 2px;
+  width: 100%;
+  padding: 5px 0;
+  margin: 0 0 1px 0;
+}
+#mod-pane .nav-tabs>li{
+  width: 50% !important;
+}
+#mod-pane ul li ul,
+#mod-pane ul li ul li{
+  width: 100%;
 }
 #mod-form #mod-pane .dropdown-menu {
   text-align: center;
-  margin-left: 2px;
   border-top: 1px solid transparent;
 }
 .accordion-inner {
