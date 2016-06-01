@@ -340,11 +340,11 @@ $(document).ready(function () {
                     type: "POST",
                     data: {folder: folderName, action: "newfolder"},
                     success: function (res) {
-                        form.parent().before(
+                        $('#dirSublist li:last-child').before(
                             $('<li>').attr('folderid', res['ID']).append(
                                 $('<a>').attr('href', '#').text(folderName))
                                 .fadeIn()
-                        );
+                        )
                         //수정을 위한 모달에도 추가
                         $('#dirSublist-mod li:last-child').before(
                             $('<li>').attr('folderid', res['ID']).append(
