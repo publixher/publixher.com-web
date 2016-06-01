@@ -924,7 +924,9 @@ $(document).ready(function () {
 
                     if (res['CATEGORY']) {
                         $('#category-mod').text(res['CATEGORY']);
+                        category_mod = res['CATEGORY'];
                         $('#sub-category-mod').text(res['SUB_CATEGORY']);
+                        sub_category_mod = res['SUB_CATEGORY'];
                     } else {
                         $('#category-mod').text('분류');
                         $('#sub-category-mod').text('하위분류');

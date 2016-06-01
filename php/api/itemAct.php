@@ -279,7 +279,7 @@ LIMIT
     banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
-    $br = "/(\<br\>){3,}/i";
+    $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['contID'];
     $comment = preg_replace($br, '<br><br>', $_POST['comment']);
@@ -697,7 +697,7 @@ LIMIT :INDEX, 6";
     banCheck($_POST['userID'],$db,-9 );
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
-    $br = "/(\<br\>){3,}/i";
+    $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
     $userID = $_POST['userID'];
     $ID = $_POST['contID'];
     $comment = preg_replace($br, '<br><br>', $_POST['comment']);

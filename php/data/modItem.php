@@ -53,6 +53,19 @@ if ($action == 'get_item') {
     }
     $body=preg_replace($gallery,"",$body);
     $previewimg = $imgs[1][0][0];
+    //더보기가 있어야할지 검사
+    $bodylen = mb_strlen($body, 'utf-8');
+    if (!$previewimg and $bodylen <= 400) {
+        $more = 0;
+    } elseif ($previewimg and !$imgs[1][1] and $bodylen <= 200) {
+        if ($for_sale) {
+            $more = 1;
+        } else {
+            $more = 0;
+        }
+    } else {
+        $more = 1;
+    }
     $blured;//오타 아님 정의해야해서 하는
     for ($i = 1; $i < count($imgs[1]); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
@@ -103,9 +116,9 @@ if ($action == 'get_item') {
     $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
 
     if (!$_POST['for_sale']) {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
     }
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $id);
@@ -116,6 +129,7 @@ if ($action == 'get_item') {
     $prepare->bindValue(':ORIGINAL', $originData, PDO::PARAM_STR);
     $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
     $prepare->bindValue(':TAG', $_POST['tag'] ? implode(' ', json_decode($_POST['tag'])) : null, PDO::PARAM_STR);
+    $prepare->bindValue(':MORE',$more);
 
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
