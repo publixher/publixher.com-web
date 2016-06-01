@@ -281,9 +281,9 @@ $(document).ready(function () {
             var upp = $('#up-progress');
             upp.css('width', progress + '%');
             if (progress == 100) {
-                upp.remove()
-                $('#sendBody').trigger('keyup')
-                $('#publiBody').trigger('keyup')
+                // upp.remove()
+                // $('#sendBody').trigger('keyup')
+                // $('#publiBody').trigger('keyup')
             }
         }, start: function (e) {
             if (this == $('#fileuploads')[0]) {
@@ -294,6 +294,9 @@ $(document).ready(function () {
                 publiBody.html(publiBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             }
         }, done: function (e, data) {
+            upp.remove()
+            $('#sendBody').trigger('keyup')
+            $('#publiBody').trigger('keyup')
             var gif = data.files[0].type == 'image/gif' ? true : false;
             var img = $('<img>').attr('src', '/img/' + data.result['files']['file_crop']).addClass('BodyPic');
             if (gif) img.addClass('gif');
