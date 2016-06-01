@@ -207,35 +207,99 @@ $(document).ready(function () {
         })
     });
 
+    function valid_pass() {
+        $.ajax({
+            url:'/php/api/findUser.php',
+            dataType:'json',
+            type:'POST',
+            data:{email:document.email_to_find,action:"valid_pass",valid:$('#find-id-div input').val()},
+            success:function(res){
+                if(res['status']==1){
+                    document.valid_to_pass=$('#find-id-div input').val();
+                    alert('인증되었습니다.')
+
+                    var d=$('#find-id-div');
+                    d.fadeOut(function(){
+                        d.find('p').text('변경할 비밀번호를 입력해 주세요.')
+                        d.find('input').attr({placeholder:'비밀번호',type:'password'}).val('').addClass('pass-change').clone().attr('placeholder','비밀번호 확인').removeClass('pass-change').addClass('pass-change-confirm').insertAfter('.pass-change');
+                        d.find('button').removeClass('pass-valid-btn').off('click').addClass('pass-change-btn').on('click',change_pass);
+                        d.fadeIn();
+                    });
+                }else if(res['status']==0){
+                    alert('인증번호가 틀립니다.');
+                }
+            }
+        })
+    }
+
+    function find_pass() {
+        $.ajax({
+            url: '/php/api/findUser.php',
+            dataType: 'json',
+            type: 'POST',
+            data: {email: $('#find-id-div input').val(), action: "find_pass"},
+            success: function (res) {
+                if (res['status'] == -2) {
+                    alert('이메일을 입력해 주세요.');
+                } else if (res['status'] == 0) {
+                    alert('해당 이메일로 가입한 회원이 없습니다.');
+                }
+            }, complete: function (res) {
+                if (res['statusText'] == 'OK') {
+                    document.email_to_find=$('#find-id-div input').val();
+                    $('#find-id-div').fadeOut(function () {
+                        var d=$('#find-id-div');
+                        d.find('p').text('email로 전송받은 인증번호를 입력해 주세요.');
+                        d.find('input').attr('placeholder','인증번호').val('');
+                        d.find('button').removeClass('pass-find-btn').off('click').addClass('pass-valid-btn').on('click',valid_pass);
+                        d.fadeIn();
+                    })
+                }
+            }
+        })
+    }
+
+    function change_pass(){
+        var pwcheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,16}$/;
+        if($('.pass-change').val()==$('.pass-change-confirm').val()) {
+            if(pwcheck.test($('.pass-change').val())) {
+                $.ajax({
+                    url: '/php/api/findUser.php',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        email: document.email_to_find,
+                        valid: document.valid_to_pass,
+                        pass: $('.pass-change').val(),
+                        action: "change_pass"
+                    },
+                    success: function (res) {
+                        if (res['status'] == 1) {
+                            alert('성공적으로 바뀌었습니다.');
+                            window.location.reload();
+                        } else if (res['status'] == -2) {
+                            alert('올바른 인증번호가 아닙니다.');
+                        }
+                    }
+                })
+            }else{
+                alert('비밀번호는 영문,숫자 6~16자 조합으로 해주세요.');
+            }
+        }else{
+            alert('비밀번호와 비밀번호 확인의 값이 다릅니다.')
+        }
+    }
+
     //비밀번호 찾기 버튼
-    $('#find-id').click(function () {
+    $('#find-id').on('click',function () {
         $('#r-div').fadeOut(function () {
             $('#r-div').remove();
             var findBtn = $('#find-id');
             findBtn.after(
                 $('<div>').attr('id', 'find-id-div').append(
                     $('<p>').addClass('alert alert-info').text('email을 입력하세요')
-                    , $('<input>').attr('type', 'text').addClass('form-control')
-                    , $('<button>').addClass('btn btn-default pass-find-btn').text('확인').attr('type','button').on('click', function () {
-                        $.ajax({
-                            url:'/php/api/findUser.php',
-                            dataType:'json',
-                            type:'POST',
-                            data:{email:$(this).siblings('input').val(),action:"find_pass"},
-                            success:function(res){
-                                console.log(res);
-                                if(res['status']==1) {
-                                    var p=$('<p>').text('입력한 메일로 보내진 인증번호를 입력하세요');
-                                    var i=$('<input>').addClass('form-control');
-                                    $('#find-id-div').html(p,i);
-                                }else if(res['status']==-2){
-                                    alert('이메일을 입력해 주세요.');
-                                }else if(res['status']==0){
-                                    alert('해당 이메일로 가입한 회원이 없습니다.');
-                                }
-                            }
-                        })
-                    })
+                    , $('<input>').attr({type:'text','placeholder':'email'}).addClass('form-control')
+                    , $('<button>').addClass('btn btn-default pass-find-btn').text('확인').attr('type', 'button').on('click',find_pass)
                 ).fadeIn()
             )
         })
