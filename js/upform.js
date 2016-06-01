@@ -281,7 +281,7 @@ $(document).ready(function () {
             var upp = $('#up-progress');
             upp.css('width', progress + '%');
             if (progress == 100) {
-                // upp.remove()
+                upp.remove()
                 // $('#sendBody').trigger('keyup')
                 // $('#publiBody').trigger('keyup')
             }
@@ -294,9 +294,6 @@ $(document).ready(function () {
                 publiBody.html(publiBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             }
         }, done: function (e, data) {
-            upp.remove()
-            $('#sendBody').trigger('keyup')
-            $('#publiBody').trigger('keyup')
             var gif = data.files[0].type == 'image/gif' ? true : false;
             var img = $('<img>').attr('src', '/img/' + data.result['files']['file_crop']).addClass('BodyPic');
             if (gif) img.addClass('gif');
@@ -309,6 +306,8 @@ $(document).ready(function () {
                 publiBody.append(img, '<br><br>')
                 publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
+            $('#sendBody').trigger('keyup')
+            $('#publiBody').trigger('keyup')
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
