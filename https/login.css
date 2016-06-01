@@ -9,9 +9,7 @@ body {
 #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
     display: none;
     height: 26px;
-    width: 340px;
     text-align: center;
-    margin: 0;
     padding: 5px 5px 5px 5px;
 }
 
@@ -79,4 +77,8 @@ body {
 }
 #center form table tbody tr td{
     display:block;
+}
+#r-div form table tbody>tr{
+    display: block;
+    margin-top: 10px !important;
 }
