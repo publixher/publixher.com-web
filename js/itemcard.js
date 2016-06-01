@@ -922,7 +922,7 @@ $(document).ready(function () {
                     $('#saleTitle-mod').val(res['TITLE']);
                     $('#publiBody-mod').html(res['BODY']);
 
-                    if (res['CATEGOTY']) {
+                    if (res['CATEGORY']) {
                         $('#category-mod').text(res['CATEGORY']);
                         $('#sub-category-mod').text(res['SUB_CATEGORY']);
                     } else {
@@ -1051,7 +1051,7 @@ $(document).ready(function () {
     $('#publixhButton-mod').on('click', function () {
 
         var $btn = $(this).button('loading');
-        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0 && $('#contentCost-mod').val().length > 0) {
+        if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0) {
             var btn = $(this);
             $(this).attr('disabled', 'disabled')
             $.ajax({
@@ -1062,7 +1062,7 @@ $(document).ready(function () {
                     body: $('#publiBody-mod').html(),
                     body_text: $('#publiBody-mod').text(),
                     for_sale: "Y",
-                    price: $('#contentCost-mod').val(),
+                    price: $('#contentCost-mod').val().length > 0?$('#contentCost-mod').val():0,
                     category: category_mod,
                     sub_category: sub_category_mod,
                     adult: $('#adult-mod').is(':checked'),
@@ -1094,7 +1094,7 @@ $(document).ready(function () {
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
-                        foldername = res['DIR'];
+                        foldername = res['FOLDER_NAME'];
                     }
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
                     $('#' + itemID_mod).fadeOut(500, function () {
@@ -1151,7 +1151,7 @@ $(document).ready(function () {
             $('#subcategorySelect-mod').html(write);
         }
 
-        switch (category) {
+        switch (category_mod) {
             case '매거진':
                 var sub = ['IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물'];
                 subwrite(sub);
@@ -1197,6 +1197,23 @@ $(document).ready(function () {
             costvali_mod = true;
         }
     });
+    //유튜브 태그 넣기(upform에서 쓰던것)
+    var iframerex = /^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
+    var you_short=/^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
+    $('.youtube-iframe').on('keyup', function (e) {
+        var tag = $(this).val();
+        if (iframerex.test(tag)) {
+            tag = $(tag).attr({
+                width: 510,
+                height: 280
+            });
+            $(this).val('');
+            var body = $(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
+            body.append(tag).trigger('keyup');
+        }else if(you_short.test(tag)){
+
+        }
+    })
 //최상단컨텐츠 버튼 동작
     $(document).on("click", ".itemTop", function (e) {
         var thisitemID = $(this).parents()[5].id;

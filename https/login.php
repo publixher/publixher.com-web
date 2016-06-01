@@ -115,7 +115,8 @@
 </script>
 
 <script src="/https/regist.js"></script>
-<div id="mask"></div>
+<div id="mask">
+</div>
 <div id="center">
     <form method='post' action='/https/loginConfirm.php'>
         <table>
