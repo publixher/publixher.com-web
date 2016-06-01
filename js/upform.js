@@ -344,32 +344,20 @@ $(document).ready(function () {
                             $('<li>').attr('folderid', res['ID']).append(
                                 $('<a>').attr('href', '#').text(folderName))
                                 .fadeIn()
+                        );
+                        //수정을 위한 모달에도 추가
+                        $('#dirSublist-mod li:last-child').before(
+                            $('<li>').attr('folderid', res['ID']).append(
+                                $('<a>').attr('href', '#').text(folderName))
+                                .fadeIn()
                         )
                     }, complete: form.val('')
-
                 })
             } else {
                 alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
             }
         }
     });
-    //유튜브 태그 넣기
-    var iframerex = /^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
-    var you_short=/^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
-    $('.youtube-iframe').on('keyup', function (e) {
-        var tag = $(this).val();
-        if (iframerex.test(tag)) {
-            tag = $(tag).attr({
-                width: 510,
-                height: 280
-            });
-            $(this).val('');
-            var body = $(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
-            body.append(tag).trigger('keyup');
-        }else if(you_short.test(tag)){
-            
-        }
-    })
 
 });
 
