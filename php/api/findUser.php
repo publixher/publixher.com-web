@@ -19,8 +19,8 @@ if ($action == 'find_pass') {
             $sendmail = new Sendmail();   //기본설정을 사용
             $body = "<p>publixher의 회원 인증번호 입니다.</p>
     <p><b>인증번호</b> : ${key}</p>";
-            $sendmail->send_mail($email, $from, $subject, $body);
             echo '{"status":1}';
+            $sendmail->send_mail($email, $from, $subject, $body);
             exit;
         } else {
             echo '{"status":0}';

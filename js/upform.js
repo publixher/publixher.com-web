@@ -100,7 +100,7 @@ $(document).ready(function () {
     //publixh 버튼 내용
     $('#publixhButton').on('click', function () {
         var $btn = $(this).button('loading');
-        if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0 && $('#contentCost').val().length > 0) {
+        if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0) {
             var btn = $(this);
             $(this).attr('disabled', 'disabled')
             $.ajax({
@@ -111,7 +111,7 @@ $(document).ready(function () {
                     body_text: $('#publiBody').text(),
                     ID_writer: mid,
                     for_sale: "Y",
-                    price: $('#contentCost').val(),
+                    price: $('#contentCost').val().length>0?$('#contentCost').val():0,
                     category: category,
                     sub_category: sub_category,
                     adult: $('#adult').is(':checked'),
