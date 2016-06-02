@@ -103,7 +103,7 @@ if (!empty($_POST)) {
             $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
         }
         $ex = count($blured) - 4;
-        $preview = $preview . "<p style='font-size=20;font-weight:700;'>&nbsp;외&nbsp;" . $ex . "장";
+        $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
             $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
