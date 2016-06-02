@@ -80,6 +80,7 @@ body {
   width: 528px;
   border: 0;
   padding: 6px 9px;
+  border-radius: 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img {
   max-width: 510px !important;
@@ -96,6 +97,7 @@ body {
   width: 528px;
   border: 0;
   padding: 6px 9px;
+  border-radius: 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
   max-width: 510px !important;
@@ -500,14 +502,15 @@ body {
 }
 #wrap #right .conf #controller .btn-group ul {
   background-color: #fff;
-  height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  height: auto;
+  max-height: 600px;
   width: 300px;
 }
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
-  padding: 5px;
+  padding: 5px 5px 0 5px;
 }
 #wrap #right .conf #controller .btn-group ul li:hover {
   background-color: #f4f4f4;
@@ -1239,6 +1242,24 @@ a:hover {
 }
 .subrep .rep {
   width: 410px !important;
+}
+.card .body p{
+  display: inline-block;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #434343;
+}
+.pin-list span{
+  display:inline-block;
+  width: 33%;
+  margin-top:5px;
+  border-bottom: 1px solid #e3e3e3;
+  text-align:center;
+  height: 22px
+}
+.pin-list .del-pin{
+  line-height: 1.3
 }
 .gifplayer-ready {
   margin-top: 0 !important;
