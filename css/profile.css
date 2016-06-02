@@ -166,7 +166,7 @@ body {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   box-shadow: inset 0 0 0;
-  width: 530px;
+  width: 543px;
   border: 0;
   max-height: 800px;
   overflow-y: scroll;
@@ -185,7 +185,7 @@ body {
   z-index: 1;
   min-height: 47px;
   box-shadow: inset 0 0 0;
-  width: 530px;
+  width: 543px;
   border: 0;
   max-height: 800px;
   overflow-y: scroll;
@@ -1351,8 +1351,7 @@ a:hover {
   width: 33%;
 }
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 8px;
+  height: 0;
 }
 ::-webkit-scrollbar-track{
   background: #efefef;
