@@ -1030,7 +1030,7 @@ $(document).ready(function () {
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     if (res['FOLDER'] != null) {
                         folderID = res['FOLDER'];
-                        foldername = res['DIR'];
+                        foldername = res['FOLDER_NAME'];
                     }
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
                     $('#' + itemID_mod).fadeOut(500, function () {
@@ -1078,6 +1078,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     var write = '';
                     var ID = res['ID'];
                     var writer = res['ID_WRITER'];
