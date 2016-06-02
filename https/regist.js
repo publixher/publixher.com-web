@@ -244,7 +244,7 @@ $(document).ready(function () {
                 } else if (res['status'] == 0) {
                     alert('해당 이메일로 가입한 회원이 없습니다.');
                 }
-            }, complete: function (res) {
+            },error:function(res){
                 if (res['statusText'] == 'OK') {
                     document.email_to_find=$('#find-id-div input').val();
                     $('#find-id-div').fadeOut(function () {
