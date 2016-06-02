@@ -33,6 +33,7 @@
     require_once "../conf/User.php";
     session_start();
     require_once "../lib/loginchk.php";
+    
     require "left.php";
     require "middle.php";
     require "right.php";

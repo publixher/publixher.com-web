@@ -4,6 +4,7 @@ session_regenerate_id(true);
 //db뒤지기
 require_once 'database_conf.php';
 require_once 'User.php';
+require_once '../lib/setCookie.php';
 //넘어온 값 받기
 if (!isset($_POST['email'])) exit;
 $email = $_POST['email'];
@@ -37,6 +38,7 @@ $_SESSION['user'] = $result;
 if(!isset($_SESSION['token'])){
     $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
-setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/');
+$cookieset=new setCookie();
+$cookieset->setCid($result->getID(),$db);
 ?>
 <meta http-equiv='refresh' content='0;url=/'>
