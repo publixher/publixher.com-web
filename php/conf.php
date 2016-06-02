@@ -65,6 +65,7 @@
                 style="display: none;"></button>
         <ul class="dropdown-menu" id="searchResult" role="menu" aria-labelledby="searchbtn">
             <li class="menu" id="search-body"><a>본문검색으로 바로가기</a></li>
+            <li class="menu" id="friendResult"></li>
             <li class="menu" id="contResult"></li>
             <li class="menu" id="nameResult"></li>
             <li class="menu" id="tagResult"></li>

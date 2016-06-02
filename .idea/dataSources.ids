@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - publixher@localhost" uuid="97bdcd9a-9306-4506-87e5-4764f0d460c4">
-    <database-info product="MySQL" version="5.7.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+    <database-info product="MySQL" version="5.7.12" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -156,7 +156,7 @@ ID_CONTENT</columns>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="52" parent="4" name="CATEGORY">
-        <data-type>enum(&apos;매거진&apos;, &apos;뉴스&apos;, &apos;소설&apos;, &apos;만화&apos;, &apos;사진&apos;, &apos;SNS&apos;, &apos;&apos;)</data-type>
+        <data-type>varchar(10)</data-type>
         <default-expression>&apos;SNS&apos;</default-expression>
       </column>
       <column id="53" parent="4" name="SUB_CATEGORY">
@@ -225,15 +225,12 @@ ID_CONTENT</columns>
         <default-expression>&apos;1&apos;</default-expression>
       </column>
       <column id="68" parent="4" name="IMG">
-        <mandatory>1</mandatory>
         <data-type>varchar(1024)</data-type>
-        <default-expression>&apos;/img/alt_img.jpg&apos;</default-expression>
       </column>
       <column id="69" parent="4" name="TAG">
         <data-type>text</data-type>
       </column>
       <column id="70" parent="4" name="DONATE">
-        <mandatory>1</mandatory>
         <data-type>int(11) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
@@ -655,503 +652,513 @@ ID_CONTENT</columns>
         <data-type>tinyint(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <index id="167" parent="12" name="EMAIL_UNIQUE">
+      <column id="167" parent="12" name="LAST_LOGIN">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <index id="168" parent="12" name="EMAIL_UNIQUE">
         <columns>EMAIL</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <index id="168" parent="12" name="ID_UNIQUE">
+      <index id="169" parent="12" name="ID_UNIQUE">
         <columns>ID</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <index id="169" parent="12" name="USER_NAME">
+      <index id="170" parent="12" name="USER_NAME">
         <columns>USER_NAME</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="170" parent="12" name="EMAIL_UNIQUE">
+      <key id="171" parent="12" name="EMAIL_UNIQUE">
         <columns>EMAIL</columns>
         <underlying-index>EMAIL_UNIQUE</underlying-index>
       </key>
-      <key id="171" parent="12" name="ID_UNIQUE">
+      <key id="172" parent="12" name="ID_UNIQUE">
         <columns>ID</columns>
         <underlying-index>ID_UNIQUE</underlying-index>
       </key>
-      <key id="172" parent="12" name="PRIMARY">
+      <key id="173" parent="12" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="173" parent="13" name="SEQ">
+      <column id="174" parent="13" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="174" parent="13" name="ID_TARGET">
+      <column id="175" parent="13" name="ID_TARGET">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="175" parent="13" name="ID_MANAGER">
+      <column id="176" parent="13" name="ID_MANAGER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="176" parent="13" name="TIME">
+      <column id="177" parent="13" name="TIME">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <index id="177" parent="13" name="TARGET">
+      <index id="178" parent="13" name="TARGET">
         <columns>ID_TARGET</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="178" parent="13" name="PRIMARY">
+      <key id="179" parent="13" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="179" parent="14" name="SEQ">
+      <trigger id="180" parent="13" name="LIST_TO_USER">
+        <trig-events>I</trig-events>
+        <trig-turn>AFTER_ROW</trig-turn>
+      </trigger>
+      <column id="181" parent="14" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="180" parent="14" name="ID_USER">
+      <column id="182" parent="14" name="ID_USER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="181" parent="14" name="ID_REPLY">
+      <column id="183" parent="14" name="ID_REPLY">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="182" parent="14" name="REPLY_KNOCK_DATE">
+      <column id="184" parent="14" name="REPLY_KNOCK_DATE">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="183" parent="14" name="ID_CONTENT">
+      <column id="185" parent="14" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <index id="184" parent="14" name="USER,REPLY">
+      <index id="186" parent="14" name="USER,REPLY">
         <columns>ID_USER
 ID_REPLY</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="185" parent="14" name="PRIMARY">
+      <key id="187" parent="14" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <key id="186" parent="14" name="USER,REPLY">
+      <key id="188" parent="14" name="USER,REPLY">
         <columns>ID_USER
 ID_REPLY</columns>
         <underlying-index>USER\u002CREPLY</underlying-index>
       </key>
-      <column id="187" parent="15" name="SEQ">
+      <column id="189" parent="15" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="188" parent="15" name="ID">
+      <column id="190" parent="15" name="ID">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="189" parent="15" name="ID_CONTENT">
+      <column id="191" parent="15" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="190" parent="15" name="REPLY_DATE">
+      <column id="192" parent="15" name="REPLY_DATE">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="191" parent="15" name="REPLY">
+      <column id="193" parent="15" name="REPLY">
         <mandatory>1</mandatory>
         <data-type>text</data-type>
       </column>
-      <column id="192" parent="15" name="ID_USER">
+      <column id="194" parent="15" name="ID_USER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="193" parent="15" name="ID_REPLY">
+      <column id="195" parent="15" name="ID_REPLY">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="194" parent="15" name="DEL">
+      <column id="196" parent="15" name="DEL">
         <mandatory>1</mandatory>
         <data-type>tinyint(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="195" parent="15" name="REPLY_TEXT">
+      <column id="197" parent="15" name="REPLY_TEXT">
         <data-type>text</data-type>
       </column>
-      <index id="196" parent="15" name="ID_UNIQUE">
+      <index id="198" parent="15" name="ID_UNIQUE">
         <columns>ID</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <index id="197" parent="15" name="SUB_REPLY_SEQ_REPLY">
+      <index id="199" parent="15" name="SUB_REPLY_SEQ_REPLY">
         <columns>ID_REPLY</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="198" parent="15" name="ID_UNIQUE">
+      <key id="200" parent="15" name="ID_UNIQUE">
         <columns>ID</columns>
         <underlying-index>ID_UNIQUE</underlying-index>
       </key>
-      <key id="199" parent="15" name="PRIMARY">
+      <key id="201" parent="15" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="200" parent="16" name="SEQ">
+      <column id="202" parent="16" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="201" parent="16" name="ID_CONTENT">
+      <column id="203" parent="16" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="202" parent="16" name="USER_NAME">
+      <column id="204" parent="16" name="USER_NAME">
         <mandatory>1</mandatory>
         <data-type>varchar(25)</data-type>
       </column>
-      <column id="203" parent="16" name="ID_WRITER">
+      <column id="205" parent="16" name="ID_WRITER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="204" parent="16" name="COMMENT">
+      <column id="206" parent="16" name="COMMENT">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="205" parent="16" name="KNOCK">
+      <column id="207" parent="16" name="KNOCK">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="206" parent="16" name="WRITE_DATE">
+      <column id="208" parent="16" name="WRITE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="207" parent="16" name="UPDATE_DATE">
+      <column id="209" parent="16" name="UPDATE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="208" parent="16" name="BODY">
-        <data-type>char(20)</data-type>
+      <column id="210" parent="16" name="BODY">
+        <data-type>varchar(100)</data-type>
       </column>
-      <column id="209" parent="16" name="WRITER_PIC">
-        <mandatory>1</mandatory>
+      <column id="211" parent="16" name="WRITER_PIC">
         <data-type>varchar(1024)</data-type>
       </column>
-      <index id="210" parent="16" name="ID_CONTENT_UNIQUE">
+      <index id="212" parent="16" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="211" parent="16" name="ID_CONTENT_UNIQUE">
+      <key id="213" parent="16" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <underlying-index>ID_CONTENT_UNIQUE</underlying-index>
       </key>
-      <key id="212" parent="16" name="PRIMARY">
+      <key id="214" parent="16" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="213" parent="17" name="SEQ">
+      <column id="215" parent="17" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="214" parent="17" name="ID">
+      <column id="216" parent="17" name="ID">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="215" parent="17" name="ID_USER">
+      <column id="217" parent="17" name="ID_USER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="216" parent="17" name="DIR">
+      <column id="218" parent="17" name="DIR">
         <data-type>varchar(45)</data-type>
         <default-expression>&apos;새 폴더&apos;</default-expression>
       </column>
-      <column id="217" parent="17" name="CONTENT_NUM">
+      <column id="219" parent="17" name="CONTENT_NUM">
         <data-type>int(10) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <index id="218" parent="17" name="FOLDER_DIR">
+      <index id="220" parent="17" name="FOLDER_DIR">
         <columns>DIR</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="219" parent="17" name="FOLDER_USER">
+      <index id="221" parent="17" name="FOLDER_USER">
         <columns>ID_USER</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="220" parent="17" name="ID_UNIQUE">
+      <index id="222" parent="17" name="ID_UNIQUE">
         <columns>ID</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="221" parent="17" name="ID_UNIQUE">
+      <key id="223" parent="17" name="ID_UNIQUE">
         <columns>ID</columns>
         <underlying-index>ID_UNIQUE</underlying-index>
       </key>
-      <key id="222" parent="17" name="PRIMARY">
+      <key id="224" parent="17" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="223" parent="18" name="SEQ">
+      <column id="225" parent="18" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="224" parent="18" name="ID_MASTER">
+      <column id="226" parent="18" name="ID_MASTER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="225" parent="18" name="ID_SLAVE">
+      <column id="227" parent="18" name="ID_SLAVE">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="226" parent="18" name="LAST_CHECK">
+      <column id="228" parent="18" name="LAST_CHECK">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="227" parent="18" name="LAST_UPDATE">
+      <column id="229" parent="18" name="LAST_UPDATE">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="228" parent="18" name="FOLLOW_DATE">
+      <column id="230" parent="18" name="FOLLOW_DATE">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <index id="229" parent="18" name="FOLLOW_MASTER">
+      <index id="231" parent="18" name="FOLLOW_MASTER">
         <columns>ID_MASTER</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="230" parent="18" name="FOLLOW_SLAVE">
+      <index id="232" parent="18" name="FOLLOW_SLAVE">
         <columns>ID_SLAVE</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="231" parent="18" name="PRIMARY">
+      <key id="233" parent="18" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="232" parent="19" name="SEQ">
+      <column id="234" parent="19" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="233" parent="19" name="ID_CONTENT">
+      <column id="235" parent="19" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="234" parent="19" name="USER_NAME">
+      <column id="236" parent="19" name="USER_NAME">
         <mandatory>1</mandatory>
         <data-type>varchar(25)</data-type>
       </column>
-      <column id="235" parent="19" name="ID_WRITER">
+      <column id="237" parent="19" name="ID_WRITER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="236" parent="19" name="COMMENT">
+      <column id="238" parent="19" name="COMMENT">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="237" parent="19" name="KNOCK">
+      <column id="239" parent="19" name="KNOCK">
         <mandatory>1</mandatory>
         <data-type>int(11) unsigned</data-type>
       </column>
-      <column id="238" parent="19" name="WRITE_DATE">
+      <column id="240" parent="19" name="WRITE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="239" parent="19" name="UPDATE_DATE">
+      <column id="241" parent="19" name="UPDATE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="240" parent="19" name="BODY">
-        <data-type>char(20)</data-type>
+      <column id="242" parent="19" name="BODY">
+        <data-type>varchar(100)</data-type>
       </column>
-      <column id="241" parent="19" name="WRITER_PIC">
-        <mandatory>1</mandatory>
+      <column id="243" parent="19" name="WRITER_PIC">
         <data-type>varchar(1024)</data-type>
       </column>
-      <index id="242" parent="19" name="ID_CONTENT_UNIQUE">
+      <index id="244" parent="19" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="243" parent="19" name="ID_CONTENT_UNIQUE">
+      <key id="245" parent="19" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <underlying-index>ID_CONTENT_UNIQUE</underlying-index>
       </key>
-      <key id="244" parent="19" name="PRIMARY">
+      <key id="246" parent="19" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="245" parent="20" name="SEQ">
+      <column id="247" parent="20" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="246" parent="20" name="TAG">
+      <column id="248" parent="20" name="TAG">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="247" parent="20" name="ID_CONTENT">
+      <column id="249" parent="20" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <index id="248" parent="20" name="TAG">
+      <index id="250" parent="20" name="TAG">
         <columns>TAG</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="249" parent="20" name="PRIMARY">
+      <key id="251" parent="20" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="250" parent="21" name="SEQ">
+      <column id="252" parent="21" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="251" parent="21" name="ID_CONTENT">
+      <column id="253" parent="21" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="252" parent="21" name="USER_NAME">
+      <column id="254" parent="21" name="USER_NAME">
         <mandatory>1</mandatory>
         <data-type>varchar(25)</data-type>
       </column>
-      <column id="253" parent="21" name="ID_WRITER">
+      <column id="255" parent="21" name="ID_WRITER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="254" parent="21" name="COMMENT">
+      <column id="256" parent="21" name="COMMENT">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="255" parent="21" name="KNOCK">
+      <column id="257" parent="21" name="KNOCK">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="256" parent="21" name="WRITE_DATE">
+      <column id="258" parent="21" name="WRITE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="257" parent="21" name="UPDATE_DATE">
+      <column id="259" parent="21" name="UPDATE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="258" parent="21" name="BODY">
-        <data-type>char(20)</data-type>
+      <column id="260" parent="21" name="BODY">
+        <data-type>varchar(100)</data-type>
       </column>
-      <column id="259" parent="21" name="WRITER_PIC">
-        <mandatory>1</mandatory>
+      <column id="261" parent="21" name="WRITER_PIC">
         <data-type>varchar(1024)</data-type>
       </column>
-      <index id="260" parent="21" name="ID_CONTENT_UNIQUE">
+      <index id="262" parent="21" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="261" parent="21" name="ID_CONTENT_UNIQUE">
+      <key id="263" parent="21" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
         <underlying-index>ID_CONTENT_UNIQUE</underlying-index>
       </key>
-      <key id="262" parent="21" name="PRIMARY">
+      <key id="264" parent="21" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="263" parent="22" name="SEQ">
+      <column id="265" parent="22" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="264" parent="22" name="WRITE_DATE">
+      <column id="266" parent="22" name="WRITE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="265" parent="22" name="WRITER_ID">
+      <column id="267" parent="22" name="WRITER_ID">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="266" parent="22" name="REPORT">
+      <column id="268" parent="22" name="REPORT">
         <mandatory>1</mandatory>
         <data-type>text</data-type>
       </column>
-      <key id="267" parent="22" name="PRIMARY">
+      <key id="269" parent="22" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="268" parent="23" name="SEQ">
+      <column id="270" parent="23" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="269" parent="23" name="REPORT_DATE">
+      <column id="271" parent="23" name="REPORT_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="270" parent="23" name="USER_ID">
+      <column id="272" parent="23" name="USER_ID">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="271" parent="23" name="CONTENT_ID">
+      <column id="273" parent="23" name="CONTENT_ID">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <index id="272" parent="23" name="CONT_USER">
+      <index id="274" parent="23" name="CONT_USER">
         <columns>USER_ID
 CONTENT_ID</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="273" parent="23" name="CONT_USER">
+      <key id="275" parent="23" name="CONT_USER">
         <columns>USER_ID
 CONTENT_ID</columns>
         <underlying-index>CONT_USER</underlying-index>
       </key>
-      <key id="274" parent="23" name="PRIMARY">
+      <key id="276" parent="23" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
-      <column id="275" parent="24" name="SEQ">
+      <trigger id="277" parent="23" name="REPORT_CONTENT">
+        <trig-events>I</trig-events>
+        <trig-turn>AFTER_ROW</trig-turn>
+      </trigger>
+      <column id="278" parent="24" name="SEQ">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="276" parent="24" name="ID_USER">
+      <column id="279" parent="24" name="ID_USER">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="277" parent="24" name="ID_CONTENT">
+      <column id="280" parent="24" name="ID_CONTENT">
         <mandatory>1</mandatory>
         <data-type>char(10)</data-type>
       </column>
-      <column id="278" parent="24" name="DONATE_DATE">
+      <column id="281" parent="24" name="DONATE_DATE">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="279" parent="24" name="POINT">
+      <column id="282" parent="24" name="POINT">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <index id="280" parent="24" name="ID_CONTENT">
+      <index id="283" parent="24" name="ID_CONTENT">
         <columns>ID_CONTENT</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="281" parent="24" name="ID_USER">
+      <index id="284" parent="24" name="ID_USER">
         <columns>ID_USER</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="282" parent="24" name="PRIMARY">
+      <key id="285" parent="24" name="PRIMARY">
         <columns>SEQ</columns>
         <primary>1</primary>
       </key>
