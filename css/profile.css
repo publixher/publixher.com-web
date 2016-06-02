@@ -592,9 +592,10 @@ body {
 }
 #wrap #right .conf #controller .btn-group ul {
   background-color: #fff;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-  height: 300px;
+  height: auto;
+  max-height: 600px;
   width: 300px;
 }
 #wrap #right .conf #controller .btn-group ul li {
