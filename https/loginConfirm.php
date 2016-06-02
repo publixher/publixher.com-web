@@ -37,6 +37,6 @@ $_SESSION['user'] = $result;
 if(!isset($_SESSION['token'])){
     $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
-setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
+setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/');
 ?>
 <meta http-equiv='refresh' content='0;url=/'>

@@ -1,7 +1,7 @@
 <?php
 if(!$_SESSION['user']) {
     if (($_COOKIE['cid'] != '' and isset($_COOKIE['cid']))) {
-        setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
+        setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
         //쿠키있으면 로그인
         include_once '../conf/database_conf.php';
         require_once "../conf/User.php";
