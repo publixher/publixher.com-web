@@ -36,7 +36,7 @@ $(document).ready(function(){
                     var more = res['MORE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin);
-                    $('#topcon').append(write);
+                    $('#topcon').append($(write).attr('id',$(write).attr('id')+'_topcon'));
                     $('#'+ID).hide().fadeIn();
                 } else {
                     var write = '';
@@ -61,7 +61,7 @@ $(document).ready(function(){
                     var more = res['MORE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose,more,tag,pin);
-                    $('#topcon').append(write);
+                    $('#topcon').append($(write).attr('id',$(write).attr('id')+'_topcon'));
                     $('#'+ID).hide().fadeIn();
                 }
             }
