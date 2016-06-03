@@ -510,7 +510,7 @@ body {
 }
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
-  padding: 5px 5px 0 5px;
+  padding: 10px;
 }
 #wrap #right .conf #controller .btn-group ul li:hover {
   background-color: #f4f4f4;
@@ -793,11 +793,22 @@ li a {
   border-top-right-radius: 0;
   margin-top: -1px;
 }
+.noti-date{
+  font-size: 12px;
+  display: block;
+  text-align:center;
+}
 #pinlist {
   left: -165px !important;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: -1px;
+}
+#pinlist li:first-child{
+  display: none;
+}
+#pinlist .pin-body{
+  position: absolute;
 }
 .load-item {
   margin: auto;
@@ -1252,11 +1263,10 @@ a:hover {
 }
 .pin-list span{
   display:inline-block;
-  width: 33%;
-  margin-top:5px;
-  border-bottom: 1px solid #e3e3e3;
+  width: 25%;
+  margin-top: 30px;
   text-align:center;
-  height: 22px
+  height: 22px;
 }
 .pin-list .del-pin{
   line-height: 1.3
