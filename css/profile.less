@@ -143,15 +143,14 @@ body {
       background-color: white;
       border: 1px solid #e3e3e3;
       ul {
-        padding-left: 2px;
         font-size: 12px;
         li {
           width: 25%;
-          height: 28px;
-          padding: 1px 0 0 2px;
           a {
             text-align: center;
-            padding: 3px 0 4px 0;
+            padding: 6px;
+            margin: 0;
+            height: 30px;
           }
         }
       }
@@ -733,7 +732,8 @@ li a {
 }
 
 #wrap #middle #writing-pane ul li ul li {
-  width: 124px
+  width: 100%;
+  padding: 0 3px;
 }
 .modal-dialog{
   width: 540px;
@@ -752,7 +752,6 @@ li a {
 #publiBody-mod{
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-top: 0;
   box-shadow: inset 0 0 0;
   width: 96%;
   margin-left: 2%;
@@ -824,7 +823,7 @@ li a {
 #categorySelect-mod,
 #subcategorySelect-mod {
   background-color: #fff !important;
-  margin-top: 0px;
+  margin-top: 0;
   width: 133px !important;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
@@ -1323,6 +1322,7 @@ a:hover{
 }
 #writing-pane .nav-tabs{
   border-bottom: 1px solid #e3e3e3 !important;
+  padding-bottom: 1px;
 }
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
   border:0;
