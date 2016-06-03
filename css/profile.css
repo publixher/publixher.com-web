@@ -136,12 +136,12 @@ body {
 }
 #wrap #middle #writing-pane ul li {
   width: 25%;
-  height: 28px;
-  padding: 1px 0 0 2px;
 }
 #wrap #middle #writing-pane ul li a {
   text-align: center;
-  padding: 3px 0 4px 0;
+  padding: 6px;
+  margin: 0;
+  height: 30px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane {
   padding: 0 0 0 0;
@@ -1343,6 +1343,7 @@ a:hover {
 }
 #writing-pane .nav-tabs {
   border-bottom: 1px solid #e3e3e3 !important;
+  padding-bottom: 1px;
 }
 .nav .open > a,
 .nav .open > a:focus,
