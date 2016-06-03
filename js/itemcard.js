@@ -260,7 +260,7 @@ $(document).ready(function () {
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                             if (mid == res[i]['ID_USER'] || level == 99) {
-                                write += ' <a class="repdel">삭제</a>'
+                                write += ' <a class="repdel">X</a>'
                             }
                             write += '</span></span></td></tr></table></div>';
                             list.append(write);
@@ -349,7 +349,7 @@ $(document).ready(function () {
                         write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"<span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                         if (mid == res[i]['ID_USER'] || level == 99) {
-                            write += ' <a class="repdel">삭제</a>'
+                            write += ' <a class="repdel">X</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
                         list.append(write);
@@ -405,7 +405,7 @@ $(document).ready(function () {
                         write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                         if (mid == res[i]['ID_USER'] || level == 99) {
-                            write += ' <a class="repdel">삭제</a>'
+                            write += ' <a class="repdel">X</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
                         btn.after(write);
