@@ -45,7 +45,7 @@ if ($action == 'get_item') {
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
     if (isset($imgs[0][0])) {
         for ($i = 0; $i < count($imgs[0]); $i++) {
-            $originSource = str_replace("crop", "origin", $imgs[1][$i][0]);
+            $originSource = str_replace("crop_origin", "origin", $imgs[1][$i][0]);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
         }
