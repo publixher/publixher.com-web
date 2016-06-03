@@ -309,6 +309,9 @@ $(document).ready(function () {
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
+    }).on('fileuploadfinished',function(){
+        $('#sendBody').trigger('keyup')
+        $('#publiBody').trigger('keyup')
     })
 //해시태그 플러그인
     $('.tag-input').tagEditor({
