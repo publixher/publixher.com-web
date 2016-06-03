@@ -36,7 +36,19 @@ $(document).ready(function () {
             }
         })
     });
-
+    function getpoint(mid){
+        $.ajax({
+            url:'/php/api/profileInfo.php',
+            dataType:'json',
+            type:'GET',
+            data:{userID:mid,action:'point'},
+            success:function(res){
+                return res['result']['CASH_POINT'];
+            },error:function(){
+                return false;
+            }
+        })
+    }
     //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -173,6 +185,10 @@ $(document).ready(function () {
                                     $('<span>')
                                         .addClass('pubico pico-24')
                                 )
+                                .on('click',function(){ //기부버튼 누를때 서버에서 남은 포인트 가져오기
+                                    var input=$(this).siblings('ul').find('input');
+                                    input.attr('placeholder',getpoint(mid));
+                                })
                             , $('<ul>')  //기부 금액 넣기
                                 .on('click', function (e) {
                                     e.stopPropagation();
@@ -203,7 +219,7 @@ $(document).ready(function () {
                                                                         .text(point)
                                                                         .attr('contenteditable', 'false')
                                                                 )
-                                                            thisform.val('');
+                                                            thisform.val('').attr('placeholder',getpoint(mid));
                                                         } else {
                                                             alert('1이상 숫자만 입력해주세요.');
                                                             return 1;
