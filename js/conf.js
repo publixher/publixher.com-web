@@ -13,11 +13,15 @@ $(document).ready(function () {
                 $.ajax({
                     url: "/php/data/nameFind.php",
                     type: "GET",
-                    data: {searchword: search_word, target: target},
+                    data: {searchword: search_word, target: target,mid:mid,name:search_word},
                     dataType: 'json',
                     success: function (res) {
-                        var Result;
+                        console.log(res)
+                        var Result
                         switch (target) {
+                            case 'friend':
+                                Result = $('#friendResult');
+                                break;
                             case 'name':
                                 Result = $('#nameResult');
                                 break;
@@ -34,6 +38,11 @@ $(document).ready(function () {
                             var SearchRes = '';
                             for (var i = 0; i < res.length; i++) {
                                 switch (target) {
+                                    case 'friend':
+                                        for (var i = 0; i < res.length; i++) {
+                                            SearchRes += '<li><div><img src="' + res[i]['PIC'] + '"></div><a href="/profile/' + res[i]['ID'] + '">' + res[i]['USER_NAME'] + '>>>>친구</a></li>';
+                                        }
+                                        break;
                                     case 'name':
                                         if (res[i]['COMMUNITY'] == 1) {
                                             if (res[i]['IS_NICK'] == 'Y') {
@@ -71,11 +80,13 @@ $(document).ready(function () {
                 });
             }
 
+            search('friend');
             search('name');
-            search('title')
-            search('tag')
+            search('title');
+            search('tag');
         } else {
             $('#searchResult').css('display', 'none');
+            $('#friendResult').html('');
             $('#contResult').html('');
             $('#nameResult').html('');
             $('#tagResult').html('');
@@ -225,10 +236,10 @@ $(document).ready(function () {
     }
 
     //핀 리스트에서 del-pin 클릭시 핀 리스트에서 삭제
-    $(document).on('click','.del-pin',function(e){
+    $(document).on('click', '.del-pin', function (e) {
         e.stopPropagation();
-        var ID=$(this).siblings('a').attr('href').replace('/content/','');
-        var li=$(this).parent();
+        var ID = $(this).siblings('a').attr('href').replace('/content/', '');
+        var li = $(this).parent();
         $.ajax({
             url: "/php/data/itemAct.php",
             type: "POST",
@@ -236,7 +247,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] == 'Y') {
-                    li.fadeOut(function(){
+                    li.fadeOut(function () {
                         li.remove();
                     })
                 } else {
