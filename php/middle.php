@@ -127,11 +127,9 @@
                             <td class="priceinput" colspan="2">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon">PIK</div>
                                         <input type="text" class="form-control" id="contentCost"
                                                placeholder="여기에 가격을 입력하세요."
                                                pattern="[0-9]">
-                                        <div class="input-group-addon"><span class="pubico pico-24"></span></div>
                                     </div>
                                 </div>
                             </td>
