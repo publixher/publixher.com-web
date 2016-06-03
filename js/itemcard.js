@@ -220,7 +220,10 @@ $(document).ready(function () {
                                                                         .attr('contenteditable', 'false')
                                                                 );
 
-                                                            thisform.val('').attr('placeholder', getpoint(mid));
+                                                            thisform.val('')
+                                                            getpoint(mid,function(point){
+                                                                thisform.attr('placeholder',point);
+                                                            });
                                                         } else {
                                                             alert('1이상 숫자만 입력해주세요.');
                                                             return 1;
