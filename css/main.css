@@ -506,6 +506,7 @@ body {
   height: auto;
   max-height: 600px;
   width: 300px;
+  z-index:10000;
 }
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
@@ -796,6 +797,10 @@ li a {
   font-size: 12px;
   display: block;
   text-align:center;
+}
+#notilist li a,
+#pinlist .pin-body{
+  width:80% !important
 }
 #pinlist {
   left: -165px !important;

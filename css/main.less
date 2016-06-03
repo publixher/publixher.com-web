@@ -479,6 +479,7 @@ body {
             height: auto;
             max-height: 600px;
             width: 300px;
+            z-index: 10000;
             li {
               width: 100%;
               padding: 10px;
@@ -787,7 +788,10 @@ li a {
   display: block;
   text-align:center;
 }
-
+#notilist li a,
+#pinlist .pin-body{
+  width:80% !important
+}
 #pinlist {
   left: -165px !important;
   border-top-left-radius: 0;
