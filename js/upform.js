@@ -280,8 +280,8 @@ $(document).ready(function () {
             var progress = parseInt(data.loaded / data.total * 100, 10);
             var upp = $('#up-progress');
             upp.css('width', progress + '%');
-            if (progress == 100) {
-                upp.remove()
+            if (progress >= 100) {
+                upp.remove();
                 $('#sendBody').trigger('keyup')
                 $('#publiBody').trigger('keyup')
             }
