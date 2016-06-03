@@ -64,7 +64,7 @@ $(document).ready(function () {
                 $('#' + thisitemID + ' .tail .tshare').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
-            tail.append($('<div>').addClass('tab-comment').hide().fadeIn());
+            tail.append($('<div>').addClass('tab-comment'));
             var tab_comment = $('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
@@ -221,9 +221,6 @@ $(document).ready(function () {
                                                                 );
 
                                                             thisform.val('')
-                                                            getpoint(mid,function(point){
-                                                                thisform.attr('placeholder',point);
-                                                            });
                                                         } else {
                                                             alert('1이상 숫자만 입력해주세요.');
                                                             return 1;
