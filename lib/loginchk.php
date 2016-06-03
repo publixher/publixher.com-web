@@ -1,7 +1,6 @@
 <?php
 if(!$_SESSION['user']) {
     if (($_COOKIE['cid'] != '' and isset($_COOKIE['cid']))) {
-        setcookie('cid', $_COOKIE['cid'], time() + 3600 * 24 * 365, '/');
         //쿠키있으면 로그인
         include_once '../conf/database_conf.php';
         require_once "../conf/User.php";
@@ -25,6 +24,7 @@ if(!$_SESSION['user']) {
             if (!isset($_SESSION['token'])) {
                 $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
             }
+            $c->setCid($user->getID(),$db);
         }else{
             echo "<script>alert('쿠키 변조 가능성 확인. 운영자에게 문의해 주세요.')</script>";
             exit;
