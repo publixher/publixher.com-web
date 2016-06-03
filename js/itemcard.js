@@ -36,16 +36,14 @@ $(document).ready(function () {
             }
         })
     });
-    function getpoint(mid){
-        $.ajax({
+    function getpoint(mid,callBack){
+        return $.ajax({
             url:'/php/api/profileInfo.php',
             dataType:'json',
             type:'GET',
             data:{userID:mid,action:'point'},
             success:function(res){
-                return res['result']['CASH_POINT'];
-            },error:function(){
-                return false;
+                callBack(res['result']['CASH_POINT']);
             }
         })
     }
@@ -66,7 +64,7 @@ $(document).ready(function () {
                 $('#' + thisitemID + ' .tail .tshare').css('background-color', 'white');
             }
             $(this).parent().css('background-color', '#f4f4f4');
-            tail.append($('<div>').addClass('tab-comment').hide().fadeIn());
+            tail.append($('<div>').addClass('tab-comment'));
             var tab_comment = $('#' + thisitemID + ' .tail .tab-comment');
             var word = '<div role="tabpanel">'
             //정렬별 선택패널
@@ -187,7 +185,9 @@ $(document).ready(function () {
                                 )
                                 .on('click',function(){ //기부버튼 누를때 서버에서 남은 포인트 가져오기
                                     var input=$(this).siblings('ul').find('input');
-                                    input.attr('placeholder',getpoint(mid));
+                                    getpoint(mid,function(point){
+                                        input.attr('placeholder',point);
+                                    });
                                 })
                             , $('<ul>')  //기부 금액 넣기
                                 .on('click', function (e) {
@@ -218,8 +218,9 @@ $(document).ready(function () {
                                                                         .addClass('donate-span')
                                                                         .text(point)
                                                                         .attr('contenteditable', 'false')
-                                                                )
-                                                            thisform.val('').attr('placeholder',getpoint(mid));
+                                                                );
+
+                                                            thisform.val('')
                                                         } else {
                                                             alert('1이상 숫자만 입력해주세요.');
                                                             return 1;
