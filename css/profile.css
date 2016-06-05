@@ -283,6 +283,7 @@ body {
   width: 132px;
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
   width: 132px;
@@ -293,7 +294,7 @@ body {
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
-  width: 255px;
+  width: 50%;
   height: 22px;
   padding: 0 0 0 0;
 }
@@ -301,13 +302,13 @@ body {
   margin: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group {
-  width: 255px;
+  width: 100%;
   padding: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group .input-group-addon,
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group input {
   padding: 0 0 0 0;
-  height: 22px;
+  border: 0;
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
