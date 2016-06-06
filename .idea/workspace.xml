@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/mongo_conf.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/content_explode.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php/test.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php/test.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/actionData.php" afterPath="$PROJECT_DIR$/php/api/actionData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/market.php" afterPath="$PROJECT_DIR$/php/market.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content_explode.php" afterPath="$PROJECT_DIR$/lib/content_explode.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -83,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="239" column="41" selection-start-line="239" selection-start-column="41" selection-end-line="239" selection-end-column="41" />
+            <state relative-caret-position="474">
+              <caret line="216" column="32" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
               <folding>
                 <marker date="1465200206000" expanded="true" signature="4845:5037" ph="INSERT INTO publixher.TBL_CONTENT... " />
                 <marker date="1465200206000" expanded="true" signature="5077:5379" ph="INSERT INTO publixher.TBL_CONTENT... " />
@@ -104,8 +96,8 @@
       <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="834">
-              <caret line="248" column="8" selection-start-line="248" selection-start-column="8" selection-end-line="249" selection-end-column="41" />
+            <state relative-caret-position="849">
+              <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
               <folding>
                 <marker date="1465199503000" expanded="true" signature="5224:5416" ph="INSERT INTO publixher.TBL_CONTENT... " />
                 <marker date="1465199503000" expanded="true" signature="5456:5758" ph="INSERT INTO publixher.TBL_CONTENT... " />
@@ -119,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content_explode.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="content_explode.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+            <state relative-caret-position="315">
+              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -248,8 +240,8 @@
         <option value="$PROJECT_DIR$/conf/mongo_conf.php" />
         <option value="$PROJECT_DIR$/php/api/actionData.php" />
         <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
-        <option value="$PROJECT_DIR$/lib/content_explode.php" />
         <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
+        <option value="$PROJECT_DIR$/lib/content_explode.php" />
       </list>
     </option>
   </component>
@@ -294,8 +286,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1677" />
-    <option name="y" value="541" />
+    <option name="x" value="1577" />
+    <option name="y" value="456" />
     <option name="width" value="2169" />
     <option name="height" value="1533" />
   </component>
@@ -622,14 +614,7 @@
       <workItem from="1464839435927" duration="11295000" />
       <workItem from="1464929506094" duration="9132000" />
       <workItem from="1465179124294" duration="2280000" />
-      <workItem from="1465188318214" duration="9464000" />
-    </task>
-    <task id="LOCAL-00232" summary="사진 자르기 구현 완료">
-      <created>1463734881803</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1463734881803</updated>
+      <workItem from="1465188318214" duration="9975000" />
     </task>
     <task id="LOCAL-00233" summary="댓글순서 바꿈">
       <created>1463736254246</created>
@@ -967,11 +952,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465190491512</updated>
     </task>
-    <option name="localTasksCounter" value="281" />
+    <task id="LOCAL-00281" summary="몽고디비에 콘텐츠 piece 넣기">
+      <created>1465200230965</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1465200230965</updated>
+    </task>
+    <option name="localTasksCounter" value="282" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266897000" />
+    <option name="totallyTimeSpent" value="267408000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -983,7 +975,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1677" y="541" width="2169" height="1533" extended-state="0" />
+    <frame x="1577" y="456" width="2169" height="1533" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12364833" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
@@ -1024,7 +1016,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="유튜브 넣기" />
     <MESSAGE value="엔터 안쳐도 되게" />
     <MESSAGE value="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중" />
     <MESSAGE value="gitignore에 이상한거 생김" />
@@ -1049,7 +1040,8 @@
     <MESSAGE value="이미지 추가시 리사이징" />
     <MESSAGE value="로그아웃 도메인 바꿈" />
     <MESSAGE value="best 시험중" />
-    <option name="LAST_COMMIT_MESSAGE" value="best 시험중" />
+    <MESSAGE value="몽고디비에 콘텐츠 piece 넣기" />
+    <option name="LAST_COMMIT_MESSAGE" value="몽고디비에 콘텐츠 piece 넣기" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1517,18 +1509,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
+    <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="474">
+          <caret line="216" column="32" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
+          <folding>
+            <marker date="1465200206000" expanded="true" signature="4845:5037" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1465200206000" expanded="true" signature="5077:5379" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1465200206000" expanded="true" signature="7372:7448" ph="UPDATE publi... " />
+            <marker date="1465200206000" expanded="true" signature="7686:8392" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1465200206000" expanded="true" signature="8646:8730" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
+            <marker date="1465200206000" expanded="true" signature="9086:9157" ph="INSERT INTO publixher.TBL_TAGS... " />
+            <marker date="1465200206000" expanded="true" signature="9492:9562" ph="UPDATE publi... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="248" column="8" selection-start-line="248" selection-start-column="8" selection-end-line="249" selection-end-column="41" />
+        <state relative-caret-position="849">
+          <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
           <folding>
             <marker date="1465199503000" expanded="true" signature="5224:5416" ph="INSERT INTO publixher.TBL_CONTENT... " />
             <marker date="1465199503000" expanded="true" signature="5456:5758" ph="INSERT INTO publixher.TBL_CONTENT... " />
@@ -1541,19 +1541,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
+    <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="239" column="41" selection-start-line="239" selection-start-column="41" selection-end-line="239" selection-end-column="41" />
-          <folding>
-            <marker date="1465200206000" expanded="true" signature="4845:5037" ph="INSERT INTO publixher.TBL_CONTENT... " />
-            <marker date="1465200206000" expanded="true" signature="5077:5379" ph="INSERT INTO publixher.TBL_CONTENT... " />
-            <marker date="1465200206000" expanded="true" signature="7372:7448" ph="UPDATE publi... " />
-            <marker date="1465200206000" expanded="true" signature="7686:8392" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1465200206000" expanded="true" signature="8646:8730" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
-            <marker date="1465200206000" expanded="true" signature="9086:9157" ph="INSERT INTO publixher.TBL_TAGS... " />
-            <marker date="1465200206000" expanded="true" signature="9492:9562" ph="UPDATE publi... " />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
