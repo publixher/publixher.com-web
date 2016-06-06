@@ -438,7 +438,7 @@ body {
 #wrap #right .conf {
   position: fixed;
   width: 300px;
-  height: 120px;
+  height: 70px;
   top: 0;
   z-index: 2;
   background-color: #434343;
@@ -1302,11 +1302,7 @@ a:hover {
 .usrpic-wrap {
   display: none !important;
 }
-#wrap #right .conf {
-  top: 5px !important;
-  border-radius: 4px !important;
-  height: 70px !important;
-}
+
 #report-button {
   border: 1px solid #e3e3e3;
   padding: 2px;
@@ -1334,6 +1330,11 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
+
+
+
 @media
 (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
@@ -1346,11 +1347,14 @@ a:hover {
   #wrap #right #gsearch{
     display: none;
   }
-  #wrap #right #controller{
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  #upform{
+    margin-top: 50px !important;
+  }
+  .conf{
+    left:0 !important;
+    width: 100% !important;
+    height: 40px !important;
+    box-shadow: 0 0 0 !important;
   }
   #wrap #right #controller button{
     color: white !important;
@@ -1483,4 +1487,5 @@ a:hover {
   .tab-content table {
     width: 100% !important;
   }
+
 }
