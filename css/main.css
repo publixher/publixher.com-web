@@ -1488,11 +1488,14 @@ a:hover {
     width: 100% !important;
   }
   .conf .loaded{
-    margin-top: 5px !important;
-    width: 700% !important
+    position: fixed;
+    margin-top: 40px !important;
+    width: 100% !important;
+    height: 80% !important;
   }
   .conf .dropdown-toggle:active,
   .conf .dropdown-toggle:focus{
     background-color: transparent !important;
   }
+
 }
