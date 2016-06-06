@@ -14,5 +14,5 @@ function content_explode($body_text, $uid)
 
     $document = ['id' => $uid, 'pieces' => $pieces];
     $bulk->insert($document);
-    $manager->executeBulkWrite('publixher.contents', $bulk);
+//    $manager->executeBulkWrite('publixher.contents', $bulk);
 }
