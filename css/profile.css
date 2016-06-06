@@ -204,6 +204,7 @@ body {
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput {
   width: 25%;
+  border-right: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .btn {
   position: relative;
@@ -262,7 +263,7 @@ body {
   font-size: 12px;
   outline: 0;
   border: 0;
-  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
   height: 22px;
@@ -943,8 +944,6 @@ li a {
   width: 264px;
   height: auto;
   border: 0 !important;
-  border-left: 1px solid #eee !important;
-  border-right: 1px solid #eee !important;
 }
 .tag-editor {
   width: 264px;
