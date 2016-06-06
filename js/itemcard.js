@@ -988,17 +988,18 @@ $(document).ready(function () {
             if (this == $('#fileuploads-mod')[0]) {
                 var sendBody_mod = $('#sendBody-mod');
                 sendBody_mod.html(sendBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                sendBody_mod.height(sendBody_mod.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp-mod')[0]) {
                 var publiBody_mod = $('#publiBody-mod')
                 publiBody_mod.html(publiBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                publiBody_mod.height(publiBody_mod.height() + data.result['files']['file_height'] + 8);
 
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
         }
-    })
+    });
+    $('#sendBody-mod,#publiBody-mod').on('DOMNodeInserted',function(e){
+        resize($(this)[0])
+    });
     //수정시 글쓰기 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
