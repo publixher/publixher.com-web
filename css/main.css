@@ -1437,7 +1437,7 @@ a:hover {
 
   #wrap #middle .item .header .conf .dropdown-menu,
   #wrap #middle .item-for-sale .header .conf .dropdown-menu {
-    left: -76px
+    left: -450%;
   }
 
   #wrap #middle .item .subrep, #wrap #middle .item-for-sale .subrep {
@@ -1491,12 +1491,12 @@ a:hover {
     position: fixed;
     margin-top: 40px !important;
     width: 100% !important;
-    height: 80% !important;
+    max-height: 80% !important;
     left: 0 !important;
     top: 0;
   }
-  .conf .dropdown-toggle:active,
-  .conf .dropdown-toggle:focus{
+  #right .conf .dropdown-toggle:active,
+  #right .conf .dropdown-toggle:focus{
     background-color: transparent !important;
   }
 
