@@ -26,7 +26,7 @@ if(!$_SESSION['user']) {
             }
             $c->setCid($user->getID(),$db);
         }else{
-            echo "<script>alert('쿠키 변조 가능성 확인. 운영자에게 문의해 주세요.')</script>";
+            echo "<script>alert('쿠키 변조 가능성 확인. 운영자에게 문의해 주세요.')</script><meta http-equiv='refresh' content='0;url=/https/login.php'>";
             exit;
         }
     }else{

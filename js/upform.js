@@ -282,8 +282,6 @@ $(document).ready(function () {
             upp.css('width', progress + '%');
             if (progress >= 100) {
                 upp.remove();
-                $('#sendBody').trigger('keyup')
-                $('#publiBody').trigger('keyup')
             }
         }, start: function (e) {
             if (this == $('#fileuploads')[0]) {
@@ -309,6 +307,9 @@ $(document).ready(function () {
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
+    })
+    $('#sendBody,#publiBody').on('DOMNodeInserted',function(e){
+        resize($(this)[0])
     })
 //해시태그 플러그인
     $('.tag-input').tagEditor({
