@@ -1495,9 +1495,15 @@ a:hover {
     left: 0 !important;
     top: 0;
   }
-  #right .conf .dropdown-toggle:active,
-  #right .conf .dropdown-toggle:focus{
+  .conf .dropdown-toggle:active,
+  .conf .dropdown-toggle:focus{
     background-color: transparent !important;
+    box-shadow: inset 0 0 0 !important;
   }
-
+  .rep_tag-ul,
+  .donate-input-ul{
+    min-width: 100px;
+    width: 25%;
+    left: auto;
+  }
 }
