@@ -11,7 +11,7 @@ $(document).ready(function () {
             data:{itemID:item,userID:user,time:time,action:"readDone"}
         })
     }
-
+    
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);
