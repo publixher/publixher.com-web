@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/mongo_conf.php" afterPath="$PROJECT_DIR$/conf/mongo_conf.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content_explode.php" afterPath="$PROJECT_DIR$/lib/content_explode.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
@@ -114,8 +115,8 @@
       <file leaf-file-name="content_explode.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="300">
+              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -125,7 +126,7 @@
         <entry file="file://$PROJECT_DIR$/conf/mongo_conf.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="99" />
+              <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
               <folding>
                 <element signature="e#6#93#0#PHP" expanded="false" />
               </folding>
@@ -237,11 +238,11 @@
         <option value="$PROJECT_DIR$/php/market.php" />
         <option value="$PROJECT_DIR$/php/tesa.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
-        <option value="$PROJECT_DIR$/conf/mongo_conf.php" />
         <option value="$PROJECT_DIR$/php/api/actionData.php" />
         <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
         <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
         <option value="$PROJECT_DIR$/lib/content_explode.php" />
+        <option value="$PROJECT_DIR$/conf/mongo_conf.php" />
       </list>
     </option>
   </component>
@@ -614,14 +615,7 @@
       <workItem from="1464839435927" duration="11295000" />
       <workItem from="1464929506094" duration="9132000" />
       <workItem from="1465179124294" duration="2280000" />
-      <workItem from="1465188318214" duration="9975000" />
-    </task>
-    <task id="LOCAL-00233" summary="댓글순서 바꿈">
-      <created>1463736254246</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1463736254247</updated>
+      <workItem from="1465188318214" duration="10218000" />
     </task>
     <task id="LOCAL-00234" summary="댓글순서 아래 -&gt; 위 , 대댓글 창 닫히게">
       <created>1463739027429</created>
@@ -959,11 +953,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465200230965</updated>
     </task>
-    <option name="localTasksCounter" value="282" />
+    <task id="LOCAL-00282" summary="exception catch">
+      <created>1465200745837</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1465200745837</updated>
+    </task>
+    <option name="localTasksCounter" value="283" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267408000" />
+    <option name="totallyTimeSpent" value="267651000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1016,7 +1017,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="엔터 안쳐도 되게" />
     <MESSAGE value="커뮤니티 false-&gt;0,&#10;비밀번호 찾기 만드는중" />
     <MESSAGE value="gitignore에 이상한거 생김" />
     <MESSAGE value="비밀번호 찾기 임시" />
@@ -1041,7 +1041,8 @@
     <MESSAGE value="로그아웃 도메인 바꿈" />
     <MESSAGE value="best 시험중" />
     <MESSAGE value="몽고디비에 콘텐츠 piece 넣기" />
-    <option name="LAST_COMMIT_MESSAGE" value="몽고디비에 콘텐츠 piece 넣기" />
+    <MESSAGE value="exception catch" />
+    <option name="LAST_COMMIT_MESSAGE" value="exception catch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1499,16 +1500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/mongo_conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="99" />
-          <folding>
-            <element signature="e#6#93#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
@@ -1541,10 +1532,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/conf/mongo_conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+          <folding>
+            <element signature="e#6#93#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
           <folding />
         </state>
       </provider>
