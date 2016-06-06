@@ -1334,7 +1334,6 @@ a:hover {
 
 
 
-
 @media
 (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
@@ -1355,6 +1354,7 @@ a:hover {
     width: 100% !important;
     height: 40px !important;
     box-shadow: 0 0 0 !important;
+    border-radius: 0 !important
   }
   #wrap #right #controller button{
     color: white !important;
@@ -1486,6 +1486,10 @@ a:hover {
 
   .tab-content table {
     width: 100% !important;
+  }
+  .conf .loaded{
+    margin-top: 5px !important;
+    width: 700% !important
   }
   .conf .dropdown-toggle:active,
   .conf .dropdown-toggle:focus{
