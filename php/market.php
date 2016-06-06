@@ -28,7 +28,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="weekly-hot-list"></div>
-                            <div role="tabpanel" class="tab-pane" id="your"></div>
+                            <div role="tabpanel" class="tab-pane" id="your-hot-list"></div>
                         </div>
                     </div>
                 </div>

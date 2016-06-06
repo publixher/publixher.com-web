@@ -13,6 +13,7 @@ if (!empty($_POST)) {
     require_once '../../lib/getImgFromUrl.php';
     require_once '../../lib/banchk.php';
     require_once '../../lib/iFrameCrop.php';
+    require_once '../../lib/content_explode.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -23,7 +24,6 @@ if (!empty($_POST)) {
     }
 
     banCheck($_POST['ID_writer'],$db,-2 );
-
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
@@ -33,9 +33,7 @@ if (!empty($_POST)) {
     $for_sale = $_POST['for_sale'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
-    /*$words=explode(' ',$body_text);
-    $words=array_count_values($words);
-    arsort($words);*/
+    
     $body=iframe_crop($body);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 동영상의 길이를 통해 최대 크기를 치환
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
@@ -247,6 +245,9 @@ FROM publixher.TBL_CONTENT AS CONT
         setcookie('fid',$_POST['folder'],time() + 3600 * 24 * 365, '/');
         //공개대상 쿠키 설정
         setcookie('exp',$_POST['expose'],time() + 3600 * 24 * 365, '/');
+        
+        //몽고디비에 쳐 넣기
+        content_explode($body_text,$uid);
         echo $result;
     } catch (PDOException $e) {
         $db->rollBack();

@@ -236,6 +236,8 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare3->execute();
         }
         $db->commit();
+        //몽고디비에 쳐 넣기
+        content_explode($body_text,$uid);
         if(!$result) {
             echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
             exit;

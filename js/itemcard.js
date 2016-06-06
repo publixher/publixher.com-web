@@ -3,15 +3,15 @@
  */
 $(document).ready(function () {
     //아이템이 접히거나 다 봤을때 정보를 수집하기
-    function readDone(item,user,time){
+    function readDone(item, user, time) {
         $.ajax({
-            url:'/php/api/actionData.php',
-            dataType:'json',
-            type:'POST',
-            data:{itemID:item,userID:user,time:time,action:"readDone"}
+            url: '/php/api/actionData.php',
+            dataType: 'json',
+            type: 'POST',
+            data: {itemID: item, userID: user, time: time, action: "readDone"}
         })
     }
-    
+
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);
@@ -36,17 +36,18 @@ $(document).ready(function () {
             }
         })
     });
-    function getpoint(mid,callBack){
+    function getpoint(mid, callBack) {
         return $.ajax({
-            url:'/php/api/profileInfo.php',
-            dataType:'json',
-            type:'GET',
-            data:{userID:mid,action:'point'},
-            success:function(res){
+            url: '/php/api/profileInfo.php',
+            dataType: 'json',
+            type: 'GET',
+            data: {userID: mid, action: 'point'},
+            success: function (res) {
                 callBack(res['result']['CASH_POINT']);
             }
         })
     }
+
     //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -183,10 +184,10 @@ $(document).ready(function () {
                                     $('<span>')
                                         .addClass('pubico pico-24')
                                 )
-                                .on('click',function(){ //기부버튼 누를때 서버에서 남은 포인트 가져오기
-                                    var input=$(this).siblings('ul').find('input');
-                                    getpoint(mid,function(point){
-                                        input.attr('placeholder',point);
+                                .on('click', function () { //기부버튼 누를때 서버에서 남은 포인트 가져오기
+                                    var input = $(this).siblings('ul').find('input');
+                                    getpoint(mid, function (point) {
+                                        input.attr('placeholder', point);
                                     });
                                 })
                             , $('<ul>')  //기부 금액 넣기
@@ -234,6 +235,7 @@ $(document).ready(function () {
                 )
 
             $('#best-' + thisitemID).append(spinner);
+
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
@@ -259,6 +261,8 @@ $(document).ready(function () {
                             write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <span class="pubico pico-comment"></span><a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
+                            write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td ><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
+                            write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                             if (mid == res[i]['ID_USER'] || level == 99) {
                                 write += ' <a class="repdel">X</a>'
                             }
@@ -346,7 +350,7 @@ $(document).ready(function () {
                         var reply = res[i]['REP_BODY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"<span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                         if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <a class="repdel">X</a>'
@@ -402,7 +406,7 @@ $(document).ready(function () {
                         var reply = res[i]['REP_BODY'];
                         var knock = res[i]['KNOCK'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px"><tr><td><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">대댓글</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                         if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <a class="repdel">X</a>'
@@ -528,7 +532,7 @@ $(document).ready(function () {
                                 var date = res[i]['REPLY_DATE'];
                                 var reply = res[i]['REP_BODY'];
                                 write += '<div class=commentReply id="' + thispanelrep + '-subrep-' + ID + '">';
-                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
+                                write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                                 write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span></span>'
                                 if (mid == res[i]['ID_USER'] || level == 99) {
                                     write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
@@ -735,7 +739,7 @@ $(document).ready(function () {
                         var date = res[i]['REPLY_DATE'];
                         var reply = res[i]['REP_BODY'];
                         write += '<div class=commentReply id="' + where + '-rep-' + ID + '">';
-                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
+                        write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span>'
                         if (mid == res[i]['ID_USER'] || level == 99) {
                             write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
@@ -781,7 +785,7 @@ $(document).ready(function () {
 
     });
     //구매버튼(가격표시)동작
-    var itemPool=window['item_pool']=new Array();
+    var itemPool = window['item_pool'] = new Array();
     var previewarr = [];
     $(document).on("click", ".price", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -825,9 +829,13 @@ $(document).ready(function () {
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function () {
-                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function(){
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function () {
                             //확장된 순간부터 해당 게시물 읽은 시간을 기록한다
-                            itemPool.push({'time':new Date(),'scroll_end':$('#'+thisitemID).position().top+$('#'+thisitemID).height(),'ID':thisitemID});
+                            itemPool.push({
+                                'time': new Date(),
+                                'scroll_end': $('#' + thisitemID).position().top + $('#' + thisitemID).height(),
+                                'ID': thisitemID
+                            });
                         }).find('.gif').gifplayer({
                             playOn: 'hover',
                             wait: true
@@ -856,11 +864,11 @@ $(document).ready(function () {
             document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');
             //접는 순간 해당 게시물 읽은 시간을 구한다
-            var now=new Date();
-            var itemIndex=findIndex(itemPool,'ID',thisitemID);
-            var gap=(now.getTime()-itemPool[itemIndex]['time'].getTime())/1000;
-            readDone(thisitemID,mid,gap);
-            itemPool.splice(itemIndex,1);
+            var now = new Date();
+            var itemIndex = findIndex(itemPool, 'ID', thisitemID);
+            var gap = (now.getTime() - itemPool[itemIndex]['time'].getTime()) / 1000;
+            readDone(thisitemID, mid, gap);
+            itemPool.splice(itemIndex, 1);
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
             priceSpan.append('&nbsp;<a>구매하기?</a>')
@@ -999,7 +1007,7 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
         }
     });
-    $('#sendBody-mod,#publiBody-mod').on('DOMNodeInserted',function(e){
+    $('#sendBody-mod,#publiBody-mod').on('DOMNodeInserted', function (e) {
         resize($(this)[0])
     });
     //수정시 글쓰기 버튼 클릭할때의 동작
@@ -1084,7 +1092,7 @@ $(document).ready(function () {
                     body: $('#publiBody-mod').html(),
                     body_text: $('#publiBody-mod').text(),
                     for_sale: "Y",
-                    price: $('#contentCost-mod').val().length > 0?$('#contentCost-mod').val():0,
+                    price: $('#contentCost-mod').val().length > 0 ? $('#contentCost-mod').val() : 0,
                     category: category_mod,
                     sub_category: sub_category_mod,
                     adult: $('#adult-mod').is(':checked'),
@@ -1213,7 +1221,7 @@ $(document).ready(function () {
             alert('가격은 숫자로 입력해 주세요.');
             $('#contentCost-mod').focus();
             costvali_mod = false;
-        } else if (parseInt(contentCost.val())> 65535) {
+        } else if (parseInt(contentCost.val()) > 65535) {
             alert('65535픽 이상은 입력되지 않습니다.');
             costvali_mod = false;
         } else {
@@ -1222,7 +1230,7 @@ $(document).ready(function () {
     });
     //유튜브 태그 넣기(upform에서 쓰던것)
     var iframerex = /^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
-    var you_short=/^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
+    var you_short = /^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
     $('.youtube-iframe').on('keyup', function (e) {
         var tag = $(this).val();
         if (iframerex.test(tag)) {
@@ -1233,7 +1241,7 @@ $(document).ready(function () {
             $(this).val('');
             var body = $(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
             body.append(tag).trigger('keyup');
-        }else if(you_short.test(tag)){
+        } else if (you_short.test(tag)) {
 
         }
     })
@@ -1353,25 +1361,25 @@ $(document).ready(function () {
 
     })
     //스크롤할때 열린 아이템보다 스크롤이 아래 있으면 스크롤 추적 끝내고 해당 시간변수 삭제
-    $(document).scroll(function(){
-        var scrollTop=$(document).scrollTop()+300;
-        $.each(itemPool,function(index,val){
-            if(scrollTop>val.scroll_end){
+    $(document).scroll(function () {
+        var scrollTop = $(document).scrollTop() + 300;
+        $.each(itemPool, function (index, val) {
+            if (scrollTop > val.scroll_end) {
                 //사람이 다 봤으면 데이터 보내기 시작
-                var now=new Date();
-                var gap=(now.getTime()-itemPool[findIndex(itemPool,'ID',val.ID)]['time'].getTime())/1000;
-                readDone(val.ID,mid,gap);
-                itemPool.splice(index,1);
+                var now = new Date();
+                var gap = (now.getTime() - itemPool[findIndex(itemPool, 'ID', val.ID)]['time'].getTime()) / 1000;
+                readDone(val.ID, mid, gap);
+                itemPool.splice(index, 1);
             }
         })
     })
 });
 
 //오브젝트 안에서 키의 값이 특정값인 인덱스 찾기(한개만)
-function findIndex(array,attr,val){
-    var len=array.length;
-    for(var i=0;i<len;i++){
-        if(array[i][attr]===val){
+function findIndex(array, attr, val) {
+    var len = array.length;
+    for (var i = 0; i < len; i++) {
+        if (array[i][attr] === val) {
             return i;
         }
     }
