@@ -161,11 +161,11 @@ body {
   padding: 2px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .regbtn {
-  width: 133px;
+  width: 25%;
   height: 100%;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .regbtn button {
-  width: 131px;
+  width: 100%;
   padding: 0 0 0 0;
   text-align: center;
   border-radius: 0;
@@ -174,6 +174,7 @@ body {
   font-size: 12px;
   outline: 0;
   border: 0;
+  border-top: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
   height: 22px;
@@ -195,6 +196,7 @@ body {
   width: 132px;
   border-bottom: 1px solid #eee;
   border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
   width: 132px;
@@ -205,7 +207,7 @@ body {
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
-  width: 255px;
+  width: 50%;
   height: 22px;
   padding: 0 0 0 0;
 }
@@ -213,13 +215,14 @@ body {
   margin: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group {
-  width: 255px;
+  width: 100%;
   padding: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group .input-group-addon,
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group input {
-  padding: 0 0 0 0;
-  height: 22px;
+  padding: 0 10px;
+  border: 0;
+  font-size: 12px;
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
@@ -1279,6 +1282,12 @@ a:hover {
 .reply-body .reply-del{
   color: #ddd
 }
+.repdel{
+  font-size: 10px;
+  color: #ddd;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+}
 .gifplayer-ready {
   margin-top: 0 !important;
 }
@@ -1324,4 +1333,154 @@ a:hover {
   box-shadow: inset 0 0 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  #left,
+  #right .market
+  {
+    display: none;
+  }
+  #wrap #right #logo,
+  #wrap #right #gsearch{
+    display: none;
+  }
+  #wrap #right #controller{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #wrap #right #controller button{
+    color: white !important;
+  }
+  #wrap, #middle, #writing-pane, .item-for-sale, .item {
+    width: 100% !important;
+  }
+
+  #writing-pane, .item-for-sale, .item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane #sendBody,
+  #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle,
+  #wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
+    width: 96% !important;
+    margin: 2% !important;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
+    margin-bottom: -1px !important;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane #publiBody {
+    margin-top: 0 !important;
+  }
+
+  #wrap #middle .item .header .writer, #wrap #middle .item-for-sale .header .writer {
+    width: 65% !important;
+  }
+
+  #wrap #middle .item .header .title, #wrap #middle .item-for-sale .header .title {
+    width: 80% !important;
+  }
+
+  #wrap #middle .item .header .conf, #wrap #middle .item-for-sale .header .conf {
+    float: right;
+    font-size: 12px;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img,
+  #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img,
+  #wrap #middle .item .body .BodyPic,
+  #wrap #middle .item-for-sale .body .BodyPic {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  #wrap #middle .item .body,
+  #wrap #middle .item-for-sale .body {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  .tag-editor {
+    width: 100%;
+  }
+
+  #wrap #middle .item .commentReg, #wrap #middle .item-for-sale .commentReg {
+    width: 100% !important;
+  }
+
+  #wrap #middle .item .header, #wrap #middle .item-for-sale .header {
+    width: 96%;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane .taginput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
+    width: 50% !important;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group {
+    width: 100%
+  }
+
+  #wrap #middle .item .header .conf .dropdown-menu,
+  #wrap #middle .item-for-sale .header .conf .dropdown-menu {
+    left: -76px
+  }
+
+  #wrap #middle .item .subrep, #wrap #middle .item-for-sale .subrep {
+    width: 100%
+  }
+
+  #wrap #middle .item .commentReg_sub, #wrap #middle .item-for-sale .commentReg_sub {
+    width: 86% !important
+  }
+
+  .item-profile-wrap {
+    width: 12%;
+    height: 80%;
+  }
+
+  #writing-pane .nav-tabs > li {
+    width: 25% !important;
+  }
+
+  #writing-pane .nav-tabs li > .dropdown-menu {
+    width: 98% !important;
+    min-width: 98% !important;
+  }
+
+  #writing-pane .nav-tabs .dropdown-menu li {
+    width: 100% !important;
+  }
+
+  #wrap #middle #writing-pane .tab-content .tab-pane .fileinput .fileupform,
+  #wrap #middle #writing-pane .tab-content .tab-pane .fileinput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput,
+  .regbtn {
+    width: 25% !important;
+    text-align: center;
+  }
+
+  #sendButton, #publixhButton,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn,
+  #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
+  #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .tab-content table {
+    width: 100% !important;
+  }
 }
