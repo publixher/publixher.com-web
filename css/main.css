@@ -1487,5 +1487,8 @@ a:hover {
   .tab-content table {
     width: 100% !important;
   }
-
+  .conf .dropdown-toggle:active,
+  .conf .dropdown-toggle:focus{
+    background-color: transparent !important;
+  }
 }
