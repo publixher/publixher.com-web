@@ -282,6 +282,8 @@ $(document).ready(function () {
             upp.css('width', progress + '%');
             if (progress >= 100) {
                 upp.remove();
+                $('#sendBody').trigger('keyup')
+                $('#publiBody').trigger('keyup')
             }
         }, start: function (e) {
             if (this == $('#fileuploads')[0]) {
@@ -298,9 +300,11 @@ $(document).ready(function () {
             if (this == $('#fileuploads')[0]) {
                 var sendBody = $('#sendBody');
                 sendBody.append(img, '<br><br>');
+                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp')[0]) {
                 var publiBody = $('#publiBody')
                 publiBody.append(img, '<br><br>')
+                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
@@ -308,7 +312,7 @@ $(document).ready(function () {
     })
     $('#sendBody,#publiBody').on('DOMNodeInserted',function(e){
         resize($(this)[0])
-    });
+    })
 //해시태그 플러그인
     $('.tag-input').tagEditor({
         delimiter: ', ',

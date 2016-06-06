@@ -988,9 +988,11 @@ $(document).ready(function () {
             if (this == $('#fileuploads-mod')[0]) {
                 var sendBody_mod = $('#sendBody-mod');
                 sendBody_mod.html(sendBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                sendBody_mod.height(sendBody_mod.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp-mod')[0]) {
                 var publiBody_mod = $('#publiBody-mod')
                 publiBody_mod.html(publiBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
+                publiBody_mod.height(publiBody_mod.height() + data.result['files']['file_height'] + 8);
 
             }
         }, fail: function (e, data) {
