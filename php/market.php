@@ -1,4 +1,4 @@
-<script src="/js/best.js"></script>
+<script src="/js/best.js" type="text/javascript"></script>
 <div class="market">
     <div id="market-nav">
         <div id="market-nav-carousel" class="carousel slide" data-ride="carousel" data-pause="hover">
