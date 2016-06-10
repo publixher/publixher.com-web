@@ -193,12 +193,33 @@ body {
           }
           .cateinput {
             height: 22px;
-            width: 133px;
+            width: 25%;
             padding: 0 0 0 0;
             margin: 0 10px 0 10px;
             border-bottom: 1px solid #eee;
+            .div {
+              width: 100%;
+              .btn {
+                width: 100%;
+                padding: 0 0 0 0;
+                height: 22px;
+                border-radius: 0;
+                border: 0;
+                font-size: 12px;
+              }
+            }
+          }
+          .subcateinput {
+            height: 22px;
+            width: 25%;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            .div {
+              width: 100%;
+            }
             .btn {
-              width: 133px;
+              width: 100%;
               padding: 0 0 0 0;
               height: 22px;
               border-radius: 0;
@@ -206,20 +227,6 @@ body {
               font-size: 12px;
             }
           }
-          .subcateinput {
-            height: 22px;
-            width: 132px;
-            border-bottom: 1px solid #eee;
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
-            .btn {
-              width: 132px;
-              padding: 0 0 0 0;
-              height: 22px;
-              border-radius: 0;
-              border: 0;
-              font-size: 12px;
-            }
           }
           .priceinput {
             width: 50%;
@@ -661,6 +668,10 @@ li a {
   box-shadow: 0 0 0;
   border-top: 0;
 }
+#categorySelect li,
+#subcategorySelect li{
+  width: 100%;
+}
 #dirSublist li:last-child{
   margin-top: 5px
 }
@@ -771,8 +782,7 @@ li a {
 #subcategorySelect,
 #categorySelect-mod,
 #subcategorySelect-mod {
-  margin-top: 0px;
-  width: 133px;
+  margin-top: 0;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
@@ -982,7 +992,6 @@ li a {
   margin-right: auto;
 }
 .hot-pic-wrap {
-  width: 288px;
   height: 162px;
   position: relative;
   overflow: hidden;
@@ -993,7 +1002,6 @@ li a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 288px;
 }
 .hot-body,
 .hot-data{
