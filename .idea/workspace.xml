@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content_explode.php" afterPath="$PROJECT_DIR$/lib/content_explode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/actionData.php" afterPath="$PROJECT_DIR$/php/api/actionData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/loginchk.php" afterPath="$PROJECT_DIR$/lib/loginchk.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -46,13 +43,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginchk.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loginchk.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/loginchk.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+            <state relative-caret-position="420">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
               <folding>
-                <marker date="1465179326000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1465522172000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
               </folding>
             </state>
           </provider>
@@ -169,7 +166,7 @@
       <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
+            <state relative-caret-position="3585">
               <caret line="239" column="54" selection-start-line="239" selection-start-column="54" selection-end-line="239" selection-end-column="54" />
               <folding>
                 <marker date="1465209500000" expanded="true" signature="4845:5037" ph="INSERT INTO publixher.TBL_CONTENT... " />
@@ -205,7 +202,7 @@
       <file leaf-file-name="modItem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
+            <state relative-caret-position="3225">
               <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
               <folding>
                 <marker date="1464953082000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
@@ -223,11 +220,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content_explode.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="content_explode.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="495">
+              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -299,7 +296,6 @@
         <option value="$PROJECT_DIR$/php/data/fileUp.php" />
         <option value="$PROJECT_DIR$/php/api/fileUp.php" />
         <option value="$PROJECT_DIR$/php/api/modItem.php" />
-        <option value="$PROJECT_DIR$/lib/loginchk.php" />
         <option value="$PROJECT_DIR$/js/upform.js" />
         <option value="$PROJECT_DIR$/php/logout.php" />
         <option value="$PROJECT_DIR$/js/best.js" />
@@ -312,6 +308,7 @@
         <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
         <option value="$PROJECT_DIR$/lib/content_explode.php" />
+        <option value="$PROJECT_DIR$/lib/loginchk.php" />
       </list>
     </option>
   </component>
@@ -356,8 +353,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1342" />
-    <option name="y" value="494" />
+    <option name="x" value="755" />
+    <option name="y" value="273" />
     <option name="width" value="2169" />
     <option name="height" value="1533" />
   </component>
@@ -400,6 +397,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -540,26 +557,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Default">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -684,14 +681,8 @@
       <workItem from="1464839435927" duration="11295000" />
       <workItem from="1464929506094" duration="9132000" />
       <workItem from="1465179124294" duration="2280000" />
-      <workItem from="1465188318214" duration="20541000" />
-    </task>
-    <task id="LOCAL-00237" summary="사진 감싸기 카드에 구매 후 더보기를 아이콘으로">
-      <created>1463810427382</created>
-      <option name="number" value="00237" />
-      <option name="presentableId" value="LOCAL-00237" />
-      <option name="project" value="LOCAL" />
-      <updated>1463810427383</updated>
+      <workItem from="1465188318214" duration="20586000" />
+      <workItem from="1465522053974" duration="119000" />
     </task>
     <task id="LOCAL-00238" summary="gif를 처음 로딩시에는 png로,&#10;">
       <created>1463987835928</created>
@@ -1029,11 +1020,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465206663611</updated>
     </task>
-    <option name="localTasksCounter" value="286" />
+    <task id="LOCAL-00286" summary="몽고 사용">
+      <created>1465216128574</created>
+      <option name="number" value="00286" />
+      <option name="presentableId" value="LOCAL-00286" />
+      <option name="project" value="LOCAL" />
+      <updated>1465216128574</updated>
+    </task>
+    <option name="localTasksCounter" value="287" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277974000" />
+    <option name="totallyTimeSpent" value="278138000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1045,20 +1043,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1342" y="494" width="2169" height="1533" extended-state="0" />
+    <frame x="755" y="273" width="2169" height="1533" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12364833" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12458862" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30673143" sideWeight="0.50494623" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3254216" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31505898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27480915" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32477447" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19916725" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1067,9 +1063,11 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39879155" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22068009" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19916725" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1086,7 +1084,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="프사는 gif도 캡쳐해서 크롭 하도록" />
     <MESSAGE value="폴더 두개 생기는거 수정" />
     <MESSAGE value="시험중" />
     <MESSAGE value="더보기 되게" />
@@ -1111,7 +1108,8 @@
     <MESSAGE value="비밀번호 바꿨음" />
     <MESSAGE value="사용자가 본거 기록" />
     <MESSAGE value="몽고db 사용 안해" />
-    <option name="LAST_COMMIT_MESSAGE" value="몽고db 사용 안해" />
+    <MESSAGE value="몽고 사용" />
+    <option name="LAST_COMMIT_MESSAGE" value="몽고 사용" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1303,19 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-          <folding>
-            <marker date="1464953082000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1464953082000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1464953082000" expanded="true" signature="3995:4063" ph="SELECT ORIGI... TBL_CONTENT" />
-            <marker date="1464953082000" expanded="true" signature="4304:4513" ph="UPDATE publi... " />
-            <marker date="1464953082000" expanded="true" signature="4545:4866" ph="UPDATE publi... " />
-            <marker date="1464953082000" expanded="true" signature="6279:7012" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1464953082000" expanded="true" signature="7205:7275" ph="UPDATE publi... " />
-            <marker date="1464953082000" expanded="true" signature="7455:7525" ph="UPDATE publi... " />
-            <marker date="1464953082000" expanded="true" signature="7708:7757" ph="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1464953082000" expanded="true" signature="8086:8157" ph="INSERT INTO publixher.TBL_TAGS... " />
-            <marker date="1464953082000" expanded="true" signature="8407:8498" ph="UPDATE publi... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1323,11 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="41" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="41" />
-          <folding>
-            <marker date="1464952863000" expanded="true" signature="2002:2053" ph="UPDATE publi... " />
-            <marker date="1464952863000" expanded="true" signature="2316:2361" ph="SELECT * fro... TBL_USER" />
-            <marker date="1464952863000" expanded="true" signature="3092:3185" ph="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1335,10 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4185">
           <caret line="279" column="72" selection-start-line="279" selection-start-column="72" selection-end-line="279" selection-end-column="72" />
-          <folding>
-            <marker date="1465183179000" expanded="true" signature="11433:11482" ph="..." />
-            <marker date="1465183179000" expanded="true" signature="11677:11726" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1346,11 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
           <caret line="73" column="41" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="45" />
-          <folding>
-            <marker date="1464952759000" expanded="true" signature="2380:2431" ph="UPDATE publi... " />
-            <marker date="1464952759000" expanded="true" signature="2694:2739" ph="SELECT * fro... TBL_USER" />
-            <marker date="1464952759000" expanded="true" signature="3440:3533" ph="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1366,7 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1374,7 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1382,17 +1351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
           <caret line="65" column="56" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
-          <folding>
-            <marker date="1464321938000" expanded="true" signature="235:575" ph="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1464321938000" expanded="true" signature="609:911" ph="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1464321938000" expanded="true" signature="932:1105" ph="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1464321938000" expanded="true" signature="1402:1748" ph="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1464321938000" expanded="true" signature="1782:2090" ph="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1464321938000" expanded="true" signature="2111:2286" ph="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1464321938000" expanded="true" signature="2584:2929" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
-            <marker date="1464321938000" expanded="true" signature="2963:3270" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
-            <marker date="1464321938000" expanded="true" signature="3291:3467" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1400,11 +1358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding>
-            <marker date="1464321938000" expanded="true" signature="397:523" ph="SELECT COUNT... TBL_CONTENT_NOTI" />
-            <marker date="1464321938000" expanded="true" signature="1699:2614" ph="SELECT NOTI.... TBL_CONTENT_NOTI" />
-            <marker date="1464321938000" expanded="true" signature="3141:3217" ph="UPDATE publi... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1412,23 +1365,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/tesa.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tesa.php" />
     <entry file="file://$PROJECT_DIR$/js/best.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,7 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1444,7 +1387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,12 +1394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <marker date="1465204544000" expanded="true" signature="83:143" ph="{...}" />
-            <marker date="1465204544000" expanded="true" signature="71234:71267" ph="{...}" />
-            <marker date="1465204544000" expanded="true" signature="71234:71273" ph="{...}" />
-            <marker date="1465204544000" expanded="true" signature="71234:71275" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1465,7 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1473,9 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-          <folding>
-            <element signature="e#6#93#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1502,7 +1434,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
+        <state relative-caret-position="3225">
           <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
           <folding>
             <marker date="1464953082000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
@@ -1515,16 +1447,6 @@
             <marker date="1464953082000" expanded="true" signature="7876:7946" ph="UPDATE publi... " />
             <marker date="1464953082000" expanded="true" signature="8193:8264" ph="INSERT INTO publixher.TBL_TAGS... " />
             <marker date="1464953082000" expanded="true" signature="8503:8594" ph="UPDATE publi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/loginchk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding>
-            <marker date="1465179326000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
           </folding>
         </state>
       </provider>
@@ -1542,7 +1464,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
+        <state relative-caret-position="3585">
           <caret line="239" column="54" selection-start-line="239" selection-start-column="54" selection-end-line="239" selection-end-column="54" />
           <folding>
             <marker date="1465209500000" expanded="true" signature="4845:5037" ph="INSERT INTO publixher.TBL_CONTENT... " />
@@ -1660,9 +1582,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="495">
+          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/loginchk.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding>
+            <marker date="1465522172000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
+          </folding>
         </state>
       </provider>
     </entry>
