@@ -26,7 +26,6 @@
                                     echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                                 }
                                 ?>
-                                <li><span class="pubico pico-folder-plus"></span><input type="text" class="form-control new-folder"></li>
                             </ul>
                         </li>
                     </ul>
