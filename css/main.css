@@ -684,14 +684,14 @@ li a {
 #expSublist,
 #categorySelect,
 #subcategorySelect {
-  min-width: 100px !important;
+  min-width: 100px;
   width: 100%;
   box-shadow: 0 0 0;
   border-top: 0;
 }
 #categorySelect li,
 #subcategorySelect li{
-  width: 100%;
+  width: 100% !important;
   padding: 0 3px;
 }
 #dirSublist li:last-child {
@@ -796,7 +796,7 @@ li a {
 #categorySelect-mod,
 #subcategorySelect-mod {
   margin-top: 0;
-  width: 133px;
+  width: 100% !important;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
