@@ -692,6 +692,7 @@ li a {
 #categorySelect li,
 #subcategorySelect li{
   width: 100%;
+  padding: 0 3px;
 }
 #dirSublist li:last-child {
   margin-top: 5px;
@@ -799,12 +800,7 @@ li a {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-#categorySelect li a,
-#subcategorySelect li a,
-#categorySelect-mod li a,
-#subcategorySelect-mod li a {
-  width: 127px;
-}
+
 #notilist {
   left: -122px;
   border-top-left-radius: 0;
