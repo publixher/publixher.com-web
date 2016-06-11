@@ -361,6 +361,11 @@ $(document).ready(function () {
     });
     $('#sendBody,#publiBody').on('input',function(){
         resize($(this)[0]);
+        if (e.which == 13)
+        {
+            e.preventDefault();
+            document.selection.createRange().pasteHTML("<br/>")
+        }
     })
 });
 
