@@ -577,11 +577,12 @@ body {
       }
     }
   }
-}
+
 
 .carousel-control.right, .carousel-control.left {
   background-image: none;
-  width: 50px;
+  width: 15%;
+  height:50px;
   padding: 8px;
   font-size: 14px
 }
@@ -994,6 +995,7 @@ li a {
   position: relative;
   overflow: hidden;
   opacity: 0.5;
+  cursor: pointer;
 }
 .hot-pic {
   position: absolute;
@@ -1289,6 +1291,12 @@ a:hover{
   color: #ddd;
   vertical-align: text-bottom;
   margin-left: 5px;
+}
+.carousel-inner .item div .nav li{
+  width: 35% !important;
+}
+.carousel-inner .item div .nav li:first-child{
+  margin-left: 15%
 }
 //gif
 .gifplayer-ready{
