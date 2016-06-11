@@ -8,8 +8,8 @@
                     <div role="tabpanel">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#now-hot-list" aria-controls="now" role="tab" data-toggle="tab">지금 HOT!</a></li>
-                            <li role="presentation"><a href="#daily-hot-list" aria-controls="daily" role="tab" data-toggle="tab">오늘 HOT!</a></li>
+                            <li role="presentation" class="active"><a href="#now-hot-list" aria-controls="now" role="tab" data-toggle="tab">trending</a></li>
+                            <li role="presentation"><a href="#daily-hot-list" aria-controls="daily" role="tab" data-toggle="tab">daily</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -22,8 +22,8 @@
                     <div role="tabpanel">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#weekly-hot-list" aria-controls="weekly" role="tab" data-toggle="tab">주간 HOT!</a></li>
-                            <li role="presentation"><a href="#your-hot-list" aria-controls="your" role="tab" data-toggle="tab">나만 HOT!</a></li>
+                            <li role="presentation" class="active"><a href="#weekly-hot-list" aria-controls="weekly" role="tab" data-toggle="tab">weekly</a></li>
+                            <li role="presentation"><a href="#your-hot-list" aria-controls="your" role="tab" data-toggle="tab">for you</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
