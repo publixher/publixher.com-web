@@ -548,9 +548,10 @@ body {
   font-size: 12px;
 }
 #wrap #right .conf #logo {
-  margin: 5px 5px 5px 5px;
-  height: 40px;
-  width: 184px;
+  margin: 5px 5px 0px 5px;
+  height: 30px;
+  width: 40px;
+  overflow: hidden;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -975,6 +976,7 @@ li a {
   border-radius: 2px;
   padding: 4px;
   line-height: 2.2em;
+  font-size: 12px;
 }
 .content-body-rep-wrap {
   margin: 0 10px 0 10px;
@@ -1094,7 +1096,6 @@ li a {
   margin-right: auto;
 }
 .hot-pic-wrap {
-  width: 288px;
   height: 162px;
   position: relative;
   overflow: hidden;
@@ -1423,9 +1424,6 @@ a:hover {
 #publixh div div button,
 #send div:nth-child(2) button {
   border: 0;
-}
-#wrap #right .conf #logo {
-  display: none !important;
 }
 .usrpic-wrap {
   display: none !important;
