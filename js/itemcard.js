@@ -1366,11 +1366,7 @@ $(document).ready(function () {
     })
     $('#sendBody-mod,#publiBody-mod').on('input',function(e){
         resize($(this)[0]);
-        if (e.which == 13)
-        {
-            e.preventDefault();
-            document.selection.createRange().pasteHTML("<br/>")
-        }
+        document.execCommand('insertParagraph',false,'id for new p')
     })
 });
 
