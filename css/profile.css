@@ -63,10 +63,6 @@ body {
   width: 300px;
   max-height: 300px;
 }
-#wrap #middle .btn-group ul li {
-  width: 100%;
-  padding: 5px;
-}
 #wrap #middle .btn-group ul li:hover {
   background-color: #f4f4f4;
 }
@@ -1401,6 +1397,13 @@ a:hover {
   color: #ddd;
   vertical-align: text-bottom;
   margin-left: 5px;
+}
+.oi{
+  display: inline-block;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #434343;
 }
 .gifplayer-ready {
   margin-top: 0 !important;
