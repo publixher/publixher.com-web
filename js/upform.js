@@ -15,6 +15,7 @@ function getCookie(cName) {
     }
     return encodeURIComponent(cValue);
 }
+
 $(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
     $('.hasInput .form-control').click(function (e) {
@@ -310,9 +311,6 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
     })
-    $('#sendBody,#publiBody').on('DOMNodeInserted',function(e){
-        resize($(this)[0])
-    })
 //해시태그 플러그인
     $('.tag-input').tagEditor({
         delimiter: ', ',
@@ -361,7 +359,9 @@ $(document).ready(function () {
             }
         }
     });
-
+    $('#sendBody,#publiBody').on('input',function(){
+        resize($(this)[0]);
+    })
 });
 
 //텍스트에이리어 입력시 자동 크기조정

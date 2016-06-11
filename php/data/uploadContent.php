@@ -246,8 +246,6 @@ FROM publixher.TBL_CONTENT AS CONT
         //공개대상 쿠키 설정
         setcookie('exp',$_POST['expose'],time() + 3600 * 24 * 365, '/');
         
-        //몽고디비에 쳐 넣기
-        content_explode($body_text,$uid,$_POST['tags']);
         echo $result;
     } catch (PDOException $e) {
         $db->rollBack();

@@ -1,6 +1,8 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
+
+
 $(document).ready(function () {
     //아이템이 접히거나 다 봤을때 정보를 수집하기
     function readDone(item,user,time){
@@ -999,9 +1001,6 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
         }
     });
-    $('#sendBody-mod,#publiBody-mod').on('DOMNodeInserted',function(e){
-        resize($(this)[0])
-    });
     //수정시 글쓰기 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
@@ -1364,6 +1363,9 @@ $(document).ready(function () {
                 itemPool.splice(index,1);
             }
         })
+    })
+    $('#sendBody-mod,#publiBody-mod').on('input',function(){
+        resize($(this)[0]);
     })
 });
 

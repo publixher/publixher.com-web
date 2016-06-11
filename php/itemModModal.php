@@ -32,7 +32,7 @@
                     <!-- 똥싸기와 용돈벌기 내용 -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane" id="send-mod">
-                            <div contenteditable="true" class="form-control" id="sendBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                            <div contenteditable="true" class="form-control" id="sendBody-mod" ></div>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                         aria-expanded="false">
@@ -65,7 +65,7 @@
                         <div role="tabpanel" class="tab-pane" id="publixh-mod">
                             <div>
                                 <input type="text" class="form-control" id="saleTitle-mod">
-                                <div contenteditable="true" class="form-control" id="publiBody-mod" oninput="resize(this)" onkeyup="resize(this)"></div>
+                                <div contenteditable="true" class="form-control" id="publiBody-mod"></div>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                             aria-expanded="false">
