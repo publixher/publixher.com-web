@@ -20,7 +20,7 @@ body {
 {
     display: none;
 }
-#wrap #right #logo,
+.pico-search,
 #wrap #right #gsearch{
     display: none;
 }
@@ -461,9 +461,10 @@ body {
     border-radius: 0 !important
 }
 #wrap #right .conf #logo {
-    margin: 5px 5px 5px 5px;
-    height: 40px;
-    width: 184px;
+    margin: 5px 5px 0px 5px;
+    height: 30px;
+    width: 40px;
+    overflow: hidden;
     float: left;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -1293,9 +1294,7 @@ a:hover {
 #send div:nth-child(2) button {
     border: 0;
 }
-#wrap #right .conf #logo {
-    display: none !important;
-}
+
 .usrpic-wrap {
     display: none !important;
 }

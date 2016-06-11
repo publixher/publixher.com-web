@@ -70,16 +70,7 @@ body {
 #wrap #middle .btn-group ul li:hover {
   background-color: #f4f4f4;
 }
-#wrap #middle .btn-group ul li a {
-  width: 81%;
-  text-decoration: none;
-  color: #434343;
-  font-size: 12px;
-  text-align: center;
-}
-#wrap #middle .btn-group ul li a input[type=text] {
-  width: 100%;
-}
+
 #wrap #middle #listul {
   padding: 0;
   margin: 0;
@@ -269,42 +260,49 @@ body {
   border-top: 1px solid #eee !important;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
-  height: 22px;
-  width: 132px;
+  height: 30px;
+  width: 25%;
   padding: 0 0 0 0;
   margin: 0 10px 0 10px;
   border-bottom: 1px solid #eee;
 }
+#wrap #middle #writing-pane .tab-content .tab-pane .cateinput div{
+  width: 100%;
+}
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput .btn {
-  width: 133px;
+  width: 100%;
   padding: 0 0 0 0;
-  height: 22px;
+  height: 30px;
   border-radius: 0;
   border: 0;
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput {
-  height: 22px;
-  width: 132px;
-  border-left: 1px solid #eee;
+  height: 30px;
+  width: 25%;
   border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
   border-right: 1px solid #eee;
 }
+#wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div{
+  width: 100%;
+}
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
-  width: 132px;
+  width: 100%;
   padding: 0 0 0 0;
-  height: 22px;
+  height: 30px;
   border-radius: 0;
   border: 0;
   font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
   width: 50%;
-  height: 22px;
+  height: 30px;
   padding: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .form-group {
   margin: 0 0 0 0;
+  height: 30px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .input-group {
   width: 100%;
@@ -541,9 +539,10 @@ body {
   font-size: 12px;
 }
 #wrap #right .conf #logo {
-  margin: 5px 5px 5px 5px;
-  height: 40px;
-  width: 184px;
+  margin: 5px 5px 0px 5px;
+  height: 30px;
+  width: 40px;
+  overflow: hidden;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -754,11 +753,16 @@ li a {
   box-shadow: 0 0 0;
   border-top: 0;
 }
+#categorySelect li,
+#subcategorySelect li{
+  width: 100% !important;
+  padding:0 3px;
+}
 #dirSublist li:last-child {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 #middle .conf .dropdown-menu {
-  width: 100%;
+  width: 100% !important;
   box-shadow: 0 0 0;
 }
 #wrap #middle #writing-pane ul li ul li {
@@ -814,6 +818,7 @@ li a {
 #mod-pane ul li ul,
 #mod-pane ul li ul li{
   width: 100%;
+  padding: 0 3px;
 }
 #mod-form #mod-pane .dropdown-menu {
   text-align: center;
@@ -854,15 +859,9 @@ li a {
 #subcategorySelect-mod {
   background-color: #fff !important;
   margin-top: 0;
-  width: 133px !important;
+  width: 100%;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-}
-#categorySelect li a,
-#subcategorySelect li a,
-#categorySelect-mod li a,
-#subcategorySelect-mod li a {
-  width: 127px;
 }
 #notilist {
   left: -122px;
@@ -968,6 +967,7 @@ li a {
   border-radius: 2px;
   padding: 4px;
   line-height: 2.2em;
+  font-size: 12px;
 }
 .content-body-rep-wrap {
   margin: 0 10px 0 10px;
@@ -1087,7 +1087,6 @@ li a {
   margin-right: auto;
 }
 .hot-pic-wrap {
-  width: 288px;
   height: 162px;
   position: relative;
   overflow: hidden;
@@ -1188,6 +1187,7 @@ li a {
 #contentCost {
   box-shadow: inset 0 0 0;
   border: 1px solid #e3e3e3;
+  height:30px;
 }
 .market ul {
   padding-left: 5px !important;
@@ -1382,13 +1382,7 @@ a:hover {
 .subrep .rep {
   width: 405px !important;
 }
-.card .body p{
-  display: inline-block;
-  border-radius: 4px;
-  margin-left: 20px;
-  font-size: 12px;
-  color: #434343;
-}
+
 .pin-list span{
   display:inline-block;
   width: 25%;
@@ -1415,9 +1409,6 @@ a:hover {
 #publixh div div button,
 #send div:nth-child(2) button {
   border: 0;
-}
-#wrap #right .conf #logo {
-  display: none !important;
 }
 .usrpic-wrap {
   display: none !important;

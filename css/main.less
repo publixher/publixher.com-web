@@ -192,41 +192,49 @@ body {
             border-top: 1px solid #eee !important;
           }
           .cateinput {
-            height: 22px;
-            width: 133px;
+            height: 30px;
+            width: 25%;
             padding: 0 0 0 0;
             margin: 0 10px 0 10px;
             border-bottom: 1px solid #eee;
-            .btn {
-              width: 133px;
-              padding: 0 0 0 0;
-              height: 22px;
-              border-radius: 0;
-              border: 0;
-              font-size: 12px;
+            .div {
+              width: 100%;
+              .btn {
+                width: 100%;
+                padding: 0 0 0 0;
+                height: 30px;
+                border-radius: 0;
+                border: 0;
+                font-size: 12px;
+              }
             }
           }
           .subcateinput {
-            height: 22px;
-            width: 132px;
+            height: 30px;
+            width: 25%;
             border-bottom: 1px solid #eee;
             border-left: 1px solid #eee;
             border-right: 1px solid #eee;
+            .div {
+              width: 100%;
+            }
             .btn {
-              width: 132px;
+              width: 100%;
               padding: 0 0 0 0;
-              height: 22px;
+              height: 30px;
               border-radius: 0;
               border: 0;
               font-size: 12px;
             }
           }
+          }
           .priceinput {
             width: 50%;
-            height: 22px;
+            height: 30px;
             padding: 0 0 0 0;
             .form-group {
               margin: 0 0 0 0;
+              height: 30px;
             }
             .input-group {
               width: 100%;
@@ -427,9 +435,10 @@ body {
       box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
       font-size: 12px;
       #logo {
-        margin: 5px 5px 5px 5px;
-        height: 40px;
-        width: 184px;
+        margin: 5px 5px 0px 5px;
+        height: 30px;
+        width: 40px;
+        overflow: hidden;
         float: left;
         .roundborder();
       }
@@ -568,11 +577,12 @@ body {
       }
     }
   }
-}
+
 
 .carousel-control.right, .carousel-control.left {
   background-image: none;
-  width: 50px;
+  width: 15%;
+  height:50px;
   padding: 8px;
   font-size: 14px
 }
@@ -661,8 +671,13 @@ li a {
   box-shadow: 0 0 0;
   border-top: 0;
 }
+#categorySelect li,
+#subcategorySelect li{
+  width: 100% !important;
+  padding: 0 3px;
+}
 #dirSublist li:last-child{
-  margin-top: 5px
+  margin-top: 10px
 }
 #middle .conf .dropdown-menu {
   width: 100%;
@@ -727,6 +742,7 @@ li a {
 #mod-pane ul li ul,
 #mod-pane ul li ul li{
   width: 100%;
+  padding: 0 3px;
 }
 #mod-form #mod-pane .dropdown-menu {
   text-align: center;
@@ -771,17 +787,9 @@ li a {
 #subcategorySelect,
 #categorySelect-mod,
 #subcategorySelect-mod {
-  margin-top: 0px;
-  width: 133px;
+  margin-top: 0;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-}
-
-#categorySelect li a,
-#subcategorySelect li a,
-#categorySelect-mod li a,
-#subcategorySelect-mod li a {
-  width: 127px;
 }
 
 #notilist {
@@ -886,6 +894,7 @@ li a {
   border-radius: 2px;
   padding: 4px;
   line-height: 2.2em;
+  font-size: 12px;
 }
 .content-body-rep-wrap{
   margin: 0 10px 0 10px;
@@ -982,11 +991,11 @@ li a {
   margin-right: auto;
 }
 .hot-pic-wrap {
-  width: 288px;
   height: 162px;
   position: relative;
   overflow: hidden;
   opacity: 0.5;
+  cursor: pointer;
 }
 .hot-pic {
   position: absolute;
@@ -1083,6 +1092,7 @@ li a {
 #contentCost{
   box-shadow: inset 0 0 0;
   border: 1px solid #e3e3e3;
+  height:30px;
 }
 .market ul{
   padding-left: 5px !important;
@@ -1256,13 +1266,7 @@ a:hover{
 .subrep .rep{
   width: 405px !important;
 }
-.card .body p{
-  display: inline-block;
-  border-radius: 4px;
-  margin-left: 20px;
-  font-size: 12px;
-  color: #434343;
-}
+
 .pin-list span{
   display:inline-block;
   width: 25%;
@@ -1282,6 +1286,12 @@ a:hover{
   vertical-align: text-bottom;
   margin-left: 5px;
 }
+.carousel-inner .item div .nav li{
+  width: 35% !important;
+}
+.carousel-inner .item div .nav li:first-child{
+  margin-left: 15%
+}
 //gif
 .gifplayer-ready{
   margin-top: 0 !important;
@@ -1293,9 +1303,7 @@ a:hover{
   border: 0;
 }
 //임시
-#wrap #right .conf #logo{
-  display: none !important;
-}
+
 .usrpic-wrap{
   display: none !important;
 }
