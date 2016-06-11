@@ -310,9 +310,6 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
     })
-    $('#sendBody,#publiBody').on('DOMNodeInserted',function(e){
-        resize($(this)[0])
-    })
 //해시태그 플러그인
     $('.tag-input').tagEditor({
         delimiter: ', ',

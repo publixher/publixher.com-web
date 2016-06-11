@@ -999,9 +999,6 @@ $(document).ready(function () {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
         }
     });
-    $('#sendBody-mod,#publiBody-mod').on('DOMNodeInserted',function(e){
-        resize($(this)[0])
-    });
     //수정시 글쓰기 버튼 클릭할때의 동작
     $('#sendButton-mod').on('click', function () {
         var $btn = $(this).button('loading');
