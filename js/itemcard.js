@@ -1364,7 +1364,7 @@ $(document).ready(function () {
             }
         })
     })
-    $('#sendBody-mod,#publiBody-mod').on('input',function(){
+    $('#sendBody-mod,#publiBody-mod').on('input',function(e){
         resize($(this)[0]);
     })
 });

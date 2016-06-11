@@ -359,7 +359,7 @@ $(document).ready(function () {
             }
         }
     });
-    $('#sendBody,#publiBody').on('input',function(){
+    $('#sendBody,#publiBody').on('input,keyup',function(){
         resize($(this)[0]);
     })
 });
