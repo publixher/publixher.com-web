@@ -1,6 +1,8 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
+
+
 $(document).ready(function () {
     //아이템이 접히거나 다 봤을때 정보를 수집하기
     function readDone(item,user,time){
@@ -1361,6 +1363,9 @@ $(document).ready(function () {
                 itemPool.splice(index,1);
             }
         })
+    })
+    $('#sendBody-mod,#publiBody-mod').on('input',function(){
+        resize($(this)[0]);
     })
 });
 

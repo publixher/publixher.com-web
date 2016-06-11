@@ -15,6 +15,7 @@ function getCookie(cName) {
     }
     return encodeURIComponent(cValue);
 }
+
 $(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
     $('.hasInput .form-control').click(function (e) {
@@ -358,7 +359,9 @@ $(document).ready(function () {
             }
         }
     });
-
+    $('#sendBody,#publiBody').on('input',function(){
+        resize($(this)[0]);
+    })
 });
 
 //텍스트에이리어 입력시 자동 크기조정

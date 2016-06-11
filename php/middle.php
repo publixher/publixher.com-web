@@ -46,7 +46,7 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="send">
                     <div contenteditable="true" class="form-control" id="sendBody"
-                         onkeyup="resize(this)"></div>
+                         ></div>
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -84,7 +84,7 @@
                     <div>
                         <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
                         <div contenteditable="true" class="form-control" id="publiBody" 
-                             onkeyup="resize(this)"></div>
+                             ></div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-expanded="false">
