@@ -1366,7 +1366,6 @@ $(document).ready(function () {
     })
     $('#sendBody-mod,#publiBody-mod').on('input',function(e){
         resize($(this)[0]);
-        document.execCommand('insertParagraph',false,'id for new p')
     })
 });
 
