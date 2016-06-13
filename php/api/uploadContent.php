@@ -69,9 +69,17 @@ if (!empty($_POST)) {
     }
 
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < $imgcount; $i++) {
+    for ($i = 1; $i < min($imgcount,4); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
-        $blured[$i - 1] = blur($imgs[1][$i][0], 2);
+        $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][$i][0]);
+        $imgout=str_replace('origin','blur',$imgsrc);
+        $img = new imaging;
+        $img->set_img($imgsrc);
+        $img->set_quality(100);
+        $img->set_origin(true);
+        $img->set_size(100, 100);
+        $img->save_img($imgout);
+        $blured[$i - 1] = blur($imgout, 2);
     }
     //이미지 있으면 프리뷰 길이가 150 없으면 400
     if ($previewimg) {
@@ -100,18 +108,18 @@ if (!empty($_POST)) {
     }
     if (count($blured) > 5) {
         for ($i = 0; $i < 4; $i++) {
-            $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
+            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
         $ex = count($blured) - 4;
         $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
-            $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
+            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
     }
     //사진 80으로 크롭시켜서 대표이미지로 등록
     if($previewimg and $for_sale){
-        $imgsrc=__DIR__.'/../..'.str_replace('crop','origin',$imgs[1][0][0]);
+        $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][0][0]);
         $imgout=str_replace('origin','crop80',$imgsrc);
         $img = new imaging;
         $img->set_img($imgsrc);
