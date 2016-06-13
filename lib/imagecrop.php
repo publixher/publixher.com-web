@@ -103,9 +103,13 @@ class imaging
             // Wide
             if(($this->order==0 and $this->x_input >= $this->y_input) or ($this->order==1 and $this->x_input<=$this->y_input))
             {
-
-                $this->x_output = $sizeW;
-                $this->y_output = ($this->x_output / $this->x_input) * $this->y_input;
+                if($this->origin==true){
+                    $this->y_output=$sizeH;
+                    $this->x_output=($this->y_output/$this->y_input)*$this->x_input;
+                }else {
+                    $this->x_output = $sizeW;
+                    $this->y_output = ($this->x_output / $this->x_input) * $this->y_input;
+                }
 
             }
 
