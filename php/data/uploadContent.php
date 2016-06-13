@@ -123,7 +123,7 @@ if (!empty($_POST)) {
     }
     //사진 80으로 크롭시켜서 대표이미지로 등록
     if($previewimg and $for_sale){
-        $imgsrc=__DIR__.'/../..'.str_replace('crop','origin',$imgs[1][0][0]);
+        $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][0][0]);
         $imgout=str_replace('origin','crop80',$imgsrc);
         $img = new imaging;
         $img->set_img($imgsrc);
