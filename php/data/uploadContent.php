@@ -129,7 +129,7 @@ if (!empty($_POST)) {
         $img->set_img($imgsrc);
         $img->set_quality(100);
         $img->set_origin(true);
-        $img->set_size(80, 79);
+        $img->set_size(288, 288);
         $img->save_img($imgout);
     }
     //content테이블에 넣음
