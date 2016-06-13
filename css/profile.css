@@ -421,10 +421,11 @@ body {
 }
 #wrap #middle .item .body .thumbPic,
 #wrap #middle .item-for-sale .body .thumbPic {
-  max-width: 60px;
-  max-height: 60px;
-  margin: 0 5px 5px 0;
-  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: none !important;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -1412,6 +1413,14 @@ a:hover {
 }
 .carousel-inner .item div .nav li:first-child{
   margin-left: 15%
+}
+.thumbPic-wrap{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden !important;
+  display: inline-block;
+  margin: 0 10px 0 0;
 }
 .oi{
   display: inline-block;

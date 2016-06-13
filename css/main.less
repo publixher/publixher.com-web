@@ -344,8 +344,11 @@ body {
           margin-bottom: -30px;
         }
         .thumbPic {
-          margin: 0 5px 5px 0;
-          display: inline;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: none !important;
         }
         img {
           max-width: 100% !important;
@@ -1296,6 +1299,14 @@ a:hover{
 }
 .carousel-inner .item div .nav li:first-child{
   margin-left: 15%
+}
+.thumbPic-wrap{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden !important;
+  display: inline-block;
+  margin: 0 10px 0 0;
 }
 .oi{
   display: inline-block;
