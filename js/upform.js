@@ -359,8 +359,9 @@ $(document).ready(function () {
             }
         }
     });
-    $('#sendBody,#publiBody').on('input,keyup',function(){
-        resize($(this)[0]);
+    $('#sendBody,#publiBody').on('compositionend',function(e){
+        e.preventDefault();
+        console.log('compositionend');
     })
 });
 

@@ -42,14 +42,14 @@ if ($_FILES) {
             //요청이 들어온 페이지가 프로필 수정페이지면 160으로 크롭하고 유저 테이블에 저장도 하세기!
             $img->set_order(1);
             $img->set_gifCrop(true);
-            $img->set_size(160, 160);
+            $img->set_size(160, 159);
             $img->save_img($uploadDir . "profile/" . $filepath);
             //34짜리와 50짜리도 크롭 하세기!
-            $img->set_size(34,34);
+            $img->set_size(34,33);
             $img->save_img($uploadDir."crop34/".$filepath);
-            $img->set_size(50,50);
+            $img->set_size(50,49);
             $img->save_img($uploadDir."crop50/".$filepath);
-            $img->set_size(24,24);
+            $img->set_size(24,23);
             $img->save_img($uploadDir."crop24/".$filepath);
             include_once '../../conf/User.php';
             session_start();
@@ -67,7 +67,7 @@ if ($_FILES) {
             $user=$w->fetchObject(User);
             $_SESSION['user'] = $user;
         }else {
-            $img->set_size(510, 510);
+            $img->set_size(510, 509);
             $img->save_img($uploadDir . "crop/" . $filepath);
             $img->set_origin(true);
             $img->set_size(510);

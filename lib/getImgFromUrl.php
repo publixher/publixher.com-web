@@ -15,7 +15,7 @@ function getImgFromUrl($url,$originpath,$path,$size,$opath=null,$osize=null,$sel
     $img = new imaging;
     $img->set_img($filepath);
     $img->set_quality(100);
-    $img->set_size($size, $size);
+    $img->set_size($size, $size-1);
     $img->save_img($croppath);
     if($opath){
         $ocroppath=str_replace($originpath,$opath,$filepath);

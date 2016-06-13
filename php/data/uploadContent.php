@@ -121,6 +121,16 @@ if (!empty($_POST)) {
             $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
         }
     }
+    //사진 80으로 크롭시켜서 대표이미지로 등록
+    if($previewimg and $for_sale){
+        $imgsrc=__DIR__.'/../..'.str_replace('crop','origin',$imgs[1][0][0]);
+        $imgout=str_replace('origin','crop80',$imgsrc);
+        $img = new imaging;
+        $img->set_img($imgsrc);
+        $img->set_quality(100);
+        $img->set_size(80, 79);
+        $img->save_img($imgout);
+    }
     //content테이블에 넣음
     try {
         $db->beginTransaction();

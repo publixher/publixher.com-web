@@ -116,7 +116,7 @@ if (!empty($_POST)) {
         $img = new imaging;
         $img->set_img($imgsrc);
         $img->set_quality(100);
-        $img->set_size(80, 80);
+        $img->set_size(80, 79);
         $img->save_img($imgout);
     }
     //content테이블에 넣음
