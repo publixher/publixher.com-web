@@ -112,7 +112,7 @@ $(document).ready(function () {
                     body_text: $('#publiBody').text(),
                     ID_writer: mid,
                     for_sale: "Y",
-                    price: $('#contentCost').val().length>0?$('#contentCost').val():0,
+                    price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
                     category: category,
                     sub_category: sub_category,
                     adult: $('#adult').is(':checked'),
@@ -359,10 +359,12 @@ $(document).ready(function () {
             }
         }
     });
-    $('#sendBody,#publiBody').on('compositionend',function(e){
-        e.preventDefault();
-        console.log('compositionend');
-    })
+    $('#sendBody,#publiBody').on('keydown', function (e) {
+        if (e.keyCode == '13') {
+            e.preventDefault();
+            document.selection.createRange().pasteHTML("<br/>")
+        }
+    });
 });
 
 //텍스트에이리어 입력시 자동 크기조정

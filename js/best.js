@@ -15,7 +15,6 @@ $(document).ready(function () {
             dataType: 'json',
             data: {act: action},
             success: function (res) {
-                console.log(res);
                 spinner.detach();
                 for (var i = 0; i < res.length; i++) {
                     var img = '';
