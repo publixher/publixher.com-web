@@ -987,15 +987,19 @@ $(document).ready(function () {
             }
         },
         done: function (e, data) {
+            var gif = data.files[0].type == 'image/gif' ? true : false;
+            var img = $('<img>').attr('src', '/img/' + data.result['files']['file_crop']).addClass('BodyPic');
+            if (gif) img.addClass('gif');
             if (this == $('#fileuploads-mod')[0]) {
-                var sendBody_mod = $('#sendBody-mod');
-                sendBody_mod.html(sendBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                sendBody_mod.height(sendBody_mod.height() + data.result['files']['file_height'] + 8);
+                var sendBody = $('#sendBody-mod');
+                sendBody.focus();
+                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
+                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp-mod')[0]) {
-                var publiBody_mod = $('#publiBody-mod')
-                publiBody_mod.html(publiBody_mod.html() + "<img src='/img/" + data.result['files']['file_crop'] + "' class='BodyPic'><br><br>");
-                publiBody_mod.height(publiBody_mod.height() + data.result['files']['file_height'] + 8);
-
+                var publiBody = $('#publiBody-mod');
+                publiBody.focus();
+                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
+                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
@@ -1363,9 +1367,6 @@ $(document).ready(function () {
                 itemPool.splice(index,1);
             }
         })
-    })
-    $('#sendBody-mod,#publiBody-mod').on('input',function(e){
-        resize($(this)[0]);
     })
 });
 

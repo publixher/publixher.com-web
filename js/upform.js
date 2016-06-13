@@ -15,6 +15,53 @@ function getCookie(cName) {
     }
     return encodeURIComponent(cValue);
 }
+//커서 위치에 이미지 추가하기
+function pasteHtmlAtCaret(html, selectPastedContent) {
+    var sel, range;
+    if (window.getSelection) {
+        // IE9 and non-IE
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+
+            // Range.createContextualFragment() would be useful here but is
+            // only relatively recently standardized and is not supported in
+            // some browsers (IE9, for one)
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            var firstNode = frag.firstChild;
+            range.insertNode(frag);
+
+            // Preserve the selection
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                if (selectPastedContent) {
+                    range.setStartBefore(firstNode);
+                } else {
+                    range.collapse(true);
+                }
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control") {
+        // IE < 9
+        var originalRange = sel.createRange();
+        originalRange.collapse(true);
+        sel.createRange().pasteHTML(html);
+        if (selectPastedContent) {
+            range = sel.createRange();
+            range.setEndPoint("StartToStart", originalRange);
+            range.select();
+        }
+    }
+}
 
 $(document).ready(function () {
     //드롭다운안에 클릭했을때 안닫히게 하려면 이렇게
@@ -291,7 +338,7 @@ $(document).ready(function () {
                 var sendBody = $('#sendBody');
                 sendBody.html(sendBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             } else if (this == $('#fileuploadp')[0]) {
-                var publiBody = $('#publiBody')
+                var publiBody = $('#publiBody');
                 publiBody.html(publiBody.html() + '<div id="up-progress" style="background-color: lightpink;height: 5px;width: 0;"></div>');
             }
         }, done: function (e, data) {
@@ -300,11 +347,13 @@ $(document).ready(function () {
             if (gif) img.addClass('gif');
             if (this == $('#fileuploads')[0]) {
                 var sendBody = $('#sendBody');
-                sendBody.append(img, '<br><br>');
+                sendBody.focus();
+                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
                 sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp')[0]) {
-                var publiBody = $('#publiBody')
-                publiBody.append(img, '<br><br>')
+                var publiBody = $('#publiBody');
+                publiBody.focus();
+                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
                 publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
@@ -357,12 +406,6 @@ $(document).ready(function () {
             } else {
                 alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
             }
-        }
-    });
-    $('#sendBody,#publiBody').on('keydown', function (e) {
-        if (e.keyCode == '13') {
-            e.preventDefault();
-            document.selection.createRange().pasteHTML("<br/>")
         }
     });
 });

@@ -590,6 +590,16 @@ LIMIT
         $prepare5 = $db->prepare($sql5);
         $prepare5->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
         $prepare5->execute();
+        //베스트에서 삭제
+        $sql6 = "DELETE FROM publixher.TBL_NOW_HOT WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare = $db->prepare($sql6);
+        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $sql6 = "DELETE FROM publixher.TBL_DAILY_HOT WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare = $db->prepare($sql6);
+        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $sql6 = "DELETE FROM publixher.TBL_WEEKLY_HOT WHERE ID_CONTENT=:ID_CONTENT";
+        $prepare = $db->prepare($sql6);
+        $prepare->execute(array('ID_CONTENT'=>$ID));
         echo '{"result":"Y"}';
     } else {
         echo '{"result":"N","reason":"user not writer"}';
