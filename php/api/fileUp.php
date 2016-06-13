@@ -61,7 +61,7 @@ if ($_FILES) {
             $img->set_size(510, 509);
             $img->save_img($uploadDir . "crop/" . $filepath);
             $img->set_origin(true);
-            $img->set_size(510);
+            $img->set_size(510,510);
             $img->save_img($uploadDir . "crop_origin/" . $filepath);
             //gif면 png 리턴함
             $filepath=str_replace('.gif','.png',$filepath);
