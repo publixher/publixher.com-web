@@ -14,7 +14,7 @@ function blur($gdImageResource, $blurFactor = 3)
 {
     // blurFactor has to be an integer
     $blurFactor = round($blurFactor);
-    $filepath=__DIR__.'/..'. $gdImageResource;
+    $filepath=$gdImageResource;
     $filename=basename($filepath);
     $outpath=__DIR__.'/../img/blur/'.$filename;
     //get image resource
@@ -71,14 +71,14 @@ function blur($gdImageResource, $blurFactor = 3)
     imagefilter($gdImageResource, IMG_FILTER_GAUSSIAN_BLUR);
 
     //save image
-    $bluredImg=ImageCreateTrueColor(100, 100);
+    $bluredImg=ImageCreateTrueColor($originalWidth, $originalHeight);
     if($ext=="PNG"){
         $background = imagecolorallocate($bluredImg, 0, 0, 0);
         imagecolortransparent($bluredImg, $background);
         imagealphablending($bluredImg, false);
         imagesavealpha($bluredImg, true);
     }
-    ImageCopyResampled($bluredImg, $gdImageResource, 0, 0, 0, 0, 100, 100, $originalWidth, $originalHeight);
+    ImageCopyResampled($bluredImg, $gdImageResource, 0, 0, 0, 0, $originalWidth, $originalHeight, $originalWidth, $originalHeight);
     if($ext == "JPG" OR $ext == "JPEG"){
         imagejpeg($bluredImg,$outpath);
     }else if($ext == "PNG"){
