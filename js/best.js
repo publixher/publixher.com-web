@@ -16,7 +16,6 @@ $(document).ready(function () {
             data: {act: action},
             success: function (res) {
                 spinner.detach();
-                console.log(res)
                 for (var i = 0; i < res.length; i++) {
                     var img = '';
                     if (res[i]['WRITER_PIC']) {
