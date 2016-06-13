@@ -368,9 +368,8 @@ body {
 #wrap #middle .item .tail,
 #wrap #middle .item-for-sale .tail {
     float: left;
+    width: 100%;
     font-size: 12px;
-    margin-left: 9px;
-    margin-right: 9px;
     margin-top: 10px;
 }
 #wrap #middle .item .tail .badge,
@@ -389,7 +388,7 @@ body {
 }
 #wrap #middle .item .tail .tknock,
 #wrap #middle .item-for-sale .tail .tknock {
-    width: 127.5px;
+    width: 25%;
     text-align: center;
     background-color: white;
 }
@@ -409,14 +408,14 @@ body {
 #wrap #middle .item-for-sale .tail .tcomment,
 #wrap #middle .item .tail .tshare,
 #wrap #middle .item-for-sale .tail .tshare {
-    width: 127.5px;
+    width: 25%;
     text-align: center;
     background-color: white;
     height: 22px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
-    width: 127.5px;
+    width: 25%;
     text-align: center;
     background-color: white;
 }
