@@ -284,8 +284,8 @@
                 <!-- 위탭 -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#send" aria-controls="home" role="tab"
-                                                              data-toggle="tab">보내기</a></li>
-                    <?php if ($I) echo '<li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>' ?>
+                                                              data-toggle="tab">똥싸기</a></li>
+                    <?php if ($I) echo '<li role="presentation"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">용돈벌기</a></li>' ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
@@ -323,8 +323,8 @@
                 <!-- 똥싸기와 용돈벌기 내용 -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="send">
-                        <div contenteditable="true" class="form-control" id="sendBody"
-                             ></div>
+                        <div contenteditable="true" class="form-control" id="sendBody" oninput="resize(this)"
+                             onkeyup="resize(this)"></div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -360,7 +360,7 @@
                             <div>
                                 <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
                                 <div contenteditable="true" class="form-control" id="publiBody"
-                                      ></div>
+                                     oninput="resize(this)" onkeyup="resize(this)"></div>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                             aria-expanded="false">
