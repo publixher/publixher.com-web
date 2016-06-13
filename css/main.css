@@ -351,7 +351,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: none !important;
-  display: none;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -733,6 +732,9 @@ li a {
   border: 0;
   padding: 0;
 }
+#publiBody-mod img{
+  max-width: 510px;
+}
 #publixh-mod hr,
 #send-mod hr {
   margin-top: 5px;
@@ -886,6 +888,9 @@ li a {
   margin-left: 2%;
   border: 0;
   padding: 0;
+}
+#sendBody-mod img{
+  max-width: 510px;
 }
 .tag-editor {
   width: 264px;
