@@ -705,6 +705,19 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   padding: 8px;
   font-size: 14px;
 }
+.carousel-inner .nav-tabs>li:hover>a,
+.carousel-inner .nav-tabs>li.active>a,
+.carousel-inner .nav-tabs>li.active>a:focus,
+.carousel-inner .nav-tabs>li.active>a:hover{
+  border: 0 !important;
+  background-color: #f4f4f4;
+  border-radius: 4px !important;
+  padding: 8px !important;
+}
+.carousel-inner .nav-tabs>li>a{
+  height:36px;
+  padding: 8px !important;
+}
 a[href="#now"],
 a[href="#monthly"] {
   margin-left: 50px;
