@@ -1,6 +1,10 @@
 body {
   background-color: #eee;
 }
+html,body,th,td,input,select,textarea,button,div,p,a,span,li{
+  outline: 0 !important;
+  box-shadow: inset 0 0 0 !important;
+}
 #cropContainerHeader {
   width: 550px;
   height: 150px;
