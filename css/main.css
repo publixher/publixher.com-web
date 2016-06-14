@@ -719,8 +719,8 @@ li a {
   border: 0;
   border-bottom: 1px solid #f4f4f4 !important;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
   margin-top: 5px;
   padding: 0;
 }
@@ -728,8 +728,8 @@ li a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
   border: 0;
   padding: 0;
 }
@@ -885,8 +885,8 @@ li a {
 #sendBody-mod {
   margin-top: 5px;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
   border: 0;
   padding: 0;
 }
@@ -1371,4 +1371,18 @@ a:hover {
   box-shadow: inset 0 0 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+#sendBody,
+#publiBody,
+#sendbody-mod,
+#publiBody-mod{
+  overflow-y:auto;
+  max-height: 800px;
+  width: 542px !important;
+}
+#writing-pane,
+#send-mod,
+#publixh-mod{
+  overflow: hidden !important;
 }
