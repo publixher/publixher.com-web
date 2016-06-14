@@ -5,15 +5,15 @@
 
 $(document).ready(function () {
     //아이템이 접히거나 다 봤을때 정보를 수집하기
-    function readDone(item,user,time){
+    function readDone(item, user, time) {
         $.ajax({
-            url:'/php/api/actionData.php',
-            dataType:'json',
-            type:'POST',
-            data:{itemID:item,userID:user,time:time,action:"readDone"}
+            url: '/php/api/actionData.php',
+            dataType: 'json',
+            type: 'POST',
+            data: {itemID: item, userID: user, time: time, action: "readDone"}
         })
     }
-    
+
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);
@@ -38,17 +38,18 @@ $(document).ready(function () {
             }
         })
     });
-    function getpoint(mid,callBack){
+    function getpoint(mid, callBack) {
         return $.ajax({
-            url:'/php/api/profileInfo.php',
-            dataType:'json',
-            type:'GET',
-            data:{userID:mid,action:'point'},
-            success:function(res){
+            url: '/php/api/profileInfo.php',
+            dataType: 'json',
+            type: 'GET',
+            data: {userID: mid, action: 'point'},
+            success: function (res) {
                 callBack(res['result']['CASH_POINT']);
             }
         })
     }
+
     //코멘트 버튼 동작(처음 댓글 불러오기)
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -185,10 +186,10 @@ $(document).ready(function () {
                                     $('<span>')
                                         .addClass('pubico pico-24')
                                 )
-                                .on('click',function(){ //기부버튼 누를때 서버에서 남은 포인트 가져오기
-                                    var input=$(this).siblings('ul').find('input');
-                                    getpoint(mid,function(point){
-                                        input.attr('placeholder',point);
+                                .on('click', function () { //기부버튼 누를때 서버에서 남은 포인트 가져오기
+                                    var input = $(this).siblings('ul').find('input');
+                                    getpoint(mid, function (point) {
+                                        input.attr('placeholder', point);
                                     });
                                 })
                             , $('<ul>')  //기부 금액 넣기
@@ -265,10 +266,11 @@ $(document).ready(function () {
                                 write += ' <a class="repdel">X</a>'
                             }
                             write += '</span></span></td></tr></table></div>';
-                            list.append(write);
                             if (res[i]['DEL'] == 1) {
-                                list.find('.reply-body').addClass('reply-del');
+                                write = $(write);
+                                write.find('.reply-body').addClass('reply-del');
                             }
+                            list.append(write);
                             var ind = parseInt(list.attr('index')) + 1;
                             list.attr('index', ind);
                         }
@@ -354,6 +356,10 @@ $(document).ready(function () {
                             write += ' <a class="repdel">X</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
+                        if (res[i]['DEL'] == 1) {
+                            write = $(write);
+                            write.find('.reply-body').addClass('reply-del');
+                        }
                         list.append(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -410,6 +416,10 @@ $(document).ready(function () {
                             write += ' <a class="repdel">X</a>'
                         }
                         write += '</span></span></td></tr></table></div>';
+                        if (res[i]['DEL'] == 1) {
+                            write = $(write);
+                            write.find('.reply-body').addClass('reply-del');
+                        }
                         btn.after(write);
                         var ind = parseInt(list.attr('index')) + 1;
                         list.attr('index', ind);
@@ -497,7 +507,11 @@ $(document).ready(function () {
                 }
             })
         }
-    })
+    });
+    //댓글 수정동작
+    $(document).on('dbclick','.reply-body',function(){
+       var repBody=$(this).text();
+    });
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
         var thisitemID = $(this).parents()[12].id;
@@ -534,9 +548,6 @@ $(document).ready(function () {
                                 }
                                 write += '</td></tr></table></div>';
                                 subrep_list.append(write);
-                                if (res[i]['DEL'] == 1) {
-                                    subrep_list.find('.reply-body').addClass('reply-del');
-                                }
                                 var ind = parseInt(subrep_list.attr('index')) + 1;
                                 subrep_list.attr('index', ind);
                             }
@@ -780,7 +791,7 @@ $(document).ready(function () {
 
     });
     //구매버튼(가격표시)동작
-    var itemPool=window['item_pool']=new Array();
+    var itemPool = window['item_pool'] = new Array();
     var previewarr = [];
     $(document).on("click", ".price", function () {
         var thisitemID = $(this).parents()[5].id;
@@ -824,9 +835,13 @@ $(document).ready(function () {
                 success: function (res) {
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function () {
-                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function(){
+                        body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function () {
                             //확장된 순간부터 해당 게시물 읽은 시간을 기록한다
-                            itemPool.push({'time':new Date(),'scroll_end':$('#'+thisitemID).position().top+$('#'+thisitemID).height(),'ID':thisitemID});
+                            itemPool.push({
+                                'time': new Date(),
+                                'scroll_end': $('#' + thisitemID).position().top + $('#' + thisitemID).height(),
+                                'ID': thisitemID
+                            });
                         }).find('.gif').gifplayer({
                             playOn: 'hover',
                             wait: true
@@ -855,11 +870,11 @@ $(document).ready(function () {
             document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');
             //접는 순간 해당 게시물 읽은 시간을 구한다
-            var now=new Date();
-            var itemIndex=findIndex(itemPool,'ID',thisitemID);
-            var gap=(now.getTime()-itemPool[itemIndex]['time'].getTime())/1000;
-            readDone(thisitemID,mid,gap);
-            itemPool.splice(itemIndex,1);
+            var now = new Date();
+            var itemIndex = findIndex(itemPool, 'ID', thisitemID);
+            var gap = (now.getTime() - itemPool[itemIndex]['time'].getTime()) / 1000;
+            readDone(thisitemID, mid, gap);
+            itemPool.splice(itemIndex, 1);
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
             priceSpan.append('&nbsp;<a>구매하기?</a>')
@@ -990,11 +1005,11 @@ $(document).ready(function () {
             if (this == $('#fileuploads-mod')[0]) {
                 var sendBody = $('#sendBody-mod');
                 sendBody.focus();
-                pasteHtmlAtCaret(img+'<br>');
+                pasteHtmlAtCaret(img + '<br>');
             } else if (this == $('#fileuploadp-mod')[0]) {
                 var publiBody = $('#publiBody-mod');
                 publiBody.focus();
-                pasteHtmlAtCaret(img+'<br>');
+                pasteHtmlAtCaret(img + '<br>');
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
@@ -1082,7 +1097,7 @@ $(document).ready(function () {
                     body: $('#publiBody-mod').html(),
                     body_text: $('#publiBody-mod').text(),
                     for_sale: "Y",
-                    price: $('#contentCost-mod').val().length > 0?$('#contentCost-mod').val():0,
+                    price: $('#contentCost-mod').val().length > 0 ? $('#contentCost-mod').val() : 0,
                     category: category_mod,
                     sub_category: sub_category_mod,
                     adult: $('#adult-mod').is(':checked'),
@@ -1211,7 +1226,7 @@ $(document).ready(function () {
             alert('가격은 숫자로 입력해 주세요.');
             $('#contentCost-mod').focus();
             costvali_mod = false;
-        } else if (parseInt(contentCost.val())> 65535) {
+        } else if (parseInt(contentCost.val()) > 65535) {
             alert('65535픽 이상은 입력되지 않습니다.');
             costvali_mod = false;
         } else {
@@ -1220,7 +1235,7 @@ $(document).ready(function () {
     });
     //유튜브 태그 넣기(upform에서 쓰던것)
     var iframerex = /^<iframe[^>]width=["']?([^>"']+)["']?[^>]height=["']?([^>"']+)["']?[^>]src=["']?([^>"']+)["']?[^>]*><\/iframe>$/i;
-    var you_short=/^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
+    var you_short = /^https:\/\/youtu.be\/[a-zA-Z0-9-_]+$/;
     $('.youtube-iframe').on('keyup', function (e) {
         var tag = $(this).val();
         if (iframerex.test(tag)) {
@@ -1231,7 +1246,7 @@ $(document).ready(function () {
             $(this).val('');
             var body = $(this).parents('div[role="tabpanel"]').find('div[contenteditable="true"]');
             body.append(tag).trigger('keyup');
-        }else if(you_short.test(tag)){
+        } else if (you_short.test(tag)) {
 
         }
     })
@@ -1351,25 +1366,25 @@ $(document).ready(function () {
 
     })
     //스크롤할때 열린 아이템보다 스크롤이 아래 있으면 스크롤 추적 끝내고 해당 시간변수 삭제
-    $(document).scroll(function(){
-        var scrollTop=$(document).scrollTop()+300;
-        $.each(itemPool,function(index,val){
-            if(scrollTop>val.scroll_end){
+    $(document).scroll(function () {
+        var scrollTop = $(document).scrollTop() + 300;
+        $.each(itemPool, function (index, val) {
+            if (scrollTop > val.scroll_end) {
                 //사람이 다 봤으면 데이터 보내기 시작
-                var now=new Date();
-                var gap=(now.getTime()-itemPool[findIndex(itemPool,'ID',val.ID)]['time'].getTime())/1000;
-                readDone(val.ID,mid,gap);
-                itemPool.splice(index,1);
+                var now = new Date();
+                var gap = (now.getTime() - itemPool[findIndex(itemPool, 'ID', val.ID)]['time'].getTime()) / 1000;
+                readDone(val.ID, mid, gap);
+                itemPool.splice(index, 1);
             }
         })
     })
 });
 
 //오브젝트 안에서 키의 값이 특정값인 인덱스 찾기(한개만)
-function findIndex(array,attr,val){
-    var len=array.length;
-    for(var i=0;i<len;i++){
-        if(array[i][attr]===val){
+function findIndex(array, attr, val) {
+    var len = array.length;
+    for (var i = 0; i < len; i++) {
+        if (array[i][attr] === val) {
             return i;
         }
     }
