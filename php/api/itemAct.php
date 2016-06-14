@@ -125,6 +125,7 @@ FROM
 WHERE
   KNOCK + SUB_REPLY >= 10
   AND ID_CONTENT = :ID_CONTENT
+  AND ((REPLY.DEL=1 AND REPLY.SUB_REPLY>0) OR REPLY.DEL=0)
 ORDER BY
   KNOCK + SUB_REPLY DESC
 LIMIT
@@ -169,7 +170,7 @@ LIMIT
   DEL
 FROM publixher.TBL_CONTENT_REPLY AS REPLY
   INNER JOIN publixher.TBL_USER AS USER ON REPLY.ID_USER=USER.ID
-WHERE ID_CONTENT = :ID_CONTENT
+WHERE ID_CONTENT = :ID_CONTENT AND ((REPLY.DEL=1 AND REPLY.SUB_REPLY>0) OR REPLY.DEL=0)
 ORDER BY REPLY.SEQ DESC
 LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
@@ -217,6 +218,7 @@ FROM
 WHERE
   FRIEND.ID_USER = :ID_USER
   AND REPLY.ID_CONTENT = :ID_CONTENT
+  AND ((REPLY.DEL=1 AND REPLY.SUB_REPLY>0) OR REPLY.DEL=0)
 ORDER BY
   REPLY.SEQ DESC
 LIMIT
@@ -670,7 +672,7 @@ LIMIT
   DEL
 FROM publixher.TBL_CONTENT_SUB_REPLY AS SUB_REP
   INNER JOIN publixher.TBL_USER AS USER ON SUB_REP.ID_USER=USER.ID
-WHERE SUB_REP.ID_REPLY = :ID_REPLY
+WHERE SUB_REP.ID_REPLY = :ID_REPLY AND SUB_REP.DEL=0
 ORDER BY SUB_REP.SEQ DESC
 LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
@@ -811,14 +813,19 @@ LIMIT :INDEX, 6";
     $type = $_POST['type'];
     if ($_POST['userID'] == $userID) {
         if ($type == 0) {
-            $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID AND SUB_REPLY>0";
+            $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
+            $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT-1 WHERE ID=(SELECT ID_CONTENT FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID)";
         } else {
             $sql1 = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
+            $sql2 = "UPDATE publixher.TBL_CONTENT_REPLY SET SUB_REPLY=SUB_REPLY-1 WHERE ID=(SELECT ID_REPLY FROM publixher.TBL_CONTENT_SUB_REPLY WHERE ID=:ID)";
+
         }
 
-        $prepare = $db->prepare($sql);
+        $prepare = $db->prepare($sql1);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
+        $prepare = $db->prepare($sql2);
+        $prepare->execute(array('ID' => $id));
         echo '{"status":1}';
     }
 } elseif ($act == 'report') {

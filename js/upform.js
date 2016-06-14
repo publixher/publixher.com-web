@@ -31,7 +31,7 @@ function pasteHtmlAtCaret(html, selectPastedContent) {
             var el = document.createElement("div");
             el.innerHTML = html;
             var frag = document.createDocumentFragment(), node, lastNode;
-            while ( (node = el.firstChild) ) {
+            while ((node = el.firstChild)) {
                 lastNode = frag.appendChild(node);
             }
             var firstNode = frag.firstChild;
@@ -50,7 +50,7 @@ function pasteHtmlAtCaret(html, selectPastedContent) {
                 sel.addRange(range);
             }
         }
-    } else if ( (sel = document.selection) && sel.type != "Control") {
+    } else if ((sel = document.selection) && sel.type != "Control") {
         // IE < 9
         var originalRange = sel.createRange();
         originalRange.collapse(true);
@@ -343,21 +343,13 @@ $(document).ready(function () {
             }
         }, done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
-            var img='<img src="/img/'+data.result['files']['file_crop']+'" class="BodyPic">';
+            var img = '<img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic">';
             if (gif) img.addClass('gif');
-            if (this == $('#fileuploads')[0]) {
-                var sendBody = $('#sendBody');
-                sendBody.focus();
-                pasteHtmlAtCaret(img+'<br>');
-            } else if (this == $('#fileuploadp')[0]) {
-                var publiBody = $('#publiBody');
-                publiBody.focus();
-                pasteHtmlAtCaret(img+'<br>');
-            }
+            pasteHtmlAtCaret(img + '<br>');
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
-    })
+    });
 //해시태그 플러그인
     $('.tag-input').tagEditor({
         delimiter: ', ',
@@ -407,10 +399,18 @@ $(document).ready(function () {
         }
     });
 
-    $('#send-li,#pub-li').on('show.bs.tab',function(e){
-        var thisbody=$(e.relatedTarget.getAttribute('href')).find('div[contenteditable="true"]');
-        var otherbody=$(e.target.getAttribute('href')).find('div[contenteditable="true"]');
+    $('#send-li,#pub-li').on('show.bs.tab', function (e) {
+        var thisbody = $(e.relatedTarget.getAttribute('href')).find('div[contenteditable="true"]');
+        var otherbody = $(e.target.getAttribute('href')).find('div[contenteditable="true"]');
         otherbody.html(thisbody.html());
-
+    })
+    $('#fileuploads,#fileuploadp').on('click', function () {
+        var body;
+        if ($(this).is($('#fileuploads'))) {
+            body = $('#sendBody');
+        } else {
+            body = $('#publiBody');
+        }
+        body.focus();
     })
 });
