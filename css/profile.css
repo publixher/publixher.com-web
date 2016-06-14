@@ -178,8 +178,6 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0 0;
@@ -770,6 +768,8 @@ li a {
 }
 .modal-dialog{
   width: 540px;
+  margin: 0 auto;
+  margin-top: 5px;
 }
 #saleTitle-mod {
   border-bottom-left-radius: 0;
@@ -777,8 +777,8 @@ li a {
   border: 0;
   border-bottom: 1px solid #f4f4f4 !important;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
   margin-top: 5px;
   padding: 0;
 }
@@ -786,8 +786,8 @@ li a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
   border: 0;
   padding: 0;
 }
@@ -940,8 +940,9 @@ li a {
 #sendBody-mod {
   margin-top: 5px;
   box-shadow: inset 0 0 0;
-  width: 96%;
-  margin-left: 2%;
+  width: 95%;
+  margin-left: 2.5%;
+  border: 0;
   padding: 0;
 }
 #sendBody-mod img{
@@ -1429,6 +1430,9 @@ a:hover {
   display: inline-block;
   margin: 0 10px 0 0;
 }
+#publixh-mod table tbody tr .priceinput .form-group{
+  margin-bottom: 0 !important;
+}
 .oi{
   display: inline-block;
   border-radius: 4px;
@@ -1446,4 +1450,19 @@ a:hover {
 }
 .usrpic-wrap {
   display: none !important;
+}
+#sendBody,
+#publiBody,
+#sendBody-mod,
+#publiBody-mod{
+  overflow-y:auto;
+  max-height: 750px;
+  height: 100%;
+  width: 542px !important;
+}
+#writing-pane,
+#send-mod,
+#publixh-mod{
+  overflow: hidden !important;
+  max-height: 100%;
 }

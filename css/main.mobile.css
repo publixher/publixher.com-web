@@ -352,6 +352,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: none !important;
+    display: none !important;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -710,6 +711,8 @@ li a {
 }
 .modal-dialog{
     width: 540px;
+    margin: 0 auto;
+    margin-top: 5px;
 }
 #saleTitle-mod {
     border-bottom-left-radius: 0;
@@ -1292,6 +1295,9 @@ a:hover {
     overflow: hidden !important;
     display: inline-block;
     margin: 0 10px 0 0;
+}
+#publixh-mod table tbody tr .priceinput .form-group{
+    margin-bottom: 0 !important;
 }
 .oi{
     display: inline-block;
