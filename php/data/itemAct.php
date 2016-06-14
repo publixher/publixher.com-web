@@ -88,17 +88,17 @@ if ($act == 'knock') {
 //            }
 //        }
     } else {
-        $prepare=$db->prepare("DELETE FROM publixher.TBL_KNOCK_LIST WHERE ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT");
-        $prepare->execute(array('ID_USER'=>$userID,'ID_CONTENT'=>$ID));
-        $prepare=$db->prepare("UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK-1 WHERE ID=:ID");
-        $prepare->execute(array('ID'=>$ID));
-        $prepare=$db->prepare("DELETE FROM publixher.TBL_CONTENT_NOTI WHERE ID_CONTENT=:ID_CONTENT AND ID_ACTOR=:ID_ACTOR AND ACT=4");
-        $prepare->execute(array('ID_CONTENT'=>$ID,'ID_ACTOR'=>$userID));
-        $prepare=$db->prepare("UPDATE publixher.TBL_PIN_LIST SET KNOCK=IF(KNOCK>0,KNOCK-1,0) WHERE ID_CONTENT=:ID_CONTENT");
-        $prepare->execute(array('ID_CONTENT'=>$ID));
-        $prepare=$db->prepare("SELECT KNOCK FROM publixher.TBL_CONTENT WHERE ID=:ID");
-        $prepare->execute(array('ID'=>$ID));
-        echo '{"result":"N","reason":"already","KNOCK":'.$prepare->fetchColumn().'}';
+        $prepare = $db->prepare("DELETE FROM publixher.TBL_KNOCK_LIST WHERE ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT");
+        $prepare->execute(array('ID_USER' => $userID, 'ID_CONTENT' => $ID));
+        $prepare = $db->prepare("UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK-1 WHERE ID=:ID");
+        $prepare->execute(array('ID' => $ID));
+        $prepare = $db->prepare("DELETE FROM publixher.TBL_CONTENT_NOTI WHERE ID_CONTENT=:ID_CONTENT AND ID_ACTOR=:ID_ACTOR AND ACT=4");
+        $prepare->execute(array('ID_CONTENT' => $ID, 'ID_ACTOR' => $userID));
+        $prepare = $db->prepare("UPDATE publixher.TBL_PIN_LIST SET KNOCK=IF(KNOCK>0,KNOCK-1,0) WHERE ID_CONTENT=:ID_CONTENT");
+        $prepare->execute(array('ID_CONTENT' => $ID));
+        $prepare = $db->prepare("SELECT KNOCK FROM publixher.TBL_CONTENT WHERE ID=:ID");
+        $prepare->execute(array('ID' => $ID));
+        echo '{"result":"N","reason":"already","KNOCK":' . $prepare->fetchColumn() . '}';
     }
 } elseif ($act == 'comment' OR $act == 'more_comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
@@ -282,7 +282,7 @@ LIMIT
     }
 } elseif ($act == 'commentreg') {
     require_once '../../lib/banchk.php';
-    banCheck($_POST['userID'],$db,-9 );
+    banCheck($_POST['userID'], $db, -9);
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
@@ -568,7 +568,7 @@ LIMIT
     $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['ID_WRITER'] == $userID OR $userinfo->getLEVEL()>=99) {
+    if ($result1['ID_WRITER'] == $userID OR $userinfo->getLEVEL() >= 99) {
         //폴더 시퀀스 찾기
         $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
@@ -593,13 +593,13 @@ LIMIT
         //베스트에서 삭제
         $sql6 = "DELETE FROM publixher.TBL_NOW_HOT WHERE ID_CONTENT=:ID_CONTENT";
         $prepare = $db->prepare($sql6);
-        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $prepare->execute(array('ID_CONTENT' => $ID));
         $sql6 = "DELETE FROM publixher.TBL_DAILY_HOT WHERE ID_CONTENT=:ID_CONTENT";
         $prepare = $db->prepare($sql6);
-        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $prepare->execute(array('ID_CONTENT' => $ID));
         $sql6 = "DELETE FROM publixher.TBL_WEEKLY_HOT WHERE ID_CONTENT=:ID_CONTENT";
         $prepare = $db->prepare($sql6);
-        $prepare->execute(array('ID_CONTENT'=>$ID));
+        $prepare->execute(array('ID_CONTENT' => $ID));
         echo '{"result":"Y"}';
     } else {
         echo '{"result":"N","reason":"user not writer"}';
@@ -719,7 +719,7 @@ LIMIT :INDEX, 6";
 
 } elseif ($act == 'commentreg_sub') {
     require_once '../../lib/banchk.php';
-    banCheck($_POST['userID'],$db,-9 );
+    banCheck($_POST['userID'], $db, -9);
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
@@ -826,12 +826,20 @@ LIMIT :INDEX, 6";
     $userID = $_SESSION['user']->getID();
     $type = $_POST['type'];
     if ($_POST['userID'] == $userID) {
-        if ($type == 0) $sql = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
-        else $sql = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
+        if ($type == 0) {
+            $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID AND SUB_REPLY>0";
+            $sql2 = "DELETE FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID AND SUB_REPLY=0";
+        } else {
+            $sql1 = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
+        }
 
-        $prepare = $db->prepare($sql);
+        $prepare = $db->prepare($sql1);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
+        if ($type == 0) {
+            $prepare = $db->prepare($sql2);
+            $prepare->execute(array('ID' => $id));
+        }
         echo '{"result":"Y"}';
     }
 } elseif ($act == 'report') {
