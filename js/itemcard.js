@@ -990,11 +990,11 @@ $(document).ready(function () {
             if (this == $('#fileuploads-mod')[0]) {
                 var sendBody = $('#sendBody-mod');
                 sendBody.focus();
-                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
+                pasteHtmlAtCaret(img+'<br>');
             } else if (this == $('#fileuploadp-mod')[0]) {
                 var publiBody = $('#publiBody-mod');
                 publiBody.focus();
-                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
+                pasteHtmlAtCaret(img+'<br>');
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')

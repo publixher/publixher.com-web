@@ -352,7 +352,7 @@ $(document).ready(function () {
             } else if (this == $('#fileuploadp')[0]) {
                 var publiBody = $('#publiBody');
                 publiBody.focus();
-                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
+                pasteHtmlAtCaret(img+'<br>');
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
