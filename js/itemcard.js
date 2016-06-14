@@ -508,10 +508,6 @@ $(document).ready(function () {
             })
         }
     });
-    //댓글 수정동작
-    $(document).on('dbclick','.reply-body',function(){
-       var repBody=$(this).text();
-    });
     //대댓글버튼 동작
     $(document).on("click", ".repreply", function () {
         var thisitemID = $(this).parents()[12].id;
