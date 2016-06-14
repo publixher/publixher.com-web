@@ -856,6 +856,8 @@ li a {
 #send-mod .taginput,
 #publixh-mod .taginput{
   width: 50%;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 #send-mod .fileinput,
 #publixh-mod .fileinput {
@@ -864,6 +866,8 @@ li a {
 #sendButton-mod,
 #publixhButton-mod{
   width: 100% !important;
+  border-radius: 0;
+  border-bottom-right-radius: 4px;
 }
 #send-mod .fileinput .btn,
 #publixh-mod .fileinput .btn {
@@ -965,6 +969,9 @@ li a {
 }
 .form-control {
   border: 1px solid #e3e3e3;
+}
+.form-control:focus{
+  border: 1px solid #e3e3e3 !important;
 }
 .knock .pubico {
   vertical-align: sub;
