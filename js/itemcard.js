@@ -490,7 +490,6 @@ $(document).ready(function () {
                 success: function (res) {
                     type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
                     if (res['result'] == 'Y') {
-                        alert('삭제되었습니다.');
                         $('#' + thisrep + ' .reply-body').fadeOut(function () {
                             $('#' + thisrep + ' .reply-body').text('삭제된 코멘트 입니다.').addClass('reply-del').fadeIn();
                         })
