@@ -1312,7 +1312,11 @@ a:hover {
 .usrpic-wrap {
     display: none !important;
 }
-
+.pico-knock,
+.pico-comment,
+.pico-share{
+    display: none;
+}
 #report-button {
     border: 1px solid #e3e3e3;
     padding: 2px;
