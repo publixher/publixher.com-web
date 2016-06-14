@@ -2,6 +2,10 @@
 body {
     background-color: #eee;
 }
+html,body,th,td,input,select,textarea,button,div,p,a,span,li{
+    outline: 0 !important;
+    box-shadow: inset 0 0 0 !important;
+}
 .bar {
     height: 18px;
     background: lawngreen;
@@ -941,6 +945,9 @@ li a {
 }
 .form-control {
     border: 1px solid #e3e3e3;
+}
+.form-control:focus{
+    border: 1px solid #e3e3e3 !important;
 }
 .knock .pubico {
     vertical-align: sub;
