@@ -82,7 +82,7 @@ $(document).ready(function () {
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
             tab_comment.append(word);
-            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>');
+            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control" style="width: 510px;height: 25px;white-space=normal"></div>');
             //댓글 태그기능
             tab_comment
                 .append($('<div>')  //드롭다운 div
@@ -470,8 +470,6 @@ $(document).ready(function () {
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             })
-        } else {
-            resize(this)
         }
     });
     //댓글삭제 동작
@@ -490,7 +488,6 @@ $(document).ready(function () {
                 success: function (res) {
                     type == 0 ? btn.addClass('repdel') : btn.addClass('sub-repdel');
                     if (res['result'] == 'Y') {
-                        alert('삭제되었습니다.');
                         $('#' + thisrep + ' .reply-body').fadeOut(function () {
                             $('#' + thisrep + ' .reply-body').text('삭제된 코멘트 입니다.').addClass('reply-del').fadeIn();
                         })
@@ -552,7 +549,7 @@ $(document).ready(function () {
                         }
                         registRep(res);
                     }
-                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal" onkeyup="resize(this)" oninput="resize(this)"></div>').hide().fadeIn();
+                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control" style="width: 100%;height: 25px;white-space=normal"></div>').hide().fadeIn();
                     //대댓글 태그기능
                     subrep_list
                         .append(
@@ -994,12 +991,10 @@ $(document).ready(function () {
                 var sendBody = $('#sendBody-mod');
                 sendBody.focus();
                 pasteHtmlAtCaret(img[0].outerHTML+'<br>');
-                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
             } else if (this == $('#fileuploadp-mod')[0]) {
                 var publiBody = $('#publiBody-mod');
                 publiBody.focus();
                 pasteHtmlAtCaret(img[0].outerHTML+'<br>');
-                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.<img src="/img/sorry.jpeg">')
@@ -1378,9 +1373,4 @@ function findIndex(array,attr,val){
             return i;
         }
     }
-}
-//텍스트에이리어 입력시 자동 크기조정
-function resize(obj) {
-    obj.style.height = "1px";
-    obj.style.height = (23 + obj.scrollHeight) + "px";
 }

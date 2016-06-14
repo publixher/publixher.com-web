@@ -343,18 +343,16 @@ $(document).ready(function () {
             }
         }, done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
-            var img = $('<img>').attr('src', '/img/' + data.result['files']['file_crop']).addClass('BodyPic');
+            var img='<img src="/img/'+data.result['files']['file_crop']+'" class="BodyPic">';
             if (gif) img.addClass('gif');
             if (this == $('#fileuploads')[0]) {
                 var sendBody = $('#sendBody');
                 sendBody.focus();
-                pasteHtmlAtCaret(img[0].outerHTML+'<br>');
-                sendBody.height(sendBody.height() + data.result['files']['file_height'] + 8);
+                pasteHtmlAtCaret(img+'<br>');
             } else if (this == $('#fileuploadp')[0]) {
                 var publiBody = $('#publiBody');
                 publiBody.focus();
                 pasteHtmlAtCaret(img[0].outerHTML+'<br>');
-                publiBody.height(publiBody.height() + data.result['files']['file_height'] + 8);
             }
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
@@ -408,10 +406,11 @@ $(document).ready(function () {
             }
         }
     });
-});
 
-//텍스트에이리어 입력시 자동 크기조정
-function resize(obj) {
-    obj.style.height = "1px";
-    obj.style.height = (23 + obj.scrollHeight) + "px";
-}
+    $('#send-li,#pub-li').on('show.bs.tab',function(e){
+        var thisbody=$(e.relatedTarget.getAttribute('href')).find('div[contenteditable="true"]');
+        var otherbody=$(e.target.getAttribute('href')).find('div[contenteditable="true"]');
+        otherbody.html(thisbody.html());
+
+    })
+});
