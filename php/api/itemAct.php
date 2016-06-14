@@ -812,7 +812,6 @@ LIMIT :INDEX, 6";
     if ($_POST['userID'] == $userID) {
         if ($type == 0) {
             $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID AND SUB_REPLY>0";
-            $sql2 = "DELETE FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID AND SUB_REPLY=0";
         } else {
             $sql1 = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
         }
@@ -820,10 +819,6 @@ LIMIT :INDEX, 6";
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
-        if ($type == 0) {
-            $prepare = $db->prepare($sql2);
-            $prepare->execute(array('ID' => $id));
-        }
         echo '{"status":1}';
     }
 } elseif ($act == 'report') {

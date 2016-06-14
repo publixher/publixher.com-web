@@ -213,6 +213,7 @@ FROM
 WHERE
   FRIEND.ID_USER = :ID_USER
   AND REPLY.ID_CONTENT = :ID_CONTENT
+  AND (REPLY)
 ORDER BY
   REPLY.SEQ DESC
 LIMIT
@@ -673,15 +674,14 @@ LIMIT
         $timerep_sql = "SELECT
   SUB_REP.ID,
   SUB_REP.REPLY_DATE,
-  IF(SUB_REP.DEL = 0, SUB_REP.REPLY, '해당 댓글은 삭제되었습니다.') AS REP_BODY,
+  SUB_REP.REPLY AS REP_BODY,
   SUB_REP.DEL,
   SUB_REP.ID_USER,
   USER.USER_NAME,
-  REPLACE(USER.PIC,'profile','crop34') AS PIC,
-  DEL
+  REPLACE(USER.PIC,'profile','crop34') AS PIC
 FROM publixher.TBL_CONTENT_SUB_REPLY AS SUB_REP
   INNER JOIN publixher.TBL_USER AS USER ON SUB_REP.ID_USER=USER.ID
-WHERE SUB_REP.ID_REPLY = :ID_REPLY
+WHERE SUB_REP.ID_REPLY = :ID_REPLY AND SUB_REP.DEL=1
 ORDER BY SUB_REP.SEQ DESC
 LIMIT :INDEX, 6";
         $prepare1 = $db->prepare($timerep_sql);
@@ -828,7 +828,6 @@ LIMIT :INDEX, 6";
     if ($_POST['userID'] == $userID) {
         if ($type == 0) {
             $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID AND SUB_REPLY>0";
-            $sql2 = "DELETE FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID AND SUB_REPLY=0";
         } else {
             $sql1 = "UPDATE publixher.TBL_CONTENT_SUB_REPLY SET DEL=1 WHERE ID=:ID";
         }
@@ -836,10 +835,6 @@ LIMIT :INDEX, 6";
         $prepare = $db->prepare($sql1);
         $prepare->bindValue(':ID', $id);
         $prepare->execute();
-        if ($type == 0) {
-            $prepare = $db->prepare($sql2);
-            $prepare->execute(array('ID' => $id));
-        }
         echo '{"result":"Y"}';
     }
 } elseif ($act == 'report') {
