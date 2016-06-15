@@ -38,7 +38,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
 
     if (mid == writer || level == 99) {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemMod"><span class="pubico pico-content-edit"></span>수정</a></li><li><a class="itemDel"><span class="pubico pico-content-remove"></span>삭제</a></li><li><a class="itemTop"><span class="pubico pico-kkuk-up"></span>최상단 컨텐츠로</a></li> </ul></div><br>'
-    } else {
+    } else if(mid==targetID){
+        write+='<ul class="dropdown-menu" role="menu"><li><a class="itemDel"><span class="pubico pico-content-remove"></span>삭제</a></li><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div>'
+    }else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
 
