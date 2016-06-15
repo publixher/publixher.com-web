@@ -163,7 +163,7 @@ function getCards() {
         success: function (res) {
             if (res.length == 0) {
                 spinner.detach();
-                write = '<div class="card item">결과가 없네요 >,.<;;</div>'
+                write = '<div class="card item">포스트가 없습니다. 친구를 만들거나 보내기와 출판해보세요!</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
                 } else if ($('#upform').length > 0) {

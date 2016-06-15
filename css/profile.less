@@ -178,6 +178,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
               display: block;
               margin-left: auto;
               margin-right: auto;
+              border-radius: 4px;
             }
           }
           #sendBody {
@@ -194,8 +195,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
               margin-top: 5px;
               margin-bottom: 5px;
               display: block;
-              //margin-left: auto;
-              //margin-right: auto;
+              margin-left: auto;
+              margin-right: auto;
+              border-radius: 4px;
             }
           }
           hr {
@@ -439,6 +441,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           transform: translate(-50%, -50%);
           max-width: none !important;
           display: none;
+          border-radius: 4px;
         }
         img {
           max-width: 100% !important;
@@ -446,6 +449,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           display: block;
           margin-left: auto;
           margin-right: auto;
+          border-radius: 4px;
         }
       }
       hr {
@@ -520,7 +524,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       width: 300px;
       height: 70px;
       top: 0;
-      z-index: 10000;
+      z-index: 100;
       opacity: 0.9;
       border: 1px solid #e3e3e3;
       background: #fbfbfb;
@@ -795,6 +799,9 @@ li a {
 #publiBody-mod img{
   max-width: 510px;
   display: block;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #publixh-mod hr,
 #send-mod hr{
@@ -954,6 +961,9 @@ li a {
 #sendBody-mod img{
   max-width: 510px;
   display: block;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .tag-editor {
   width: 264px;
@@ -1184,15 +1194,19 @@ li a {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .hot-body{
   display: block;
+  margin-top: 8px;
+  color: #434343;
 }
 .hot-knock,
-.hot-reply {
+.hot-reply,
+.hot-data{
   padding: 0 5px 0 5px;
   vertical-align: text-bottom;
+  display: none;
 }
 #wrap #middle .item .header .conf .btn-group button,
 #wrap #middle .item-for-sale .header .conf .btn-group button{
