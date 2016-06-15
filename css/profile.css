@@ -1011,6 +1011,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #subslist li img{
   position: absolute;
@@ -1021,9 +1022,11 @@ li a {
 #subslist li .nameuser{
   display: inline-block;
   height: 50px;
-  width: 140px;
+  width: 190px;
   position: absolute;
-  padding: 14px;
+  padding: 14px 0;
+  text-align: center;
+  left: 4px;
 }
 .friend-list-pic-wrap{
   position: relative;
@@ -1032,6 +1035,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #frielist li img{
   position: absolute;
@@ -1042,9 +1046,11 @@ li a {
 #frielist li .nameuser {
   display: inline-block;
   height: 50px;
-  width: 140px;
+  width: 190px;
   position: absolute;
-  padding: 14px;
+  padding: 14px 0;
+  text-align: center;
+  left: 4px;
 }
 .freq-list-pic-wrap{
   position: relative;
@@ -1053,6 +1059,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #freqlist li img{
   position: absolute;
@@ -1063,14 +1070,21 @@ li a {
 #freqlist li .nameuser {
   display: inline-block;
   height: 50px;
-  width: 140px;
+  width: 190px;
   position: absolute;
-  padding: 14px;
+  padding: 14px 0;
+  text-align: center;
+  left: 4px;
 }
 #subslist li,
 #frielist li,
 #freqlist li{
   padding: 5px;
+}
+#subslist li:hover,
+#frielist li:hover,
+#freqlist li:hover{
+  background-color: white !important;
 }
 #profile-middle-nav {
   width: 532px;

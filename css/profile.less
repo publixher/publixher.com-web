@@ -992,6 +992,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #subslist li img{
   position: absolute;
@@ -1013,6 +1014,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #frielist li img{
   position: absolute;
@@ -1034,6 +1036,7 @@ li a {
   border-radius: 50%;
   overflow: hidden;
   float: left;
+  z-index: 2;
 }
 #freqlist li img{
   position: absolute;
@@ -1052,6 +1055,11 @@ li a {
 #frielist li,
 #freqlist li{
   padding: 5px;
+}
+#subslist li:hover,
+#frielist li:hover,
+#freqlist li:hover{
+  background-color: white !important;
 }
 #profile-middle-nav{
   width: 532px;
