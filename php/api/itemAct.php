@@ -558,12 +558,15 @@ LIMIT
 } elseif ($act == 'del') {
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
-    $sql1 = "SELECT ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $prepare=$db->prepare("SELECT LEVEL FROM publixher.TBL_USER WHERE ID=:ID");
+    $prepare->execute(array('ID'=>$userID));
+    $userLv=$prepare->fetchColumn(PDO::PARAM_INT);
+    $sql1 = "SELECT ID_WRITER,ID_TARGET FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['ID_WRITER'] == $userID) {
+    if ($result1['ID_WRITER'] == $userID || $result1['ID_TARGET']==$userID || $userLv==99) {
         //폴더 시퀀스 찾기
         $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);

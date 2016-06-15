@@ -572,12 +572,12 @@ LIMIT
     $userinfo = $_SESSION['user'];
     $ID = $_POST['ID'];
     $userID = $userinfo->getID();
-    $sql1 = "SELECT ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $sql1 = "SELECT ID_WRITER,ID_TARGET FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['ID_WRITER'] == $userID OR $userinfo->getLEVEL() >= 99) {
+    if ($result1['ID_WRITER'] == $userID OR $userinfo->getLEVEL() >= 99 || $result1['ID_TARGET']==$userID) {
         //폴더 시퀀스 찾기
         $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
