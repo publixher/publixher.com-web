@@ -68,7 +68,7 @@ $(document).ready(function () {
     $('.hasInput .form-control').click(function (e) {
         e.stopPropagation();
     });
-
+    
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
