@@ -1221,15 +1221,19 @@ li a {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .hot-body{
   display: block;
+  margin-top: 8px;
+  color: #434343;
 }
 .hot-knock,
-.hot-reply {
+.hot-reply,
+.hot-data{
   padding: 0 5px 0 5px;
   vertical-align: text-bottom;
+  display: none;
 }
 #wrap #middle .item .header .conf .btn-group button,
 #wrap #middle .item-for-sale .header .conf .btn-group button {
