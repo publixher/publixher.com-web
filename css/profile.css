@@ -1036,6 +1036,22 @@ li a {
 #frielist li .nameuser {
   display: inline;
 }
+.freq-list-pic-wrap{
+  position: relative;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#freqlist li img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#freqlist li .nameuser {
+  display: inline;
+}
 #profile-middle-nav {
   width: 532px;
   left: 50%;
