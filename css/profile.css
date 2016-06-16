@@ -1202,12 +1202,14 @@ li a {
   height: 162px;
   position: relative;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.7;
+  -webkit-filter: blur(1px);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .hot-pic-wrap:hover{
-  opacity: 1
+  opacity: 1;
+  -webkit-filter: blur(0px);
 }
 .hot-pic {
   position: absolute;
