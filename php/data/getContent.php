@@ -8,27 +8,28 @@ $nowpage = $_GET['nowpage'] * 10;
 session_start();
 if (!isset($_SESSION['user'])) include_once "../../lib/loginchk.php";
 $userID = $_SESSION['user']->getID();
-$getC=new getC($userID,$db);
+$getC = new getC($userID, $db);
 //콘텐츠 검색임시로 그냥 다 불러오기
 if (isset($_GET['profile'])) {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
-    $result=$getC->profile($nowpage,$_GET['profile']);
+    $result = $getC->profile($nowpage, $_GET['profile']);
 } elseif (isset($_GET['fid'])) { //폴더에선 폴더 내용물이 시간순 노출
-    $result=$getC->folder($nowpage,$_GET['fid']);
+    $result = $getC->folder($nowpage, $_GET['fid']);
 } elseif (isset($_GET['buylist'])) { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
-    $result=$getC->buyList($nowpage);
+    $result = $getC->buyList($nowpage);
 } elseif (isset($_GET['getItem'])) {  //한개만 특정 주소로 가서 찾는것
     if ($nowpage != 0) exit;   //첫번재 로드가 아니면 아무것도 안줌
-    $result=$getC->one($_GET['getItem']);
+    $result = $getC->one($_GET['getItem']);
 } elseif (isset($_GET['tag'])) {
-    $result=$getC->tag($nowpage,$_GET['tag']);
+    $result = $getC->tag($nowpage, $_GET['tag']);
 } elseif (isset($_GET['body'])) {
-    $result=$getC->body($nowpage,$_GET['body']);
-} elseif(isset($_GET['subscribe'])){
-    $result=$getC->subscribe($nowpage);
-}elseif(isset($_GET['community'])){
-    $result=$getC->community($nowpage);
-}else{  //메인화면에서 노출시켜줄 순
-    $result=$getC->main($nowpage);
+    $result = $getC->body($nowpage, $_GET['body']);
+} elseif (isset($_GET['subscribe'])) {
+    $result = $getC->subscribe($nowpage);
+} elseif (isset($_GET['community'])) {
+    $result = $getC->community($nowpage);
+} else {  //메인화면에서 노출시켜줄 순
+    $result = $getC->main($nowpage);
+    $getC->set_recommended();
 }
 
 

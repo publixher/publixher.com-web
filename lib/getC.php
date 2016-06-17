@@ -564,103 +564,118 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function get_recommended(int $page)
+    public function set_recommended()
     {
         $mongomanager = new MongoDB\Driver\Manager("mongodb://DongGyun:Pp999223#@localhost:27017/publixher");
         $now = time();
-        $average_time=array();
-        $interesting_id=array();
-        $interested_user=array();
-        $users_intersect=array();
-        $array_intersected=array();
-        $kind_of_me_value=array();
-        $kind_of_me=array();
+        $average_time = array();
+        $interesting_id = array();
+        $interested_user = array();
+        $users_intersect = array();
+        $array_intersected = array();
+        $kind_of_me_value = array();
+        $recommended_id = array();
         $filter = ['id' => $this->mId];
         $options = [
             'projection' => ['_id' => 0]
         ];
         $query = new MongoDB\Driver\Query($filter, $options);
         $rows = $mongomanager->executeQuery('publixher.user', $query);
-        foreach ($rows as $key=>$row) {
+        foreach ($rows as $key => $row) {
             //지금 쌓여있는 내가 봤던 컨텐츠 리스트=$viewd
-            $viewd=$row->interest;
-            $ids=array();
-            foreach($row->interest as $content){
-                $ids[]=$content->id;
+            $viewd = $row->interest;
+            $ids = array();
+            foreach ($row->interest as $content) {
+                $ids[] = $content->id;
             }
 
-            $content_filter=['id'=>['$in'=>$ids]];
-            $content_options=[
-                'projection'=>['_id'=>0]
+            $content_filter = ['id' => ['$in' => $ids]];
+            $content_options = [
+                'projection' => ['_id' => 0]
             ];
-            $content_query=new MongoDB\Driver\Query($content_filter,$content_options);
-            $contents=$mongomanager->executeQuery('publixher.contents',$content_query);
-            foreach($contents as $content){
-                $average_time[$content->id]=$content->average_time;
+            $content_query = new MongoDB\Driver\Query($content_filter, $content_options);
+            $contents = $mongomanager->executeQuery('publixher.contents', $content_query);
+            foreach ($contents as $content) {
+                $average_time[$content->id] = $content->average_time;
             }
             //$average_time에 내가 봤던 컨텐츠들중 각각의 평균 보여진 시간이 담겨져 있다
             //상대적인 흥미도를 얻기
-            usort($viewd,function($a,$b) use($now,$average_time){
-                $a_std=$a->time/(($now-$a->when)*$average_time[$a->id]);
-                $b_std=$b->time/(($now-$b->when)*$average_time[$b->id]);
-                if($a_std>$b_std){
+            usort($viewd, function ($a, $b) use ($now, $average_time) {
+                $a_std = $a->time / (($now - $a->when) * $average_time[$a->id]);
+                $b_std = $b->time / (($now - $b->when) * $average_time[$b->id]);
+                if ($a_std > $b_std) {
                     return -1;
-                }elseif($a_std<$b_std){
+                } elseif ($a_std < $b_std) {
                     return 1;
-                }else{
+                } else {
                     return 0;
                 }
             });
 
             //$viewd에 흥미있는 순서대로 정렬됬음
-            array_splice($viewd,5);
-            foreach($viewd as $interesting){
-                $interesting_id[]=$interesting->id;
+            array_splice($viewd, 5);
+            foreach ($viewd as $interesting) {
+                $interesting_id[] = $interesting->id;
             }
             //이제 $viewd는 최고로 흥미있는 5개
 
-            //임시로 해당 컨텐츠를 순위에 가진 리스트에 자신을 올려놓는다 (사실 순서가 이게 맨 마지막이 되야함)
-            $bulk=new MongoDB\Driver\BulkWrite;
-            $bulk->update(['id'=>['$in'=>$interesting_id]],['$addToSet'=>['interested_users'=>$this->mId]],['upsert'=>true,'multi'=>true]);
-            $mongomanager->executeBulkWrite('publixher.contents',$bulk);
-
             //컨텐츠 다섯개에 기록된 유저 중 2회 이상 기록된 유저를 찾음
-            $content_filter=['id'=>['$in'=>$interesting_id]];
-            $content_options=[
-                'projection'=>['_id'=>0]
+            $content_filter = ['id' => ['$in' => $interesting_id]];
+            $content_options = [
+                'projection' => ['_id' => 0]
             ];
-            $content_query=new MongoDB\Driver\Query($content_filter,$content_options);
-            $user_lists=$mongomanager->executeQuery('publixher.contents',$content_query);
-            foreach($user_lists as $user_list){
+            $content_query = new MongoDB\Driver\Query($content_filter, $content_options);
+            $user_lists = $mongomanager->executeQuery('publixher.contents', $content_query);
+            foreach ($user_lists as $user_list) {
                 //$user_list 에는 각 컨텐츠를 맘에 들어 한 사람 리스트가 있다
-                $interested_user[]=$user_list->interested_users;
+                $interested_user[] = $user_list->interested_users;
             }
             //이제 $interested_user에는 각 컨텐츠가 5개 순위에 든 사람들의 id가 있음
-            for($i=0;$i<count($interested_user)-1;$i++){
-                for($j=$i+1;$j<count($interested_user)-$i;$j++){
-                    $users_intersect[]=array_intersect($interested_user[$i],$interested_user[$j]);
+            for ($i = 0; $i < count($interested_user) - 1; $i++) {
+                for ($j = $i + 1; $j < count($interested_user) - $i; $j++) {
+                    $users_intersect[] = array_intersect($interested_user[$i], $interested_user[$j]);
                 }
             }
             //$users_intersect의 각 원소에는 겹치는 사람들이 있다(다른 원소에 있는 사람이 중복 될 수 있다)
-            foreach($users_intersect as $user_intersect){
-                foreach($user_intersect as $intersected_user){
-                    $array_intersected[]=$intersected_user;
+            foreach ($users_intersect as $user_intersect) {
+                foreach ($user_intersect as $intersected_user) {
+                    $array_intersected[] = $intersected_user;
                 }
             }
 
-            $kind_of_me=array_count_values($array_intersected);
-            $kind_of_me=array_filter($kind_of_me,function($var){
-                if($var>=2){
+            $kind_of_me = array_count_values($array_intersected);
+            $kind_of_me = array_filter($kind_of_me, function ($var) {
+                if ($var >= 2) {
                     return true;
-                }
-                else return false;
+                } else return false;
             });
-            foreach($kind_of_me as $id){
-                $kind_of_me_value[]=key($id);
+            foreach ($kind_of_me as $id) {
+                $kind_of_me_value[] = array_keys($id);
             }
             //$kind_of_me_value배열의 값에는 나와 비슷한 취향의 사람들의 아이디가 들어감
+            $user_filter = ['id' => ['$in' => $kind_of_me_value]];
+            $user_option = [
+                'projection' => ['_id' => 0, 'interest' => 1]
+            ];
+            $user_query = new MongoDB\Driver\Query($user_filter, $user_option);
+            $interest_lists = $mongomanager->executeQuery('publixher.user', $user_query);
+            foreach ($interest_lists as $interest_list) {
+                $recommended_id[] = $interest_list->id;
+            }
+            //해당 컨텐츠의 관심있는 사람 리스트에 자신을 올려놓는다
+            $bulk = new MongoDB\Driver\BulkWrite;
+            $bulk->update(['id' => ['$in' => $interesting_id]], ['$addToSet' => ['interested_users' => $this->mId]], ['upsert' => true, 'multi' => true]);
+            //나머지 내 interest중 $interesting_id에 없는 컨텐츠는 컨텐츠의 interested_users에서 자신을 뺀다
+            $bulk->update(['id' => ['$nin' => $interesting_id]], ['$pull' => ['interested_users' => $this->mId]], ['multi' => true]);
+            $mongomanager->executeBulkWrite('publixher.contents', $bulk);
+            //내 interest에서 $interesting_id에 없는건 전부 다 뺀다
+            $bulk = new MongoDB\Driver\BulkWrite;
+            $bulk->update(['id'=>$this->mId],['$pull'=>['interest'=>['id'=>['$nin'=>$interesting_id]]]],['multi'=>true]);
+            $bulk->update(['id' => $this->mId], ['$set' => ['recommended_list' => $recommended_id]], ['upsert' => true]);
+            $mongomanager->executeBulkWrite('publixher.user', $bulk);
 
-
+            return true;
         }
     }
+
 }
