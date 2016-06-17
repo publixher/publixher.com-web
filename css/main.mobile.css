@@ -26,7 +26,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 .pico-search,
 #wrap #right #gsearch{
-    display: none;
+    display: none !important;
 }
 #upform{
     margin-top: 50px !important;
@@ -178,7 +178,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .taginput input[type=text] {
     width: 100%;
-    height: 22px;
+    height: 30px;
     border-radius: 0;
     box-shadow: inset 0 0 0;
     text-align: center;
@@ -209,14 +209,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border-top: 1px solid #eee !important;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput {
-    height: 22px;
+    height: 30px;
     width: 25%;
     padding: 0 0 0 0;
     margin: 0 10px 0 10px;
     border-bottom: 1px solid #eee;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput {
-    height: 22px;
+    height: 30px;
     width: 25%;
     border-bottom: 1px solid #eee;
     border-left: 1px solid #eee;
@@ -226,14 +226,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
     width: 100%;
     padding: 0 0 0 0;
-    height: 22px;
+    height: 100%;
     border-radius: 0;
     border: 0;
     font-size: 12px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput {
     width: 50%;
-    height: 22px;
+    height: 30px;
     padding: 0 0 0 0;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .priceinput .form-group {
@@ -283,6 +283,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border: 1px solid #ddd;
     border-left: 0;
     min-height: 32px;
+    height: 100%;
+    word-break: break-all;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
@@ -294,6 +296,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border: 1px solid #ddd;
     min-height: 32px;
     margin-top: 10px;
+    height:100%;
+    word-break: break-all;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -421,7 +425,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     width: 25%;
     text-align: center;
     background-color: white;
-    height: 22px;
+    height: 30px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -440,7 +444,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .tail .commentReply .rep {
     width: 100%;
     padding-left: 54px;
-    position: absolute;
     word-break: break-all;
     vertical-align: top;
     font-size: 13px;
@@ -455,6 +458,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .tail .commentReply .rep .repaction,
 #wrap #middle .item-for-sale .tail .commentReply .rep .repaction {
     float: right;
+}
+.commentReply td:first-of-type{
+    position: absolute !important;
 }
 #wrap #right {
     float: left;
@@ -697,10 +703,15 @@ li a {
 #expSublist,
 #categorySelect,
 #subcategorySelect {
-    width: 98% !important;
-    min-width: 98% !important;
+    width: 100% !important;
+    min-width: 100% !important;
     box-shadow: 0 0 0;
     border-top: 0;
+}
+#categorySelect li,
+#subcategorySelect li{
+    width: 100% !important;
+    padding: 0 3px;
 }
 #dirSublist li:last-child {
     margin-top: 5px;
@@ -807,16 +818,10 @@ li a {
 #categorySelect-mod,
 #subcategorySelect-mod {
     margin-top: 0;
-    width: 133px;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
 }
-#categorySelect li a,
-#subcategorySelect li a,
-#categorySelect-mod li a,
-#subcategorySelect-mod li a {
-    width: 127px;
-}
+
 .noti-date{
     font-size: 12px;
     display: block;
@@ -856,7 +861,7 @@ li a {
     position: relative;
     float: left;
     width: 133px !important;
-    height: 22px;
+    height: 30px;
     overflow: hidden;
     cursor: pointer;
     padding: 0 0 0 0;
@@ -871,7 +876,7 @@ li a {
     margin-left: -90px;
     margin-top: -3px;
     width: 133px;
-    height: 22px;
+    height: 30px;
     filter: alpha(opacity=0);
     opacity: 0;
     -moz-opacity: 0;
@@ -947,9 +952,7 @@ li a {
 .form-control {
     border: 1px solid #e3e3e3;
 }
-.form-control:focus{
-    border: 1px solid #e3e3e3 !important;
-}
+
 .knock .pubico {
     vertical-align: sub;
     font-size: 18px;
@@ -1224,9 +1227,6 @@ li a {
 #search-body:focus {
     border-radius: 2px;
 }
-.commentReply td {
-    float: left;
-}
 #searchResult .menu li > div {
     height: 34px;
     width: 34px;
@@ -1294,7 +1294,7 @@ a:hover {
     font-size: 10px;
     color: #ddd;
     vertical-align: text-bottom;
-    margin-left: 5px;
+    margin: 0 10px 0 15px !important;
 }
 .thumbPic-wrap{
     width: 100px;
@@ -1307,6 +1307,9 @@ a:hover {
 }
 #publixh-mod table tbody tr .priceinput .form-group{
     margin-bottom: 0 !important;
+}
+#contentCost{
+    height:30px;
 }
 .oi{
     display: inline-block;
