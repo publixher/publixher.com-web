@@ -226,7 +226,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput .btn {
     width: 100%;
     padding: 0 0 0 0;
-    height: 22px;
+    height: 100%;
     border-radius: 0;
     border: 0;
     font-size: 12px;
@@ -707,6 +707,11 @@ li a {
     min-width: 98% !important;
     box-shadow: 0 0 0;
     border-top: 0;
+}
+#categorySelect li,
+#subcategorySelect li{
+    width: 100% !important;
+    padding: 0 3px;
 }
 #dirSublist li:last-child {
     margin-top: 5px;
@@ -1310,6 +1315,9 @@ a:hover {
 }
 #publixh-mod table tbody tr .priceinput .form-group{
     margin-bottom: 0 !important;
+}
+#contentCost{
+    height:30px;
 }
 .oi{
     display: inline-block;
