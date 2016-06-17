@@ -25,21 +25,21 @@ if ($action == 'get_item') {
     require_once '../../lib/HTMLPurifier.php';
     //CSRF검사
     if (!isset($_POST['token']) AND !isset($_GET['token'])) {
-        exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+        exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
     } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
-        exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+        exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
     }
     //여기부턴 uploadContent.php와 같음
 
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
-    $gallery="/<a[^>]*href=[\"']?\/img\/origin\/[\"']?[^>]*><\/a>/i";
+    $gallery = "/<a[^>]*href=[\"']?\/img\/origin\/[\"']?[^>]*><\/a>/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
-    $body_text=$_POST['body_text'];
+    $body_text = $_POST['body_text'];
     $body = $purifier->purify($body);
-    $body_text=$purifier->purify($body_text);
+    $body_text = $purifier->purify($body_text);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
@@ -51,7 +51,7 @@ if ($action == 'get_item') {
         }
         $body = preg_replace($not_covered, $a_covered, $body);
     }
-    $body=preg_replace($gallery,"",$body);
+    $body = preg_replace($gallery, "", $body);
     $previewimg = $imgs[1][0][0];
     //더보기가 있어야할지 검사
     $bodylen = mb_strlen($body, 'utf-8');
@@ -106,14 +106,14 @@ if ($action == 'get_item') {
     //content테이블에 넣음
     $ID_writer = $_POST['ID_writer'];
     $targetID = $_POST['targetID'];
-    $id=$_POST['ID'];
+    $id = $_POST['ID'];
 
-    $q="SELECT ORIGINAL,CHANGED,BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
-    $p=$db->prepare($q);
-    $p->bindValue(':ID',$id);
+    $q = "SELECT ORIGINAL,CHANGED,BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $p = $db->prepare($q);
+    $p->bindValue(':ID', $id);
     $p->execute();
-    $origin=$p->fetch(PDO::FETCH_ASSOC);
-    $originData=$origin['CHANGED']==1?$origin['ORIGINAL']:$origin['BODY'];
+    $origin = $p->fetch(PDO::FETCH_ASSOC);
+    $originData = $origin['CHANGED'] == 1 ? $origin['ORIGINAL'] : $origin['BODY'];
 
     if (!$_POST['for_sale']) {
         $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
@@ -129,7 +129,7 @@ if ($action == 'get_item') {
     $prepare->bindValue(':ORIGINAL', $originData, PDO::PARAM_STR);
     $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
     $prepare->bindValue(':TAG', $_POST['tag'] ? implode(' ', json_decode($_POST['tag'])) : null, PDO::PARAM_STR);
-    $prepare->bindValue(':MORE',$more);
+    $prepare->bindValue(':MORE', $more);
 
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
@@ -185,11 +185,13 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
-    //원래 폴더에서 수 감소
-    $fs="UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
-    $fp = $db->prepare($fs);
-    $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
+    if ($result['FOLDER'] != null) {
+        //원래 폴더에서 수 감소
+        $fs = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
+        $fp = $db->prepare($fs);
+        $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
         $fp->execute();
+    }
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
@@ -209,9 +211,9 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
         }
     }
 
-    $sql5="UPDATE publixher.TBL_PIN_LIST SET MODIFIED=1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
-    $prepare5=$db->prepare($sql5);
-    $prepare5->bindValue(':ID_CONTENT',$id);
+    $sql5 = "UPDATE publixher.TBL_PIN_LIST SET MODIFIED=1,LAST_UPDATE=NOW() WHERE ID_CONTENT=:ID_CONTENT";
+    $prepare5 = $db->prepare($sql5);
+    $prepare5->bindValue(':ID_CONTENT', $id);
     $prepare5->execute();
     $result = json_encode($result, JSON_UNESCAPED_UNICODE);
     echo $result;

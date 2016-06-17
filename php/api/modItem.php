@@ -184,11 +184,13 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
-    //원래 폴더에서 수 감소
-    $fs="UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
-    $fp = $db->prepare($fs);
-    $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
-    $fp->execute();
+    if($result['FOLDER']!=null) {
+        //원래 폴더에서 수 감소
+        $fs = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
+        $fp = $db->prepare($fs);
+        $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
+        $fp->execute();
+    }
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
