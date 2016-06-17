@@ -83,7 +83,7 @@ $(document).ready(function () {
             word += '    <div role="tabpanel" class="tab-pane" id="frie-' + thisitemID + '"></div>'
             word += '    </div></div>'
             tab_comment.append(word);
-            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control"></div>');
+            tab_comment.append('<div contenteditable="true" type="text" class="commentReg form-control"><div></div></div>');
             //댓글 태그기능
             tab_comment
                 .append($('<div>')  //드롭다운 div
@@ -556,7 +556,7 @@ $(document).ready(function () {
                         }
                         registRep(res);
                     }
-                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control"></div>').hide().fadeIn();
+                    subrep_list.append('<div contenteditable="true" id="' + thispanelrep + '-form" class="commentReg_sub form-control"><div></div></div>').hide().fadeIn();
                     //대댓글 태그기능
                     subrep_list
                         .append(
