@@ -45,7 +45,7 @@
             <!-- 똥싸기와 용돈벌기 내용 -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="send">
-                    <div contenteditable="true" class="form-control" id="sendBody"></div>
+                    <div contenteditable="true" class="form-control" id="sendBody"><div></div></div>
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -82,7 +82,7 @@
                 <div role="tabpanel" class="tab-pane" id="publixh">
                     <div>
                         <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
-                        <div contenteditable="true" class="form-control" id="publiBody"></div>
+                        <div contenteditable="true" class="form-control" id="publiBody"><div></div></div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-expanded="false">
