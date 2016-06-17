@@ -108,12 +108,20 @@ if ($action == 'get_item') {
     $targetID = $_POST['targetID'];
     $id = $_POST['ID'];
 
-    $q = "SELECT ORIGINAL,CHANGED,BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $q = "SELECT ORIGINAL,CHANGED,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $p = $db->prepare($q);
     $p->bindValue(':ID', $id);
     $p->execute();
     $origin = $p->fetch(PDO::FETCH_ASSOC);
     $originData = $origin['CHANGED'] == 1 ? $origin['ORIGINAL'] : $origin['BODY'];
+
+    if ($origin['FOLDER'] != null) {
+        //원래 폴더에서 수 감소
+        $fs = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
+        $fp = $db->prepare($fs);
+        $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
+        $fp->execute();
+    }
 
     if (!$_POST['for_sale']) {
         $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
@@ -185,13 +193,7 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
-    if ($result['FOLDER'] != null) {
-        //원래 폴더에서 수 감소
-        $fs = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
-        $fp = $db->prepare($fs);
-        $fp->bindValue(':ID', $result['FOLDER'], PDO::PARAM_STR);
-        $fp->execute();
-    }
+    
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
