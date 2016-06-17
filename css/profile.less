@@ -52,10 +52,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       font-weight: 600;
     }
     hr {
-      width: 160px;
-      border-top: dotted 1px;
-      color: #333;
-      margin: 0 0 0 0;
+      border-top: solid 1px;
+      color: lightgrey;
+      margin: 10px 0;
     }
     .list-unstyled {
       li {
@@ -535,6 +534,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         width: 40px;
         overflow: hidden;
         float: left;
+        cursor: pointer;
         .roundborder();
       }
       #controller {
@@ -549,6 +549,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         .btn-danger .badge {
           color: white;
           background-color: lightgray;
+          padding: 5px;
         }
         .pchange {
           width: 34px;
@@ -1518,7 +1519,8 @@ a:hover{
   margin-bottom: 0 !important;
 }
 #right .conf button{
-  color: #434343
+  color: #434343;
+  padding: 5px;
 }
 .oi{
   display: inline-block;
@@ -1547,11 +1549,9 @@ a:hover{
   overflow-y:auto;
   max-height: 750px;
   height: 100%;
-  width: 542px !important;
   padding-top: 6px;
 }
 #send-mod,
 #publixh-mod{
-  overflow: hidden !important;
   max-height: 100%;
 }
