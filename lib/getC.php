@@ -455,57 +455,10 @@ LIMIT :NOWPAGE, 10";
     public function main(int $page)
     {
         $parameter = array('USER_ID1' => $this->mId,
-            'USER_ID2' => $this->mId, 'NOWPAGE' => $page,
+            'USER_ID2' => $this->mId, 'NOWPAGE' => $page/*,
             'ME1' => $this->mId, 'ME2' => $this->mId,
-            'ME3' => $this->mId);
+            'ME3' => $this->mId*/);
         //모든 글중 내가 볼 수 있는 글
-//        $sql = "SELECT
-//  CONT.ID,
-//  CONT.ID_WRITER,
-//  CONT.TITLE,
-//  CONT.EXPOSE,
-//  CONT.KNOCK,
-//  CONT.WRITE_DATE,
-//  CONT.MODIFY_DATE,
-//  CONT.FOR_SALE,
-//  CONT.CATEGORY,
-//  CONT.SUB_CATEGORY,
-//  CONT.PRICE,
-//  CONT.PREVIEW,
-//  CONT.COMMENT,
-//  CONT.SALE,
-//  CONT.FOLDER,
-//  CONT.CHANGED,
-//  CONT.MORE,
-//  CONT.TAG,
-//  USER.USER_NAME,
-//  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-//  FOLDER.DIR                             AS FOLDER_NAME
-//FROM publixher.TBL_CONTENT AS CONT
-//  INNER JOIN publixher.TBL_USER AS USER
-//    ON USER.ID = CONT.ID_WRITER
-//  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
-//    ON CONT.FOLDER = FOLDER.ID
-//WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND EXPOSE >= (
-//  SELECT CASE ID_WRITER
-//         WHEN :USER_ID1
-//           THEN 0
-//         WHEN (
-//           SELECT ID_FRIEND
-//           FROM publixher.TBL_FRIENDS
-//           WHERE ID_USER = :USER_ID2 AND ID_FRIEND = CONT.ID_WRITER AND ALLOWED = 'Y'
-//         )
-//           THEN 1
-//         ELSE 2 END AS AUTH
-//  FROM
-//publixher.TBL_CONTENT
-//  WHERE
-//    ID = CONT.ID
-//)
-//ORDER BY WRITE_DATE DESC
-//LIMIT :NOWPAGE, 10";
-
-        //내글,친구의 친구공개 및 전체공개 글,구독한 사람의 전체공개글
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -533,31 +486,78 @@ FROM publixher.TBL_CONTENT AS CONT
     ON USER.ID = CONT.ID_WRITER
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
-  LEFT JOIN publixher.TBL_FRIENDS AS FRIEND
-    ON FRIEND.ID_FRIEND = CONT.ID_WRITER
-  LEFT JOIN publixher.TBL_FOLLOW AS FOLLOW
-    ON FOLLOW.ID_MASTER=CONT.ID_WRITER
-WHERE
-  DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND (
-    FRIEND.ID_USER = :ME1 OR CONT.ID_WRITER = :ME2 OR FOLLOW.ID_SLAVE=:ME3
-  ) AND EXPOSE >= (
-    SELECT CASE ID_WRITER
-           WHEN :USER_ID1
-             THEN 0
-           WHEN (
-             SELECT ID_FRIEND
-             FROM publixher.TBL_FRIENDS
-             WHERE ID_USER = :USER_ID2 AND ID_FRIEND = CONT.ID_WRITER AND ALLOWED = 'Y'
-           )
-             THEN 1
-           ELSE 2 END AS AUTH
-    FROM
-      publixher.TBL_CONTENT
-    WHERE
-      ID = CONT.ID
-  )
+WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND EXPOSE >= (
+  SELECT CASE ID_WRITER
+         WHEN :USER_ID1
+           THEN 0
+         WHEN (
+           SELECT ID_FRIEND
+           FROM publixher.TBL_FRIENDS
+           WHERE ID_USER = :USER_ID2 AND ID_FRIEND = CONT.ID_WRITER AND ALLOWED = 'Y'
+         )
+           THEN 1
+         ELSE 2 END AS AUTH
+  FROM
+publixher.TBL_CONTENT
+  WHERE
+    ID = CONT.ID
+)
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
+
+        //내글,친구의 친구공개 및 전체공개 글,구독한 사람의 전체공개글
+//        $sql = "SELECT
+//  CONT.ID,
+//  CONT.ID_WRITER,
+//  CONT.TITLE,
+//  CONT.EXPOSE,
+//  CONT.KNOCK,
+//  CONT.WRITE_DATE,
+//  CONT.MODIFY_DATE,
+//  CONT.FOR_SALE,
+//  CONT.CATEGORY,
+//  CONT.SUB_CATEGORY,
+//  CONT.PRICE,
+//  CONT.PREVIEW,
+//  CONT.COMMENT,
+//  CONT.SALE,
+//  CONT.FOLDER,
+//  CONT.CHANGED,
+//  CONT.MORE,
+//  CONT.TAG,
+//  USER.USER_NAME,
+//  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+//  FOLDER.DIR                             AS FOLDER_NAME
+//FROM publixher.TBL_CONTENT AS CONT
+//  INNER JOIN publixher.TBL_USER AS USER
+//    ON USER.ID = CONT.ID_WRITER
+//  LEFT JOIN publixher.TBL_FOLDER AS FOLDER
+//    ON CONT.FOLDER = FOLDER.ID
+//  LEFT JOIN publixher.TBL_FRIENDS AS FRIEND
+//    ON FRIEND.ID_FRIEND = CONT.ID_WRITER
+//  LEFT JOIN publixher.TBL_FOLLOW AS FOLLOW
+//    ON FOLLOW.ID_MASTER=CONT.ID_WRITER
+//WHERE
+//  DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND (
+//    FRIEND.ID_USER = :ME1 OR CONT.ID_WRITER = :ME2 OR FOLLOW.ID_SLAVE=:ME3
+//  ) AND EXPOSE >= (
+//    SELECT CASE ID_WRITER
+//           WHEN :USER_ID1
+//             THEN 0
+//           WHEN (
+//             SELECT ID_FRIEND
+//             FROM publixher.TBL_FRIENDS
+//             WHERE ID_USER = :USER_ID2 AND ID_FRIEND = CONT.ID_WRITER AND ALLOWED = 'Y'
+//           )
+//             THEN 1
+//           ELSE 2 END AS AUTH
+//    FROM
+//      publixher.TBL_CONTENT
+//    WHERE
+//      ID = CONT.ID
+//  )
+//ORDER BY WRITE_DATE DESC
+//LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
         $prepare->execute($parameter);
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -660,7 +660,7 @@ LIMIT :NOWPAGE, 10";
             }
             //$kind_of_me_value배열의 값에는 나와 비슷한 취향의 사람들의 아이디가 들어감
 
-            
+
         }
     }
 }
