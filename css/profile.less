@@ -440,8 +440,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           left: 50%;
           transform: translate(-50%, -50%);
           max-width: none !important;
-          display: none;
-          border-radius: 4px;
         }
         img {
           max-width: 100% !important;
@@ -724,7 +722,7 @@ li a {
 }
 
 .fileinput {
-  color: #337ab7;
+  color: #5f5f5f;
   background-color: white;
   font-size: 12px;
   text-align: center;
@@ -732,7 +730,7 @@ li a {
 }
 
 .fileinput.active, .fileinput.focus, .fileinput:active, .fileinput:focus, .fileinput:hover {
-  color: #337ab7;
+  color: #5f5f5f;
   background-color: #eee;
 }
 
@@ -741,7 +739,7 @@ li a {
 }
 
 .btn-primary:hover, .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .open > .dropdown-toggle.btn-primary {
-  color: #337ab7;
+  color: #5f5f5f;
   background-color: #eee;
   outline: 0;
 }
@@ -1175,12 +1173,14 @@ li a {
   height: 162px;
   position: relative;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.7;
+  -webkit-filter: blur(1px);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .hot-pic-wrap:hover{
-  opacity: 1
+  opacity: 1;
+  -webkit-filter: blur(0px);
 }
 .hot-pic {
   position: absolute;
@@ -1198,8 +1198,6 @@ li a {
 }
 .hot-body{
   display: block;
-  margin-top: 8px;
-  color: #434343;
 }
 .hot-knock,
 .hot-reply,
@@ -1296,9 +1294,13 @@ li a {
   overflow: hidden;
 }
 .content-category,
-.content-folder{
+.content-folder {
   font-size: 12px;
   cursor: pointer;
+  color: #5f5f5f
+}
+.content-category:hover{
+  color: #000
 }
 .reply-tag-btn {
   float: right;
@@ -1510,6 +1512,7 @@ a:hover{
   overflow: hidden !important;
   display: inline-block;
   margin: 0 10px 0 0;
+  border-radius: 4px;
 }
 #publixh-mod table tbody tr .priceinput .form-group{
   margin-bottom: 0 !important;

@@ -356,9 +356,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: none !important;
-    display: none !important;
-    border-radius: 4px;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -633,7 +630,7 @@ li a {
     cursor: pointer;
 }
 .fileinput {
-    color: #337ab7;
+    color: #5f5f5f;
     background-color: white;
     font-size: 12px;
     text-align: center;
@@ -644,7 +641,7 @@ li a {
 .fileinput:active,
 .fileinput:focus,
 .fileinput:hover {
-    color: #337ab7;
+    color: #5f5f5f;
     background-color: #eee;
 }
 .fileinput.active,
@@ -659,7 +656,7 @@ li a {
 .btn-primary:focus,
 .btn-primary:hover,
 .open > .dropdown-toggle.btn-primary {
-    color: #337ab7;
+    color: #5f5f5f;
     background-color: #eee;
     outline: 0;
 }
