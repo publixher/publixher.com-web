@@ -189,7 +189,11 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $fs="UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
     $fp = $db->prepare($fs);
     $fp->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
-    $fp->execute();
+    try {
+        $fp->execute();
+    }catch(PDOException $e){
+        $a=$e->getMessage();
+    }
     if ($_POST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";

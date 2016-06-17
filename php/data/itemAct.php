@@ -594,11 +594,6 @@ LIMIT
         $prepare3 = $db->prepare($sql3);
         $prepare3->bindValue(':ID', $folderid['FOLDER'], PDO::PARAM_STR);
         $prepare3->execute();
-        //판매목록에서 삭제
-        $sql5 = "DELETE FROM publixher.TBL_SELL_LIST WHERE ID_CONTENT=:ID_CONTENT";
-        $prepare5 = $db->prepare($sql5);
-        $prepare5->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-        $prepare5->execute();
         //베스트에서 삭제
         $sql6 = "DELETE FROM publixher.TBL_NOW_HOT WHERE ID_CONTENT=:ID_CONTENT";
         $prepare = $db->prepare($sql6);

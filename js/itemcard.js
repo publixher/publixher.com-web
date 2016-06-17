@@ -1165,7 +1165,7 @@ $(document).ready(function () {
         }
     })
     //폴더설정 버튼
-    $('#dirSublist-mod li').click(function () {
+    $('#dirSublist-mod li').on('click',function () {
         $('#directorySettingSub-mod').text($(this).text());
         folderid_mod = $(this).attr('folderid');
     })

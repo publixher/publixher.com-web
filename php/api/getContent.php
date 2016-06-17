@@ -27,6 +27,7 @@ if ($type == 'profile') {   //프로필에선 그사람이 쓴거,그사람이 �
     $result = $getC->community($nowpage);
 } elseif ($type == 'main') {  //메인화면에서 노출시켜줄 순
     $result = $getC->main($nowpage);
+    $getC->set_recommended();
 }
 
 
