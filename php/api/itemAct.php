@@ -578,11 +578,13 @@ LIMIT
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
-        //폴더에서 삭제
-        $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
-        $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':ID', $folderid['FOLDER'], PDO::PARAM_STR);
-        $prepare3->execute();
+        if($folderid!=null) {
+            //폴더에서 삭제
+            $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
+            $prepare3 = $db->prepare($sql3);
+            $prepare3->bindValue(':ID', $folderid['FOLDER'], PDO::PARAM_STR);
+            $prepare3->execute();
+        }
         //판매목록에서 삭제
         $sql5 = "DELETE FROM publixher.TBL_SELL_LIST WHERE ID_CONTENT=:ID_CONTENT";
         $prepare5 = $db->prepare($sql5);
