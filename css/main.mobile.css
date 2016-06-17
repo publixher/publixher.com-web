@@ -459,7 +459,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .tail .commentReply .rep .repaction {
     float: right;
 }
-#wrap #middle .item .tail .commentReply table tbody tr>td{
+#wrap #middle .item .tail .commentReply table tbody tr td:first-child{
     position: absolute;
 }
 #wrap #right {
