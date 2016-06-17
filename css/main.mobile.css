@@ -284,6 +284,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border-left: 0;
     min-height: 32px;
     height: 100%;
+    word-break: break-all;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
@@ -296,6 +297,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     min-height: 32px;
     margin-top: 10px;
     height:100%;
+    word-break: break-all;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -442,7 +444,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .tail .commentReply .rep {
     width: 100%;
     padding-left: 54px;
-    position: absolute;
     word-break: break-all;
     vertical-align: top;
     font-size: 13px;
