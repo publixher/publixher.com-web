@@ -568,6 +568,13 @@ LIMIT :NOWPAGE, 10";
     {
         $mongomanager = new MongoDB\Driver\Manager("mongodb://DongGyun:Pp999223#@localhost:27017/publixher");
         $now = time();
+        $average_time=array();
+        $interesting_id=array();
+        $interested_user=array();
+        $users_intersect=array();
+        $array_intersected=array();
+        $kind_of_me_value=array();
+        $kind_of_me=array();
         $filter = ['id' => $this->mId];
         $options = [
             'projection' => ['_id' => 0]
@@ -635,6 +642,25 @@ LIMIT :NOWPAGE, 10";
                 }
             }
             //$users_intersect의 각 원소에는 겹치는 사람들이 있다(다른 원소에 있는 사람이 중복 될 수 있다)
+            foreach($users_intersect as $user_intersect){
+                foreach($user_intersect as $intersected_user){
+                    $array_intersected[]=$intersected_user;
+                }
+            }
+
+            $kind_of_me=array_count_values($array_intersected);
+            $kind_of_me=array_filter($kind_of_me,function($var){
+                if($var>=2){
+                    return true;
+                }
+                else return false;
+            });
+            foreach($kind_of_me as $id){
+                $kind_of_me_value[]=key($id);
+            }
+            //$kind_of_me_value배열의 값에는 나와 비슷한 취향의 사람들의 아이디가 들어감
+
+            
         }
     }
 }
