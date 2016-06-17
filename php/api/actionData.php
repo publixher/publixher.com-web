@@ -7,6 +7,6 @@ if ($action == 'readDone') {
     $userID = $_POST['userID'];
     $time = $_POST['time'];
     $bulk = new MongoDB\Driver\BulkWrite;
-    $bulk->update(['id' => $userID], ['$push' => ['interest' => ['id'=>$itemID,'time' => $time]]], ['upsert' => true]);
+    $bulk->update(['id' => $userID], ['$addToSet' => ['interest' => ['id'=>$itemID,'time' => $time,'when'=>time()]]], ['upsert' => true]);
     $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
 }

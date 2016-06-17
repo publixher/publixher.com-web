@@ -27,7 +27,7 @@ if (isset($_GET['profile'])) {   //프로필에선 그사람이 쓴거,그사람
     $result=$getC->subscribe($nowpage);
 }elseif(isset($_GET['community'])){
     $result=$getC->community($nowpage);
-}else {  //메인화면에서 노출시켜줄 순
+}else{  //메인화면에서 노출시켜줄 순
     $result=$getC->main($nowpage);
 }
 
