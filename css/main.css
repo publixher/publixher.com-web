@@ -361,7 +361,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: none !important;
-  border-radius: 4px;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -1372,6 +1371,7 @@ a:hover {
   overflow: hidden !important;
   display: inline-block;
   margin: 0 10px 0 0;
+  border-radius: 4px;
 }
 #publixh-mod table tbody tr .priceinput .form-group{
   margin-bottom: 0 !important;
