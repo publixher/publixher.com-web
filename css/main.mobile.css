@@ -946,9 +946,7 @@ li a {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-.opend-comment > table {
-    border-bottom: 1px solid #e3e3e3;
-}
+
 .form-control {
     border: 1px solid #e3e3e3;
 }
@@ -1277,7 +1275,7 @@ a:hover {
     border: 0;
 }
 #repnav- > li {
-    width: 33%;
+    width: 30%;
 }
 .pin-list span{
     display:inline-block;
@@ -1317,6 +1315,9 @@ a:hover {
 }
 #contentCost{
     height:30px;
+}
+.tcomment, .tshare{
+    border-radius: 10px;
 }
 .oi{
     display: inline-block;

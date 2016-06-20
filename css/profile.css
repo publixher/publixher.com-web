@@ -1135,9 +1135,7 @@ li a {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.opend-comment > table {
-  border-bottom: 1px solid #e3e3e3;
-}
+
 .form-control {
   border: 1px solid #e3e3e3;
 }
@@ -1502,7 +1500,7 @@ a:hover {
   border: 0;
 }
 #repnav- > li {
-  width: 33%;
+  width: 10%;
 }
 .subrep .rep {
   width: 405px !important;
@@ -1556,6 +1554,9 @@ a:hover {
 #right .conf button{
   color: #434343;
   padding: 5px;
+}
+.tcomment, .tshare{
+  border-radius: 10px;
 }
 .oi{
   display: inline-block;
