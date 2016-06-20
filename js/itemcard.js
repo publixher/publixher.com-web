@@ -17,6 +17,7 @@ $(document).ready(function () {
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);
+        var pico=$(this).children('.pico-knock')
         var thisitemID = $(this).parents()[5].id;
         knockbtn.removeClass('knock');
         $.ajax({
@@ -28,9 +29,11 @@ $(document).ready(function () {
                 knockbtn.addClass('knock');
                 if (res['result'] != 'N') {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
+                    pico.addClass('knocked')
                 } else if (res['reason'] == 'already') {
                     alert('노크를 취소했습니다.');
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
+                    pico.removeClass('knocked')
                 }
             }, error: function (request, status, error) {
                 alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
