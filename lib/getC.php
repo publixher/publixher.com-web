@@ -17,9 +17,11 @@ class getC
         $this->db = $db;
     }
 
-    public function profile(int $page, string $target)
+    public function profile(int $page, string $target,string $category,string $sub_category)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -69,7 +71,7 @@ WHERE DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND EXPOS
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-) AND REPORT < 10
+) AND REPORT < 10 ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -79,9 +81,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function folder(int $page, string $folderId)
+    public function folder(int $page, string $folderId,string $category,string $sub_category)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -127,7 +131,7 @@ WHERE DEL = 'N' AND FOLDER = :FOLDER AND REPORT < 10 AND EXPOSE >= (
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -137,9 +141,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function buyList(int $page)
+    public function buyList(int $page,string $category,string $sub_category)
     {
         $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -173,7 +179,7 @@ FROM publixher.TBL_BUY_LIST AS BUY_LIST
     LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
     ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE BUY_LIST.ID_USER = :ID_USER
-      AND CONT.DEL = 'N' AND REPORT < 10
+      AND CONT.DEL = 'N' AND REPORT < 10 ${category_string} ${sub_category_string}
        ORDER BY BUY_LIST.BUY_DATE DESC
             LIMIT :NOWPAGE,10";
         $prepare = $this->db->prepare($sql);
@@ -238,9 +244,11 @@ publixher.TBL_CONTENT
         return $result;
     }
 
-    public function tag(int $page, string $tag)
+    public function tag(int $page, string $tag,string $category,string $sub_category)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -286,7 +294,7 @@ WHERE DEL = 'N' AND MATCH(TAG) AGAINST('${tag}') AND REPORT < 10 AND EXPOSE >= (
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -296,9 +304,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function body(int $page, string $body)
+    public function body(int $page, string $body,string $category,string $sub_category)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -344,7 +354,7 @@ WHERE DEL = 'N' AND MATCH(BODY_TEXT) AGAINST('*${body}*' IN BOOLEAN MODE) AND RE
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -354,9 +364,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function subscribe(int $page)
+    public function subscribe(int $page,string $category,string $sub_category)
     {
         $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -404,7 +416,7 @@ WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND FOLLOW.ID_SLAVE = :ID_
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
@@ -413,9 +425,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function community(int $page)
+    public function community(int $page,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_USER' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -467,7 +481,7 @@ WHERE DEL = 'N' AND REPORT < 10 AND FRIENDS.ID_USER = :ID_USER AND TARGET.COMMUN
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
@@ -476,12 +490,14 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function main(int $page)
+    public function main(int $page,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId,
             'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId/*,
             'ME1' => $this->mId, 'ME2' => $this->mId,
             'ME3' => $this->mId*/);
+        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
+        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
         //모든 글중 내가 볼 수 있는 글
         $sql = "SELECT
   CONT.ID,
@@ -528,7 +544,7 @@ WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND EXPOSE >= (
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)
+) ${category_string} ${sub_category_string}
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 

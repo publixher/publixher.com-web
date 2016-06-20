@@ -7,26 +7,28 @@ require_once '../../lib/getC.php';
 $nowpage = $_GET['nowpage'] * 10;
 $userID = $_GET['userID'];
 $type = $_GET['type'];
+$category=isset($_GET['category'])?$_GET['category']:null;
+$sub_category=isset($_GET['sub_category'])?$_GET['sub_category']:null;
 $getC = new getC($userID, $db);
 //콘텐츠 검색임시로 그냥 다 불러오기
 if ($type == 'profile') {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
-    $result = $getC->profile($nowpage, $_GET['target']);
+    $result = $getC->profile($nowpage, $_GET['target'],$category,$sub_category);
 } elseif ($type == 'folder') { //폴더에선 폴더 내용물이 시간순 노출
-    $result = $getC->folder($nowpage, $_GET['fid']);
+    $result = $getC->folder($nowpage, $_GET['fid'],$category,$sub_category);
 } elseif ($type == 'buyList') { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
-    $result = $getC->buyList($nowpage);
+    $result = $getC->buyList($nowpage,$category,$sub_category);
 } elseif ($type == 'one') {  //한개만 특정 주소로 가서 찾는것
     $result = $getC->one($_GET['getItem']);
 } elseif ($type == 'tag') {
-    $result = $getC->tag($nowpage, $_GET['tag']);
+    $result = $getC->tag($nowpage, $_GET['tag'],$category,$sub_category);
 } elseif ($type == 'bodySearch') {
-    $result = $getC->body($nowpage, $_GET['body']);
+    $result = $getC->body($nowpage, $_GET['body'],$category,$sub_category);
 } elseif ($type == 'subscribe') {
-    $result = $getC->subscribe($nowpage);
+    $result = $getC->subscribe($nowpage,$category,$sub_category);
 } elseif ($type == 'community') {
-    $result = $getC->community($nowpage);
+    $result = $getC->community($nowpage,$category,$sub_category);
 } elseif ($type == 'main') {  //메인화면에서 노출시켜줄 순
-    $result = $getC->main($nowpage);
+    $result = $getC->main($nowpage,$category,$sub_category);
     $getC->set_recommended();
 }
 
