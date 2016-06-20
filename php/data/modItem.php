@@ -23,6 +23,9 @@ if ($action == 'get_item') {
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
     require_once '../../lib/HTMLPurifier.php';
+    require_once '../../lib/iFrameCrop.php';
+    require_once '../../lib/getImgFromUrl.php';
+    require_once '../../lib/imagecrop.php';
     //CSRF검사
     if (!isset($_POST['token']) AND !isset($_GET['token'])) {
         exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
@@ -34,25 +37,44 @@ if ($action == 'get_item') {
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
-    $gallery = "/<a[^>]*href=[\"']?\/img\/origin\/[\"']?[^>]*><\/a>/i";
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
     $body_text = $_POST['body_text'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
-    preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 잡힌태그의 위치를 갖는다
+
+    $body=iframe_crop($body);
+    preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 동영상의 길이를 통해 최대 크기를 치환
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
     $body = preg_replace($a, "data-gallery", $body);    //class="gallery"를 data-gallery로 치환
+    $imgcount = count($imgs[0]);
+    $croprex = "/^\\/img\\/crop_origin\\//i";
+    //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
+    for ($i = 0; $i < $imgcount; $i++) {
+        str_replace('https://throughout.kr','',$imgs[1][$i][0]);
+        if (!preg_match($croprex, $imgs[1][$i][0])) {
+            $originurl[$i] = $imgs[1][$i][0];
+            $originurl[$i]=explode('?',$originurl[$i])[0];
+            $savedurl[$i] = getImgFromUrl($imgs[1][$i][0], 'origin', 'crop', 510,null,null,'crop_origin');
+            $imgs[1][$i][0] = $savedurl[$i];
+            $imgs[0][$i][0] = str_replace($originurl[$i], $savedurl[$i], $imgs[0][$i][0]);
+            $body = str_replace($originurl, $savedurl, $body);
+        }
+    }
+    //gif인지 검사
+    $gif=strpos($imgs[0][0][0],'class="gif"');
+    //링크로 덮는작업
     if (isset($imgs[0][0])) {
-        for ($i = 0; $i < count($imgs[0]); $i++) {
-            $originSource = str_replace("crop_origin", "origin", $imgs[1][$i][0]);
+        for ($i = 0; $i < $imgcount; $i++) {
+            $path=$imgs[1][$i][0];
+            if(strpos($imgs[0][$i][0],'class="gif"'))$path=str_replace('.png','.gif',$path);
+            $originSource = str_replace("crop_origin", "origin",$path);
             $not_covered[$i] = $imgs[0][$i][0];
             $a_covered[$i] = "a href='" . $originSource . "' data-gallery>" . $imgs[0][$i][0] . "</a";
         }
         $body = preg_replace($not_covered, $a_covered, $body);
     }
-    $body = preg_replace($gallery, "", $body);
-    $previewimg = $imgs[1][0][0];
+    $previewimg = str_replace('crop_origin','crop',$imgs[1][0][0]);
     //더보기가 있어야할지 검사
     $bodylen = mb_strlen($body, 'utf-8');
     if (!$previewimg and $bodylen <= 400) {
@@ -66,10 +88,19 @@ if ($action == 'get_item') {
     } else {
         $more = 1;
     }
+
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < count($imgs[1]); $i++) {
+    for ($i = 1; $i < min(5,$imgcount); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
-        $blured[$i - 1] = blur($imgs[1][$i][0], 2, $ext);
+        $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][$i][0]);
+        $imgout=str_replace('origin','blur',$imgsrc);
+        $img = new imaging;
+        $img->set_img($imgsrc);
+        $img->set_quality(100);
+        $img->set_origin(true);
+        $img->set_size(100, 100);
+        $img->save_img($imgout);
+        $blured[$i - 1] = blur($imgout, 2);
     }
     //이미지 있으면 프리뷰 길이가 150 없으면 400
     if ($previewimg) {
@@ -86,22 +117,37 @@ if ($action == 'get_item') {
         $previewtxt = mb_substr($previewtxt, 0, $previewlength);
     }
     if (strlen($previewtxt) > 0 && $previewimg) {
-        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else if ($previewimg) {
-        $preview = "<img src='{$previewimg}' class='BodyPic'><br><br>";
+        $preview ="<br><img src='{$previewimg}' class='BodyPic";
+        if($gif) $preview.=" gif";
+        $preview.="'><br><br>";
     } else {
         $preview = $previewtxt;
     }
-    if (count($blured) > 5) {
+    if ($imgcount > 5) {
         for ($i = 0; $i < 4; $i++) {
             $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
-        $ex = count($blured) - 4;
-        $preview = $preview . "<p style='font-size=20;font-weight:700;'>&nbsp;외&nbsp;" . $ex . "장";
+        $ex = $imgcount - 4;
+        $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
             $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
+    }
+    //사진 80으로 크롭시켜서 대표이미지로 등록
+    if($previewimg and $for_sale){
+        $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][0][0]);
+        $imgout=str_replace('origin','crop80',$imgsrc);
+        $img = new imaging;
+        $img->set_img($imgsrc);
+        $img->set_quality(100);
+        $img->set_origin(true);
+        $img->set_size(162, 162);
+        $img->save_img($imgout);
     }
     //content테이블에 넣음
     $ID_writer = $_POST['ID_writer'];
@@ -126,7 +172,7 @@ if ($action == 'get_item') {
     if (!$_POST['for_sale']) {
         $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
     } else {
-        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE WHERE ID=:ID";
+        $sql = "UPDATE publixher.TBL_CONTENT SET BODY=:BODY , FOLDER=:FOLDER , EXPOSE=:EXPOSE , CHANGED=1 , PREVIEW=:PREVIEW , ORIGINAL=:ORIGINAL , PRICE=:PRICE , CATEGORY=:CATEGORY , SUB_CATEGORY=:SUB_CATEGORY , TITLE=:TITLE , AGE=:AGE , AD=:AD , TAG=:TAG,BODY_TEXT=:BODY_TEXT,MORE=:MORE,IMG=:IMG WHERE ID=:ID";
     }
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $id);
@@ -144,6 +190,7 @@ if ($action == 'get_item') {
         $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
         $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
         $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
+        $prepare->bindValue(':IMG', $previewimg?str_replace('crop','crop80',$previewimg) : null, PDO::PARAM_STR);
         if ($_POST['adult'] == "true") {
             $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
         } else {

@@ -69,7 +69,7 @@ if (!empty($_POST)) {
     }
 
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < min($imgcount,4); $i++) {
+    for ($i = 1; $i < min($imgcount,5); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
         $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][$i][0]);
         $imgout=str_replace('origin','blur',$imgsrc);
@@ -106,11 +106,11 @@ if (!empty($_POST)) {
     } else {
         $preview = $previewtxt;
     }
-    if (count($blured) > 5) {
+    if ($imgcount > 5) {
         for ($i = 0; $i < 4; $i++) {
             $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
-        $ex = count($blured) - 4;
+        $ex = $imgcount - 4;
         $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {

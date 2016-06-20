@@ -13,7 +13,6 @@ if (!empty($_POST)) {
     require_once '../../lib/getImgFromUrl.php';
     require_once '../../lib/banchk.php';
     require_once '../../lib/iFrameCrop.php';
-    require_once '../../lib/content_explode.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -33,7 +32,7 @@ if (!empty($_POST)) {
     $for_sale = $_POST['for_sale'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
-    
+
     $body=iframe_crop($body);
     preg_match_all($reg, $body, $imgs, PREG_OFFSET_CAPTURE);//PREG_OFFSET_CAPTURE로 동영상의 길이를 통해 최대 크기를 치환
     $body = preg_replace($br, "<div><br></div>", $body);//칸띄움 줄이기
@@ -81,7 +80,7 @@ if (!empty($_POST)) {
     }
 
     $blured;//오타 아님 정의해야해서 하는
-    for ($i = 1; $i < min(4,$imgcount); $i++) {
+    for ($i = 1; $i < min(5,$imgcount); $i++) {
         //4는 블러강도. 3은평균 5가 가장 높은것.
         $imgsrc=__DIR__.'/../..'.str_replace('crop_origin','origin',$imgs[1][$i][0]);
         $imgout=str_replace('origin','blur',$imgsrc);
@@ -118,11 +117,11 @@ if (!empty($_POST)) {
     } else {
         $preview = $previewtxt;
     }
-    if (count($blured) > 5) {
+    if ($imgcount > 5) {
         for ($i = 0; $i < 4; $i++) {
             $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
-        $ex = count($blured) - 4;
+        $ex = $imgcount - 4;
         $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
