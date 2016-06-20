@@ -17,7 +17,7 @@ class getC
         $this->db = $db;
     }
 
-    public function profile(int $page, string $target,string $category,string $sub_category)
+    public function profile(int $page, string $target,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
@@ -81,7 +81,7 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function folder(int $page, string $folderId,string $category,string $sub_category)
+    public function folder(int $page, string $folderId,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
@@ -141,7 +141,7 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function buyList(int $page,string $category,string $sub_category)
+    public function buyList(int $page,string $category=null,string $sub_category=null)
     {
         $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
@@ -244,7 +244,7 @@ publixher.TBL_CONTENT
         return $result;
     }
 
-    public function tag(int $page, string $tag,string $category,string $sub_category)
+    public function tag(int $page, string $tag,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
@@ -304,7 +304,7 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function body(int $page, string $body,string $category,string $sub_category)
+    public function body(int $page, string $body,string $category=null,string $sub_category=null)
     {
         $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
@@ -364,7 +364,7 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function subscribe(int $page,string $category,string $sub_category)
+    public function subscribe(int $page,string $category=null,string $sub_category=null)
     {
         $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
         $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
