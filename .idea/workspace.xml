@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modItem.php" afterPath="$PROJECT_DIR$/php/api/modItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/modItem.php" afterPath="$PROJECT_DIR$/php/data/modItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -32,346 +35,263 @@
     <favorites_list name="publixherBoot" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="itemAct.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/itemAct.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="804" column="13" selection-start-line="804" selection-start-column="13" selection-end-line="804" selection-end-column="13" />
-              <folding>
-                <marker date="1466395767000" expanded="true" signature="894:994" ph="SELECT SEQ F... TBL_KNOCK_LIST" />
-                <marker date="1466395767000" expanded="true" signature="1282:1367" ph="INSERT INTO publixher.TBL_KNOCK_LIST... " />
-                <marker date="1466395767000" expanded="true" signature="1388:1447" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="1468:1547" ph="SELECT KNOCK... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="2213:2329" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="2637:2731" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="3841:3927" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="4041:4100" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="4184:4284" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="4399:4489" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="4581:4633" ph="SELECT KNOCK... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="5300:5930" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="6717:7290" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="8040:8736" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="11641:11732" ph="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1466395767000" expanded="true" signature="12086:12194" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="12515:12581" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="12838:13048" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="13298:13401" ph="INSERT INTO publixher.TBL_CONTENT_DONATE... " />
-                <marker date="1466395767000" expanded="true" signature="13940:14071" ph="INSERT INTO publixher.TBL_CONTENT_REPLY... " />
-                <marker date="1466395767000" expanded="true" signature="14088:14151" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="14168:14232" ph="SELECT COMME... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="14939:15074" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="15441:15576" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="15970:16064" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="16613:16675" ph="SELECT PRICE... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="16958:17049" ph="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1466395767000" expanded="true" signature="17661:17756" ph="SELECT BUY_D... TBL_BUY_LIST" />
-                <marker date="1466395767000" expanded="true" signature="18104:18200" ph="INSERT INTO publixher.TBL_BUY_LIST... " />
-                <marker date="1466395767000" expanded="true" signature="18514:18571" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="18738:18846" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="19039:19155" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="21047:21112" ph="SELECT FOR_S... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="21415:21466" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="21796:21891" ph="SELECT BUY_D... TBL_BUY_LIST" />
-                <marker date="1466395767000" expanded="true" signature="22225:22276" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="22700:22751" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="23135:23201" ph="SELECT ID_WR... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="23518:23571" ph="SELECT FOLDE... TBL_CONTENT" />
-                <marker date="1466395767000" expanded="true" signature="23801:23866" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="24071:24141" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="24347:24409" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="24524:24588" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="24703:24768" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="25029:25096" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="25437:25542" ph="SELECT SEQ F... TBL_CONTENT_REPLY_KNOCK" />
-                <marker date="1466395767000" expanded="true" signature="25820:25933" ph="INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK... " />
-                <marker date="1466395767000" expanded="true" signature="25954:26019" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="26040:26117" ph="SELECT ID_US... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="26805:26940" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="27936:28536" ph="SELECT SUB_R... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="30083:30237" ph="INSERT INTO publixher.TBL_CONTENT_SUB_REPLY... " />
-                <marker date="1466395767000" expanded="true" signature="30254:30317" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="30334:30404" ph="SELECT SUB_R... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="30421:30494" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="31380:31542" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="31974:32136" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395767000" expanded="true" signature="32675:32769" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="33787:33867" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="34105:34189" ph="DELETE FROM " />
-                <marker date="1466395767000" expanded="true" signature="34496:34639" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="34496:34652" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="34531:34563" ph="SELECT REPLA... " />
-                <marker date="1466395767000" expanded="true" signature="34531:34638" ph="SELECT REPLA... TBL_USER" />
-                <marker date="1466395767000" expanded="true" signature="34570:34602" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466395767000" expanded="true" signature="35122:35233" ph="SELECT CONT.... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35122:35303" ph="SELECT CONT.... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35122:35323" ph="SELECT CONT.... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35486" ph="SELECT CONT.... TBL_CONT" />
-                <marker date="1466395767000" expanded="true" signature="35355:35511" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35524" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35561" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35564" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35592" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35645" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35355:35688" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="35978:36035" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="36059:36184" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="36120:36183" ph="SELECT ID_CO... TBL_CONTENT_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="36225:36286" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="36310:36447" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="36381:36446" ph="SELECT ID_RE... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="36471:36600" ph="UPDATE publi... " />
-                <marker date="1466395767000" expanded="true" signature="36532:36599" ph="SELECT ID_CO... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395767000" expanded="true" signature="37077:37166" ph="INSERT INTO publixher.TBL_CONTENT_REPORT... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="itemAct.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/api/itemAct.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
-              <folding>
-                <marker date="1466395803000" expanded="true" signature="309:409" ph="SELECT SEQ F... TBL_KNOCK_LIST" />
-                <marker date="1466395803000" expanded="true" signature="697:782" ph="INSERT INTO publixher.TBL_KNOCK_LIST... " />
-                <marker date="1466395803000" expanded="true" signature="803:862" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="883:962" ph="SELECT KNOCK... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="1824:1940" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="2248:2404" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="2283:2390" ph="SELECT REPLA... *" />
-                <marker date="1466395803000" expanded="true" signature="2322:2354" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466395803000" expanded="true" signature="3512:3598" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="3712:3771" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="3855:3955" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="4070:4160" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="4252:4304" ph="SELECT KNOCK... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="4929:5559" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="6558:7131" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="8093:8789" ph="SELECT REPLY... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="11288:11379" ph="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1466395803000" expanded="true" signature="11710:11818" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="12139:12205" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="12462:12672" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="12922:13025" ph="INSERT INTO publixher.TBL_CONTENT_DONATE... " />
-                <marker date="1466395803000" expanded="true" signature="13602:13733" ph="INSERT INTO publixher.TBL_CONTENT_REPLY... " />
-                <marker date="1466395803000" expanded="true" signature="13750:13813" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="13830:13894" ph="SELECT COMME... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="14593:14728" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="15095:15230" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="15748:15842" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="16143:16205" ph="SELECT PRICE... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="16488:16579" ph="SELECT CASH_... TBL_CONNECTOR" />
-                <marker date="1466395803000" expanded="true" signature="17144:17239" ph="SELECT BUY_D... TBL_BUY_LIST" />
-                <marker date="1466395803000" expanded="true" signature="17587:17683" ph="INSERT INTO publixher.TBL_BUY_LIST... " />
-                <marker date="1466395803000" expanded="true" signature="17997:18054" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="18221:18329" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="18522:18638" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="20510:20575" ph="SELECT FOR_S... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="20878:20929" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="21259:21354" ph="SELECT BUY_D... TBL_BUY_LIST" />
-                <marker date="1466395803000" expanded="true" signature="21688:21739" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="22187:22238" ph="SELECT BODY TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="22637:22686" ph="SELECT LEVEL... TBL_USER" />
-                <marker date="1466395803000" expanded="true" signature="22799:22865" ph="SELECT ID_WR... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="23166:23219" ph="SELECT FOLDE... TBL_CONTENT" />
-                <marker date="1466395803000" expanded="true" signature="23449:23514" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="23719:23789" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="23996:24060" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="24236:24298" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="24413:24477" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="24592:24657" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="24889:24956" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="25310:25415" ph="SELECT SEQ F... TBL_CONTENT_REPLY_KNOCK" />
-                <marker date="1466395803000" expanded="true" signature="25693:25806" ph="INSERT INTO publixher.TBL_CONTENT_REPLY_KNOCK... " />
-                <marker date="1466395803000" expanded="true" signature="25827:25892" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="25913:25990" ph="SELECT ID_US... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="26674:26809" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="27801:28401" ph="SELECT SUB_R... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="29980:30134" ph="INSERT INTO publixher.TBL_CONTENT_SUB_REPLY... " />
-                <marker date="1466395803000" expanded="true" signature="30151:30214" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="30231:30301" ph="SELECT SUB_R... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="30318:30391" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="31277:31439" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="31871:32033" ph="INSERT INTO publixher.TBL_CONTENT_NOTI... " />
-                <marker date="1466395803000" expanded="true" signature="32678:32772" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="33794:33874" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="34112:34196" ph="DELETE FROM " />
-                <marker date="1466395803000" expanded="true" signature="34502:34629" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="34537:34615" ph="SELECT REPLA... TBL_USER" />
-                <marker date="1466395803000" expanded="true" signature="35093:35294" ph="SELECT CONT.... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="35326:35659" ph="SELECT CONT.... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="35953:36010" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="36034:36159" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="36095:36158" ph="SELECT ID_CO... TBL_CONTENT_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="36200:36261" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="36285:36422" ph="UPDATE publi... " />
-                <marker date="1466395803000" expanded="true" signature="36356:36421" ph="SELECT ID_RE... TBL_CONTENT_SUB_REPLY" />
-                <marker date="1466395803000" expanded="true" signature="36771:36860" ph="INSERT INTO publixher.TBL_CONTENT_REPORT... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getC.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/getC.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
-              <folding>
-                <element signature="e#7#95#0#PHP" expanded="false" />
-                <marker date="1466400387000" expanded="true" signature="506:1903" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="506:1947" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="1543:1885" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="1634:1774" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="2351:3001" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="2351:3167" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="2351:3574" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="3186:3528" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="3277:3417" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="3911:4833" ph="SELECT CONT.... TBL_BUY_LIST" />
-                <marker date="1466400387000" expanded="true" signature="3911:4902" ph="SELECT CONT.... TBL_BUY_LIST" />
-                <marker date="1466400387000" expanded="true" signature="5257:5263" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="5257:6432" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="6088:6430" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="6179:6319" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="6805:6811" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="6805:8039" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="7651:7993" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="7742:7882" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="8414:9673" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="9285:9627" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="9376:9516" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="10065:11405" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="11017:11359" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="11108:11248" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="11795:13336" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="12948:13290" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="13039:13179" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="13827:15048" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="14660:15002" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="14751:14891" ph="SELECT ID_FR... TBL_FRIENDS" />
-                <marker date="1466400387000" expanded="true" signature="15115:16744" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="16292:16690" ph="SELECT CASE TBL_CONTENT" />
-                <marker date="1466400387000" expanded="true" signature="16399:16547" ph="SELECT ID_FR... TBL_FRIENDS" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/itemcard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1545">
-              <caret line="1130" column="222" selection-start-line="1130" selection-start-column="171" selection-end-line="1130" selection-end-column="222" />
-              <folding>
-                <marker date="1466399827000" expanded="true" signature="85:145" ph="{...}" />
-                <marker date="1466399827000" expanded="true" signature="15102:15133" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="15184:15200" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="15789:15824" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="15841:15866" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="16176:16192" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="17900:17957" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="18292:18349" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="18424:18481" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="20371:20402" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="20453:20469" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="21017:21052" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="21069:21094" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="21400:21416" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="24337:24370" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="24387:24412" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="24747:24763" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="30535:30566" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="30621:30637" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="31214:31248" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="31265:31290" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="31633:31649" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="44814:44848" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="44865:44890" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="45225:45241" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="71454:71493" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topcon.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/topcon.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="62" column="219" selection-start-line="62" selection-start-column="219" selection-end-line="62" selection-end-column="219" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upform.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/upform.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1093">
-              <caret line="191" column="47" selection-start-line="191" selection-start-column="47" selection-end-line="191" selection-end-column="47" />
-              <folding>
-                <marker date="1466399827000" expanded="true" signature="13169:13218" ph="..." />
-                <marker date="1466399827000" expanded="true" signature="13414:13463" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/itemload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentManage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/contentManage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="201" column="26" selection-start-line="201" selection-start-column="26" selection-end-line="201" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="191" column="36" selection-start-line="191" selection-start-column="36" selection-end-line="191" selection-end-column="36" />
-              <folding>
-                <marker date="1466139126000" expanded="true" signature="6047:6239" ph="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1466139126000" expanded="true" signature="6279:6581" ph="INSERT INTO publixher.TBL_CONTENT... " />
-                <marker date="1466139126000" expanded="true" signature="8607:8683" ph="UPDATE publi... " />
-                <marker date="1466139126000" expanded="true" signature="8890:9596" ph="SELECT CONT.... TBL_CONTENT" />
-                <marker date="1466139126000" expanded="true" signature="9850:9934" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
-                <marker date="1466139126000" expanded="true" signature="10290:10361" ph="INSERT INTO publixher.TBL_TAGS... " />
-                <marker date="1466139126000" expanded="true" signature="10696:10766" ph="UPDATE publi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.68709326">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="getC.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/getC.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1125">
+                  <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#7#95#0#PHP" expanded="false" />
+                    <marker date="1466409289000" expanded="true" signature="766:2163" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="766:2249" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="1803:2145" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="1894:2034" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="2913:3563" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="2913:3729" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="2913:4178" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="3748:4090" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="3839:3979" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="4775:5697" ph="SELECT CONT.... TBL_BUY_LIST" />
+                    <marker date="1466409289000" expanded="true" signature="4775:5808" ph="SELECT CONT.... TBL_BUY_LIST" />
+                    <marker date="1466409289000" expanded="true" signature="6163:6169" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="6163:7338" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="6994:7336" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="7085:7225" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="7971:7977" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="7971:9247" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="8817:9159" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="8908:9048" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="9882:11183" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="10753:11095" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="10844:10984" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="11835:13217" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="12787:13129" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="12878:13018" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="13867:15450" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="15020:15362" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="15111:15251" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="16201:17379" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="16201:17464" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="17034:17376" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="17125:17265" ph="SELECT ID_FR... TBL_FRIENDS" />
+                    <marker date="1466409289000" expanded="true" signature="17531:19160" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="18708:19106" ph="SELECT CASE TBL_CONTENT" />
+                    <marker date="1466409289000" expanded="true" signature="18815:18963" ph="SELECT ID_FR... TBL_FRIENDS" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="getContent.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="810">
+                  <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+                  <folding>
+                    <marker date="1466409081000" expanded="true" signature="2040:2133" ph="SELECT BUY_D... TBL_BUY_LIST" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="getContent.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="495">
+                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                  <folding>
+                    <marker date="1466406836000" expanded="true" signature="1868:1961" ph="SELECT BUY_D... TBL_BUY_LIST" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="a.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/a.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/itemcard.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="980">
+                  <caret line="1330" column="26" selection-start-line="1330" selection-start-column="26" selection-end-line="1330" selection-end-column="26" />
+                  <folding>
+                    <marker date="1466399827000" expanded="true" signature="85:145" ph="{...}" />
+                    <marker date="1466399827000" expanded="true" signature="15102:15133" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15184:15200" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15789:15824" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15841:15866" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="16176:16192" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="17900:17957" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="18292:18349" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="18424:18481" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="20371:20402" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="20453:20469" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21017:21052" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21069:21094" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21400:21416" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24337:24370" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24387:24412" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24747:24763" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="30535:30566" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="30621:30637" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31214:31248" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31265:31290" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31633:31649" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="44814:44848" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="44865:44890" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="45225:45241" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="71454:71493" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="825">
+                  <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+                  <folding>
+                    <marker date="1466410611000" expanded="true" signature="5983:6175" ph="INSERT INTO publixher.TBL_CONTENT... " />
+                    <marker date="1466410611000" expanded="true" signature="6215:6517" ph="INSERT INTO publixher.TBL_CONTENT... " />
+                    <marker date="1466410611000" expanded="true" signature="8543:8619" ph="UPDATE publi... " />
+                    <marker date="1466410611000" expanded="true" signature="8826:9532" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466410611000" expanded="true" signature="9786:9870" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
+                    <marker date="1466410611000" expanded="true" signature="10226:10297" ph="INSERT INTO publixher.TBL_TAGS... " />
+                    <marker date="1466410611000" expanded="true" signature="10632:10702" ph="UPDATE publi... " />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="uploadContent.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="429">
+                  <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+                  <folding>
+                    <marker date="1466410639000" expanded="true" signature="5301:5493" ph="INSERT INTO publixher.TBL_CONTENT... " />
+                    <marker date="1466410639000" expanded="true" signature="5533:5835" ph="INSERT INTO publixher.TBL_CONTENT... " />
+                    <marker date="1466410639000" expanded="true" signature="7857:7933" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="8171:8877" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="9131:9215" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
+                    <marker date="1466410639000" expanded="true" signature="9571:9642" ph="INSERT INTO publixher.TBL_TAGS... " />
+                    <marker date="1466410639000" expanded="true" signature="9977:10047" ph="UPDATE publi... " />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="modItem.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="429">
+                  <caret line="133" column="14" selection-start-line="133" selection-start-column="14" selection-end-line="133" selection-end-column="14" />
+                  <folding>
+                    <marker date="1466410639000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="594:643" ph="SELECT DIR F... TBL_FOLDER" />
+                    <marker date="1466410639000" expanded="true" signature="6398:6473" ph="SELECT ORIGI... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="6755:6825" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="7005:7190" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="7222:7516" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="9048:9781" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="10018:10088" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="10335:10406" ph="INSERT INTO publixher.TBL_TAGS... " />
+                    <marker date="1466410639000" expanded="true" signature="10647:10738" ph="UPDATE publi... " />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="upform.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/upform.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="253">
+                  <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+                  <folding>
+                    <marker date="1466399827000" expanded="true" signature="13169:13218" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="13414:13463" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="modItem.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="433">
+                  <caret line="125" column="14" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
+                  <folding>
+                    <marker date="1466410639000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />
+                    <marker date="1466410639000" expanded="true" signature="5897:5972" ph="SELECT ORIGI... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="6238:6308" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="6488:6697" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="6729:7059" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="8586:9319" ph="SELECT CONT.... TBL_CONTENT" />
+                    <marker date="1466410639000" expanded="true" signature="9552:9622" ph="UPDATE publi... " />
+                    <marker date="1466410639000" expanded="true" signature="9805:9854" ph="SELECT DIR F... TBL_FOLDER" />
+                    <marker date="1466410639000" expanded="true" signature="10183:10254" ph="INSERT INTO publixher.TBL_TAGS... " />
+                    <marker date="1466410639000" expanded="true" signature="10504:10595" ph="UPDATE publi... " />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/itemcard.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="128">
+                  <caret line="1033" column="28" selection-start-line="1033" selection-start-column="28" selection-end-line="1033" selection-end-column="28" />
+                  <folding>
+                    <marker date="1466399827000" expanded="true" signature="85:145" ph="{...}" />
+                    <marker date="1466399827000" expanded="true" signature="15102:15133" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15184:15200" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15789:15824" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="15841:15866" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="16176:16192" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="17900:17957" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="18292:18349" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="18424:18481" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="20371:20402" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="20453:20469" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21017:21052" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21069:21094" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="21400:21416" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24337:24370" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24387:24412" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="24747:24763" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="30535:30566" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="30621:30637" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31214:31248" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31265:31290" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="31633:31649" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="44814:44848" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="44865:44890" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="45225:45241" ph="..." />
+                    <marker date="1466399827000" expanded="true" signature="71454:71493" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -389,7 +309,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/market.php" />
         <option value="$PROJECT_DIR$/lib/content_explode.php" />
         <option value="/MySQL Fragment (getContent.php:13109).sql" />
         <option value="/MySQL Fragment (getC.php:5313).sql" />
@@ -419,13 +338,7 @@
         <option value="/MySQL Fragment (getC.php:13237).sql" />
         <option value="$PROJECT_DIR$/php/main.php" />
         <option value="$PROJECT_DIR$/php/api/actionData.php" />
-        <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
-        <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
         <option value="$PROJECT_DIR$/https/login.php" />
-        <option value="$PROJECT_DIR$/php/data/getContent.php" />
-        <option value="$PROJECT_DIR$/php/api/getContent.php" />
-        <option value="$PROJECT_DIR$/php/data/modItem.php" />
-        <option value="$PROJECT_DIR$/php/api/modItem.php" />
         <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/php/itemModModal.php" />
         <option value="$PROJECT_DIR$/php/profile_middle.php" />
@@ -438,8 +351,15 @@
         <option value="$PROJECT_DIR$/js/upform.js" />
         <option value="/MySQL Fragment (getC.php:12206).sql" />
         <option value="/MySQL Fragment (getC.php:13826).sql" />
-        <option value="$PROJECT_DIR$/lib/getC.php" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
+        <option value="$PROJECT_DIR$/php/api/getContent.php" />
+        <option value="$PROJECT_DIR$/lib/loginchk.php" />
+        <option value="$PROJECT_DIR$/php/data/getContent.php" />
+        <option value="$PROJECT_DIR$/lib/getC.php" />
+        <option value="$PROJECT_DIR$/php/data/uploadContent.php" />
+        <option value="$PROJECT_DIR$/php/api/modItem.php" />
+        <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
+        <option value="$PROJECT_DIR$/php/data/modItem.php" />
       </list>
     </option>
   </component>
@@ -484,7 +404,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="917" />
+    <option name="x" value="978" />
     <option name="y" value="23" />
     <option name="width" value="2164" />
     <option name="height" value="2085" />
@@ -836,35 +756,7 @@
       <workItem from="1465959569299" duration="14283000" />
       <workItem from="1466056591445" duration="15728000" />
       <workItem from="1466136464907" duration="12896000" />
-      <workItem from="1466393510243" duration="6026000" />
-    </task>
-    <task id="LOCAL-00286" summary="몽고 사용">
-      <created>1465216128574</created>
-      <option name="number" value="00286" />
-      <option name="presentableId" value="LOCAL-00286" />
-      <option name="project" value="LOCAL" />
-      <updated>1465216128574</updated>
-    </task>
-    <task id="LOCAL-00287" summary="쿠키변조 가능성 확인 삭제">
-      <created>1465522183101</created>
-      <option name="number" value="00287" />
-      <option name="presentableId" value="LOCAL-00287" />
-      <option name="project" value="LOCAL" />
-      <updated>1465522183102</updated>
-    </task>
-    <task id="LOCAL-00288" summary="모바일 페이지와 데스크탑 페이지 css 분기">
-      <created>1465525467481</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1465525467481</updated>
-    </task>
-    <task id="LOCAL-00289" summary="모바일 메인페이지 추가">
-      <created>1465527224600</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1465527224600</updated>
+      <workItem from="1466393510243" duration="12565000" />
     </task>
     <task id="LOCAL-00290" summary="수정창에 폴더 생성칸 삭제">
       <created>1465545664821</created>
@@ -1181,11 +1073,39 @@
       <option name="project" value="LOCAL" />
       <updated>1466400950182</updated>
     </task>
-    <option name="localTasksCounter" value="335" />
+    <task id="LOCAL-00335" summary="노크 되있으면 knocked">
+      <created>1466401237706</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1466401237706</updated>
+    </task>
+    <task id="LOCAL-00336" summary="카테고리,서브 카테고리 선택 가능">
+      <created>1466406855033</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1466406855034</updated>
+    </task>
+    <task id="LOCAL-00337" summary="카테고리,서브 카테고리 선택 가능 수정">
+      <created>1466409325129</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1466409325129</updated>
+    </task>
+    <task id="LOCAL-00338" summary="수정시 썸네일에 div 삭제되는거 수정">
+      <created>1466409597932</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1466409597932</updated>
+    </task>
+    <option name="localTasksCounter" value="339" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376265000" />
+    <option name="totallyTimeSpent" value="382804000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1197,8 +1117,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="917" y="23" width="2164" height="2085" extended-state="0" />
-    <editor active="true" />
+    <frame x="978" y="23" width="2164" height="2085" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1520321" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13100848" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
@@ -1211,7 +1131,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24929312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32477447" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32112393" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32112393" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1238,9 +1158,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="cropped blur" />
-    <MESSAGE value="crop_origin 510 -&gt; 510,510" />
-    <MESSAGE value="100되는거 수정" />
     <MESSAGE value="커서 위치에 이미지 추가&#10;컨텐츠 삭제시 베스트에 있는것도 추가" />
     <MESSAGE value="s" />
     <MESSAGE value="resize 다 뺀거" />
@@ -1263,7 +1180,10 @@
     <MESSAGE value="익스플로러 호환성 댓글" />
     <MESSAGE value="delPin 동작 수정" />
     <MESSAGE value="노크 되있으면 knocked" />
-    <option name="LAST_COMMIT_MESSAGE" value="노크 되있으면 knocked" />
+    <MESSAGE value="카테고리,서브 카테고리 선택 가능" />
+    <MESSAGE value="카테고리,서브 카테고리 선택 가능 수정" />
+    <MESSAGE value="수정시 썸네일에 div 삭제되는거 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="수정시 썸네일에 div 삭제되는거 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1274,25 +1194,20 @@
           <option name="timeStamp" value="444" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/modItem.php</url>
-          <line>110</line>
-          <option name="timeStamp" value="529" />
+          <url>file://$PROJECT_DIR$/php/data/uploadContent.php</url>
+          <line>119</line>
+          <option name="timeStamp" value="549" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/modItem.php</url>
-          <line>117</line>
-          <option name="timeStamp" value="530" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/lib/getC.php</url>
-          <line>590</line>
-          <option name="timeStamp" value="535" />
+          <url>file://$PROJECT_DIR$/php/api/uploadContent.php</url>
+          <line>112</line>
+          <option name="timeStamp" value="550" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="536" />
+      <option name="time" value="551" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="nameFind.php">
@@ -1301,24 +1216,12 @@
       <configuration name="PhpLocalRunConfigurationType">
         <watch expression="$GLOBALS" />
       </configuration>
-      <configuration name="getContent.php">
-        <watch expression="$viewd" language="PHP" />
-        <watch expression="$interesting_id" language="PHP" />
-        <watch expression="$this-&gt;mId" language="PHP" />
-      </configuration>
       <configuration name="navigation.php">
         <watch expression="$GLOBALS" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/foldercon.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1512,6 +1415,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1464321938000" expanded="true" signature="397:523" ph="SELECT COUNT... TBL_CONTENT_NOTI" />
+            <marker date="1464321938000" expanded="true" signature="1699:2614" ph="SELECT NOTI.... TBL_CONTENT_NOTI" />
+            <marker date="1464321938000" expanded="true" signature="3141:3217" ph="UPDATE publi... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1519,6 +1427,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1465797543000" expanded="true" signature="240:576" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1465797543000" expanded="true" signature="614:912" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1465797543000" expanded="true" signature="934:1107" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1465797543000" expanded="true" signature="1409:1751" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1465797543000" expanded="true" signature="1789:2093" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1465797543000" expanded="true" signature="2115:2290" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1465797543000" expanded="true" signature="2593:2934" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1465797543000" expanded="true" signature="2972:3275" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1465797543000" expanded="true" signature="3297:3473" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1543,20 +1462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/itemModModal.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
@@ -1572,14 +1477,6 @@
           <folding>
             <marker date="1466152174000" expanded="true" signature="1979:2041" ph="SELECT ID,DI... TBL_FOLDER" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/a.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1606,71 +1503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="121" column="38" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
-          <folding>
-            <marker date="1466147507000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="594:643" ph="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1466147507000" expanded="true" signature="4506:4581" ph="SELECT ORIGI... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="4863:4933" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="5113:5298" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="5330:5615" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="7033:7766" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="8003:8073" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="8320:8391" ph="INSERT INTO publixher.TBL_TAGS... " />
-            <marker date="1466147507000" expanded="true" signature="8632:8723" ph="UPDATE publi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
-          <folding>
-            <marker date="1466147507000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1466147507000" expanded="true" signature="3995:4070" ph="SELECT ORIGI... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="4336:4406" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="4586:4795" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="4827:5148" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="6561:7294" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466147507000" expanded="true" signature="7527:7597" ph="UPDATE publi... " />
-            <marker date="1466147507000" expanded="true" signature="7780:7829" ph="SELECT DIR F... TBL_FOLDER" />
-            <marker date="1466147507000" expanded="true" signature="8158:8229" ph="INSERT INTO publixher.TBL_TAGS... " />
-            <marker date="1466147507000" expanded="true" signature="8479:8570" ph="UPDATE publi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <marker date="1466145756000" expanded="true" signature="1690:1783" ph="SELECT BUY_D... TBL_BUY_LIST" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="191" column="36" selection-start-line="191" selection-start-column="36" selection-end-line="191" selection-end-column="36" />
-          <folding>
-            <marker date="1466139126000" expanded="true" signature="6047:6239" ph="INSERT INTO publixher.TBL_CONTENT... " />
-            <marker date="1466139126000" expanded="true" signature="6279:6581" ph="INSERT INTO publixher.TBL_CONTENT... " />
-            <marker date="1466139126000" expanded="true" signature="8607:8683" ph="UPDATE publi... " />
-            <marker date="1466139126000" expanded="true" signature="8890:9596" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466139126000" expanded="true" signature="9850:9934" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
-            <marker date="1466139126000" expanded="true" signature="10290:10361" ph="INSERT INTO publixher.TBL_TAGS... " />
-            <marker date="1466139126000" expanded="true" signature="10696:10766" ph="UPDATE publi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -1684,18 +1516,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/upform.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1093">
-          <caret line="191" column="47" selection-start-line="191" selection-start-column="47" selection-end-line="191" selection-end-column="47" />
-          <folding>
-            <marker date="1466399827000" expanded="true" signature="13169:13218" ph="..." />
-            <marker date="1466399827000" expanded="true" signature="13414:13463" ph="..." />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1886,54 +1707,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="115" column="5" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/loginchk.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding>
+            <marker date="1465522172000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <marker date="1466406836000" expanded="true" signature="1868:1961" ph="SELECT BUY_D... TBL_BUY_LIST" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/upform.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+          <folding>
+            <marker date="1466399827000" expanded="true" signature="13169:13218" ph="..." />
+            <marker date="1466399827000" expanded="true" signature="13414:13463" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/getC.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
+        <state relative-caret-position="1125">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="e#7#95#0#PHP" expanded="false" />
-            <marker date="1466400387000" expanded="true" signature="506:1903" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="506:1947" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="1543:1885" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="1634:1774" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="2351:3001" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="2351:3167" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="2351:3574" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="3186:3528" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="3277:3417" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="3911:4833" ph="SELECT CONT.... TBL_BUY_LIST" />
-            <marker date="1466400387000" expanded="true" signature="3911:4902" ph="SELECT CONT.... TBL_BUY_LIST" />
-            <marker date="1466400387000" expanded="true" signature="5257:5263" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="5257:6432" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="6088:6430" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="6179:6319" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="6805:6811" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="6805:8039" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="7651:7993" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="7742:7882" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="8414:9673" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="9285:9627" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="9376:9516" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="10065:11405" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="11017:11359" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="11108:11248" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="11795:13336" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="12948:13290" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="13039:13179" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="13827:15048" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="14660:15002" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="14751:14891" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1466400387000" expanded="true" signature="15115:16744" ph="SELECT CONT.... TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="16292:16690" ph="SELECT CASE TBL_CONTENT" />
-            <marker date="1466400387000" expanded="true" signature="16399:16547" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="766:2163" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="766:2249" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="1803:2145" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="1894:2034" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="2913:3563" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="2913:3729" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="2913:4178" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="3748:4090" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="3839:3979" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="4775:5697" ph="SELECT CONT.... TBL_BUY_LIST" />
+            <marker date="1466409289000" expanded="true" signature="4775:5808" ph="SELECT CONT.... TBL_BUY_LIST" />
+            <marker date="1466409289000" expanded="true" signature="6163:6169" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="6163:7338" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="6994:7336" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="7085:7225" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="7971:7977" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="7971:9247" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="8817:9159" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="8908:9048" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="9882:11183" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="10753:11095" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="10844:10984" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="11835:13217" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="12787:13129" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="12878:13018" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="13867:15450" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="15020:15362" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="15111:15251" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="16201:17379" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="16201:17464" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="17034:17376" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="17125:17265" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466409289000" expanded="true" signature="17531:19160" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="18708:19106" ph="SELECT CASE TBL_CONTENT" />
+            <marker date="1466409289000" expanded="true" signature="18815:18963" ph="SELECT ID_FR... TBL_FRIENDS" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <marker date="1466409081000" expanded="true" signature="2040:2133" ph="SELECT BUY_D... TBL_BUY_LIST" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/a.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="1130" column="222" selection-start-line="1130" selection-start-column="171" selection-end-line="1130" selection-end-column="222" />
+        <state relative-caret-position="980">
+          <caret line="1330" column="26" selection-start-line="1330" selection-start-column="26" selection-end-line="1330" selection-end-column="26" />
           <folding>
             <marker date="1466399827000" expanded="true" signature="85:145" ph="{...}" />
             <marker date="1466399827000" expanded="true" signature="15102:15133" ph="..." />
@@ -1965,11 +1844,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+    <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="433">
+          <caret line="125" column="14" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
+          <folding>
+            <marker date="1466410639000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />
+            <marker date="1466410639000" expanded="true" signature="5897:5972" ph="SELECT ORIGI... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="6238:6308" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="6488:6697" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="6729:7059" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="8586:9319" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="9552:9622" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="9805:9854" ph="SELECT DIR F... TBL_FOLDER" />
+            <marker date="1466410639000" expanded="true" signature="10183:10254" ph="INSERT INTO publixher.TBL_TAGS... " />
+            <marker date="1466410639000" expanded="true" signature="10504:10595" ph="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/uploadContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+          <folding>
+            <marker date="1466410639000" expanded="true" signature="5301:5493" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1466410639000" expanded="true" signature="5533:5835" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1466410639000" expanded="true" signature="7857:7933" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="8171:8877" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="9131:9215" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
+            <marker date="1466410639000" expanded="true" signature="9571:9642" ph="INSERT INTO publixher.TBL_TAGS... " />
+            <marker date="1466410639000" expanded="true" signature="9977:10047" ph="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="133" column="14" selection-start-line="133" selection-start-column="14" selection-end-line="133" selection-end-column="14" />
+          <folding>
+            <marker date="1466410639000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="594:643" ph="SELECT DIR F... TBL_FOLDER" />
+            <marker date="1466410639000" expanded="true" signature="6398:6473" ph="SELECT ORIGI... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="6755:6825" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="7005:7190" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="7222:7516" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="9048:9781" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466410639000" expanded="true" signature="10018:10088" ph="UPDATE publi... " />
+            <marker date="1466410639000" expanded="true" signature="10335:10406" ph="INSERT INTO publixher.TBL_TAGS... " />
+            <marker date="1466410639000" expanded="true" signature="10647:10738" ph="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding>
+            <marker date="1466410611000" expanded="true" signature="5983:6175" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1466410611000" expanded="true" signature="6215:6517" ph="INSERT INTO publixher.TBL_CONTENT... " />
+            <marker date="1466410611000" expanded="true" signature="8543:8619" ph="UPDATE publi... " />
+            <marker date="1466410611000" expanded="true" signature="8826:9532" ph="SELECT CONT.... TBL_CONTENT" />
+            <marker date="1466410611000" expanded="true" signature="9786:9870" ph="INSERT INTO publixher.TBL_SELL_LIST... " />
+            <marker date="1466410611000" expanded="true" signature="10226:10297" ph="INSERT INTO publixher.TBL_TAGS... " />
+            <marker date="1466410611000" expanded="true" signature="10632:10702" ph="UPDATE publi... " />
+          </folding>
         </state>
       </provider>
     </entry>
