@@ -275,7 +275,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
     width: 100% !important;
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: inset 0 0 0;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
@@ -288,7 +288,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
     width: 100% !important;
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: inset 0 0 0;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
@@ -946,9 +946,7 @@ li a {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-.opend-comment > table {
-    border-bottom: 1px solid #e3e3e3;
-}
+
 .form-control {
     border: 1px solid #e3e3e3;
 }
@@ -1234,6 +1232,8 @@ li a {
     float: left;
     top: -6px;
     margin-right: 6px;
+    overflow: hidden;
+    border-radius: 50%;
 }
 #searchResult .menu li > div img {
     position: absolute;
@@ -1275,7 +1275,7 @@ a:hover {
     border: 0;
 }
 #repnav- > li {
-    width: 33%;
+    width: 20%;
 }
 .pin-list span{
     display:inline-block;
@@ -1287,6 +1287,11 @@ a:hover {
 .pin-list .del-pin{
     line-height: 1.3
 }
+.del-pin{
+    position: absolute;
+    cursor: pointer;
+}
+
 .reply-body .reply-del{
     color: #ddd
 }
@@ -1310,6 +1315,9 @@ a:hover {
 }
 #contentCost{
     height:30px;
+}
+.tcomment, .tshare{
+    border-radius: 10px;
 }
 .oi{
     display: inline-block;

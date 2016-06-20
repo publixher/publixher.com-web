@@ -359,7 +359,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       .commentReg_sub {
         width: 460px !important;
         margin-left: 4px;
-        border-radius: 0;
+        border-radius: 4px;
         box-shadow: inset 0 0 0;
         padding: 5px 10px 5px 10px;
         font-size: 12px;
@@ -369,7 +369,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       }
       .commentReg {
         width: 100% !important;
-        border-radius: 0;
+        border-radius: 4px;
         box-shadow: inset 0 0 0;
         padding: 5px 10px 5px 10px;
         font-size: 12px;
@@ -969,13 +969,6 @@ li a {
   height: auto;
   border: 0 !important;
 }
-.tag-editor {
-  width: 264px;
-  height: auto;
-  border: 0 !important;
-  border-left: 1px solid #eee !important;
-  border-right: 1px solid #eee !important;
-}
 .tag-editor li {
   width: auto !important;
   vertical-align: middle;
@@ -1114,9 +1107,7 @@ li a {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.opend-comment>table{
-  border-bottom: 1px solid #e3e3e3
-}
+
 .form-control{
   border: 1px solid #e3e3e3;
 }
@@ -1418,7 +1409,9 @@ li a {
   position: relative;
   float:left;
   top: -6px;
-  margin-right: 6px
+  margin-right: 6px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 #searchResult .menu li>div img{
   position: absolute;
@@ -1475,7 +1468,7 @@ a:hover{
   border: 0;
 }
 #repnav->li{
-  width: 33%
+  width: 10%
 }
 .subrep .rep{
   width: 405px !important;
@@ -1490,6 +1483,13 @@ a:hover{
 }
 .pin-list .del-pin{
   line-height: 1.3
+}
+.del-pin{
+  position: absolute;
+  cursor: pointer;
+}
+.del-pin:hover{
+  color: #ddd
 }
 .reply-del{
   color: #ddd
@@ -1522,6 +1522,9 @@ a:hover{
 #right .conf button{
   color: #434343;
   padding: 5px;
+}
+.tcomment, .tshare{
+  border-radius: 10px;
 }
 .oi{
   display: inline-block;
