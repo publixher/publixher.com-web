@@ -1061,7 +1061,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,res['KNOCKED']);
                     $('#' + itemID_mod).fadeOut(500, function () {
                         $(this).replaceWith(write).fadeIn(500);
                     })
@@ -1128,7 +1128,7 @@ $(document).ready(function () {
                         folderID = res['FOLDER'];
                         foldername = res['FOLDER_NAME'];
                     }
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY'],res['KNOCKED']);
                     $('#' + itemID_mod).fadeOut(500, function () {
                         $(this).replaceWith(write).fadeIn(500);
                     })

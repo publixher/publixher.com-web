@@ -123,7 +123,7 @@ $(document).ready(function () {
                         foldername = res['FOLDER_NAME'];
                     }
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,res['KNOCKED']);
                     $('#upform').after(write);
                     $('#' + ID).hide().fadeIn()
                         .find('.gif').gifplayer({wait: true});
@@ -196,7 +196,7 @@ $(document).ready(function () {
                         foldername = res['FOLDER_NAME'];
                     }
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY']);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY'],res['KNOCKED']);
                     $('#upform').after(write);
                     $('#' + ID).hide().fadeIn()
                         .find('.gif').gifplayer({wait: true});

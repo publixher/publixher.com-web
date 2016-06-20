@@ -19,7 +19,7 @@ class getC
 
     public function profile(int $page, string $target)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page);
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -43,7 +43,8 @@ class getC
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   USER2.USER_NAME                        AS TARGET_NAME,
-  USER2.ID                               AS TARGET_ID
+  USER2.ID                               AS TARGET_ID,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
@@ -51,6 +52,8 @@ FROM publixher.TBL_CONTENT AS CONT
     ON CONT.FOLDER = FOLDER.ID
   LEFT JOIN publixher.TBL_USER AS USER2
     ON USER2.ID = CONT.ID_TARGET
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND (ID_WRITER = :ID_WRITER OR ID_TARGET = :ID_TARGET) AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -78,7 +81,7 @@ LIMIT :NOWPAGE, 10";
 
     public function folder(int $page, string $folderId)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId);
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -100,12 +103,15 @@ LIMIT :NOWPAGE, 10";
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
   INNER JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND FOLDER = :FOLDER AND REPORT < 10 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -133,7 +139,7 @@ LIMIT :NOWPAGE, 10";
 
     public function buyList(int $page)
     {
-        $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId);
+        $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -155,7 +161,8 @@ LIMIT :NOWPAGE, 10";
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_BUY_LIST AS BUY_LIST
   INNER JOIN publixher.TBL_CONTENT AS CONT
     ON BUY_LIST.ID_CONTENT = CONT.ID
@@ -163,6 +170,8 @@ FROM publixher.TBL_BUY_LIST AS BUY_LIST
     ON CONT.ID_WRITER = USER.ID
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE BUY_LIST.ID_USER = :ID_USER
       AND CONT.DEL = 'N' AND REPORT < 10
        ORDER BY BUY_LIST.BUY_DATE DESC
@@ -175,7 +184,7 @@ WHERE BUY_LIST.ID_USER = :ID_USER
 
     public function one(string $cid)
     {
-        $parameter = array('ID' => $cid, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId);
+        $parameter = array('ID' => $cid, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -197,12 +206,15 @@ WHERE BUY_LIST.ID_USER = :ID_USER
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND CONT.ID = :ID AND REPORT < 10 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -228,7 +240,7 @@ publixher.TBL_CONTENT
 
     public function tag(int $page, string $tag)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page);
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -250,12 +262,15 @@ publixher.TBL_CONTENT
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND MATCH(TAG) AGAINST('${tag}') AND REPORT < 10 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -283,7 +298,7 @@ LIMIT :NOWPAGE, 10";
 
     public function body(int $page, string $body)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page);
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -305,12 +320,15 @@ LIMIT :NOWPAGE, 10";
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND MATCH(BODY_TEXT) AGAINST('*${body}*' IN BOOLEAN MODE) AND REPORT < 10 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -338,7 +356,7 @@ LIMIT :NOWPAGE, 10";
 
     public function subscribe(int $page)
     {
-        $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId);
+        $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -360,7 +378,8 @@ LIMIT :NOWPAGE, 10";
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
@@ -368,6 +387,8 @@ FROM publixher.TBL_CONTENT AS CONT
     ON CONT.FOLDER = FOLDER.ID
   INNER JOIN publixher.TBL_FOLLOW AS FOLLOW
     ON FOLLOW.ID_MASTER = CONT.ID_WRITER
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND FOLLOW.ID_SLAVE = :ID_SLAVE AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -394,7 +415,7 @@ LIMIT :NOWPAGE, 10";
 
     public function community(int $page)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_USER' => $this->mId, 'NOWPAGE' => $page);
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_USER' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -418,7 +439,8 @@ LIMIT :NOWPAGE, 10";
   REPLACE(WRITER.PIC, 'profile', 'crop50') AS PIC,
   FOLDER.DIR                               AS FOLDER_NAME,
   TARGET.ID                                AS TARGET_ID,
-  TARGET.USER_NAME                         AS TARGET_NAME
+  TARGET.USER_NAME                         AS TARGET_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS WRITER
     ON WRITER.ID = CONT.ID_WRITER
@@ -428,6 +450,8 @@ FROM publixher.TBL_CONTENT AS CONT
     ON CONT.ID_TARGET = TARGET.ID
   INNER JOIN publixher.TBL_FRIENDS AS FRIENDS
     ON FRIENDS.ID_FRIEND = TARGET.ID
+    LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND REPORT < 10 AND FRIENDS.ID_USER = :ID_USER AND TARGET.COMMUNITY = 1 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -455,7 +479,7 @@ LIMIT :NOWPAGE, 10";
     public function main(int $page)
     {
         $parameter = array('USER_ID1' => $this->mId,
-            'USER_ID2' => $this->mId, 'NOWPAGE' => $page/*,
+            'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId/*,
             'ME1' => $this->mId, 'ME2' => $this->mId,
             'ME3' => $this->mId*/);
         //모든 글중 내가 볼 수 있는 글
@@ -480,12 +504,15 @@ LIMIT :NOWPAGE, 10";
   CONT.TAG,
   USER.USER_NAME,
   REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-  FOLDER.DIR                             AS FOLDER_NAME
+  FOLDER.DIR                             AS FOLDER_NAME,
+  IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
   INNER JOIN publixher.TBL_USER AS USER
     ON USER.ID = CONT.ID_WRITER
   LEFT JOIN publixher.TBL_FOLDER AS FOLDER
     ON CONT.FOLDER = FOLDER.ID
+  LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND EXPOSE >= (
   SELECT CASE ID_WRITER
          WHEN :USER_ID1
@@ -527,7 +554,8 @@ LIMIT :NOWPAGE, 10";
 //  CONT.TAG,
 //  USER.USER_NAME,
 //  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
-//  FOLDER.DIR                             AS FOLDER_NAME
+//  FOLDER.DIR                             AS FOLDER_NAME,
+//        IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 //FROM publixher.TBL_CONTENT AS CONT
 //  INNER JOIN publixher.TBL_USER AS USER
 //    ON USER.ID = CONT.ID_WRITER
@@ -537,6 +565,8 @@ LIMIT :NOWPAGE, 10";
 //    ON FRIEND.ID_FRIEND = CONT.ID_WRITER
 //  LEFT JOIN publixher.TBL_FOLLOW AS FOLLOW
 //    ON FOLLOW.ID_MASTER=CONT.ID_WRITER
+//        LEFT JOIN publixher.TBL_KNOCK_LIST AS KNOCK
+//    ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 //WHERE
 //  DEL = 'N' AND ID_TARGET IS NULL AND REPORT < 10 AND (
 //    FRIEND.ID_USER = :ME1 OR CONT.ID_WRITER = :ME2 OR FOLLOW.ID_SLAVE=:ME3
@@ -559,7 +589,7 @@ LIMIT :NOWPAGE, 10";
 //ORDER BY WRITE_DATE DESC
 //LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
-        $prepare->execute($parameter);
+            $prepare->execute($parameter);
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }

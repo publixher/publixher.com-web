@@ -1,7 +1,7 @@
 /**
  * Created by gangdong-gyun on 2016. 3. 30..
  */
-function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin) {
+function itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,knocked) {
     write = '<div class="item card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -63,10 +63,14 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
     }
+    if(knocked){
+        write=$(write);
+        write.find('.pico-knock').addClass('knocked');
+    }
     return write;
 }
 
-function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,category,sub_category) {
+function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,category,sub_category,knocked) {
     write = '<div class="item-for-sale card" id="';
     write += ID;
     write += '"><div class="header">';
@@ -136,6 +140,10 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     else {
         write += '<td class="tprice"><span class="price"><a class="value">' + price + '</a>&nbsp;<a>Pigs</a></span></td></tr></table></div> </div>';
     }
+    if(knocked){
+        write=$(write);
+        write.find('.pico-knock').addClass('knocked');
+    }
     return write;
 }
 
@@ -197,7 +205,8 @@ function getCards() {
                                 foldername = res[i]['FOLDER_NAME'];
                             }
                             var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                            write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
+                            var knocked=res[i]['KNOCKED'];
+                            write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,knocked);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
                                 $('#'+ID).hide().fadeIn()
@@ -234,7 +243,8 @@ function getCards() {
                                 foldername = res[i]['FOLDER_NAME'];
                             }
                             var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res[i]['CATEGORY'], res[i]['SUB_CATEGORY']);
+                            var knocked=res[i]['KNOCKED'];
+                            write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res[i]['CATEGORY'], res[i]['SUB_CATEGORY'],knocked);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
                                 $('#'+ID).hide().fadeIn()
@@ -326,7 +336,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin);
+                                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,res[i]['KNOCKED']);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                         $('#'+ID).hide().fadeIn()
@@ -358,7 +368,7 @@ $(document).ready(function () {
                                         foldername = res[i]['FOLDER_NAME'];
                                     }
                                     var tag = res[i]['TAG'] ? res[i]['TAG'].split(' ') : null;
-                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY']);
+                                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,res[i]['CATEGORY'],res[i]['SUB_CATEGORY'],res[i]['KNOCKED']);
                                     if ($('.card:last-child').length > 0) {
                                         $('.card:last-child').after(write);
                                         $('#'+ID).hide().fadeIn()
