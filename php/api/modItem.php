@@ -86,13 +86,13 @@ if ($action == 'get_item') {
     }
     if (count($blured) > 5) {
         for ($i = 0; $i < 4; $i++) {
-            $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
+            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
         $ex = count($blured) - 4;
         $preview = $preview . "<p style='font-size=20;font-weight:700;'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
-            $preview = $preview . "<img src='{$blured[$i]}' class='thumbPic'>";
+            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
     }
     //content테이블에 넣음
