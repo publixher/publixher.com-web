@@ -343,9 +343,9 @@ $(document).ready(function () {
             }
         }, done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
-            var img = '<img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic">';
+            var img = '<div><img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic"></div>';
             if (gif) img.addClass('gif');
-            pasteHtmlAtCaret(img + '<br>');
+            pasteHtmlAtCaret(img+'<br>');
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
