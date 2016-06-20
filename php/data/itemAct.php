@@ -809,20 +809,27 @@ LIMIT :INDEX, 6";
   FROM publixher.TBL_CONTENT AS CONT INNER JOIN publixher.TBL_USER AS USER ON CONT.ID_WRITER = USER.ID
   WHERE CONT.ID = :ID_CONTENT";
             $_SESSION['user']->setPIN($_SESSION['user']->getPIN() . ' ' . $ID);
+            $prepare1 = $db->prepare($sql1);
+            $prepare1->bindValue(':ID_CONTENT', $ID);
+            $prepare1->bindValue(':ID_USER', $userID);
+            $prepare1->execute();
+            //coalesce로 PIN값이 NULL이면 빈문자열로 치환해서 넣는다
+            $sql2 = "UPDATE publixher.TBL_USER SET PIN=CONCAT(COALESCE(PIN,''),' ',:PIN) WHERE ID=:ID";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->bindValue(':PIN', $ID);
+            $prepare2->bindValue(':ID', $userID);
+            $prepare2->execute();
         } elseif ($act == 'delPin') {
             $sql1 = "DELETE FROM publixher.TBL_PIN_LIST WHERE ID_CONTENT=:ID_CONTENT AND ID_USER=:ID_USER";
             $_SESSION['user']->setPIN(str_replace(' ' . $ID, '', $_SESSION['user']->getPIN()));
+            $prepare1 = $db->prepare($sql1);
+            $prepare1->bindValue(':ID_CONTENT', $ID);
+            $prepare1->bindValue(':ID_USER', $userID);
+            $prepare1->execute();
+            $sql2= "UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM (SELECT * FROM publixher.TBL_USER) AS publixher WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
+            $prepare2=$db->prepare($sql2);
+            $prepare2->execute(array('PIN_CONT'=>$ID,'ID'=>$userID,'SUBQUERY_ID'=>$userID));
         }
-        $prepare1 = $db->prepare($sql1);
-        $prepare1->bindValue(':ID_CONTENT', $ID);
-        $prepare1->bindValue(':ID_USER', $userID);
-        $prepare1->execute();
-        //coalesce로 PIN값이 NULL이면 빈문자열로 치환해서 넣는다
-        $sql2 = "UPDATE publixher.TBL_USER SET PIN=CONCAT(COALESCE(PIN,''),' ',:PIN) WHERE ID=:ID";
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':PIN', $ID);
-        $prepare2->bindValue(':ID', $userID);
-        $prepare2->execute();
         $db->commit();
     } catch (PDOException $e) {
         $db->rollBack();
