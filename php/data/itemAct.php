@@ -826,7 +826,7 @@ LIMIT :INDEX, 6";
             $prepare1->bindValue(':ID_CONTENT', $ID);
             $prepare1->bindValue(':ID_USER', $userID);
             $prepare1->execute();
-            $sql2="UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM publixher.TBL_USER WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
+            $sql2= "UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM (SELECT * FROM publixher.TBL_USER) AS publixher WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
             $prepare2=$db->prepare($sql2);
             $prepare2->execute(array('PIN_CONT'=>$ID,'ID'=>$userID,'SUBQUERY_ID'=>$userID));
         }
