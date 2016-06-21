@@ -92,7 +92,8 @@ $_SESSION['user'] = $user;
 if (!isset($_SESSION['token'])) {
     $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
-setcookie('cid', $user->getID(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
+$cookieset=new setCookie();
+$cookieset->setCid($result->getID(),$db);
 echo '{"result":"Y"}';
 
 ?>
