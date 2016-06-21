@@ -46,8 +46,8 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1321">
-              <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+            <state relative-caret-position="31">
+              <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -56,7 +56,7 @@
       <file leaf-file-name="naver.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/naver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
+            <state relative-caret-position="-1260">
               <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="116" selection-end-column="38" />
               <folding />
             </state>
@@ -127,8 +127,8 @@
       <file leaf-file-name="api_login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding>
                 <marker date="1466499660000" expanded="true" signature="247:298" ph="SELECT * FRO... TBL_USER" />
                 <marker date="1466499660000" expanded="true" signature="719:839" ph="INSERT INTO publixher.TBL_USER... " />
@@ -642,14 +642,7 @@
       <workItem from="1466393510243" duration="15270000" />
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
-      <workItem from="1466493862130" duration="5889000" />
-    </task>
-    <task id="LOCAL-00296" summary="p를 br로">
-      <created>1465640845039</created>
-      <option name="number" value="00296" />
-      <option name="presentableId" value="LOCAL-00296" />
-      <option name="project" value="LOCAL" />
-      <updated>1465640845039</updated>
+      <workItem from="1466493862130" duration="6039000" />
     </task>
     <task id="LOCAL-00297" summary="리사이징">
       <created>1465641311387</created>
@@ -987,11 +980,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466500314723</updated>
     </task>
-    <option name="localTasksCounter" value="345" />
+    <task id="LOCAL-00345" summary="popup 안함">
+      <created>1466500750149</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1466500750149</updated>
+    </task>
+    <option name="localTasksCounter" value="346" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392729000" />
+    <option name="totallyTimeSpent" value="392879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1044,7 +1044,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="파일 여러개 업로드시 생기는 문제 해결, purifier의 data-userid 속성 살림" />
     <MESSAGE value="내 게시글이나 댓글에 달린 댓글대댓글은 지울 수 있음" />
     <MESSAGE value="타겟이 나인 게시물 삭제 가능, 내 댓글에 작성된 대댓글 삭제 가능, 내 게시글에 작성된 댓글대댓글 삭제 가능" />
     <MESSAGE value="자기가 볼 수 있는것만 볼 수 있음" />
@@ -1069,7 +1068,8 @@
     <MESSAGE value="average_time,total_read 올림,등록시 몽고에서 들어감" />
     <MESSAGE value="아날로그래프로" />
     <MESSAGE value="네이버아이디로 로그인" />
-    <option name="LAST_COMMIT_MESSAGE" value="네이버아이디로 로그인" />
+    <MESSAGE value="popup 안함" />
+    <option name="LAST_COMMIT_MESSAGE" value="popup 안함" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1541,21 +1541,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
+    <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <marker date="1466499660000" expanded="true" signature="247:298" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466499660000" expanded="true" signature="719:839" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466499660000" expanded="true" signature="1375:1436" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1466499660000" expanded="true" signature="1606:1657" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466499660000" expanded="true" signature="2117:2168" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466499660000" expanded="true" signature="2373:2424" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466499660000" expanded="true" signature="2728:2848" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466499660000" expanded="true" signature="3423:3484" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1466499660000" expanded="true" signature="3632:3683" ph="SELECT * FRO... TBL_USER" />
-          </folding>
+        <state relative-caret-position="480">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1575,17 +1565,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
+    <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <marker date="1466499660000" expanded="true" signature="247:298" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466499660000" expanded="true" signature="719:839" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1466499660000" expanded="true" signature="1375:1436" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466499660000" expanded="true" signature="1606:1657" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466499660000" expanded="true" signature="2117:2168" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466499660000" expanded="true" signature="2373:2424" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466499660000" expanded="true" signature="2728:2848" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1466499660000" expanded="true" signature="3423:3484" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466499660000" expanded="true" signature="3632:3683" ph="SELECT * FRO... TBL_USER" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/https/naver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="-1260">
           <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="116" selection-end-column="38" />
           <folding />
         </state>
@@ -1593,8 +1593,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1321">
-          <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+        <state relative-caret-position="31">
+          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
           <folding />
         </state>
       </provider>
