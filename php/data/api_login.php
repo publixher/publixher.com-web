@@ -1,6 +1,7 @@
 <?php
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
+require_once '../../lib/setCookie.php';
 //유효성 검사
 $info = $_POST;
 if ($info['api'] == 'naver') {
