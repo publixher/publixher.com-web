@@ -769,7 +769,7 @@ $(document).ready(function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail').css('margin-bottom', '10px');
         if (!tail.hasClass('opend-share')) {
-            var linkstr = 'https://alpha.publixher.com/content/' + thisitemID;
+            var linkstr = 'https://analograph.com/content/' + thisitemID;
             if (tail.hasClass('opend-comment')) {
                 tail.removeClass('opend-comment');
                 $('#' + thisitemID + ' .tail .tab-comment').remove();
