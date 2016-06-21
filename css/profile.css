@@ -1591,10 +1591,12 @@ a:hover {
 #send div:nth-child(2) button {
   border: 0;
 }
+#configbtn{
+  display: none;
+}
 .usrpic-wrap {
   display: none !important;
 }
-
 #sendBody-mod,
 #publiBody-mod{
   overflow-y:auto;
