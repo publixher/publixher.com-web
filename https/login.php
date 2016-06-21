@@ -18,6 +18,7 @@
     <![endif]-->
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="/https/jquery.min.js" type="text/javascript"></script>
+    <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2-min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="/https/bootstrap.min.js"></script>
     <script src="/https/naver.js"></script>
@@ -198,16 +199,16 @@
 
             </table>
         </form>
-<!--        <div id="naver_id_login"></div>-->
-<!--        <script>-->
-<!--            var naver_id_login = new naver_id_login("_qejyFc7r1hTDosszi6B", "http://alpha.publixher.com/php/naver_login.php");-->
-<!--            naver_id_login.setButton("white", 3, 40)-->
-<!--            //        naver_id_login.setPopup();-->
-<!--            naver_id_login.setDomain(".publixher.com");-->
-<!--            naver_id_login.setState("abcdefghijklmnoqstuv");-->
-<!--            naver_id_login.init_naver_id_login();-->
-<!--        </script>-->
-<!--        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>-->
+        <div id="naver_id_login"></div>
+        <script>
+            var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
+            naver_id_login.setButton("white", 3, 40)
+            naver_id_login.setPopup();
+            naver_id_login.setDomain(".analograph.com");
+            naver_id_login.setState("");
+            naver_id_login.init_naver_id_login();
+        </script>
+        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>
     </div>
 </div>
 </body>
