@@ -1,6 +1,7 @@
 <?php
 require_once'../../conf/database_conf.php';
 require_once'../../conf/User.php';
+require_once '../../lib/setCookie.php';
 session_start();
 session_regenerate_id(true);
 $userinfo = $_SESSION['user'];
@@ -130,7 +131,8 @@ WHERE CONN.ID_ANONY = :ID";
             exit;
         }
         $_SESSION['user'] = $result;
-        setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
+        $c=new setCookie();
+        $c->setCid($result->getID(),$db);
     } elseif ($isnick == 'N') {
         //실명일때 익명으로 새로 로그인
         $sql = "SELECT ID_ANONY FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_USER";
@@ -148,7 +150,8 @@ WHERE CONN.ID_ANONY = :ID";
             $prepare2->execute();
             $result = $prepare2->fetchObject(User);
             $_SESSION['user'] = $result;
-            setcookie('cid', $result->getID(), time() + 3600 * 24 * 365, '/','publixher.com',false,true);
+            $c=new setCookie();
+            $c->setCid($result->getID(),$db);
         }
     }
     echo "<meta http-equiv='refresh' content='0;url=${referer}'>";

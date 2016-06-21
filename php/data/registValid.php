@@ -27,7 +27,8 @@ if(sha1($seq.$id)==$id_crypt) {
     if (!isset($_SESSION['token'])) {
         $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
     }
-    setcookie('cid', $user->getID(), time() + 3600 * 24 * 365, '/', 'publixher.com', false, true);
+    $c=new setCookie();
+    $c->setCid($result->getID(),$db);
 }
 ?>
 <meta http-equiv='refresh' content='0;url=/'>
