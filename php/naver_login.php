@@ -25,5 +25,6 @@
             }
         })
     }
+    naver_reg();
 </script>
 </html>
