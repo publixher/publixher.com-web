@@ -5,7 +5,7 @@
 <script>
     var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
     naver_id_login.get_naver_userprofile();
-    function naver_reg(naver_id_login){
+    function naver_reg(){
         var email=naver_id_login.getProfileData('email');
         var age=naver_id_login.getProfileData('age');
         var birthday=naver_id_login.getProfileData('birthday');
@@ -25,6 +25,6 @@
             }
         })
     }
-    naver_reg(naver_id_login);
+    naver_reg();
 </script>
 </html>
