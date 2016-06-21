@@ -199,7 +199,7 @@
 
             </table>
         </form>
-        <div id="naver_id_login"></div>
+        <div id="naver_id_login" style="display: none;"></div>
         <script>
             var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
             naver_id_login.setButton("white", 3, 40)
