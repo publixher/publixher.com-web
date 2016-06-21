@@ -26,94 +26,94 @@
 </head>
 <body>
 
-<!--<script>-->
-<!--    //페이스북 SDK 초기화-->
-<!--    window.fbAsyncInit = function () {-->
-<!--        FB.init({-->
-<!--            appId: '1573511302961818',-->
-<!--            status: true,-->
-<!--            xfbml: true,-->
-<!--            version: 'v2.5'-->
-<!--        })-->
-<!--        ;-->
-<!--    };-->
-<!---->
-<!--    (function (d) {-->
-<!--        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];-->
-<!--        if (d.getElementById(id)) {-->
-<!--            return;-->
-<!--        }-->
-<!--        js = d.createElement('script');-->
-<!--        js.id = id;-->
-<!--        js.async = true;-->
-<!--        js.src = "//connect.facebook.net/en_US/all.js";-->
-<!--        ref.parentNode.insertBefore(js, ref);-->
-<!--    }(document));-->
-<!---->
-<!--    function facebooklogin() {-->
-<!--        FB.getLoginStatus(function (response) {-->
-<!--            statusChangeCallback(response);-->
-<!--        });-->
-<!--    }-->
-<!--    function statusChangeCallback(response) {-->
-<!--        console.log(response);-->
-<!--        if (response.status === 'connected') {-->
-<!--            // 페이스북을 통해서 로그인이 되어있다.-->
-<!--            FB.api('/me?fields=email', function (response) {-->
-<!--                $.ajax({-->
-<!--                    url: "/php/data/api_login.php",-->
-<!--                    type: "POST",-->
-<!--                    data: {email: response.email, api: "facebook", action: "login"},-->
-<!--                    dataType: 'json',-->
-<!--                    success: function (res) {-->
-<!--                        location.href = '/';-->
-<!--                    }, error: function () {-->
-<!--                        alert('작업중 문제가 생겼습니다.');-->
-<!--                        location.href = '/https/login.php';-->
-<!--                    }-->
-<!--                })-->
-<!--            });-->
-<!--        } else if (response.status === 'not_authorized') {-->
-<!--            // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.-->
-<!--            FB.login(function (response) {-->
-<!--                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale', {locale: 'ko_KR'}, function (response) {-->
-<!--                    function replaceAll(str, searchStr, replaceStr) {-->
-<!--                        return str.split(searchStr).join(replaceStr);-->
-<!--                    }-->
-<!---->
-<!--                    var gender = response.gender == '남성' ? 'M' : 'F';-->
-<!--                    var profile_image = replaceAll(response.profile_picture.data.url, "\"", "");-->
-<!--                    $.ajax({-->
-<!--                        url: "/php/data/api_login.php",-->
-<!--                        type: "POST",-->
-<!--                        data: {-->
-<!--                            email: response.email,-->
-<!--                            birthday: response.birthday,-->
-<!--                            gender: gender,-->
-<!--                            image: profile_image,-->
-<!--                            name: response.name,-->
-<!--                            locale: response.locale,-->
-<!--                            api: "facebook",-->
-<!--                            action: 'reg'-->
-<!--                        },-->
-<!--                        dataType: 'json',-->
-<!--                        success: function (res) {-->
-<!--                            window.close();-->
-<!--                            location.href = '/';-->
-<!--                        }, error: function () {-->
-<!--                            alert('작업중 문제가 생겼습니다.');-->
-<!--                            location.href = '/https/login.php';-->
-<!--                        }-->
-<!--                    })-->
-<!--                });-->
-<!--            }, {scope: 'public_profile,email,user_birthday'});-->
-<!--        } else {-->
-<!--            // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.-->
-<!--            FB.login(function (response) {-->
-<!--            }, {scope: 'public_profile,email,user_birthday'});-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+<script>
+    //페이스북 SDK 초기화
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '143041429433315',
+            status: true,
+            xfbml: true,
+            version: 'v2.6'
+        })
+        ;
+    };
+
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = "//connect.facebook.net/ko_kr/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    function facebooklogin() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+    function statusChangeCallback(response) {
+        console.log(response);
+        if (response.status === 'connected') {
+            // 페이스북을 통해서 로그인이 되어있다.
+            FB.api('/me?fields=email', function (response) {
+                $.ajax({
+                    url: "/php/data/api_login.php",
+                    type: "POST",
+                    data: {email: response.email, api: "facebook", action: "login"},
+                    dataType: 'json',
+                    success: function (res) {
+                        location.href = '/';
+                    }, error: function () {
+                        alert('작업중 문제가 생겼습니다.');
+                        location.href = '/https/login.php';
+                    }
+                })
+            });
+        } else if (response.status === 'not_authorized') {
+            // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
+            FB.login(function (response) {
+                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale', {locale: 'ko_KR'}, function (response) {
+                    function replaceAll(str, searchStr, replaceStr) {
+                        return str.split(searchStr).join(replaceStr);
+                    }
+
+                    var gender = response.gender == '남성' ? 'M' : 'F';
+                    var profile_image = replaceAll(response.profile_picture.data.url, "\"", "");
+                    $.ajax({
+                        url: "/php/data/api_login.php",
+                        type: "POST",
+                        data: {
+                            email: response.email,
+                            birthday: response.birthday,
+                            gender: gender,
+                            image: profile_image,
+                            name: response.name,
+                            locale: response.locale,
+                            api: "facebook",
+                            action: 'reg'
+                        },
+                        dataType: 'json',
+                        success: function (res) {
+                            window.close();
+                            location.href = '/';
+                        }, error: function () {
+                            alert('작업중 문제가 생겼습니다.');
+                            location.href = '/https/login.php';
+                        }
+                    })
+                });
+            }, {scope: 'public_profile,email,user_birthday'});
+        } else {
+            // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
+            FB.login(function (response) {
+            }, {scope: 'public_profile,email,user_birthday'});
+        }
+    }
+</script>
 
 <script src="/https/regist.js"></script>
 <div id="mask">
@@ -208,7 +208,7 @@
             naver_id_login.setState("");
             naver_id_login.init_naver_id_login();
         </script>
-<!--        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>-->
+        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>
     </div>
 </div>
 </body>

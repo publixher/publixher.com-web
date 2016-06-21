@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.php" afterPath="$PROJECT_DIR$/https/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/registConfirm.php" afterPath="$PROJECT_DIR$/php/data/registConfirm.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -36,18 +37,34 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+            <state relative-caret-position="450">
+              <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+              <folding>
+                <marker date="1466506918000" expanded="true" signature="737:880" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1466506918000" expanded="true" signature="1558:1619" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1466506918000" expanded="true" signature="2078:2222" ph="..." />
+                <marker date="1466506918000" expanded="true" signature="2249:2340" ph="..." />
+                <marker date="1466506918000" expanded="true" signature="2350:2405" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="884" column="33" selection-start-line="884" selection-start-column="33" selection-end-line="884" selection-end-column="33" />
+            <state relative-caret-position="641">
+              <caret line="882" column="54" selection-start-line="882" selection-start-column="54" selection-end-line="882" selection-end-column="54" />
               <folding>
                 <marker date="1466506589000" expanded="true" signature="85:145" ph="{...}" />
                 <marker date="1466506589000" expanded="true" signature="15202:15233" ph="..." />
@@ -171,16 +188,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bodySearch.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="buyList.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/buyList.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -259,17 +266,17 @@
         <option value="$PROJECT_DIR$/php/notiCenter.php" />
         <option value="$PROJECT_DIR$/https/naver.js" />
         <option value="$PROJECT_DIR$/lib/getImgFromUrl.php" />
-        <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/php/api/registConfirm.php" />
         <option value="$PROJECT_DIR$/php/api/modItem.php" />
         <option value="$PROJECT_DIR$/php/naver_login.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
-        <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/bodySearch.php" />
         <option value="$PROJECT_DIR$/php/buyList.php" />
         <option value="$PROJECT_DIR$/php/data/profileChange.php" />
         <option value="$PROJECT_DIR$/php/data/registValid.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
+        <option value="$PROJECT_DIR$/https/login.php" />
+        <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
       </list>
     </option>
   </component>
@@ -689,14 +696,7 @@
       <workItem from="1466393510243" duration="15270000" />
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
-      <workItem from="1466493862130" duration="11558000" />
-    </task>
-    <task id="LOCAL-00317" summary="내 게시글이나 댓글에 달린 댓글대댓글은 지울 수 있음">
-      <created>1465966780409</created>
-      <option name="number" value="00317" />
-      <option name="presentableId" value="LOCAL-00317" />
-      <option name="project" value="LOCAL" />
-      <updated>1465966780411</updated>
+      <workItem from="1466493862130" duration="11980000" />
     </task>
     <task id="LOCAL-00318" summary="타겟이 나인 게시물 삭제 가능, 내 댓글에 작성된 대댓글 삭제 가능, 내 게시글에 작성된 댓글대댓글 삭제 가능">
       <created>1465967742704</created>
@@ -1034,11 +1034,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466506249254</updated>
     </task>
-    <option name="localTasksCounter" value="366" />
+    <task id="LOCAL-00366" summary="컨텐츠 삭제 confirm">
+      <created>1466506619351</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1466506619351</updated>
+    </task>
+    <option name="localTasksCounter" value="367" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398398000" />
+    <option name="totallyTimeSpent" value="398820000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1091,7 +1098,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="외 몇장 나오는거 안나오던거를 수정,ㅅ블러 썸네일 4장으로 바꿈, 수정도 바꿈" />
     <MESSAGE value="ie 호환성 체크중" />
     <MESSAGE value="노크에 따라 같은 페이지에서 knocked 추가,제거" />
     <MESSAGE value="average_time,total_read 올림,등록시 몽고에서 들어감" />
@@ -1116,7 +1122,8 @@
     <MESSAGE value="네이버 아이디로 로그인" />
     <MESSAGE value="구글 애널리틱스 바꿈" />
     <MESSAGE value="쿠키 방식 바꿈" />
-    <option name="LAST_COMMIT_MESSAGE" value="쿠키 방식 바꿈" />
+    <MESSAGE value="컨텐츠 삭제 confirm" />
+    <option name="LAST_COMMIT_MESSAGE" value="컨텐츠 삭제 confirm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1140,7 +1147,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="559" />
+      <option name="time" value="560" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="nameFind.php">
@@ -1420,18 +1427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
-          <folding>
-            <marker date="1466502185000" expanded="true" signature="2055:2199" ph="..." />
-            <marker date="1466502185000" expanded="true" signature="2226:2317" ph="..." />
-            <marker date="1466502185000" expanded="true" signature="2327:2382" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1579,14 +1574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/https/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/loginConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1680,8 +1667,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="884" column="33" selection-start-line="884" selection-start-column="33" selection-end-line="884" selection-end-column="33" />
+        <state relative-caret-position="641">
+          <caret line="882" column="54" selection-start-line="882" selection-start-column="54" selection-end-line="882" selection-end-column="54" />
           <folding>
             <marker date="1466506589000" expanded="true" signature="85:145" ph="{...}" />
             <marker date="1466506589000" expanded="true" signature="15202:15233" ph="..." />
@@ -1709,6 +1696,28 @@
             <marker date="1466506589000" expanded="true" signature="44965:44990" ph="..." />
             <marker date="1466506589000" expanded="true" signature="45325:45341" ph="..." />
             <marker date="1466506589000" expanded="true" signature="71664:71703" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/https/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+          <folding>
+            <marker date="1466506918000" expanded="true" signature="737:880" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1466506918000" expanded="true" signature="1558:1619" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466506918000" expanded="true" signature="2078:2222" ph="..." />
+            <marker date="1466506918000" expanded="true" signature="2249:2340" ph="..." />
+            <marker date="1466506918000" expanded="true" signature="2350:2405" ph="..." />
           </folding>
         </state>
       </provider>
