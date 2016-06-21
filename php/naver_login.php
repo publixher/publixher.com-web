@@ -25,6 +25,6 @@
             }
         })
     }
-
+    naver_reg(naver_id_login);
 </script>
 </html>
