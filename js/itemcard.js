@@ -882,23 +882,25 @@ $(document).ready(function () {
 //삭제버튼 동작
     $(document).on("click", ".itemDel", function (e) {
         var thisitemID = $(this).parents()[5].id;
-        $.ajax({
-            url: "/php/data/itemAct.php",
-            type: "POST",
-            data: {ID: thisitemID, action: "del", token: token},
-            dataType: 'json',
-            success: function (res) {
-                if (res['result'] == 'Y') {
-                    $('#' + thisitemID).fadeOut("normal", function () {
-                        $(this).remove();
-                    });
-                } else {
-                    alert('게시물이 삭제되는 도중 오류가 생겼습니다. 관리자에게 문의해 주세요.');
+        if(confirm('정말 삭제하시겠습니까?')) {
+            $.ajax({
+                url: "/php/data/itemAct.php",
+                type: "POST",
+                data: {ID: thisitemID, action: "del", token: token},
+                dataType: 'json',
+                success: function (res) {
+                    if (res['result'] == 'Y') {
+                        $('#' + thisitemID).fadeOut("normal", function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('게시물이 삭제되는 도중 오류가 생겼습니다. 관리자에게 문의해 주세요.');
+                    }
+                }, error: function (request) {
+                    alert(request.responseText);
                 }
-            }, error: function (request) {
-                alert(request.responseText);
-            }
-        })
+            })
+        }
     });
     //수정버튼 동작
     var expose_mod;
