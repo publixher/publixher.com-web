@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="cdn-&gt;local">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/naver_login.php" afterPath="$PROJECT_DIR$/php/naver_login.php" />
     </list>
@@ -48,8 +48,8 @@
       <file leaf-file-name="naver.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/naver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+            <state relative-caret-position="975">
+              <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -58,8 +58,8 @@
       <file leaf-file-name="naver_login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/naver_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+            <state relative-caret-position="90">
+              <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -632,28 +632,7 @@
       <workItem from="1466393510243" duration="15270000" />
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
-      <workItem from="1466493862130" duration="8608000" />
-    </task>
-    <task id="LOCAL-00307" summary="100되는거 수정">
-      <created>1465803211842</created>
-      <option name="number" value="00307" />
-      <option name="presentableId" value="LOCAL-00307" />
-      <option name="project" value="LOCAL" />
-      <updated>1465803211843</updated>
-    </task>
-    <task id="LOCAL-00308" summary="커서 위치에 이미지 추가&#10;컨텐츠 삭제시 베스트에 있는것도 추가">
-      <created>1465806487517</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1465806487518</updated>
-    </task>
-    <task id="LOCAL-00309" summary="s">
-      <created>1465882898585</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1465882898585</updated>
+      <workItem from="1466493862130" duration="9433000" />
     </task>
     <task id="LOCAL-00310" summary="resize 다 뺀거">
       <created>1465887169167</created>
@@ -977,11 +956,32 @@
       <option name="project" value="LOCAL" />
       <updated>1466503412475</updated>
     </task>
-    <option name="localTasksCounter" value="356" />
+    <task id="LOCAL-00356" summary="naver_reg()">
+      <created>1466503480518</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1466503480518</updated>
+    </task>
+    <task id="LOCAL-00357" summary="callback-&gt;naver_reg()">
+      <created>1466503723806</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1466503723806</updated>
+    </task>
+    <task id="LOCAL-00358" summary="callback-&gt;naver_reg">
+      <created>1466503938606</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1466503938606</updated>
+    </task>
+    <option name="localTasksCounter" value="359" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395448000" />
+    <option name="totallyTimeSpent" value="396273000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,8 +1034,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="원래 폴더의 게시물 수가 줄어들지 않는 문제 수정" />
-    <MESSAGE value="익스플로러 호환성" />
     <MESSAGE value="익스플로러 호환성 댓글" />
     <MESSAGE value="delPin 동작 수정" />
     <MESSAGE value="노크 되있으면 knocked" />
@@ -1054,12 +1052,14 @@
     <MESSAGE value="Merge branch 'master' of github.com:publixher/publixher.com-web&#10;&#10;# Conflicts:&#10;#&#9;php/api/registConfirm.php&#10;#&#9;php/data/registConfirm.php&#10;" />
     <MESSAGE value="facebook으로 로그인 뺌" />
     <MESSAGE value="popup 뺌" />
-    <MESSAGE value="naver_reg()" />
     <MESSAGE value="naver_id_login" />
     <MESSAGE value="네이버로그인 display:none" />
     <MESSAGE value="naver_reg" />
     <MESSAGE value="naver_reg(naver_id_login)" />
-    <option name="LAST_COMMIT_MESSAGE" value="naver_reg(naver_id_login)" />
+    <MESSAGE value="naver_reg()" />
+    <MESSAGE value="callback-&gt;naver_reg()" />
+    <MESSAGE value="callback-&gt;naver_reg" />
+    <option name="LAST_COMMIT_MESSAGE" value="callback-&gt;naver_reg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1499,16 +1499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1464850837000" expanded="true" signature="282:333" ph="SELECT * FRO... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="826">
@@ -1562,6 +1552,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/https/loginConfirm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1464850837000" expanded="true" signature="282:333" ph="SELECT * FRO... TBL_USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1582,16 +1582,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/https/naver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+        <state relative-caret-position="975">
+          <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/naver_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+        <state relative-caret-position="90">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
           <folding />
         </state>
       </provider>

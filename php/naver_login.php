@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <script src="/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2-min.js"></script>
+<script src="/https/naver.js"></script>
 <script>
     var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
     naver_id_login.get_naver_userprofile();
@@ -25,6 +25,5 @@
             }
         })
     }
-    naver_reg();
 </script>
 </html>
