@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modItem.php" afterPath="$PROJECT_DIR$/php/api/modItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.mobile.css" afterPath="$PROJECT_DIR$/css/main.mobile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.css" afterPath="$PROJECT_DIR$/https/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Sendmail.php" afterPath="$PROJECT_DIR$/lib/Sendmail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/registConfirm.php" afterPath="$PROJECT_DIR$/php/api/registConfirm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/modItem.php" afterPath="$PROJECT_DIR$/php/data/modItem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/registConfirm.php" afterPath="$PROJECT_DIR$/php/data/registConfirm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/naver_login.php" afterPath="$PROJECT_DIR$/php/naver_login.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -94,12 +91,9 @@
       <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-              <folding>
-                <marker date="1466502050000" expanded="true" signature="721:864" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466502050000" expanded="true" signature="1539:1600" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,10 +102,11 @@
         <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="645">
-              <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+              <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
               <folding>
-                <marker date="1466502050000" expanded="true" signature="737:880" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466502050000" expanded="true" signature="1558:1619" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1466502185000" expanded="true" signature="2055:2199" ph="..." />
+                <marker date="1466502185000" expanded="true" signature="2226:2317" ph="..." />
+                <marker date="1466502185000" expanded="true" signature="2327:2382" ph="..." />
               </folding>
             </state>
           </provider>
@@ -158,8 +153,8 @@
       <file leaf-file-name="modItem.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+            <state relative-caret-position="698">
+              <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
               <folding>
                 <marker date="1466502050000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
                 <marker date="1466502050000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />
@@ -665,14 +660,7 @@
       <workItem from="1466393510243" duration="15270000" />
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
-      <workItem from="1466493862130" duration="7187000" />
-    </task>
-    <task id="LOCAL-00298" summary="세로 1픽셀씩만 줄임">
-      <created>1465786858561</created>
-      <option name="number" value="00298" />
-      <option name="presentableId" value="LOCAL-00298" />
-      <option name="project" value="LOCAL" />
-      <updated>1465786858563</updated>
+      <workItem from="1466493862130" duration="7338000" />
     </task>
     <task id="LOCAL-00299" summary="대표 이미지 단축기준 자르기">
       <created>1465795254696</created>
@@ -1010,11 +998,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466500899311</updated>
     </task>
-    <option name="localTasksCounter" value="347" />
+    <task id="LOCAL-00347" summary="throughout.kr -&gt; analograph.com">
+      <created>1466502064737</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1466502064737</updated>
+    </task>
+    <option name="localTasksCounter" value="348" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="394027000" />
+    <option name="totallyTimeSpent" value="394178000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,7 +1029,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30673143" sideWeight="0.50494623" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32516494" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15253387" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2744606" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2744606" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24929312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32477447" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
@@ -1067,7 +1062,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="타겟이 나인 게시물 삭제 가능, 내 댓글에 작성된 대댓글 삭제 가능, 내 게시글에 작성된 댓글대댓글 삭제 가능" />
     <MESSAGE value="자기가 볼 수 있는것만 볼 수 있음" />
     <MESSAGE value="추천 컨텐츠 만드는 중" />
     <MESSAGE value="페이스북,네이버 로그인 없앰" />
@@ -1092,7 +1086,8 @@
     <MESSAGE value="네이버아이디로 로그인" />
     <MESSAGE value="popup 안함" />
     <MESSAGE value="popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="popup" />
+    <MESSAGE value="throughout.kr -&gt; analograph.com" />
+    <option name="LAST_COMMIT_MESSAGE" value="throughout.kr -&gt; analograph.com" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1566,22 +1561,20 @@
     <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
-          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
           <folding>
-            <marker date="1466502050000" expanded="true" signature="737:880" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466502050000" expanded="true" signature="1558:1619" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466502185000" expanded="true" signature="2055:2199" ph="..." />
+            <marker date="1466502185000" expanded="true" signature="2226:2317" ph="..." />
+            <marker date="1466502185000" expanded="true" signature="2327:2382" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <marker date="1466502050000" expanded="true" signature="721:864" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466502050000" expanded="true" signature="1539:1600" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1611,8 +1604,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        <state relative-caret-position="698">
+          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
           <folding>
             <marker date="1466502050000" expanded="true" signature="296:406" ph="SELECT TITLE... TBL_CONTENT" />
             <marker date="1466502050000" expanded="true" signature="577:626" ph="SELECT DIR F... TBL_FOLDER" />

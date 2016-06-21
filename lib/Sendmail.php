@@ -19,7 +19,7 @@ class Sendmail {
 	/* smtp 계정 아이디 입력 */
     var $smtp_id="d.k.kang@publixher.com";
     /* smtp 계정 비밀번호 입력 */
-	var $smtp_pw="sk763118!";
+	var $smtp_pw="gfsad";
 
     /* 디버그모드 - 활성 :1, 비활성 : 0; */
     var $debug = 1;
