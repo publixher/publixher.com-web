@@ -208,7 +208,7 @@
             naver_id_login.setState("");
             naver_id_login.init_naver_id_login();
         </script>
-        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>
+        <div onclick="facebooklogin()" id="facebook_id_login" style="display: none;"><img src="/img/sorry.jpeg"></div>
     </div>
 </div>
 </body>
