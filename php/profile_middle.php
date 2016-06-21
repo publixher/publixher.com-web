@@ -255,7 +255,7 @@
             } elseif ($allowed == 'N') {
                 echo '<button type="button" class="btn btn-default request" id="friequst" disabled>친구신청중</button>';
             } elseif ($allowed == 'Y') {
-                echo '<button type="button" class="btn btn-success onfriend" id="friequst">내칭구칭구</button>';
+                echo '<button type="button" class="btn btn-success onfriend" id="friequst">친구</button>';
             }
 
             //구독신청 버튼
