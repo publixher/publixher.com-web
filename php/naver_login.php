@@ -6,12 +6,12 @@
     var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
     naver_id_login.get_naver_userprofile();
     function naver_reg(){
-        var email=naver_id_login.getProfileData('email')
-        var age=naver_id_login.getProfileData('age')
-        var birthday=naver_id_login.getProfileData('birthday')
-        var gender=naver_id_login.getProfileData('gender')
-        var profile_image=naver_id_login.getProfileData('profile_image')
-        var name=naver_id_login.getProfileData('name')
+        var email=naver_id_login.getProfileData('email');
+        var age=naver_id_login.getProfileData('age');
+        var birthday=naver_id_login.getProfileData('birthday');
+        var gender=naver_id_login.getProfileData('gender');
+        var profile_image=naver_id_login.getProfileData('profile_image');
+        var name=naver_id_login.getProfileData('name');
         $.ajax({
             url: "/php/data/api_login.php",
             type: "POST",

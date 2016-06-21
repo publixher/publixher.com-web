@@ -41,8 +41,8 @@ if ($check_email && $check_pass) {
         $body = "
 <p>대학별 프라이빗 커뮤니티 throughout에 오신 것을 환영합니다!</p>
 <p>회원가입 후 학교의 모든 구성원과 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
-<p><a href='http://throughout.kr/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>
-<p>가입 절차 및 기타 문의는 cs@throughout.kr로 메일 주시기 바랍니다.</p>";
+<p><a href='http://analograph.com/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>
+<p>가입 절차 및 기타 문의는 cs@analograph.com로 메일 주시기 바랍니다.</p>";
         $sendmail->send_mail($email, $from, $subject, $body);
         $db->commit();
         $msg = '{"result":"reg"}';
