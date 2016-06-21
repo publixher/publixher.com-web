@@ -199,16 +199,16 @@
 
             </table>
         </form>
-        <div id="naver_id_login"></div>
+        <div id="naver_id_login" style="display: none;"></div>
         <script>
             var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
             naver_id_login.setButton("white", 3, 40)
-            naver_id_login.setPopup();
+//            naver_id_login.setPopup();
             naver_id_login.setDomain(".analograph.com");
             naver_id_login.setState("");
             naver_id_login.init_naver_id_login();
         </script>
-        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>
+<!--        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/sorry.jpeg"></div>-->
     </div>
 </div>
 </body>
