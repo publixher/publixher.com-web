@@ -13,6 +13,7 @@ if (!empty($_POST)) {
     require_once '../../lib/getImgFromUrl.php';
     require_once '../../lib/banchk.php';
     require_once '../../lib/iFrameCrop.php';
+    require_once '../../conf/mongo_conf.php';
 //토큰검사
     session_start();
     //CSRF검사
@@ -257,6 +258,10 @@ FROM publixher.TBL_CONTENT AS CONT
         //시간 형식 바꾸는것
         $result['WRITE_DATE'] = passing_time($result['WRITE_DATE']);
         $result = json_encode($result, JSON_UNESCAPED_UNICODE);
+
+        $bulk=new MongoDB\Driver\BulkWrite;
+        $bulk->insert(['id'=>$uid]);
+        $mongomanager->executeBulkWrite('publixher.contents',$bulk);
         $db->commit();
 
         //폴더 쿠키설정

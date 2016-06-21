@@ -31,7 +31,6 @@ $(document).ready(function () {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                     pico.addClass('knocked')
                 } else if (res['reason'] == 'already') {
-                    alert('노크를 취소했습니다.');
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                     pico.removeClass('knocked')
                 }
@@ -1258,7 +1257,7 @@ $(document).ready(function () {
             data: {ID: thisitemID, action: "top", mid: mid, token: token},
             dataType: 'json',
             success: function (res) {
-                if (!res['result'] == 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
+                if (res['result'] != 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
             }, error: function (request) {
                 alert(request.responseText);
             }

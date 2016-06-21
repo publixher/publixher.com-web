@@ -244,6 +244,9 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
             $prepare3->execute();
         }
+        $bulk=new MongoDB\Driver\BulkWrite;
+        $bulk->insert(['id'=>$uid]);
+        $mongomanager->executeBulkWrite('publixher.contents',$bulk);
         $db->commit();
         if(!$result) {
             echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
