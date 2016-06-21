@@ -4,10 +4,6 @@
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.php" afterPath="$PROJECT_DIR$/https/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/naver.js" afterPath="$PROJECT_DIR$/https/naver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/getImgFromUrl.php" afterPath="$PROJECT_DIR$/lib/getImgFromUrl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/api_login.php" afterPath="$PROJECT_DIR$/php/data/api_login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/naver_login.php" afterPath="$PROJECT_DIR$/php/naver_login.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -47,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1551">
-              <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
+            <state relative-caret-position="1321">
+              <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -60,8 +56,8 @@
       <file leaf-file-name="naver.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/naver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
+            <state relative-caret-position="385">
+              <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="116" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -148,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getImgFromUrl.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getImgFromUrl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="480">
+              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -224,9 +220,9 @@
         <option value="$PROJECT_DIR$/php/notiCenter.php" />
         <option value="$PROJECT_DIR$/php/naver_login.php" />
         <option value="$PROJECT_DIR$/https/naver.js" />
-        <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
         <option value="$PROJECT_DIR$/lib/getImgFromUrl.php" />
+        <option value="$PROJECT_DIR$/https/login.php" />
       </list>
     </option>
   </component>
@@ -646,14 +642,7 @@
       <workItem from="1466393510243" duration="15270000" />
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
-      <workItem from="1466493862130" duration="5453000" />
-    </task>
-    <task id="LOCAL-00295" summary="p를 br로">
-      <created>1465640558680</created>
-      <option name="number" value="00295" />
-      <option name="presentableId" value="LOCAL-00295" />
-      <option name="project" value="LOCAL" />
-      <updated>1465640558680</updated>
+      <workItem from="1466493862130" duration="5889000" />
     </task>
     <task id="LOCAL-00296" summary="p를 br로">
       <created>1465640845039</created>
@@ -991,11 +980,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466497835000</updated>
     </task>
-    <option name="localTasksCounter" value="344" />
+    <task id="LOCAL-00344" summary="네이버아이디로 로그인">
+      <created>1466500314723</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1466500314723</updated>
+    </task>
+    <option name="localTasksCounter" value="345" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392293000" />
+    <option name="totallyTimeSpent" value="392729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1048,7 +1044,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="댓글 삭제 구분 완료" />
     <MESSAGE value="파일 여러개 업로드시 생기는 문제 해결, purifier의 data-userid 속성 살림" />
     <MESSAGE value="내 게시글이나 댓글에 달린 댓글대댓글은 지울 수 있음" />
     <MESSAGE value="타겟이 나인 게시물 삭제 가능, 내 댓글에 작성된 대댓글 삭제 가능, 내 게시글에 작성된 댓글대댓글 삭제 가능" />
@@ -1073,7 +1068,8 @@
     <MESSAGE value="노크에 따라 같은 페이지에서 knocked 추가,제거" />
     <MESSAGE value="average_time,total_read 올림,등록시 몽고에서 들어감" />
     <MESSAGE value="아날로그래프로" />
-    <option name="LAST_COMMIT_MESSAGE" value="아날로그래프로" />
+    <MESSAGE value="네이버아이디로 로그인" />
+    <option name="LAST_COMMIT_MESSAGE" value="네이버아이디로 로그인" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1537,22 +1533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/https/naver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/https/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1551">
-          <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/naver_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1597,8 +1577,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="480">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/https/naver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="116" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/https/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1321">
+          <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
           <folding />
         </state>
       </provider>
