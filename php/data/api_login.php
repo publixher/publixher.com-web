@@ -94,7 +94,7 @@ if (!isset($_SESSION['token'])) {
     $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
 $cookieset=new setCookie();
-$cookieset->setCid($result->getID(),$db);
+$cookieset->setCid($user->getID(),$db);
 echo '{"result":"Y"}';
 
 ?>
