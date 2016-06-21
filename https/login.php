@@ -56,7 +56,6 @@
         });
     }
     function statusChangeCallback(response) {
-        console.log(response);
         if (response.status === 'connected') {
             // 페이스북을 통해서 로그인이 되어있다.
             FB.api('/me?fields=email', function (response) {
