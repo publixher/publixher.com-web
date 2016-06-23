@@ -82,7 +82,7 @@
 
                     var gender = response.gender == '남성' ? 'M' : 'F';
                     var profile_image = replaceAll(response.profile_picture.data.url, "\"", "");
-                    var date=new Data(response.birthday);
+                    var date=new Date(response.birthday);
                     var d=date.getDate();
                     var m=date.getMonth()+1;
                     var y=date.getFullYear();
