@@ -60,7 +60,9 @@ if ($info['api'] == 'naver') {
         $user = $q->fetchObject(User);
         if (!$user) {
             require_once '../../lib/random_64.php';
+            require_once '../../lib/getImgFromUrl.php';
             $id = uniqueid($db, 'user');
+            $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
             try {
                 $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1)";
                 $prepare = $db->prepare($sql);
@@ -69,7 +71,7 @@ if ($info['api'] == 'naver') {
                 $prepare->bindValue(':USER_NAME', $info['name'], PDO::PARAM_STR);
                 $prepare->bindValue(':SEX', $info['gender'], PDO::PARAM_STR);
                 $prepare->bindValue(':BIRTH', $info['birthday'], PDO::PARAM_STR);
-                $prepare->bindValue(':PIC', $info['image'], PDO::PARAM_STR);
+                $prepare->bindValue(':PIC', $pic, PDO::PARAM_STR);
                 $prepare->execute();
                 $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
                 $prepare2 = $db->prepare($sql2);
