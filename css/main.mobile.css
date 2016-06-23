@@ -89,6 +89,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     padding: 6px;
     margin: 0;
     height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane {
     padding: 0 0 0 0;
@@ -1182,6 +1185,16 @@ li a {
 .donate-span {
     color: #C35D5B;
     background: #FFDBDB;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 4px;
+    line-height: 1.8em;
+    margin-right: 5px;
+}
+.rep-tag{
+    color: #46799b;
+    background: #e0eaf1;
     overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
