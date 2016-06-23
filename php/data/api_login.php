@@ -18,7 +18,7 @@ if ($info['api'] == 'naver') {
         $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
         try {
             $db->beginTransaction();
-            $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1)";
+            $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL,PASSWORD) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1,'NAVER')";
             $prepare = $db->prepare($sql);
             $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
             $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
@@ -65,7 +65,7 @@ if ($info['api'] == 'naver') {
             $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
             try {
                 $db->beginTransaction();
-                $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1)";
+                $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL,PASSWORD) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1,'FACEBOOK')";
                 $prepare = $db->prepare($sql);
                 $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
                 $prepare->bindValue(':EMAIL', $info['email'], PDO::PARAM_STR);
