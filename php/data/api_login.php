@@ -77,6 +77,7 @@ if ($info['api'] == 'naver') {
                 $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
                 $prepare2 = $db->prepare($sql2);
                 $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
+                $prepare2->execute();
                 $sql2 = "SELECT * FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
                 $q2 = $db->prepare($sql2);
                 $q2->bindValue(':EMAIL', $info['email']);
