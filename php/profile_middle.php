@@ -102,7 +102,7 @@
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    친구신청목록(<span id="frequestnum"><?= $frequestnum ?></span>)
+                    친구요청(<span id="frequestnum"><?= $frequestnum ?></span>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="freqlist">
@@ -284,14 +284,14 @@
                 <!-- 위탭 -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active" id="send-li"><a href="#send" aria-controls="home" role="tab"
-                                                              data-toggle="tab">똥싸기</a></li>
-                    <?php if ($I) echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">용돈벌기</a></li>' ?>
+                                                              data-toggle="tab">보내기</a></li>
+                    <?php if ($I) echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>' ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
-                            <?php if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']}의 친구에게 공개</a></li>";
+                            <?php if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']} 친구에게 공개</a></li>";
                             elseif(strpos($expauth, 'b') !== false and $I) echo "<li><a>친구에게 공개</a></li>";
                              if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>'; ?>
                         </ul>

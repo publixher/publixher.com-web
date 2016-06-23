@@ -17,9 +17,9 @@ class Sendmail {
     /* smtp 의 호스트 설정 : 아래는 gmail 일경우 */
     var $host="ssl://smtp.worksmobile.com";
 	/* smtp 계정 아이디 입력 */
-    var $smtp_id="d.k.kang@publixher.com";
+    var $smtp_id="s.h.lee@analograph.com";
     /* smtp 계정 비밀번호 입력 */
-	var $smtp_pw="sk763118!";
+	var $smtp_pw="pp929392";
 
     /* 디버그모드 - 활성 :1, 비활성 : 0; */
     var $debug = 1;

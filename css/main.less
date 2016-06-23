@@ -59,9 +59,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           width: 25%;
           a {
             text-align: center;
-            padding: 66px;
+            padding: 6px;
             margin: 0;
             height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
       }
@@ -1061,7 +1064,7 @@ li a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 300px;
+  min-width: 288px;
 }
 .hot-body,
 .hot-data{
@@ -1228,6 +1231,16 @@ li a {
   border-radius: 2px;
   padding: 4px;
   line-height:1.8em;
+  margin-right: 5px;
+}
+.rep-tag{
+  color: #46799b;
+  background: #e0eaf1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 4px;
+  line-height: 1.8em;
   margin-right: 5px;
 }
 .new-folder{
