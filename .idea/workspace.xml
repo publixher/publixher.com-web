@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profileConfig.php" afterPath="$PROJECT_DIR$/php/profileConfig.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -131,21 +131,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tagSearch.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tagSearch.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="21" selection-end-column="33" />
+              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="market.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/market.php">
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/conf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -179,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="/MySQL Fragment (getC.php:3467).sql" />
         <option value="/MySQL Fragment (getC.php:4701).sql" />
         <option value="/MySQL Fragment (getC.php:5803).sql" />
         <option value="/MySQL Fragment (getC.php:7125).sql" />
@@ -230,6 +229,7 @@
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
         <option value="$PROJECT_DIR$/php/profileConfig.php" />
+        <option value="$PROJECT_DIR$/php/conf.php" />
       </list>
     </option>
   </component>
@@ -651,14 +651,7 @@
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
       <workItem from="1466493862130" duration="13607000" />
-      <workItem from="1466653611410" duration="5606000" />
-    </task>
-    <task id="LOCAL-00331" summary="익스플로러 호환성 댓글">
-      <created>1466152715370</created>
-      <option name="number" value="00331" />
-      <option name="presentableId" value="LOCAL-00331" />
-      <option name="project" value="LOCAL" />
-      <updated>1466152715370</updated>
+      <workItem from="1466653611410" duration="6859000" />
     </task>
     <task id="LOCAL-00332" summary="delPin 동작 수정">
       <created>1466394924375</created>
@@ -996,11 +989,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466661447468</updated>
     </task>
-    <option name="localTasksCounter" value="380" />
+    <task id="LOCAL-00380" summary="profileconfig 모바일 분기">
+      <created>1466664936640</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1466664936640</updated>
+    </task>
+    <option name="localTasksCounter" value="381" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="406053000" />
+    <option name="totallyTimeSpent" value="407306000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1053,7 +1053,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="popup 안함" />
     <MESSAGE value="popup" />
     <MESSAGE value="throughout.kr -&gt; analograph.com" />
     <MESSAGE value="Merge branch 'master' of github.com:publixher/publixher.com-web&#10;&#10;# Conflicts:&#10;#&#9;php/api/registConfirm.php&#10;#&#9;php/data/registConfirm.php&#10;" />
@@ -1078,7 +1077,8 @@
     <MESSAGE value="프로필 모바일 스타일 적용,페이스북 로그인 가능" />
     <MESSAGE value="페이스북 버튼" />
     <MESSAGE value="api로그인 표시" />
-    <option name="LAST_COMMIT_MESSAGE" value="api로그인 표시" />
+    <MESSAGE value="profileconfig 모바일 분기" />
+    <option name="LAST_COMMIT_MESSAGE" value="profileconfig 모바일 분기" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1471,14 +1471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/contentManage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -1616,7 +1608,15 @@
     <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="21" selection-end-column="33" />
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
           <folding />
         </state>
       </provider>
