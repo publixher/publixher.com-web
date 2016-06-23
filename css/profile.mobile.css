@@ -19,7 +19,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   margin: auto;
   position: relative;
 }
-#left,
 #right .market
 {
   display: none;
@@ -28,15 +27,21 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right #gsearch{
   display: none !important;
 }
-#upform{
-  margin-top: 50px !important;
-}
 #wrap #right #controller button{
   color: #434343 !important;
   background-color: transparent;
   border-color: transparent;
 }
-
+#profile-middle-nav>div{
+  width: 50%;
+  margin: 0 !important;
+  padding: 1px
+}
+#profile-middle-nav div button{
+  width: 100%;
+  border-radius: 0 !important;
+  border: 0 solid #e3e3e3;
+}
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div {
   width: 100%;
@@ -54,21 +59,23 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 
 #wrap #left {
+margin-top: 50px;
+}
+#left .profile-wrap{
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 4px;
   float: left;
-  width: 174px;
+  margin-left: 10px;
+  position: relative;
 }
-#wrap #left .list-unstyled {
-  padding-left: 10px;
-  padding-top: 10px;
-  font-size: 20px;
-}
-#wrap #left .list-unstyled li {
-  padding-left: 20px;
-  font-size: 14px;
-  cursor: pointer;
-}
-#wrap #left .list-unstyled li:hover {
-  background-color: lightgray;
+#left .profile-wrap .profilepic{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 #wrap #middle #writing-pane {
   margin: 5px 10px 10px 10px;
