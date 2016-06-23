@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/profile.mobile.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/api_login.php" afterPath="$PROJECT_DIR$/php/data/api_login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile.php" afterPath="$PROJECT_DIR$/php/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/sellManage.php" afterPath="$PROJECT_DIR$/php/sellManage.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/tagSearch.php" afterPath="$PROJECT_DIR$/php/tagSearch.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -33,174 +36,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/https/login.php">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+            <state relative-caret-position="525">
+              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
+      <file leaf-file-name="sellManage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/sellManage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
-              <folding>
-                <marker date="1466507157000" expanded="true" signature="735:878" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466507157000" expanded="true" signature="1556:1617" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466507157000" expanded="true" signature="2000:2144" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api_login.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
-              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
-              <folding>
-                <marker date="1466659950000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466659950000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466659950000" expanded="true" signature="1415:1476" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466659950000" expanded="true" signature="1646:1697" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466659950000" expanded="true" signature="2157:2208" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466659950000" expanded="true" signature="2413:2464" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466659950000" expanded="true" signature="2964:3084" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466659950000" expanded="true" signature="3649:3710" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466659950000" expanded="true" signature="3896:3947" ph="SELECT * FRO... TBL_USER" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/itemcard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="882" column="54" selection-start-line="882" selection-start-column="54" selection-end-line="882" selection-end-column="54" />
-              <folding>
-                <marker date="1466506589000" expanded="true" signature="85:145" ph="{...}" />
-                <marker date="1466506589000" expanded="true" signature="15202:15233" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="15284:15300" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="15889:15924" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="15941:15966" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="16276:16292" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="18000:18057" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="18392:18449" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="18524:18581" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="20471:20502" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="20553:20569" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="21117:21152" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="21169:21194" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="21500:21516" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="24437:24470" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="24487:24512" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="24847:24863" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="30635:30666" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="30721:30737" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="31314:31348" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="31365:31390" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="31733:31749" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="44914:44948" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="44965:44990" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="45325:45341" ph="..." />
-                <marker date="1466506589000" expanded="true" signature="71664:71703" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profileChange.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/profileChange.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="145" column="16" selection-start-line="145" selection-start-column="16" selection-end-line="145" selection-end-column="16" />
-              <folding>
-                <marker date="1466506238000" expanded="true" signature="1004:1104" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="1246:1365" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="2072:2117" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466506238000" expanded="true" signature="2711:2868" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="3079:3276" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466506238000" expanded="true" signature="3159:3276" ph="SELECT :ID, TBL_USER" />
-                <marker date="1466506238000" expanded="true" signature="3594:3670" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="4302:4566" ph="SELECT ID, E... TBL_USER" />
-                <marker date="1466506238000" expanded="true" signature="5141:5208" ph="SELECT ID_AN... TBL_CONNECTOR" />
-                <marker date="1466506238000" expanded="true" signature="5629:5674" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466506238000" expanded="true" signature="6211:6285" ph="INSERT INTO publixher.TBL_FOLDER... " />
-                <marker date="1466506238000" expanded="true" signature="6705:6750" ph="DELETE FROM " />
-                <marker date="1466506238000" expanded="true" signature="6934:6999" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="7297:7360" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="7550:7609" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="7798:7906" ph="UPDATE publi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registValid.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/registValid.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-              <folding>
-                <marker date="1466506238000" expanded="true" signature="159:206" ph="SELECT SEQ F... TBL_USER" />
-                <marker date="1466506238000" expanded="true" signature="395:445" ph="UPDATE publi... " />
-                <marker date="1466506238000" expanded="true" signature="560:607" ph="SELECT * FRO... TBL_USER" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sendmail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/Sendmail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="525">
+              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profileChange.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/api/profileChange.php">
+      <file leaf-file-name="tagSearch.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="market.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/market.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1464593565000" expanded="true" signature="474:574" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="716:835" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="1551:1684" ph="SELECT ID,EM... TBL_USER" />
-                <marker date="1464593565000" expanded="true" signature="2196:2353" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="2569:2766" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1464593565000" expanded="true" signature="2649:2766" ph="SELECT :ID, TBL_USER" />
-                <marker date="1464593565000" expanded="true" signature="3084:3160" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="3410:3512" ph="SELECT ID,EM... TBL_USER" />
-                <marker date="1464593565000" expanded="true" signature="4134:4398" ph="SELECT ID, E... TBL_USER" />
-                <marker date="1464593565000" expanded="true" signature="4905:4972" ph="SELECT ID_AN... TBL_CONNECTOR" />
-                <marker date="1464593565000" expanded="true" signature="5258:5360" ph="SELECT ID,EM... TBL_USER" />
-                <marker date="1464593565000" expanded="true" signature="5982:6056" ph="INSERT INTO publixher.TBL_FOLDER... " />
-                <marker date="1464593565000" expanded="true" signature="6451:6496" ph="DELETE FROM " />
-                <marker date="1464593565000" expanded="true" signature="6660:6725" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="6931:6994" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="7220:7279" ph="UPDATE publi... " />
-                <marker date="1464593565000" expanded="true" signature="7497:7605" ph="UPDATE publi... " />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginchk.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/loginchk.php">
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-              <folding>
-                <marker date="1465522172000" expanded="true" signature="394:439" ph="SELECT * FRO... TBL_USER" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="36" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/conf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,6 +101,38 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="720">
               <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="embeded.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/embeded.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="foldercon.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/foldercon.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="35" selection-end-column="6" />
+              <folding>
+                <marker date="1466505432000" expanded="true" signature="2651:2704" ph="SELECT ID_US... TBL_FOLDER" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getItem.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/getItem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -233,9 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/HTMLPurifier.php" />
-        <option value="$PROJECT_DIR$/conf/database_conf.php" />
-        <option value="/MySQL Fragment (getC.php:892).sql" />
         <option value="/MySQL Fragment (getC.php:1714).sql" />
         <option value="/MySQL Fragment (getC.php:3467).sql" />
         <option value="/MySQL Fragment (getC.php:4701).sql" />
@@ -284,6 +204,9 @@
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
+        <option value="$PROJECT_DIR$/php/profile.php" />
+        <option value="$PROJECT_DIR$/php/sellManage.php" />
+        <option value="$PROJECT_DIR$/php/tagSearch.php" />
       </list>
     </option>
   </component>
@@ -598,14 +521,15 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/https" />
-      <recent name="$PROJECT_DIR$/lib" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/php/api" />
       <recent name="$PROJECT_DIR$/https" />
       <recent name="$PROJECT_DIR$/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/css" />
+      <recent name="$PROJECT_DIR$/https" />
+      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.main">
@@ -704,14 +628,7 @@
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
       <workItem from="1466493862130" duration="13607000" />
-      <workItem from="1466653611410" duration="3900000" />
-    </task>
-    <task id="LOCAL-00327" summary="컨텐츠 삭제시 폴더가 없으면 아무것도 안하게">
-      <created>1466147094555</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1466147094556</updated>
+      <workItem from="1466653611410" duration="4217000" />
     </task>
     <task id="LOCAL-00328" summary="컨텐츠 삭제시 폴더가 없으면 아무것도 안하게">
       <created>1466147288327</created>
@@ -1049,11 +966,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466659810445</updated>
     </task>
-    <option name="localTasksCounter" value="376" />
+    <task id="LOCAL-00376" summary="페이스북 날짜 수정">
+      <created>1466659953442</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1466659953442</updated>
+    </task>
+    <option name="localTasksCounter" value="377" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404347000" />
+    <option name="totallyTimeSpent" value="404664000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1146,11 +1070,6 @@
           <line>5</line>
           <option name="timeStamp" value="564" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/api_login.php</url>
-          <line>64</line>
-          <option name="timeStamp" value="566" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -1170,41 +1089,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/conf/database_conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/phpmyadmin/4.6.1/share/phpmyadmin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/phpmyadmin/4.6.1/share/phpmyadmin/tbl_sql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/getNoti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/best.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/content_explode.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1331,20 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/embeded.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/getItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/notiCenter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1438,42 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/market.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="418" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="418" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/buyList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/contentManage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1623,8 +1457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+        <state relative-caret-position="270">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
             <marker date="1466659950000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
             <marker date="1466659950000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
@@ -1636,6 +1470,104 @@
             <marker date="1466659950000" expanded="true" signature="3649:3710" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
             <marker date="1466659950000" expanded="true" signature="3896:3947" ph="SELECT * FRO... TBL_USER" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bodySearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/buyList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/contentManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/embeded.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/getItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/foldercon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="35" selection-end-column="6" />
+          <folding>
+            <marker date="1466505432000" expanded="true" signature="2651:2704" ph="SELECT ID_US... TBL_FOLDER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/sellManage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/market.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="36" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tagSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
