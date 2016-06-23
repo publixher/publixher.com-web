@@ -37,6 +37,7 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: inset 0 0 0;
+    margin-bottom: 10px;
 }
 #r-div form table tbody tr:first-child td input{
     margin-top: 0;
@@ -61,7 +62,8 @@ body {
     width: 80%;
     display:block;
     margin: 0 auto;
-    border: 0;
+    border: 1px solid #e3e3e3;
+    margin-top: 10px;
 }
 #years{
     width: 80px !important;
@@ -92,6 +94,9 @@ body {
     height: 62px;
     margin: 0 auto;
     display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #abacab;
 }
 #naver_id_login_anchor img,
 #facebook_id_login img{
@@ -101,4 +106,15 @@ body {
     margin: 0 auto;
     margin-top: 10px;
     border-radius: 4px;
+}
+#r-div form table tbody tr td:first-child{
+    width: 30%;
+    float: left;
+}
+#r-div form table tbody tr td:nth-child(2){
+    width: 70%;
+    float: left;
+}
+#mid, #mpass, #mpasscheck, #mname{
+    width:70% !important;
 }
