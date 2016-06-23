@@ -482,13 +482,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #logo {
   margin: 0 5px 0 5px;
   height: 30px;
-  width: 40px;
+  width: 80px;
   overflow: hidden;
   float: left;
   cursor: pointer;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  position: relative;
 }
 #wrap #right .conf #controller .dropdown-menu {
   padding-bottom: 0;
@@ -518,9 +519,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #controller .btn-danger:hover,
 #wrap #right .conf #controller .btn-danger:focus {
   background-color: lightgray;
-}
-#wrap #right .conf #controller #usr {
-  margin-left: 10px;
 }
 #wrap #right .conf #controller #configbtn {
   width: 34px;
@@ -1441,6 +1439,14 @@ a:hover {
 }
 #li-noticenter{
   display: none;
+}
+#logo img{
+  width: 100px;
+  height:100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .oi{
   display: inline-block;
