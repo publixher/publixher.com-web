@@ -78,12 +78,12 @@ margin-top: 50px;
   transform: translate(-50%, -50%);
 }
 #wrap #middle #writing-pane {
-  margin: 5px 10px 10px 10px;
+  margin: 10px 0;
   background-color: white;
   border: 1px solid #e3e3e3;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  border-radius: 0 !important;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  border-radius: 4px !important;
 }
 #wrap #middle #writing-pane ul {
   font-size: 12px;
@@ -263,11 +263,15 @@ margin-top: 50px;
 #wrap #middle .item-for-sale {
   margin: 10px 0;
   height: inherit;
-  float: left;
   background-color: white;
-  margin-left: 4px !important;
-  margin-right: 4px !important;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
   border-radius: 4px !important;
+  border: 1px solid #e3e3e3;
+  float: left;
+}
+.tail table tbody tr>td{
+  border-radius: 4px;
 }
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
@@ -397,6 +401,7 @@ margin-top: 50px;
   width: 100%;
   font-size: 12px;
   margin-top: 10px;
+  margin-bottom: 1% !important;
 }
 #wrap #middle .item .tail table,
 #wrap #middle .item-for-sale .tail table{
@@ -487,7 +492,8 @@ margin-top: 50px;
   z-index: 100;
   font-size: 12px;
   left:0 !important;
-  width: 100% !important;
+  width: 98% !important;
+  margin-left: 1%;
   height: 40px !important;
   opacity: 0.9;
   border: 1px solid #e3e3e3;
@@ -498,12 +504,13 @@ margin-top: 50px;
 #wrap #right .conf #logo {
   margin: 5px 5px 0 5px;
   height: 30px;
-  width: 40px;
+  width: 80px;
   overflow: hidden;
   float: left;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  position: relative;
 }
 #wrap #right .conf #controller .dropdown-menu {
   padding-bottom: 0;
@@ -1362,6 +1369,14 @@ a:hover {
 }
 .tcomment, .tshare{
   border-radius: 10px;
+}
+#logo img{
+  width: 100px;
+  height:100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .oi{
   display: inline-block;

@@ -458,10 +458,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       #logo {
         margin: 0 5px 0 5px;
         height: 30px;
-        width: 40px;
+        width: 80px;
         overflow: hidden;
         float: left;
         cursor: pointer;
+        position: relative;
         .roundborder();
       }
       #controller {
@@ -492,9 +493,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           &:hover, &:focus {
             background-color: lightgray;
           }
-        }
-        #usr {
-          margin-left: 10px;
         }
         #configbtn {
           width: 34px;
@@ -1425,6 +1423,14 @@ a:hover{
 }
 .tcomment, .tshare{
   border-radius: 10px;
+}
+#logo img{
+  width: 100px;
+  height:100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .oi{
   display: inline-block;
