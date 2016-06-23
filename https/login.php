@@ -202,6 +202,7 @@
 
             </table>
         </form>
+        <div id="api_login">
         <div id="naver_id_login"></div>
         <script>
             var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
@@ -211,7 +212,8 @@
             naver_id_login.setState("");
             naver_id_login.init_naver_id_login();
         </script>
-        <div onclick="facebooklogin()" id="facebook_id_login" style="display: none;"><img src="/img/sorry.jpeg"></div>
+        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
+        </div>
     </div>
 </div>
 </body>
