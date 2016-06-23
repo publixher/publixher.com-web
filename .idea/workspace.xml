@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/https/login.php" afterPath="$PROJECT_DIR$/https/login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/api_login.php" afterPath="$PROJECT_DIR$/php/data/api_login.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
@@ -33,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+            <state relative-caret-position="1155">
+              <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -57,21 +58,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="api_login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+            <state relative-caret-position="1260">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
-                <marker date="1466658539000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466658539000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466658539000" expanded="true" signature="1415:1476" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466658539000" expanded="true" signature="1646:1697" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466658539000" expanded="true" signature="2157:2208" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466658539000" expanded="true" signature="2413:2464" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1466658539000" expanded="true" signature="2923:3043" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466658539000" expanded="true" signature="3608:3669" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466658539000" expanded="true" signature="3817:3868" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1466658745000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1466658745000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1466658745000" expanded="true" signature="1415:1476" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1466658745000" expanded="true" signature="1646:1697" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1466658745000" expanded="true" signature="2157:2208" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1466658745000" expanded="true" signature="2413:2464" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1466658745000" expanded="true" signature="2964:3084" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1466658745000" expanded="true" signature="3649:3710" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1466658745000" expanded="true" signature="3858:3909" ph="SELECT * FRO... TBL_USER" />
               </folding>
             </state>
           </provider>
@@ -282,8 +283,8 @@
         <option value="$PROJECT_DIR$/php/data/registValid.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
-        <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
+        <option value="$PROJECT_DIR$/https/login.php" />
       </list>
     </option>
   </component>
@@ -704,14 +705,7 @@
       <workItem from="1466417078424" duration="221000" />
       <workItem from="1466477074111" duration="1110000" />
       <workItem from="1466493862130" duration="13607000" />
-      <workItem from="1466653611410" duration="2583000" />
-    </task>
-    <task id="LOCAL-00323" summary="추천 컨텐츠 세팅">
-      <created>1466145785284</created>
-      <option name="number" value="00323" />
-      <option name="presentableId" value="LOCAL-00323" />
-      <option name="project" value="LOCAL" />
-      <updated>1466145785284</updated>
+      <workItem from="1466653611410" duration="3402000" />
     </task>
     <task id="LOCAL-00324" summary="수정시 폴더 오류">
       <created>1466146419645</created>
@@ -1049,11 +1043,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466655722385</updated>
     </task>
-    <option name="localTasksCounter" value="372" />
+    <task id="LOCAL-00372" summary="페이스북으로 로그인 시험중">
+      <created>1466658561161</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1466658561161</updated>
+    </task>
+    <option name="localTasksCounter" value="373" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403030000" />
+    <option name="totallyTimeSpent" value="403849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1433,6 +1434,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1607,29 +1609,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/https/login.php">
+    <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="1260">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <marker date="1466658745000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466658745000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1466658745000" expanded="true" signature="1415:1476" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466658745000" expanded="true" signature="1646:1697" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466658745000" expanded="true" signature="2157:2208" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466658745000" expanded="true" signature="2413:2464" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1466658745000" expanded="true" signature="2964:3084" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1466658745000" expanded="true" signature="3649:3710" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1466658745000" expanded="true" signature="3858:3909" ph="SELECT * FRO... TBL_USER" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
+    <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
-          <folding>
-            <marker date="1466658539000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466658539000" expanded="true" signature="759:879" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466658539000" expanded="true" signature="1415:1476" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1466658539000" expanded="true" signature="1646:1697" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466658539000" expanded="true" signature="2157:2208" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466658539000" expanded="true" signature="2413:2464" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1466658539000" expanded="true" signature="2923:3043" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1466658539000" expanded="true" signature="3608:3669" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1466658539000" expanded="true" signature="3817:3868" ph="SELECT * FRO... TBL_USER" />
-          </folding>
+        <state relative-caret-position="1155">
+          <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

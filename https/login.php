@@ -82,12 +82,17 @@
 
                     var gender = response.gender == '남성' ? 'M' : 'F';
                     var profile_image = replaceAll(response.profile_picture.data.url, "\"", "");
+                    var date=new Data(response.birthday);
+                    var d=date.getDate();
+                    var m=date.getMonth()+1;
+                    var y=date.getFullYear();
+                    var format_date=y+'-'+m+'-'+d;
                     $.ajax({
                         url: "/php/data/api_login.php",
                         type: "POST",
                         data: {
                             email: response.email,
-                            birthday: response.birthday,
+                            birthday: format_date,
                             gender: gender,
                             image: profile_image,
                             name: response.name,

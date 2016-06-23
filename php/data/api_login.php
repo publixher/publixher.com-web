@@ -64,6 +64,7 @@ if ($info['api'] == 'naver') {
             $id = uniqueid($db, 'user');
             $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
             try {
+                $db->beginTransaction();
                 $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1)";
                 $prepare = $db->prepare($sql);
                 $prepare->bindValue(':ID', $id, PDO::PARAM_STR);
