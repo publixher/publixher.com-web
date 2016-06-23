@@ -71,12 +71,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     background-color: lightgray;
 }
 #wrap #middle #writing-pane {
-    margin: 5px 10px 10px 10px;
+    margin: 10px 0;
     background-color: white;
     border: 1px solid #e3e3e3;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 0 !important;
+    margin-left: 1% !important;
+    margin-right: 1% !important;
+    border-radius: 4 !important;
 }
 #wrap #middle #writing-pane ul {
     font-size: 12px;
@@ -256,7 +256,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale {
     margin: 5px 10px 10px 10px;
     height: inherit;
-    float: left;
     background-color: white;
     margin-left: 1% !important;
     margin-right: 1% !important;
