@@ -102,7 +102,7 @@
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    친구신청목록(<span id="frequestnum"><?= $frequestnum ?></span>)
+                    친구요청(<span id="frequestnum"><?= $frequestnum ?></span>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="freqlist">
