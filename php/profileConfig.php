@@ -8,7 +8,29 @@
     <title>프로필</title>
     <!-- 부트스트랩 -->
     <link href="/plugins/bootstrap-3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/profile.css" rel="stylesheet">
+    <?php
+    function isMobile(){
+        $arr_browser = array ("iphone", "android", "ipod", "iemobile", "mobile", "lgtelecom", "ppc", "symbianos", "blackberry", "ipad");
+        $httpUserAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+        // 기본값으로 모바일 브라우저가 아닌것으로 간주함
+        $mobile_browser = false;
+        $mobilesize=count($arr_browser);
+        // 모바일브라우저에 해당하는 문자열이 있는 경우 $mobile_browser 를 true로 설정
+        for($indexi = 0 ; $indexi < $mobilesize ; $indexi++){
+            if(strpos($httpUserAgent, $arr_browser[$indexi]) == true){
+                $mobile_browser = true;
+                break;
+            }
+        }
+        return $mobile_browser;
+    }
+
+    if(isMobile()){
+        echo '<link href="/css/profile.mobile.css" rel="stylesheet">';
+    }else{
+        echo '<link href="/css/profile.css" rel="stylesheet">';
+    }
+    ?>
     <link rel="stylesheet" href="/css/publixherico/style.css">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
