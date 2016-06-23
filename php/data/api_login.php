@@ -82,6 +82,7 @@ if ($info['api'] == 'naver') {
                 $q2->bindValue(':EMAIL', $info['email']);
                 $q2->execute();
                 $user = $q2->fetchObject(User);
+                $db->commit();
             }catch(PDOException $e){
                 $db->rollBack();
                 $msg = '{"result":"server error"}';
