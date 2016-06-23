@@ -97,7 +97,6 @@
                         },
                         dataType: 'json',
                         success: function (res) {
-                            window.close();
                             location.href = '/';
                         }, error: function () {
                             alert('작업중 문제가 생겼습니다.');
