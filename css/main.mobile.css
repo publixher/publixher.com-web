@@ -29,7 +29,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     display: none !important;
 }
 #upform{
-    margin-top: 50px !important;
+    padding-top: 40px !important;
 }
 #wrap #right #controller button{
     color: #434343 !important;
@@ -480,11 +480,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
 }
 #wrap #right .conf {
-    position: fixed;
+    position: absolute;
     top: 0;
+    left:0 !important;
     z-index: 100;
     font-size: 12px;
-    left:0 !important;
     width: 98% !important;
     margin-left: 1%;
     height: 40px !important;
@@ -1353,6 +1353,7 @@ a:hover {
     display: inline-block;
     margin: 0 10px 0 0;
     border-radius:4px;
+    opacity: 0.5;
 }
 #publixh-mod table tbody tr .priceinput .form-group{
     margin-bottom: 0 !important;
