@@ -325,7 +325,7 @@ LIMIT
                 $psql = "UPDATE publixher.TBL_CONNECTOR AS CONN
   INNER JOIN publixher.TBL_CONTENT AS CONT
   ON CONT.ID_WRITER =CONN.ID_USER OR CONT.ID_WRITER=CONN.ID_ANONY
-  SET CONN.CASH_POINT=CONN.CASH_POINT+:POINT WHERE CONT.ID=:ID";
+  SET CONN.CASH_POINT_EX=CONN.CASH_POINT_EX+:POINT WHERE CONT.ID=:ID";
                 $pprepare = $db->prepare($psql);
                 $pprepare->bindValue(':POINT', $point);
                 $pprepare->bindValue(':ID', $ID);
@@ -456,7 +456,10 @@ LIMIT
             $prepare4 = $db->prepare($sql4);
             $prepare4->execute(array('POINT' => $price, 'ID_USER' => $userID, 'ID_ANONY' => $userID));
 
-
+//판매자 포인트 늘림
+            $sql="UPDATE publixher.TBL_CONNECTOR SET CASH_POINT_EX=CASH_POINT_EX+:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+            $prepare=$db->prepare($sql);
+            $prepare->execute(array('POINT'=>$price,'ID_USER'=>$writer,'ID_ANONY'=>$writer));
             //알람처리
             $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
             $prepare4 = $db->prepare($sql4);

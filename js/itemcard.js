@@ -1001,7 +1001,11 @@ $(document).ready(function () {
         done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
             var img = '<div><img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic"></div>';
-            if (gif) img.addClass('gif');
+            if (gif){
+                img=$(img);
+                img.children('img').addClass('gif');
+                img=img[0].outerHTML;
+            }
             if (this == $('#fileuploads-mod')[0]) {
                 var sendBody = $('#sendBody-mod');
                 sendBody.focus();

@@ -344,7 +344,11 @@ $(document).ready(function () {
         }, done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
             var img = '<div><img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic"></div>';
-            if (gif) img.addClass('gif');
+            if (gif){
+                img=$(img);
+                img.children('img').addClass('gif');
+                img=img[0].outerHTML;
+            }
             pasteHtmlAtCaret(img+'<br>');
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
