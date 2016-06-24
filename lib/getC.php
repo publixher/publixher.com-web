@@ -17,11 +17,11 @@ class getC
         $this->db = $db;
     }
 
-    public function profile(int $page, string $target,string $category=null,string $sub_category=null)
+    public function profile(int $page, string $target, string $category = null, string $sub_category = null)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_WRITER' => $target, 'ID_TARGET' => $target, 'NOWPAGE' => $page, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -81,11 +81,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function folder(int $page, string $folderId,string $category=null,string $sub_category=null)
+    public function folder(int $page, string $folderId, string $category = null, string $sub_category = null)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'FOLDER' => $folderId, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -141,11 +141,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function buyList(int $page,string $category=null,string $sub_category=null)
+    public function buyList(int $page, string $category = null, string $sub_category = null)
     {
-        $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('NOWPAGE' => $page, 'ID_USER' => $this->mId, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -190,7 +190,7 @@ WHERE BUY_LIST.ID_USER = :ID_USER
 
     public function one(string $cid)
     {
-        $parameter = array('ID' => $cid, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
+        $parameter = array('ID' => $cid, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'KNOCK_USER_ID' => $this->mId);
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -244,11 +244,11 @@ publixher.TBL_CONTENT
         return $result;
     }
 
-    public function tag(int $page, string $tag,string $category=null,string $sub_category=null)
+    public function tag(int $page, string $tag, string $category = null, string $sub_category = null)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -304,11 +304,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function body(int $page, string $body,string $category=null,string $sub_category=null)
+    public function body(int $page, string $body, string $category = null, string $sub_category = null)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -364,11 +364,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function subscribe(int $page,string $category=null,string $sub_category=null)
+    public function subscribe(int $page, string $category = null, string $sub_category = null)
     {
-        $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('ID_SLAVE' => $this->mId, 'NOWPAGE' => $page, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -425,11 +425,11 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function community(int $page,string $category=null,string $sub_category=null)
+    public function community(int $page, string $category = null, string $sub_category = null)
     {
-        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_USER' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $parameter = array('USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'ID_USER' => $this->mId, 'NOWPAGE' => $page, 'KNOCK_USER_ID' => $this->mId);
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         $sql = "SELECT
   CONT.ID,
   CONT.ID_WRITER,
@@ -490,14 +490,14 @@ LIMIT :NOWPAGE, 10";
         return $result;
     }
 
-    public function main(int $page,string $category=null,string $sub_category=null)
+    public function main(int $page, string $category = null, string $sub_category = null)
     {
         $parameter = array('USER_ID1' => $this->mId,
-            'USER_ID2' => $this->mId, 'NOWPAGE' => $page,'KNOCK_USER_ID'=>$this->mId/*,
+            'USER_ID2' => $this->mId, 'NOWPAGE' => $page, 'KNOCK_USER_ID' => $this->mId/*,
             'ME1' => $this->mId, 'ME2' => $this->mId,
             'ME3' => $this->mId*/);
-        $category!=null?$category_string="AND CONT.CATEGORY='${category}'":$category_string="";
-        $sub_category!=null?$sub_category_string="AND CONT.SUB_CATEGORY='${sub_category}'":$sub_category_string="";
+        $category != null ? $category_string = "AND CONT.CATEGORY='${category}'" : $category_string = "";
+        $sub_category != null ? $sub_category_string = "AND CONT.SUB_CATEGORY='${sub_category}'" : $sub_category_string = "";
         //모든 글중 내가 볼 수 있는 글
         $sql = "SELECT
   CONT.ID,
@@ -605,8 +605,12 @@ LIMIT :NOWPAGE, 10";
 //ORDER BY WRITE_DATE DESC
 //LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
-            $prepare->execute($parameter);
-        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        $prepare->execute($parameter);
+        try {
+            $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            $a=$e->getMessage();
+        }
         return $result;
     }
 
@@ -716,7 +720,7 @@ LIMIT :NOWPAGE, 10";
             $mongomanager->executeBulkWrite('publixher.contents', $bulk);
             //내 interest에서 $interesting_id에 없는건 전부 다 뺀다
             $bulk = new MongoDB\Driver\BulkWrite;
-            $bulk->update(['id'=>$this->mId],['$pull'=>['interest'=>['id'=>['$nin'=>$interesting_id]]]],['multi'=>true]);
+            $bulk->update(['id' => $this->mId], ['$pull' => ['interest' => ['id' => ['$nin' => $interesting_id]]]], ['multi' => true]);
             $bulk->update(['id' => $this->mId], ['$set' => ['recommended_list' => $recommended_id]], ['upsert' => true]);
             $mongomanager->executeBulkWrite('publixher.user', $bulk);
 

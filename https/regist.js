@@ -182,11 +182,13 @@ $(document).ready(function () {
         }
         if (idvali && dupidchk && pwvali && namevali) {
             e.preventDefault();
-            var formData = $('#rf').serialize();
+            if(!document.formData) {
+                document.formData = $('#rf').serialize();
+            }
             $.ajax({
                 url: "/php/data/registConfirm.php",
                 type: "POST",
-                data: formData,
+                data: document.formData,
                 dataType: 'json',
                 success: function (res) {
                     if (res['result'] == 'reg') {
@@ -203,7 +205,7 @@ $(document).ready(function () {
             return false;
         }
         $('#rf').fadeOut(function () {
-            $('#rf').replaceWith('<div>인증메일을 보냈습니다.<br> 메일을 통해 ID를 인증해주세요.</div>').fadeIn();
+            $('#rf').replaceWith('<div>인증메일을 보냈습니다.<br> 메일을 통해 ID를 인증해주세요.<div><button onclick="$(\'#submit\').trigger(\'click\')">메일 다시 받기</button></div></div>').fadeIn();
         })
     });
 
