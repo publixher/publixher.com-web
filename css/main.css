@@ -622,7 +622,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   background-image: none;
   width: 15%;
   height: 50px;
-  padding: 8px;
+  padding: 13px 8px;
   font-size: 14px;
 }
 .carousel-inner .nav-tabs>li:hover>a,
@@ -1409,6 +1409,11 @@ a:hover {
   display: inline-block;
   margin: 0 10px 0 0;
   border-radius: 4px;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+.thumbPic-wrap:hover{
+  opacity: 1;
 }
 #publixh-mod table tbody tr .priceinput .form-group{
   margin-bottom: 0 !important;
