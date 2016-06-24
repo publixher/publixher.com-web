@@ -19,7 +19,8 @@
             dataType: 'json',
             success: function (res) {
                 location.href='/';
-            },error: function () {
+            },error: function (request,status,error) {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
                 alert('작업중 문제가 생겼습니다.');
                 location.href='/https/login.php';
             }
