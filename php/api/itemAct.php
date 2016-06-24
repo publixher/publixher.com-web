@@ -447,6 +447,10 @@ LIMIT
             $prepare2->bindValue(':PRICE', $price, PDO::PARAM_STR);
             $prepare2->execute();
 
+            $sql="INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT)";
+            $prepare=$db->prepare($sql);
+            $prepare->execute(array('ID_USER'=>$userID,'ID_CONTENT'=>$ID));
+
             $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
             $prepare3 = $db->prepare($sql3);
             $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
