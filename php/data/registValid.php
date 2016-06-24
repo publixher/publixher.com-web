@@ -29,7 +29,7 @@ if(sha1($seq.$id)==$id_crypt) {
         $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
     }
     $c=new setCookie();
-    $c->setCid($result->getID(),$db);
+    $c->setCid($user->getID(),$db);
 }
 ?>
 <meta http-equiv='refresh' content='0;url=/'>
