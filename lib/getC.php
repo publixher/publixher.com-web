@@ -606,11 +606,7 @@ LIMIT :NOWPAGE, 10";
 //LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
         $prepare->execute($parameter);
-        try {
-            $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-        }catch(PDOException $e){
-            $a=$e->getMessage();
-        }
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 

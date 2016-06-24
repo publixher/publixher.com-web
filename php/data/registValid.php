@@ -1,6 +1,7 @@
 <?php
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
+require_once '../../lib/setCookie.php';
 $id=$_GET['id'];
 $id_crypt = $_GET['crypt'];
 $result=array();
