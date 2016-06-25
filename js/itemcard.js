@@ -813,7 +813,7 @@ $(document).ready(function () {
                     if (res['buy'] == 'f') {
                         alert('구매 실패 : ' + res['reason']);
                     } else {
-                        priceSpan.html('<span class="pubico pico-down-tri"></span>');
+                        priceSpan.html('<span class="pubico pico-down-tri"></span> 더보기');
                         priceSpan.removeClass('buyConfirm').addClass('bought');
                     }
                 }
@@ -863,7 +863,7 @@ $(document).ready(function () {
                 body.html(previewarr['' + thisitemID]).fadeIn();
             });
             priceSpan.fadeOut(function () {
-                priceSpan.html('<a><span class="pubico pico-down-tri"></span></a>').fadeIn();
+                priceSpan.html('<a><span class="pubico pico-down-tri"></span> 더보기</a>').fadeIn();
             });
             document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded').addClass('bought');

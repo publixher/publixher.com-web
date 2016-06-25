@@ -59,7 +59,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
     if (more == '1') {
-        write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span></a></span></td></tr></table></div> </div>';
+        write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span> 더보기</a></span></td></tr></table></div> </div>';
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
     }
@@ -132,7 +132,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
     if (bought) {
         if (more == '1') {
-            write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span></a></span></td></tr></table></div> </div>';
+            write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span> 더보기</a></span></td></tr></table></div> </div>';
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
         }
