@@ -175,9 +175,9 @@
                 <tbody>
                 <tr>
                     <td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span
-                                class="badgea"> 0</span></span></td>
+                                class="badgea"> </span></span></td>
                     <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span
-                                class="badgea"> 0</span></span></td>
+                                class="badgea"> </span></span></td>
                     <td class="tshare" style="background-color: rgb(244, 244, 244);"><span class="share"><span
                                 class="pubico pico-share"></span><a>공유하기</a></span></td>
                     <td class="tprice"><span class="price bought"><a><span
