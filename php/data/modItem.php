@@ -32,6 +32,16 @@ if ($action == 'get_item') {
     } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
         exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
     }
+    //유저의 수정 권한 확인
+    $sql="SELECT ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('ID'=>$_POST['ID']));
+    $id_writer_forchk=$prepare->fetchColumn();
+    $userinfo=$_SESSION['user'];
+
+    if(!($userinfo->getID()==$id_writer_forchk || $userinfo->getLEVEL()==99)){
+        exit();
+    }
     //여기부턴 uploadContent.php와 같음
 
     //이미지 소스만 가져오기
