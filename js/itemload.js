@@ -155,7 +155,9 @@ function getCards() {
     //페이지 로드 끝나면 아이템카드 불러오기
     if ($('#topcon').length > 0) {
         $('#topcon').after(spinner);
-    } else if ($('#upform').length > 0) {
+    } else if($('.notice').length>0){
+        $('.notice').after(spinner);
+    }else if ($('#upform').length > 0) {
         $('#upform').after(spinner);
     } else {
         $('#prea').after(spinner);
@@ -174,6 +176,8 @@ function getCards() {
                 write = '<div class="card item">포스트가 없습니다. 친구를 만들거나 보내기와 출판해보세요!</div>'
                 if ($('#topcon').length > 0) {
                     $('#topcon').after(write);
+                } else if($('.notice').length>0){
+                    $('.notice').after(write);
                 } else if ($('#upform').length > 0) {
                     $('#upform').after(write);
                 } else {
@@ -209,6 +213,10 @@ function getCards() {
                             write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,knocked);
                             if ($('#topcon').length > 0) {
                                 $('#topcon').after(write);
+                                $('#'+ID).hide().fadeIn()
+                                    .find('.gif').gifplayer({wait:true});
+                            } else if($('.notice').length>0){
+                                $('.notice').after(write);
                                 $('#'+ID).hide().fadeIn()
                                     .find('.gif').gifplayer({wait:true});
                             } else if ($('#upform').length > 0) {
@@ -249,7 +257,11 @@ function getCards() {
                                 $('#topcon').after(write);
                                 $('#'+ID).hide().fadeIn()
                                     .find('.gif').gifplayer({wait:true});
-                            } else if ($('#upform').length > 0) {
+                            } else if($('.notice').length>0){
+                                $('.notice').after(write);
+                                $('#'+ID).hide().fadeIn()
+                                    .find('.gif').gifplayer({wait:true});
+                            }  else if ($('#upform').length > 0) {
                                 $('#upform').after(write);
                                 $('#'+ID).hide().fadeIn()
                                     .find('.gif').gifplayer({wait:true});

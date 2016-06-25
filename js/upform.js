@@ -160,7 +160,7 @@ $(document).ready(function () {
                     ID_writer: mid,
                     for_sale: "Y",
                     price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
-                    category: category,
+                    category: category!=null?category:'SNS',
                     sub_category: sub_category,
                     adult: $('#adult').is(':checked'),
                     ad: $('#ad').is(':checked'),
