@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -180,11 +180,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="865" column="68" selection-start-line="865" selection-start-column="48" selection-end-line="865" selection-end-column="68" />
+            <state relative-caret-position="274">
+              <caret line="847" column="23" selection-start-line="847" selection-start-column="23" selection-end-line="847" selection-end-column="23" />
               <folding>
                 <marker date="1466846340000" expanded="true" signature="85:145" ph="{...}" />
                 <marker date="1466846340000" expanded="true" signature="15202:15233" ph="..." />
@@ -213,6 +213,16 @@
                 <marker date="1466846340000" expanded="true" signature="45325:45341" ph="..." />
                 <marker date="1466846340000" expanded="true" signature="71783:71822" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/itemload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -281,11 +291,11 @@
         <option value="$PROJECT_DIR$/php/api/itemAct.php" />
         <option value="$PROJECT_DIR$/lib/getC.php" />
         <option value="$PROJECT_DIR$/js/upform.js" />
-        <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
         <option value="$PROJECT_DIR$/https/regist.js" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
+        <option value="$PROJECT_DIR$/js/itemload.js" />
       </list>
     </option>
   </component>
@@ -709,14 +719,7 @@
       <workItem from="1466493862130" duration="13607000" />
       <workItem from="1466653611410" duration="11297000" />
       <workItem from="1466736404398" duration="6542000" />
-      <workItem from="1466829115757" duration="8856000" />
-    </task>
-    <task id="LOCAL-00348" summary="Merge branch 'master' of github.com:publixher/publixher.com-web&#10;&#10;# Conflicts:&#10;#&#9;php/api/registConfirm.php&#10;#&#9;php/data/registConfirm.php&#10;">
-      <created>1466502207906</created>
-      <option name="number" value="00348" />
-      <option name="presentableId" value="LOCAL-00348" />
-      <option name="project" value="LOCAL" />
-      <updated>1466502207906</updated>
+      <workItem from="1466829115757" duration="8921000" />
     </task>
     <task id="LOCAL-00349" summary="facebook으로 로그인 뺌">
       <created>1466502376084</created>
@@ -1054,11 +1057,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466845806502</updated>
     </task>
-    <option name="localTasksCounter" value="397" />
+    <task id="LOCAL-00397" summary="더보기 추가">
+      <created>1466846347867</created>
+      <option name="number" value="00397" />
+      <option name="presentableId" value="LOCAL-00397" />
+      <option name="project" value="LOCAL" />
+      <updated>1466846347867</updated>
+    </task>
+    <option name="localTasksCounter" value="398" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="427142000" />
+    <option name="totallyTimeSpent" value="427207000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1111,7 +1121,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="네이버 아이디로 로그인" />
     <MESSAGE value="구글 애널리틱스 바꿈" />
     <MESSAGE value="쿠키 방식 바꿈" />
     <MESSAGE value="컨텐츠 삭제 confirm" />
@@ -1136,7 +1145,8 @@
     <MESSAGE value="공지사항 밑에 가게" />
     <MESSAGE value="세션 id와 같거나 운영자가 아니면 다른사람 꺼 수정 못하도록" />
     <MESSAGE value="메일 다시보내기" />
-    <option name="LAST_COMMIT_MESSAGE" value="메일 다시보내기" />
+    <MESSAGE value="더보기 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="더보기 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1667,14 +1677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="909">
-          <caret line="340" column="75" selection-start-line="340" selection-start-column="75" selection-end-line="340" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1680">
@@ -1838,8 +1840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="865" column="68" selection-start-line="865" selection-start-column="48" selection-end-line="865" selection-end-column="68" />
+        <state relative-caret-position="274">
+          <caret line="847" column="23" selection-start-line="847" selection-start-column="23" selection-end-line="847" selection-end-column="23" />
           <folding>
             <marker date="1466846340000" expanded="true" signature="85:145" ph="{...}" />
             <marker date="1466846340000" expanded="true" signature="15202:15233" ph="..." />
@@ -1868,6 +1870,14 @@
             <marker date="1466846340000" expanded="true" signature="45325:45341" ph="..." />
             <marker date="1466846340000" expanded="true" signature="71783:71822" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
