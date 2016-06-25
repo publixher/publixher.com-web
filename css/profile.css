@@ -461,9 +461,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .tail {
   float: left;
   font-size: 12px;
-  margin-left: 9px;
-  margin-right: 9px;
-  margin-top: 10px;
+  margin: 9px 9px 2px 9px;
 }
 #wrap #middle .item .tail .badge,
 #wrap #middle .item-for-sale .tail .badge {
@@ -1152,9 +1150,9 @@ li a {
   margin-right: 5px;
 }
 .knocked{
-  padding: 1px 5px;
-  background-color: #80c1c4;
-  border-radius: 5px;
+  padding: 2px 5px;
+  background-color: #cd5d67;
+  border-radius: 50%;
   color: white;
 }
 .usrpic-wrap {
@@ -1613,9 +1611,7 @@ a:hover {
   color: #434343;
   position: absolute;
 }
-.gifplayer-ready {
-  margin-top: 0 !important;
-}
+
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
