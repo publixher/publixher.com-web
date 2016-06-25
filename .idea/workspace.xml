@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/upform.js" afterPath="$PROJECT_DIR$/js/upform.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -33,20 +33,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/data/registConfirm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-              <folding>
-                <marker date="1466507157000" expanded="true" signature="735:878" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1466507157000" expanded="true" signature="1556:1617" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1466507157000" expanded="true" signature="2000:2144" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="getC.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/getC.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -305,15 +291,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upform.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upform.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/upform.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="162" column="59" selection-start-line="162" selection-start-column="59" selection-end-line="162" selection-end-column="59" />
+            <state relative-caret-position="579">
+              <caret line="159" column="35" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
               <folding>
                 <marker date="1466836805000" expanded="true" signature="13190:13239" ph="..." />
                 <marker date="1466836805000" expanded="true" signature="13435:13484" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/itemload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-246">
+              <caret line="263" column="30" selection-start-line="263" selection-start-column="30" selection-end-line="263" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -372,7 +368,6 @@
         <option value="$PROJECT_DIR$/js/topcon.js" />
         <option value="/MySQL Fragment (getC.php:12206).sql" />
         <option value="/MySQL Fragment (getC.php:13826).sql" />
-        <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="$PROJECT_DIR$/php/api/getContent.php" />
         <option value="$PROJECT_DIR$/lib/loginchk.php" />
         <option value="$PROJECT_DIR$/php/data/getContent.php" />
@@ -409,6 +404,7 @@
         <option value="$PROJECT_DIR$/php/api/itemAct.php" />
         <option value="$PROJECT_DIR$/lib/getC.php" />
         <option value="$PROJECT_DIR$/js/upform.js" />
+        <option value="$PROJECT_DIR$/js/itemload.js" />
       </list>
     </option>
   </component>
@@ -832,14 +828,7 @@
       <workItem from="1466493862130" duration="13607000" />
       <workItem from="1466653611410" duration="11297000" />
       <workItem from="1466736404398" duration="6542000" />
-      <workItem from="1466829115757" duration="2643000" />
-    </task>
-    <task id="LOCAL-00343" summary="아날로그래프로">
-      <created>1466497835000</created>
-      <option name="number" value="00343" />
-      <option name="presentableId" value="LOCAL-00343" />
-      <option name="project" value="LOCAL" />
-      <updated>1466497835000</updated>
+      <workItem from="1466829115757" duration="3287000" />
     </task>
     <task id="LOCAL-00344" summary="네이버아이디로 로그인">
       <created>1466500314723</created>
@@ -1177,11 +1166,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466836149526</updated>
     </task>
-    <option name="localTasksCounter" value="392" />
+    <task id="LOCAL-00392" summary="카테고리 변경">
+      <created>1466836818803</created>
+      <option name="number" value="00392" />
+      <option name="presentableId" value="LOCAL-00392" />
+      <option name="project" value="LOCAL" />
+      <updated>1466836818803</updated>
+    </task>
+    <option name="localTasksCounter" value="393" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="420929000" />
+    <option name="totallyTimeSpent" value="421573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1234,7 +1230,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="callback-&gt;naver_reg" />
     <MESSAGE value="cdn-&gt;local" />
     <MESSAGE value="쿠키 설정" />
     <MESSAGE value="api_login $result -&gt; $user" />
@@ -1259,7 +1254,8 @@
     <MESSAGE value="registvalid $result-&gt;$user" />
     <MESSAGE value="sell_list도" />
     <MESSAGE value="dataType:json 주석" />
-    <option name="LAST_COMMIT_MESSAGE" value="dataType:json 주석" />
+    <MESSAGE value="카테고리 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="카테고리 변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1308,13 +1304,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/api/getContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/a.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1491,6 +1480,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding>
+            <marker date="1466655738000" expanded="true" signature="212:273" ph="SELECT WRITE... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="818:900" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466655738000" expanded="true" signature="1712:1807" ph="SELECT USER_... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="2765:2832" ph="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1466655738000" expanded="true" signature="3620:3715" ph="SELECT USER_... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="4689:4797" ph="SELECT ID_US... TBL_FRIENDS" />
+            <marker date="1466655738000" expanded="true" signature="5814:5906" ph="SELECT USER_... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="9108:9190" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1466655738000" expanded="true" signature="10358:10453" ph="SELECT USER_... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="11411:11478" ph="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1466655738000" expanded="true" signature="12266:12361" ph="SELECT USER_... TBL_USER" />
+            <marker date="1466655738000" expanded="true" signature="13247:13346" ph="SELECT ALLOW... TBL_FRIENDS" />
+            <marker date="1466655738000" expanded="true" signature="14117:14211" ph="SELECT SEQ F... TBL_FOLLOW" />
+            <marker date="1466655738000" expanded="true" signature="17312:17374" ph="SELECT ID,DI... TBL_FOLDER" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1519,6 +1524,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1905,12 +1911,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/upform.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="162" column="59" selection-start-line="162" selection-start-column="59" selection-end-line="162" selection-end-column="59" />
+        <state relative-caret-position="579">
+          <caret line="159" column="35" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
           <folding>
             <marker date="1466836805000" expanded="true" signature="13190:13239" ph="..." />
             <marker date="1466836805000" expanded="true" signature="13435:13484" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-246">
+          <caret line="263" column="30" selection-start-line="263" selection-start-column="30" selection-end-line="263" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
