@@ -160,7 +160,7 @@ $(document).ready(function () {
                     ID_writer: mid,
                     for_sale: "Y",
                     price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
-                    category: category,
+                    category: category!=null?category:'SNS',
                     sub_category: sub_category,
                     adult: $('#adult').is(':checked'),
                     ad: $('#ad').is(':checked'),
@@ -170,7 +170,7 @@ $(document).ready(function () {
                     expose: expose,
                     tags: JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
                 },
-                // dataType: 'json',
+                dataType: 'json',
                 success: function (res) {
                     if (res['status'] == -2) {
                         alert('해당 계정은 ' + res['result']['BAN'] + ' 까지 글 작성이 제한되었습니다.');
