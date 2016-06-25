@@ -161,7 +161,7 @@
     <!--    각 카드가 하나의 아이템-->
 <!--    공지사항 시작-->
     <div class="item-for-sale card notice" id="1sdhOPm7Xg" style="display: block;">
-        <div class="header" style="background-color: #434343;">
+        <div class="header" style="background-color: #5d5d5d;">
             <div class="item-profile-wrap"><img src="/img/crop50/e381c49473a8ecbd5d5265c05ea8590c.png"
                                                 class="profilepic"></div>
             <div class="writer"><a style="font-weight: 700; color: #e3e3e3;">analograph</a>&nbsp;<span
