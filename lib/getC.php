@@ -601,7 +601,7 @@ LIMIT :NOWPAGE, 10";
 //      publixher.TBL_CONTENT
 //    WHERE
 //      ID = CONT.ID
-//  ) ${category_string} ${sub_category_string}
+//  )
 //ORDER BY WRITE_DATE DESC
 //LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
