@@ -5,8 +5,9 @@
             <!-- 위탭 -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active" id="send-li"><a href="#send" aria-controls="home" role="tab"
-                                                          data-toggle="tab">보내기</a></li>
-                <li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab" data-toggle="tab">출판하기</a>
+                                                                       data-toggle="tab">보내기</a></li>
+                <li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"
+                                                       data-toggle="tab">출판하기</a>
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
@@ -45,7 +46,9 @@
             <!-- 똥싸기와 용돈벌기 내용 -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="send">
-                    <div contenteditable="true" class="form-control" id="sendBody"><div></div></div>
+                    <div contenteditable="true" class="form-control" id="sendBody">
+                        <div></div>
+                    </div>
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -82,7 +85,9 @@
                 <div role="tabpanel" class="tab-pane" id="publixh">
                     <div>
                         <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
-                        <div contenteditable="true" class="form-control" id="publiBody"><div></div></div>
+                        <div contenteditable="true" class="form-control" id="publiBody">
+                            <div></div>
+                        </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -154,6 +159,40 @@
         </div>
     </form>
     <!--    각 카드가 하나의 아이템-->
+<!--    공지사항 시작-->
+    <div class="item-for-sale card notice" id="1sdhOPm7Xg" style="display: block;">
+        <div class="header">
+            <div class="item-profile-wrap"><img src="/img/crop50/e381c49473a8ecbd5d5265c05ea8590c.png"
+                                                class="profilepic"></div>
+            <div class="writer"><a href="/profile/4jLDaImqHE">analograph</a>&nbsp;<span
+                    class="content-expose">전체공개</span></div>
+            <div class="conf"><a class="pin-a">핀</a>
+                <br></div>
+            <div class="title">Welcome to analograph</div>
+        </div>
+        <div class="body">analograph에 찾아주신 모든 분들께 감사합니다!&nbsp;한 달 뒤, 모바일 앱과 함께 정식런칭을 계획하고 있으니, 그 전까지&nbsp;어떠한 컨텐츠든 자유롭게
+            올려주세요!<br><img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic"><br><br></div>
+        <div class="tail opend-share" style="margin-bottom: 10px;">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span
+                                class="badgea"> 0</span></span></td>
+                    <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span
+                                class="badgea"> 0</span></span></td>
+                    <td class="tshare" style="background-color: rgb(244, 244, 244);"><span class="share"><span
+                                class="pubico pico-share"></span><a>공유하기</a></span></td>
+                    <td class="tprice"><span class="price bought"><a><span
+                                    class="pubico pico-down-tri"></span></a></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tab-share" style="display: block;">이 게시물의 url<br>
+                <div class="form-control linkurl">https://analograph.com/content/1sdhOPm7Xg</div>
+            </div>
+        </div>
+    </div>
+<!--    공지사항 끝-->
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
