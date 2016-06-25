@@ -164,7 +164,7 @@
         <div class="header">
             <div class="item-profile-wrap"><img src="/img/crop50/e381c49473a8ecbd5d5265c05ea8590c.png"
                                                 class="profilepic"></div>
-            <div class="writer"><a href="/profile/4jLDaImqHE">analograph</a>&nbsp;<span
+            <div class="writer"><a href="/profile/4jLDaImqHE" style="font-weight: 700">analograph</a>&nbsp;<span
                     class="content-expose">전체공개</span></div>
             <div class="title">Welcome to analograph</div>
         </div>
