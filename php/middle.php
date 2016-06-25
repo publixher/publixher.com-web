@@ -170,7 +170,7 @@
         </div>
         <div class="body">analograph에 찾아주신 모든 분들께 감사합니다!&nbsp;한 달 뒤, 모바일 앱과 함께 정식런칭을 계획하고 있으니, 그 전까지&nbsp;어떠한 컨텐츠든 자유롭게
             올려주세요!<br><br><div style="display: block; width: 90%; height: 150px; overflow: hidden; border-radius: 15px; position: relative; margin: 0 auto; border: 1px solid #ddd;">
-                <img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);
+                <img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 ">
             </div><br><br></div>
         <div class="tail opend-share">
