@@ -212,7 +212,11 @@ if ($action == 'get_item') {
             $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
         }
     }
-    $prepare->execute();
+    try {
+        $prepare->execute();
+    }catch(PDOException $e){
+        $a=$e->getMessage();
+    }
     //id로 컨텐츠 테이블의 내용도 가져옴
     $sql = "SELECT
   CONT.ID,
