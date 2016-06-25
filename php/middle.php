@@ -186,7 +186,7 @@
     transform: translate(-50%, -50%);
 "></div>
             <br><br></div>
-        <div class="tail opend-share" style="margin-bottom: 10px;">
+        <div class="tail opend-share">
             <table>
                 <tbody>
                 <tr>
