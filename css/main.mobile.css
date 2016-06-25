@@ -976,7 +976,7 @@ li a {
 }
 .knocked{
     padding: 2px 5px;
-    background-color: #cd5d67;
+    background-color: #394f64;
     border-radius: 50%;
     color: white;
 }
@@ -1394,6 +1394,9 @@ a:hover {
 }
 .pico-comment,
 .pico-share{
+    display: none;
+}
+#pinlist li:first-child{
     display: none;
 }
 #report-button {
