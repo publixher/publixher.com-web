@@ -74,6 +74,5 @@ if($_POST['resend']=="false") {
 <p><a href='http://analograph.com/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>";
     $sendmail=new Sendmail();
     $sendmail->send_mail($email,$from,$subject,$body);
-    $a=0;
 }
 ?>
