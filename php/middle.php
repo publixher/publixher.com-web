@@ -166,8 +166,6 @@
                                                 class="profilepic"></div>
             <div class="writer"><a href="/profile/4jLDaImqHE">analograph</a>&nbsp;<span
                     class="content-expose">전체공개</span></div>
-            <div class="conf"><a class="pin-a">핀</a>
-                <br></div>
             <div class="title">Welcome to analograph</div>
         </div>
         <div class="body">analograph에 찾아주신 모든 분들께 감사합니다!&nbsp;한 달 뒤, 모바일 앱과 함께 정식런칭을 계획하고 있으니, 그 전까지&nbsp;어떠한 컨텐츠든 자유롭게
@@ -187,9 +185,6 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="tab-share" style="display: block;">이 게시물의 url<br>
-                <div class="form-control linkurl">https://analograph.com/content/1sdhOPm7Xg</div>
-            </div>
         </div>
     </div>
 <!--    공지사항 끝-->
