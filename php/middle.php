@@ -159,7 +159,7 @@
         </div>
     </form>
     <!--    각 카드가 하나의 아이템-->
-<!--    공지사항 시작-->
+    <!--    공지사항 시작-->
     <div class="item-for-sale card notice" id="1sdhOPm7Xg" style="display: block;">
         <div class="header">
             <div class="item-profile-wrap"><img src="/img/crop50/e381c49473a8ecbd5d5265c05ea8590c.png"
@@ -169,7 +169,23 @@
             <div class="title">Welcome to analograph</div>
         </div>
         <div class="body">analograph에 찾아주신 모든 분들께 감사합니다!&nbsp;한 달 뒤, 모바일 앱과 함께 정식런칭을 계획하고 있으니, 그 전까지&nbsp;어떠한 컨텐츠든 자유롭게
-            올려주세요!<br><img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic"><br><br></div>
+            올려주세요!<br><br>
+            <div style="
+    display: block;
+    width: 90%;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #e3e3e3;
+"><img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+"></div>
+            <br><br></div>
         <div class="tail opend-share" style="margin-bottom: 10px;">
             <table>
                 <tbody>
@@ -178,7 +194,7 @@
                                 class="badgea"> </span></span></td>
                     <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span
                                 class="badgea"> </span></span></td>
-                    <td class="tshare" style="background-color: rgb(244, 244, 244);"><span class="share"><span
+                    <td class="tshare"><span class="share"><span
                                 class="pubico pico-share"></span><a>공유하기</a></span></td>
                     <td class="tprice"><span class="price bought"><a><span
                                     class="pubico pico-down-tri"></span></a></span></td>
@@ -187,7 +203,7 @@
             </table>
         </div>
     </div>
-<!--    공지사항 끝-->
+    <!--    공지사항 끝-->
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
