@@ -173,16 +173,10 @@
                 <img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 ">
             </div><br><br></div>
-        <div class="tail opend-share">
-            <table>
+        <div class="tail opend-share" style="padding: 9px 9px 2px 9px; width: 100%;">
+            <table style="margin: 0 auto">
                 <tbody>
                 <tr>
-                    <td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span
-                                class="badgea"> </span></span></td>
-                    <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span
-                                class="badgea"> </span></span></td>
-                    <td class="tshare"><span class="share"><span
-                                class="pubico pico-share"></span><a>공유하기</a></span></td>
                     <td class="tprice"><span class="price bought"><a><span
                                     class="pubico pico-down-tri"></span></a></span></td>
                 </tr>
