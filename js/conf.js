@@ -131,7 +131,7 @@ $(document).ready(function () {
                     for (var i = 0; i < res.length; i++) {
                         switch (res[i]['ACT']) {
                             case '1':
-                                var word = res[i]['USER_NAME'] + "님이 당신의 \"" + res[i]['TITLE'] + "\"게시물을 구매했습니다.";
+                                var word = res[i]['USER_NAME'] + "님이 회원님의 \"" + res[i]['TITLE'] + "\"게시물을 구매했습니다.";
                                 $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
                             case '2':
