@@ -13,7 +13,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/php/data/best.php',
             type: "GET",
-            dataType: 'jon',
+            dataType: 'json',
             data: data,
             success: function (res) {
                 spinner.detach();
