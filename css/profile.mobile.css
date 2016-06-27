@@ -33,6 +33,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   background-color: transparent;
   border-color: transparent;
 }
+#profile-middle-nav {
+  border-radius: 4px;
+  margin: 5px;
+  border: 1px solid #e3e3e3;
+}
 #profile-middle-nav>div{
   width: 50%;
   margin: 0 !important;
@@ -42,6 +47,16 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   width: 100%;
   border-radius: 0 !important;
   border: 0 solid #e3e3e3;
+}
+#activity{
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  background-color: white;
+  margin: 5px;
+}
+#name{
+  margin-top: 10px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div {
@@ -68,7 +83,7 @@ padding-top: 40px;
   overflow: hidden;
   border-radius: 4px;
   float: left;
-  margin: 0 10px;
+  margin: 10px;
   position: relative;
 }
 #left .profile-wrap #profilepic{
@@ -122,6 +137,7 @@ padding-top: 40px;
   border: 0;
   padding: 6px 9px;
   border-radius: 0;
+  height: 100%;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody {
   z-index: 1;
@@ -132,6 +148,7 @@ padding-top: 40px;
   border: 0;
   padding: 6px 9px;
   border-radius: 0;
+  height: 100%;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #publiBody img,
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody img {
@@ -982,8 +999,8 @@ li a {
   margin-right: 5px;
 }
 .knocked{
-  padding: 2px 5px;
-  background-color: #cd5d67;
+  padding: 2px 5.5px;
+  background-color: #394f64;
   border-radius: 50%;
   color: white;
 }
@@ -1326,7 +1343,7 @@ a:hover {
   border: 0;
 }
 #repnav- > li {
-  width: 20%;
+  width: 15%;
 }
 .pin-list span{
   display:inline-block;
@@ -1401,5 +1418,12 @@ a:hover {
 }
 .pico-comment,
 .pico-share{
+  display: none;
+}
+.linkurl{
+  width: 98%;
+  margin-left: 1%;
+}
+#notilist li:first-child{
   display: none;
 }
