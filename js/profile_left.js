@@ -17,6 +17,8 @@ $(document).ready(function(){
                         return 0;
                     }
                     alert('이 ID는 '+days+'일간 로그인이 제한됩니다.')
+                },error:function(xhr,status,error){
+                errorReport("ban",{days:days,target:targetid,token:token,action:"ban"},status,error);
                 }
             })
         }
@@ -28,7 +30,9 @@ $(document).ready(function(){
                 url:'/php/data/idManage.php',
                 type:'POST',
                 dataType:'json',
-                data:{target:targetid,token:token,action:"release"}
+                data:{target:targetid,token:token,action:"release"},error:function(xhr,status,error){
+                errorReport("release",{target:targetid,token:token,action:"release"},status,error);
+                }
             })
         }
     });
@@ -47,8 +51,8 @@ $(document).ready(function(){
                     li.fadeOut(function(){
                         $(li).remove();
                     })
-                }, error: function (request) {
-                    alert(request.responseText);
+                },error:function(xhr,status,error){
+                errorReport("deletefolder",{action: "deletefolder", userID: mid, folderid: thisfolder},status,error);
                 }
             })
         }

@@ -45,6 +45,8 @@ $(document).ready(function () {
                     }
                 }
                 page = page + 1;
+            },error:function(xhr,status,error){
+            errorReport("confnotireg",{action: "confnotireq",nowpage:page},status,error);
             }
         })
     }

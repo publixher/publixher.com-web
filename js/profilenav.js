@@ -61,8 +61,9 @@ $(document).ready(function () {
                 } else if (btn.hasClass('onfriend')) {
                     btn.html('친구신청').addClass('btn-default').addClass('request').removeClass('btn-success').removeClass('onfriend').removeAttr('disabled');
                 }
-            }, error: function () {
+            }, error: function (xhr,status,error) {
                 $(this).removeAttr('disabled');
+                errorReport("friend",{targetID: targetid, myID: myID, action: action, token: token},status,error)
             }
         });
     });
@@ -92,6 +93,8 @@ $(document).ready(function () {
                     alert('서버 오류가 생겼습니다. 다시 시도해 주세요');
                     btn.removeClass('freqanswer');
                 }
+            },error:function(xhr,status,error){
+            errorReport("friendRes",{targetID: fid, requestid: requestid, action: action, myID: myID, token: token},status,error);
             }
         })
     })
@@ -113,8 +116,9 @@ $(document).ready(function () {
                     btn.addClass('subscribe').removeClass('dis_subscribe').addClass('btn-default').removeClass('btn-info').html('구독하기');
                 }
                 btn.removeAttr('disabled');
-            }, error: function () {
+            }, error: function (xhr,status,error) {
                 $(this).removeAttr('disabled');
+                errorReport("subscribe",{targetID: targetID, action: action, userID: mid, token: token},status,error)
             }
         })
     })
@@ -124,7 +128,9 @@ $(document).ready(function () {
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
-            data: {action: "writeAuth", userID: mid, radioValue: radioValue}
+            data: {action: "writeAuth", userID: mid, radioValue: radioValue},error:function(xhr,status,error){
+            errorReport("writeAuth",{action: "writeAuth", userID: mid, radioValue: radioValue},status,error);
+            }
         })
     })
     $(".expAuth").change(function () {
@@ -135,7 +141,9 @@ $(document).ready(function () {
         $.ajax({
             url: "/php/data/profileChange.php",
             type: "POST",
-            data: {action: "expAuth", userID: mid, checkValue: checkValue}
+            data: {action: "expAuth", userID: mid, checkValue: checkValue},error:function(xhr,status,error){
+            errorReport("expAuth",{action: "expAuth", userID: mid, checkValue: checkValue},status,error);
+            }
         })
     })
 });

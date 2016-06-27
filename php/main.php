@@ -47,6 +47,7 @@
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.1-min.js"></script>
     <script src="/js/plugins.js"></script>
+    <script src="/js/errorReport.js"></script>
 </head>
 <body>
 

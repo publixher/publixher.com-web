@@ -65,8 +65,8 @@ $(document).ready(function(){
                     $('#'+ID).hide().fadeIn();
                 }
             }
-        }, error: function (request) {
-            alert(request.responseText);
+        },error:function(xhr,status,error){
+        errorReport("topcon",{profile:targetID},status,error);
         }
     })
 });

@@ -137,7 +137,16 @@ $(document).ready(function () {
                     document.location.href = '#' + ID;
                 },
                 error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    errorReport("send_upload",{
+                        body: $('#sendBody').html(),
+                        body_text: $('#sendBody').text(),
+                        ID_writer: mid,
+                        folder: $folderID,
+                        token: token,
+                        expose: expose,
+                        targetID: ID_target,
+                        tags: JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
+                    },status,error)
                     btn.removeAttr('disabled')
                 }
             })
@@ -212,7 +221,22 @@ $(document).ready(function () {
                     document.location.href = '#' + ID;
                 },
                 error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    errorReport("publixh_upload",{
+                        body: $('#publiBody').html(),
+                        body_text: $('#publiBody').text(),
+                        ID_writer: mid,
+                        for_sale: "Y",
+                        price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
+                        category: category!=null?category:'SNS',
+                        sub_category: sub_category,
+                        adult: $('#adult').is(':checked'),
+                        ad: $('#ad').is(':checked'),
+                        title: $('#saleTitle').val(),
+                        folder: $folderID,
+                        token: token,
+                        expose: expose,
+                        tags: JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
+                    },status,error)
                     btn.removeAttr('disabled')
                 }
             })
@@ -395,7 +419,9 @@ $(document).ready(function () {
                                 $('<a>').attr('href', '#').text(folderName))
                                 .fadeIn()
                         )
-                    }, complete: form.val('')
+                    }, complete: form.val(''),error:function(xhr,status,error){
+                    errorReport("new_folder",{folder: folderName, action: "newfolder"},status,error);
+                    }
                 })
             } else {
                 alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')

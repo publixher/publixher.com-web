@@ -43,6 +43,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/profileConfig.js"></script>
+    <script src="/js/errorReport.js"></script>
+
     <style>
         #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
             display: none;

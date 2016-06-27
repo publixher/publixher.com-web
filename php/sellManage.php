@@ -57,6 +57,8 @@
 
     <script src="/js/sellManage.js"></script>
     <script src="/js/plugins.js"></script>
+    <script src="/js/errorReport.js"></script>
+
 </head>
 <body>
 <div id="wrap">

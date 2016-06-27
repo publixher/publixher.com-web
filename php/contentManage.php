@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
     <title>프로필</title>
     <!-- 부트스트랩 -->
@@ -12,15 +13,16 @@
     <link rel="stylesheet" href="/plugins/Bootstrap-Image-Gallery-master/css/bootstrap-image-gallery.min.css">
     <link rel="stylesheet" href="/css/publixherico/style.css">
     <?php
-    function isMobile(){
-        $arr_browser = array ("iphone", "android", "ipod", "iemobile", "mobile", "lgtelecom", "ppc", "symbianos", "blackberry", "ipad");
+    function isMobile()
+    {
+        $arr_browser = array("iphone", "android", "ipod", "iemobile", "mobile", "lgtelecom", "ppc", "symbianos", "blackberry", "ipad");
         $httpUserAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
         // 기본값으로 모바일 브라우저가 아닌것으로 간주함
         $mobile_browser = false;
-        $mobilesize=count($arr_browser);
+        $mobilesize = count($arr_browser);
         // 모바일브라우저에 해당하는 문자열이 있는 경우 $mobile_browser 를 true로 설정
-        for($indexi = 0 ; $indexi < $mobilesize ; $indexi++){
-            if(strpos($httpUserAgent, $arr_browser[$indexi]) == true){
+        for ($indexi = 0; $indexi < $mobilesize; $indexi++) {
+            if (strpos($httpUserAgent, $arr_browser[$indexi]) == true) {
                 $mobile_browser = true;
                 break;
             }
@@ -28,12 +30,12 @@
         return $mobile_browser;
     }
 
-    if(isMobile()){
+    if (isMobile()) {
         echo '<link href="/css/profile.mobile.css" rel="stylesheet">';
-    }else{
+    } else {
         echo '<link href="/css/profile.css" rel="stylesheet">';
     }
-    ?>    <!--[if lt IE 9]>
+    ?> <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -44,19 +46,21 @@
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="/js/plugins.js"></script>
+    <script src="/js/errorReport.js"></script>
+
     <!--    <script src="../js/regist.js"></script>-->
 </head>
 <body>
 <div id="wrap">
     <?php
-    require_once'../conf/User.php';
-    require_once'../conf/database_conf.php';
+    require_once '../conf/User.php';
+    require_once '../conf/database_conf.php';
     session_start();
     require_once "../lib/loginchk.php";
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
     $userID = $userinfo->getID();
-    $_GET['id']=$folderuser['ID_USER'];
+    $_GET['id'] = $folderuser['ID_USER'];
     require "profile_left.php";
     //중간
     echo '<div id="middle"><span id="prea"></span>';
@@ -65,7 +69,18 @@
     require "right.php";
     ?>
     <!--    구글 애널리틱스-->
-    <script>   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-73277050-2', 'auto');   ga('send', 'pageview');  </script>
+    <script>   (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-73277050-2', 'auto');
+        ga('send', 'pageview');  </script>
 </div>
 </body>
 </html>

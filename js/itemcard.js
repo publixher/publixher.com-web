@@ -34,8 +34,8 @@ $(document).ready(function () {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                     pico.removeClass('knocked')
                 }
-            }, error: function (request, status, error) {
-                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            }, error: function (xhr, status, error) {
+                errorReport("knock",{ID: thisitemID, action: "knock", userID: mid, token: token},status,error)
                 knockbtn.addClass('knock');
             }
         })
@@ -48,6 +48,8 @@ $(document).ready(function () {
             data: {userID: mid, action: 'point'},
             success: function (res) {
                 callBack(res['result']['CASH_POINT']);
+            },error:function(xhr,status,error){
+            errorReport("getpoint",{userID: mid, action: 'point'},status,error);
             }
         })
     }
@@ -163,6 +165,8 @@ $(document).ready(function () {
                                                                     })
                                                             )
                                                         }
+                                                    },error:function(xhr,status,error){
+                                                    errorReport("nameFind",{target: 'friend', mid: mid, name: name},status,error);
                                                     }
                                                 })
                                             }
@@ -304,8 +308,8 @@ $(document).ready(function () {
                         $('a[href=#time-' + thisitemID + ']').trigger('click');
 
                     }
-                }, error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }, error: function (xhr, status, error) {
+                    errorReport("comment",{ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},status,error)
                 }
             })
             tail.addClass('opend-comment');
@@ -372,8 +376,8 @@ $(document).ready(function () {
                 if (parseInt(index) == 0 && res['result'] != 'NO') {
                     registRep(res, sort + '-' + num);
                 }
-            }, error: function (request, status, error) {
-                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            },error:function(xhr,status,error){
+            errorReport("comment",{ID: num, action: "comment", userID: mid, sort: sort, token: token},status,error);
             }
         })
     })
@@ -432,8 +436,8 @@ $(document).ready(function () {
                 }
 
                 registRep(res, sort + '-' + num);
-            }, error: function (request, status, error) {
-                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            },error:function(xhr,status,error){
+            errorReport("more_comment",{ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token},status,error);
             }
         })
     })
@@ -477,9 +481,16 @@ $(document).ready(function () {
                     $('#' + thisitemID + ' .tail .tab-comment').remove();
                     $('#' + thisitemID + ' .tail').removeClass('opend-comment');
                     $('#' + thisitemID + ' .comment').trigger('click');
-                }, error: function (request, status, error) {
-                    thisform.addClass('commentReg');
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                },error:function(xhr,status,error){
+                errorReport("commentreg",{
+                    ID: thisitemID,
+                    action: "commentreg",
+                    userID: mid,
+                    comment: reply,
+                    token: token,
+                    taglist: taglist,
+                    donatelist: donatelist
+                },status,error);
                 }
             })
         }
@@ -506,6 +517,8 @@ $(document).ready(function () {
 
                     }
                     else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
+                },error:function(xhr,status,error){
+                errorReport("rep_del",{ID: thisrepID, action: "rep_del", token: token, userID: mid, type: type},status,error);
                 }
             })
         }
@@ -662,6 +675,8 @@ $(document).ready(function () {
                                 .fadeIn()
                         )
 
+                },error:function(xhr,status,error){
+                errorReport("sub_comment",{ID: thisitemID, repID: thisrepID, action: "sub_comment", userID: mid, token: token},status,error);
                 }
             });
         } else {
@@ -711,6 +726,16 @@ $(document).ready(function () {
                     $('#' + sub).remove();
                     $('#' + thisreply + ' .repreplybad').text(res['SUB_REPLY']);
                     $('#' + thisreply + ' .repreply').trigger('click');
+                },error:function(xhr,status,error){
+                errorReport("commentreg_sub",{
+                    ID: thisitemID,
+                    action: "commentreg_sub",
+                    repID: thisrepID,
+                    userID: mid,
+                    comment: reply,
+                    token: token,
+                    taglist: taglist
+                },status,error);
                 }
             })
         }
@@ -760,6 +785,8 @@ $(document).ready(function () {
                 }
 
                 registRep(res, caret);
+            },error:function(xhr,status,error){
+            errorReport("more_sub_comment",{repID: repID, action: "more_sub_comment", userID: mid, index: index, token: token},status,error);
             }
         })
     })
@@ -817,9 +844,14 @@ $(document).ready(function () {
                         priceSpan.removeClass('buyConfirm').addClass('bought');
                     }
                 }
-                , error: function (request, status, error) {
+                , error: function (xhr, status, error) {
                     pricebtn.addClass('price')
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    errorReport("buy",{
+                        ID: thisitemID,
+                        action: "buy",
+                        userID: mid,
+                        token: token
+                    },status,error)
                 }
             })
         } else if (priceSpan.hasClass('bought')) {
@@ -852,8 +884,8 @@ $(document).ready(function () {
 
                     priceSpan.removeClass('bought').addClass('expanded');
                 }
-                , error: function (request) {
-                    alert(request.responseText);
+                ,error:function(xhr,status,error){
+                errorReport("more",{ID: thisitemID, action: "more", userID: mid, token: token},status,error);
                 }
             })
         } else if (priceSpan.hasClass('expanded')) {
@@ -896,8 +928,8 @@ $(document).ready(function () {
                     } else {
                         alert('게시물이 삭제되는 도중 오류가 생겼습니다. 관리자에게 문의해 주세요.');
                     }
-                }, error: function (request) {
-                    alert(request.responseText);
+                },error:function(xhr,status,error){
+                errorReport("del",{ID: thisitemID, action: "del", token: token},status,error);
                 }
             })
         }
@@ -973,6 +1005,8 @@ $(document).ready(function () {
                     }
                 }
                 $('#itemModModal').modal({show: true})
+            },error:function(xhr,status,error){
+            errorReport("get_item",{itemID: thisitemID, action: "get_item"},status,error);
             }
         })
     })
@@ -1078,7 +1112,17 @@ $(document).ready(function () {
                     btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    errorReport("mod_item",{
+                        ID: itemID_mod,
+                        body: $('#sendBody-mod').html(),
+                        body_text: $('#sendBody-mod').text(),
+                        ID_writer: mid,
+                        folder: folderid_mod,
+                        token: token,
+                        tag: JSON.stringify($('#send-tag-mod').tagEditor('getTags')[0].tags),
+                        expose: expose_mod,
+                        action: "mod_item"
+                    },status,error);
                     btn.removeAttr('disabled')
                 }
             })
@@ -1147,7 +1191,23 @@ $(document).ready(function () {
                     btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    errorReport("mod_item",{
+                        ID: itemID_mod,
+                        body: $('#publiBody-mod').html(),
+                        body_text: $('#publiBody-mod').text(),
+                        for_sale: "Y",
+                        price: $('#contentCost-mod').val().length > 0 ? $('#contentCost-mod').val() : 0,
+                        category: category_mod,
+                        sub_category: sub_category_mod,
+                        adult: $('#adult-mod').is(':checked'),
+                        ad: $('#ad-mod').is(':checked'),
+                        title: $('#saleTitle-mod').val(),
+                        folder: folderid_mod,
+                        token: token,
+                        tag: JSON.stringify($('#publi-tag-mod').tagEditor('getTags')[0].tags),
+                        expose: expose_mod,
+                        action: "mod_item"
+                    },status,error);
                     btn.removeAttr('disabled')
                 }
             })
@@ -1264,8 +1324,8 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res['result'] != 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
-            }, error: function (request) {
-                alert(request.responseText);
+            },error:function(xhr,status,error){
+            errorReport("top",{ID: thisitemID, action: "top", mid: mid, token: token},status,error);
             }
         })
     });
@@ -1287,8 +1347,8 @@ $(document).ready(function () {
                 else {
                     $('#' + thisrepID + ' .repknockbad').text(res['KNOCK']);
                 }
-            }, error: function (request) {
-                alert(request.responseText);
+            },error:function(xhr,status,error){
+            errorReport("repknock",{ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token},status,error);
             }
         })
     });
@@ -1312,6 +1372,8 @@ $(document).ready(function () {
                     } else {
                         alert('작업중 문제가 생겼습니다.')
                     }
+                },error:function(xhr,status,error){
+                errorReport("delPin",{ID: thisitemID, token: token, action: "delPin", userID: mid},status,error);
                 }
             })
         } else {
@@ -1328,6 +1390,8 @@ $(document).ready(function () {
                     } else {
                         alert('작업중 문제가 생겼습니다.')
                     }
+                },error:function(xhr,status,error){
+                errorReport("addPin",{ID: thisitemID, token: token, action: "addPin", userID: mid},status,error);
                 }
             })
         }
@@ -1351,6 +1415,8 @@ $(document).ready(function () {
                         alert('이미 신고한 게시물입니다.')
                     }
                     btn.addClass('itemReport');
+                },error:function(xhr,status,error){
+                errorReport("report",{ID: thisitemID, token: token, action: "report", userID: mid},status,error);
                 }
             });
         }

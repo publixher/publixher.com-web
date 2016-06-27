@@ -9,11 +9,12 @@ $(document).ready(function () {
     $('#market').append(spinner)
     //로딩 다 끝내면 베스트 게시물 찾아오기
     function getBest(action) {
+        var data={act: action};
         $.ajax({
             url: '/php/data/best.php',
             type: "GET",
-            dataType: 'json',
-            data: {act: action},
+            dataType: 'jon',
+            data: data,
             success: function (res) {
                 spinner.detach();
                 for (var i = 0; i < res.length; i++) {
@@ -39,6 +40,8 @@ $(document).ready(function () {
                         )
 
                 }
+            },error:function(xhr,status,error){
+                errorReport("getBest",data,status,error)
             }
         })
     }

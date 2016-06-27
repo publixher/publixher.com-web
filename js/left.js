@@ -10,7 +10,9 @@ $(document).ready(function(){
         }else{
             mu=($(this).attr('href')).replace('/profile/', '')
         }
-        $.ajax({url:"php/data/subscribe.php", type: "GET", data: {mu:mu,action:"check"}, dataType: 'json'})
+        $.ajax({url:"php/data/subscribe.php", type: "GET", data: {mu:mu,action:"check"}, dataType: 'json',error:function(xhr,status,error){
+            errorReport("subscribe_check",{mu:mu,action:"check"},status,error);
+        }})
         $('.newcontent[data-substarget='+mu+']').remove();
     })
     //건의 및 오류 신고

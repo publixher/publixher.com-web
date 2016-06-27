@@ -10,10 +10,11 @@ $(document).ready(function () {
         if (search_word.length > 1) {
             $('#searchResult').css('display', 'block').append(spinner);
             function search(target) {
+                var data={searchword: search_word, target: target,mid:mid,name:search_word}
                 $.ajax({
                     url: "/php/data/nameFind.php",
                     type: "GET",
-                    data: {searchword: search_word, target: target,mid:mid,name:search_word},
+                    data: data,
                     dataType: 'json',
                     success: function (res) {
                         console.log(res)
@@ -76,6 +77,8 @@ $(document).ready(function () {
                             Result.html('');
                             Result.css('display', 'none');
                         }
+                    },error:function(xhr,status,error){
+                        errorReport("search",data,status,error)
                     }
                 });
             }
@@ -107,6 +110,8 @@ $(document).ready(function () {
             if (res['COUNT'] > 0) {
                 $('#notibtn').append('<span class="badge">' + res['COUNT'] + '</span>');
             }
+        },error:function(xhr,status,error){
+            errorReport("getNoti",{action: "confonload"},status,error)
         }
     })
     //알림을 받아오는 함수
@@ -168,6 +173,8 @@ $(document).ready(function () {
                     }
                     notiPage = notiPage + 1;
                     notiLoading = false;
+                },error:function(xhr,status,error){
+                    errorReport("getNoti",{action: "confnotireq", nowpage: notiPage},status,error)
                 }
             })
         }
@@ -230,6 +237,8 @@ $(document).ready(function () {
                         $('#pinlist').addClass('loaded');
                     }
                     pinLoading = false;
+                },error:function(xhr,status,error){
+                    errorReport("getPin",{action: "loadpin", nowpage: pinPage},status,error)
                 }
             })
         }
@@ -253,6 +262,8 @@ $(document).ready(function () {
                 } else {
                     alert('작업중 문제가 생겼습니다.')
                 }
+            },error:function(xhr,status,error){
+            errorReport("delPin",{ID: ID, token: token, action: "delPin", userID: mid},status,error);
             }
         })
     });

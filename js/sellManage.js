@@ -142,13 +142,7 @@ $(document).ready(function () {
                     spinner.detach();
                     return;
                 }
-                if (xhr.status == 500) {
-                    spinner.detach();
-                    console.log('서버 오류! 관리자에게 문의하기')
-                } else {
-                    spinner.detach();
-                    console.log('몰랑몰랑')
-                }
+                errorReport("cms",{sort: sort, page: page, action: "most"},textStatus,errorThrown)
             }, complete: function () {
                 spinner.detach();
             }
@@ -188,6 +182,8 @@ $(document).ready(function () {
                 spinner.detach();
                 $('#start_date').removeAttr('disabled');
                 $('#end_date').removeAttr('disabled');
+            },error:function(xhr,status,error){
+            errorReport("cms_monthly",{action: "monthly", start: start, end: end},status,error);
             }
         })
     }
@@ -264,13 +260,7 @@ $(document).ready(function () {
                     spinner.detach();
                     return;
                 }
-                if (xhr.status == 500) {
-                    spinner.detach();
-                    console.log('서버 오류! 관리자에게 문의하기')
-                } else {
-                    spinner.detach();
-                    console.log('몰랑몰랑')
-                }
+                errorReport("cms_graph",{action: "item", contentID: id},textStatus,errorThrown)
             }, complete: function () {
                 spinner.detach();
             }

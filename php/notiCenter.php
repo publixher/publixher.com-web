@@ -20,6 +20,8 @@
     <script src="/plugins/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/notiCenter.js"></script>
+    <script src="/js/errorReport.js"></script>
+
 </head>
 <body>
 <div id="wrap">

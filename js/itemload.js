@@ -286,13 +286,7 @@ function getCards() {
                 spinner.detach();
                 return;
             }
-            if (xhr.status == 500) {
-                spinner.detach();
-                console.log('서버 오류! 관리자에게 문의하기')
-            } else {
-                spinner.detach();
-                console.log('몰랑몰랑')
-            }
+            errorReport("itemLoad",loadOption,textStatus,errorThrown)
         }
     })
 }
@@ -405,11 +399,7 @@ $(document).ready(function () {
                             }
                             return;
                         }
-                        if (xhr.status == 500) {
-                            console.log('서버 오류! 관리자에게 문의하기')
-                        } else {
-                            console.log('몰랑몰랑')
-                        }
+                        errorReport("loadOption_scroll",loadOption,textStatus,errorThrown)
                     }
                 })
             }
