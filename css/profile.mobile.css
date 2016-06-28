@@ -1414,6 +1414,18 @@ a:hover {
   display: block;
   margin-top: 50px;
 }
+.deletefolder {
+  background-color: transparent;
+  border: 0;
+  font-size: 10px;
+  color: black;
+  right: 0 !important;
+}
+.deletefolder:hover,
+.deletefolder:active,
+.deletefolder:focus {
+  background-color: #434343;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
