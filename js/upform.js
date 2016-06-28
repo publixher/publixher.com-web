@@ -148,6 +148,7 @@ $(document).ready(function () {
                         tags: JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
                     },status,error)
                     btn.removeAttr('disabled')
+                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -238,6 +239,7 @@ $(document).ready(function () {
                         tags: JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
                     },status,error)
                     btn.removeAttr('disabled')
+                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         } else {
@@ -421,6 +423,7 @@ $(document).ready(function () {
                         )
                     }, complete: form.val(''),error:function(xhr,status,error){
                     errorReport("new_folder",{folder: folderName, action: "newfolder"},status,error);
+                        alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                     }
                 })
             } else {

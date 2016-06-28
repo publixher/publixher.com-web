@@ -78,6 +78,7 @@ $(document).ready(function () {
                             Result.css('display', 'none');
                         }
                     },error:function(xhr,status,error){
+                        alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                         errorReport("search",data,status,error)
                     }
                 });
@@ -112,6 +113,7 @@ $(document).ready(function () {
             }
         },error:function(xhr,status,error){
             errorReport("getNoti",{action: "confonload"},status,error)
+            alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
         }
     })
     //알림을 받아오는 함수
@@ -175,6 +177,7 @@ $(document).ready(function () {
                     notiLoading = false;
                 },error:function(xhr,status,error){
                     errorReport("getNoti",{action: "confnotireq", nowpage: notiPage},status,error)
+                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -239,6 +242,7 @@ $(document).ready(function () {
                     pinLoading = false;
                 },error:function(xhr,status,error){
                     errorReport("getPin",{action: "loadpin", nowpage: pinPage},status,error)
+                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -264,6 +268,7 @@ $(document).ready(function () {
                 }
             },error:function(xhr,status,error){
             errorReport("delPin",{ID: ID, token: token, action: "delPin", userID: mid},status,error);
+                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     });
