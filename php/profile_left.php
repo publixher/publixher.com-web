@@ -57,11 +57,11 @@
     $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-    echo '<hr>폴더목록<ul>';
+    echo '<hr><div id="FolDerFolDeR">폴더목록<ul>';
     for ($i = 0; $i < count($FOLDER); $i++) {
         echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
     }
-    echo '</ul>';
+    echo '</ul></div>';
     if ($userinfo->getLEVEL() == 99) {
         echo <<<END
 <hr>관리자 권한
