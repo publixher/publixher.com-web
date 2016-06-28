@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="로드">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -83,21 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sellManage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sellManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1038">
-              <caret line="265" column="18" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
+            <state relative-caret-position="496">
+              <caret line="139" column="31" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1277">
-              <caret line="289" column="34" selection-start-line="289" selection-start-column="34" selection-end-line="289" selection-end-column="34" />
+            <state relative-caret-position="1262">
+              <caret line="243" column="52" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -204,11 +204,11 @@
         <option value="$PROJECT_DIR$/js/notiCenter.js" />
         <option value="$PROJECT_DIR$/js/profile_left.js" />
         <option value="$PROJECT_DIR$/js/profilenav.js" />
-        <option value="$PROJECT_DIR$/js/sellManage.js" />
         <option value="$PROJECT_DIR$/js/topcon.js" />
         <option value="$PROJECT_DIR$/js/upform.js" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
         <option value="$PROJECT_DIR$/js/itemload.js" />
+        <option value="$PROJECT_DIR$/js/sellManage.js" />
       </list>
     </option>
   </component>
@@ -634,14 +634,7 @@
       <workItem from="1466736404398" duration="6542000" />
       <workItem from="1466829115757" duration="10483000" />
       <workItem from="1466999290881" duration="10356000" />
-      <workItem from="1467087318195" duration="1673000" />
-    </task>
-    <task id="LOCAL-00356" summary="naver_reg()">
-      <created>1466503480518</created>
-      <option name="number" value="00356" />
-      <option name="presentableId" value="LOCAL-00356" />
-      <option name="project" value="LOCAL" />
-      <updated>1466503480518</updated>
+      <workItem from="1467087318195" duration="2453000" />
     </task>
     <task id="LOCAL-00357" summary="callback-&gt;naver_reg()">
       <created>1466503723806</created>
@@ -979,11 +972,18 @@
       <option name="project" value="LOCAL" />
       <updated>1467099714899</updated>
     </task>
-    <option name="localTasksCounter" value="405" />
+    <task id="LOCAL-00405" summary="로드할땐 에러 표시 뺌">
+      <created>1467100124028</created>
+      <option name="number" value="00405" />
+      <option name="presentableId" value="LOCAL-00405" />
+      <option name="project" value="LOCAL" />
+      <updated>1467100124028</updated>
+    </task>
+    <option name="localTasksCounter" value="406" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440798000" />
+    <option name="totallyTimeSpent" value="441578000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1036,7 +1036,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="프로필 모바일 스타일 적용,페이스북 로그인 가능" />
     <MESSAGE value="페이스북 버튼" />
     <MESSAGE value="api로그인 표시" />
     <MESSAGE value="profileconfig 모바일 분기" />
@@ -1061,7 +1060,8 @@
     <MESSAGE value="에러 몽고에 저장하기" />
     <MESSAGE value="에러 사과문 표시" />
     <MESSAGE value="폴더폴더!" />
-    <option name="LAST_COMMIT_MESSAGE" value="폴더폴더!" />
+    <MESSAGE value="로드할땐 에러 표시 뺌" />
+    <option name="LAST_COMMIT_MESSAGE" value="로드할땐 에러 표시 뺌" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1526,18 +1526,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1038">
-          <caret line="265" column="18" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
+        <state relative-caret-position="1262">
+          <caret line="243" column="52" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+    <entry file="file://$PROJECT_DIR$/js/sellManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1277">
-          <caret line="289" column="34" selection-start-line="289" selection-start-column="34" selection-end-line="289" selection-end-column="34" />
+        <state relative-caret-position="496">
+          <caret line="139" column="31" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
           <folding />
         </state>
       </provider>
