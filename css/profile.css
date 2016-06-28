@@ -91,15 +91,15 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle #picreg {
   width: 160px;
   height: 160px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 4px;
 }
 #wrap #middle #picreg .file-input-img {
-  position: relative;
-  float: left;
-  width: 160px !important;
-  height: 160px;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0 0 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #wrap #middle #picreg .fileupform {
   display: inline-block;
