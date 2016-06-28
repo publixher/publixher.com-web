@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/best.js" afterPath="$PROJECT_DIR$/js/best.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/conf.js" afterPath="$PROJECT_DIR$/js/conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/left.js" afterPath="$PROJECT_DIR$/js/left.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/notiCenter.js" afterPath="$PROJECT_DIR$/js/notiCenter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/profile_left.js" afterPath="$PROJECT_DIR$/js/profile_left.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/profilenav.js" afterPath="$PROJECT_DIR$/js/profilenav.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sellManage.js" afterPath="$PROJECT_DIR$/js/sellManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/topcon.js" afterPath="$PROJECT_DIR$/js/topcon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/upform.js" afterPath="$PROJECT_DIR$/js/upform.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_left.php" afterPath="$PROJECT_DIR$/php/profile_left.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -103,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upform.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upform.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/upform.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1518">
-              <caret line="425" column="104" selection-start-line="425" selection-start-column="104" selection-end-line="425" selection-end-column="104" />
+            <state relative-caret-position="423">
+              <caret line="352" column="44" selection-start-line="352" selection-start-column="44" selection-end-line="352" selection-end-column="44" />
               <folding>
                 <marker date="1467099437000" expanded="true" signature="14510:14559" ph="..." />
                 <marker date="1467099437000" expanded="true" signature="14755:14804" ph="..." />
@@ -116,12 +106,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="left.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/left.js">
+      <file leaf-file-name="profile_left.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/profile_left.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-              <folding />
+            <state relative-caret-position="885">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+              <folding>
+                <marker date="1467099705000" expanded="true" signature="1266:1337" ph="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1467099705000" expanded="true" signature="1413:1485" ph="SELECT CASH_... TBL_CONNECTOR" />
+                <marker date="1467099705000" expanded="true" signature="2081:2155" ph="SELECT CONTE... TBL_FOLDER" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/api/getContent.php" />
         <option value="$PROJECT_DIR$/lib/loginchk.php" />
         <option value="$PROJECT_DIR$/php/data/getContent.php" />
         <option value="$PROJECT_DIR$/php/middle.php" />
@@ -217,6 +210,7 @@
         <option value="$PROJECT_DIR$/js/sellManage.js" />
         <option value="$PROJECT_DIR$/js/topcon.js" />
         <option value="$PROJECT_DIR$/js/upform.js" />
+        <option value="$PROJECT_DIR$/php/profile_left.php" />
       </list>
     </option>
   </component>
@@ -642,14 +636,7 @@
       <workItem from="1466736404398" duration="6542000" />
       <workItem from="1466829115757" duration="10483000" />
       <workItem from="1466999290881" duration="10356000" />
-      <workItem from="1467087318195" duration="1085000" />
-    </task>
-    <task id="LOCAL-00354" summary="naver_reg">
-      <created>1466503356392</created>
-      <option name="number" value="00354" />
-      <option name="presentableId" value="LOCAL-00354" />
-      <option name="project" value="LOCAL" />
-      <updated>1466503356393</updated>
+      <workItem from="1467087318195" duration="1352000" />
     </task>
     <task id="LOCAL-00355" summary="naver_reg(naver_id_login)">
       <created>1466503412475</created>
@@ -987,11 +974,18 @@
       <option name="project" value="LOCAL" />
       <updated>1467022620438</updated>
     </task>
-    <option name="localTasksCounter" value="403" />
+    <task id="LOCAL-00403" summary="에러 사과문 표시">
+      <created>1467099450060</created>
+      <option name="number" value="00403" />
+      <option name="presentableId" value="LOCAL-00403" />
+      <option name="project" value="LOCAL" />
+      <updated>1467099450062</updated>
+    </task>
+    <option name="localTasksCounter" value="404" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440210000" />
+    <option name="totallyTimeSpent" value="440477000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1044,7 +1038,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="페이스북으로 로그인 시험중" />
     <MESSAGE value="페이스북 날짜 수정" />
     <MESSAGE value="프로필 모바일 스타일 적용,페이스북 로그인 가능" />
     <MESSAGE value="페이스북 버튼" />
@@ -1069,7 +1062,8 @@
     <MESSAGE value="더보기 한칸 띄기" />
     <MESSAGE value="수정 수정" />
     <MESSAGE value="에러 몽고에 저장하기" />
-    <option name="LAST_COMMIT_MESSAGE" value="에러 몽고에 저장하기" />
+    <MESSAGE value="에러 사과문 표시" />
+    <option name="LAST_COMMIT_MESSAGE" value="에러 사과문 표시" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1118,13 +1112,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/data/uploadContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="58" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1680">
@@ -1525,11 +1512,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/upform.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1518">
-          <caret line="425" column="104" selection-start-line="425" selection-start-column="104" selection-end-line="425" selection-end-column="104" />
+        <state relative-caret-position="423">
+          <caret line="352" column="44" selection-start-line="352" selection-start-column="44" selection-end-line="352" selection-end-column="44" />
           <folding>
             <marker date="1467099437000" expanded="true" signature="14510:14559" ph="..." />
             <marker date="1467099437000" expanded="true" signature="14755:14804" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile_left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <folding>
+            <marker date="1467099705000" expanded="true" signature="1266:1337" ph="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1467099705000" expanded="true" signature="1413:1485" ph="SELECT CASH_... TBL_CONNECTOR" />
+            <marker date="1467099705000" expanded="true" signature="2081:2155" ph="SELECT CONTE... TBL_FOLDER" />
           </folding>
         </state>
       </provider>
