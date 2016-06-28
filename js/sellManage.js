@@ -185,7 +185,6 @@ $(document).ready(function () {
                 $('#end_date').removeAttr('disabled');
             },error:function(xhr,status,error){
             errorReport("cms_monthly",{action: "monthly", start: start, end: end},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     }
