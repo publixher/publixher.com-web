@@ -37,7 +37,7 @@ $(document).ready(function () {
             }, error: function (xhr, status, error) {
                 errorReport("knock",{ID: thisitemID, action: "knock", userID: mid, token: token},status,error)
                 knockbtn.addClass('knock');
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     });
@@ -51,7 +51,7 @@ $(document).ready(function () {
                 callBack(res['result']['CASH_POINT']);
             },error:function(xhr,status,error){
             errorReport("getpoint",{userID: mid, action: 'point'},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     }
@@ -169,7 +169,7 @@ $(document).ready(function () {
                                                         }
                                                     },error:function(xhr,status,error){
                                                     errorReport("nameFind",{target: 'friend', mid: mid, name: name},status,error);
-                                                        alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                                                        //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                                                     }
                                                 })
                                             }
@@ -313,7 +313,7 @@ $(document).ready(function () {
                     }
                 }, error: function (xhr, status, error) {
                     errorReport("comment",{ID: thisitemID, action: "comment", sort: "first", userID: mid, token: token},status,error)
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
             tail.addClass('opend-comment');
@@ -382,7 +382,7 @@ $(document).ready(function () {
                 }
             },error:function(xhr,status,error){
             errorReport("comment",{ID: num, action: "comment", userID: mid, sort: sort, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -443,7 +443,7 @@ $(document).ready(function () {
                 registRep(res, sort + '-' + num);
             },error:function(xhr,status,error){
             errorReport("more_comment",{ID: num, action: "more_comment", userID: mid, index: index, sort: sort, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -497,7 +497,7 @@ $(document).ready(function () {
                     taglist: taglist,
                     donatelist: donatelist
                 },status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -526,7 +526,7 @@ $(document).ready(function () {
                     else alert('동작중 문제가 발생했습니다. 다시 시도해 주세요.');
                 },error:function(xhr,status,error){
                 errorReport("rep_del",{ID: thisrepID, action: "rep_del", token: token, userID: mid, type: type},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -685,7 +685,7 @@ $(document).ready(function () {
 
                 },error:function(xhr,status,error){
                 errorReport("sub_comment",{ID: thisitemID, repID: thisrepID, action: "sub_comment", userID: mid, token: token},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             });
         } else {
@@ -745,7 +745,7 @@ $(document).ready(function () {
                     token: token,
                     taglist: taglist
                 },status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -797,7 +797,7 @@ $(document).ready(function () {
                 registRep(res, caret);
             },error:function(xhr,status,error){
             errorReport("more_sub_comment",{repID: repID, action: "more_sub_comment", userID: mid, index: index, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+               // alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -863,7 +863,7 @@ $(document).ready(function () {
                         userID: mid,
                         token: token
                     },status,error)
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                  //  alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         } else if (priceSpan.hasClass('bought')) {
@@ -898,7 +898,7 @@ $(document).ready(function () {
                 }
                 ,error:function(xhr,status,error){
                 errorReport("more",{ID: thisitemID, action: "more", userID: mid, token: token},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         } else if (priceSpan.hasClass('expanded')) {
@@ -943,7 +943,7 @@ $(document).ready(function () {
                     }
                 },error:function(xhr,status,error){
                 errorReport("del",{ID: thisitemID, action: "del", token: token},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -1021,7 +1021,7 @@ $(document).ready(function () {
                 $('#itemModModal').modal({show: true})
             },error:function(xhr,status,error){
             errorReport("get_item",{itemID: thisitemID, action: "get_item"},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -1139,7 +1139,7 @@ $(document).ready(function () {
                         action: "mod_item"
                     },status,error);
                     btn.removeAttr('disabled')
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -1225,7 +1225,7 @@ $(document).ready(function () {
                         action: "mod_item"
                     },status,error);
                     btn.removeAttr('disabled')
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         } else {
@@ -1343,7 +1343,7 @@ $(document).ready(function () {
                 if (res['result'] != 'Y') alert('오류가 생겼습니다. 관리자에게 문의해 주세요.');
             },error:function(xhr,status,error){
             errorReport("top",{ID: thisitemID, action: "top", mid: mid, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //lert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     });
@@ -1367,7 +1367,7 @@ $(document).ready(function () {
                 }
             },error:function(xhr,status,error){
             errorReport("repknock",{ID: thisrepnum, action: "repknock", mid: mid, thisitemID: thisitemID, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     });
@@ -1393,7 +1393,7 @@ $(document).ready(function () {
                     }
                 },error:function(xhr,status,error){
                 errorReport("delPin",{ID: thisitemID, token: token, action: "delPin", userID: mid},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         } else {
@@ -1412,7 +1412,7 @@ $(document).ready(function () {
                     }
                 },error:function(xhr,status,error){
                 errorReport("addPin",{ID: thisitemID, token: token, action: "addPin", userID: mid},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
         }
@@ -1438,7 +1438,7 @@ $(document).ready(function () {
                     btn.addClass('itemReport');
                 },error:function(xhr,status,error){
                 errorReport("report",{ID: thisitemID, token: token, action: "report", userID: mid},status,error);
-                    alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                    //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             });
         }
