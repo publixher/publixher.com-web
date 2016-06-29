@@ -64,7 +64,7 @@ $(document).ready(function () {
             }, error: function (xhr,status,error) {
                 $(this).removeAttr('disabled');
                 errorReport("friend",{targetID: targetid, myID: myID, action: action, token: token},status,error)
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         });
     });
@@ -96,7 +96,7 @@ $(document).ready(function () {
                 }
             },error:function(xhr,status,error){
             errorReport("friendRes",{targetID: fid, requestid: requestid, action: action, myID: myID, token: token},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -121,7 +121,7 @@ $(document).ready(function () {
             }, error: function (xhr,status,error) {
                 $(this).removeAttr('disabled');
                 errorReport("subscribe",{targetID: targetID, action: action, userID: mid, token: token},status,error)
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -133,7 +133,7 @@ $(document).ready(function () {
             type: "POST",
             data: {action: "writeAuth", userID: mid, radioValue: radioValue},error:function(xhr,status,error){
             errorReport("writeAuth",{action: "writeAuth", userID: mid, radioValue: radioValue},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
@@ -147,7 +147,7 @@ $(document).ready(function () {
             type: "POST",
             data: {action: "expAuth", userID: mid, checkValue: checkValue},error:function(xhr,status,error){
             errorReport("expAuth",{action: "expAuth", userID: mid, checkValue: checkValue},status,error);
-                alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     })
