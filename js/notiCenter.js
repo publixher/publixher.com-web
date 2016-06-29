@@ -31,7 +31,7 @@ $(document).ready(function () {
                             $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                             break;
                         case '7':
-                            var word = "회원님이 다신 \""+res[i]['REPLY']+"\" 댓글에 "+res[i]['USER_NAME']+"님이 \""+res[i]['SUB_REPLY']+"\" 라고 댓글을 달았습니다.";
+                            var word = "회원님의 \""+res[i]['REPLY']+"\" 댓글에 "+res[i]['USER_NAME']+"님이 \""+res[i]['SUB_REPLY']+"\" 라고 댓글을 달았습니다.";
                             $('#listul').append('<li><div class="noti-img-wrap"><img class="noti-img" src="'+res[i]['PIC']+'"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">'+res[i]['NOTI_DATE']+'</span></li>');
                             break;
                         case '8':
