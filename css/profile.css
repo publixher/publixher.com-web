@@ -1109,11 +1109,12 @@ li a {
   position: relative;
   width: 160px;
   height: 160px;
-  margin-top: 10px;
   overflow: hidden;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 .item-profile-wrap {
   float: left;
@@ -1613,13 +1614,13 @@ a:hover {
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   padding: 5px;
-  background-color: #f5f5f5;
+  background-color: white;
 }
 #FolDerFolDeR{
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   padding: 5px;
-  background-color: #f5f5f5;
+  background-color: white;
   min-height: 68px;
 }
 #pf>table{
