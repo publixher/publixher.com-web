@@ -980,12 +980,15 @@ $(document).ready(function () {
                 var expset = $('#exposeSetting-mod');
                 switch (expose_mod) {
                     case 0:
+                    case "0":
                         expset.text('나만보기');
                         break;
                     case 1:
+                    case "1":
                         expset.text('친구에게 공개');
                         break;
                     case 2:
+                    case "2":
                         expset.text('전체공개');
                 }
                 if (res['FOLDER']) {
