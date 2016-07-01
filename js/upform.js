@@ -403,7 +403,7 @@ $(document).ready(function () {
         if (e.keyCode == 13 && $(this).val().length > 0) {
             var form = $(this);
             var folderName = $(this).val();
-            if (/^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{1,15}$/.test(folderName)) {
+            if (/^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9-_]{1,15}$/.test(folderName)) {
                 $.ajax({
                     url: "/php/data/profileChange.php",
                     dataType: 'json',
@@ -427,7 +427,7 @@ $(document).ready(function () {
                     }
                 })
             } else {
-                alert('폴더 이름은 한글,영문,숫자 1~15글자만 허용됩니다')
+                alert('폴더 이름은 한글,영문,숫자,구분자(-,_) 1~15글자만 허용됩니다')
             }
         }
     });
