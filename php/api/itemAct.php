@@ -402,7 +402,7 @@ LIMIT
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
     //가격은 db의 데이터로 정해져야함
-    $sql7 = "SELECT PRICE,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $sql7 = "SELECT PRICE,ID_WRITER,AGE FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare7 = $db->prepare($sql7);
     $prepare7->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare7->execute();
@@ -425,7 +425,7 @@ LIMIT
     if ($price > $usercash) {
         echo '{"status":-4}';
         exit;
-    } else if ($age < 19) {
+    } else if ($age < 19 && $result['AGE'] == 'Y') {
         echo '{"status":-5}';
         exit;
     }
@@ -447,9 +447,9 @@ LIMIT
             $prepare2->bindValue(':PRICE', $price, PDO::PARAM_STR);
             $prepare2->execute();
 
-            $sql="INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT)";
-            $prepare=$db->prepare($sql);
-            $prepare->execute(array('ID_USER'=>$userID,'ID_CONTENT'=>$ID));
+            $sql = "INSERT INTO publixher.TBL_SELL_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT)";
+            $prepare = $db->prepare($sql);
+            $prepare->execute(array('ID_USER' => $userID, 'ID_CONTENT' => $ID));
 
             $sql3 = "UPDATE publixher.TBL_CONTENT SET SALE=SALE+1 WHERE ID=:ID;";
             $prepare3 = $db->prepare($sql3);
@@ -461,9 +461,9 @@ LIMIT
             $prepare4->execute(array('POINT' => $price, 'ID_USER' => $userID, 'ID_ANONY' => $userID));
 
 //판매자 포인트 늘림
-            $sql="UPDATE publixher.TBL_CONNECTOR SET CASH_POINT_EX=CASH_POINT_EX+:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
-            $prepare=$db->prepare($sql);
-            $prepare->execute(array('POINT'=>$price,'ID_USER'=>$writer,'ID_ANONY'=>$writer));
+            $sql = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT_EX=CASH_POINT_EX+:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
+            $prepare = $db->prepare($sql);
+            $prepare->execute(array('POINT' => $price, 'ID_USER' => $writer, 'ID_ANONY' => $writer));
             //알람처리
             $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,1,:ID_ACTOR)";
             $prepare4 = $db->prepare($sql4);
@@ -565,15 +565,15 @@ LIMIT
 } elseif ($act == 'del') {
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
-    $prepare=$db->prepare("SELECT LEVEL FROM publixher.TBL_USER WHERE ID=:ID");
-    $prepare->execute(array('ID'=>$userID));
-    $userLv=$prepare->fetchColumn(PDO::PARAM_INT);
+    $prepare = $db->prepare("SELECT LEVEL FROM publixher.TBL_USER WHERE ID=:ID");
+    $prepare->execute(array('ID' => $userID));
+    $userLv = $prepare->fetchColumn(PDO::PARAM_INT);
     $sql1 = "SELECT ID_WRITER,ID_TARGET FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare1->execute();
     $result1 = $prepare1->fetch(PDO::FETCH_ASSOC);
-    if ($result1['ID_WRITER'] == $userID || $result1['ID_TARGET']==$userID || $userLv==99) {
+    if ($result1['ID_WRITER'] == $userID || $result1['ID_TARGET'] == $userID || $userLv == 99) {
         //폴더 시퀀스 찾기
         $sql4 = "SELECT FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
@@ -585,7 +585,7 @@ LIMIT
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
-        if($folderid!=null) {
+        if ($folderid != null) {
             //폴더에서 삭제
             $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM-1 WHERE ID=:ID";
             $prepare3 = $db->prepare($sql3);
@@ -824,9 +824,9 @@ LIMIT :INDEX, 6";
             $prepare1->bindValue(':ID_CONTENT', $ID);
             $prepare1->bindValue(':ID_USER', $userID);
             $prepare1->execute();
-            $sql2="UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM publixher.TBL_USER WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
-            $prepare2=$db->prepare($sql2);
-            $prepare2->execute(array('PIN_CONT'=>$ID,'ID'=>$userID,'SUBQUERY_ID'=>$userID));
+            $sql2 = "UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM publixher.TBL_USER WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
+            $prepare2 = $db->prepare($sql2);
+            $prepare2->execute(array('PIN_CONT' => $ID, 'ID' => $userID, 'SUBQUERY_ID' => $userID));
         }
         $db->commit();
         echo '{"status":1}';
@@ -850,10 +850,10 @@ INNER JOIN publixher.TBL_CONTENT AS CONT ON CONT.ID=SUB_REPLY.ID_CONTENT
 WHERE SUB_REPLY.ID=:ID";
     }
     $prepare = $db->prepare($sql);
-    $prepare->execute(array('ID'=>$id));
-    $ids=$prepare->fetch(PDO::FETCH_ASSOC);
-    
-    if ($userID==$ids['CONTENT_WRITER'] || $userID==$ids['REPLY_WRITER'] || $userID==$ids['SUB_REPLY_WRITER']) {
+    $prepare->execute(array('ID' => $id));
+    $ids = $prepare->fetch(PDO::FETCH_ASSOC);
+
+    if ($userID == $ids['CONTENT_WRITER'] || $userID == $ids['REPLY_WRITER'] || $userID == $ids['SUB_REPLY_WRITER']) {
         if ($type == 0) {
             $sql1 = "UPDATE publixher.TBL_CONTENT_REPLY SET DEL=1 WHERE ID=:ID";
             $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT-1 WHERE ID=(SELECT ID_CONTENT FROM publixher.TBL_CONTENT_REPLY WHERE ID=:ID)";

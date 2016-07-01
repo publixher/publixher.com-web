@@ -415,7 +415,7 @@ LIMIT
     $ID = $_POST['ID'];
     $userID = $_POST['userID'];
     //가격은 db의 데이터로 정해져야함
-    $sql7 = "SELECT PRICE,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
+    $sql7 = "SELECT PRICE,ID_WRITER,AGE FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $prepare7 = $db->prepare($sql7);
     $prepare7->bindValue(':ID', $ID, PDO::PARAM_STR);
     $prepare7->execute();
@@ -438,7 +438,7 @@ LIMIT
     if ($price > $usercash) {
         echo '{"buy":"f","reason":"not enough cash"}';
         exit;
-    } else if ($age < 19) {
+    } else if ($age < 19 && $result['AGE']=='Y') {
         echo '{"buy":"f","reason":"age registration"}';
         exit;
     }
