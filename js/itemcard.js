@@ -829,7 +829,8 @@ $(document).ready(function () {
     //구매버튼(가격표시)동작
     var itemPool = window['item_pool'] = new Array();
     var previewarr = [];
-    $(document).on("click touchstart", ".price", function () {
+    $(document).on("click touchstart", ".price", function (e) {
+        e.stopPropagation(); e.preventDefault();
         var thisitemID = $(this).parents()[5].id;
         var priceSpan = $('#' + thisitemID + ' .tail .price')
         //안산상태에서 한번 눌려졌을때 한번 더누르면 구매됨
