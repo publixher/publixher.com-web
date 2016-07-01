@@ -358,6 +358,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .body .BodyPic {
   max-width: 510px !important;
   max-height: 510px !important;
+  margin-top: 10px;
   margin-bottom: -30px;
 }
 #wrap #middle .item .body .thumbPic,
@@ -740,6 +741,7 @@ li a {
   width: 540px;
   margin: 0 auto;
   margin-top: 5px;
+  box-shadow: 0px 0px 300px #888888 !important;
 }
 #saleTitle-mod {
   border-bottom-left-radius: 0;
@@ -1418,8 +1420,6 @@ a:hover {
 }
 #sendBody-mod,
 #publiBody-mod{
-  overflow-y:auto;
-  max-height: 750px;
   height: 100%;
   padding-top: 6px;
 }
@@ -1463,6 +1463,14 @@ a:hover {
 #hasInput>li{
   width: 96%;
   margin-left: 2%;
+}
+.price{
+  padding: 3px 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+.price a{
+  padding: 0 !important
 }
 #mod-pane div button,
 #publixh div div button,
