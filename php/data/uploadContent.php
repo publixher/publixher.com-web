@@ -108,9 +108,9 @@ if (!empty($_POST)) {
         $previewtxt = mb_substr($previewtxt, 0, $previewlength);
     }
     if (strlen($previewtxt) > 0 && $previewimg) {
-        $preview = $previewtxt . "<br><img src='{$previewimg}' class='BodyPic";
+        $preview = $previewtxt . "<br><div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if ($gif) $preview .= " gif";
-        $preview .= "'><br><br>";
+        $preview .= "'></div><br><br>";
     } else if ($previewimg) {
         $preview = "<br><img src='{$previewimg}' class='BodyPic";
         if ($gif) $preview .= " gif";
