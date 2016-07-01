@@ -305,7 +305,7 @@ $(document).ready(function () {
                 subwrite(sub);
                 break;
             case '사진':
-                var sub = ['일상', '인물', '자연', '여행', '동식물', 'pine_art', '야경', 'GIF'];
+                var sub = ['일상', '인물', '자연', '여행', '동식물', 'fine_art', '야경', 'GIF'];
                 subwrite(sub);
                 break;
         }
