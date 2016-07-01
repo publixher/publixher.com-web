@@ -58,10 +58,10 @@ if ($_FILES) {
             $user=$w->fetchObject(User);
             $_SESSION['user'] = $user;
         }elseif($_POST['action']=='content') {
-            $img->set_size(510, 510);
+            $img->set_size(528, 528);
             $img->save_img($uploadDir . "crop/" . $filepath);
             $img->set_origin(true);
-            $img->set_size(510,510);
+            $img->set_size(528,528);
             $img->save_img($uploadDir . "crop_origin/" . $filepath);
             //gif면 png 리턴함
             $filepath=str_replace('.gif','.png',$filepath);
