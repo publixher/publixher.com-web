@@ -920,7 +920,7 @@ $(document).ready(function () {
             itemPool.splice(itemIndex, 1);
         } else {
             //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
-            priceSpan.append('&nbsp;<a>구매하기?</a>')
+            priceSpan.append('&nbsp;<a>구매하기</a>')
             priceSpan.addClass('buyConfirm');
         }
     });
