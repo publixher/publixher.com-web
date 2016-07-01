@@ -245,7 +245,7 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare3->execute();
         }
         $bulk=new MongoDB\Driver\BulkWrite;
-        $bulk->insert(['id'=>$uid]);
+        $bulk->insert(['id'=>$uid, 'interested_users' => []]);
         $mongomanager->executeBulkWrite('publixher.contents',$bulk);
         $db->commit();
         if(!$result) {
