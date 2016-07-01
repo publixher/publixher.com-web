@@ -716,17 +716,9 @@ LIMIT :NOWPAGE, 10";
             $mongomanager->executeBulkWrite('publixher.contents', $bulk);
             //내 interest에서 $interesting_id에 없는건 전부 다 뺀다
             $bulk = new MongoDB\Driver\BulkWrite;
-            $bulk->update(['id' => $this->mId], ['$pull' => ['interest' =>['id'=> ['$nin' => $interesting_id]]]], ['multi' => true]);
+            $bulk->update(['id' => $this->mId], ['$pull' => ['interest' => ['id' => ['$nin' => $interesting_id]]]], ['multi' => true]);
             $bulk->update(['id' => $this->mId], ['$set' => ['recommended_list' => $recommended_id]], ['upsert' => true]);
-            try {
-                $mongomanager->executeBulkWrite('publixher.user', $bulk);
-            }catch(MongoDB\Driver\WriteError $e){
-                $a=$e;
-            }catch(MongoDB\Driver\Exception\BulkWriteException $e){
-                $a=$e;
-            }catch(MongoDB\Driver\Exception\Exception $e){
-                $a=$e;
-            }
+            $mongomanager->executeBulkWrite('publixher.user', $bulk);
 
             return true;
         }
