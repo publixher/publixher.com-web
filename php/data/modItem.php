@@ -198,7 +198,7 @@ if ($action == 'get_item') {
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
         $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
-        $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
+        $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
         $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
         $prepare->bindValue(':IMG', $previewimg ? str_replace('crop', 'crop80', $previewimg) : null, PDO::PARAM_STR);
         if ($_POST['adult'] == "true") {
