@@ -181,8 +181,8 @@ $(document).ready(function () {
                 cms_date.append(result);
             }, complete: function () {
                 spinner.detach();
-                $('#start_date').removeAttr('disabled');
-                $('#end_date').removeAttr('disabled');
+                $('#start_date').removeClass('disabled');
+                $('#end_date').removeClass('disabled');
             },error:function(xhr,status,error){
             errorReport("cms_monthly",{action: "monthly", start: start, end: end},status,error);
             }
@@ -305,8 +305,8 @@ $(document).ready(function () {
         var end_date = $('#end_date');
         var start = start_date.datepicker('getUTCDate').toISOString().slice(0, 10);
         var end = end_date.datepicker('getUTCDate').toISOString().slice(0, 10);
-        start_date.attr('disabled', 'disabled');
-        end_date.attr('disabled', 'disabled');
+        start_date.addClass('disabled')
+        end_date.addClass('disabled')
         getMonthly(start, end);
     })
 
