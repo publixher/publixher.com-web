@@ -1123,7 +1123,7 @@ $(document).ready(function () {
         }
         if ($('#sendBody-mod').html().length > 0) {
             var btn = $(this);
-            $(this).attr('disabled', 'disabled')
+            $(this).addClass('disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -1166,7 +1166,6 @@ $(document).ready(function () {
                     })
                     $('#sendBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
-                    btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
                     errorReport("mod_item",{
@@ -1180,8 +1179,9 @@ $(document).ready(function () {
                         expose: expose_mod,
                         action: "mod_item"
                     },status,error);
-                    btn.removeAttr('disabled')
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                },complete:function(){
+                    btn.removeClass('disabled')
                 }
             })
         }
@@ -1194,7 +1194,7 @@ $(document).ready(function () {
         var $btn = $(this).button('loading');
         if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0) {
             var btn = $(this);
-            $(this).attr('disabled', 'disabled')
+            $(this).addClass('disabled')
             $.ajax({
                 url: "/php/data/modItem.php",
                 type: "POST",
@@ -1246,7 +1246,6 @@ $(document).ready(function () {
                     $('#contentCost-mod').val("");
                     $('#publiBody-mod').html("").trigger('keyup');
                     $('#itemModModal').modal('hide');
-                    btn.removeAttr('disabled')
                 },
                 error: function (request, status, error) {
                     errorReport("mod_item",{
@@ -1266,8 +1265,9 @@ $(document).ready(function () {
                         expose: expose_mod,
                         action: "mod_item"
                     },status,error);
-                    btn.removeAttr('disabled')
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                },complete:function(){
+                    btn.removeClass('disabled')
                 }
             })
         } else {

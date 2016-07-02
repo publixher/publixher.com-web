@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     //친구요청
     $('#friequst').on('click', function () {
-        $(this).attr('disabled', 'disabled');
+        $(this).addClass('disabled')
         var action = $(this).hasClass('request') ? "request" : "endrelation";
         $.ajax({
             url: "/php/data/friend.php",
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
     //구독신청
     $('#subsbtn').on('click', function () {
-        $(this).attr('disabled', 'disabled');
+        var btn=$(this).addClass('disabled')
         var action = $(this).hasClass('subscribe') ? "subscribe" : "dis_subscribe";
         $.ajax({
             url: "/php/data/friend.php",
@@ -117,11 +117,11 @@ $(document).ready(function () {
                 } else {
                     btn.addClass('subscribe').removeClass('dis_subscribe').addClass('btn-default').removeClass('btn-info').html('구독하기');
                 }
-                btn.removeAttr('disabled');
             }, error: function (xhr,status,error) {
-                $(this).removeAttr('disabled');
                 errorReport("subscribe",{targetID: targetID, action: action, userID: mid, token: token},status,error)
                 //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+            },complete:function(){
+                btn.removeClass('disabled');
             }
         })
     })
