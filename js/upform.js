@@ -68,7 +68,7 @@ $(document).ready(function () {
     $('.hasInput .form-control').click(function (e) {
         e.stopPropagation();
     });
-    
+
     //글쓸때 버튼 클릭할때의 동작
     $('#sendButton').on('click', function () {
         var $btn = $(this).button('loading');
@@ -123,7 +123,7 @@ $(document).ready(function () {
                         foldername = res['FOLDER_NAME'];
                     }
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
-                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin,res['KNOCKED']);
+                    write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic, targetID, targetname, expose, more, tag, pin, res['KNOCKED']);
                     $('#upform').after(write);
                     $('#' + ID).hide().fadeIn()
                         .find('.gif').gifplayer({wait: true});
@@ -132,12 +132,10 @@ $(document).ready(function () {
                     for (var i = 0; i < tags.length; i++) {
                         $('#send-tag').tagEditor('removeTag', tags[i]);
                     }
-                    btn.removeClass('disabled')
-
                     document.location.href = '#' + ID;
                 },
                 error: function (request, status, error) {
-                    errorReport("send_upload",{
+                    errorReport("send_upload", {
                         body: $('#sendBody').html(),
                         body_text: $('#sendBody').text(),
                         ID_writer: mid,
@@ -146,13 +144,14 @@ $(document).ready(function () {
                         expose: expose,
                         targetID: ID_target,
                         tags: JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
-                    },status,error)
-                    btn.removeClass('disabled')
+                    }, status, error)
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                }, complete: function () {
+                    $btn.button('reset');
+                    btn.removeClass('disabled')
                 }
             })
         }
-        $btn.button('reset');
         $btn.blur();
     })
     //publixh 버튼 내용
@@ -170,7 +169,7 @@ $(document).ready(function () {
                     ID_writer: mid,
                     for_sale: "Y",
                     price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
-                    category: category!=null?category:'SNS',
+                    category: category != null ? category : 'SNS',
                     sub_category: sub_category,
                     adult: $('#adult').is(':checked'),
                     ad: $('#ad').is(':checked'),
@@ -206,7 +205,7 @@ $(document).ready(function () {
                         foldername = res['FOLDER_NAME'];
                     }
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
-                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY'],res['KNOCKED']);
+                    write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, true, preview, writer, folderID, foldername, pic, expose, more, tag, pin, res['CATEGORY'], res['SUB_CATEGORY'], res['KNOCKED']);
                     $('#upform').after(write);
                     $('#' + ID).hide().fadeIn()
                         .find('.gif').gifplayer({wait: true});
@@ -218,17 +217,16 @@ $(document).ready(function () {
                     for (var i = 0; i < tags.length; i++) {
                         $('#publi-tag').tagEditor('removeTag', tags[i]);
                     }
-                    btn.removeClass('disabled')
                     document.location.href = '#' + ID;
                 },
                 error: function (request, status, error) {
-                    errorReport("publixh_upload",{
+                    errorReport("publixh_upload", {
                         body: $('#publiBody').html(),
                         body_text: $('#publiBody').text(),
                         ID_writer: mid,
                         for_sale: "Y",
                         price: $('#contentCost').val().length > 0 ? $('#contentCost').val() : 0,
-                        category: category!=null?category:'SNS',
+                        category: category != null ? category : 'SNS',
                         sub_category: sub_category,
                         adult: $('#adult').is(':checked'),
                         ad: $('#ad').is(':checked'),
@@ -237,15 +235,16 @@ $(document).ready(function () {
                         token: token,
                         expose: expose,
                         tags: JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
-                    },status,error)
-                    btn.removeClass('disabled')
+                    }, status, error)
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+                }, complete: function () {
+                    $btn.button('reset');
+                    btn.removeClass('disabled')
                 }
             })
         } else {
             alert('제목과 본문 , 가격을 입력해 주세요')
         }
-        $btn.button('reset');
     })
     //공개설정 버튼
     var expose = 2;   //기본값 전체공개
@@ -309,7 +308,7 @@ $(document).ready(function () {
                 subwrite(sub);
                 break;
             default:
-                var sub=[''];
+                var sub = [''];
                 subwrite(sub);
                 break;
         }
@@ -374,16 +373,12 @@ $(document).ready(function () {
         }, done: function (e, data) {
             var gif = data.files[0].type == 'image/gif' ? true : false;
             var img = '<div><img src="/img/' + data.result['files']['file_crop'] + '" class="BodyPic"></div>';
-            if (gif){
-                img=$(img);
+            if (gif) {
+                img = $(img);
                 img.children('img').addClass('gif');
-                img=img[0].outerHTML;
+                img = img[0].outerHTML;
             }
-            if(this==$('#fileuploads')[0]){
-                pasteHtmlAtCaret(img+'<br>')
-            }else{
-
-            }
+            pasteHtmlAtCaret(img + '<br>')
 
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
@@ -430,8 +425,8 @@ $(document).ready(function () {
                                 $('<a>').attr('href', '#').text(folderName))
                                 .fadeIn()
                         )
-                    }, complete: form.val(''),error:function(xhr,status,error){
-                    errorReport("new_folder",{folder: folderName, action: "newfolder"},status,error);
+                    }, complete: form.val(''), error: function (xhr, status, error) {
+                        errorReport("new_folder", {folder: folderName, action: "newfolder"}, status, error);
                         //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                     }
                 })
