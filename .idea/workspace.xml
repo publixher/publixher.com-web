@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/upform.js" afterPath="$PROJECT_DIR$/js/upform.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modItem.php" afterPath="$PROJECT_DIR$/php/api/modItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/uploadContent.php" afterPath="$PROJECT_DIR$/php/api/uploadContent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/modItem.php" afterPath="$PROJECT_DIR$/php/data/modItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/uploadContent.php" afterPath="$PROJECT_DIR$/php/data/uploadContent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/profile_middle.php" afterPath="$PROJECT_DIR$/php/profile_middle.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -37,20 +33,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fileUp.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/api/fileUp.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="63" column="34" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="34" />
-              <folding>
-                <marker date="1467362082000" expanded="true" signature="2002:2053" ph="UPDATE publi... " />
-                <marker date="1467362082000" expanded="true" signature="2316:2361" ph="SELECT * fro... TBL_USER" />
-                <marker date="1467362082000" expanded="true" signature="3096:3189" ph="INSERT INTO publixher.TBL_CONTENT_IMG_LIST... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="modItem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/modItem.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -318,11 +300,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modItem.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modItem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+            <state relative-caret-position="420">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
                 <marker date="1467445261000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
                 <marker date="1467445261000" expanded="true" signature="594:643" ph="SELECT DIR F... TBL_FOLDER" />
@@ -335,6 +317,32 @@
                 <marker date="1467445261000" expanded="true" signature="10448:10518" ph="UPDATE publi... " />
                 <marker date="1467445261000" expanded="true" signature="10765:10836" ph="INSERT INTO publixher.TBL_TAGS... " />
                 <marker date="1467445261000" expanded="true" signature="11077:11168" ph="UPDATE publi... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile_middle.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="855">
+              <caret line="271" column="40" selection-start-line="271" selection-start-column="40" selection-end-line="271" selection-end-column="40" />
+              <caret line="273" column="40" selection-start-line="273" selection-start-column="40" selection-end-line="273" selection-end-column="40" />
+              <folding>
+                <marker date="1467445845000" expanded="true" signature="212:273" ph="SELECT WRITE... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="818:900" ph="SELECT ID_FR... TBL_FRIENDS" />
+                <marker date="1467445845000" expanded="true" signature="1712:1807" ph="SELECT USER_... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="2765:2832" ph="SELECT ID_MA... TBL_FOLLOW" />
+                <marker date="1467445845000" expanded="true" signature="3620:3715" ph="SELECT USER_... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="4689:4797" ph="SELECT ID_US... TBL_FRIENDS" />
+                <marker date="1467445845000" expanded="true" signature="5814:5906" ph="SELECT USER_... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="9178:9260" ph="SELECT ID_FR... TBL_FRIENDS" />
+                <marker date="1467445845000" expanded="true" signature="10430:10525" ph="SELECT USER_... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="11483:11550" ph="SELECT ID_MA... TBL_FOLLOW" />
+                <marker date="1467445845000" expanded="true" signature="12338:12433" ph="SELECT USER_... TBL_USER" />
+                <marker date="1467445845000" expanded="true" signature="13319:13418" ph="SELECT ALLOW... TBL_FRIENDS" />
+                <marker date="1467445845000" expanded="true" signature="14270:14364" ph="SELECT SEQ F... TBL_FOLLOW" />
+                <marker date="1467445845000" expanded="true" signature="17560:17622" ph="SELECT ID,DI... TBL_FOLDER" />
               </folding>
             </state>
           </provider>
@@ -394,7 +402,6 @@
         <option value="$PROJECT_DIR$/js/sellManage.js" />
         <option value="$PROJECT_DIR$/js/topcon.js" />
         <option value="$PROJECT_DIR$/php/itemModModal.php" />
-        <option value="$PROJECT_DIR$/php/profile_middle.php" />
         <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/lib/getC.php" />
@@ -409,6 +416,7 @@
         <option value="$PROJECT_DIR$/php/api/uploadContent.php" />
         <option value="$PROJECT_DIR$/php/api/modItem.php" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
+        <option value="$PROJECT_DIR$/php/profile_middle.php" />
       </list>
     </option>
   </component>
@@ -837,14 +845,7 @@
       <workItem from="1467087318195" duration="2966000" />
       <workItem from="1467173024382" duration="4090000" />
       <workItem from="1467344224540" duration="13181000" />
-      <workItem from="1467426348433" duration="5459000" />
-    </task>
-    <task id="LOCAL-00375" summary="페이스북 날짜 수정">
-      <created>1466659810445</created>
-      <option name="number" value="00375" />
-      <option name="presentableId" value="LOCAL-00375" />
-      <option name="project" value="LOCAL" />
-      <updated>1466659810445</updated>
+      <workItem from="1467426348433" duration="5949000" />
     </task>
     <task id="LOCAL-00376" summary="페이스북 날짜 수정">
       <created>1466659953442</created>
@@ -1182,11 +1183,18 @@
       <option name="project" value="LOCAL" />
       <updated>1467442920087</updated>
     </task>
-    <option name="localTasksCounter" value="424" />
+    <task id="LOCAL-00424" summary="이미지 받아오기">
+      <created>1467445271584</created>
+      <option name="number" value="00424" />
+      <option name="presentableId" value="LOCAL-00424" />
+      <option name="project" value="LOCAL" />
+      <updated>1467445271584</updated>
+    </task>
+    <option name="localTasksCounter" value="425" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464821000" />
+    <option name="totallyTimeSpent" value="465311000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1239,7 +1247,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="카테고리 변경" />
     <MESSAGE value="공지사항 밑에 가게" />
     <MESSAGE value="세션 id와 같거나 운영자가 아니면 다른사람 꺼 수정 못하도록" />
     <MESSAGE value="메일 다시보내기" />
@@ -1264,7 +1271,8 @@
     <MESSAGE value="외부 이미지 가져올때 https:// -&gt; http://" />
     <MESSAGE value="수정시 서브 카테고리 없으면 null처리" />
     <MESSAGE value="카테고리 선택 개선" />
-    <option name="LAST_COMMIT_MESSAGE" value="카테고리 선택 개선" />
+    <MESSAGE value="이미지 받아오기" />
+    <option name="LAST_COMMIT_MESSAGE" value="이미지 받아오기" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1505,29 +1513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5805">
-          <caret line="387" column="49" selection-start-line="387" selection-start-column="49" selection-end-line="387" selection-end-column="49" />
-          <folding>
-            <marker date="1467194724000" expanded="true" signature="212:273" ph="SELECT WRITE... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="818:900" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1467194724000" expanded="true" signature="1712:1807" ph="SELECT USER_... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="2765:2832" ph="SELECT ID_MA... TBL_FOLLOW" />
-            <marker date="1467194724000" expanded="true" signature="3620:3715" ph="SELECT USER_... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="4689:4797" ph="SELECT ID_US... TBL_FRIENDS" />
-            <marker date="1467194724000" expanded="true" signature="5814:5906" ph="SELECT USER_... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="9108:9190" ph="SELECT ID_FR... TBL_FRIENDS" />
-            <marker date="1467194724000" expanded="true" signature="10358:10453" ph="SELECT USER_... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="11411:11478" ph="SELECT ID_MA... TBL_FOLLOW" />
-            <marker date="1467194724000" expanded="true" signature="12266:12361" ph="SELECT USER_... TBL_USER" />
-            <marker date="1467194724000" expanded="true" signature="13247:13346" ph="SELECT ALLOW... TBL_FRIENDS" />
-            <marker date="1467194724000" expanded="true" signature="14117:14211" ph="SELECT SEQ F... TBL_FOLLOW" />
-            <marker date="1467194724000" expanded="true" signature="17312:17374" ph="SELECT ID,DI... TBL_FOLDER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/middle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
@@ -1543,6 +1528,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1035">
           <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1923,8 +1909,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/modItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+        <state relative-caret-position="420">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <marker date="1467445261000" expanded="true" signature="313:423" ph="SELECT TITLE... TBL_CONTENT" />
             <marker date="1467445261000" expanded="true" signature="594:643" ph="SELECT DIR F... TBL_FOLDER" />
@@ -1937,6 +1923,30 @@
             <marker date="1467445261000" expanded="true" signature="10448:10518" ph="UPDATE publi... " />
             <marker date="1467445261000" expanded="true" signature="10765:10836" ph="INSERT INTO publixher.TBL_TAGS... " />
             <marker date="1467445261000" expanded="true" signature="11077:11168" ph="UPDATE publi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile_middle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="271" column="40" selection-start-line="271" selection-start-column="40" selection-end-line="271" selection-end-column="40" />
+          <caret line="273" column="40" selection-start-line="273" selection-start-column="40" selection-end-line="273" selection-end-column="40" />
+          <folding>
+            <marker date="1467445845000" expanded="true" signature="212:273" ph="SELECT WRITE... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="818:900" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1467445845000" expanded="true" signature="1712:1807" ph="SELECT USER_... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="2765:2832" ph="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1467445845000" expanded="true" signature="3620:3715" ph="SELECT USER_... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="4689:4797" ph="SELECT ID_US... TBL_FRIENDS" />
+            <marker date="1467445845000" expanded="true" signature="5814:5906" ph="SELECT USER_... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="9178:9260" ph="SELECT ID_FR... TBL_FRIENDS" />
+            <marker date="1467445845000" expanded="true" signature="10430:10525" ph="SELECT USER_... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="11483:11550" ph="SELECT ID_MA... TBL_FOLLOW" />
+            <marker date="1467445845000" expanded="true" signature="12338:12433" ph="SELECT USER_... TBL_USER" />
+            <marker date="1467445845000" expanded="true" signature="13319:13418" ph="SELECT ALLOW... TBL_FRIENDS" />
+            <marker date="1467445845000" expanded="true" signature="14270:14364" ph="SELECT SEQ F... TBL_FOLLOW" />
+            <marker date="1467445845000" expanded="true" signature="17560:17622" ph="SELECT ID,DI... TBL_FOLDER" />
           </folding>
         </state>
       </provider>
