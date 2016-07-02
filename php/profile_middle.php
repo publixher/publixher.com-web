@@ -138,11 +138,14 @@
                 <ul class="dropdown-menu hasSelect" role="menu" id="confAut">
                     <li><b>글쓰기 권한</b></li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="0" <?php if ($writeauth == 0) echo 'checked' ?>>나만</label></li>
+                                                    value="0" <?php if ($writeauth == 0) echo 'checked' ?>>나만</label>
+                    </li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="1" <?php if ($writeauth == 1) echo 'checked' ?>>친구</label></li>
+                                                    value="1" <?php if ($writeauth == 1) echo 'checked' ?>>친구</label>
+                    </li>
                     <li class="radio"><label><input type="radio" name="writeAuth"
-                                                    value="2" <?php if ($writeauth == 2) echo 'checked' ?>>전체</label></li>
+                                                    value="2" <?php if ($writeauth == 2) echo 'checked' ?>>전체</label>
+                    </li>
                     <li><b>타인이 설정할 수 있는 공개 권한</b></li>
                     <li class="checkbox"><label><input type="checkbox" value="a" class="expAuth" checked disabled>나와 글쓴이</label>
                     </li>
@@ -171,7 +174,7 @@
             $prepare3->execute();
             $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
             $friendnum = count($friends);
-            $frelation=false;
+            $frelation = false;
             //나랑 글쓴이랑 친구인지 확인
             foreach ($friends as $fri) {
                 $frelation = $userID == $fri['ID_FRIEND'];
@@ -251,11 +254,11 @@
             $prepare2->execute();
             $allowed = $prepare2->fetchColumn();
             if (!$allowed) {
-                echo '<button type="button" class="btn btn-default request" id="friequst">친구신청</button>';
+                echo '<div id="friend-btn"><button type="button" class="btn btn-default request" id="friequst">친구신청</button></div>';
             } elseif ($allowed == 'N') {
-                echo '<button type="button" class="btn btn-default request" id="friequst" disabled>친구신청중</button>';
+                echo '<div id="friend-btn"><button type="button" class="btn btn-default request" id="friequst" disabled>친구신청중</button></div>';
             } elseif ($allowed == 'Y') {
-                echo '<button type="button" class="btn btn-success onfriend" id="friequst">친구</button>';
+                echo '<div id="friend-btn"><button type="button" class="btn btn-success onfriend" id="friequst">친구</button></div>';
             }
 
             //구독신청 버튼
@@ -266,9 +269,9 @@
             $prepare3->execute();
             $subscribe = $prepare3->fetchColumn();
             if (!$subscribe) {
-                echo '<button type="button" class="btn btn-default subscribe" id="subsbtn">구독하기</button>';
+                echo '<div id="subs-btn"><button type="button" class="btn btn-default subscribe" id="subsbtn">구독하기</button></div>';
             } else {
-                echo '<button type="button" class="btn btn-info dis_subscribe" id="subsbtn">구독중</button>';
+                echo '<div id="subs-btn"><button type="button" class="btn btn-info dis_subscribe" id="subsbtn">구독중</button></div>';
             }
             ?>
         </div>
@@ -284,7 +287,7 @@
                 <!-- 위탭 -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active" id="send-li"><a href="#send" aria-controls="home" role="tab"
-                                                              data-toggle="tab">보내기</a></li>
+                                                                           data-toggle="tab">보내기</a></li>
                     <?php if ($I) echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>' ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
@@ -292,13 +295,14 @@
                         <ul class="dropdown-menu" role="menu" id="expSublist">
                             <li><a>나만보기</a></li>
                             <?php if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']} 친구에게 공개</a></li>";
-                            elseif(strpos($expauth, 'b') !== false and $I) echo "<li><a>친구에게 공개</a></li>";
-                             if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>'; ?>
+                            elseif (strpos($expauth, 'b') !== false and $I) echo "<li><a>친구에게 공개</a></li>";
+                            if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>'; ?>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
-                            <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span class="caret"></span></a>
+                            <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span
+                                class="caret"></span></a>
                         <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
                             <li><a>미분류</a></li>
                             <?php
@@ -316,14 +320,18 @@
                                 echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                             }
                             ?>
-                            <li><span class="pubico pico-folder-plus"></span><input type="text" class="form-control new-folder"></li>
+                            <li><span class="pubico pico-folder-plus"></span><input type="text"
+                                                                                    class="form-control new-folder">
+                            </li>
                         </ul>
                     </li>
                 </ul>
                 <!-- 똥싸기와 용돈벌기 내용 -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="send">
-                        <div contenteditable="true" class="form-control" id="sendBody"><div></div></div>
+                        <div contenteditable="true" class="form-control" id="sendBody">
+                            <div></div>
+                        </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -342,7 +350,8 @@
                                            data-url="/php/data/fileUp.php" multiple class="fileupform" type="file">
                                 </td>
                                 <td class="taginput">
-                                    <input type="text" class="tag-input" class="form-control" placeholder="인물 , 제목" id="send-tag">
+                                    <input type="text" class="tag-input" class="form-control" placeholder="인물 , 제목"
+                                           id="send-tag">
                                 </td>
                                 <td class="regbtn">
                                     <button type="button" id="sendButton" data-loading-text="싸는중..."
@@ -358,7 +367,9 @@
                         <div role="tabpanel" class="tab-pane" id="publixh">
                             <div>
                                 <input type="text" class="form-control" id="saleTitle" placeholder="첫줄이 제목이 됩니다.">
-                                <div contenteditable="true" class="form-control" id="publiBody"><div></div></div>
+                                <div contenteditable="true" class="form-control" id="publiBody">
+                                    <div></div>
+                                </div>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                             aria-expanded="false">
@@ -439,7 +450,7 @@
 </div>
 <script>
     var page = 0;
-    var targetID ='<?=$targetid?>';
+    var targetID = '<?=$targetid?>';
     var loadOption = {ID: mid, nowpage: page, profile: targetID, I: I, frelation: frelation};
 </script>
 <!--    해시 태그-->
