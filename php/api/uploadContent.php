@@ -33,7 +33,6 @@ if (!empty($_POST)) {
         str_replace('http://analograph.com','',$imgs[1][$i][0]);
         if (!preg_match($croprex,$imgs[1][$i][0])){
             $originurl[$i]=$imgs[1][$i][0];
-            $originurl[$i]=explode('?',$originurl[$i])[0];
             $savedurl[$i] = getImgFromUrl($imgs[1][$i][0], 'origin', 'crop', 528,null,null,'crop_origin');
             $imgs[1][$i][0]=$savedurl[$i];
             $imgs[0][$i][0]=str_replace($originurl[$i],$savedurl[$i],$imgs[0][$i][0]);

@@ -379,7 +379,12 @@ $(document).ready(function () {
                 img.children('img').addClass('gif');
                 img=img[0].outerHTML;
             }
-            pasteHtmlAtCaret(img+'<br>');
+            if(this==$('#fileuploads')[0]){
+                pasteHtmlAtCaret(img+'<br>')
+            }else{
+
+            }
+
         }, fail: function (e, data) {
             alert('파일 업로드중 문제가 발생했습니다. 다시 시도해주세요.')
         }
