@@ -1085,11 +1085,16 @@ li a {
   margin-left: -300%;
 }
 #subslist li,
-#frielist li,
+#frielist li, {
+  padding: 5px;
+  display: flex;
+  width: 33.3%;
+  float: left;
+}
 #freqlist li{
   padding: 5px;
   display: flex;
-  width: 33.3% !important;
+  width: 50%;
   float: left;
 }
 #subslist li:first-child,
@@ -1606,7 +1611,7 @@ a:hover {
   border-radius: 10px;
 }
 .freqanswer{
-  padding: 14px 6px;
+  padding: 14px !important;
 }
 #logo img{
   width: 100px;
