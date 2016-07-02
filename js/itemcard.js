@@ -1004,10 +1004,48 @@ $(document).ready(function () {
                     $('#publiBody-mod').html(res['BODY']);
 
                     if (res['CATEGORY']) {
-                        $('#category-mod').text(res['CATEGORY']);
+                        var category_txt=res['CATEGORY']=='SNS'?'분류':res['CATEGORY'];
+                        var sub_txt=res['SUB_CATEGORY']==null?'하위분류':res['SUB_CATEGORY'];
+                        $('#category-mod').text(category_txt);
                         category_mod = res['CATEGORY'];
-                        $('#sub-category-mod').text(res['SUB_CATEGORY']);
+
+                        $('#sub-category-mod').text(sub_txt);
                         sub_category_mod = res['SUB_CATEGORY'];
+
+                        function subwrite(sub) {
+                            $('#subcategorySelect-mod').html('');
+                            var write = '';
+                            for (var i = 0; i < sub.length; i++) {
+                                write += '<li><a>' + sub[i] + '</a></li>'
+                            }
+                            $('#subcategorySelect-mod').html(write);
+                        }
+
+                        switch (category_mod) {
+                            case '매거진':
+                                var sub = ['','IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물'];
+                                subwrite(sub);
+                                break;
+                            case '뉴스':
+                                var sub = ['','일반', '스포츠', '연애', '테크'];
+                                subwrite(sub);
+                                break;
+                            case '소설':
+                                var sub = ['','문학', '에세이', '인문', '자기개발', '교육'];
+                                subwrite(sub);
+                                break;
+                            case '만화':
+                                var sub = ['','로맨스', '판타지', '개그', '미스터리', '호러', 'SF', '무협', '스포츠'];
+                                subwrite(sub);
+                                break;
+                            case '사진':
+                                var sub = ['','일상', '인물', '자연', '여행', '동식물', 'pine_art', '야경', 'GIF'];
+                                subwrite(sub);
+                                break;
+                            default:var sub=['']
+                                subwrite(sub)
+                                break;
+                        }
                     } else {
                         $('#category-mod').text('분류');
                         $('#sub-category-mod').text('하위분류');
@@ -1292,6 +1330,10 @@ $(document).ready(function () {
             case '사진':
                 var sub = ['일상', '인물', '자연', '여행', '동식물', 'pine_art', '야경', 'GIF'];
                 subwrite(sub);
+                break;
+            default:
+                var sub=[''];
+                subwrite(sub)
                 break;
         }
     })

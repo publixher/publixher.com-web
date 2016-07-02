@@ -308,6 +308,10 @@ $(document).ready(function () {
                 var sub = ['일상', '인물', '자연', '여행', '동식물', 'fine_art', '야경', 'GIF'];
                 subwrite(sub);
                 break;
+            default:
+                var sub=[''];
+                subwrite(sub);
+                break;
         }
     })
     //하위 카테고리 리스트 버튼
