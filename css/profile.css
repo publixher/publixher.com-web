@@ -1110,14 +1110,13 @@ li a {
 #profile-middle-nav>div,
 .others>div {
   width: 25% !important;
-  box-sizing: border-box;
+  display: inline-block;
 }
 #profile-middle-nav button,
 .others button {
   width: 103% !important;
   border: 0;
   border-radius: 0 !important;
-  box-sizing: border-box;
 }
 .profile-wrap {
   position: relative;
