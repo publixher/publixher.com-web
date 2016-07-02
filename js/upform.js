@@ -83,7 +83,7 @@ $(document).ready(function () {
 
         if ($('#sendBody').html().length > 0) {
             var btn = $(this);
-            $(this).attr('disabled', 'disabled');
+            $(this).addClass('disabled')
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
@@ -132,7 +132,7 @@ $(document).ready(function () {
                     for (var i = 0; i < tags.length; i++) {
                         $('#send-tag').tagEditor('removeTag', tags[i]);
                     }
-                    btn.removeAttr('disabled')
+                    btn.removeClass('disabled')
 
                     document.location.href = '#' + ID;
                 },
@@ -147,7 +147,7 @@ $(document).ready(function () {
                         targetID: ID_target,
                         tags: JSON.stringify($('#send-tag').tagEditor('getTags')[0].tags)
                     },status,error)
-                    btn.removeAttr('disabled')
+                    btn.removeClass('disabled')
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
@@ -160,7 +160,7 @@ $(document).ready(function () {
         var $btn = $(this).button('loading');
         if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0) {
             var btn = $(this);
-            $(this).attr('disabled', 'disabled')
+            $(this).addClass('disabled')
             $.ajax({
                 url: "/php/data/uploadContent.php",
                 type: "POST",
@@ -218,7 +218,7 @@ $(document).ready(function () {
                     for (var i = 0; i < tags.length; i++) {
                         $('#publi-tag').tagEditor('removeTag', tags[i]);
                     }
-                    btn.removeAttr('disabled')
+                    btn.removeClass('disabled')
                     document.location.href = '#' + ID;
                 },
                 error: function (request, status, error) {
@@ -238,7 +238,7 @@ $(document).ready(function () {
                         expose: expose,
                         tags: JSON.stringify($('#publi-tag').tagEditor('getTags')[0].tags)
                     },status,error)
-                    btn.removeAttr('disabled')
+                    btn.removeClass('disabled')
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
