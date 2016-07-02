@@ -1181,11 +1181,12 @@ $(document).ready(function () {
                     },status,error);
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 },complete:function(){
+                    $btn.button('reset');
                     btn.removeClass('disabled')
                 }
             })
         }
-        $btn.button('reset');
+        
         $btn.blur();
     })
     //publixh 버튼 내용
@@ -1267,13 +1268,14 @@ $(document).ready(function () {
                     },status,error);
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 },complete:function(){
+                    $btn.button('reset');
                     btn.removeClass('disabled')
                 }
             })
         } else {
             alert('제목과 본문, 가격을 입력해 주세요')
         }
-        $btn.button('reset');
+        
     })
     //공개설정 버튼
     $('#expSublist-mod li').click(function () {
