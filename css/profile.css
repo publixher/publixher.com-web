@@ -1097,7 +1097,8 @@ li a {
 #freqlist li:hover{
   background-color: white !important;
 }
-#profile-middle-nav {
+#profile-middle-nav,
+.others {
   width: 530px;
   left: 50%;
   margin-left: -265px;
@@ -1106,15 +1107,16 @@ li a {
   margin-top: 10px;
   overflow: hidden;
 }
-#profile-middle-nav>div {
+#profile-middle-nav>div,
+.others>div {
   width: 25% !important;
-  box-sizing: border-box;
+  display: inline-block;
 }
-#profile-middle-nav button {
+#profile-middle-nav button,
+.others button {
   width: 103% !important;
   border: 0;
   border-radius: 0 !important;
-  box-sizing: border-box;
 }
 .profile-wrap {
   position: relative;
