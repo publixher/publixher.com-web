@@ -69,8 +69,13 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         background-color: #fff;
         overflow-y: auto;
         overflow-x: hidden;
-        width: 200px;
-        max-height: 600px;
+        max-height: 250px;
+        width: 545px;
+        position: inherit;
+        border-radius: 0 !important;
+        border: 0;
+        margin-top: 0;
+        padding-top: 0;
         li {
           width: 100%;
           padding: 5px;
@@ -1011,8 +1016,6 @@ li a {
 #subslist li .nameuser{
   display: inline-block;
   height: 50px;
-  width: 140px;
-  position: absolute;
   padding: 14px;
 }
 .friend-list-pic-wrap{
@@ -1064,11 +1067,14 @@ li a {
 #freqlist li{
   padding: 5px;
   display: flex;
+  width: 33.3%;
 }
-#subslist li:hover,
-#frielist li:hover,
-#freqlist li:hover{
-  background-color: white !important;
+#subslist li:first-child,
+#frielist li:first-child,
+#freqlist li:first-child{
+  display: block;
+  width: 100% !important;
+  background-color: #e6e6e6;
 }
 #profile-middle-nav,
 .others {
@@ -1087,7 +1093,8 @@ li a {
 }
 #profile-middle-nav button,
 .others button {
-  width: 103% !important;
+  width: 101% !important;
+  margin: 0;
   border: 0;
   border-radius: 0 !important;
 }
