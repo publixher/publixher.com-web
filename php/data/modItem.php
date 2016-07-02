@@ -61,7 +61,7 @@ if ($action == 'get_item') {
     $croprex = "/^\\/img\\/crop_origin\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for ($i = 0; $i < $imgcount; $i++) {
-        str_replace('https://analograph.com', '', $imgs[1][$i][0]);
+        str_replace('http://analograph.com', '', $imgs[1][$i][0]);
         if (!preg_match($croprex, $imgs[1][$i][0])) {
             $originurl[$i] = $imgs[1][$i][0];
             $originurl[$i] = explode('?', $originurl[$i])[0];
