@@ -158,7 +158,7 @@
     <?php } else {
     //        내 프로필이 아닐경우
     ?>
-        <div class="btn-group" role="group">
+        <div class="btn-group others" role="group">
             <script>
                 var I = false;
                 var frelation = false;

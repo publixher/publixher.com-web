@@ -165,6 +165,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   display: block;
   max-width: 528px;
   margin-left: -9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #sendBody {
   z-index: 1;
@@ -181,6 +183,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   display: block;
   max-width: 528px;
   margin-left: -9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane hr {
   margin: 5px 0 0 0;
@@ -441,6 +445,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   display: block;
   max-width: 528px;
   margin-left: -9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #wrap #middle .item hr,
 #wrap #middle .item-for-sale hr {
@@ -816,9 +822,10 @@ li a {
 #publiBody-mod img{
   max-width: 510px;
   display: block;
-  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #publixh-mod hr,
 #send-mod hr {
@@ -978,9 +985,10 @@ li a {
 #sendBody-mod img{
   max-width: 510px;
   display: block;
-  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .tag-editor {
@@ -1090,16 +1098,23 @@ li a {
   background-color: white !important;
 }
 #profile-middle-nav {
-  width: 532px;
+  width: 530px;
   left: 50%;
   margin-left: -265px;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  margin-top: 10px;
+  overflow: hidden;
 }
 #profile-middle-nav>div {
   width: 25% !important;
+  box-sizing: border-box;
 }
 #profile-middle-nav button {
-  width: 100% !important;
-  margin-top: 10px;
+  width: 103% !important;
+  border: 0;
+  border-radius: 0 !important;
+  box-sizing: border-box;
 }
 .profile-wrap {
   position: relative;
@@ -1622,6 +1637,13 @@ a:hover {
   padding: 5px;
   background-color: white;
   min-height: 68px;
+  text-align: center;
+}
+#FolDerFolDeR ul{
+  list-style: none;
+  margin-left: -40px;
+  margin-top: 10px;
+  text-align: left;
 }
 #pf>table{
   margin: 10px;
