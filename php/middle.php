@@ -172,7 +172,7 @@
                 <img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="position: absolute; top: 44%; left: 50%; transform: translate(-50%, -50%);
 ">
             </div><br><br></div>
-        <div class="tail opend-share" style="padding: 9px 9px 2px 9px; width: 100%;">
+        <div class="tail opend-share" style="padding: 9px 9px 5px 9px; width: 100%;">
             <table style="margin: 0 auto">
                 <tbody>
                 <tr>
