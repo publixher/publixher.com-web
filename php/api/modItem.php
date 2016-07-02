@@ -43,7 +43,7 @@ if ($action == 'get_item') {
     $croprex = "/^\\/img\\/crop_origin\\//i";
     //원본이 서버에 없으면 서버에 저장하고 태그의 소스를 바꾸는작업
     for ($i = 0; $i < $imgcount; $i++) {
-        str_replace('https://analograph.com','',$imgs[1][$i][0]);
+        str_replace('http://analograph.com','',$imgs[1][$i][0]);
         if (!preg_match($croprex, $imgs[1][$i][0])) {
             $originurl[$i] = $imgs[1][$i][0];
             $originurl[$i]=explode('?',$originurl[$i])[0];
@@ -187,7 +187,7 @@ WHERE ID = :ID";
     if ($_POST['for_sale']) {
         $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
         $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
-        $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category'], PDO::PARAM_STR);
+        $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
         $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
         $prepare->bindValue(':IMG', $previewimg?str_replace('crop','crop80',$previewimg) : null, PDO::PARAM_STR);
         if ($_POST['adult'] == true) {
