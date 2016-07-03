@@ -65,7 +65,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   max-height: 250px;
   width: 530px;
   position: inherit;
-  border-radius: 0 !important;
+  border-radius: 0;
   border: 0;
   margin-top: 0;
   padding: 0;
@@ -785,7 +785,11 @@ li a {
 }
 #middle .conf .dropdown-menu {
   width: 100% !important;
-  box-shadow: 0 0 0;
+  position: absolute !important;
+  border: 1px solid #e3e3e3 !important;
+  border-radius: 4px !important;
+  padding: 5px 5px !important;
+  margin-left: -125px;
 }
 #wrap #middle #writing-pane ul li ul li {
   width: 100%;
