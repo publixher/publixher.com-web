@@ -52,6 +52,13 @@ if ($action == 'request') {
     $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"status":1}';
+} elseif ($action == 'cancelRequest') {
+    $targetID=$_POST['targetID'];
+    $userID=$_POST['myID'];
+    $sql="DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('ID_FRIEND'=>$targetID,'ID_USER'=>$userID,'ID_FRIEND2'=>$userID,'ID_USER2'=>$targetID));
+    echo '{"status":"1"}';
 } elseif ($action == 'endrelation') {
     $targetID = $_POST['targetID'];
     $userID = $_POST['myID'];

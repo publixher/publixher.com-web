@@ -59,7 +59,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($friend_list); $i++) {
-                        echo "<li><div class='friend-list-pic-wrap'><img src='".$friend_list[$i]['PIC']."'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='friend-list-pic-wrap'><img src='" . $friend_list[$i]['PIC'] . "'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
                         $arr[] = $friend_list[$i]['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -79,7 +79,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($master_list); $i++) {
-                        echo "<li><div class='subs-list-pic-wrap'><img src='".$master_list[$i]['PIC']."'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='subs-list-pic-wrap'><img src='" . $master_list[$i]['PIC'] . "'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
                         $arr[] = $master_list[$i]['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -90,36 +90,37 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
             <!--            친구신청목록-->
             <?php
             //친구요청(ID_FRIEND에 내 아이디가 들어가 있고 ALLOWED가 N인것들의 수와 목록을 보여주는것)
-            $sql2 = "SELECT ID_USER,SEQ FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ALLOWED='N') ORDER BY SEQ DESC";
+            $sql2 = "SELECT
+  FRIEND.SEQ,
+  FRIEND.ID_USER,
+  USER.USER_NAME,
+  REPLACE(USER.PIC,'profile', 'crop50') AS PIC
+FROM publixher.TBL_FRIENDS AS FRIEND
+  INNER JOIN publixher.TBL_USER AS USER
+    ON USER.ID = FRIEND.ID_USER AND ALLOWED = 'N' AND ID_FRIEND = :ID_FRIEND
+ORDER BY USER_NAME ASC";
             $prepare2 = $db->prepare($sql2);
             $prepare2->bindValue(':ID_FRIEND', $targetid, PDO::PARAM_STR);
             $prepare2->execute();
-            $friendrequest = $prepare2->fetchAll(PDO::FETCH_ASSOC);
-            $frequestnum = count($friendrequest);
+            $freq_list = $prepare2->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    친구요청(<span id="frequestnum"><?= $frequestnum ?></span>)
+                    친구요청(<span id="frequestnum"><?= count($freq_list) ?></span>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="freqlist">
                     <li><input type="text" class="form-control"></li>
                     <?php
-                    if ($frequestnum == 0) {
+                    if (count($freq_list) == 0) {
                         echo '<li><a>친구요청이 없습니다</a></li>';
                     } else {
                         $arr = array();
-                        $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID=:ID";
-                        $fprepare = $db->prepare($fsql);
-                        for ($i = 0; $i < $frequestnum; $i++) {
-                            $fprepare->bindValue(':ID', $friendrequest[$i]['ID_USER'], PDO::PARAM_STR);
-                            $fprepare->execute();
-                            $reqname = $fprepare->fetch(PDO::FETCH_ASSOC);
-                            echo "<li><div class='freq-list-pic-wrap'><img src='${reqname['PIC']}'></div><a href='/profile/" . $friendrequest[$i]['ID_USER'] . "' class='nameuser'>" . $reqname['USER_NAME'] . "</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' fid='" . $friendrequest[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $friendrequest[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
-                            $arr[] = $reqname;
+                        for ($i = 0; $i < count($freq_list); $i++) {
+                            echo "<li><div class='freq-list-pic-wrap'><img src='" . $freq_list[$i]['PIC'] . "'></div><a href='/profile/" . $freq_list[$i]['ID_USER'] . "' class='nameuser'>" . $freq_list[$i]['USER_NAME'] . "</a> <a requestid='" . $freq_list[$i]['SEQ'] . "' fid='" . $freq_list[$i]['ID_USER'] . "' class='friendok freqanswer'>O</a> <a requestid='" . $freq_list[$i]['SEQ'] . "' class='friendno freqanswer'>X</a></li>";
+                            $arr[] = $freq_list[$i]['USER_NAME'];
                         }
-                        unset($fprepare);
                         $arr = json_encode($arr);
                         echo "<script>var freqvar=${arr};</script>";
 
@@ -195,7 +196,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($friend_list); $i++) {
-                        echo "<li><div class='friend-list-pic-wrap'><img src='".$friend_list[$i]['PIC']."'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='friend-list-pic-wrap'><img src='" . $friend_list[$i]['PIC'] . "'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
                         $arr[] = $friend_list[$i]['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -215,7 +216,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($master_list); $i++) {
-                        echo "<li><div class='subs-list-pic-wrap'><img src='".$master_list[$i]['PIC']."'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
+                        echo "<li><div class='subs-list-pic-wrap'><img src='" . $master_list[$i]['PIC'] . "'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
                         $arr[] = $master_list[$i]['USER_NAME'];
                     }
                     $arr = json_encode($arr);
@@ -235,7 +236,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
             if (!$allowed) {
                 echo '<div id="friend-btn"><button type="button" class="btn btn-default request" id="friequst">친구신청</button></div>';
             } elseif ($allowed == 'N') {
-                echo '<div id="friend-btn"><button type="button" class="btn btn-default request" id="friequst" disabled>친구신청중</button></div>';
+                echo '<div id="friend-btn"><button type="button" class="btn btn-default onrequest" id="friequst" >친구신청중</button></div>';
             } elseif ($allowed == 'Y') {
                 echo '<div id="friend-btn"><button type="button" class="btn btn-success onfriend" id="friequst">친구</button></div>';
             }

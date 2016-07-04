@@ -48,7 +48,9 @@ $(document).ready(function () {
     //친구요청
     $('#friequst').on('click', function () {
         $(this).addClass('disabled')
-        var action = $(this).hasClass('request') ? "request" : "endrelation";
+        var action = $(this).hasClass('request') ? "request" : 
+                     $(this).hasClass('onrequest')?"cancelRequest":
+                     "endrelation";
         $.ajax({
             url: "/php/data/friend.php",
             type: "POST",
@@ -57,14 +59,18 @@ $(document).ready(function () {
             success: function () {
                 var btn = $('#friequst');
                 if (btn.hasClass('request')) {
-                    btn.html('친구신청중');
+                    btn.html('친구신청중').removeClass('request').addClass('onrequest');
                 } else if (btn.hasClass('onfriend')) {
-                    btn.html('친구신청').addClass('btn-default').addClass('request').removeClass('btn-success').removeClass('onfriend').removeClass('disabled');
+                    btn.html('친구신청').addClass('btn-default').addClass('request').removeClass('btn-success').removeClass('onfriend');
+                } else if(btn.hasClass('onrequest')){
+                    btn.html('친구신청').removeClass('onrequest').addClass('request');
                 }
             }, error: function (xhr,status,error) {
                 $(this).removeClass('disabled');
                 errorReport("friend",{targetID: targetid, myID: myID, action: action, token: token},status,error)
                 //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
+            },complete:function(){
+                $('#friequst').removeClass('disabled').blur();
             }
         });
     });

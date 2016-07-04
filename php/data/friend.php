@@ -7,9 +7,9 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH
 session_start();
 //CSRF검사
 if (!isset($_POST['token']) AND !isset($_GET['token'])) {
-    exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
-    exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :'.$_POST['token'].' \n $_GET["token"] :'.$_GET['token'].'$_SESSION :'.$_SESSION);
+    exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 }
 require_once '../../conf/database_conf.php';
 $action = $_POST['action'];
@@ -74,6 +74,13 @@ if ($action == 'request') {
     $prepare2->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
     $prepare2->bindValue(':ID_FRIEND2', $userID, PDO::PARAM_STR);
     $prepare2->execute();
+    echo '{"result":"Y"}';
+} elseif ($action == 'cancelRequest') {
+    $targetID=$_POST['targetID'];
+    $userID=$_POST['myID'];
+    $sql="DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('ID_FRIEND'=>$targetID,'ID_USER'=>$userID,'ID_FRIEND2'=>$userID,'ID_USER2'=>$targetID));
     echo '{"result":"Y"}';
 } elseif ($action == 'subscribe') {
     $targetID = $_POST['targetID'];
