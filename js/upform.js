@@ -156,8 +156,9 @@ $(document).ready(function () {
     })
     //publixh 버튼 내용
     $('#publixhButton').on('click', function () {
-        var $btn = $(this).button('loading');
+
         if ($('#publiBody').html().length > 0 && $('#saleTitle').val().length > 0) {
+            var $btn = $(this).button('loading');
             var btn = $(this);
             $(this).addClass('disabled')
             $.ajax({
