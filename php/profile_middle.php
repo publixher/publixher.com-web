@@ -12,6 +12,32 @@
     $expauth = $auth['EXPAUTH'];
     //자신일경우
     $I = $targetid == $userID ? 1 : 0;
+
+    //친구목록과 구독목록 불러오기
+    //구독목록
+    $sql = "SELECT
+  USER.USER_NAME,
+  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  USER.ID
+FROM publixher.TBL_USER AS USER
+  INNER JOIN publixher.TBL_FOLLOW AS FOLLOW
+    ON FOLLOW.ID_SLAVE=:USER_ID
+WHERE USER.ID = FOLLOW.ID_MASTER
+ORDER BY USER.USER_NAME ASC";
+    $prepare = $db->prepare($sql);
+    $prepare->execute(array('USER_ID' => $targetid));
+    $master_list = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT
+  USER.USER_NAME,
+  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  USER.ID
+FROM publixher.TBL_USER AS USER
+INNER JOIN publixher.TBL_FRIENDS AS FRIEND
+  ON FRIEND.ID_USER=:USER_ID AND ALLOWED='Y'
+WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
+    $prepare = $db->prepare($sql);
+    $prepare->execute(array('USER_ID' => $targetid));
+    $friend_list = $prepare->fetchAll(PDO::FETCH_ASSOC);
     //위에 버튼그룹
     if ($I) {
 //        내프로필일경우
@@ -22,34 +48,20 @@
         </script>
         <div class="btn-group" role="group" id="profile-middle-nav">
             <!--            친구목록-->
-            <?php
-            $sql3 = "SELECT ID_FRIEND FROM publixher.TBL_FRIENDS WHERE ID_USER=:ID_USER AND ALLOWED='Y'";
-            $prepare3 = $db->prepare($sql3);
-            $prepare3->bindValue(':ID_USER', $targetid);
-            $prepare3->execute();
-            $friends = $prepare3->fetchAll(PDO::FETCH_ASSOC);
-            $friendnum = count($friends);
-            ?>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    친구목록(<?= $friendnum ?>)
+                    친구목록(<?= count($friend_list) ?>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
-                    $friprepare = $db->prepare($fsql);
-                    for ($i = 0; $i < $friendnum; $i++) {
-                        $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
-                        $friprepare->execute();
-                        $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><div class='friend-list-pic-wrap'><img src='${friend['PIC']}'></div><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
-                        $arr[] = $friend['USER_NAME'];
+                    for ($i = 0; $i < count($friend_list); $i++) {
+                        echo "<li><div class='friend-list-pic-wrap'><img src='".$friend_list[$i]['PIC']."'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
+                        $arr[] = $friend_list[$i]['USER_NAME'];
                     }
-                    unset($friprepare);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
@@ -57,33 +69,19 @@
             </div>
             <!--            구독목록-->
             <div class="btn-group" role="group">
-                <?php
-                $sql4 = "SELECT ID_MASTER FROM publixher.TBL_FOLLOW WHERE ID_SLAVE=:ID_SLAVE";
-                $prepare4 = $db->prepare($sql4);
-                $prepare4->bindValue(':ID_SLAVE', $targetid);
-                $prepare4->execute();
-                $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
-                $masternum = count($masters);
-                ?>
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    구독목록(<?= $masternum ?>)
+                    구독목록(<?= count($master_list) ?>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $msql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
-                    $mriprepare = $db->prepare($msql);
-                    for ($i = 0; $i < $masternum; $i++) {
-                        $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
-                        $mriprepare->execute();
-                        $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><div class='subs-list-pic-wrap'><img src='${master['PIC']}'></div><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
-                        $arr[] = $master['USER_NAME'];
+                    for ($i = 0; $i < count($master_list); $i++) {
+                        echo "<li><div class='subs-list-pic-wrap'><img src='".$master_list[$i]['PIC']."'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
+                        $arr[] = $master_list[$i]['USER_NAME'];
                     }
-                    unset($mriprepare);
                     $arr = json_encode($arr);
                     echo "<script>var subsvar=${arr};</script>";
                     ?>
@@ -185,26 +183,21 @@
                 }
             }
             ?>
+            <!--            친구목록-->
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    친구목록(<?= $friendnum ?>)
+                    친구목록(<?= count($friend_list) ?>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $fsql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
-                    $friprepare = $db->prepare($fsql);
-                    for ($i = 0; $i < $friendnum; $i++) {
-                        $friprepare->bindValue(':ID', $friends[$i]['ID_FRIEND'], PDO::PARAM_STR);
-                        $friprepare->execute();
-                        $friend = $friprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><div class='friend-list-pic-wrap'><img src='${friend['PIC']}'></div><a href='/profile/" . $friend['ID'] . "' class='nameuser'>" . $friend['USER_NAME'] . "</a></li>";
-                        $arr[] = $friend['USER_NAME'];
+                    for ($i = 0; $i < count($friend_list); $i++) {
+                        echo "<li><div class='friend-list-pic-wrap'><img src='".$friend_list[$i]['PIC']."'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
+                        $arr[] = $friend_list[$i]['USER_NAME'];
                     }
-                    unset($friprepare);
                     $arr = json_encode($arr);
                     echo "<script>var frievar=${arr};</script>";
                     ?>
@@ -212,33 +205,19 @@
             </div>
             <!--            구독목록-->
             <div class="btn-group" role="group">
-                <?php
-                $sql4 = "SELECT ID_MASTER FROM publixher.TBL_FOLLOW WHERE ID_SLAVE=:ID_SLAVE";
-                $prepare4 = $db->prepare($sql4);
-                $prepare4->bindValue(':ID_SLAVE', $targetid);
-                $prepare4->execute();
-                $masters = $prepare4->fetchAll(PDO::FETCH_ASSOC);
-                $masternum = count($masters);
-                ?>
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
-                    구독목록(<?= $masternum ?>)
+                    구독목록(<?= count($master_list) ?>)
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
                     <?php
                     $arr = array();
-                    $msql = "SELECT USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC,ID FROM publixher.TBL_USER WHERE ID=:ID";
-                    $mriprepare = $db->prepare($msql);
-                    for ($i = 0; $i < $masternum; $i++) {
-                        $mriprepare->bindValue(':ID', $masters[$i]['ID_MASTER'], PDO::PARAM_STR);
-                        $mriprepare->execute();
-                        $master = $mriprepare->fetch(PDO::FETCH_ASSOC);
-                        echo "<li><div class='subs-list-pic-wrap'><img src='${master['PIC']}'></div><a href='/profile/" . $master['ID'] . "' class='nameuser'>" . $master['USER_NAME'] . "</a></li>";
-                        $arr[] = $master['USER_NAME'];
+                    for ($i = 0; $i < count($master_list); $i++) {
+                        echo "<li><div class='subs-list-pic-wrap'><img src='".$master_list[$i]['PIC']."'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
+                        $arr[] = $master_list[$i]['USER_NAME'];
                     }
-                    unset($mriprepare);
                     $arr = json_encode($arr);
                     echo "<script>var subsvar=${arr};</script>";
                     ?>
