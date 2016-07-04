@@ -232,7 +232,7 @@ $(document).ready(function () {
                             , $('<a>').addClass('pin-body').attr('href', '/content/' + res[i]['ID_CONTENT']).text(res[i]['BODY'])
                             , $('<span>').text(res[i]['KNOCK']).addClass('pin-knock')
                             , $('<span>').text(res[i]['REPLY']).addClass('pin-reply')
-                            , $('<span>').addClass('pubico pico-pin2 del-pin')
+                            , $('<span>').addClass('pubico pico-pin_002 del-pin')
                         ).insertAfter($('#pinlist li:last-child'))
                         pinPage = pinPage + 1;
                     }
