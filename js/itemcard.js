@@ -1432,7 +1432,6 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     if (res['result'] == 'Y') {
-                        pin_a.addClass('pin-a').removeClass('pubico').removeClass('pico-pin2');
                         pin_a.removeClass('pinned')
                         pin = pin.replace(' ' + thisitemID, '');
                         $('.pin-list a[href="/content/' + thisitemID + '"]').parents('li').remove();
