@@ -19,7 +19,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     margin: auto;
     position: relative;
 }
-.pin-a,
+.pin-a{
+    font-size: 16px;
+    padding: 6px;
+    display: block;
+}
 #left,
 #right .market {
     display: none;
@@ -544,7 +548,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
-    background-color: lightgray;
+    color: black;
     outline: 0;
 }
 #wrap #right .conf #controller .btn-group ul {
@@ -1396,6 +1400,10 @@ a:hover {
 }
 .price a{
     padding: 0 !important
+}
+.pinned{
+    color: #00a2f3 !important;
+    transition: all 0.3s ease-in-out;
 }
 #mod-pane div button,
 #publixh div div button,

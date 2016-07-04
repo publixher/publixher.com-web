@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'publixherico';
-    src:    url('fonts/publixherico.eot?jnku6u');
-    src:    url('fonts/publixherico.eot?jnku6u#iefix') format('embedded-opentype'),
-        url('fonts/publixherico.ttf?jnku6u') format('truetype'),
-        url('fonts/publixherico.woff?jnku6u') format('woff'),
-        url('fonts/publixherico.svg?jnku6u#publixherico') format('svg');
+    src:    url('fonts/publixherico.eot?g1nl5q');
+    src:    url('fonts/publixherico.eot?g1nl5q#iefix') format('embedded-opentype'),
+        url('fonts/publixherico.ttf?g1nl5q') format('truetype'),
+        url('fonts/publixherico.woff?g1nl5q') format('woff'),
+        url('fonts/publixherico.svg?g1nl5q#publixherico') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.pico-Pin_002:before {
+    content: "\e90c";
+}
 .pico-youtube:before {
     content: "\e905";
 }
@@ -116,15 +119,6 @@
 }
 .pico-person-cog:before {
     content: "\e927";
-}
-.pico-pin:before {
-    content: "\e928";
-}
-.pico-pin2:before {
-    content: "\e929";
-}
-.pico-pin3:before {
-    content: "\e92a";
 }
 .pico-bin:before {
     content: "\e92b";

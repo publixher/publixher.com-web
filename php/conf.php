@@ -47,7 +47,7 @@
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" id="pinbtn"
                     aria-expanded="false">
-                <span class="pubico pico-pin2"></span>
+                <span class="pubico pico-Pin_002"></span>
             </button>
             <ul class="dropdown-menu" role="menu" id="pinlist">
                 <li></li>

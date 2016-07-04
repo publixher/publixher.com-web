@@ -58,7 +58,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   width: 550px;
   float: left;
 }
-#wrap #middle .btn-group ul {
+#wrap #middle #profile-middle-nav ul {
   background-color: #fff;
   overflow-y: auto;
   overflow-x: hidden;
@@ -354,6 +354,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   border: 1px solid #ddd;
   min-height: 32px;
   height:100%;
+  word-break: break-all;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
@@ -366,6 +367,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   min-height: 32px;
   height: 100%;
   margin-top: 10px;
+  word-break: break-all;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -418,11 +420,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .body,
 #wrap #middle .item-for-sale .body {
   float: left;
-  margin-left: 9px;
-  margin-right: 9px;
+  margin: 10px 9px;
   width: 510px;
   word-break: break-all;
-  margin-top: 10px;
   line-height: 22px;
 }
 #wrap #middle .item .body .BodyPic,
@@ -587,7 +587,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .conf #controller .btn-danger:hover,
 #wrap #right .conf #controller .btn-danger:focus {
-  background-color: lightgray;
+  color: black;
   outline: 0;
 }
 #wrap #right .conf #controller #configbtn {
@@ -602,7 +602,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
-  background-color: lightgray;
+  color: black;
   outline: 0;
 }
 #wrap #right .conf #controller .btn-group ul {
@@ -1681,6 +1681,10 @@ a:hover {
   margin-left: -9px;
   margin-top: 10px;
   margin-bottom: -10px;
+}
+.pinned{
+  color: #00a2f3 !important;
+  transition: all 0.3s ease-in-out;
 }
 .item-sale-card{
   padding: 5px 10px;

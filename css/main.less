@@ -285,6 +285,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         border: 1px solid #ddd;
         min-height: 32px;
         height: 100%;
+        word-break: break-all;
       }
       .commentReg {
         width: 100% !important;
@@ -296,6 +297,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         min-height: 32px;
         height: 100%;
         margin-top: 10px;
+        word-break: break-all;
       }
 
       .header {
@@ -345,11 +347,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       }
       .body {
         float: left;
-        margin-left: 9px;
-        margin-right: 9px;
+        margin: 10px 9px;
         width: 510px;
         word-break: break-all;
-        margin-top: 10px;
         line-height: 22px;
         .BodyPic {
           max-width: 528px !important;
@@ -485,7 +485,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           background-color: transparent;
           border-color: transparent;
           &:hover, &:focus {
-            background-color: lightgray;
+            color: black;
           }
         }
         #configbtn {
@@ -498,7 +498,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           border-color: transparent;
           outline: 0;
           &:hover, &:focus {
-            background-color: lightgray;
+            color: black;
             outline: 0;
           }
         }
@@ -1467,6 +1467,10 @@ a:hover{
   margin-left: -9px;
   margin-top: 10px;
   margin-bottom: -10px;
+}
+.pinned{
+  color: #00a2f3 !important;
+  transition: all 0.3s ease-in-out;
 }
 //유튜브
 #mod-pane div button,
