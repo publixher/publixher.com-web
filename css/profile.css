@@ -1682,6 +1682,39 @@ a:hover {
   margin-top: 10px;
   margin-bottom: -10px;
 }
+.item-sale-card{
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  background-color: white;
+  margin: 2%;
+  width: 96%
+}
+.item-sale-title{
+  float: left;
+  width: 58%;
+  margin: 0 1%;
+  font-weight: 700;
+  border-right: 1px solid #e3e3e3;
+}
+.item-sale-price,
+.item-sale-category{
+  float: left;
+  width: 18%;
+  margin: 0 1%;
+}
+.item-sale-knock,
+.item-sale-comment,
+.item-sale-report,
+.item-sale-sale,
+.item-sale-revenue{
+  display: inline-block;
+  width: 16%;
+  margin: 2% 2% 0 2%;
+  text-align: center;
+  background-color: #e3e3e3;
+  border-radius: 10px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
