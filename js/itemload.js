@@ -30,9 +30,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
-        write += '<span class="pin-a pubico pubico pico-Pin_002 pinned"></span>';
+        write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
     } else {
-        write += '<span class="pin-a pubico pico-Pin_002"></span>';
+        write += '<a class="pin-a pubico pico-Pin_002"></a>';
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span> </button> '
 
