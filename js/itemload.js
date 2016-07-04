@@ -8,26 +8,25 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
+    write += '<span class="content-date">'+date + '</span>&nbsp;'
+    switch (expose) {
+        case "0":
+            write += '<span class="content-expose">나만</span>';
+            break;
+        case "1":
+            write += '<span class="content-expose">친구</span>';
+            break;
+        case "2":
+            write += '<span class="content-expose">전체</span>';
+            break;
+    }
     if (targetID) {
         write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
     }
     if (folderID) {
-        write += '<span class="content-date">'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;';
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
     }
 
-    switch (expose) {
-        case "0":
-            write += '<span class="content-expose">나만보기</span>';
-            break;
-        case "1":
-            write += '<span class="content-expose">친구에게 공개</span>';
-            break;
-        case "2":
-            write += '<span class="content-expose">전체공개</span>';
-            break;
-    }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -77,12 +76,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
-    if (folderID) {
-        write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;';
-    }
-
+    write += '<span class="content-date">'+date + '</span>&nbsp;';
     switch (expose) {
         case "0":
             write += '<span class="content-expose">나만보기</span>';
@@ -94,6 +88,10 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    }
+
     //카테고리 표시부분
     if(category!='SNS') {
         write+='<span class="content-category"><span class="item-category">'+category+'</span>';

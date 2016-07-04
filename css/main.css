@@ -319,7 +319,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   font-size: 14px;
   color: lightslategrey;
   float: left;
-  margin: 2px 0 4px 0;
+  margin: 1px 0 3px 0;
   width: 75%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1112,10 +1112,18 @@ li a {
 }
 .content-date,
 .content-expose {
-  float: left;
-  margin-left: 1.5%;
+  margin-left: .5%;
   font-size: 12px;
   margin-top: 0.7%;
+}
+.content-folder,
+.content-category{
+  padding: 1px 10px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+}
+.content-folder {
+  margin-left: 2%;
 }
 .content-folder a {
   float: none !important;
@@ -1188,8 +1196,7 @@ li a {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.item-category,
-.item-sub_category,
+.content-category,
 .content-folder {
   font-size: 12px;
   cursor: pointer;
