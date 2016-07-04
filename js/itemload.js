@@ -30,9 +30,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
-        write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
+        write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
     } else {
-        write += '<a class="pin-a pubico pico-Pin_002"></a>';
+        write += '<a class="pin-a">핀</a>';
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span> </button> '
 
@@ -77,7 +77,11 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
-    write += '<span class="content-date">'+date + '</span>&nbsp;';
+    if (folderID) {
+        write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    } else {
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
+    }
 
     switch (expose) {
         case "0":
@@ -90,13 +94,6 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
-
-    if (folderID) {
-        write += <span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    } else {
-
-    }
-
     //카테고리 표시부분
     if(category!='SNS') {
         write+='<span class="content-category"><span class="item-category">'+category+'</span>';
@@ -107,9 +104,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
-        write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
+        write += '<a class="pin-a pubico pico-pin2 pinned">핀</a>';
     } else {
-        write += '<a class="pin-a pubico pico-Pin_002"></a>';
+        write += '<a class="pin-a">핀</a>';
     }
     write += '<div class="btn-group"> <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span> </button> '
     if (mid == writer || level == 99) {
