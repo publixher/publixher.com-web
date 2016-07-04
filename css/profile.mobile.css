@@ -1096,6 +1096,12 @@ li a {
   font-size: 12px;
   margin-top: 0.7%;
 }
+.content-folder,
+.content-category{
+  padding: 1px 10px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+}
 .content-folder {
   margin-left: 2%;
 }
@@ -1168,8 +1174,7 @@ li a {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.item-category,
-.item-sub_category,
+.content-category,
 .content-folder {
   font-size: 12px;
   cursor: pointer;
