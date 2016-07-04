@@ -77,11 +77,6 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
     write += '<div class="writer"><a href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
-    if (folderID) {
-        write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    } else {
-        write += '<span class="content-date">'+date + '</span>&nbsp;';
-    }
 
     switch (expose) {
         case "0":
@@ -94,6 +89,13 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
+    
+    if (folderID) {
+        write += '<span class=content-date>'+date + '</span>&nbsp;<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    } else {
+        write += '<span class="content-date">'+date + '</span>&nbsp;';
+    }
+
     //카테고리 표시부분
     if(category!='SNS') {
         write+='<span class="content-category"><span class="item-category">'+category+'</span>';
