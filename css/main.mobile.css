@@ -19,7 +19,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     margin: auto;
     position: relative;
 }
-.pin-a,
+.pin-a{
+    font-size: 16px;
+    padding: 6px;
+    display: block;
+}
 #left,
 #right .market {
     display: none;
