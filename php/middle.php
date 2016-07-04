@@ -73,7 +73,7 @@
                             </td>
 
                             <td class="regbtn">
-                                <button type="button" id="sendButton" data-loading-text="싸는중..."
+                                <button type="button" id="sendButton" data-loading-text="보내는중"
                                         class="btn btn-primary">
                                     <span class="pubico pico-pen2">보내기</span>
                                 </button>
@@ -146,7 +146,7 @@
                                 <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag">
                             </td>
                             <td class="regbtn">
-                                <button type="button" id="publixhButton" data-loading-text="싸는중..."
+                                <button type="button" id="publixhButton" data-loading-text="출판중"
                                         class="btn btn-primary" autocomplete="off">
                                     <span class="pubico pico-pen2">출판하기</span>
                                 </button>
@@ -172,7 +172,7 @@
                 <img src="/img/crop/efc1caf98a65cd6e7739bd650d2a62e1.png" class="BodyPic" style="position: absolute; top: 44%; left: 50%; transform: translate(-50%, -50%);
 ">
             </div><br><br></div>
-        <div class="tail opend-share" style="padding: 9px 9px 2px 9px; width: 100%;">
+        <div class="tail opend-share" style="padding: 9px 9px 5px 9px; width: 100%;">
             <table style="margin: 0 auto">
                 <tbody>
                 <tr>

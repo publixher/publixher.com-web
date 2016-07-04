@@ -282,7 +282,7 @@ padding-top: 40px;
   float: left;
 }
 .tail table tbody tr>td{
-  border-radius: 4px;
+  border-radius: 20px;
 }
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
@@ -299,15 +299,16 @@ padding-top: 40px;
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
-  width: 98% !important;
+  width: 99% !important;
   border-radius: 4px;
-  box-shadow: inset 0 0 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   padding: 5px 10px 5px 10px;
   font-size: 12px;
   border: 1px solid #ddd;
   border-left: 0;
   min-height: 32px;
-  margin-left: 1%;
+  padding-left: 1%;
   height: 100%;
   word-break: break-all;
 }
@@ -507,7 +508,6 @@ padding-top: 40px;
   width: 98% !important;
   margin-left: 1%;
   height: 40px !important;
-  opacity: 0.9;
   border: 1px solid #e3e3e3;
   background: #fbfbfb;
   border-bottom-right-radius: 4px;
@@ -1404,9 +1404,11 @@ a:hover {
   position: absolute;
 }
 .price{
-  padding: 3px 20px;
+  padding: 5px 15px;
   background-color: #f4f4f4;
-  border-radius: 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-right: 5px;
 }
 .price a{
   padding: 0 !important
