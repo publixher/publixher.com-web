@@ -1432,6 +1432,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     if (res['result'] == 'Y') {
+                        pin_a.addClass('pin-a');
                         pin_a.removeClass('pinned')
                         pin = pin.replace(' ' + thisitemID, '');
                         $('.pin-list a[href="/content/' + thisitemID + '"]').parents('li').remove();
@@ -1451,7 +1452,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (res) {
                     if (res['result'] == 'Y') {
-                        pin_a.addClass('pin-a pubico pico-pin2 pinned');
+                        pin_a.addClass('pin-a pubico pico-Pin_002 pinned');
 
                         pin = pin + ' ' + thisitemID;
                     } else {
