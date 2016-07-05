@@ -396,6 +396,8 @@ padding-top: 40px;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: none !important;
+  margin: 0;
+  width: auto;
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
@@ -1068,12 +1070,16 @@ li a {
 }
 .hot-body,
 .hot-data {
-  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
+}
+.hot-body{
+  display: block;
+  margin-top: 8px;
+  padding: 0 10px;
 }
 .hot-knock,
 .hot-reply {
@@ -1098,7 +1104,7 @@ li a {
 }
 .content-folder,
 .content-category{
-  padding: 1px 10px;
+  padding: 1px 8px;
   background-color: #e8e8e8;
   border-radius: 10px;
 }
@@ -1409,7 +1415,8 @@ a:hover {
 .oi{
   display: inline-block;
   border-radius: 4px;
-  margin: 16px 10px;
+  padding: 15px 5px;
+  background-color: #f9f9f9;
   font-size: 12px;
   color: #434343;
   position: absolute;
