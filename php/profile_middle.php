@@ -3,13 +3,14 @@
     <?php
     require_once '../conf/getTarget.php';
     //글쓰기권한,공개설정 탐색
-    $w = "SELECT WRITEAUTH,EXPAUTH FROM publixher.TBL_USER WHERE ID=:ID";
+    $w = "SELECT WRITEAUTH,EXPAUTH,VIEWAUTH FROM publixher.TBL_USER WHERE ID=:ID";
     $p = $db->prepare($w);
     $p->bindValue(':ID', $targetid);
     $p->execute();
     $auth = $p->fetch(PDO::FETCH_ASSOC);
     $writeauth = $auth['WRITEAUTH'];
     $expauth = $auth['EXPAUTH'];
+    $viewauth=$auth['VIEWAUTH'];
     //자신일경우
     $I = $targetid == $userID ? 1 : 0;
 
@@ -153,6 +154,11 @@ ORDER BY USER_NAME ASC";
                             친구</label></li>
                     <li class="checkbox"><label><input type="checkbox" value="c"
                                                        class="expAuth" <? if (strpos($expauth, 'c') !== false) echo 'checked' ?>>전체</label>
+                    <li><b>목록 공개</b></li>
+                    <li class="checkbox"><label><input type="checkbox" value="z"
+                                                       class="viewAuth" <? if (strpos($viewauth, 'z') !== false) echo 'checked' ?>>친구</label></li>
+                    <li class="checkbox"><label><input type="checkbox" value="y"
+                                                       class="viewAuth" <? if (strpos($viewauth, 'y') !== false) echo 'checked' ?>>구독</label>
                     </li>
                 </ul>
             </div>
@@ -194,13 +200,17 @@ ORDER BY USER_NAME ASC";
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
                     <?php
-                    $arr = array();
-                    for ($i = 0; $i < count($friend_list); $i++) {
-                        echo "<li><div class='friend-list-pic-wrap'><img src='" . $friend_list[$i]['PIC'] . "'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
-                        $arr[] = $friend_list[$i]['USER_NAME'];
+                    if(strpos($viewauth, 'z') !== false) {
+                        $arr = array();
+                        for ($i = 0; $i < count($friend_list); $i++) {
+                            echo "<li><div class='friend-list-pic-wrap'><img src='" . $friend_list[$i]['PIC'] . "'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
+                            $arr[] = $friend_list[$i]['USER_NAME'];
+                        }
+                        $arr = json_encode($arr);
+                        echo "<script>var frievar=${arr};</script>";
+                    }else{
+                        echo "<li><div>친구목록 비공개</div></li>";
                     }
-                    $arr = json_encode($arr);
-                    echo "<script>var frievar=${arr};</script>";
                     ?>
                 </ul>
             </div>
@@ -214,13 +224,17 @@ ORDER BY USER_NAME ASC";
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
                     <?php
-                    $arr = array();
-                    for ($i = 0; $i < count($master_list); $i++) {
-                        echo "<li><div class='subs-list-pic-wrap'><img src='" . $master_list[$i]['PIC'] . "'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
-                        $arr[] = $master_list[$i]['USER_NAME'];
+                    if(strpos($viewauth, 'y') !== false) {
+                        $arr = array();
+                        for ($i = 0; $i < count($master_list); $i++) {
+                            echo "<li><div class='subs-list-pic-wrap'><img src='" . $master_list[$i]['PIC'] . "'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
+                            $arr[] = $master_list[$i]['USER_NAME'];
+                        }
+                        $arr = json_encode($arr);
+                        echo "<script>var subsvar=${arr};</script>";
+                    }else{
+                        echo "<li><div>구독목록 비공개</div></li>";
                     }
-                    $arr = json_encode($arr);
-                    echo "<script>var subsvar=${arr};</script>";
                     ?>
                 </ul>
             </div>
@@ -268,7 +282,13 @@ ORDER BY USER_NAME ASC";
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active" id="send-li"><a href="#send" aria-controls="home" role="tab"
                                                                            data-toggle="tab">보내기</a></li>
-                    <?php if ($I) echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>' ?>
+                    <?php
+                    if ($I) {
+                        echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>';
+                    } else {
+                        echo '<li role="presentation" id="profile-others"><a disabled class="disabled">출판하기</a>';
+                    }
+                    ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>

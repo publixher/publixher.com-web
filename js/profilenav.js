@@ -157,4 +157,20 @@ $(document).ready(function () {
             }
         })
     })
+    $('.viewAuth').change(function(){
+        var checkValue='';
+        $('.viewAuth:checked').each(function(){
+            checkValue+=$(this).val();
+        })
+        if(checkValue.length>1){
+            checkValue=checkValue.substring(0,1)+','+checkValue.substring(1,2)
+        }
+        $.ajax({
+            url:'/php/data/profileChange.php',
+            type:'POST',
+            data:{action:"viewAuth",userID:mid,checkValue:checkValue},error:function(xhr,status,error){
+                errorReport("expAuth",{action:"viewAuth",userID:mid,checkValue:checkValue},status,error);
+            }
+        })
+    })
 });

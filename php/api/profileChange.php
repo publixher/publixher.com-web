@@ -194,5 +194,10 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare->bindValue(':POINT', $_POST['point']);
     $prepare->execute();
     echo '{"status":1}';
+}elseif($_POST['action']=='viewAuth'){
+    $sql="UPDATE publixher.TBL_USER SET VIEWAUTH=:VIEWAUTH WHERE ID=:ID";
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('VIEWAUTH'=>$_POST['checkValue'],'ID'=>$_POST['userID']));
+    echo '{"status":1}';
 }
 ?>
