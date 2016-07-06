@@ -746,10 +746,17 @@ li a {
 #expSublist,
 #categorySelect,
 #subcategorySelect {
-  width: 100% !important;
+  width: 400% !important;
   min-width: 100% !important;
-  box-shadow: 0 0 0;
-  border-top: 0;
+}
+#dirSublist{
+  margin-left: -300%;
+}
+#expSublist{
+  margin-left: -200%;
+}
+#subcategorySelect{
+  margin-left: -100%;
 }
 #categorySelect li,
 #subcategorySelect li{
@@ -761,7 +768,6 @@ li a {
 }
 #middle .conf .dropdown-menu {
   width: 100%;
-  box-shadow: 0 0 0;
   left: -450%;
 }
 #wrap #middle #writing-pane ul li ul li {
@@ -1570,4 +1576,7 @@ a:hover {
 .pinned{
   color: #00a2f3 !important;
   transition: all 0.3s ease-in-out;
+}
+.disabled{
+  background-color: transparent !important;
 }
