@@ -268,7 +268,13 @@ ORDER BY USER_NAME ASC";
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active" id="send-li"><a href="#send" aria-controls="home" role="tab"
                                                                            data-toggle="tab">보내기</a></li>
-                    <?php if ($I) echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>' ?>
+                    <?php
+                    if ($I) {
+                        echo '<li role="presentation" id="pub-li"><a href="#publixh" aria-controls="profile" role="tab"data-toggle="tab">출판하기</a></li>';
+                    }else{
+                        echo '<li role="presentation" id="profile-others"><a disabled class="disabled">출판하기</a>';
+                    }
+                    ?>
                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
