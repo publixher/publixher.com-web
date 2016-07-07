@@ -775,7 +775,7 @@ li a {
   padding: 0 3px;
 }
 .modal-dialog{
-  width: 540px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -928,6 +928,11 @@ li a {
   margin-left: 2%;
   border: 0;
   padding: 0;
+}
+#sendBody-mod,
+#publiBody-mod{
+  height: 100%;
+  padding-top: 6px;
 }
 .tag-editor {
   width: 100%;
