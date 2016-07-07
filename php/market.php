@@ -130,7 +130,7 @@
         </div>
     </div>
     <div id="market-nav">
-        <div id="market-nav-carousel" class="carousel slide" data-ride="carousel" data-pause="hover">
+        <div id="market-nav-carousel" class="carousel slide" data-ride="carousel" data-pause="hover" data-interval="10000">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
