@@ -18,7 +18,7 @@
                         </li>
                         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                     role="button" aria-expanded="false">
-                                <span class="pubico pico-folder"></span><span id="directorySettingSub-mod">미분류</span><span class="caret"></span></a>
+                                </span><span id="directorySettingSub-mod">미분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu hasInput" role="menu" id="dirSublist-mod">
                                 <li><a>미분류</a></li>
                                 <?php
