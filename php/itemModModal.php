@@ -18,7 +18,7 @@
                         </li>
                         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                                     role="button" aria-expanded="false">
-                                <span class="pubico pico-folder"></span><span id="directorySettingSub-mod">미분류</span><span class="caret"></span></a>
+                                </span><span id="directorySettingSub-mod">미분류</span><span class="caret"></span></a>
                             <ul class="dropdown-menu hasInput" role="menu" id="dirSublist-mod">
                                 <li><a>미분류</a></li>
                                 <?php
@@ -54,7 +54,7 @@
                                         <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="send-tag-mod">
                                     </td>
                                     <td class="regbtn">
-                                        <button type="button" id="sendButton-mod" data-loading-text="싸는중..." class="btn btn-primary">
+                                        <button type="button" id="sendButton-mod" data-loading-text="보내는중" class="btn btn-primary">
                                             <span class="pubico pico-pen2">보내기</span>
                                         </button>
                                     </td>
@@ -124,7 +124,7 @@
                                         <input type="text" class="tag-input form-control" placeholder="인물 , 제목" id="publi-tag-mod">
                                     </td>
                                     <td class="regbtn">
-                                        <button type="button" id="publixhButton-mod" data-loading-text="싸는중..."
+                                        <button type="button" id="publixhButton-mod" data-loading-text="출판중"
                                                 class="btn btn-primary" autocomplete="off">
                                             <span class="pubico pico-pen2">출판하기</span>
                                         </button>

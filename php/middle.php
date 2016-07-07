@@ -20,7 +20,7 @@
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                                             role="button" aria-expanded="false">
-                        <span class="pubico pico-folder"></span><span id="directorySettingSub">미분류</span><span
+                        <span id="directorySettingSub">미분류</span><span
                             class="caret"></span></a>
                     <ul class="dropdown-menu hasInput" role="menu" id="dirSublist">
                         <li><a>미분류</a></li>
@@ -38,7 +38,7 @@
                             echo '<li folderid="' . $FOLDER[$i]['ID'] . '"><a href="#" >' . $FOLDER[$i]['DIR'] . '</a></li>';
                         }
                         ?>
-                        <li><span class="pubico pico-folder-plus"></span><input type="text"
+                        <li><input type="text"
                                                                                 class="form-control new-folder"></li>
                     </ul>
                 </li>

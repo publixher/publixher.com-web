@@ -244,7 +244,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            alert('제목과 본문 , 가격을 입력해 주세요')
+            alert('제목을 입력해 주세요')
         }
     })
     //공개설정 버튼
