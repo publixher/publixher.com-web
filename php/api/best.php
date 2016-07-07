@@ -123,5 +123,36 @@ LIMIT 10";
         exit;
     }
     echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
+} elseif ($action == 'category') {
+    $category = implode('\',\'', $_GET['category']);
+    $sub_category = implode('\',\'', $_GET['sub_category']);
+    $sql = "SELECT SQL_CACHE
+  TITLE,
+  ID,
+  IMG
+FROM publixher.TBL_CONTENT
+WHERE
+WRITE_DATE > :INTERVAL
+AND DEL = 'N'
+AND EXPOSE > 1 
+AND FOR_SALE = 'Y'
+AND CATEGORY IN ('".$category."')";
+    if($sub_category!==null){
+        $sql.=" AND SUB_CATEGORY IN ('".$sub_category."')";
+    }
+    $sql.=" ORDER BY KNOCK + (COMMENT * 0.2)
+DESC
+LIMIT 10";
+
+    $today = mktime();
+    $interval = array(date("Y-m-d H:i:s",$today-(15*60)),date("Y-m-d H:i:s",$today-(60*60*24)),date("Y-m-d H:i:s",$today-(60*60*24*7)));
+    $section = array('now', 'daily', 'weekly');
+    $best = array();
+    $prepare = $db->prepare($sql);
+    for ($i = 0; $i < 3; $i++) {
+        $prepare->execute(array('INTERVAL' => $interval[$i]));
+        $best[$section[$i]] = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    }
+    echo json_encode($best, JSON_UNESCAPED_UNICODE);
 }
 ?>

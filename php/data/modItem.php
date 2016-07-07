@@ -50,6 +50,7 @@ if ($action == 'get_item') {
     $a = "/class=\"gallery\"/i";
     $body = $_POST['body'];
     $body_text = $_POST['body_text'];
+    $for_sale=$_POST['for_sale'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
 
