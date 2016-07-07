@@ -60,39 +60,49 @@ $(document).ready(function () {
             type: "GET",
             data: {act: 'category', category: category, sub_category: sub_category},
             success: function (res) {
-                console.log(res)
-                var daily = '';
-                for (var i = 0; i < res['daily'].length; i++) {
-                    var img = '';
-                    if (res['daily'][i]['IMG']) {
-                        img = $('<img>').attr({
-                            src: res['daily'][i]['IMG'],
-                            onclick: 'location.href="/content/' + res['daily'][i]['ID'] + '"'
-                        }).addClass('hot-pic')
-                    } else {
-                        img = $('<div>').addClass('hot-no-img').attr('onclick', 'location.href="/content/' + res['daily'][i]['ID'] + '"');
-                    }
-
-                    var li = $('<div>').append(
-                        $('<li>')
-                            .addClass('daily-list-item')
-                            .append(
-                                $('<div>').append(img).addClass('hot-pic-wrap'),
-                                $('<a>').addClass('hot-body').attr('href', '/content/' + res['daily'][i]['ID']).text(res['daily'][i]['TITLE'])
-                            )
-                    )
-                    daily += li.html();
-                }
-                $('#daily-hot-list').html('').append(daily);
+                replacer(res,'now')
+                replacer(res,'daily')
+                replacer(res,'weekly')
 
             }
         })
     }
 
+    function replacer(res,section){
+        var section_html='';
+        for (var i = 0; i < res[section].length; i++) {
+            var img = '';
+            if (res[section][i]['IMG']) {
+                img = $('<img>').attr({
+                    src: res[section][i]['IMG'],
+                    onclick: 'location.href="/content/' + res[section][i]['ID'] + '"'
+                }).addClass('hot-pic')
+            } else {
+                img = $('<div>').addClass('hot-no-img').attr('onclick', 'location.href="/content/' + res[section][i]['ID'] + '"');
+            }
+
+            var li = $('<div>').append(
+                $('<li>')
+                    .addClass(section+'-list-item')
+                    .append(
+                        $('<div>').append(img).addClass('hot-pic-wrap'),
+                        $('<a>').addClass('hot-body').attr('href', '/content/' + res[section][i]['ID']).text(res[section][i]['TITLE'])
+                    )
+            )
+            section_html += li.html();
+        }
+        $('#'+section+'-hot-list').html('').append(section_html);
+    }
     $('#best-category-sel input').change(function (e) {
         var category = [];
         var sub_category = [];
-        if (!$(this).hasClass('best-category-checkbox')) {
+        if ($(this).hasClass('best-category-checkbox')) {
+            if($(this).prop('checked')==false){
+                $('.best-sub_category-checkbox[data-best-category='+$(this).val()+']').prop('checked',false)
+            }else{
+                $('.best-sub_category-checkbox[data-best-category='+$(this).val()+']').prop('checked',true)
+            }
+        }else{
             $('.best-category-checkbox[value=' + $(this).attr('data-best-category') + ']').prop('checked', true)
         }
         $('.best-category-checkbox:checked').each(function () {
@@ -101,6 +111,6 @@ $(document).ready(function () {
         $('.best-sub_category-checkbox:checked').each(function () {
             sub_category.push($(this).val())
         });
-        if (category.length > 0 && sub_category.length > 0)  getBestInCategory(category, sub_category)
+        getBestInCategory(category, sub_category)
     })
 });

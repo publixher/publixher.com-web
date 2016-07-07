@@ -32,8 +32,10 @@ WHERE
 WRITE_DATE > :INTERVAL
 AND DEL = 'N'
 AND EXPOSE > 1 
-AND FOR_SALE = 'Y'
-AND CATEGORY IN ('".$category."')";
+AND FOR_SALE = 'Y'";
+    if($category!==null) {
+        " AND CATEGORY IN ('" . $category . "')";
+    }
     if($sub_category!==null){
         $sql.=" AND SUB_CATEGORY IN ('".$sub_category."')";
     }
