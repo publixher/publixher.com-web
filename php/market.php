@@ -3,9 +3,38 @@
     <div id="market-nav">
         <div id="market-nav-carousel" class="carousel slide" data-ride="carousel" data-pause="hover">
             <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#now-hot-list" aria-controls="now" role="tab" data-toggle="tab">trending</a></li>
+                            <li role="presentation"><a href="#daily-hot-list" aria-controls="daily" role="tab" data-toggle="tab">daily</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="now-hot-list"></div>
+                            <div role="tabpanel" class="tab-pane" id="daily-hot-list"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#weekly-hot-list" aria-controls="weekly" role="tab" data-toggle="tab">weekly</a></li>
+                            <li role="presentation"><a href="#your-hot-list" aria-controls="your" role="tab" data-toggle="tab">for you</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="weekly-hot-list"></div>
+                            <div role="tabpanel" class="tab-pane" id="your-hot-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="best-category" data-toggle="dropdown" aria-expanded="true">
-                    카테고리
                     <span class="caret"></span>
                 </button>
                 <div class="dropdown-menu" id="best-category-sel" role="menu" aria-labelledby="best-category">
@@ -130,36 +159,6 @@
                             <input type="checkbox" value="GIF" class="best-sub_category-checkbox" data-best-category="사진"> GIF
                         </label>
                     </p>
-                </div>
-            </div>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <div role="tabpanel">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#now-hot-list" aria-controls="now" role="tab" data-toggle="tab">trending</a></li>
-                            <li role="presentation"><a href="#daily-hot-list" aria-controls="daily" role="tab" data-toggle="tab">daily</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="now-hot-list"></div>
-                            <div role="tabpanel" class="tab-pane" id="daily-hot-list"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div role="tabpanel">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#weekly-hot-list" aria-controls="weekly" role="tab" data-toggle="tab">weekly</a></li>
-                            <li role="presentation"><a href="#your-hot-list" aria-controls="your" role="tab" data-toggle="tab">for you</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="weekly-hot-list"></div>
-                            <div role="tabpanel" class="tab-pane" id="your-hot-list"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <a class="right carousel-control" href="#market-nav-carousel" role="button" data-slide="next">
