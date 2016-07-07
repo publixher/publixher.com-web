@@ -701,6 +701,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .market .noImg {
   height: 70px;
 }
+#wrap #right .market #market-nav #market-nav-carousel {
+  width: 300px;
+  height: 100%;
+  min-height: 600px;
+}
+#wrap #right .market #market-nav div[role="tabpanel"] {
+  width: 300px;
+}
 .carousel-control.right,
 .carousel-control.left {
   background-image: none;

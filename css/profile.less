@@ -654,6 +654,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     }
     .market {
       .roundborder();
+      border-radius: 4px;
       top: 95px;
       width: 300px;
       height: auto;
@@ -691,11 +692,21 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     }
   }
 }
-.carousel-control.right,.carousel-control.left{
+#wrap #right .market #market-nav #market-nav-carousel {
+  width: 300px;
+  height: 100%;
+  min-height: 600px;
+}
+#wrap #right .market #market-nav div[role="tabpanel"] {
+  width: 300px;
+}
+.carousel-control.right,
+.carousel-control.left {
   background-image: none;
-  width: 50px;
+  width: 15%;
+  height: 50px;
   padding: 13px 8px;
-  font-size: 14px
+  font-size: 14px;
 }
 .carousel-inner .nav-tabs>li:hover>a,
 .carousel-inner .nav-tabs>li.active>a,
