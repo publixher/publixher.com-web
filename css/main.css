@@ -1024,10 +1024,8 @@ li a {
   height: 200px;
   width: 96%;
   float: left;
-  background-color: #f9f9f9;
-  border: 1px solid #e3e3e3;
+  border-bottom: 1px solid #f4f4f4;
   margin: 2%;
-  border-radius: 4px;
 }
 #now-hot-list li,
 #daily-hot-list li,
@@ -1418,6 +1416,7 @@ a:hover {
   border: 0;
   border-bottom: 1px solid #e3e3e3;
   padding: 0 30px;
+  opacity: 0.9;
 }
 .checkbox-inline{
   padding: 0;
