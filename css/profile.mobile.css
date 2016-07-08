@@ -1000,18 +1000,18 @@ li a {
 .form-control {
   border: 1px solid #e3e3e3;
 }
-.knock a{
-  padding: 6px 3px 6px 5px !important;
-}
+
 .knock .pubico {
   vertical-align: sub;
   font-size: 18px;
   font-weight: 700;
   color: #e3e3e3;
+  position: absolute;
+  margin: -3px 0 0 -15px !important;
 }
 .knocked{
   color: #394F63 !important;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 .usrpic-wrap {
   position: relative;
