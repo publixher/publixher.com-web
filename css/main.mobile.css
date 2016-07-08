@@ -981,16 +981,18 @@ li a {
 .form-control {
     border: 1px solid #e3e3e3;
 }
-
+.knock a{
+    margin-left: 5px
+}
 .knock .pubico {
     vertical-align: sub;
     font-size: 18px;
-    margin-right: 5px;
     font-weight: 700;
     color: #e3e3e3;
 }
 .knocked{
     color: #394F63 !important;
+    transition: all 0.3s ease-in-out;
 }
 .usrpic-wrap {
     position: relative;
