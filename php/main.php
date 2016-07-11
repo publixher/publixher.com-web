@@ -94,6 +94,9 @@
             } else {
                 // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
                 FB.login(function (response) {
+                    FB.api('/me/friends', function (response) {
+                        console.log(response)
+                    });
                 }, {scope: 'user_friends'});
             }
         }
