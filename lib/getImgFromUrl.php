@@ -1,5 +1,5 @@
 <?php
-function getImgFromUrl($url,$originpath,$path,$size,$opath=null,$osize=null,$sel='crop'){
+function getImgFromUrl($url,$originpath,$path,$size,$opath=null,$osize=null,$sel='crop',$o2path=null,$o2size=null){
     require_once 'imagecrop.php';
     //이미지가 서버에 없으면 경로에서 이미지 따와서 서버에 저장하는것
     $tmp_file = explode(' ', microtime());
@@ -25,6 +25,11 @@ function getImgFromUrl($url,$originpath,$path,$size,$opath=null,$osize=null,$sel
         $ocroppath=str_replace($originpath,$opath,$filepath);
         $img->set_size($osize,$osize);
         $img->save_img($ocroppath);
+    }
+    if($o2path!==null){
+        $o2croppath=str_replace($originpath,$o2path,$filepath);
+        $img->set_size($o2size,$o2size);
+        $img->save_img($o2croppath);
     }
     if($sel=='origin') return $fileurl;
     elseif($sel=='crop_origin') return $croporiginurl;

@@ -15,7 +15,7 @@ if ($info['api'] == 'naver') {
     if (!$user) {
         $id = uniqueid($db, 'user');
         $age = date("Y") - (substr($info['age'], 0, 1) . '5') . '-';
-        $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
+        $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin','crop24',24);
         try {
             $db->beginTransaction();
             $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL,PASSWORD) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1,'NAVER')";
@@ -63,7 +63,7 @@ if ($info['api'] == 'naver') {
             require_once '../../lib/getImgFromUrl.php';
             require_once '../../conf/mongo_conf.php';
             $id = uniqueid($db, 'user');
-            $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
+            $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin','crop24',24);
             try {
                 $db->beginTransaction();
                 $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,USER_NAME,SEX,BIRTH,PIC,LEVEL,PASSWORD) VALUES (:ID,:EMAIL,:USER_NAME,:SEX,:BIRTH,:PIC,1,'FACEBOOK')";

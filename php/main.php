@@ -50,6 +50,36 @@
     <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.1-min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/errorReport.js"></script>
+    <script>
+        //페이스북 SDK 초기화
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '143041429433315',
+                status: true,
+                xfbml: true,
+                version: 'v2.6'
+            })
+            ;
+        };
+
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/ko_kr/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+        function a(){
+            FB.api('/me/friends',function(res){
+                console.log(res)
+            })
+        }
+        a();
+    </script>
 </head>
 <body>
 
