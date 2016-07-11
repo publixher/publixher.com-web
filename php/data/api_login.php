@@ -61,6 +61,7 @@ if ($info['api'] == 'naver') {
         if (!$user) {
             require_once '../../lib/random_64.php';
             require_once '../../lib/getImgFromUrl.php';
+            require_once '../../conf/mongo_conf.php';
             $id = uniqueid($db, 'user');
             $pic = getImgFromUrl($info['image'], 'profile', 'crop50', 50, 'crop34', 34, 'origin');
             try {
