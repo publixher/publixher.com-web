@@ -93,13 +93,13 @@ if ($info['api'] == 'naver') {
         }
     }
 }
-$bulk = new MongoDB\Driver\BulkWrite;
-$user_document=['id'=>$id];
-if($info['action']=='reg' && $info['api']=='facebook'){
-    $user_document['facebook_id']=$info['id'];
-}
-$bulk->insert($user_document);
-$result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
+//$bulk = new MongoDB\Driver\BulkWrite;
+//$user_document=['id'=>$id];
+//if($info['action']=='reg' && $info['api']=='facebook'){
+//    $user_document['facebook_id']=$info['id'];
+//}
+//$bulk->insert($user_document);
+//$result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
 
 $_SESSION['user'] = $user;
 //세션토큰 생성(CSRF등 대책)
