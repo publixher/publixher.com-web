@@ -76,7 +76,7 @@
         } else if (response.status === 'not_authorized') {
             // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
             FB.login(function (response) {
-                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale', {locale: 'ko_KR'}, function (response) {
+                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale,friends', {locale: 'ko_KR'}, function (response) {
                     function replaceAll(str, searchStr, replaceStr) {
                         return str.split(searchStr).join(replaceStr);
                     }
