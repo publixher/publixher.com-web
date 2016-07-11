@@ -319,8 +319,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
     padding: 6px 6px 0 6px;    width: 100%;
     height: 65px;
-    background-color: #fafafa;
-    border-bottom: 1px solid #eeeeee;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
@@ -333,10 +331,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .header .writer,
 #wrap #middle .item-for-sale .header .writer {
-    font-size: 14px;
-    color: lightslategrey;
+    font-size: 12px;
+    color: #5f5f5f;
     float: left;
-    margin: 1px 0 3px 0;
+    margin: 4px 0;
     width: 65%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -354,7 +352,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .header .title,
 #wrap #middle .item-for-sale .header .title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
@@ -368,7 +366,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     margin-left: 2%;
     margin-right: 2%;
     word-break: break-all;
-    margin-top: 10px;
+    margin-top: 5px;
     line-height: 22px;
 }
 
@@ -489,18 +487,16 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
 }
 #wrap #right .conf {
-    position: absolute;
+    position: fixed;
     top: 0;
     left:0 !important;
     z-index: 100;
     font-size: 12px;
-    width: 98% !important;
-    margin-left: 1%;
+    width: 100% !important;
     height: 40px !important;
-    border: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
     background: #fbfbfb;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-radius: 0;
 }
 #wrap #right .conf #logo {
     margin: 5px 5px 0 5px;
@@ -553,19 +549,23 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     outline: 0;
 }
 #wrap #right .conf #controller .btn-group ul {
-    background-color: #fff;
+    background-color: #fbfbfb;
     overflow-y: auto;
     overflow-x: hidden;
     height: auto;
     position: fixed;
-    margin-top: 40px !important;
+    margin-top: 39px !important;
     width: 100% !important;
     max-height: 70% !important;
     left: 0 !important;
     top: 0;
+    border: 0;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e9e9e9;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     z-index:10000;
+    box-shadow: 0 0 0;
 }
 #wrap #right .conf #controller .btn-group ul li {
     width: 100%;
@@ -946,7 +946,7 @@ li a {
     line-height: 2.2em;
 }
 .content-body-rep-wrap {
-    margin: 0 10px 0 10px;
+    margin: 0 10px 5px 10px;
 }
 .item-profile-wrap {
     float: left;
@@ -986,17 +986,20 @@ li a {
 .form-control {
     border: 1px solid #e3e3e3;
 }
-
+.tknock .knock{
+    margin-right: -15px;
+}
 .knock .pubico {
     vertical-align: sub;
     font-size: 18px;
-    margin-right: 5px;
+    font-weight: 700;
+    color: #e3e3e3;
+    position: absolute;
+    margin: -3px 0 0 -18px !important;
 }
 .knocked{
-    padding: 2px 5.5px;
-    background-color: #394f64;
-    border-radius: 50%;
-    color: white;
+    color: #394F63 !important;
+    transition: all 0.15s ease-in-out;
 }
 .usrpic-wrap {
     position: relative;
@@ -1080,10 +1083,6 @@ li a {
     height: 28px;
     margin-top: -3px;
     background-color: transparent;
-}
-#wrap #middle .item .header .writer a:first-child,
-#wrap #middle .item-for-sale .header .writer a:first-child {
-    float: left;
 }
 .content-date,
 .content-expose {
@@ -1243,7 +1242,7 @@ li a {
 .new-folder {
     border: 1px solid #e3e3e3 !important;
     box-shadow: inset 0 0 0 !important;
-    padding: 6px 24px 6px 6px;
+    padding: 6px;
 }
 .pico-folder,
 .pico-file-plus,
@@ -1360,11 +1359,11 @@ a:hover {
 .reply-body .reply-del{
     color: #ddd
 }
-.repdel{
+.repdel,
+.sub-repdel{
     font-size: 10px;
+    margin: 0 0 0 10px !important;
     color: #ddd;
-    vertical-align: text-bottom;
-    margin: 0 10px 0 15px !important;
 }
 .thumbPic-wrap{
     width: 50px;
@@ -1408,6 +1407,7 @@ a:hover {
     border-radius: 20px;
     white-space: nowrap;
     margin-right: 5px;
+    cursor: pointer;
 }
 .price a{
     padding: 0 !important

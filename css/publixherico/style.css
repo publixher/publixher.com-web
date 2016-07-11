@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'publixherico';
-    src:    url('fonts/publixherico.eot?g1nl5q');
-    src:    url('fonts/publixherico.eot?g1nl5q#iefix') format('embedded-opentype'),
-        url('fonts/publixherico.ttf?g1nl5q') format('truetype'),
-        url('fonts/publixherico.woff?g1nl5q') format('woff'),
-        url('fonts/publixherico.svg?g1nl5q#publixherico') format('svg');
+    src:    url('fonts/publixherico.eot?20ruco');
+    src:    url('fonts/publixherico.eot?20ruco#iefix') format('embedded-opentype'),
+        url('fonts/publixherico.ttf?20ruco') format('truetype'),
+        url('fonts/publixherico.woff?20ruco') format('woff'),
+        url('fonts/publixherico.svg?20ruco#publixherico') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.pico-triple-dot:before {
+    content: "\e90d";
+}
 .pico-Pin_002:before {
     content: "\e90c";
 }

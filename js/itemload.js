@@ -11,13 +11,13 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += '<span class="content-date">'+date + '</span>&nbsp;'
     switch (expose) {
         case "0":
-            write += '<span class="content-expose">나만</span>';
+            write += '<span class="content-expose">나만보기</span>';
             break;
         case "1":
-            write += '<span class="content-expose">친구</span>';
+            write += '<span class="content-expose">친구에게</span>';
             break;
         case "2":
-            write += '<span class="content-expose">전체</span>';
+            write += '<span class="content-expose">전체공개</span>';
             break;
     }
     if (targetID) {
@@ -82,7 +82,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">나만보기</span>';
             break;
         case "1":
-            write += '<span class="content-expose">친구에게 공개</span>';
+            write += '<span class="content-expose">친구에게</span>';
             break;
         case "2":
             write += '<span class="content-expose">전체공개</span>';

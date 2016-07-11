@@ -375,8 +375,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   padding: 8px 10px 0 10px;
   width: 528px;
   height: 65px;
-  background-color: #fafafa;
-  border-bottom: 1px solid #eeeeee;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -389,10 +387,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .header .writer,
 #wrap #middle .item-for-sale .header .writer {
-  font-size: 14px;
-  color: lightslategrey;
+  font-size: 12px;
+  color: #5f5f5f;
   float: left;
-  margin: 1px 0 3px 0;
+  margin: 4px 0;
   width: 75%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -410,7 +408,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .header .title,
 #wrap #middle .item-for-sale .header .title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
@@ -420,7 +418,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .body,
 #wrap #middle .item-for-sale .body {
   float: left;
-  margin: 10px 9px;
+  margin: 5px 9px;
   width: 510px;
   word-break: break-all;
   line-height: 22px;
@@ -700,6 +698,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .market .noImg {
   height: 70px;
+}
+#wrap #right .market #market-nav #market-nav-carousel {
+  width: 300px;
+  height: 100%;
+  min-height: 675px;
+}
+#wrap #right .market #market-nav div[role="tabpanel"] {
+  width: 300px;
 }
 .carousel-control.right,
 .carousel-control.left {
@@ -1002,7 +1008,7 @@ li a {
   font-size: 12px;
 }
 .content-body-rep-wrap {
-  margin: 0 10px 0 10px;
+  margin: 0 10px 10px 10px;
 }
 .subs-list-pic-wrap{
   position: relative;
@@ -1171,13 +1177,14 @@ li a {
 .knock .pubico {
   vertical-align: sub;
   font-size: 18px;
-  margin-right: 5px;
+  font-weight: 700;
+  color: #e3e3e3;
+  position: absolute;
+  margin: -3px 0 0 -18px !important;
 }
 .knocked{
-  padding: 2px 5.5px;
-  background-color: #394f64;
-  border-radius: 50%;
-  color: white;
+  color: #394F63 !important;
+  transition: all 0.15s ease-in-out;
 }
 .usrpic-wrap {
   position: relative;
@@ -1203,10 +1210,8 @@ li a {
   height: 200px;
   width: 96%;
   float: left;
-  background-color: #f9f9f9;
-  border: 1px solid #e3e3e3;
+  border-bottom: 1px solid #f4f4f4;
   margin: 2%;
-  border-radius: 4px;
 }
 #now-hot-list li,
 #daily-hot-list li,
@@ -1269,10 +1274,6 @@ li a {
   margin-top: -3px;
   background-color: transparent;
 }
-#wrap #middle .item .header .writer a:first-child,
-#wrap #middle .item-for-sale .header .writer a:first-child {
-  float: left;
-}
 .content-date,
 .content-expose {
   margin-left: .5%;
@@ -1285,7 +1286,7 @@ li a {
 .content-folder,
 .content-category{
   padding: 1px 10px;
-  background-color: #e8e8e8;
+  background-color: #f4f4f4;
   border-radius: 10px;
 }
 .content-folder a {
@@ -1428,10 +1429,9 @@ li a {
   margin-right: 5px;
 }
 .new-folder {
-  margin-top: -22px;
   border: 1px solid #e3e3e3 !important;
   box-shadow: inset 0 0 0 !important;
-  padding: 6px 24px 6px 6px;
+  padding: 6px;
 }
 .pico-folder-plus {
   color: gray;
@@ -1582,11 +1582,11 @@ a:hover {
 .reply-del{
   color: #ddd
 }
-.repdel{
+.repdel,
+.sub-repdel{
   font-size: 10px;
+  margin: 0 0 0 10px !important;
   color: #ddd;
-  vertical-align: text-bottom;
-  margin: 0 10px 0 15px !important;
 }
 .carousel-inner .item div .nav li{
   width: 35% !important;
@@ -1608,6 +1608,19 @@ a:hover {
 #best-category:focus{
   background-color: transparent;
   color: black;
+}
+#best-category-sel {
+  WIDTH: 100%;
+  MARGIN-TOP: 15%;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0 30px;
+  opacity: 0.9;
+}
+.checkbox-inline{
+  padding: 0;
+  margin: 5px 20px !important;
 }
 .thumbPic-wrap{
   width: 100px;
@@ -1692,6 +1705,7 @@ a:hover {
   padding: 3px 20px;
   background-color: #f4f4f4;
   border-radius: 10px;
+  cursor: pointer;
 }
 .price a{
   padding: 0 !important
@@ -1708,6 +1722,12 @@ a:hover {
 }
 .disabled{
   background-color: transparent !important;
+}
+.checkbox{
+  text-align: center
+}
+.checkbox .best-category-checkbox{
+  display: none
 }
 .item-sale-card{
   padding: 5px 10px;
