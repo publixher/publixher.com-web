@@ -103,19 +103,19 @@
       <file leaf-file-name="api_login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="95" column="0" selection-start-line="95" selection-start-column="2" selection-end-line="101" selection-end-column="69" />
+            <state relative-caret-position="540">
+              <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
               <folding>
-                <marker date="1468226016000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1468226016000" expanded="true" signature="759:896" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1468226016000" expanded="true" signature="1432:1493" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1468226016000" expanded="true" signature="1663:1714" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1468226016000" expanded="true" signature="2174:2225" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1468226016000" expanded="true" signature="2430:2481" ph="SELECT * FRO... TBL_USER" />
-                <marker date="1468226016000" expanded="true" signature="2981:3110" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1468226016000" expanded="true" signature="2981:3121" ph="INSERT INTO publixher.TBL_USER... " />
-                <marker date="1468226016000" expanded="true" signature="3686:3747" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-                <marker date="1468226016000" expanded="true" signature="3933:3984" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1468226207000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1468226207000" expanded="true" signature="759:896" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1468226207000" expanded="true" signature="1432:1493" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1468226207000" expanded="true" signature="1663:1714" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1468226207000" expanded="true" signature="2174:2225" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1468226207000" expanded="true" signature="2430:2481" ph="SELECT * FRO... TBL_USER" />
+                <marker date="1468226207000" expanded="true" signature="2981:3110" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1468226207000" expanded="true" signature="2981:3121" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1468226207000" expanded="true" signature="3686:3747" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+                <marker date="1468226207000" expanded="true" signature="3933:3984" ph="SELECT * FRO... TBL_USER" />
               </folding>
             </state>
           </provider>
@@ -612,14 +612,7 @@
       <workItem from="1467793864979" duration="7006000" />
       <workItem from="1467862876237" duration="4717000" />
       <workItem from="1467963981698" duration="478000" />
-      <workItem from="1468213340797" duration="4212000" />
-    </task>
-    <task id="LOCAL-00394" summary="세션 id와 같거나 운영자가 아니면 다른사람 꺼 수정 못하도록">
-      <created>1466841768195</created>
-      <option name="number" value="00394" />
-      <option name="presentableId" value="LOCAL-00394" />
-      <option name="project" value="LOCAL" />
-      <updated>1466841768195</updated>
+      <workItem from="1468213340797" duration="4386000" />
     </task>
     <task id="LOCAL-00395" summary="메일 다시보내기">
       <created>1466845766127</created>
@@ -957,11 +950,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468225569915</updated>
     </task>
-    <option name="localTasksCounter" value="443" />
+    <task id="LOCAL-00443" summary="//회원가입시 몽고에 id,facebook_id 추가">
+      <created>1468226023523</created>
+      <option name="number" value="00443" />
+      <option name="presentableId" value="LOCAL-00443" />
+      <option name="project" value="LOCAL" />
+      <updated>1468226023526</updated>
+    </task>
+    <option name="localTasksCounter" value="444" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502142000" />
+    <option name="totallyTimeSpent" value="502316000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1014,7 +1014,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="interest 5개로 짜르는거 됨" />
     <MESSAGE value="510 -&gt; 528" />
     <MESSAGE value="구매시 나이 제한" />
     <MESSAGE value="&lt;div class='pre-body-pic'&gt;" />
@@ -1039,7 +1038,8 @@
     <MESSAGE value="all_mutual_friends 삭제" />
     <MESSAGE value="friends 추가" />
     <MESSAGE value="회원가입시 몽고에 id,facebook_id 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="회원가입시 몽고에 id,facebook_id 추가" />
+    <MESSAGE value="//회원가입시 몽고에 id,facebook_id 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="//회원가입시 몽고에 id,facebook_id 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1053,11 +1053,6 @@
           <url>file://$PROJECT_DIR$/php/api/uploadContent.php</url>
           <line>20</line>
           <option name="timeStamp" value="644" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/api_login.php</url>
-          <line>95</line>
-          <option name="timeStamp" value="645" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/php/data/api_login.php</url>
@@ -1515,19 +1510,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/api_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="2" selection-end-line="101" selection-end-column="69" />
+        <state relative-caret-position="540">
+          <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
           <folding>
-            <marker date="1468226016000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1468226016000" expanded="true" signature="759:896" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1468226016000" expanded="true" signature="1432:1493" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1468226016000" expanded="true" signature="1663:1714" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1468226016000" expanded="true" signature="2174:2225" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1468226016000" expanded="true" signature="2430:2481" ph="SELECT * FRO... TBL_USER" />
-            <marker date="1468226016000" expanded="true" signature="2981:3110" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1468226016000" expanded="true" signature="2981:3121" ph="INSERT INTO publixher.TBL_USER... " />
-            <marker date="1468226016000" expanded="true" signature="3686:3747" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
-            <marker date="1468226016000" expanded="true" signature="3933:3984" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1468226207000" expanded="true" signature="287:338" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1468226207000" expanded="true" signature="759:896" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1468226207000" expanded="true" signature="1432:1493" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1468226207000" expanded="true" signature="1663:1714" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1468226207000" expanded="true" signature="2174:2225" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1468226207000" expanded="true" signature="2430:2481" ph="SELECT * FRO... TBL_USER" />
+            <marker date="1468226207000" expanded="true" signature="2981:3110" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1468226207000" expanded="true" signature="2981:3121" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1468226207000" expanded="true" signature="3686:3747" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+            <marker date="1468226207000" expanded="true" signature="3933:3984" ph="SELECT * FRO... TBL_USER" />
           </folding>
         </state>
       </provider>

@@ -83,6 +83,9 @@ if ($info['api'] == 'naver') {
                 $q2->bindValue(':EMAIL', $info['email']);
                 $q2->execute();
                 $user = $q2->fetchObject(User);
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->insert(['id'=>$id,'facebook_id'=>$info['id']]);
+                $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
                 $db->commit();
             }catch(PDOException $e){
                 $db->rollBack();
@@ -93,14 +96,6 @@ if ($info['api'] == 'naver') {
         }
     }
 }
-//$bulk = new MongoDB\Driver\BulkWrite;
-//$user_document=['id'=>$id];
-//if($info['action']=='reg' && $info['api']=='facebook'){
-//    $user_document['facebook_id']=$info['id'];
-//}
-//$bulk->insert($user_document);
-//$result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
-
 $_SESSION['user'] = $user;
 //세션토큰 생성(CSRF등 대책)
 if (!isset($_SESSION['token'])) {
