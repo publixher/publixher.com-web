@@ -258,7 +258,7 @@ $(document).ready(function () {
                         list.html('');
                         var repnum = Object.keys(res).length - 3;
                         if (res['more'] == 1) {
-                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span style="cursor: pointer;">more</span></div>')
                         }
                         for (var i = repnum; i > -1; i--) {
                             var write = '';
