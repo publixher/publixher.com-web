@@ -97,12 +97,12 @@
                 }, {scope: 'user_friends'});
             }
         }
-        getFacebookFriend();
     </script>
 </head>
 <body>
 
 <div id="wrap">
+    <button onclick="getFacebookFriend()" style="display: none">fbf</button>
     <?php
     require_once "../conf/User.php";
     session_start();
