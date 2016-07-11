@@ -258,7 +258,7 @@ $(document).ready(function () {
                         list.html('');
                         var repnum = Object.keys(res).length - 3;
                         if (res['more'] == 1) {
-                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span style="cursor: pointer;">more</span></div>')
+                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer;"></span></div>')
                         }
                         for (var i = repnum; i > -1; i--) {
                             var write = '';
@@ -272,7 +272,7 @@ $(document).ready(function () {
                             write += '<table style="margin-top: 5px;margin-bottom: 5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'] + '" class="profilepic"></div></td>';
                             write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;"><span class="reply-body">' + reply + '</span><span class="repaction"><a class="repknock">노크</a> <span class="repknockbad">' + knock + '</span> <a class="repreply">코멘트</a> <span class="repreplybad">' + res[i]['SUB_REPLY'] + '</span>';
                             if (mid == res[i]['ID_USER'] || level == 99 || mid==res[i]['CONTENT_WRITER']) {
-                                write += ' <a class="repdel">X</a>'
+                                write += ' <a class="repdel pubico pico-x"></a>'
                             }
                             write += '</span></span></td></tr></table></div>';
                             if (res[i]['DEL'] == 1) {
@@ -350,7 +350,7 @@ $(document).ready(function () {
                     var list = $('#' + where);
                     var repnum = Object.keys(res).length - 3;
                     if (res['more'] == 1) {
-                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn" style="cursor: pointer;"></span></div>')
+                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer;"></span></div>')
                     }
                     for (var i = repnum; i > -1; i--) {
                         var write = '';
@@ -551,7 +551,7 @@ $(document).ready(function () {
                         function registRep(res) {
                             var repnum = Object.keys(res).length - 3;
                             if (res['more'] == 1) {
-                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="caret repbtn_sub" style="cursor: pointer;"></span></div>')
+                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer;"></span></div>')
                             }
                             for (var i = repnum; i > -1; i--) {
                                 var write = '';
@@ -781,7 +781,7 @@ $(document).ready(function () {
                         write += '<table style="margin-top: 5px;margin-bottom:5px;"><tr><td style="width: 54px;height: 34px;"><div class="rep-profilepic-wrap"><img src="' + res[i]['PIC'].replace('profile', 'crop34') + '" class="profilepic"></div></td>';
                         write += '<td class="rep"><span class="writer"> <a href="/profile/' + res[i]['ID_USER'] + '">' + name + '</a> &nbsp;<span class="timeago">' + date + '</span></span><br><span style="font-size: 12px;">' + reply + '</span>'
                         if (mid == res[i]['ID_USER'] || level == 99|| mid==res[i]['CONTENT_WRITER'] || mid==res[i]['REPLY_WRITER']) {
-                            write += ' <span class="repaction"><a class="sub-repdel">삭제</a></span>'
+                            write += ' <span class="repaction"><a class="sub-repdel pubico pico-x"></a></span>'
                         }
                         write += '</td></tr></table></div>';
                         btn.after(write);
