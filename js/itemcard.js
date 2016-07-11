@@ -258,7 +258,7 @@ $(document).ready(function () {
                         list.html('');
                         var repnum = Object.keys(res).length - 3;
                         if (res['more'] == 1) {
-                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
+                            list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="repbtn pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
                         }
                         for (var i = repnum; i > -1; i--) {
                             var write = '';
@@ -350,7 +350,7 @@ $(document).ready(function () {
                     var list = $('#' + where);
                     var repnum = Object.keys(res).length - 3;
                     if (res['more'] == 1) {
-                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
+                        list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="repbtn pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
                     }
                     for (var i = repnum; i > -1; i--) {
                         var write = '';
@@ -551,7 +551,7 @@ $(document).ready(function () {
                         function registRep(res) {
                             var repnum = Object.keys(res).length - 3;
                             if (res['more'] == 1) {
-                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
+                                subrep_list.append('<div style="height: 20px;text-align: center" class="cursor"><span class="repbtn_sub pubico pico-triple-dot" style="cursor: pointer; color: #ddd;"></span></div>')
                             }
                             for (var i = repnum; i > -1; i--) {
                                 var write = '';
