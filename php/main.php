@@ -82,23 +82,33 @@
             if (response.status === 'connected') {
                 // 페이스북을 통해서 로그인이 되어있다.
                 FB.api('/me/friends', function (response) {
-                    console.log(response)
+                    friendSearch(response['data'])
                 });
             } else if (response.status === 'not_authorized') {
                 // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
                 FB.login(function (response) {
                     FB.api('/me/friends', function (response) {
-                        console.log(response)
+                        friendSearch(response['data'])
                     });
                 }, {scope: 'user_friends'});
             } else {
                 // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
                 FB.login(function (response) {
                     FB.api('/me/friends', function (response) {
-                        console.log(response)
+                        friendSearch(response['data'])
                     });
                 }, {scope: 'user_friends'});
             }
+        }
+        function friendSearch(list){
+            $.ajax({
+                url:'/php/data/friendSearch.php',
+                type:'GET',
+                data:{list:list},
+                success:function(res){
+                    console.log(res)
+                }
+            })
         }
     </script>
 </head>
