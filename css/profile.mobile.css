@@ -567,19 +567,21 @@ padding-top: 40px;
   outline: 0;
 }
 #wrap #right .conf #controller .btn-group ul {
-  background-color: #fff;
+  background-color: #fbfbfb;
   overflow-y: auto;
   overflow-x: hidden;
   height: auto;
   position: fixed;
-  margin-top: 40px !important;
+  margin-top: 39px !important;
   width: 100% !important;
   max-height: 70% !important;
   left: 0 !important;
   top: 0;
+  border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index:10000;
+  box-shadow: 0 0 0
 }
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
