@@ -7,6 +7,7 @@ header("Content-Type:application/json");
  * Time: 오후 7:21
  */
 require_once '../../conf/mongo_conf.php';
+require_once '../../conf/database_conf.php';
 
 $list=$_GET['list'];
 $fb_ids=array();
@@ -22,4 +23,9 @@ $cursor=$mongomanager->executeQuery('publixher.user',$query);
 foreach($cursor as $user){
     $ids[]=$user->id;
 }
-$ids;
+$ids=implode('\',\'', $ids);
+$sql="SELECT ID,USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID IN ('".$ids."')";
+$prepare=$db->prepare($sql);
+$prepare->execute();
+$result=$prepare->fetchAll(PDO::FETCH_ASSOC);
+echo json_encode($result,JSON_UNESCAPED_UNICODE);

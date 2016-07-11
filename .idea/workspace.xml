@@ -68,9 +68,13 @@
       <file leaf-file-name="friendSearch.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/friendSearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="450">
+              <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+              <folding>
+                <marker date="1468233860000" expanded="true" signature="652:749" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468233860000" expanded="true" signature="652:759" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468233860000" expanded="true" signature="652:760" ph="SELECT ID,US... TBL_USER" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,8 +112,8 @@
       <file leaf-file-name="best.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/best.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+            <state relative-caret-position="195">
+              <caret line="23" column="51" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="51" />
               <folding>
                 <marker date="1467870828000" expanded="true" signature="152:291" ph="SELECT SQL_C... TBL_NOW_HOT" />
                 <marker date="1467870828000" expanded="true" signature="505:680" ph="SELECT SQL_C... TBL_DAILY_HOT" />
@@ -133,7 +137,7 @@
       <file leaf-file-name="getC.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/getC.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="7261">
               <caret line="688" column="17" selection-start-line="688" selection-start-column="17" selection-end-line="688" selection-end-column="17" />
               <folding>
                 <marker date="1467359725000" expanded="true" signature="795:2278" ph="SELECT CONT.... TBL_CONTENT" />
@@ -613,14 +617,7 @@
       <workItem from="1467793864979" duration="7006000" />
       <workItem from="1467862876237" duration="4717000" />
       <workItem from="1467963981698" duration="478000" />
-      <workItem from="1468213340797" duration="8319000" />
-    </task>
-    <task id="LOCAL-00402" summary="에러 몽고에 저장하기">
-      <created>1467022620438</created>
-      <option name="number" value="00402" />
-      <option name="presentableId" value="LOCAL-00402" />
-      <option name="project" value="LOCAL" />
-      <updated>1467022620438</updated>
+      <workItem from="1468213340797" duration="8838000" />
     </task>
     <task id="LOCAL-00403" summary="에러 사과문 표시">
       <created>1467099450060</created>
@@ -958,11 +955,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468232633443</updated>
     </task>
-    <option name="localTasksCounter" value="451" />
+    <task id="LOCAL-00451" summary="friendSearch">
+      <created>1468233308512</created>
+      <option name="number" value="00451" />
+      <option name="presentableId" value="LOCAL-00451" />
+      <option name="project" value="LOCAL" />
+      <updated>1468233308512</updated>
+    </task>
+    <option name="localTasksCounter" value="452" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="506249000" />
+    <option name="totallyTimeSpent" value="506768000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1054,11 +1058,6 @@
           <url>file://$PROJECT_DIR$/php/api/uploadContent.php</url>
           <line>20</line>
           <option name="timeStamp" value="644" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/friendSearch.php</url>
-          <line>8</line>
-          <option name="timeStamp" value="649" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1492,19 +1491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/best.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <marker date="1467870828000" expanded="true" signature="152:291" ph="SELECT SQL_C... TBL_NOW_HOT" />
-            <marker date="1467870828000" expanded="true" signature="505:680" ph="SELECT SQL_C... TBL_DAILY_HOT" />
-            <marker date="1467870828000" expanded="true" signature="895:1071" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
-            <marker date="1467870828000" expanded="true" signature="1402:1544" ph="SELECT SQL_C... TBL_CONTENT" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/mongo_conf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1513,9 +1499,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/getC.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="7261">
           <caret line="688" column="17" selection-start-line="688" selection-start-column="17" selection-end-line="688" selection-end-column="17" />
           <folding>
             <marker date="1467359725000" expanded="true" signature="795:2278" ph="SELECT CONT.... TBL_CONTENT" />
@@ -1547,19 +1541,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/getImgFromUrl.php">
+    <entry file="file://$PROJECT_DIR$/php/data/best.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="195">
+          <caret line="23" column="51" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="51" />
+          <folding>
+            <marker date="1467870828000" expanded="true" signature="152:291" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1467870828000" expanded="true" signature="505:680" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1467870828000" expanded="true" signature="895:1071" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1467870828000" expanded="true" signature="1402:1544" ph="SELECT SQL_C... TBL_CONTENT" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/data/friendSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="450">
+          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding>
+            <marker date="1468233860000" expanded="true" signature="652:749" ph="SELECT ID,US... TBL_USER" />
+            <marker date="1468233860000" expanded="true" signature="652:759" ph="SELECT ID,US... TBL_USER" />
+            <marker date="1468233860000" expanded="true" signature="652:760" ph="SELECT ID,US... TBL_USER" />
+          </folding>
         </state>
       </provider>
     </entry>
