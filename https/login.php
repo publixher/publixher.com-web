@@ -76,7 +76,7 @@
         } else if (response.status === 'not_authorized') {
             // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
             FB.login(function (response) {
-                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale', {locale: 'ko_KR'}, function (response) {
+                FB.api('/me?fields=id,name,picture.width(160).height(160).as(profile_picture),email,gender,birthday,locale,context.fields(all_mutual_friends)', {locale: 'ko_KR'}, function (response) {
                     function replaceAll(str, searchStr, replaceStr) {
                         return str.split(searchStr).join(replaceStr);
                     }
@@ -115,11 +115,11 @@
                         }
                     })
                 });
-            }, {scope: 'public_profile,email,user_birthday'});
+            }, {scope: 'public_profile,email,user_birthday,user_friends'});
         } else {
             // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
             FB.login(function (response) {
-            }, {scope: 'public_profile,email,user_birthday'});
+            }, {scope: 'public_profile,email,user_birthday,user_friends'});
         }
     }
 </script>
