@@ -112,7 +112,7 @@
                             $('<div>').addClass('friend-list-pic-wrap')
                                 .append($('<img>').attr('src',res[i]['PIC']))
                             ,$('<a>').attr('href','/profile/'+res[i]['ID']).addClass('nameuser').text(res[i]['USER_NAME'])
-                            ,$('<button>').text('친구신청')
+                            ,$('<button>').text('친구신청').attr('data-user-id',res[i]['ID']).addClass('recommend-frequest')
                         ).appendTo(list)
                     }
                 }
