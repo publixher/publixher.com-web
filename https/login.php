@@ -97,6 +97,7 @@
                         url: "/php/data/api_login.php",
                         type: "POST",
                         data: {
+                            id:response.id,
                             email: response.email,
                             birthday: format_date,
                             gender: gender,
@@ -115,11 +116,11 @@
                         }
                     })
                 });
-            }, {scope: 'public_profile,email,user_birthday'});
+            }, {scope: 'public_profile,email,user_birthday,user_friends'});
         } else {
             // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
             FB.login(function (response) {
-            }, {scope: 'public_profile,email,user_birthday'});
+            }, {scope: 'public_profile,email,user_birthday,user_friends'});
         }
     }
 </script>

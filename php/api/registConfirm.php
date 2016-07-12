@@ -43,6 +43,9 @@ if ($check_email && $check_pass) {
 <p>이메일 인증 후 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
 <p><a href='http://analograph.com/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>";
         $sendmail->send_mail($email, $from, $subject, $body);
+        $bulk = new MongoDB\Driver\BulkWrite;
+        $bulk->insert(['id'=>$id]);
+        $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
         $db->commit();
         echo '{"status":1}';
     } catch (PDOException $e) {

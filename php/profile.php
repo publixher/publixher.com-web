@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="/plugins/Bootstrap-Image-Gallery-master/css/bootstrap-image-gallery.min.css">
     <link rel="stylesheet" href="/css/publixherico/style.css">
+    
     <?php
     function isMobile(){
         $arr_browser = array ("iphone", "android", "ipod", "iemobile", "mobile", "lgtelecom", "ppc", "symbianos", "blackberry", "ipad");
@@ -46,7 +47,90 @@
     <script src="/plugins/Bootstrap-Image-Gallery-master/js/bootstrap-image-gallery.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/errorReport.js"></script>
+    <script>
+        //페이스북 SDK 초기화
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '143041429433315',
+                status: true,
+                xfbml: true,
+                version: 'v2.6'
+            })
+            ;
+        };
 
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/ko_kr/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+        function getFacebookFriend() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                // 페이스북을 통해서 로그인이 되어있다.
+                FB.api('/me/friends', function (response) {
+                    friendSearch(response['data'])
+                });
+            } else if (response.status === 'not_authorized') {
+                // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
+                FB.login(function (response) {
+                    FB.api('/me?fields=friends,id', function (response) {
+                        console.log(response)
+                        registFacebookId(response.id,mid,friendSearch,response['friends']['data'])
+                    });
+                }, {scope: 'user_friends'});
+            } else {
+                // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
+                FB.login(function (response) {
+                    FB.api('/me?fields=friends,id', function (response) {
+                        console.log(response)
+                        registFacebookId(response['id'],mid,friendSearch,response['friends']['data'])
+
+                    });
+                }, {scope: 'user_friends'});
+            }
+        }
+        function friendSearch(list){
+            $.ajax({
+                url:'/php/data/friendSearch.php',
+                type:'GET',
+                data:{list:list,action:'recommend'},
+                success:function(res){
+                    var list=$('#recommended-friend');
+                    for(var i=0;i<res.length;i++){
+                        $('<li>').append(
+                            $('<div>').addClass('friend-list-pic-wrap')
+                                .append($('<img>').attr('src',res[i]['PIC']))
+                            ,$('<a>').attr('href','/profile/'+res[i]['ID']).addClass('nameuser').text(res[i]['USER_NAME'])
+                            ,$('<button>').text('친구신청')
+                        ).appendTo(list)
+                    }
+                }
+            })
+        }
+        function registFacebookId(facebookid,mid,callback,list){
+            $.ajax({
+                url:'/php/data/friendSearch.php',
+                type:'POST',
+                data:{facebook_id:facebookid,mid:mid,action:'registFacebookId'},
+                success:function(){
+                    if(callback!==undefined){
+                        callback(list)
+                    }
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 <div id="wrap">
