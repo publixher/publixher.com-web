@@ -136,7 +136,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         }
     }
     else {
-        write += '<td class="tprice"><span class="price"><a class="value">' + price + '</a>&nbsp;<a>Pigs</a></span></td></tr></table></div> </div>';
+        write += '<td class="tprice"><span class="price"><a class="value" data-price="'+price+'">구매</a></span></td></tr></table></div> </div>';
     }
     if(knocked==1){
         write=$(write);
