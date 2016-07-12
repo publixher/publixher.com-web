@@ -57,6 +57,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
+                    <li style="display: none"><button type="button" onclick="getFacebookFriend()" data-toggle="modal" data-target="#friend-recommend">친구추천받기</button></li>
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($friend_list); $i++) {
@@ -447,6 +448,20 @@ ORDER BY USER_NAME ASC";
     <div id="topcon"></div>
 
     <!--    각 카드가 하나의 아이템-->
+</div>
+<!-- 친구추천 모달 -->
+<div class="modal fade" id="friend-recommend" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="friendModalLabel">혹시 이사람을 아시나요?</h4>
+            </div>
+            <div class="modal-body" id="recommended-friend">
+                
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     var page = 0;
