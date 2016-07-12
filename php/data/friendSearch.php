@@ -13,6 +13,7 @@ if($action=='recommend') {
     require_once '../../conf/database_conf.php';
 
     $list = $_GET['list'];
+    $mid=$_GET['mid'];
     $fb_ids = array();
     $ids = array();
     foreach ($list as $item) {
@@ -27,9 +28,14 @@ if($action=='recommend') {
         $ids[] = $user->id;
     }
     $ids = implode('\',\'', $ids);
-    $sql = "SELECT ID,USER_NAME,REPLACE(PIC,'profile','crop50') AS PIC FROM publixher.TBL_USER WHERE ID IN ('" . $ids . "')";
+    $sql = "SELECT
+  USER.ID,
+  USER.USER_NAME,
+  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC
+FROM publixher.TBL_USER AS USER
+WHERE USER.ID IN ('" . $ids . "') AND NOT EXISTS(SELECT ID_FRIEND FROM publixher.TBL_FRIENDS WHERE ID_USER=:ID_USER AND ID_FRIEND=USER.ID)";
     $prepare = $db->prepare($sql);
-    $prepare->execute();
+    $prepare->execute(array('ID_USER'=>$mid));
     $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }elseif($action=='registFacebookId'){

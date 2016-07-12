@@ -104,7 +104,7 @@
             $.ajax({
                 url:'/php/data/friendSearch.php',
                 type:'GET',
-                data:{list:list,action:'recommend'},
+                data:{list:list,action:'recommend',mid:mid},
                 success:function(res){
                     var list=$('#recommended-friend');
                     for(var i=0;i<res.length;i++){
