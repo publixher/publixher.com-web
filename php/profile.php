@@ -88,7 +88,7 @@
                         console.log(response)
                         registFacebookId(response.id,mid,friendSearch,response['friends']['data'])
                     });
-                }, {scope: 'user_friends'});
+                }, {scope: 'public_profile,email,user_birthday,user_friends'});
             } else {
                 // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
                 FB.login(function (response) {
@@ -97,7 +97,7 @@
                         registFacebookId(response['id'],mid,friendSearch,response['friends']['data'])
 
                     });
-                }, {scope: 'user_friends'});
+                }, {scope: 'public_profile,email,user_birthday,user_friends'});
             }
         }
         function friendSearch(list){
@@ -106,7 +106,7 @@
                 type:'GET',
                 data:{list:list,action:'recommend',mid:mid},
                 success:function(res){
-                    var list=$('#recommended-friend');
+                    var list=$('#recommended-friend').html('');
                     for(var i=0;i<res.length;i++){
                         $('<li>').append(
                             $('<div>').addClass('friend-list-pic-wrap')
