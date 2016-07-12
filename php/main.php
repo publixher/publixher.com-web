@@ -89,7 +89,7 @@
                 FB.login(function (response) {
                     FB.api('/me?fields=friends,id', function (response) {
                         console.log(response)
-                        registFacebookId(response.id,mid,friendSearch(response['data']))
+                        registFacebookId(response.id,mid,friendSearch(response['friends']['data']))
                     });
                 }, {scope: 'user_friends'});
             } else {
@@ -97,7 +97,7 @@
                 FB.login(function (response) {
                     FB.api('/me?fields=friends,id', function (response) {
                         console.log(response)
-                        registFacebookId(response.id,mid,friendSearch(response['data']))
+                        registFacebookId(response['id'],mid,friendSearch(response['friends']['data']))
 
                     });
                 }, {scope: 'user_friends'});
@@ -107,19 +107,19 @@
             $.ajax({
                 url:'/php/data/friendSearch.php',
                 type:'GET',
-                data:{list:list},
+                data:{list:list,action:'recommend'},
                 success:function(res){
                     console.log(res)
                 }
             })
         }
-        function registFacebookId(facebookid,mid,callback=null){
+        function registFacebookId(facebookid,mid,callback){
             $.ajax({
                 url:'/php/data/friendSearch.php',
-                type:'GET',
-                data:{facebook_id:facebookid,mid:mid},
-                success:function(res){
-                    if(callback!==null){
+                type:'POST',
+                data:{facebook_id:facebookid,mid:mid,action:'registFacebookId'},
+                success:function(){
+                    if(callback!==undefined){
                         callback()
                     }
                 }
