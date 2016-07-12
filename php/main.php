@@ -87,15 +87,18 @@
             } else if (response.status === 'not_authorized') {
                 // 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다.
                 FB.login(function (response) {
-                    FB.api('/me/friends', function (response) {
-                        friendSearch(response['data'])
+                    FB.api('/me?fields=friends,id', function (response) {
+                        console.log(response)
+                        registFacebookId(response.id,mid,friendSearch(response['data']))
                     });
                 }, {scope: 'user_friends'});
             } else {
                 // 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다.
                 FB.login(function (response) {
-                    FB.api('/me/friends', function (response) {
-                        friendSearch(response['data'])
+                    FB.api('/me?fields=friends,id', function (response) {
+                        console.log(response)
+                        registFacebookId(response.id,mid,friendSearch(response['data']))
+
                     });
                 }, {scope: 'user_friends'});
             }
@@ -107,6 +110,18 @@
                 data:{list:list},
                 success:function(res){
                     console.log(res)
+                }
+            })
+        }
+        function registFacebookId(facebookid,mid,callback=null){
+            $.ajax({
+                url:'/php/data/friendSearch.php',
+                type:'GET',
+                data:{facebook_id:facebookid,mid:mid},
+                success:function(res){
+                    if(callback!==null){
+                        callback()
+                    }
                 }
             })
         }
