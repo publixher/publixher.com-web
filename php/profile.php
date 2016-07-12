@@ -106,7 +106,7 @@
                 type:'GET',
                 data:{list:list,action:'recommend',mid:mid},
                 success:function(res){
-                    var list=$('#recommended-friend');
+                    var list=$('#recommended-friend').html('');
                     for(var i=0;i<res.length;i++){
                         $('<li>').append(
                             $('<div>').addClass('friend-list-pic-wrap')
