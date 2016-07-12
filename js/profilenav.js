@@ -76,7 +76,7 @@ $(document).ready(function () {
     });
     //추천받은 친구 친구요청
     $(document).on('click','.recommend-frequest',function(){
-        $(this).addClass('disabled')
+        var btn= $(this).addClass('disabled')
         var targetid=$(this).attr('data-user-id');
         $.ajax({
             url: "/php/data/friend.php",
@@ -84,9 +84,9 @@ $(document).ready(function () {
             data: {targetID: targetid, myID: myID, action: 'request', token: token},
             dataType: 'json',
             success: function () {
-                $(this).text('친구신청중')
+                btn.text('친구신청중')
             }, error: function (xhr,status,error) {
-                $(this).removeClass('disabled').text('실패');
+                btn.removeClass('disabled').text('실패');
                 errorReport("recommended_friend_req",{targetID: targetid, myID: myID, action: action, token: token},status,error)
                 //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
