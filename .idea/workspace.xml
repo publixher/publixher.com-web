@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/profilenav.js" afterPath="$PROJECT_DIR$/js/profilenav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/friendSearch.php" afterPath="$PROJECT_DIR$/php/data/friendSearch.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -63,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profilenav.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profilenav.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/profilenav.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="412">
@@ -121,8 +121,8 @@
       <file leaf-file-name="friend.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/data/friend.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="125">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,15 +138,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="friendSearch.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="friendSearch.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/data/friendSearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="463">
+              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
               <folding>
-                <marker date="1468298004000" expanded="true" signature="843:940" ph="SELECT ID,US... TBL_USER" />
-                <marker date="1468298004000" expanded="true" signature="843:954" ph="SELECT ID,US... TBL_USER" />
-                <marker date="1468298004000" expanded="true" signature="843:955" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468305250000" expanded="true" signature="843:978" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468305250000" expanded="true" signature="843:1097" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468305250000" expanded="true" signature="843:1098" ph="SELECT ID,US... TBL_USER" />
+                <marker date="1468305250000" expanded="true" signature="1008:1096" ph="SELECT ID_FR... TBL_FRIENDS" />
               </folding>
             </state>
           </provider>
@@ -201,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/api/errorReport.php" />
         <option value="$PROJECT_DIR$/js/errorReport.js" />
         <option value="$PROJECT_DIR$/js/regist.js" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
@@ -252,6 +252,7 @@
         <option value="$PROJECT_DIR$/php/profile_middle.php" />
         <option value="$PROJECT_DIR$/php/profile.php" />
         <option value="$PROJECT_DIR$/js/profilenav.js" />
+        <option value="/MySQL Fragment (friendSearch.php:842).sql" />
       </list>
     </option>
   </component>
@@ -631,14 +632,7 @@
       <workItem from="1467862876237" duration="4717000" />
       <workItem from="1467963981698" duration="478000" />
       <workItem from="1468213340797" duration="9163000" />
-      <workItem from="1468297191073" duration="5203000" />
-    </task>
-    <task id="LOCAL-00409" summary="폴더 이름 구분자 추가">
-      <created>1467344964607</created>
-      <option name="number" value="00409" />
-      <option name="presentableId" value="LOCAL-00409" />
-      <option name="project" value="LOCAL" />
-      <updated>1467344964609</updated>
+      <workItem from="1468297191073" duration="6192000" />
     </task>
     <task id="LOCAL-00410" summary="폴더 이름 구분자 추가">
       <created>1467345060774</created>
@@ -976,11 +970,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468303491758</updated>
     </task>
-    <option name="localTasksCounter" value="458" />
+    <task id="LOCAL-00458" summary="$(this)-&gt;btn">
+      <created>1468303825417</created>
+      <option name="number" value="00458" />
+      <option name="presentableId" value="LOCAL-00458" />
+      <option name="project" value="LOCAL" />
+      <updated>1468303825417</updated>
+    </task>
+    <option name="localTasksCounter" value="459" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="512296000" />
+    <option name="totallyTimeSpent" value="513285000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1004,7 +1005,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24929312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32477447" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3060241" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3060241" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1033,7 +1034,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="이미지 받아오기" />
     <MESSAGE value="프로필 타인에서 버튼 네비게이션에 버튼을 div로 래핑" />
     <MESSAGE value="버튼 동작 플래그 설정" />
     <MESSAGE value="disabled attr을 전부 class disabled로" />
@@ -1058,7 +1058,8 @@
     <MESSAGE value="friendSearch" />
     <MESSAGE value="친구추천버튼" />
     <MESSAGE value="친구추천중 친구신청 버튼" />
-    <option name="LAST_COMMIT_MESSAGE" value="친구추천중 친구신청 버튼" />
+    <MESSAGE value="$(this)-&gt;btn" />
+    <option name="LAST_COMMIT_MESSAGE" value="$(this)-&gt;btn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1074,15 +1075,15 @@
           <option name="timeStamp" value="644" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/data/friend.php</url>
-          <line>17</line>
-          <option name="timeStamp" value="651" />
+          <url>file://$PROJECT_DIR$/php/data/friendSearch.php</url>
+          <line>35</line>
+          <option name="timeStamp" value="653" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="652" />
+      <option name="time" value="655" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="nameFind.php">
@@ -1507,26 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/friendSearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <marker date="1468298004000" expanded="true" signature="843:940" ph="SELECT ID,US... TBL_USER" />
-            <marker date="1468298004000" expanded="true" signature="843:954" ph="SELECT ID,US... TBL_USER" />
-            <marker date="1468298004000" expanded="true" signature="843:955" ph="SELECT ID,US... TBL_USER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/data/friend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2199">
@@ -1565,6 +1546,27 @@
         <state relative-caret-position="412">
           <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/friend.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/data/friendSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <marker date="1468305250000" expanded="true" signature="843:978" ph="SELECT ID,US... TBL_USER" />
+            <marker date="1468305250000" expanded="true" signature="843:1097" ph="SELECT ID,US... TBL_USER" />
+            <marker date="1468305250000" expanded="true" signature="843:1098" ph="SELECT ID,US... TBL_USER" />
+            <marker date="1468305250000" expanded="true" signature="1008:1096" ph="SELECT ID_FR... TBL_FRIENDS" />
+          </folding>
         </state>
       </provider>
     </entry>
