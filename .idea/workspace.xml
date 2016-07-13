@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/best.php" afterPath="$PROJECT_DIR$/php/api/best.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/data/best.php" afterPath="$PROJECT_DIR$/php/data/best.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/best.js" afterPath="$PROJECT_DIR$/js/best.js" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -104,16 +103,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="99" column="75" selection-start-line="99" selection-start-column="75" selection-end-line="99" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,9 +116,11 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="256" column="6" selection-start-line="256" selection-start-column="6" selection-end-line="256" selection-end-column="6" />
-              <folding />
+            <state relative-caret-position="2205">
+              <caret line="367" column="6" selection-start-line="367" selection-start-column="6" selection-end-line="367" selection-end-column="6" />
+              <folding>
+                <marker date="1468395972000" expanded="true" signature="10345:10347" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,11 +150,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="best.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="best.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/api/best.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
+            <state relative-caret-position="525">
+              <caret line="149" column="53" selection-start-line="149" selection-start-column="53" selection-end-line="149" selection-end-column="53" />
               <folding>
                 <marker date="1468395944000" expanded="true" signature="240:577" ph="SELECT SQL_C... TBL_NOW_HOT" />
                 <marker date="1468395944000" expanded="true" signature="610:909" ph="SELECT SQL_C... TBL_NOW_HOT" />
@@ -176,6 +167,16 @@
                 <marker date="1468395944000" expanded="true" signature="3648:3824" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
                 <marker date="1468395944000" expanded="true" signature="4335:4467" ph="SELECT SQL_C... TBL_CONTENT" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="best.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/best.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -231,7 +232,6 @@
         <option value="$PROJECT_DIR$/php/right.php" />
         <option value="$PROJECT_DIR$/php/data/modItem.php" />
         <option value="$PROJECT_DIR$/php/api/modItem.php" />
-        <option value="$PROJECT_DIR$/js/best.js" />
         <option value="$PROJECT_DIR$/php/api/registConfirm.php" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/lib/getImgFromUrl.php" />
@@ -249,6 +249,7 @@
         <option value="$PROJECT_DIR$/https/login.php" />
         <option value="$PROJECT_DIR$/php/data/best.php" />
         <option value="$PROJECT_DIR$/php/api/best.php" />
+        <option value="$PROJECT_DIR$/js/best.js" />
       </list>
     </option>
   </component>
@@ -629,14 +630,7 @@
       <workItem from="1467963981698" duration="478000" />
       <workItem from="1468213340797" duration="9163000" />
       <workItem from="1468297191073" duration="8525000" />
-      <workItem from="1468384578987" duration="1774000" />
-    </task>
-    <task id="LOCAL-00417" summary="interest 5개로 짜르는거 됨">
-      <created>1467361841704</created>
-      <option name="number" value="00417" />
-      <option name="presentableId" value="LOCAL-00417" />
-      <option name="project" value="LOCAL" />
-      <updated>1467361841704</updated>
+      <workItem from="1468384578987" duration="2231000" />
     </task>
     <task id="LOCAL-00418" summary="510 -&gt; 528">
       <created>1467362089065</created>
@@ -974,11 +968,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468389710070</updated>
     </task>
-    <option name="localTasksCounter" value="466" />
+    <task id="LOCAL-00466" summary="카테고리 베스트별 캐시 삭제">
+      <created>1468395960807</created>
+      <option name="number" value="00466" />
+      <option name="presentableId" value="LOCAL-00466" />
+      <option name="project" value="LOCAL" />
+      <updated>1468395960808</updated>
+    </task>
+    <option name="localTasksCounter" value="467" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="517392000" />
+    <option name="totallyTimeSpent" value="517849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1031,7 +1032,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="제목 핀 수정" />
     <MESSAGE value="타인 프로필 출판하기 넣음" />
     <MESSAGE value="친구목록 구독목록 공개여부 설정 가능" />
     <MESSAGE value="카테고리별 best , 수정시 대표이미지 등록 안되던거 수정" />
@@ -1056,7 +1056,8 @@
     <MESSAGE value=" * pigs -&gt; 구매" />
     <MESSAGE value="맛집 추가" />
     <MESSAGE value="약관 형식 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="약관 형식 추가" />
+    <MESSAGE value="카테고리 베스트별 캐시 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="카테고리 베스트별 캐시 삭제" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1310,13 +1311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/best.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1505,9 +1499,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="256" column="6" selection-start-line="256" selection-start-column="6" selection-end-line="256" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="2205">
+          <caret line="367" column="6" selection-start-line="367" selection-start-column="6" selection-end-line="367" selection-end-column="6" />
+          <folding>
+            <marker date="1468395972000" expanded="true" signature="10345:10347" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1534,8 +1530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/api/best.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
+        <state relative-caret-position="525">
+          <caret line="149" column="53" selection-start-line="149" selection-start-column="53" selection-end-line="149" selection-end-column="53" />
           <folding>
             <marker date="1468395944000" expanded="true" signature="240:577" ph="SELECT SQL_C... TBL_NOW_HOT" />
             <marker date="1468395944000" expanded="true" signature="610:909" ph="SELECT SQL_C... TBL_NOW_HOT" />
@@ -1548,6 +1544,14 @@
             <marker date="1468395944000" expanded="true" signature="3648:3824" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
             <marker date="1468395944000" expanded="true" signature="4335:4467" ph="SELECT SQL_C... TBL_CONTENT" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/best.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

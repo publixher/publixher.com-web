@@ -99,8 +99,6 @@ $(document).ready(function () {
         if ($(this).hasClass('best-category-checkbox')) {
             if($(this).prop('checked')==false){
                 $('.best-sub_category-checkbox[data-best-category='+$(this).val()+']').prop('checked',false)
-            }else{
-                $('.best-sub_category-checkbox[data-best-category='+$(this).val()+']').prop('checked',true)
             }
         }else{
             $('.best-category-checkbox[value=' + $(this).attr('data-best-category') + ']').prop('checked', true)
