@@ -608,7 +608,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .market #market-nav #market-nav-carousel {
   width: 300px;
   height: 100%;
-  min-height: 675px;
+  min-height: 815px;
 }
 #wrap #right .market #market-nav div[role="tabpanel"] {
   width: 300px;
@@ -1069,8 +1069,9 @@ li a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
+  padding: 0 10px;
 }
 .hot-body{
   display: block;
@@ -1415,11 +1416,11 @@ a:hover {
   border: 0;
   border-bottom: 1px solid #e3e3e3;
   padding: 0 30px;
-  opacity: 0.9;
 }
 .checkbox-inline{
   padding: 0;
   margin: 5px 20px !important;
+  width: 32%;
 }
 .thumbPic-wrap{
   width: 100px;
@@ -1508,11 +1509,11 @@ a:hover {
   background-color: transparent !important;
 }
 .checkbox{
-  text-align: center
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #e3e3e3;
 }
-.checkbox .best-category-checkbox{
-  display: none
-}
+
 #recommended-friend li{
   width: 50%;
   padding: 10px;
