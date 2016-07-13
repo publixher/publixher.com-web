@@ -23,7 +23,7 @@ if ($action == 'now') {
 } elseif ($action == 'category') {
     $category = implode('\',\'', $_GET['category']);
     $sub_category = implode('\',\'', $_GET['sub_category']);
-    $sql = "SELECT SQL_CACHE
+    $sql = "SELECT 
   TITLE,
   ID,
   IMG
