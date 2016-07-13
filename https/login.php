@@ -236,7 +236,6 @@
                 <h4 class="modal-title" id="ToU-Label">이용약관</h4>
             </div>
             <div class="modal-body">
-                <p>analograph 이용약관</p>
 
                 <p>1. 목적</p>
 
