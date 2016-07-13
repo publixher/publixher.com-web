@@ -66,8 +66,8 @@
                     dataType: 'json',
                     success: function (res) {
                         location.href = '/';
-                    }, error: function (request,status,error) {
-                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
+                    }, error: function (request, status, error) {
+                        console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error)
                         alert('작업중 문제가 생겼습니다.');
                         location.href = '/https/login.php';
                     }
@@ -84,20 +84,20 @@
                     var gender = response.gender == '남성' ? 'M' : 'F';
                     var profile_image = replaceAll(response.profile_picture.data.url, "\"", "");
                     var format_date;
-                    if(response.birthday) {
+                    if (response.birthday) {
                         var date = new Date(response.birthday);
                         var d = date.getDate();
                         var m = date.getMonth() + 1;
                         var y = date.getFullYear();
                         format_date = y + '-' + m + '-' + d;
-                    }else{
-                        format_date='1800-01-01';
+                    } else {
+                        format_date = '1800-01-01';
                     }
                     $.ajax({
                         url: "/php/data/api_login.php",
                         type: "POST",
                         data: {
-                            id:response.id,
+                            id: response.id,
                             email: response.email,
                             birthday: format_date,
                             gender: gender,
@@ -210,16 +210,62 @@
             </table>
         </form>
         <div id="api_login">
-        <div id="naver_id_login"></div>
-        <script>
-            var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
-            naver_id_login.setButton("white", 3, 40)
-//            naver_id_login.setPopup();
-            naver_id_login.setDomain(".analograph.com");
-            naver_id_login.setState("");
-            naver_id_login.init_naver_id_login();
-        </script>
-        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
+            <div id="naver_id_login"></div>
+            <script>
+                var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
+                naver_id_login.setButton("white", 3, 40)
+                //            naver_id_login.setPopup();
+                naver_id_login.setDomain(".analograph.com");
+                naver_id_login.setState("");
+                naver_id_login.init_naver_id_login();
+            </script>
+            <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
+        </div>
+        <p>회원가입과 동시에 사용자는 analograph의 <a data-toggle="modal" data-target="#Terms-of-Use">이용약관</a>
+            <a data-toggle="modal" data-target="#Privacy-Statement">개인정보취급방침</a>
+            및 <a data-toggle="modal" data-target="#Electronic-banking-agreement">전자금융거래약관</a>에
+            동의한 것으로 간주됩니다.</p>
+    </div>
+</div>
+<!-- 이용약관 -->
+<div class="modal fade" id="Terms-of-Use" tabindex="-1" role="dialog" aria-labelledby="ToU-Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ToU-Label">이용약관</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 개인정보취급방침 -->
+<div class="modal fade" id="Privacy-Statement" tabindex="-1" role="dialog" aria-labelledby="PS-Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="PS-Label">개인정보취급방침</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 전자금융거래약관 -->
+<div class="modal fade" id="Electronic-banking-agreement" tabindex="-1" role="dialog" aria-labelledby="Eba-Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="Eba-Label">전자금융거래약관</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
         </div>
     </div>
 </div>
