@@ -362,7 +362,7 @@
                 <h4 class="modal-title" id="PS-Label">개인정보취급방침</h4>
             </div>
             <div class="modal-body">
-                ...
+                업데이트 예정
             </div>
         </div>
     </div>
@@ -376,7 +376,7 @@
                 <h4 class="modal-title" id="Eba-Label">전자금융거래약관</h4>
             </div>
             <div class="modal-body">
-                ...
+                업데이트 예정
             </div>
         </div>
     </div>
