@@ -1627,6 +1627,7 @@ a:hover {
 .checkbox-inline{
   padding: 0;
   margin: 5px 20px !important;
+  width: 33%;
 }
 .thumbPic-wrap{
   width: 100px;
@@ -1730,11 +1731,12 @@ a:hover {
   background-color: transparent !important;
 }
 .checkbox{
-  text-align: center
+  text-align: center;
+  padding: 5px;
+  background-color: #ddd;
+  border-radius: 20px;
 }
-.checkbox .best-category-checkbox{
-  display: none
-}
+
 #recommended-friend li{
   width: 50%;
   padding: 10px;
