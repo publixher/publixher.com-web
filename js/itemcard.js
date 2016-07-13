@@ -1024,7 +1024,7 @@ $(document).ready(function () {
 
                         switch (category_mod) {
                             case '매거진':
-                                var sub = ['','IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물'];
+                                var sub = ['','IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물','맛집'];
                                 subwrite(sub);
                                 break;
                             case '뉴스':
@@ -1315,7 +1315,7 @@ $(document).ready(function () {
 
         switch (category_mod) {
             case '매거진':
-                var sub = ['IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물'];
+                var sub = ['IT', '게임', '여행-국내', '여행-해외', '뷰티', '패션', '반려동물','맛집'];
                 subwrite(sub);
                 break;
             case '뉴스':

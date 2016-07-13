@@ -29,6 +29,8 @@
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" value="반려동물" class="best-sub_category-checkbox" data-best-category="매거진"> 반려동물
+                </label><label class="checkbox-inline">
+                    <input type="checkbox" value="맛집" class="best-sub_category-checkbox" data-best-category="매거진"> 맛집
                 </label>
             </p>
             <p>
