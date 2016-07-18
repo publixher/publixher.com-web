@@ -221,7 +221,7 @@
             </script>
             <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
         </div>
-        <p>회원가입과 동시에 사용자는 analograph의 <a data-toggle="modal" data-target="#Terms-of-Use">이용약관과</a>
+        <p>회원가입과 동시에 사용자는 analograph의 <a data-toggle="modal" data-target="#Terms-of-Use">이용약관</a>과
             <a data-toggle="modal" data-target="#Privacy-Statement">개인정보취급방침</a>
             및 <a data-toggle="modal" data-target="#Electronic-banking-agreement">전자금융거래약관</a>에
             동의한 것으로 간주됩니다.</p>
