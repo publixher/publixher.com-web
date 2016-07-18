@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/middle.php" afterPath="$PROJECT_DIR$/php/middle.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -68,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/conf.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
@@ -98,13 +98,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="middle.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="middle.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/middle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="192" column="10" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
+            <state relative-caret-position="478">
+              <caret line="192" column="24" selection-start-line="192" selection-start-column="24" selection-end-line="192" selection-end-column="24" />
               <folding>
-                <marker date="1468830830000" expanded="true" signature="2007:2069" ph="SELECT ID,DI... TBL_FOLDER" />
+                <marker date="1468831197000" expanded="true" signature="2007:2069" ph="SELECT ID,DI... TBL_FOLDER" />
               </folding>
             </state>
           </provider>
@@ -242,8 +242,8 @@
         <option value="$PROJECT_DIR$/js/best.js" />
         <option value="$PROJECT_DIR$/php/getItem.php" />
         <option value="$PROJECT_DIR$/php/profile_left.php" />
-        <option value="$PROJECT_DIR$/php/middle.php" />
         <option value="$PROJECT_DIR$/php/conf.php" />
+        <option value="$PROJECT_DIR$/php/middle.php" />
       </list>
     </option>
   </component>
@@ -627,14 +627,7 @@
       <workItem from="1468384578987" duration="2636000" />
       <workItem from="1468473171933" duration="1212000" />
       <workItem from="1468481041411" duration="287000" />
-      <workItem from="1468825468589" duration="1947000" />
-    </task>
-    <task id="LOCAL-00422" summary="수정시 서브 카테고리 없으면 null처리">
-      <created>1467441885163</created>
-      <option name="number" value="00422" />
-      <option name="presentableId" value="LOCAL-00422" />
-      <option name="project" value="LOCAL" />
-      <updated>1467441885163</updated>
+      <workItem from="1468825468589" duration="2023000" />
     </task>
     <task id="LOCAL-00423" summary="카테고리 선택 개선">
       <created>1467442920087</created>
@@ -972,11 +965,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468830949359</updated>
     </task>
-    <option name="localTasksCounter" value="471" />
+    <task id="LOCAL-00471" summary="mid와 userID 상수선언">
+      <created>1468831139129</created>
+      <option name="number" value="00471" />
+      <option name="presentableId" value="LOCAL-00471" />
+      <option name="project" value="LOCAL" />
+      <updated>1468831139130</updated>
+    </task>
+    <option name="localTasksCounter" value="472" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521700000" />
+    <option name="totallyTimeSpent" value="521776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1523,21 +1523,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/middle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="192" column="10" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
-          <folding>
-            <marker date="1468830830000" expanded="true" signature="2007:2069" ph="SELECT ID,DI... TBL_FOLDER" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/conf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/middle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="192" column="24" selection-start-line="192" selection-start-column="24" selection-end-line="192" selection-end-column="24" />
+          <folding>
+            <marker date="1468831197000" expanded="true" signature="2007:2069" ph="SELECT ID,DI... TBL_FOLDER" />
+          </folding>
         </state>
       </provider>
     </entry>
