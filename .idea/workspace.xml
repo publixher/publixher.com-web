@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="베스트 대 가테고리 선택시 전체 선택되는거 뺌">
+    <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/conf.php" afterPath="$PROJECT_DIR$/php/conf.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/getItem.php" afterPath="$PROJECT_DIR$/php/getItem.php" />
@@ -69,21 +69,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="conf.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/conf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getItem.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getItem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/getItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="71" column="14" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+            <state relative-caret-position="200">
+              <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -117,7 +117,7 @@
             <state relative-caret-position="5505">
               <caret line="367" column="6" selection-start-line="367" selection-start-column="6" selection-end-line="367" selection-end-column="6" />
               <folding>
-                <marker date="1468395972000" expanded="true" signature="10345:10347" ph="..." />
+                <marker date="1468828872000" expanded="true" signature="10357:10359" ph="..." />
               </folding>
             </state>
           </provider>
@@ -246,8 +246,8 @@
         <option value="$PROJECT_DIR$/php/data/best.php" />
         <option value="$PROJECT_DIR$/php/api/best.php" />
         <option value="$PROJECT_DIR$/js/best.js" />
-        <option value="$PROJECT_DIR$/php/conf.php" />
         <option value="$PROJECT_DIR$/php/getItem.php" />
+        <option value="$PROJECT_DIR$/php/conf.php" />
       </list>
     </option>
   </component>
@@ -631,14 +631,7 @@
       <workItem from="1468384578987" duration="2636000" />
       <workItem from="1468473171933" duration="1212000" />
       <workItem from="1468481041411" duration="287000" />
-      <workItem from="1468825468589" duration="495000" />
-    </task>
-    <task id="LOCAL-00419" summary="구매시 나이 제한">
-      <created>1467363244938</created>
-      <option name="number" value="00419" />
-      <option name="presentableId" value="LOCAL-00419" />
-      <option name="project" value="LOCAL" />
-      <updated>1467363244938</updated>
+      <workItem from="1468825468589" duration="603000" />
     </task>
     <task id="LOCAL-00420" summary="&lt;div class='pre-body-pic'&gt;">
       <created>1467363713963</created>
@@ -976,11 +969,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468396484268</updated>
     </task>
-    <option name="localTasksCounter" value="468" />
+    <task id="LOCAL-00468" summary="mid와 userID 상수선언">
+      <created>1468828857744</created>
+      <option name="number" value="00468" />
+      <option name="presentableId" value="LOCAL-00468" />
+      <option name="project" value="LOCAL" />
+      <updated>1468828857745</updated>
+    </task>
+    <option name="localTasksCounter" value="469" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="520248000" />
+    <option name="totallyTimeSpent" value="520356000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1033,7 +1033,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="친구목록 구독목록 공개여부 설정 가능" />
     <MESSAGE value="카테고리별 best , 수정시 대표이미지 등록 안되던거 수정" />
     <MESSAGE value="카테고리별 best 섹션별" />
     <MESSAGE value="data-interval=&quot;10000&quot;" />
@@ -1058,7 +1057,8 @@
     <MESSAGE value="약관 형식 추가" />
     <MESSAGE value="카테고리 베스트별 캐시 삭제" />
     <MESSAGE value="베스트 대 가테고리 선택시 전체 선택되는거 뺌" />
-    <option name="LAST_COMMIT_MESSAGE" value="베스트 대 가테고리 선택시 전체 선택되는거 뺌" />
+    <MESSAGE value="mid와 userID 상수선언" />
+    <option name="LAST_COMMIT_MESSAGE" value="mid와 userID 상수선언" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1435,7 +1435,7 @@
         <state relative-caret-position="5505">
           <caret line="367" column="6" selection-start-line="367" selection-start-column="6" selection-end-line="367" selection-end-column="6" />
           <folding>
-            <marker date="1468395972000" expanded="true" signature="10345:10347" ph="..." />
+            <marker date="1468828872000" expanded="true" signature="10357:10359" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1521,18 +1521,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/conf.php">
+    <entry file="file://$PROJECT_DIR$/php/getItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/getItem.php">
+    <entry file="file://$PROJECT_DIR$/php/conf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="71" column="14" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+        <state relative-caret-position="330">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>

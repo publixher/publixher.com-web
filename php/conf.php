@@ -19,8 +19,8 @@
     ?>
 
     <script>
-        const mid = "<?=$mid?>"
-        const token = "<?=$token?>";
+        var mid = "<?=$mid?>"
+        var token = "<?=$token?>";
         var pin = "<?=$mpin?>";
         var level=<?=$mlevel?>;
 
