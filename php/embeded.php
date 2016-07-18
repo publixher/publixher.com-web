@@ -62,6 +62,7 @@
     echo '</div>';
     ?>
     <script>
+        const mid='<?=$userID?>';
         var loadOption = {ID: <?=$iid?>};
     </script>
     <script src="/js/itemcard.js"></script>

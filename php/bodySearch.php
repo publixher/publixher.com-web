@@ -58,6 +58,7 @@
     //세션에 mid가 없으면 로그인페이지로 넘기고 있으면 유저 등록
     //$userinfo는 현재 접속한 유저
     $userinfo = $_SESSION['user'];
+    $userID=$userinfo->getID();
     $body = $_GET['body'];
     require "left.php";
     //중간
@@ -72,6 +73,7 @@
     <script>
         var page = 0;
         var body='<?=$body?>';
+        const mid='<?=$userID?>';
         var loadOption={ID:mid,nowpage:page,body:body};
 
     </script>

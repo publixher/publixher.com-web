@@ -83,6 +83,7 @@
     <script>
         var page = 0;
         var fid='<?=$fid?>';
+        const mid='<?=$userID?>';
         var loadOption={ID:mid,nowpage:page,fid:fid};
     </script>
     <script src="/js/itemcard.js"></script>

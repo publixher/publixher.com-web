@@ -189,7 +189,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
 <script>
     var page = 0;
-    var mid = '<?=$userID?>';
+    const mid = '<?=$userID?>';
     var targetID = null;
     var loadOption = {ID: mid, nowpage: page};
 </script>
