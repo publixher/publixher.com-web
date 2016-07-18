@@ -69,8 +69,8 @@
     ?>
     <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
     <script>
-        var iid = '<?=$iid?>';
-        var userID = '<?=$userID?>';
+        const iid = '<?=$iid?>';
+        const userID = '<?=$userID?>';
         var page=0;
         var loadOption = {ID: userID, getItem: iid,nowpage:page};
     </script>
