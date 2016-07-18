@@ -466,6 +466,7 @@ ORDER BY USER_NAME ASC";
 <script>
     var page = 0;
     var targetID = '<?=$targetid?>';
+    var mid='<?=$userID?>';
     var loadOption = {ID: mid, nowpage: page, profile: targetID, I: I, frelation: frelation};
 </script>
 <!--    해시 태그-->

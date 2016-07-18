@@ -19,7 +19,7 @@
     ?>
 
     <script>
-        var mid = "<?=$mid?>";
+        var mid = "<?=$mid?>"
         var token = "<?=$token?>";
         var pin = "<?=$mpin?>";
         var level=<?=$mlevel?>;
