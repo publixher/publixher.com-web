@@ -19,10 +19,10 @@
     ?>
 
     <script>
-        var mid = "<?=$mid?>"
-        var token = "<?=$token?>";
+        const mid = "<?=$mid?>";
+        const token = "<?=$token?>";
         var pin = "<?=$mpin?>";
-        var level=<?=$mlevel?>;
+        const level=<?=$mlevel?>;
 
     </script>
     <div id="controller">
