@@ -10,7 +10,6 @@
     <script>
         var targetid = '<?=$targetid?>';
         var myID = '<?=$userID?>';
-        var mid = myID;
     </script>
     <script src="/js/profile_left.js"></script>
     <p id="name"><?php

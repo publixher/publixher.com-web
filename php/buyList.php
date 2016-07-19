@@ -78,6 +78,7 @@
 
     <script>
         var page = 0;
+        const mid='<?=$userID?>';
         var loadOption = {ID: mid, nowpage: page, buylist: "Y"};
     </script>
     <script src="/js/itemcard.js"></script>

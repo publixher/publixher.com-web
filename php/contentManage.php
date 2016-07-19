@@ -69,7 +69,9 @@
     require "right.php";
     ?>
     <!--    구글 애널리틱스-->
-    <script>   (function (i, s, o, g, r, a, m) {
+    <script>
+        const mid='<?=$userID?>';
+        (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
                     (i[r].q = i[r].q || []).push(arguments)
