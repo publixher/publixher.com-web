@@ -65,7 +65,6 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     if(knocked==1){
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
-        write.find('img').addClass('knocked-image');
     }
     return write;
 }
@@ -142,7 +141,6 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     if(knocked==1){
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
-        write.find('img').addClass('knocked-image');
     }
     return write;
 }

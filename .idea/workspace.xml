@@ -4,7 +4,6 @@
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemload.js" afterPath="$PROJECT_DIR$/js/itemload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/getC.php" afterPath="$PROJECT_DIR$/lib/getC.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -233,17 +232,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="itemload.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="173" column="12" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
+            <state relative-caret-position="375">
+              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getC.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getC.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/getC.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
@@ -438,9 +437,9 @@
         <option value="$PROJECT_DIR$/php/api/itemAct.php" />
         <option value="$PROJECT_DIR$/php/data/itemAct.php" />
         <option value="$PROJECT_DIR$/js/itemcard.js" />
-        <option value="$PROJECT_DIR$/js/itemload.js" />
         <option value="/MySQL Fragment (getC.php:16435).sql" />
         <option value="$PROJECT_DIR$/lib/getC.php" />
+        <option value="$PROJECT_DIR$/js/itemload.js" />
       </list>
     </option>
   </component>
@@ -832,14 +831,7 @@
       <workItem from="1468825468589" duration="4914000" />
       <workItem from="1468915037673" duration="311000" />
       <workItem from="1468916088982" duration="661000" />
-      <workItem from="1468986351572" duration="3819000" />
-    </task>
-    <task id="LOCAL-00428" summary="disabled attr을 전부 class disabled로">
-      <created>1467449072885</created>
-      <option name="number" value="00428" />
-      <option name="presentableId" value="LOCAL-00428" />
-      <option name="project" value="LOCAL" />
-      <updated>1467449072885</updated>
+      <workItem from="1468986351572" duration="3885000" />
     </task>
     <task id="LOCAL-00429" summary="pre-body-pic">
       <created>1467601737454</created>
@@ -1177,11 +1169,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468988188322</updated>
     </task>
-    <option name="localTasksCounter" value="477" />
+    <task id="LOCAL-00477" summary="노크수만큼 중복 제거">
+      <created>1468995322183</created>
+      <option name="number" value="00477" />
+      <option name="presentableId" value="LOCAL-00477" />
+      <option name="project" value="LOCAL" />
+      <updated>1468995322183</updated>
+    </task>
+    <option name="localTasksCounter" value="478" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="529458000" />
+    <option name="totallyTimeSpent" value="529524000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1234,7 +1233,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="all_mutual_friends 추가" />
     <MESSAGE value="all_mutual_friends 삭제" />
     <MESSAGE value="friends 추가" />
     <MESSAGE value="//회원가입시 몽고에 id,facebook_id 추가" />
@@ -1259,7 +1257,8 @@
     <MESSAGE value="각 페이지 mid 정의" />
     <MESSAGE value="텍스트하고 이미지 순서 바꿈" />
     <MESSAGE value="1.노크 무한&#10;2.노크알림 제거&#10;3.노크시 knocked-image클래스 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.노크 무한&#10;2.노크알림 제거&#10;3.노크시 knocked-image클래스 추가" />
+    <MESSAGE value="노크수만큼 중복 제거" />
+    <option name="LAST_COMMIT_MESSAGE" value="노크수만큼 중복 제거" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1846,14 +1845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/itemload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="173" column="12" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/data/getContent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1911,6 +1902,14 @@
             <marker date="1468995311000" expanded="true" signature="17394:17736" ph="SELECT CASE TBL_CONTENT" />
             <marker date="1468995311000" expanded="true" signature="17485:17625" ph="SELECT ID_FR... TBL_FRIENDS" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/itemload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
