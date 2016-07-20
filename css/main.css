@@ -1521,7 +1521,9 @@ a:hover {
   padding: 5px;
   border-bottom: 1px solid #f1f1f1;
 }
-
+.knocked-image{
+  -webkit-filter: grayscale(0%);
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
