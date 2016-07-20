@@ -54,9 +54,9 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
-    write += '</span></span></td> <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span class="badgea"> '
+    write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
-    write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
+    write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
     if (more == '1') {
         write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span> 더보기</a></span></td></tr></table></div> </div>';
     } else {
@@ -126,9 +126,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     }
     write += '<div class="tail"> <table><tr><td class="tknock"><span class="knock"><span class="pubico pico-knock"></span><a>노크</a><span class="badgea"> ';
     write += knock;
-    write += '</span></span></td> <td class="tcomment"><span class="comment"><span class="pubico pico-comment"></span><a>코멘트</a><span class="badgea"> '
+    write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
-    write += '<td class="tshare"><span class="share"><span class="pubico pico-share"></span><a>공유하기</a></span></td>'
+    write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
     if (bought) {
         if (more == '1') {
             write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span> 더보기</a></span></td></tr></table></div> </div>';
