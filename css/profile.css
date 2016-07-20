@@ -1246,7 +1246,9 @@ li a {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  -webkit-filter: grayscale(60%);
+  -webkit-filter: grayscale(1); /* Webkit */
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* W3C */
   transition: all 0.3s ease-in-out;
 }
 .hot-pic-wrap:hover{
