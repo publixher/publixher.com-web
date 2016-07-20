@@ -34,6 +34,8 @@ $(document).ready(function () {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                     pico.removeClass('knocked')
                 }
+                let card=knockbtn.parents('.card');
+                card.find('img').addClass('knocked-image');
             }, error: function (xhr, status, error) {
                 errorReport("knock",{ID: thisitemID, action: "knock", userID: mid, token: token},status,error)
                 knockbtn.addClass('knock');
@@ -889,8 +891,14 @@ $(document).ready(function () {
                             playOn: 'hover',
                             wait: true
                         });  //gif 재생
+                        if(body.siblings('.tail').find('.knocked').length>0){
+                            console.log('addClass')
+                            console.log(body.find('img'))
+                            body.find('img').addClass('knocked-image')
+                        }
 
                     });
+
                     priceSpan.fadeOut(function () {
                         priceSpan.html('<a><span class="pubico pico-up-tri"></span></a>').fadeIn();
                     });

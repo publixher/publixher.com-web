@@ -11,50 +11,37 @@ if (!$act) {
 if ($act == 'knock') {
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
-    $sql = "SELECT SEQ FROM publixher.TBL_KNOCK_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT) LIMIT 1 ";
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue('ID_USER', $userID, PDO::PARAM_STR);
-    $prepare->bindValue('ID_CONTENT', $ID, PDO::PARAM_STR);
-    $prepare->execute();
-    $knocked = $prepare->fetch(PDO::FETCH_ASSOC);
-    if (!$knocked) {
-        //노크처리
-        $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
-        $sql2 = "UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK+1 WHERE ID=:ID;";
-        $sql3 = "SELECT KNOCK,ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
-        //insert문
-        $prepare1 = $db->prepare($sql1);
-        $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-        $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-        $prepare1->execute();
-        //update문
-        $prepare2 = $db->prepare($sql2);
-        $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
-        $prepare2->execute();
-        //select문
-        $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
-        $prepare3->execute();
-        $result = $prepare3->fetch(PDO::FETCH_ASSOC);
-        if (!$result) {
-            echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
-            exit;
-        }
-        echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
 
-        //알람처리
-        $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_CONTENT,ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_CONTENT,:ID_TARGET,4,:ID_ACTOR)";
-        $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-        $prepare4->bindValue(':ID_TARGET', $result['ID_WRITER'], PDO::PARAM_STR);
-        $prepare4->bindValue(':ID_ACTOR', $userID, PDO::PARAM_STR);
-        $prepare4->execute();
+    //노크처리
+    $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
+    $sql2 = "UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK+1 WHERE ID=:ID;";
+    $sql3 = "SELECT KNOCK,ID_WRITER,TAG,SUB_CATEGORY FROM publixher.TBL_CONTENT WHERE ID=:ID;";
+    //insert문
+    $prepare1 = $db->prepare($sql1);
+    $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
+    $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
+    $prepare1->execute();
+    //update문
+    $prepare2 = $db->prepare($sql2);
+    $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
+    $prepare2->execute();
+    //select문
+    $prepare3 = $db->prepare($sql3);
+    $prepare3->bindValue(':ID', $ID, PDO::PARAM_STR);
+    $prepare3->execute();
+    $result = $prepare3->fetch(PDO::FETCH_ASSOC);
+    if (!$result) {
+        echo json_encode(array('status' => array('code' => 0)), JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
+    
 
-        $sql5 = "UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM (SELECT * FROM publixher.TBL_USER) AS publixher WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
-        $prepare5 = $db->prepare($sql5);
-        $prepare5->bindValue(':ID_CONTENT', $ID);
-        $prepare5->execute();
-        //TODO:흥미처리 해야함
+    $sql5 = "UPDATE publixher.TBL_USER SET PIN=(SELECT REPLACE(PIN,:PIN_CONT,'') FROM (SELECT * FROM publixher.TBL_USER) AS publixher WHERE ID=:SUBQUERY_ID) WHERE ID=:ID";
+    $prepare5 = $db->prepare($sql5);
+    $prepare5->bindValue(':ID_CONTENT', $ID);
+    $prepare5->execute();
+    //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
 //        $ip=$db->prepare($sql5);
@@ -80,19 +67,7 @@ if ($act == 'knock') {
 //                $ip->execute();
 //            }
 //        }
-    } else {
-        $prepare = $db->prepare("DELETE FROM publixher.TBL_KNOCK_LIST WHERE ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT");
-        $prepare->execute(array('ID_USER' => $userID, 'ID_CONTENT' => $ID));
-        $prepare = $db->prepare("UPDATE publixher.TBL_CONTENT SET KNOCK=KNOCK-1 WHERE ID=:ID");
-        $prepare->execute(array('ID' => $ID));
-        $prepare = $db->prepare("DELETE FROM publixher.TBL_CONTENT_NOTI WHERE ID_CONTENT=:ID_CONTENT AND ID_ACTOR=:ID_ACTOR AND ACT=4");
-        $prepare->execute(array('ID_CONTENT' => $ID, 'ID_ACTOR' => $userID));
-        $prepare = $db->prepare("UPDATE publixher.TBL_PIN_LIST SET KNOCK=IF(KNOCK>0,KNOCK-1,0) WHERE ID_CONTENT=:ID_CONTENT");
-        $prepare->execute(array('ID_CONTENT' => $ID));
-        $prepare = $db->prepare("SELECT KNOCK FROM publixher.TBL_CONTENT WHERE ID=:ID");
-        $prepare->execute(array('ID' => $ID));
-        echo '{"status":-3,"KNOCK":' . $prepare->fetchColumn() . '}';
-    }
+    
 } elseif ($act == 'comment') {  //처음 불러오는거나 이상 불러오는거 둘다 이 분기로 들어가기
     require_once '../../lib/passing_time.php';
     $ID = $_GET['contID'];
