@@ -72,6 +72,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) AND REPORT < 10 ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -132,6 +133,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -180,6 +182,7 @@ FROM publixher.TBL_BUY_LIST AS BUY_LIST
     ON KNOCK.ID_USER=:KNOCK_USER_ID AND KNOCK.ID_CONTENT=CONT.ID
 WHERE BUY_LIST.ID_USER = :ID_USER
       AND CONT.DEL = 'N' AND REPORT < 10 ${category_string} ${sub_category_string}
+      GROUP BY CONT.ID
        ORDER BY BUY_LIST.BUY_DATE DESC
             LIMIT :NOWPAGE,10";
         $prepare = $this->db->prepare($sql);
@@ -295,6 +298,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -355,6 +359,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
@@ -417,6 +422,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
@@ -482,6 +488,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
         $prepare = $this->db->prepare($sql);
@@ -545,6 +552,7 @@ publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
 ) ${category_string} ${sub_category_string}
+ GROUP BY CONT.ID
 ORDER BY WRITE_DATE DESC
 LIMIT :NOWPAGE, 10";
 
