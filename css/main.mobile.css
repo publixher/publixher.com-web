@@ -939,13 +939,16 @@ li a {
     margin-bottom: -1px !important;
 }
 .body-tag {
-    color: #46799b;
-    background: #e0eaf1;
+    color: #fff;
+    background: #bbb;
     overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
     padding: 4px;
     line-height: 2.2em;
+}
+.body-tag:hover{
+    color: #e3e3e3;
 }
 .content-body-rep-wrap {
     margin: 0 10px 5px 10px;
