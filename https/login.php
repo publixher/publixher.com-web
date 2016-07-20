@@ -361,9 +361,6 @@
                 <h4 class="modal-title" id="PS-Label">개인정보취급방침</h4>
             </div>
             <div class="modal-body">
-                <p>개인정보 취급방침</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
                 <ol>
                     <li>개인정보의 수집ㆍ이용 목적, 수집하는 개인정보의 항목 및 수집방법</li>
                 </ol>
