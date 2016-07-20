@@ -391,6 +391,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     margin-bottom: 10px;
     margin-left: -3.1463%;
     box-shadow: 0 0 3px #ddd;
+    -webkit-filter: grayscale(1); /* Webkit */
+    filter: gray; /* IE6-9 */
+    filter: grayscale(1); /* W3C */
 }
 #wrap #middle .item hr,
 #wrap #middle .item-for-sale hr {

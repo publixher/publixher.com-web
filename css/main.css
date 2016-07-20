@@ -353,8 +353,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .body .BodyPic,
 #wrap #middle .item-for-sale .body .BodyPic {
-  max-width: 528px !important;
-  max-height: 528px !important;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -375,6 +374,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   margin-left: -9px;
   margin-top: 10px;
   margin-bottom: 10px;
+  -webkit-filter: grayscale(1); /* Webkit */
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* W3C */
 }
 #wrap #middle .item hr,
 #wrap #middle .item-for-sale hr {
