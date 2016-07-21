@@ -321,51 +321,14 @@ LIMIT
     //링크를 타고 온게 아니라 진짜로 샀는지 확인
     $ID = $_GET['contID'];
     $userID = $_GET['userID'];
-    //유료글인지 무료글인지 확인
-    $sql = "SELECT FOR_SALE,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID";
-    $prepare = $db->prepare($sql);
-    $prepare->bindValue(':ID', $ID, PDO::PARAM_STR);
-    $prepare->execute();
-    $result = $prepare->fetch(PDO::FETCH_ASSOC);
-    //유료글일때
-    if ($result['FOR_SALE'] == "Y") {
-        //자기 글일땐 허용
-        if ($result['ID_WRITER'] == $userID) {
-            $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
-            $prepare2 = $db->prepare($sql2);
-            $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
-            $prepare2->execute();
-            $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-            echo json_encode($result, JSON_UNESCAPED_UNICODE);
-        } else {
-            //남의글일땐 샀는지 확인
-            $sql1 = "SELECT BUY_DATE FROM publixher.TBL_BUY_LIST WHERE (ID_USER=:ID_USER AND ID_CONTENT=:ID_CONTENT)";
-            $prepare1 = $db->prepare($sql1);
-            $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-            $prepare1->bindValue(':ID_CONTENT', $ID, PDO::PARAM_STR);
-            $prepare1->execute();
-            $result = $prepare1->fetch(PDO::FETCH_ASSOC);
 
-            if ($result) {
-                $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
-                $prepare2 = $db->prepare($sql2);
-                $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
-                $prepare2->execute();
-                $result = $prepare2->fetch(PDO::FETCH_ASSOC);
-                echo json_encode(array('status' => 1, 'result' => $result), JSON_UNESCAPED_UNICODE);
-            } else {
-                echo '{"status":-7}';
-            }
-        }
-    } else {
-        //무료글일때
         $sql2 = "SELECT BODY FROM publixher.TBL_CONTENT WHERE ID=:ID";
         $prepare2 = $db->prepare($sql2);
         $prepare2->bindValue(':ID', $ID, PDO::PARAM_STR);
         $prepare2->execute();
         $result = $prepare2->fetch(PDO::FETCH_ASSOC);
         echo json_encode(array('status' => 1, 'result' => $result), JSON_UNESCAPED_UNICODE);
-    }
+    
 } elseif ($act == 'del') {
     $ID = $_POST['contID'];
     $userID = $_POST['userID'];
