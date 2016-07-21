@@ -27,23 +27,8 @@
     if ($userID == $targetid) {
         //현재 접속자와 타겟 유저가 같을때의 동작
         echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a></ul><hr>";
-
-        //가진돈 찾기위해 커넥터를 통해 캐쉬를 찾음
-        $sql1 = '';
-        if ($userinfo->getISNICK() == "N") {
-            $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_USER=:ID_TARGET";
-        } else if ($userinfo->getISNICK() == "Y") {
-            $sql1 = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_TARGET";
-        }
-        $prepare1 = $db->prepare($sql1);
-        $prepare1->bindValue(':ID_TARGET', $userinfo->getID(), PDO::PARAM_STR);
-        $prepare1->execute();
-        $cash = $prepare1->fetch(PDO::FETCH_ASSOC);
-        $cash = $cash['CASH_POINT'];
-
         ?>
         <ul class="list-unstyled" id="activity">
-            <li><a><?= $cash ?> pigs</a></li>
             <li><a>충전 &middot 결제정보</a></li>
             <li><a href="/buyList/<?= $userID ?>">구매목록</a></li>
             <li><a href="/sellManage/<?=$userID?>">판매관리</a></li>
