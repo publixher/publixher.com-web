@@ -24,17 +24,6 @@
         <li>고등학교 : <?= $target['H_SCHOOL'] ?></li>
     </ul>
     <?php
-    if ($userID == $targetid) {
-        //현재 접속자와 타겟 유저가 같을때의 동작
-        echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a></ul><hr>";
-        ?>
-        <ul class="list-unstyled" id="activity">
-            <li><a>충전 &middot 결제정보</a></li>
-            <li><a href="/buyList/<?= $userID ?>">구매목록</a></li>
-            <li><a href="/sellManage/<?=$userID?>">판매관리</a></li>
-        </ul>
-        <?php
-    }
     //폴더목록 가져오기
     $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
     $prepare1 = $db->prepare($sql1);

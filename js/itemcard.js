@@ -835,41 +835,7 @@ $(document).ready(function () {
         e.stopPropagation(); e.preventDefault();
         var thisitemID = $(this).parents()[5].id;
         var priceSpan = $('#' + thisitemID + ' .tail .price')
-        //안산상태에서 한번 눌려졌을때 한번 더누르면 구매됨
-        if (priceSpan.hasClass('buyConfirm')) {
-            var pricebtn = $(this);
-            pricebtn.removeClass('price');
-            $.ajax({
-                url: "/php/data/itemAct.php",
-                type: "POST",
-                data: {
-                    ID: thisitemID,
-                    action: "buy",
-                    userID: mid,
-                    token: token
-                },
-                dataType: 'json',
-                success: function (res) {
-                    pricebtn.addClass('price')
-                    if (res['buy'] == 'f') {
-                        alert('구매 실패 : ' + res['reason']);
-                    } else {
-                        priceSpan.html('<span class="pubico pico-down-tri"></span> 더보기');
-                        priceSpan.removeClass('buyConfirm').addClass('bought');
-                    }
-                }
-                , error: function (xhr, status, error) {
-                    pricebtn.addClass('price')
-                    errorReport("buy",{
-                        ID: thisitemID,
-                        action: "buy",
-                        userID: mid,
-                        token: token
-                    },status,error)
-                  //  alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
-                }
-            })
-        } else if (priceSpan.hasClass('bought')) {
+        if (!priceSpan.hasClass('expanded')) {
             //산상태에서는 더보기 버튼의 역할을 함
             var body = $('#' + thisitemID + ' .body');
             $.ajax({
@@ -878,6 +844,7 @@ $(document).ready(function () {
                 data: {ID: thisitemID, action: "more", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
+                    console.log(res)
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function () {
                         body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function () {
@@ -920,18 +887,13 @@ $(document).ready(function () {
                 priceSpan.html('<a><span class="pubico pico-down-tri"></span> 더보기</a>').fadeIn();
             });
             document.location.href = '#' + thisitemID;
-            priceSpan.removeClass('expanded').addClass('bought');
+            priceSpan.removeClass('expanded');
             //접는 순간 해당 게시물 읽은 시간을 구한다
             var now = new Date();
             var itemIndex = findIndex(itemPool, 'ID', thisitemID);
             var gap = (now.getTime() - itemPool[itemIndex]['time'].getTime()) / 1000;
             readDone(thisitemID, mid, gap);
             itemPool.splice(itemIndex, 1);
-        } else {
-            //사지도 않고 클릭도 안했을땐 구매하기 문자열을 추가하고 구매확정 확인 클래스를 넣음
-            var price=priceSpan.children('.value').attr('data-price');
-            priceSpan.text(price+' pigs 구매하기');
-            priceSpan.addClass('buyConfirm');
         }
     });
 //삭제버튼 동작
