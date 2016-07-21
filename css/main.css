@@ -353,8 +353,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .body .BodyPic,
 #wrap #middle .item-for-sale .body .BodyPic {
-  max-width: 528px !important;
-  max-height: 528px !important;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -375,6 +374,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   margin-left: -9px;
   margin-top: 10px;
   margin-bottom: 10px;
+  -webkit-filter: grayscale(1); /* Webkit */
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* W3C */
+  transition: all 0.3s ease-in-out;
 }
 #wrap #middle .item hr,
 #wrap #middle .item-for-sale hr {
@@ -994,6 +997,9 @@ li a {
 .form-control {
   border: 1px solid #f1f1f1;
 }
+.form-control:focus{
+  border: 1px solid #f1f1f1;
+}
 
 .knock .pubico {
   vertical-align: sub;
@@ -1055,7 +1061,9 @@ li a {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  -webkit-filter: grayscale(60%);
+  -webkit-filter: grayscale(1); /* Webkit */
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* W3C */
   transition: all 0.3s ease-in-out;
 }
 .hot-pic-wrap:hover{
@@ -1506,7 +1514,7 @@ a:hover {
   margin-bottom: -10px;
 }
 .pinned{
-  color: #009cea !important;
+  color: #46799b !important;
   transition: all 0.3s ease-in-out;
 }
 .disabled{
@@ -1517,7 +1525,9 @@ a:hover {
   padding: 5px;
   border-bottom: 1px solid #f1f1f1;
 }
-
+.knocked-image{
+  -webkit-filter: grayscale(0%) !important;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
