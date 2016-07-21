@@ -836,15 +836,14 @@ $(document).ready(function () {
         var thisitemID = $(this).parents()[5].id;
         var priceSpan = $('#' + thisitemID + ' .tail .price')
         if (!priceSpan.hasClass('expanded')) {
-            //산상태에서는 더보기 버튼의 역할을 함
             var body = $('#' + thisitemID + ' .body');
+            $('#'+thisitemID+' .knock').trigger('click');
             $.ajax({
                 url: "/php/data/itemAct.php",
                 type: "GET",
                 data: {ID: thisitemID, action: "more", userID: mid, token: token},
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res)
                     previewarr['' + thisitemID] = $('#' + thisitemID + ' .body').html();
                     body.fadeOut(function () {
                         body.html('<div id="links' + thisitemID + '">' + res['BODY'] + '</div>').fadeIn(function () {
@@ -859,8 +858,6 @@ $(document).ready(function () {
                             wait: true
                         });  //gif 재생
                         if(body.siblings('.tail').find('.knocked').length>0){
-                            console.log('addClass')
-                            console.log(body.find('img'))
                             body.find('img').addClass('knocked-image')
                         }
 
