@@ -128,16 +128,11 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '</span></span></td> <td class="tcomment"><span class="comment"><a>코멘트</a><span class="badgea"> '
     write += comment + '</span></span></td>'
     write += '<td class="tshare"><span class="share"><a>공유하기</a></span></td>'
-    if (bought) {
         if (more == '1') {
             write += '<td class="tprice"><span class="price bought"><a><span class="pubico pico-down-tri"></span> 더보기</a></span></td></tr></table></div> </div>';
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
         }
-    }
-    else {
-        write += '<td class="tprice"><span class="price"><a class="value" data-price="'+price+'">구매</a></span></td></tr></table></div> </div>';
-    }
     if(knocked==1){
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
@@ -169,7 +164,7 @@ function getCards() {
         tryCount: 0,
         retryLimit: 3,
         success: function (res) {
-            
+
             if (res.length == 0) {
                 spinner.detach();
                 write = '<div class="card item">포스트가 없습니다. 친구를 만들거나 보내기와 출판해보세요!</div>'
