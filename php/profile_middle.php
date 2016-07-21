@@ -57,7 +57,7 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
-                    <li style="display: none"><button type="button" onclick="getFacebookFriend()" data-toggle="modal" data-target="#friend-recommend">친구추천받기</button></li>
+                    <li><button type="button" onclick="getFacebookFriend()" data-toggle="modal" data-target="#friend-recommend">페이스북 친구찾기</button></li>
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($friend_list); $i++) {
@@ -455,7 +455,7 @@ ORDER BY USER_NAME ASC";
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="friendModalLabel">혹시 이사람을 아시나요?</h4>
+                <h4 class="modal-title" id="friendModalLabel">혹시 이 사람을 아시나요?</h4>
             </div>
             <div class="modal-body" id="recommended-friend">
                 
