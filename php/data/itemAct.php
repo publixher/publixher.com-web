@@ -277,62 +277,7 @@ LIMIT
     $uid = uniqueid($db, 'reply');
     $taglist = array_unique($_POST['taglist'], SORT_STRING);
     $taglist_len = count($taglist);
-
-    //후원기능 시작
-    if (isset($_POST['donatelist'])) {
-        $point = 0;
-        foreach ($_POST['donatelist'] as $val) {
-            $point = $point + $val;
-        }
-        $sql = "SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
-        $prepare = $db->prepare($sql);
-        $prepare->bindValue(':ID_ANONY', $userID);
-        $prepare->bindValue(':ID_USER', $userID);
-        $prepare->execute();
-        $cash = $prepare->fetchColumn();
-        if ($cash > $point) {
-            try {
-                $db->beginTransaction();
-                //내 포인트 깎기
-                $dsql = "UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT-:POINT WHERE ID_USER=:ID_USER OR ID_ANONY=:ID_ANONY";
-                $dprepare = $db->prepare($dsql);
-                $dprepare->bindValue(':POINT', $point);
-                $dprepare->bindValue(':ID_ANONY', $userID);
-                $dprepare->bindValue(':ID_USER', $userID);
-                $dprepare->execute();
-                //콘텐츠에 기부 올리기
-                $upsql = "UPDATE publixher.TBL_CONTENT SET DONATE=DONATE+:POINT WHERE ID=:ID";
-                $upprepare = $db->prepare($upsql);
-                $upprepare->bindValue(':ID', $ID);
-                $upprepare->bindValue(':POINT', $point);
-                $upprepare->execute();
-                //판매자의 포인트 올리기
-                $psql = "UPDATE publixher.TBL_CONNECTOR AS CONN
-  INNER JOIN publixher.TBL_CONTENT AS CONT
-  ON CONT.ID_WRITER =CONN.ID_USER OR CONT.ID_WRITER=CONN.ID_ANONY
-  SET CONN.CASH_POINT_EX=CONN.CASH_POINT_EX+:POINT WHERE CONT.ID=:ID";
-                $pprepare = $db->prepare($psql);
-                $pprepare->bindValue(':POINT', $point);
-                $pprepare->bindValue(':ID', $ID);
-                $pprepare->execute();
-                //기부 테이블에 추가
-                $isql = "INSERT INTO publixher.TBL_CONTENT_DONATE(ID_USER, ID_CONTENT,POINT) VALUES(:ID_USER,:ID_CONTENT,:POINT)";
-                $iprepare = $db->prepare($isql);
-                $iprepare->bindValue(':ID_USER', $userID);
-                $iprepare->bindValue(':ID_CONTENT', $ID);
-                $iprepare->bindValue(':POINT', $point);
-                $iprepare->execute();
-                $db->commit();
-            } catch (PDOException $e) {
-                $db->rollBack();
-                echo '{"status":-1}';
-                exit;
-            }
-        } else {
-            echo '{"status":-2}';
-            exit;
-        }
-    }
+    
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_REPLY(ID,ID_USER,ID_CONTENT,REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
     $sql3 = "SELECT COMMENT,ID_WRITER FROM publixher.TBL_CONTENT WHERE ID=:ID;";
