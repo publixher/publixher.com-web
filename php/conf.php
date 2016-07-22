@@ -1,6 +1,6 @@
 <div class="conf">
     <script src="/js/conf.js"></script>
-    <div id="logo"><img src="/img/logo.png" onclick="location.href='/'"></div>
+    <div id="logo"><img src="/img/logo.svg" onclick="location.href='/'"></div>
 
 
     <?php
