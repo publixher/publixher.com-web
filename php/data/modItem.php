@@ -131,7 +131,7 @@ if ($action == 'get_item') {
         if($gif) $preview.=" gif";
         $preview.="'></div><br>".$previewtxt."<br>";
     } else if ($previewimg) {
-        $preview = "<br><div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
+        $preview = "<div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if ($gif) $preview .= " gif";
         $preview .= "'></div><br><br>";
     } else {
