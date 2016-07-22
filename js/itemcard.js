@@ -59,7 +59,7 @@ $(document).ready(function () {
     }
 
     //코멘트 버튼 동작(처음 댓글 불러오기)
-    $(document).on("click", ".comment", function () {
+    $(document).on("click touchstart", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail');
         tail.css('margin-bottom', '10px');
@@ -103,7 +103,7 @@ $(document).ready(function () {
                             'id': thisitemID + '-rep-tag'
                         }).append($('<span>').addClass('pubico pico-person-plus'))
                         , $('<ul>') //태그 리스트 안에 input이 들어간다
-                            .on('click', function (e) {
+                            .on('click touchstart', function (e) {
                                 e.stopPropagation();
                             }).addClass('dropdown-menu rep_tag-ul')
                             .attr({
@@ -149,7 +149,7 @@ $(document).ready(function () {
                                                                             .attr('data-userID', res[i]['ID'])
                                                                             .text(res[i]['USER_NAME'])
                                                                     )
-                                                                    .on('click', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
+                                                                    .on('click touchstart', function () {  //선택되면 댓글창으로 넘기고 아래 친구 리스트 다 지운다음 드롭다운 토글하기.
                                                                         var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
                                                                         tab_comment.children('.commentReg').append(
                                                                             $('<span>')
@@ -197,14 +197,14 @@ $(document).ready(function () {
                                     $('<span>')
                                         .addClass('pubico pico-24')
                                 )
-                                .on('click', function () { //기부버튼 누를때 서버에서 남은 포인트 가져오기
+                                .on('click touchstart', function () { //기부버튼 누를때 서버에서 남은 포인트 가져오기
                                     var input = $(this).siblings('ul').find('input');
                                     getpoint(mid, function (point) {
                                         input.attr('placeholder', point);
                                     });
                                 })
                             , $('<ul>')  //기부 금액 넣기
-                                .on('click', function (e) {
+                                .on('click touchstart', function (e) {
                                     e.stopPropagation();
                                 })
                                 .addClass('dropdown-menu donate-input-ul')
@@ -331,7 +331,7 @@ $(document).ready(function () {
         }
     });
     //댓글 네비게이션에 각 탭 누를때의 동작
-    $(document).on('click', '.bestrep,.timerep,.frierep', function () {
+    $(document).on('click touchstart', '.bestrep,.timerep,.frierep', function () {
         var target = $(this).attr('aria-controls');
         var index = $('#' + target).attr('index');
         var tarsplit = target.split('-');
@@ -389,7 +389,7 @@ $(document).ready(function () {
         })
     })
 //댓글에서 각 탭에 화살표버튼 새로운 코멘트들을 불러오는거
-    $(document).on('click', '.repbtn', function (e) {
+    $(document).on('click touchstart', '.repbtn', function (e) {
         var target = $(this).parents()[1].id;
         var tarsplit = target.split('-');
         var sort = tarsplit[0];
@@ -505,7 +505,7 @@ $(document).ready(function () {
         }
     });
     //댓글삭제 동작
-    $(document).on('click', '.repdel,.sub-repdel', function () {
+    $(document).on('click touchstart', '.repdel,.sub-repdel', function () {
         var type = $(this).hasClass('repdel') ? 0 : 1;
         var thisrep = type == 0 ? $(this).parents()[6].id : $(this).parents()[5].id;
         var thisrepID = type == 0 ? (thisrep.split('-'))[3] : (thisrep.split('-'))[5];
@@ -534,7 +534,7 @@ $(document).ready(function () {
         }
     });
     //대댓글버튼 동작
-    $(document).on("click", ".repreply", function () {
+    $(document).on("click touchstart", ".repreply", function () {
         var thisitemID = $(this).parents()[12].id;
         var thispanelrep = ($(this).parents()[6].id);
         var thisrepID = (thispanelrep.split('-'))[3];
@@ -601,7 +601,7 @@ $(document).ready(function () {
                                                 .addClass('pubico pico-person-plus')
                                         )
                                     , $('<ul>')
-                                        .on('click', function (e) {
+                                        .on('click touchstart', function (e) {
                                             e.stopPropagation();
                                         })
                                         .addClass('dropdown-menu rep_tag-ul')
@@ -655,7 +655,7 @@ $(document).ready(function () {
                                                                                             .attr('data-userID', res[i]['ID'])
                                                                                             .text(res[i]['USER_NAME'])
                                                                                     )
-                                                                                    .on('click', function () {  //찾아서 클릭하면 친구 li 다 지우고 댓글창에 넘긴다음 드롭다운 토글
+                                                                                    .on('click touchstart', function () {  //찾아서 클릭하면 친구 li 다 지우고 댓글창에 넘긴다음 드롭다운 토글
                                                                                         var tagId = $(this).children('.rep-tag-friend-name').attr('data-userID');
                                                                                         subrep_list.children('.commentReg_sub').append(
                                                                                             $('<span>')
@@ -754,7 +754,7 @@ $(document).ready(function () {
     });
 
     //대댓글에서 화살표 동작
-    $(document).on('click', '.repbtn_sub', function (e) {
+    $(document).on('click touchstart', '.repbtn_sub', function (e) {
         var caret = $(this).parents()[1].id;
         var idset = caret.split('-');
         var repID = idset[3];
@@ -805,7 +805,7 @@ $(document).ready(function () {
     })
 
     //공유하기 버튼 동작
-    $(document).on("click", ".share", function () {
+    $(document).on("click touchstart", ".share", function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail').css('margin-bottom', '10px');
         if (!tail.hasClass('opend-share')) {
@@ -894,7 +894,7 @@ $(document).ready(function () {
         }
     });
 //삭제버튼 동작
-    $(document).on("click", ".itemDel", function (e) {
+    $(document).on("click touchstart", ".itemDel", function (e) {
         var thisitemID = $(this).parents()[5].id;
         if(confirm('정말 삭제하시겠습니까?')) {
             $.ajax({
@@ -921,7 +921,7 @@ $(document).ready(function () {
     var expose_mod;
     var folderid_mod;
     var itemID_mod;
-    $(document).on('click', '.itemMod', function () {
+    $(document).on('click touchstart', '.itemMod', function () {
         var thisitemID = $(this).parents()[5].id;
         var type = '';
         itemID_mod = thisitemID;
@@ -1079,7 +1079,7 @@ $(document).ready(function () {
         }
     });
     //수정시 글쓰기 버튼 클릭할때의 동작
-    $('#sendButton-mod').on('click', function () {
+    $('#sendButton-mod').on('click touchstart', function () {
         var $btn = $(this).button('loading');
         var ID_target = null;
         if (targetID) {
@@ -1158,7 +1158,7 @@ $(document).ready(function () {
         $btn.blur();
     })
     //publixh 버튼 내용
-    $('#publixhButton-mod').on('click', function () {
+    $('#publixhButton-mod').on('click touchstart', function () {
 
         var $btn = $(this).button('loading');
         if ($('#publiBody-mod').html().length > 0 && $('#saleTitle-mod').val().length > 0) {
@@ -1262,7 +1262,7 @@ $(document).ready(function () {
         }
     })
     //폴더설정 버튼
-    $('#dirSublist-mod li').on('click',function () {
+    $('#dirSublist-mod li').on('click touchstart',function () {
         $('#directorySettingSub-mod').text($(this).text());
         folderid_mod = $(this).attr('folderid');
     })
@@ -1309,7 +1309,7 @@ $(document).ready(function () {
     })
     //하위 카테고리 리스트 버튼
     var sub_category_mod;
-    $(document).on('click', "#subcategorySelect-mod li", function () {
+    $(document).on('click touchstart', "#subcategorySelect-mod li", function () {
         $('#sub-category-mod').text($(this).text());
         sub_category_mod = $(this).text();
     })
@@ -1348,7 +1348,7 @@ $(document).ready(function () {
         }
     })
 //최상단컨텐츠 버튼 동작
-    $(document).on("click", ".itemTop", function (e) {
+    $(document).on("click touchstart", ".itemTop", function (e) {
         var thisitemID = $(this).parents()[5].id;
         $.ajax({
             url: "/php/data/itemAct.php",
@@ -1364,7 +1364,7 @@ $(document).ready(function () {
         })
     });
     //댓글 노크클릭시의 동작
-    $(document).on("click", ".repknock", function (e) {
+    $(document).on("click touchstart", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
         var idset = thisrepID.split('-');
         var thisrepnum = idset[3];
@@ -1388,7 +1388,7 @@ $(document).ready(function () {
         })
     });
     //핀 클릭시 동작
-    $(document).on('click', '.pin-a', function () {
+    $(document).on('click touchstart', '.pin-a', function () {
         var thisitemID = $(this).parents()[2].id;
         var pin_a = $(this);
         pin_a.removeClass('pin-a')
@@ -1435,7 +1435,7 @@ $(document).ready(function () {
 
     });
     //신고 동작
-    $(document).on('click', '.itemReport', function () {
+    $(document).on('click touchstart', '.itemReport', function () {
         var thisitemID = $(this).parents()[5].id;
         var btn = $(this);
         $(this).removeClass('itemReport');
@@ -1460,7 +1460,7 @@ $(document).ready(function () {
         }
     })
     //게시글의 카테고리 클릭시 게시글 카드 다 지우고 loadOption 다시작성해서 요청
-    $(document).on('click', '.item-category,.item-sub_category', function () {
+    $(document).on('click touchstart', '.item-category,.item-sub_category', function () {
         var category = $(this).hasClass('item-category') ? $(this).text() : $(this).siblings('.item-category').text();
         var sub_category = $(this).hasClass('item-sub_category') ? $(this).text() : null;
         loadOption['nowpage'] = 0;
