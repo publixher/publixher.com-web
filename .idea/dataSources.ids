@@ -6,8 +6,10 @@
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
-    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
-      <schema id="1" name="publixher"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="publixher">
+        <visible>1</visible>
+      </schema>
       <table id="2" parent="1" name="TBL_BAN_LIST">
         <comment>밴당한사람 리스트</comment>
       </table>
@@ -39,20 +41,20 @@
       <table id="24" parent="1" name="TBL_WEEKLY_HOT"/>
       <column id="25" parent="2" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11) unsigned</data-type>
+        <data-type>int(11) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="26" parent="2" name="ID_TARGET">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="27" parent="2" name="ID_MANAGER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="28" parent="2" name="TIME">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
       </column>
       <index id="29" parent="2" name="TARGET">
         <columns>ID_TARGET</columns>
@@ -64,25 +66,25 @@
       </key>
       <column id="31" parent="3" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="32" parent="3" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="33" parent="3" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="34" parent="3" name="BUY_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="35" parent="3" name="PRICE">
         <mandatory>1</mandatory>
-        <data-type>int(6) unsigned</data-type>
+        <data-type>int(6) unsigned|0</data-type>
       </column>
       <index id="36" parent="3" name="BUY_LIST_USER">
         <columns>ID_USER
@@ -99,23 +101,23 @@ ID_CONTENT</columns>
       </key>
       <column id="39" parent="4" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="40" parent="4" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="41" parent="4" name="ID_ANONY">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="42" parent="4" name="CASH_POINT">
-        <data-type>mediumint(6) unsigned</data-type>
+        <data-type>mediumint(6) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="43" parent="4" name="CASH_POINT_EX">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <index id="44" parent="4" name="ID_ANONY_UNIQUE">
@@ -142,127 +144,127 @@ ID_CONTENT</columns>
       </key>
       <column id="49" parent="5" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="50" parent="5" name="ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="51" parent="5" name="ID_WRITER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="52" parent="5" name="TITLE">
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <column id="53" parent="5" name="EXPOSE">
         <mandatory>1</mandatory>
-        <data-type>tinyint(2)</data-type>
+        <data-type>tinyint(2)|0</data-type>
       </column>
       <column id="54" parent="5" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="55" parent="5" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="56" parent="5" name="MODIFY_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="57" parent="5" name="REPORT">
         <mandatory>1</mandatory>
-        <data-type>tinyint(2) unsigned</data-type>
+        <data-type>tinyint(2) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="58" parent="5" name="FOR_SALE">
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="59" parent="5" name="CATEGORY">
-        <data-type>enum(&apos;SNS&apos;, &apos;매거진&apos;, &apos;뉴스&apos;, &apos;소설&apos;, &apos;만화&apos;, &apos;사진&apos;)</data-type>
+        <data-type>enum(&apos;SNS&apos;, &apos;매거진&apos;, &apos;뉴스&apos;, &apos;소설&apos;, &apos;만화&apos;, &apos;사진&apos;)|0</data-type>
         <default-expression>&apos;SNS&apos;</default-expression>
       </column>
       <column id="60" parent="5" name="SUB_CATEGORY">
-        <data-type>enum(&apos;IT&apos;, &apos;게임&apos;, &apos;여행-국내&apos;, &apos;여행-해외&apos;, &apos;뷰티&apos;, &apos;패션&apos;, &apos;반려동물&apos;, &apos;일반&apos;, &apos;스포츠&apos;, &apos;연애&apos;, &apos;테크&apos;, &apos;문학&apos;, &apos;에세이&apos;, &apos;인문&apos;, &apos;자기개발&apos;, &apos;교육&apos;, &apos;로맨스&apos;, &apos;판타지&apos;, &apos;개그&apos;, &apos;미스터리&apos;, &apos;호러&apos;, &apos;SF&apos;, &apos;무협&apos;, &apos;일상&apos;, &apos;인물&apos;, &apos;자연&apos;, &apos;여행&apos;, &apos;동식물&apos;, &apos;pine_art&apos;, &apos;야경&apos;, &apos;GIF&apos;, &apos;&apos;)</data-type>
+        <data-type>enum(&apos;IT&apos;, &apos;게임&apos;, &apos;여행-국내&apos;, &apos;여행-해외&apos;, &apos;뷰티&apos;, &apos;패션&apos;, &apos;반려동물&apos;, &apos;일반&apos;, &apos;스포츠&apos;, &apos;연애&apos;, &apos;테크&apos;, &apos;문학&apos;, &apos;에세이&apos;, &apos;인문&apos;, &apos;자기개발&apos;, &apos;교육&apos;, &apos;로맨스&apos;, &apos;판타지&apos;, &apos;개그&apos;, &apos;미스터리&apos;, &apos;호러&apos;, &apos;SF&apos;, &apos;무협&apos;, &apos;일상&apos;, &apos;인물&apos;, &apos;자연&apos;, &apos;여행&apos;, &apos;동식물&apos;, &apos;pine_art&apos;, &apos;야경&apos;, &apos;GIF&apos;, &apos;&apos;)|0</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
       <column id="61" parent="5" name="PRICE">
         <mandatory>1</mandatory>
-        <data-type>smallint(5) unsigned</data-type>
+        <data-type>smallint(5) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="62" parent="5" name="AGE">
         <comment>Y:성인용N:전체용</comment>
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="63" parent="5" name="AD">
         <comment>Y면 광고하기</comment>
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="64" parent="5" name="BODY">
         <mandatory>1</mandatory>
-        <data-type>longtext</data-type>
+        <data-type>longtext|0</data-type>
       </column>
       <column id="65" parent="5" name="BODY_TEXT">
-        <data-type>longtext</data-type>
+        <data-type>longtext|0</data-type>
       </column>
       <column id="66" parent="5" name="PREVIEW">
         <mandatory>1</mandatory>
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="67" parent="5" name="COMMENT">
         <mandatory>1</mandatory>
-        <data-type>int(11) unsigned</data-type>
+        <data-type>int(11) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="68" parent="5" name="SALE">
         <mandatory>1</mandatory>
-        <data-type>int(11) unsigned</data-type>
+        <data-type>int(11) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="69" parent="5" name="DEL">
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="70" parent="5" name="FOLDER">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="71" parent="5" name="ID_TARGET">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="72" parent="5" name="ORIGINAL">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="73" parent="5" name="CHANGED">
         <mandatory>1</mandatory>
-        <data-type>int(1)</data-type>
+        <data-type>int(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="74" parent="5" name="MORE">
         <mandatory>1</mandatory>
-        <data-type>tinyint(1)</data-type>
+        <data-type>tinyint(1)|0</data-type>
         <default-expression>&apos;1&apos;</default-expression>
       </column>
       <column id="75" parent="5" name="IMG">
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
       </column>
       <column id="76" parent="5" name="TAG">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="77" parent="5" name="DONATE">
-        <data-type>int(11) unsigned</data-type>
+        <data-type>int(11) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <index id="78" parent="5" name="BODY_TEXT">
@@ -316,25 +318,25 @@ ID_TARGET</columns>
       </key>
       <column id="88" parent="6" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="89" parent="6" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="90" parent="6" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="91" parent="6" name="DONATE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="92" parent="6" name="POINT">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
       </column>
       <index id="93" parent="6" name="ID_CONTENT">
         <columns>ID_CONTENT</columns>
@@ -350,16 +352,16 @@ ID_TARGET</columns>
       </key>
       <column id="96" parent="7" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned zerofill</data-type>
+        <data-type>int(10) unsigned zerofill|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="97" parent="7" name="FILE_NAME">
         <mandatory>1</mandatory>
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <column id="98" parent="7" name="FILE_HASH">
         <mandatory>1</mandatory>
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <index id="99" parent="7" name="IMG_LIST_HASH">
         <columns>FILE_HASH</columns>
@@ -371,44 +373,44 @@ ID_TARGET</columns>
       </key>
       <column id="101" parent="8" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="102" parent="8" name="ID_CONTENT">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="103" parent="8" name="ID_TARGET">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="104" parent="8" name="NOTI_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="105" parent="8" name="ACT">
         <comment>1:내 컨텐츠 구매 2:친구신청 3:내 게시글에 댓글4:내 게시글에 노크5:태그될때6:내댓글에노크7:내댓글에대댓글8:운영자의알림9:내가 댓글에서 태그될때</comment>
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
       </column>
       <column id="106" parent="8" name="ID_ACTOR">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="107" parent="8" name="CHECKED">
         <comment>체크되면</comment>
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="108" parent="8" name="ID_REPLY">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="109" parent="8" name="ID_SUB_REPLY">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="110" parent="8" name="FOLLING">
         <mandatory>1</mandatory>
-        <data-type>enum(&apos;Y&apos;, &apos;N&apos;)</data-type>
+        <data-type>enum(&apos;Y&apos;, &apos;N&apos;)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <index id="111" parent="8" name="CONTENT_NOTI_TAR,ACT">
@@ -428,47 +430,47 @@ ID_ACTOR</columns>
       </key>
       <column id="114" parent="9" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="115" parent="9" name="ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="116" parent="9" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="117" parent="9" name="REPLY_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="118" parent="9" name="REPLY">
         <mandatory>1</mandatory>
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="119" parent="9" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="120" parent="9" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="121" parent="9" name="SUB_REPLY">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="122" parent="9" name="DEL">
         <mandatory>1</mandatory>
-        <data-type>tinyint(1)</data-type>
+        <data-type>tinyint(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="123" parent="9" name="REPLY_TEXT">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <index id="124" parent="9" name="ID_UNIQUE">
         <columns>ID</columns>
@@ -491,25 +493,25 @@ SUB_REPLY</columns>
       </key>
       <column id="128" parent="10" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="129" parent="10" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="130" parent="10" name="ID_REPLY">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="131" parent="10" name="REPLY_KNOCK_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="132" parent="10" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <index id="133" parent="10" name="USER,REPLY">
         <columns>ID_USER
@@ -528,21 +530,21 @@ ID_REPLY</columns>
       </key>
       <column id="136" parent="11" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="137" parent="11" name="REPORT_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="138" parent="11" name="USER_ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="139" parent="11" name="CONTENT_ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <index id="140" parent="11" name="CONT_USER">
         <columns>USER_ID
@@ -561,41 +563,41 @@ CONTENT_ID</columns>
       </key>
       <column id="143" parent="12" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="144" parent="12" name="ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="145" parent="12" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="146" parent="12" name="REPLY_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="147" parent="12" name="REPLY">
         <mandatory>1</mandatory>
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="148" parent="12" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="149" parent="12" name="ID_REPLY">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="150" parent="12" name="DEL">
         <mandatory>1</mandatory>
-        <data-type>tinyint(1)</data-type>
+        <data-type>tinyint(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="151" parent="12" name="REPLY_TEXT">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <index id="152" parent="12" name="ID_UNIQUE">
         <columns>ID</columns>
@@ -616,44 +618,44 @@ CONTENT_ID</columns>
       </key>
       <column id="156" parent="13" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="157" parent="13" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="158" parent="13" name="USER_NAME">
         <mandatory>1</mandatory>
-        <data-type>varchar(25)</data-type>
+        <data-type>varchar(25)|0</data-type>
       </column>
       <column id="159" parent="13" name="ID_WRITER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="160" parent="13" name="COMMENT">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="161" parent="13" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
       </column>
       <column id="162" parent="13" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="163" parent="13" name="UPDATE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="164" parent="13" name="BODY">
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <column id="165" parent="13" name="WRITER_PIC">
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
       </column>
       <index id="166" parent="13" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
@@ -670,23 +672,23 @@ CONTENT_ID</columns>
       </key>
       <column id="169" parent="14" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="170" parent="14" name="ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="171" parent="14" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="172" parent="14" name="DIR">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
         <default-expression>&apos;새 폴더&apos;</default-expression>
       </column>
       <column id="173" parent="14" name="CONTENT_NUM">
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <index id="174" parent="14" name="FOLDER_DIR">
@@ -712,30 +714,30 @@ CONTENT_ID</columns>
       </key>
       <column id="179" parent="15" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="180" parent="15" name="ID_MASTER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="181" parent="15" name="ID_SLAVE">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="182" parent="15" name="LAST_CHECK">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="183" parent="15" name="LAST_UPDATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="184" parent="15" name="FOLLOW_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <index id="185" parent="15" name="FOLLOW_MASTER">
@@ -752,20 +754,20 @@ CONTENT_ID</columns>
       </key>
       <column id="188" parent="16" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="189" parent="16" name="ID_FRIEND">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="190" parent="16" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="191" parent="16" name="ALLOWED">
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <index id="192" parent="16" name="FRIENDS_ALLOWED">
@@ -783,16 +785,16 @@ ID_FRIEND</columns>
       </key>
       <column id="195" parent="17" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="196" parent="17" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="197" parent="17" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <index id="198" parent="17" name="KNOCK_LIST_USER,CONT">
         <columns>ID_USER
@@ -805,44 +807,44 @@ ID_CONTENT</columns>
       </key>
       <column id="200" parent="18" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="201" parent="18" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="202" parent="18" name="USER_NAME">
         <mandatory>1</mandatory>
-        <data-type>varchar(25)</data-type>
+        <data-type>varchar(25)|0</data-type>
       </column>
       <column id="203" parent="18" name="ID_WRITER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="204" parent="18" name="COMMENT">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="205" parent="18" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(11) unsigned</data-type>
+        <data-type>int(11) unsigned|0</data-type>
       </column>
       <column id="206" parent="18" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="207" parent="18" name="UPDATE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="208" parent="18" name="BODY">
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <column id="209" parent="18" name="WRITER_PIC">
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
       </column>
       <index id="210" parent="18" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>
@@ -859,57 +861,57 @@ ID_CONTENT</columns>
       </key>
       <column id="213" parent="19" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="214" parent="19" name="PIN_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="215" parent="19" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="216" parent="19" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="217" parent="19" name="ID_WRITER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="218" parent="19" name="LAST_CHECK">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="219" parent="19" name="LAST_UPDATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="220" parent="19" name="MODIFIED">
         <mandatory>1</mandatory>
-        <data-type>int(1)</data-type>
+        <data-type>int(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="221" parent="19" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="222" parent="19" name="REPLY">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="223" parent="19" name="BODY">
-        <data-type>char(20)</data-type>
+        <data-type>char(20)|0</data-type>
       </column>
       <column id="224" parent="19" name="WRITER_PIC">
         <mandatory>1</mandatory>
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
       </column>
       <index id="225" parent="19" name="USER">
         <columns>ID_USER</columns>
@@ -921,21 +923,21 @@ ID_CONTENT</columns>
       </key>
       <column id="227" parent="20" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="228" parent="20" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="229" parent="20" name="WRITER_ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="230" parent="20" name="REPORT">
         <mandatory>1</mandatory>
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <key id="231" parent="20" name="PRIMARY">
         <columns>SEQ</columns>
@@ -943,20 +945,20 @@ ID_CONTENT</columns>
       </key>
       <column id="232" parent="21" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="233" parent="21" name="ID_USER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="234" parent="21" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="235" parent="21" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <index id="236" parent="21" name="ID_CONTENT">
@@ -973,16 +975,16 @@ ID_CONTENT</columns>
       </key>
       <column id="239" parent="22" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="240" parent="22" name="TAG">
         <mandatory>1</mandatory>
-        <data-type>varchar(255)</data-type>
+        <data-type>varchar(255)|0</data-type>
       </column>
       <column id="241" parent="22" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <index id="242" parent="22" name="TAG">
         <columns>TAG</columns>
@@ -994,95 +996,95 @@ ID_CONTENT</columns>
       </key>
       <column id="244" parent="23" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="245" parent="23" name="ID">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="246" parent="23" name="EMAIL">
-        <data-type>varchar(255)</data-type>
+        <data-type>varchar(255)|0</data-type>
       </column>
       <column id="247" parent="23" name="PASSWORD">
-        <data-type>char(60)</data-type>
+        <data-type>char(60)|0</data-type>
       </column>
       <column id="248" parent="23" name="LEVEL">
         <mandatory>1</mandatory>
-        <data-type>int(2)</data-type>
+        <data-type>int(2)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="249" parent="23" name="USER_NAME">
         <mandatory>1</mandatory>
-        <data-type>varchar(25)</data-type>
+        <data-type>varchar(25)|0</data-type>
       </column>
       <column id="250" parent="23" name="SEX">
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
       </column>
       <column id="251" parent="23" name="BIRTH">
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
       </column>
       <column id="252" parent="23" name="REGION">
-        <data-type>char(3)</data-type>
+        <data-type>char(3)|0</data-type>
       </column>
       <column id="253" parent="23" name="H_SCHOOL">
-        <data-type>varchar(10)</data-type>
+        <data-type>varchar(10)|0</data-type>
       </column>
       <column id="254" parent="23" name="UNIV">
-        <data-type>varchar(10)</data-type>
+        <data-type>varchar(10)|0</data-type>
       </column>
       <column id="255" parent="23" name="PIC">
         <mandatory>1</mandatory>
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
         <default-expression>&apos;/img/profile/PIG.png&apos;</default-expression>
       </column>
       <column id="256" parent="23" name="JOIN_DATE">
         <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="257" parent="23" name="IS_NICK">
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
       <column id="258" parent="23" name="TOP_CONTENT">
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="259" parent="23" name="IN_USE">
         <mandatory>1</mandatory>
-        <data-type>char(1)</data-type>
+        <data-type>char(1)|0</data-type>
         <default-expression>&apos;Y&apos;</default-expression>
       </column>
       <column id="260" parent="23" name="WRITEAUTH">
         <mandatory>1</mandatory>
-        <data-type>tinyint(1)</data-type>
+        <data-type>tinyint(1)|0</data-type>
         <default-expression>&apos;2&apos;</default-expression>
       </column>
       <column id="261" parent="23" name="EXPAUTH">
         <mandatory>1</mandatory>
-        <data-type>char(3)</data-type>
+        <data-type>char(3)|0</data-type>
         <default-expression>&apos;abc&apos;</default-expression>
       </column>
       <column id="262" parent="23" name="VIEWAUTH">
         <mandatory>1</mandatory>
-        <data-type>set(&apos;z&apos;, &apos;y&apos;)</data-type>
+        <data-type>set(&apos;z&apos;, &apos;y&apos;)|0</data-type>
         <default-expression>&apos;z,y&apos;</default-expression>
       </column>
       <column id="263" parent="23" name="PIN">
-        <data-type>text</data-type>
+        <data-type>text|0</data-type>
       </column>
       <column id="264" parent="23" name="BAN">
-        <data-type>datetime</data-type>
+        <data-type>datetime|0</data-type>
       </column>
       <column id="265" parent="23" name="COMMUNITY">
         <mandatory>1</mandatory>
-        <data-type>tinyint(1)</data-type>
+        <data-type>tinyint(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="266" parent="23" name="LAST_LOGIN">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <index id="267" parent="23" name="EMAIL_UNIQUE">
@@ -1113,44 +1115,44 @@ ID_CONTENT</columns>
       </key>
       <column id="273" parent="24" name="SEQ">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="274" parent="24" name="ID_CONTENT">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="275" parent="24" name="USER_NAME">
         <mandatory>1</mandatory>
-        <data-type>varchar(25)</data-type>
+        <data-type>varchar(25)|0</data-type>
       </column>
       <column id="276" parent="24" name="ID_WRITER">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>char(10)|0</data-type>
       </column>
       <column id="277" parent="24" name="COMMENT">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="278" parent="24" name="KNOCK">
         <mandatory>1</mandatory>
-        <data-type>int(10) unsigned</data-type>
+        <data-type>int(10) unsigned|0</data-type>
       </column>
       <column id="279" parent="24" name="WRITE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="280" parent="24" name="UPDATE_DATE">
         <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
+        <data-type>timestamp|0</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
       <column id="281" parent="24" name="BODY">
-        <data-type>varchar(100)</data-type>
+        <data-type>varchar(100)|0</data-type>
       </column>
       <column id="282" parent="24" name="WRITER_PIC">
-        <data-type>varchar(1024)</data-type>
+        <data-type>varchar(1024)|0</data-type>
       </column>
       <index id="283" parent="24" name="ID_CONTENT_UNIQUE">
         <columns>ID_CONTENT</columns>

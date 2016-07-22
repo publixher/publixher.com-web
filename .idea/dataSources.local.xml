@@ -4,8 +4,8 @@
     <data-source name="MySQL - publixher@localhost" uuid="97bdcd9a-9306-4506-87e5-4764f0d460c4">
       <secret-storage>master_key</secret-storage>
       <user-name>Kang</user-name>
-      <schema-pattern>publixher.*</schema-pattern>
-      <default-schemas>publixher.*</default-schemas>
+      <introspection-scope>publixher:*</introspection-scope>
+      <resolve-scope>publixher:*</resolve-scope>
     </data-source>
   </component>
 </project>
