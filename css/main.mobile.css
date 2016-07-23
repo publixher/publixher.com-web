@@ -319,7 +319,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .header {
     float: left;
     padding: 6px 6px 0 6px;
-    width: 528px;
+    width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
@@ -528,7 +528,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #controller .btn-danger .badge {
     color: white;
     background-color: lightgray;
-    padding: 5px;
+    padding: 3px 5px;
+    max-width: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #wrap #right .conf #controller .pchange {
     width: 34px;
@@ -594,9 +598,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .conf #controller #username {
     background-color: transparent;
-    width: 70px;
-    height: 34px;
-    outline: 0;
+    color: #434343;
+    max-width: 70px;
+    padding: 7px 2px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
 }
 #wrap #right .conf #gsearch {
     width: 96%;
@@ -1020,8 +1029,10 @@ li a {
 .usrpic-wrap {
     position: relative;
     overflow: hidden;
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: 5px;
 }
 .usrpic-wrap img {
     position: absolute;
@@ -1443,6 +1454,9 @@ a:hover {
 .knocked-image{
     -webkit-filter: grayscale(0%) !important;
 }
+#usr{
+    height: 30px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1450,9 +1464,6 @@ a:hover {
 }
 #configbtn{
     display: none;
-}
-.usrpic-wrap {
-    display: none !important;
 }
 .pico-comment,
 .pico-share{
