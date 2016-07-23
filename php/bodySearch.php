@@ -62,6 +62,7 @@
     $body = $_GET['body'];
     require "left.php";
     //중간
+    echo "<div> 본문 <b>$body</b> 에 대한 검색 결과</div>";
     echo '<div id="middle"><span id="prea"></span></div>';
     //오른쪽
     require "right.php";
