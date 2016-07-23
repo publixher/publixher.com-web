@@ -42,7 +42,7 @@ class getC
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   USER2.USER_NAME                        AS TARGET_NAME,
   USER2.ID                               AS TARGET_ID,
@@ -107,7 +107,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -168,7 +168,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_BUY_LIST AS BUY_LIST
@@ -214,7 +214,7 @@ WHERE BUY_LIST.ID_USER = :ID_USER
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -272,7 +272,7 @@ publixher.TBL_CONTENT
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -333,7 +333,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -394,7 +394,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -456,7 +456,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   WRITER.USER_NAME,
-  REPLACE(WRITER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(WRITER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                               AS FOLDER_NAME,
   TARGET.ID                                AS TARGET_ID,
   TARGET.USER_NAME                         AS TARGET_NAME,
@@ -526,7 +526,7 @@ LIMIT :NOWPAGE, 10";
   CONT.MORE,
   CONT.TAG,
   USER.USER_NAME,
-  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
   FOLDER.DIR                             AS FOLDER_NAME,
   IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 FROM publixher.TBL_CONTENT AS CONT
@@ -577,7 +577,7 @@ LIMIT :NOWPAGE, 10";
 //  CONT.MORE,
 //  CONT.TAG,
 //  USER.USER_NAME,
-//  REPLACE(USER.PIC, 'profile', 'crop50') AS PIC,
+//  REPLACE(USER.PIC, 'profile', 'crop24') AS PIC,
 //  FOLDER.DIR                             AS FOLDER_NAME,
 //        IF(KNOCK.ID_CONTENT IS NOT NULL,TRUE,FALSE) AS KNOCKED
 //FROM publixher.TBL_CONTENT AS CONT

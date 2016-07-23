@@ -217,5 +217,9 @@ class User
         return $this->EXPAUTH;
     }
 
+    public function setAttr(string $attr,string $set){
+        $this->$attr=$set;
+        return true;
+    }
 
 }
