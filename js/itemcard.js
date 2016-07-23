@@ -816,7 +816,7 @@ $(document).ready(function () {
                 body.html(previewarr['' + thisitemID]).fadeIn();
             });
             priceSpan.fadeOut(function () {
-                priceSpan.html('<a><span class="pubico pico-down-tri"></span> 더보기</a>').fadeIn();
+                priceSpan.html('<a><span class="pubico pico-down-tri"></span> </a>').fadeIn();
             });
             document.location.href = '#' + thisitemID;
             priceSpan.removeClass('expanded');
