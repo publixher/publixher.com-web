@@ -62,6 +62,9 @@
     $tag = $_GET['tag'];
     require "left.php";
     //중간
+    if(isMobile()){
+        echo '<div style="height: 40px; width: 100%; display: block;"></div>';
+    }
     echo '<div id="middle"><span id="prea"></span></div>';
     //오른쪽
     require "right.php";
