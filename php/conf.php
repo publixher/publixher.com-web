@@ -8,7 +8,7 @@
     $mid = $_SESSION['user']->getID();
     $mname = $_SESSION['user']->getUSERNAME();
     $mage = $_SESSION['user']->getBIRTH();
-    $mpic=$_SESSION['user']->getPIC();
+    $mpic=str_replace('profile','crop24',$_SESSION['user']->getPIC());
     $mpin=$_SESSION['user']->getPIN();
     $mlevel=$_SESSION['user']->getLEVEL();
     $token = $_SESSION['token'];    //토큰

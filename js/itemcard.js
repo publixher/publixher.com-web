@@ -34,7 +34,7 @@ $(document).ready(function () {
                     $('#' + thisitemID + ' .knock .badgea').text(res['KNOCK']);
                     pico.removeClass('knocked')
                 }
-                let card=knockbtn.parents('.card');
+                var card=knockbtn.parents('.card');
                 card.find('img').addClass('knocked-image');
             }, error: function (xhr, status, error) {
                 errorReport("knock",{ID: thisitemID, action: "knock", userID: mid, token: token},status,error)
