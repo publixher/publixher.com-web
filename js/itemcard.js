@@ -14,6 +14,13 @@ $(document).ready(function () {
         })
     }
 
+    //더블클릭 노크 동작
+    $(document).on('dblclick','.body img',function(e){
+        console.log($(this))
+        var $card=$(this).parents('.card');
+        var $knock=$card.find('.knock');
+        $knock.trigger('click');
+    });
     //노크버튼 동작
     $(document).on("click", ".knock", function () {
         var knockbtn = $(this);

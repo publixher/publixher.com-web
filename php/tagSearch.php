@@ -65,6 +65,7 @@
     if(isMobile()){
         echo '<div style="height: 40px; width: 100%; display: block;"></div>';
     }
+    echo "<div> 태그 <b>$tag</b> 에 대한 검색 결과</div>";
     echo '<div id="middle"><span id="prea"></span></div>';
     //오른쪽
     require "right.php";
