@@ -621,7 +621,6 @@ padding-top: 40px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  outline: 0;
 }
 #wrap #right .conf #gsearch {
   width: 96%;
@@ -1481,6 +1480,9 @@ a:hover {
 .deletefolder:focus {
   background-color: #434343;
 }
+#usr{
+  height: 30px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1488,9 +1490,6 @@ a:hover {
 }
 #configbtn{
   display: none;
-}
-.usrpic-wrap {
-  display: none !important;
 }
 .pico-comment,
 .pico-share{

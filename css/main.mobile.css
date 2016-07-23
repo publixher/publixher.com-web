@@ -605,7 +605,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    outline: 0;
 }
 #wrap #right .conf #gsearch {
     width: 96%;
@@ -1452,6 +1451,9 @@ a:hover {
 .knocked-image{
     -webkit-filter: grayscale(0%) !important;
 }
+#usr{
+    height: 30px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1459,9 +1461,6 @@ a:hover {
 }
 #configbtn{
     display: none;
-}
-.usrpic-wrap {
-    display: none !important;
 }
 .pico-comment,
 .pico-share{
