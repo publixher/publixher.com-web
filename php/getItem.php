@@ -60,6 +60,9 @@
     $_GET['id'] = $userID;
     require "left.php";
     //중간
+    if(isMobile()){
+        echo '<div style="height: 40px; width: 100%; display: block;"></div>';
+    }
     echo '<div id="middle"><span id="prea"></span>';
     echo '</div>';
     //오른쪽
