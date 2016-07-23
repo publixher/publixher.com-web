@@ -42,6 +42,7 @@ $(document).ready(function () {
                 //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
+
     });
     function getpoint(mid, callBack) {
         return $.ajax({
@@ -180,72 +181,6 @@ $(document).ready(function () {
                             )
                     )
                 );
-            tab_comment
-                .append(
-                    $('<div>')
-                        .addClass('dropdown')
-                        .append(
-                            $('<button>')
-                                .addClass('btn btn-default dropdown-toggle donate-btn')
-                                .attr({
-                                    'type': 'button',
-                                    'data-toggle': 'dropdown',
-                                    'aria-expanded': 'true',
-                                    'id': thisitemID + '-donate-btn'
-                                })
-                                .append(
-                                    $('<span>')
-                                        .addClass('pubico pico-24')
-                                )
-                                .on('click', function () { //기부버튼 누를때 서버에서 남은 포인트 가져오기
-                                    var input = $(this).siblings('ul').find('input');
-                                    getpoint(mid, function (point) {
-                                        input.attr('placeholder', point);
-                                    });
-                                })
-                            , $('<ul>')  //기부 금액 넣기
-                                .on('click', function (e) {
-                                    e.stopPropagation();
-                                })
-                                .addClass('dropdown-menu donate-input-ul')
-                                .attr({
-                                    'role': 'menu',
-                                    'aria-labelledby': thisitemID + '-donate-btn'
-                                })
-                                .append(
-                                    $('<li>')
-                                        .addClass('donate-input-li')
-                                        .append(
-                                            $('<input>')
-                                                .addClass('form-control donate-form')
-                                                .attr('type', 'text')
-                                                .on('keyup', function (e) {
-                                                    if (e.keyCode == 13 && $(this).val().length > 0) {
-                                                        var thisform = $(this);
-                                                        var point = $(this).val();
-                                                        var rex = /^\d+$/;
-                                                        //숫자인지 체크
-                                                        if (rex.test(point) && point != 0) {
-                                                            tab_comment.children('.commentReg')
-                                                                .append(
-                                                                    $('<span>')
-                                                                        .addClass('donate-span')
-                                                                        .text(point)
-                                                                        .attr('contenteditable', 'false')
-                                                                );
-
-                                                            thisform.val('')
-                                                        } else {
-                                                            alert('1이상 숫자만 입력해주세요.');
-                                                            return 1;
-                                                        }
-                                                    }
-
-                                                })
-                                        )
-                                )
-                        )
-                )
 
             $('#best-' + thisitemID).append(spinner);
             $.ajax({
@@ -832,7 +767,7 @@ $(document).ready(function () {
     var itemPool = window['item_pool'] = new Array();
     var previewarr = [];
     $(document).on("click touchstart", ".price", function (e) {
-        e.stopPropagation(); e.preventDefault();
+        e.stopPropagation();
         var thisitemID = $(this).parents()[5].id;
         var priceSpan = $('#' + thisitemID + ' .tail .price')
         if (!priceSpan.hasClass('expanded')) {
