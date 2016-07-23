@@ -556,7 +556,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         .btn-danger .badge {
           color: white;
           background-color: lightgray;
-          padding: 5px;
+          padding: 3px 5px;
+          max-width: 35px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .pchange {
           width: 34px;
@@ -618,8 +622,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         }
         #username {
           background-color: transparent;
-          width: 70px;
-          height: 34px;
+          color: #434343;
+          max-width: 70px;
+          padding: 7px 2px !important;
+          font-size: 12px !important;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          outline: 0;
         }
       }
       #gsearch {
