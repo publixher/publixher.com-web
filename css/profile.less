@@ -598,9 +598,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
             overflow-y: auto;
             overflow-x: hidden;
             height: auto;
-            max-height: 600px;
+            max-height: 500px;
             width: 300px;
             z-index: 10000;
+            margin-left: -270px;
+            border-radius: 0;
             li {
               width: 100%;
               padding: 10px;
@@ -891,12 +893,7 @@ li a {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-#notilist{
-  left: -189px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-top: -1px;
-}
+
 .noti-date{
   font-size: 12px;
   display: block;
@@ -905,12 +902,6 @@ li a {
 #notilist li a,
 #pinlist .pin-body{
   width:80% !important
-}
-#pinlist{
-  left: -218px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-top: -1px;
 }
 #pinlist li:first-child{
   display: none;
