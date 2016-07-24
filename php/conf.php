@@ -54,7 +54,7 @@
         </div>
         <!--설정버튼-->
         <button type="button" id="configbtn" class="btn btn-default" onclick="location.href='/php/logout.php'">
-            <span class="pubico pico-cog"></span>
+            <span class="caret"></span>
         </button>
     </div>
     <input id="gsearch" type="text" placeholder="사람, 커뮤니티, 컨텐츠를 검색해 보세요.">

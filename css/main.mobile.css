@@ -550,14 +550,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
-    width: 34px;
+    #wrap #right .conf #controller #configbtn {
+    float: right;
+    color: #ddd;
     height: 34px;
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
-    background-position: 2px 2px;
-    background-color: transparent;
-    border-color: transparent;
-    outline: 0;
+    margin: 3px 10px;
+}
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
@@ -1046,7 +1044,7 @@ li a {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    margin: 5px 8px;
+    margin: 5px;
 }
 .usrpic-wrap img {
     position: absolute;
@@ -1475,7 +1473,6 @@ a:hover {
 #send div:nth-child(2) button {
     border: 0;
 }
-
 .pico-comment,
 .pico-share{
     display: none;
