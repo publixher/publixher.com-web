@@ -536,6 +536,12 @@ padding-top: 40px;
 #wrap #right .conf #controller .dropdown-menu {
   padding-bottom: 0;
 }
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
 #wrap #right .conf #controller .divider {
   background-color: royalblue;
   margin-bottom: 0;
