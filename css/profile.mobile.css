@@ -443,7 +443,7 @@ padding-top: 40px;
   width: 100%;
   background-color: transparent;
   text-align: center;
-  font-size: 10px;
+  font-size: 11px;
 }
 #wrap #middle .item .tail .tknock,
 #wrap #middle .item-for-sale .tail .tknock {
@@ -470,7 +470,7 @@ padding-top: 40px;
   width: 25%;
   text-align: center;
   background-color: white;
-  height: 30px;
+  height: 22px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -1602,4 +1602,8 @@ a:hover {
 }
 .knocked-image{
   -webkit-filter: grayscale(0%) !important;
+}
+
+.tshare{
+  display: none;
 }

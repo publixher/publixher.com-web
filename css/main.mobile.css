@@ -427,7 +427,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     width: 100%;
     background-color: transparent;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
 }
 #wrap #middle .item .tail .tknock,
 #wrap #middle .item-for-sale .tail .tknock {
@@ -454,7 +454,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     width: 25%;
     text-align: center;
     background-color: white;
-    height: 30px;
+    height: 22px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -1482,5 +1482,9 @@ a:hover {
     margin-left: 1%;
 }
 #notilist li:first-child{
+    display: none;
+}
+
+.tshare{
     display: none;
 }
