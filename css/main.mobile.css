@@ -270,9 +270,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border: 1px solid #f1f1f1;
     float: left;
 }
-.tail table tbody tr>td{
-    border-radius: 20px;
-}
+
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:focus,
@@ -405,7 +403,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
     width: 100%;
     font-size: 12px;
-    margin: 1.5% 0 !important;
+    margin: 3% 0 1.5% 0 !important;
 }
 #wrap #middle .item .tail table,
 #wrap #middle .item-for-sale .tail table{
@@ -1416,7 +1414,11 @@ a:hover {
     height:30px;
 }
 .tcomment, .tshare{
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.tab-comment{
+    background-color: #f4f4f4;
 }
 #logo img{
     width: 100%;
