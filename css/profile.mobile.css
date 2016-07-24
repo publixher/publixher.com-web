@@ -565,7 +565,11 @@ padding-top: 40px;
   background-position: 2px 2px;
 }
 #wrap #right .conf #controller #usr {
-  margin: 3px;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
   width: 34px;
@@ -617,6 +621,10 @@ padding-top: 40px;
 #wrap #right .conf #controller #usrpic {
   float: left;
   cursor: pointer;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 #wrap #right .conf #controller #username {
   background-color: transparent;
@@ -1054,7 +1062,7 @@ li a {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  margin: 7px 7px 0 10px;
+  margin: 5px 8px;
 }
 .usrpic-wrap img {
   position: absolute;
@@ -1478,9 +1486,7 @@ a:hover {
 .deletefolder:focus {
   background-color: #434343;
 }
-#usr{
-  height: 30px;
-}
+
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {

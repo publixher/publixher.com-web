@@ -543,7 +543,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     background-position: 2px 2px;
 }
 #wrap #right .conf #controller #usr {
-    margin: 3px;
+    margin: 3px 0;
+    background-color: #e8e8e8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
     width: 34px;
@@ -595,6 +599,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #controller #usrpic {
     float: left;
     cursor: pointer;
+    margin: 3px 0;
+    background-color: #e8e8e8;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 #wrap #right .conf #controller #username {
     background-color: transparent;
@@ -1038,7 +1046,7 @@ li a {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    margin: 7px 7px 0 10px;
+    margin: 5px 8px;
 }
 .usrpic-wrap img {
     position: absolute;
@@ -1449,9 +1457,7 @@ a:hover {
 .knocked-image{
     -webkit-filter: grayscale(0%) !important;
 }
-#usr{
-    height: 30px;
-}
+
 #result-for{
     width: 98%;
     margin-left: 1%;
