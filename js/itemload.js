@@ -100,6 +100,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     } else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
+
     write += '</div><div class="folder-cate">';
 
     if (folderID) {
@@ -115,10 +116,12 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         write+='</span>';
     }
 
-
-    write += '</div><div class="title">';
+    write += '</div></div>'
+    write += '<div class="title">';
     write += title;
-    write += '</div></div> <div class="body">'
+    write += '</div>'
+    
+    write += '<div class="body">'
     write += preview + '</div>';
     if (tag) {
         write += '<div class="content-body-rep-wrap">';
