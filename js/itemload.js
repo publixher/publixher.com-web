@@ -6,7 +6,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/profile/' + writer + '">'
+    write += '<div class="writer"><a class="content-writer" href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     write += '<span class="content-date">'+date + '</span>&nbsp;'
     switch (expose) {
@@ -74,7 +74,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/profile/' + writer + '">'
+    write += '<div class="writer"><a class="content-writer" href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     write += '<span class="content-date">'+date + '</span>&nbsp;';
     switch (expose) {
