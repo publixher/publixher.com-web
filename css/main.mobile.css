@@ -1124,12 +1124,6 @@ li a {
 .content-expose{
     margin-right: 2%;
 }
-.content-folder,
-.content-category{
-    padding: 1px 8px;
-    background-color: #e8e8e8;
-    border-radius: 10px;
-}
 .content-folder a {
     float: none !important;
 }
@@ -1204,6 +1198,10 @@ li a {
     font-size: 12px;
     cursor: pointer;
     color: #5f5f5f;
+    padding: 1px 8px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    display: inline-block;
 }
 .item-category:hover,
 .item-sub_category:hover,
