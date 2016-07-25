@@ -20,13 +20,6 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
-    if (targetID) {
-        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
-    }
-    if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    }
-
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -42,6 +35,16 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
+
+    write += '</div><div class="folder-cate">';
+
+    if (targetID) {
+        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
+    }
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    }
+
 
     write += '</div></div> <div class="body">'
     write += preview + '</div>';
@@ -120,7 +123,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += '<div class="title">';
     write += title;
     write += '</div>'
-    
+
     write += '<div class="body">'
     write += preview + '</div>';
     if (tag) {
