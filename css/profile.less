@@ -525,7 +525,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     .conf {
       position: fixed;
       width: 300px;
-      height: 70px;
+      height: 75px;
       top: 0;
       z-index: 100;
       border: 1px solid #f1f1f1;
@@ -534,7 +534,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       border-bottom-left-radius: 4px;
       font-size: 12px;
       #logo {
-        margin: 2px 5px;
+        margin: 5px;
         opacity: 0.7;
         height: 30px;
         width: 40px;
@@ -621,6 +621,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
         #usrpic {
           float: left;
           cursor: pointer;
+          margin: 3px 0;
+          background-color: #e8e8e8;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
         }
         #username {
           background-color: transparent;
@@ -727,7 +731,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 .carousel-inner .nav-tabs>li.active>a:focus,
 .carousel-inner .nav-tabs>li.active>a:hover{
   border: 0 !important;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   border-radius: 4px !important;
   padding: 8px !important;
 }
@@ -795,6 +799,12 @@ li a {
   border-radius: 4px !important;
   padding: 5px 5px !important;
   margin-left: -125px;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #fafafa;
 }
 #wrap #middle #writing-pane ul li ul li {
   width: 100%;
@@ -1536,9 +1546,8 @@ a:hover{
   text-decoration: none !important;
 }
 #writing-pane .active>a{
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   border: 0;
-  border-bottom: 1px solid #f1f1f1;
 }
 #writing-pane .nav-tabs{
   border-bottom: 1px solid #f1f1f1 !important;
@@ -1553,7 +1562,7 @@ a:hover{
 }
 .nav>li>a:focus, .nav>li>a:hover{
   border: 0;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle{
   border: 0;
@@ -1649,7 +1658,6 @@ a:hover{
 }
 #right .conf button{
   color: #434343;
-  padding: 5px;
 }
 .tcomment, .tshare{
   border-radius: 10px;
@@ -1709,15 +1717,7 @@ a:hover{
   border-radius: 4px;
   background-color: #f5f5f5;
 }
-.price{
-  padding: 3px 20px;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.price a{
-  padding: 0 !important
-}
+
 .pre-body-pic{
   width: 528px;
   margin-left: -9px;
@@ -1757,7 +1757,11 @@ a:hover{
   -webkit-filter: grayscale(0%) !important;
 }
 #usr{
-  height: 30px;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 34px;
 }
 //유튜브
 #mod-pane div button,
@@ -1765,10 +1769,7 @@ a:hover{
 #send div:nth-child(2) button {
   border: 0;
 }
-//임시
-#configbtn{
-  display: none;
-}
+
 #sendBody-mod,
 #publiBody-mod{
   height: 100%;

@@ -469,7 +469,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf {
   position: fixed;
   width: 300px;
-  height: 70px;
+  height: 75px;
   top: 0;
   z-index: 100;
   border: 1px solid #f1f1f1;
@@ -479,7 +479,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   font-size: 12px;
 }
 #wrap #right .conf #logo {
-  margin: 2px 5px;
+  margin: 5px;
   opacity: 0.7;
   height: 30px;
   width: 80px;
@@ -567,6 +567,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #controller #usrpic {
   float: left;
   cursor: pointer;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 #wrap #right .conf #controller #username {
   background-color: transparent;
@@ -644,7 +648,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 .carousel-inner .nav-tabs>li.active>a:focus,
 .carousel-inner .nav-tabs>li.active>a:hover{
   border: 0 !important;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   border-radius: 4px !important;
   padding: 8px !important;
 }
@@ -718,6 +722,8 @@ li a {
   margin-bottom: 5px;
   margin-top: 5px;
   padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #f1f1f1;
 }
 .sungho-writable {
   float: left;
@@ -752,6 +758,12 @@ li a {
   border-radius: 4px !important;
   padding: 5px 5px !important;
   margin-left: -125px;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #fafafa;
 }
 #wrap #middle #writing-pane ul li ul li {
   width: 100%;
@@ -1343,9 +1355,8 @@ a:hover {
   text-decoration: none !important;
 }
 #writing-pane .active > a {
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   border: 0;
-  border-bottom: 1px solid #f1f1f1;
 }
 #writing-pane .nav-tabs {
   border-bottom: 1px solid #f1f1f1 !important;
@@ -1355,7 +1366,7 @@ a:hover {
 .nav .open > a:focus,
 .nav .open > a:hover {
   border: 0;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
 }
 .nav > li > a {
   border: 0;
@@ -1363,7 +1374,7 @@ a:hover {
 .nav > li > a:focus,
 .nav > li > a:hover {
   border: 0;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
   border: 0;
@@ -1464,7 +1475,6 @@ a:hover {
 }
 #right .conf button{
   color: #434343;
-  padding: 5px;
 }
 #community-btn,
 #subscribe-btn{
@@ -1503,15 +1513,7 @@ a:hover {
   width: 96%;
   margin-left: 2%;
 }
-.price{
-  padding: 3px 20px;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.price a{
-  padding: 0 !important
-}
+
 .pre-body-pic{
   width: 528px;
   margin-left: -9px;
@@ -1534,15 +1536,29 @@ a:hover {
   -webkit-filter: grayscale(0%) !important;
 }
 #usr{
-  height: 30px;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 34px;
+}
+#result-for{
+  position: fixed;
+  width: 174px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: #bbbbbb;
+  word-break: normal;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
 }
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
   border: 0;
-}
-#configbtn{
-  display: none;
 }
 #send-mod,
 #publixh-mod{

@@ -286,9 +286,7 @@ padding-top: 40px;
   border: 1px solid #f1f1f1;
   float: left;
 }
-.tail table tbody tr>td{
-  border-radius: 20px;
-}
+
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:focus,
@@ -304,30 +302,28 @@ padding-top: 40px;
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
-  width: 99% !important;
-  border-radius: 4px;
+  width: 100% !important;
+  border-radius: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 5px 10px 5px 10px;
   font-size: 12px;
-  border: 1px solid #ddd;
-  border-left: 0;
+  border: 1px solid #f1f1f1;
+  border-right: 0;
   min-height: 32px;
-  padding-left: 1%;
   height: 100%;
   word-break: break-all;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
-  width: 98% !important;
-  border-radius: 4px;
-  box-shadow: inset 0 0 0;
-  padding: 5px 10px 5px 10px;
+  width: 100% !important;
+  border-radius: 0;
+  padding: 5px 10px;
   font-size: 12px;
-  border: 1px solid #ddd;
+  border: 0;
+  border-top: 1px solid #f1f1f1;
   min-height: 32px;
   margin-top: 10px;
-  margin-left: 1%;
   height:100%;
   word-break: break-all;
 }
@@ -423,8 +419,7 @@ padding-top: 40px;
   float: left;
   width: 100%;
   font-size: 12px;
-  margin-top: 10px;
-  margin-bottom: 1% !important;
+  margin: 3% 0 1.5% 0 !important;
 }
 #wrap #middle .item .tail table,
 #wrap #middle .item-for-sale .tail table{
@@ -469,7 +464,7 @@ padding-top: 40px;
   width: 25%;
   text-align: center;
   background-color: white;
-  height: 30px;
+  height: 24px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -517,9 +512,10 @@ padding-top: 40px;
   font-size: 12px;
   width: 100% !important;
   height: 40px !important;
-  border-bottom: 1px solid #f1f1f1;
-  background: #fbfbfb;
+  border-bottom: 1px solid #e3e3e3;
+  background: #f4f4f4;
   border-radius: 0;
+  opacity: 0.95;
 }
 #wrap #right .conf #logo {
   margin: 5px;
@@ -535,6 +531,12 @@ padding-top: 40px;
 }
 #wrap #right .conf #controller .dropdown-menu {
   padding-bottom: 0;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #fafafa;
 }
 #wrap #right .conf #controller .divider {
   background-color: royalblue;
@@ -559,17 +561,17 @@ padding-top: 40px;
   background-position: 2px 2px;
 }
 #wrap #right .conf #controller #usr {
-  margin: 3px;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
-  width: 34px;
+  float: right;
+  color: #ddd;
   height: 34px;
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: 2px 2px;
-  background-color: transparent;
-  border-color: transparent;
-  outline: 0;
+  margin: 3px 10px;
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
@@ -611,6 +613,10 @@ padding-top: 40px;
 #wrap #right .conf #controller #usrpic {
   float: left;
   cursor: pointer;
+  margin: 3px 0;
+  background-color: #e8e8e8;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 #wrap #right .conf #controller #username {
   background-color: transparent;
@@ -1352,9 +1358,8 @@ a:hover {
   text-decoration: none !important;
 }
 #writing-pane .active > a {
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   border: 0;
-  border-bottom: 1px solid #f1f1f1;
 }
 #writing-pane .nav-tabs {
   border-bottom: 1px solid #f1f1f1 !important;
@@ -1372,7 +1377,7 @@ a:hover {
 .nav > li > a:focus,
 .nav > li > a:hover {
   border: 0;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane #saleTitle {
   border: 0;
@@ -1426,7 +1431,11 @@ a:hover {
   height:30px;
 }
 .tcomment, .tshare{
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.tab-comment{
+  background-color: #f4f4f4;
 }
 #logo img{
   width: 100%;
@@ -1444,17 +1453,7 @@ a:hover {
   color: #434343;
   position: absolute;
 }
-.price{
-  padding: 5px 15px;
-  background-color: #f4f4f4;
-  border-radius: 20px;
-  white-space: nowrap;
-  margin-right: 5px;
-  cursor: pointer;
-}
-.price a{
-  padding: 0 !important
-}
+
 #activity{
   padding: 10px;
   border-radius: 4px;
@@ -1483,17 +1482,13 @@ a:hover {
 .deletefolder:focus {
   background-color: #434343;
 }
-#usr{
-  height: 30px;
-}
+
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
   border: 0;
 }
-#configbtn{
-  display: none;
-}
+
 .pico-comment,
 .pico-share{
   display: none;
@@ -1605,4 +1600,10 @@ a:hover {
 }
 .knocked-image{
   -webkit-filter: grayscale(0%) !important;
+}
+.opend-comment{
+  margin-bottom: 0 !important;
+}
+.tshare{
+  display: none;
 }
