@@ -70,7 +70,6 @@ $(document).ready(function () {
     $(document).on("click", ".comment", function () {
         var thisitemID = $(this).parents()[5].id;
         var tail = $('#' + thisitemID + ' .tail');
-        tail.css('margin-bottom', '10px');
         if (!tail.hasClass('opend-comment')) {
 
             var spinner = $('<div>')
