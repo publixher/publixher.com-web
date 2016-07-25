@@ -311,10 +311,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
     float: left;
-    padding: 6px 6px 0 6px;
+    padding: 6px;
     width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    background-color: #fafafa;
 }
 #wrap #middle .item .header .profilepic,
 #wrap #middle .item-for-sale .header .profilepic {
@@ -1196,9 +1197,8 @@ li a {
     cursor: pointer;
     color: #5f5f5f;
     padding: 1px 8px;
-    background-color: #f4f4f4;
+    background-color: #e8e8e8;
     border-radius: 10px;
-    display: inline-block;
 }
 .item-category:hover,
 .item-sub_category:hover,
