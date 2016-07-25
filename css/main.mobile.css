@@ -287,12 +287,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item-for-sale .commentReg_sub {
     width: 100% !important;
     border-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
     border: 1px solid #f1f1f1;
-    border-right: 0;
+    border-right: 1px solid #fff;
     min-height: 32px;
     height: 100%;
     word-break: break-all;
@@ -303,8 +301,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border-radius: 0;
     padding: 5px 10px;
     font-size: 12px;
-    border: 0;
-    border-top: 1px solid #f1f1f1;
+    border: 1px solid #fff !important;
+    border-top: 1px solid #f1f1f1 !important;
     min-height: 32px;
     margin-top: 10px;
     height:100%;
