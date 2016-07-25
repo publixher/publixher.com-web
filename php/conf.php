@@ -33,7 +33,7 @@
             </div>
         <!--노티,핀,설정버튼-->
         <!-- 노티버튼 -->
-        <div class="btn-group">
+        <div class="btn-group" id="noti-drop">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" id="notibtn"
                     aria-expanded="false">
                 <span class="pubico pico-bell"></span>
@@ -43,7 +43,7 @@
             </ul>
         </div>
         <!--핀버튼-->
-        <div class="btn-group">
+        <div class="btn-group" id="pin-drop">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" id="pinbtn"
                     aria-expanded="false">
                 <span class="pubico pico-Pin_002"></span>

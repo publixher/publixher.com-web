@@ -10,7 +10,7 @@ $(document).ready(function () {
         if (search_word.length > 1) {
             $('#searchResult').css('display', 'block').append(spinner);
             function search(target) {
-                var data={searchword: search_word, target: target,mid:mid,name:search_word}
+                var data = {searchword: search_word, target: target, mid: mid, name: search_word}
                 $.ajax({
                     url: "/php/data/nameFind.php",
                     type: "GET",
@@ -77,9 +77,9 @@ $(document).ready(function () {
                             Result.html('');
                             Result.css('display', 'none');
                         }
-                    },error:function(xhr,status,error){
+                    }, error: function (xhr, status, error) {
                         //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
-                        errorReport("search",data,status,error)
+                        errorReport("search", data, status, error)
                     }
                 });
             }
@@ -111,8 +111,8 @@ $(document).ready(function () {
             if (res['COUNT'] > 0) {
                 $('#notibtn').append('<span class="badge">' + res['COUNT'] + '</span>');
             }
-        },error:function(xhr,status,error){
-            errorReport("getNoti",{action: "confonload"},status,error)
+        }, error: function (xhr, status, error) {
+            errorReport("getNoti", {action: "confonload"}, status, error)
             //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
         }
     })
@@ -175,8 +175,8 @@ $(document).ready(function () {
                     }
                     notiPage = notiPage + 1;
                     notiLoading = false;
-                },error:function(xhr,status,error){
-                    errorReport("getNoti",{action: "confnotireq", nowpage: notiPage},status,error)
+                }, error: function (xhr, status, error) {
+                    errorReport("getNoti", {action: "confnotireq", nowpage: notiPage}, status, error)
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
@@ -184,10 +184,9 @@ $(document).ready(function () {
     }
 
     //알림버튼 누를때 서버에서 그룹화된거 다 불러오기
-    $('#notibtn').on('click', function () {
-        if (!$('#notilist').hasClass('loaded')) {
-            getNoti();
-        }
+    $('#noti-drop').on('show.bs.dropdown', function () {
+        $('#notilist').html();
+        getNoti();
     })
     $('#notilist').scroll(function () {
         notilist = $('#notilist');
@@ -240,8 +239,8 @@ $(document).ready(function () {
                         $('#pinlist').addClass('loaded');
                     }
                     pinLoading = false;
-                },error:function(xhr,status,error){
-                    errorReport("getPin",{action: "loadpin", nowpage: pinPage},status,error)
+                }, error: function (xhr, status, error) {
+                    errorReport("getPin", {action: "loadpin", nowpage: pinPage}, status, error)
                     //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
                 }
             })
@@ -266,17 +265,16 @@ $(document).ready(function () {
                 } else {
                     alert('작업중 문제가 생겼습니다.')
                 }
-            },error:function(xhr,status,error){
-            errorReport("delPin",{ID: ID, token: token, action: "delPin", userID: mid},status,error);
+            }, error: function (xhr, status, error) {
+                errorReport("delPin", {ID: ID, token: token, action: "delPin", userID: mid}, status, error);
                 //alert('오류가 탑지되어 자동으로 서버에 오류내역이 저장되었습니다.\n이용에 불편을 드려 죄송합니다.\n새로고침 후 다시 이용해 주세요.')
             }
         })
     });
     //핀리스트
-    $('#pinbtn').on('click', function () {
-        if (!$('#pinlist').hasClass('loaded')) {
-            getPin();
-        }
+    $('#pin-drop').on('show.bs.dropdown', function () {
+        $('#pinlist').html();
+        getPin();
     })
     //무한 휠!!
     $('#pinlist').scroll(function () {
