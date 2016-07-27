@@ -118,11 +118,10 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         }
         write+='</span>';
     }
-
-    write += '</div></div>'
     write += '<div class="title">';
     write += title;
     write += '</div>'
+    write += '</div></div>'
 
     write += '<div class="body">'
     write += preview + '</div>';
