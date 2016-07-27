@@ -285,14 +285,16 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
-    width: 100% !important;
+    width: 96% !important;
     border-radius: 0;
     padding: 8px 10px;
     font-size: 12px;
-    border: 1px solid #f1f1f1;
-    border-right: 1px solid #fff;
+    border: 1px solid #fff !important;
+    border-top: 1px solid #f1f1f1 !important;
     min-height: 32px;
-    height: 100%;
+    margin-left: 2%;
+    margin-top: 10px;
+    height:100%;
     word-break: break-all;
 }
 #wrap #middle .item .commentReg,
@@ -1406,13 +1408,7 @@ a:hover {
 #contentCost{
     height:30px;
 }
-.tcomment, .tshare{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.tab-comment{
-    background-color: #f4f4f4;
-}
+
 #logo img{
     width: 100%;
     position: absolute;
