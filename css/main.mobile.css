@@ -1,6 +1,8 @@
 
 body {
     background-color: #fafafa;
+    max-width: 530px;
+    margin: 0 auto;
 }
 html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     outline: 0 !important;
@@ -285,28 +287,29 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .commentReg_sub,
 #wrap #middle .item-for-sale .commentReg_sub {
-    width: 100% !important;
+    width: 96% !important;
     border-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    padding: 5px 10px 5px 10px;
+    padding: 8px 10px;
     font-size: 12px;
-    border: 1px solid #f1f1f1;
-    border-right: 0;
+    border: 1px solid #fff !important;
+    border-top: 1px solid #f1f1f1 !important;
     min-height: 32px;
-    height: 100%;
+    margin-left: 2%;
+    margin-top: 10px;
+    height:100%;
     word-break: break-all;
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
-    width: 100% !important;
+    width: 96% !important;
     border-radius: 0;
-    padding: 5px 10px;
+    padding: 8px 10px;
     font-size: 12px;
-    border: 0;
-    border-top: 1px solid #f1f1f1;
+    border: 1px solid #fff !important;
+    border-top: 1px solid #f1f1f1 !important;
     min-height: 32px;
     margin-top: 10px;
+    margin-left: 2%;
     height:100%;
     word-break: break-all;
 }
@@ -343,16 +346,15 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     text-decoration: none;
     cursor: pointer;
 }
-#wrap #middle .item .header .title,
-#wrap #middle .item-for-sale .header .title {
-    font-size: 14px;
+.item-for-sale .title {
+    font-size: 12px;
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 80%;
-    margin-left: 34px;
-    margin-top: 30px;
+    display: inline;
+    margin: 10px;
+    vertical-align: baseline;
+    padding-left: 5px;
+    border-left: 1px solid #e3e3e3;
+    color: #5f5f5f;
 }
 #wrap #middle .item .body,
 #wrap #middle .item-for-sale .body {
@@ -399,7 +401,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
     width: 100%;
     font-size: 12px;
-    margin: 3% 0 1.5% 0 !important;
+    margin: 3% 0 1.5% 0;
+}
+.opend-comment{
+    margin: 3% 0 0 0 !important;
 }
 #wrap #middle .item .tail table,
 #wrap #middle .item-for-sale .tail table{
@@ -444,6 +449,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     text-align: center;
     background-color: white;
     height: 24px;
+}
+.tcomment, .tshare{
+    border-radius: 10px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -494,7 +502,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     border-bottom: 1px solid #e3e3e3;
     background: #f4f4f4;
     border-radius: 0;
-    opacity: 0.95;
+    opacity: 0.97;
 }
 #wrap #right .conf #logo {
     margin: 5px;
@@ -955,8 +963,8 @@ li a {
     margin-bottom: -1px !important;
 }
 .body-tag {
-    color: #fff;
-    background: #bbb;
+    color: #5f5f5f;
+    background: #e8e8e8;
     overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
@@ -965,7 +973,7 @@ li a {
     font-size: 11px;
 }
 .body-tag:hover{
-    color: #e3e3e3;
+    color: #000;
 }
 .content-body-rep-wrap {
     margin: 0 10px 5px 10px;
@@ -1196,9 +1204,8 @@ li a {
     cursor: pointer;
     color: #5f5f5f;
     padding: 1px 8px;
-    background-color: #f4f4f4;
+    background-color: #e8e8e8;
     border-radius: 10px;
-    display: inline-block;
 }
 .item-category:hover,
 .item-sub_category:hover,
@@ -1407,13 +1414,7 @@ a:hover {
 #contentCost{
     height:30px;
 }
-.tcomment, .tshare{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.tab-comment{
-    background-color: #f4f4f4;
-}
+
 #logo img{
     width: 100%;
     position: absolute;
@@ -1459,6 +1460,7 @@ a:hover {
     background-color: #bbbbbb;
     word-break: normal;
 }
+
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1477,6 +1479,15 @@ a:hover {
 }
 .opend-comment{
     margin-bottom: 0 !important;
+}
+.folder-cate{
+    margin-top: 3px;
+    display: inline-block;
+    width: 100%;
+    padding-left: 30px;
+}
+.card .conf{
+    margin-top: 3px;
 }
 .tshare{
     display: none;

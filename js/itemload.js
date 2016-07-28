@@ -6,7 +6,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/profile/' + writer + '">'
+    write += '<div class="writer"><a class="content-writer" href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     write += '<span class="content-date">'+date + '</span>&nbsp;'
     switch (expose) {
@@ -20,13 +20,6 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
-    if (targetID) {
-        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
-    }
-    if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    }
-
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -42,6 +35,16 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     }else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
+
+    write += '</div><div class="folder-cate">';
+
+    if (targetID) {
+        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
+    }
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    }
+
 
     write += '</div></div> <div class="body">'
     write += preview + '</div>';
@@ -74,7 +77,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     write += ID;
     write += '"><div class="header">';
     write += '<div class="item-profile-wrap"><img src="' + pic + '" class="profilepic"></div>';
-    write += '<div class="writer"><a href="/profile/' + writer + '">'
+    write += '<div class="writer"><a class="content-writer" href="/profile/' + writer + '">'
     write += name + '</a>&nbsp;'
     write += '<span class="content-date">'+date + '</span>&nbsp;';
     switch (expose) {
@@ -88,18 +91,6 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
-    if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    }
-
-    //카테고리 표시부분
-    if(category!='SNS') {
-        write+='<span class="content-category"><span class="item-category">'+category+'</span>';
-        if(sub_category!=null){
-            write+='<span class="pubico pico-kkuk"></span><span class="item-sub_category">'+sub_category+'</span>';
-        }
-        write+='</span>';
-    }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -112,9 +103,27 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
     } else {
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
-    write += '</div><div class="title">';
+
+    write += '</div><div class="folder-cate">';
+
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+    }
+
+//카테고리 표시부분
+    if(category!='SNS') {
+        write+='<span class="content-category"><span class="item-category">'+category+'</span>';
+        if(sub_category!=null){
+            write+='<span class="pubico pico-kkuk"></span><span class="item-sub_category">'+sub_category+'</span>';
+        }
+        write+='</span>';
+    }
+    write += '<div class="title">';
     write += title;
-    write += '</div></div> <div class="body">'
+    write += '</div>'
+    write += '</div></div>'
+
+    write += '<div class="body">'
     write += preview + '</div>';
     if (tag) {
         write += '<div class="content-body-rep-wrap">';

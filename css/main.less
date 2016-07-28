@@ -288,11 +288,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       }
       .commentReg {
         width: 100% !important;
-        border-radius: 4px;
         box-shadow: inset 0 0 0;
-        padding: 8px 10px;
+        padding: 8px 10px;;
         font-size: 12px;
-        border: 1px solid #ddd;
+        border-radius: 0;
+        border: 1px solid #fff !important;
+        border-top: 1px solid #f1f1f1 !important;
         min-height: 32px;
         height: 100%;
         margin-top: 10px;
@@ -301,7 +302,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 
       .header {
         float: left;
-        padding: 8px 10px 0 10px;
+        padding: 10px 10px 0 10px;
         width: 528px;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
@@ -331,16 +332,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
               cursor: pointer;
             }
           }
-        }
-        .title {
-          font-size: 14px;
-          font-weight: 700;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          width: 80%;
-          margin-left: 34px;
-          margin-top: 30px;
         }
       }
       .body {
@@ -942,8 +933,8 @@ li a {
   margin-bottom: -1px !important;
 }
 .body-tag {
-  color: #fff;
-  background: #bbb;
+  color: #5f5f5f;
+  background: #e8e8e8;
   overflow: hidden;
   cursor: pointer;
   border-radius: 2px;
@@ -952,7 +943,7 @@ li a {
   font-size: 11px;
 }
 .body-tag:hover{
-  color: #e3e3e3;
+  color: #000;
 }
 .content-body-rep-wrap{
   margin: 0 10px 10px 10px;
@@ -1115,8 +1106,11 @@ li a {
 }
 .content-folder,
 .content-category{
-  padding: 1px 10px;
-  background-color: #f4f4f4;
+  font-size: 12px;
+  cursor: pointer;
+  color: #5f5f5f;
+  padding: 1px 8px;
+  background-color: #e8e8e8;
   border-radius: 10px;
 }
 .content-folder a{
@@ -1189,12 +1183,6 @@ li a {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-.content-category,
-.content-folder {
-  font-size: 12px;
-  cursor: pointer;
-  color: #5f5f5f;
 }
 .item-category:hover,
 .item-sub_category:hover,
@@ -1534,6 +1522,25 @@ a:hover{
   background-color: #bbbbbb;
   word-break: normal;
   box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+}
+.opend-comment{
+  margin: 9px 9px 0 9px !important;
+}
+.folder-cate{
+  margin-top: 3px;
+  display: inline-block;
+  width: 100%;
+  padding-left: 30px;
+}
+.item-for-sale .title {
+  font-size: 12px;
+  font-weight: 700;
+  display: inline;
+  margin: 10px;
+  vertical-align: baseline;
+  padding-left: 5px;
+  border-left: 1px solid #e3e3e3;
+  color: #5f5f5f;
 }
 //유튜브
 #mod-pane div button,
