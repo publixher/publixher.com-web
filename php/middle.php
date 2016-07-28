@@ -13,9 +13,9 @@
                                                             role="button" aria-expanded="false">
                         <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" id="expSublist">
-                        <li><a>나만보기</a></li>
-                        <li><a>친구에게 공개</a></li>
                         <li><a>전체공개</a></li>
+                        <li><a>친구에게 공개</a></li>
+                        <li><a>나만보기</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
