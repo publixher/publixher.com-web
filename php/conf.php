@@ -53,7 +53,18 @@
             </ul>
         </div>
         <!--설정버튼-->
-        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href='/php/logout.php'">
+        <div class="btn-group" id="conf=drop">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="configbtn" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="conflist">
+
+
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">고객센터</a></li>
+                <li role="presentation" onclick="location.href='/php/logout.php'"><a role="menuitem" tabindex="-1" href="#">log-out</a></li>
+            </ul>
+        </div>
+        
+        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href='/php/logout.php'" style="display: none;">
             <span class="caret"></span>
         </button>
     </div>

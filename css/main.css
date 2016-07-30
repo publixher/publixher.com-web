@@ -557,6 +557,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #right .conf #controller .btn-group ul li {
   width: 100%;
   padding: 10px;
+  margin-top: -5px;
 }
 #wrap #right .conf #controller .btn-group ul li:hover {
   background-color: #f4f4f4;
@@ -651,9 +652,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 .carousel-inner .nav-tabs>li.active>a:focus,
 .carousel-inner .nav-tabs>li.active>a:hover{
   border: 0 !important;
-  background-color: #fafafa;
   border-radius: 4px !important;
   padding: 8px !important;
+  font-weight: 700;
+  background-color: white !important;
 }
 .carousel-inner .nav-tabs>li>a{
   height:36px;
