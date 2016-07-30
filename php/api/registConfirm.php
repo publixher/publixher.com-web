@@ -54,7 +54,8 @@ if ($check_email && $check_pass) {
         echo $msg;
     }
 } else {
-    $msg=array("email"=>$email,"pass"=>$pass,"name"=>$name,"community"=>$community,"check_email"=>$check_email,"check_pass"=>$check_pass);
+    $msg=array("email"=>$email,"pass"=>$pass,"name"=>$name,"community"=>$community,"check_email"=>$check_email,"check_pass"=>$check_pass
+    ,"POST"=>$_POST,"GET"=>$_GET);
     echo json_encode($msg,JSON_UNESCAPED_UNICODE);
 }
 ?>
