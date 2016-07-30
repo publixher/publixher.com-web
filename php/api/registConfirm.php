@@ -54,7 +54,7 @@ if ($check_email && $check_pass) {
         echo $msg;
     }
 } else {
-    $msg = '{"status":-2}';
-    echo $msg;
+    $msg=array("email"=>$email,"pass"=>$pass,"name"=>$name,"community"=>$community,"check_email"=>$check_email,"check_pass"=>$check_pass);
+    echo json_encode($msg,JSON_UNESCAPED_UNICODE);
 }
 ?>

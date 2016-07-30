@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="258cc765-9c37-4afc-b44f-21dc9d85c0be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/itemcard.js" afterPath="$PROJECT_DIR$/js/itemcard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/registConfirm.php" afterPath="$PROJECT_DIR$/php/api/registConfirm.php" />
     </list>
     <list id="2cd21623-4eea-4d3b-8517-a35af100c8f9" name="New changelist" comment="" />
     <ignored path="publixherBoot.iws" />
@@ -35,7 +35,7 @@
       <file leaf-file-name="itemcard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
+            <state relative-caret-position="270">
               <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding>
                 <marker date="1469686498000" expanded="true" signature="12292:12323" ph="..." />
@@ -75,39 +75,53 @@
       <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
+            <state relative-caret-position="810">
               <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/https/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="420">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/conf.js">
+      <file leaf-file-name="registConfirm.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4125">
-              <caret line="275" column="8" selection-start-line="275" selection-start-column="8" selection-end-line="275" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="480">
+              <caret line="57" column="49" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+              <folding>
+                <marker date="1469858441000" expanded="true" signature="719:862" ph="INSERT INTO publixher.TBL_USER... " />
+                <marker date="1469858441000" expanded="true" signature="1537:1598" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/conf.php">
+      <file leaf-file-name="best.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/api/best.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="-405">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1468395944000" expanded="true" signature="240:577" ph="SELECT SQL_C... TBL_NOW_HOT" />
+                <marker date="1468395944000" expanded="true" signature="610:909" ph="SELECT SQL_C... TBL_NOW_HOT" />
+                <marker date="1468395944000" expanded="true" signature="930:1103" ph="SELECT SQL_C... TBL_NOW_HOT" />
+                <marker date="1468395944000" expanded="true" signature="1586:1929" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="1963:2268" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="2289:2464" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="2947:3289" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="3323:3627" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="3648:3824" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+                <marker date="1468395944000" expanded="true" signature="4335:4467" ph="SELECT TITLE... TBL_CONTENT" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,16 +171,9 @@
       <file leaf-file-name="itemload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/itemload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4905">
-              <caret line="327" column="56" selection-start-line="327" selection-start-column="56" selection-end-line="327" selection-end-column="56" />
-              <folding>
-                <marker date="1469262512000" expanded="true" signature="500:506" ph=" " />
-                <marker date="1469262512000" expanded="true" signature="566:572" ph=" " />
-                <marker date="1469262512000" expanded="true" signature="1147:1153" ph=" " />
-                <marker date="1469262512000" expanded="true" signature="3995:4001" ph=" " />
-                <marker date="1469262512000" expanded="true" signature="4061:4067" ph=" " />
-                <marker date="1469262512000" expanded="true" signature="4535:4541" ph=" " />
-              </folding>
+            <state relative-caret-position="5040">
+              <caret line="336" column="56" selection-start-line="336" selection-start-column="56" selection-end-line="336" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -195,7 +202,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/97bdcd9a-9306-4506-87e5-4764f0d460c4/console.sql" />
         <option value="/MySQL Fragment (best.php:1287).sql" />
         <option value="$PROJECT_DIR$/php/right.php" />
-        <option value="$PROJECT_DIR$/php/api/registConfirm.php" />
         <option value="$PROJECT_DIR$/php/data/registConfirm.php" />
         <option value="$PROJECT_DIR$/lib/getImgFromUrl.php" />
         <option value="$PROJECT_DIR$/php/data/api_login.php" />
@@ -240,6 +246,7 @@
         <option value="$PROJECT_DIR$/js/itemcard.js" />
         <option value="$PROJECT_DIR$/php/main.php" />
         <option value="$PROJECT_DIR$/https/login.php" />
+        <option value="$PROJECT_DIR$/php/api/registConfirm.php" />
       </list>
     </option>
   </component>
@@ -336,25 +343,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Default">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -563,6 +551,25 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
     </panes>
   </component>
@@ -751,14 +758,8 @@
       <workItem from="1469253562834" duration="4813000" />
       <workItem from="1469419531311" duration="2132000" />
       <workItem from="1469597017450" duration="745000" />
-      <workItem from="1469676716542" duration="870000" />
-    </task>
-    <task id="LOCAL-00447" summary="facebookFriend 추가">
-      <created>1468228769751</created>
-      <option name="number" value="00447" />
-      <option name="presentableId" value="LOCAL-00447" />
-      <option name="project" value="LOCAL" />
-      <updated>1468228769752</updated>
+      <workItem from="1469676716542" duration="1036000" />
+      <workItem from="1469856361476" duration="1263000" />
     </task>
     <task id="LOCAL-00448" summary="facebookFriend 추가">
       <created>1468231059862</created>
@@ -1096,11 +1097,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469423817508</updated>
     </task>
-    <option name="localTasksCounter" value="496" />
+    <task id="LOCAL-00496" summary="모바일 doubletap 이벤트 추가 및 적용">
+      <created>1469686697471</created>
+      <option name="number" value="00496" />
+      <option name="presentableId" value="LOCAL-00496" />
+      <option name="project" value="LOCAL" />
+      <updated>1469686697472</updated>
+    </task>
+    <option name="localTasksCounter" value="497" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="545799000" />
+    <option name="totallyTimeSpent" value="547228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1115,14 +1123,16 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20600858" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20886981" sideWeight="0.48472506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327145" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30673143" sideWeight="0.50494623" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26752505" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27349398" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24929312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32477447" sideWeight="0.49676898" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24474959" sideWeight="0.51527494" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3060241" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1131,12 +1141,10 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39879155" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24819277" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25783134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3060241" sideWeight="0.49505377" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1153,7 +1161,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="베스트 대 가테고리 선택시 전체 선택되는거 뺌" />
     <MESSAGE value="mid와 userID 상수선언" />
     <MESSAGE value="프로필 middle에 mid변수 추가a" />
     <MESSAGE value="각 페이지 mid 정의" />
@@ -1178,7 +1185,8 @@
     <MESSAGE value="태그,본문 페이지에 어떤 검색 결과인지 알려줌" />
     <MESSAGE value="핀,알림 클릭때마다 불러옴" />
     <MESSAGE value="bottom 10 뺌" />
-    <option name="LAST_COMMIT_MESSAGE" value="bottom 10 뺌" />
+    <MESSAGE value="모바일 doubletap 이벤트 추가 및 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="모바일 doubletap 이벤트 추가 및 적용" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1188,11 +1196,16 @@
           <line>4</line>
           <option name="timeStamp" value="581" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/api/registConfirm.php</url>
+          <line>10</line>
+          <option name="timeStamp" value="665" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="665" />
+      <option name="time" value="666" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="nameFind.php">
@@ -1215,20 +1228,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/api/best.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2235">
-          <caret line="149" column="53" selection-start-line="149" selection-start-column="53" selection-end-line="149" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/best.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/https/regist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -1461,9 +1460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
           <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
-          <folding>
-            <marker date="1469262512000" expanded="true" signature="2737:2779" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1471,10 +1467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
           <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="65" />
-          <folding>
-            <marker date="1469420399000" expanded="true" signature="2772:2814" ph="..." />
-            <marker date="1469420399000" expanded="true" signature="3200:3239" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1482,7 +1474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
           <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1496,7 +1487,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/conf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="585">
           <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
           <folding />
         </state>
@@ -1530,16 +1521,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4905">
-          <caret line="327" column="56" selection-start-line="327" selection-start-column="56" selection-end-line="327" selection-end-column="56" />
-          <folding>
-            <marker date="1469262512000" expanded="true" signature="500:506" ph=" " />
-            <marker date="1469262512000" expanded="true" signature="566:572" ph=" " />
-            <marker date="1469262512000" expanded="true" signature="1147:1153" ph=" " />
-            <marker date="1469262512000" expanded="true" signature="3995:4001" ph=" " />
-            <marker date="1469262512000" expanded="true" signature="4061:4067" ph=" " />
-            <marker date="1469262512000" expanded="true" signature="4535:4541" ph=" " />
-          </folding>
+        <state relative-caret-position="5040">
+          <caret line="336" column="56" selection-start-line="336" selection-start-column="56" selection-end-line="336" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1553,7 +1537,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/itemcard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
+        <state relative-caret-position="270">
           <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
             <marker date="1469686498000" expanded="true" signature="12292:12323" ph="..." />
@@ -1591,7 +1575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="810">
           <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding />
         </state>
@@ -1599,9 +1583,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/https/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="420">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/best.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1468395944000" expanded="true" signature="240:577" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1468395944000" expanded="true" signature="610:909" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1468395944000" expanded="true" signature="930:1103" ph="SELECT SQL_C... TBL_NOW_HOT" />
+            <marker date="1468395944000" expanded="true" signature="1586:1929" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="1963:2268" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="2289:2464" ph="SELECT SQL_C... TBL_DAILY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="2947:3289" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="3323:3627" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="3648:3824" ph="SELECT SQL_C... TBL_WEEKLY_HOT" />
+            <marker date="1468395944000" expanded="true" signature="4335:4467" ph="SELECT TITLE... TBL_CONTENT" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/registConfirm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="57" column="49" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+          <folding>
+            <marker date="1469858441000" expanded="true" signature="719:862" ph="INSERT INTO publixher.TBL_USER... " />
+            <marker date="1469858441000" expanded="true" signature="1537:1598" ph="INSERT INTO publixher.TBL_CONNECTOR... " />
+          </folding>
         </state>
       </provider>
     </entry>
