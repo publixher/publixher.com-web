@@ -26,7 +26,7 @@
     <?php
     if ($userID == $targetid) {
         //현재 접속자와 타겟 유저가 같을때의 동작
-        echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a><hr>";
+        echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a>";
     }
     //폴더목록 가져오기
     $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
@@ -34,7 +34,7 @@
     $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-    echo '<hr><div id="FolDerFolDeR">폴더목록<ul>';
+    echo '<div id="FolDerFolDeR">폴더목록<ul>';
     for ($i = 0; $i < count($FOLDER); $i++) {
         echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
     }
