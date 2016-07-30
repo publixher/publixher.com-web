@@ -194,7 +194,7 @@ WHERE BUY_LIST.ID_USER = :ID_USER
     public function one(string $cid)
     {
         $parameter = array('ID' => $cid, 'USER_ID1' => $this->mId, 'USER_ID2' => $this->mId, 'KNOCK_USER_ID' => $this->mId);
-        $sql = "SELECT
+        $sql = "SELECT 
   CONT.ID,
   CONT.ID_WRITER,
   CONT.TITLE,
@@ -239,7 +239,8 @@ WHERE DEL = 'N' AND CONT.ID = :ID AND REPORT < 10 AND EXPOSE >= (
 publixher.TBL_CONTENT
   WHERE
     ID = CONT.ID
-)";
+  
+)GROUP BY CONT.ID";
 
         $prepare = $this->db->prepare($sql);
         $prepare->execute($parameter);
