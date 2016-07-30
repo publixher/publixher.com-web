@@ -2,12 +2,12 @@
 //db뒤지기
 require_once '../../conf/database_conf.php';
 //넘어온 값 받기
-if (!isset($_POST['email'])){
+if (!isset($_GET['email'])){
     echo '{"status":-2}';
     exit;
 }
-$email = $_POST['email'];
-$pass = $_POST['pass'];
+$email = $_GET['email'];
+$pass = $_GET['pass'];
 $date=date("Y-m-d H:i:s",time());
 $result=array();
 //쿼리
