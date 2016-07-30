@@ -45,7 +45,7 @@ if ($check_email && $check_pass) {
         $sendmail->send_mail($email, $from, $subject, $body);
         $bulk = new MongoDB\Driver\BulkWrite;
         $bulk->insert(['id'=>$id]);
-        $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
+//            $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
         $db->commit();
         echo json_encode(array('status'=>1),JSON_UNESCAPED_UNICODE);
     } catch (PDOException $e) {
