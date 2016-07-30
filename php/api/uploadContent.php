@@ -1,6 +1,6 @@
 <?php
 header("Content-Type:application/json");
-if (!empty($_POST)) {
+if (!empty($_GET)) {
     require_once '../../conf/database_conf.php';
     require_once '../../lib/passing_time.php';
     require_once '../../lib/blur.php';
@@ -10,15 +10,15 @@ if (!empty($_POST)) {
     require_once'../../lib/getImgFromUrl.php';
     require_once'../../lib/banchk.php';
     require_once '../../lib/iFrameCrop.php';
-    banCheck($_POST['ID_writer'],$db,-2 );
+    banCheck($_GET['ID_writer'],$db,-2 );
 
     //이미지 소스만 가져오기
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
-    $body = $_POST['body'];
-    $body_text=$_POST['body_text'];
-    $for_sale=$_POST['for_sale'];
+    $body = $_GET['body'];
+    $body_text=$_GET['body_text'];
+    $for_sale=$_GET['for_sale'];
     $body = $purifier->purify($body);
     $body_text=$purifier->purify($body_text);
     $body=iframe_crop($body);
@@ -130,8 +130,8 @@ if (!empty($_POST)) {
     //content테이블에 넣음
     try {
         $db->beginTransaction();
-        $ID_writer = $_POST['ID_writer'];
-        $targetID = $_POST['targetID'];
+        $ID_writer = $_GET['ID_writer'];
+        $targetID = $_GET['targetID'];
         if (!$for_sale) {
             $sql = "INSERT INTO publixher.TBL_CONTENT (ID,ID_WRITER,BODY,PREVIEW,FOLDER,EXPOSE,ID_TARGET,MORE,TAG,BODY_TEXT) VALUES (:ID,:ID_WRITER,:BODY,:PREVIEW,:FOLDER,:EXPOSE,:ID_TARGET,:MORE,:TAG,:BODY_TEXT)";
         } else {
@@ -143,11 +143,11 @@ if (!empty($_POST)) {
         $prepare->bindValue(':ID_WRITER', $ID_writer, PDO::PARAM_STR);
         $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
         $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
-        $prepare->bindValue(':FOLDER', $_POST['folder'], PDO::PARAM_STR);
-        $prepare->bindValue(':EXPOSE', $_POST['expose'], PDO::PARAM_STR);
+        $prepare->bindValue(':FOLDER', $_GET['folder'], PDO::PARAM_STR);
+        $prepare->bindValue(':EXPOSE', $_GET['expose'], PDO::PARAM_STR);
         $prepare->bindValue(':MORE', $more, PDO::PARAM_STR);
         $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
-        $prepare->bindValue(':TAG', $_POST['tags'] ? implode(' ', json_decode($_POST['tags'])) : null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
+        $prepare->bindValue(':TAG', $_GET['tags'] ? implode(' ', json_decode($_GET['tags'])) : null, PDO::PARAM_STR);  //태그가 있으면 넣고 아니면 말고
         if ($targetID == '') {
             $prepare->bindValue(':ID_TARGET', NULL, PDO::PARAM_STR);
         } else {
@@ -155,17 +155,17 @@ if (!empty($_POST)) {
         }
 
         if ($for_sale) {
-            $prepare->bindValue(':PRICE', $_POST['price'], PDO::PARAM_STR);
-            $prepare->bindValue(':CATEGORY', $_POST['category'], PDO::PARAM_STR);
-            $prepare->bindValue(':SUB_CATEGORY', $_POST['sub_category']?$_POST['sub_category']:null, PDO::PARAM_STR);
-            $prepare->bindValue(':TITLE', $_POST['title'], PDO::PARAM_STR);
+            $prepare->bindValue(':PRICE', $_GET['price'], PDO::PARAM_STR);
+            $prepare->bindValue(':CATEGORY', $_GET['category'], PDO::PARAM_STR);
+            $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']?$_GET['sub_category']:null, PDO::PARAM_STR);
+            $prepare->bindValue(':TITLE', $_GET['title'], PDO::PARAM_STR);
             $prepare->bindValue(':IMG', $previewimg?str_replace('crop','crop80',$previewimg) : null, PDO::PARAM_STR);
-            if ($_POST['adult'] == true) {
+            if ($_GET['adult'] == true) {
                 $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
             } else {
                 $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
             }
-            if ($_POST['ad'] == true) {
+            if ($_GET['ad'] == true) {
                 $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
             } else {
                 $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
@@ -226,8 +226,8 @@ FROM publixher.TBL_CONTENT AS CONT
             $prepare2->execute();
         }
         //태그 넣기
-        if ($_POST['tags']) {
-            $tags = json_decode($_POST['tags']);
+        if ($_GET['tags']) {
+            $tags = json_decode($_GET['tags']);
             $tagsql = "INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
             $tpr = $db->prepare($tagsql);
             $tpr->bindValue(':ID_CONTENT', $uid);
@@ -236,11 +236,11 @@ FROM publixher.TBL_CONTENT AS CONT
                 $tpr->execute();
             }
         }
-        if ($_POST['folder']) {
+        if ($_GET['folder']) {
             //폴더에 내용 수 증가
             $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
             $prepare3 = $db->prepare($sql3);
-            $prepare3->bindValue(':ID', $_POST['folder'], PDO::PARAM_STR);
+            $prepare3->bindValue(':ID', $_GET['folder'], PDO::PARAM_STR);
             $prepare3->execute();
         }
         $bulk=new MongoDB\Driver\BulkWrite;

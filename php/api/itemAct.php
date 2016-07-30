@@ -3,14 +3,14 @@ header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 
-$act = $_POST['action'];
+$act = $_GET['action'];
 if (!$act) {
     $act = $_GET['action'];
 }
 //액션에 따라 동작이 달라짐
 if ($act == 'knock') {
-    $ID = $_POST['contID'];
-    $userID = $_POST['userID'];
+    $ID = $_GET['contID'];
+    $userID = $_GET['userID'];
 
     //노크처리
     $sql1 = "INSERT INTO publixher.TBL_KNOCK_LIST(ID_USER,ID_CONTENT) VALUES(:ID_USER,:ID_CONTENT);";
@@ -257,16 +257,16 @@ LIMIT
     }
 } elseif ($act == 'commentreg') {
     require_once '../../lib/banchk.php';
-    banCheck($_POST['userID'], $db, -9);
+    banCheck($_GET['userID'], $db, -9);
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
-    $userID = $_POST['userID'];
-    $ID = $_POST['contID'];
-    $comment = preg_replace($br, '<br><br>', $_POST['comment']);
+    $userID = $_GET['userID'];
+    $ID = $_GET['contID'];
+    $comment = preg_replace($br, '<br><br>', $_GET['comment']);
     $comment = $purifier->purify($comment);
     $uid = uniqueid($db, 'reply');
-    $taglist = array_unique($_POST['taglist'], SORT_STRING);
+    $taglist = array_unique($_GET['taglist'], SORT_STRING);
     $taglist_len = count($taglist);
     
 
@@ -330,8 +330,8 @@ LIMIT
         echo json_encode(array('status' => 1, 'result' => $result), JSON_UNESCAPED_UNICODE);
     
 } elseif ($act == 'del') {
-    $ID = $_POST['contID'];
-    $userID = $_POST['userID'];
+    $ID = $_GET['contID'];
+    $userID = $_GET['userID'];
     $prepare = $db->prepare("SELECT LEVEL FROM publixher.TBL_USER WHERE ID=:ID");
     $prepare->execute(array('ID' => $userID));
     $userLv = $prepare->fetchColumn(PDO::PARAM_INT);
@@ -383,14 +383,14 @@ LIMIT
     //한번 확인해주고
     $sql1 = "UPDATE publixher.TBL_USER SET TOP_CONTENT=:TOP_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
-    $prepare1->bindValue(':TOP_CONTENT', $_POST['contID'], PDO::PARAM_STR);
-    $prepare1->bindValue(':ID', $_POST['userID'], PDO::PARAM_STR);
+    $prepare1->bindValue(':TOP_CONTENT', $_GET['contID'], PDO::PARAM_STR);
+    $prepare1->bindValue(':ID', $_GET['userID'], PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"status":"1"}';
 } elseif ($act == 'repknock') {
     //댓글에 노크처리
-    $userID = $_POST['userID'];
-    $ID = $_POST['repID'];
+    $userID = $_GET['userID'];
+    $ID = $_GET['repID'];
     $sql = "SELECT SEQ FROM publixher.TBL_CONTENT_REPLY_KNOCK WHERE (ID_USER=:ID_USER AND ID_REPLY=:ID_REPLY) LIMIT 1 ";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
@@ -406,7 +406,7 @@ LIMIT
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
         $prepare1->bindValue(':ID_REPLY', $ID, PDO::PARAM_STR);
-        $prepare1->bindValue(':ID_CONTENT', $_POST['contID'], PDO::PARAM_STR);
+        $prepare1->bindValue(':ID_CONTENT', $_GET['contID'], PDO::PARAM_STR);
         $prepare1->execute();
         //update문
         $prepare2 = $db->prepare($sql2);
@@ -493,17 +493,17 @@ LIMIT :INDEX, 6";
 
 } elseif ($act == 'commentreg_sub') {
     require_once '../../lib/banchk.php';
-    banCheck($_POST['userID'], $db, -9);
+    banCheck($_GET['userID'], $db, -9);
     require_once '../../lib/random_64.php';
     require_once '../../lib/HTMLPurifier.php';
     $br = "/((\<div\>)?(\<br\>)(\<\/div\>)?){3,}/i";
-    $userID = $_POST['userID'];
-    $ID = $_POST['contID'];
-    $comment = preg_replace($br, '<br><br>', $_POST['comment']);
+    $userID = $_GET['userID'];
+    $ID = $_GET['contID'];
+    $comment = preg_replace($br, '<br><br>', $_GET['comment']);
     $comment = $purifier->purify($comment);
-    $repID = $_POST['repID'];
+    $repID = $_GET['repID'];
     $uid = uniqueid($db, 'sub_reply');
-    $taglist = $_POST['taglist'];
+    $taglist = $_GET['taglist'];
     $taglist_len = count($taglist);
     $sql1 = "INSERT INTO publixher.TBL_CONTENT_SUB_REPLY(ID,ID_USER,ID_CONTENT,REPLY,ID_REPLY,REPLY_TEXT) VALUES(:ID,:ID_USER,:ID_CONTENT,:REPLY,:ID_REPLY,:REPLY_TEXT);";
     $sql2 = "UPDATE publixher.TBL_CONTENT SET COMMENT=COMMENT+1 WHERE ID=:ID;";
@@ -559,8 +559,8 @@ LIMIT :INDEX, 6";
     $prepare5->execute();
     exit;
 } elseif ($act == 'addPin' OR $act == 'delPin') {
-    $userID = $_POST['userID'];
-    $ID = $_POST['contID'];
+    $userID = $_GET['userID'];
+    $ID = $_GET['contID'];
     try {
         $db->beginTransaction();
         if ($act == 'addPin') {
@@ -603,9 +603,9 @@ LIMIT :INDEX, 6";
         exit;
     }
 } elseif ($act == 'rep_del') {
-    $id = $_POST['repID'];
-    $userID = $_POST['userID'];
-    $type = $_POST['type'];
+    $id = $_GET['repID'];
+    $userID = $_GET['userID'];
+    $type = $_GET['type'];
     if ($type == 0) {
         $sql = "SELECT CONT.ID_WRITER AS CONTENT_WRITER,REPLY.ID_USER AS REPLY_WRITER FROM publixher.TBL_CONTENT_REPLY AS REPLY 
 INNER JOIN publixher.TBL_CONTENT AS CONT ON CONT.ID=REPLY.ID_CONTENT 
@@ -638,8 +638,8 @@ WHERE SUB_REPLY.ID=:ID";
         echo '{"status":1}';
     }
 } elseif ($act == 'report') {
-    $id = $_POST['contID'];
-    $userID = $_POST['userID'];
+    $id = $_GET['contID'];
+    $userID = $_GET['userID'];
     $sql = "INSERT INTO publixher.TBL_CONTENT_REPORT(USER_ID,CONTENT_ID) VALUES(:USER_ID,:CONTENT_ID)";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':USER_ID', $userID);

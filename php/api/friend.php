@@ -1,11 +1,11 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-$action = $_POST['action'];
+$action = $_GET['action'];
 if ($action == 'request') {
     //친구신청 되 있는지 확인
-    $targetID = $_POST['targetID'];
-    $myID = $_POST['myID'];
+    $targetID = $_GET['targetID'];
+    $myID = $_GET['myID'];
     $sql1 = "SELECT SEQ FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER)";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':ID_FRIEND', $targetID, PDO::PARAM_STR);
@@ -31,9 +31,9 @@ if ($action == 'request') {
     }
 } elseif ($action == 'friendok') {
     //친구신청에 ok
-    $targetID = $_POST['targetID'];
-    $requestid = $_POST['requestid'];
-    $myID = $_POST['myID'];
+    $targetID = $_GET['targetID'];
+    $requestid = $_GET['requestid'];
+    $myID = $_GET['myID'];
     $sql1 = "UPDATE publixher.TBL_FRIENDS SET ALLOWED='Y' WHERE SEQ=:SEQ";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
@@ -46,22 +46,22 @@ if ($action == 'request') {
     $prepare2->execute();
     echo '{"status":1}';
 } elseif ($action == 'friendno') {
-    $requestid = $_POST['requestid'];
+    $requestid = $_GET['requestid'];
     $sql1 = "DELETE FROM publixher.TBL_FRIENDS WHERE SEQ=:SEQ";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':SEQ', $requestid, PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"status":1}';
 } elseif ($action == 'cancelRequest') {
-    $targetID=$_POST['targetID'];
-    $userID=$_POST['myID'];
+    $targetID=$_GET['targetID'];
+    $userID=$_GET['myID'];
     $sql="DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
     $prepare=$db->prepare($sql);
     $prepare->execute(array('ID_FRIEND'=>$targetID,'ID_USER'=>$userID,'ID_FRIEND2'=>$userID,'ID_USER2'=>$targetID));
     echo '{"status":"1"}';
 } elseif ($action == 'endrelation') {
-    $targetID = $_POST['targetID'];
-    $userID = $_POST['myID'];
+    $targetID = $_GET['targetID'];
+    $userID = $_GET['myID'];
     //친구목록에는 양방향으로 신청이 되어 있으니 두개 다 지워야한다
     $sql2 = "DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
     $prepare2 = $db->prepare($sql2);
@@ -72,8 +72,8 @@ if ($action == 'request') {
     $prepare2->execute();
     echo '{"status":1}';
 } elseif ($action == 'subscribe') {
-    $targetID = $_POST['targetID'];
-    $userID = $_POST['myID'];
+    $targetID = $_GET['targetID'];
+    $userID = $_GET['myID'];
     $sql3 = "INSERT INTO publixher.TBL_FOLLOW(ID_MASTER,ID_SLAVE) VALUES(:ID_MASTER,:ID_SLAVE)";
     $prepare3 = $db->prepare($sql3);
     $prepare3->bindValue(':ID_MASTER', $targetID);
@@ -81,8 +81,8 @@ if ($action == 'request') {
     $prepare3->execute();
     echo '{"status":1}';
 } elseif ($action == 'dis_subscribe') {
-    $targetID = $_POST['targetID'];
-    $userID = $_POST['myID'];
+    $targetID = $_GET['targetID'];
+    $userID = $_GET['myID'];
     $sql3 = "DELETE FROM publixher.TBL_FOLLOW WHERE (ID_MASTER=:ID_MASTER AND ID_SLAVE=:ID_SLAVE)";
     $prepare3 = $db->prepare($sql3);
     $prepare3->bindValue(':ID_MASTER', $targetID);
