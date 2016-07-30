@@ -29,7 +29,7 @@ if ($check_email && $check_pass) {
         $prepare->bindValue(':USER_NAME', $name, PDO::PARAM_STR);
         $prepare->bindValue(':SEX', $_GET['sex'], PDO::PARAM_STR);
         $prepare->bindValue(':BIRTH', $_GET['byear'] . $_GET['bmonth'] . $_GET['bday'], PDO::PARAM_STR);
-        $prepare->bindValue(':COMMUNITY', $community=='true'?'TRUE':'FALSE');
+        $prepare->bindValue(':COMMUNITY', $community==true?1:0);
         $prepare->execute();
         $seq=$db->lastInsertId();
         $sql2 = "INSERT INTO publixher.TBL_CONNECTOR(ID_USER) VALUES(:ID_USER)";
