@@ -379,12 +379,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .body img,
 #wrap #middle .item-for-sale .body img {
-    width: 106.2925%;
+    width: 108%;
     height: auto !important;
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: -3.1463%;
+    margin-left: -4%;
     box-shadow: 0 0 3px #ddd;
     -webkit-filter: grayscale(1); /* Webkit */
     filter: gray; /* IE6-9 */
@@ -1461,7 +1461,35 @@ a:hover {
     background-color: #bbbbbb;
     word-break: normal;
 }
-
+.rep-tag-friend{
+    background-color: white;
+}
+.rep-tag-friend-pic-wrap{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 5px;
+    display: inline-block;
+}
+.rep-tag-friend-name{
+    height: 50px;
+    margin: 5px;
+    position: absolute;
+    padding: 15px 20px;
+}
+.rep-tag-friend{
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+    height: 60px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+    cursor: pointer;
+}
+.rep-tag-friend:hover{
+    background-color: #fafafa;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {

@@ -1481,7 +1481,35 @@ a:hover {
 .deletefolder:focus {
   background-color: #434343;
 }
-
+.rep-tag-friend{
+  background-color: white;
+}
+.rep-tag-friend-pic-wrap{
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 5px;
+  display: inline-block;
+}
+.rep-tag-friend-name{
+  height: 50px;
+  margin: 5px;
+  position: absolute;
+  padding: 15px 20px;
+}
+.rep-tag-friend{
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  height: 60px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+  cursor: pointer;
+}
+.rep-tag-friend:hover{
+  background-color: #fafafa;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
