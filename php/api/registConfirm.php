@@ -47,11 +47,11 @@ if ($check_email && $check_pass) {
         $bulk->insert(['id'=>$id]);
         $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);
         $db->commit();
-        echo '{"status":1}';
+        echo json_encode(array('status'=>1),JSON_UNESCAPED_UNICODE);
     } catch (PDOException $e) {
         $db->rollBack();
-        $msg=array("e"=>$e);
-        echo json_encode($e,JSON_UNESCAPED_UNICODE);
+        $msg='{"status":-1}';
+        echo $msg;
     }
 } else {
     $msg = '{"status":-2}';
