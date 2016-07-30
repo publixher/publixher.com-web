@@ -50,8 +50,8 @@ if ($check_email && $check_pass) {
         echo '{"status":1}';
     } catch (PDOException $e) {
         $db->rollBack();
-        $msg='{"status":-1}';
-        echo $msg;
+        $msg=array("e"=>$e);
+        echo json_encode($e,JSON_UNESCAPED_UNICODE);
     }
 } else {
     $msg = '{"status":-2}';
