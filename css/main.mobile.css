@@ -1089,11 +1089,10 @@ li a {
 .daily-list-item,
 .weekly-list-item {
     height: 200px;
-    width: 100%;
+    width: 96%;
     float: left;
-    background-color: #f9f9f9;
-    border: 1px solid #f1f1f1;
-    margin: 5px 0 5px 0;
+    border-bottom: 1px solid #f1f1f1;
+    margin: 2%;
 }
 #now-hot-list li,
 #daily-hot-list li,
@@ -1105,43 +1104,49 @@ li a {
 .daily-list-item span,
 .weekly-list-item span {
     text-align: center;
-    display: block;
-    margin-top: -40px;
+    margin-top: -5px;
     position: relative;
     width: 250px;
     margin-left: auto;
     margin-right: auto;
 }
 .hot-pic-wrap {
-    width: 288px;
     height: 162px;
     position: relative;
     overflow: hidden;
-    opacity: 0.5;
+    cursor: pointer;
+    -webkit-filter: grayscale(1); /* Webkit */
+    filter: gray; /* IE6-9 */
+    filter: grayscale(1); /* W3C */
+    transition: all 0.3s ease-in-out;
+}
+.hot-pic-wrap:hover{
+    -webkit-filter: grayscale(0%);
 }
 .hot-pic {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 288px;
+    min-width: 288px;
 }
 .hot-body,
 .hot-data {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
+    padding: 0 10px;
 }
 .hot-body{
     display: block;
     margin-top: 8px;
-    padding: 0 10px;
 }
 .hot-knock,
-.hot-reply {
-    margin-left: 5px;
+.hot-reply,
+.hot-data{
+    display: none;
 }
 #wrap #middle .item .header .conf .btn-group button,
 #wrap #middle .item-for-sale .header .conf .btn-group button {
