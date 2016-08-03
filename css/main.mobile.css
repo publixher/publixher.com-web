@@ -58,8 +58,14 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 
 #wrap #left {
-    float: left;
-    width: 174px;
+    width: 100%;
+    padding: 50px 10px;
+}
+#subscribe-btn{
+    text-align: center;
+    height: 30px;
+    padding: 5px;
+    border-bottom: 1px solid #f1f1f1;
 }
 #wrap #left .list-unstyled {
     padding-left: 10px;
