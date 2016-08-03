@@ -286,7 +286,13 @@ padding-top: 40px;
   border-bottom: 1px solid #f1f1f1;
   float: left;
 }
-
+#wrap #middle .item .header .conf .btn-group button,
+#wrap #middle .item-for-sale .header .conf .btn-group button {
+  border: 0 !important;
+  margin-top: -9px;
+  background-color: transparent;
+  padding: 6px;
+}
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item-for-sale .item-for-sale .tail .nav-tabs > li.active > a,
 #wrap #middle .item .item-for-sale .tail .nav-tabs > li.active > a:focus,
