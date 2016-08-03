@@ -501,6 +501,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right {
     float: left;
+    width: 100%;
 }
 #wrap #right .conf {
     position: fixed;
@@ -655,8 +656,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    top: 95px;
-    width: 300px;
+    top: 10px;
+    width: 100%;
     height: auto;
     position: relative;
     z-index: 1;
@@ -668,11 +669,19 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     width: 100%;
 }
 #wrap #right .market #market-nav #market-nav-carousel {
-    width: 300px;
+    width: 100%;
     height: 100%;
 }
+#best-category{
+    border: 0;
+    color: #808080;
+    background-color: transparent;
+    position:absolute;
+    z-index:1;
+    padding:12px 16px;
+}
 #wrap #right .market #market-nav div[role="tabpanel"] {
-    width: 300px;
+    width: 100%;
 }
 .carousel-control.right,
 .carousel-control.left {
