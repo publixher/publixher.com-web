@@ -146,6 +146,36 @@
     ?>
     <!--    구글 애널리틱스-->
     <script>   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-73277050-2', 'auto');   ga('send', 'pageview');  </script>
+    <button id="call-left">왼쪽버튼</button>
+    <button id="call-right">오른쪽버튼</button>
+    <script>
+        $("#call-left").on('touchstart', function () {
+            $('.market').css('display', 'none');
+            $('#call-right').removeClass('right-called');
+            if($(this).hasClass("left-called")){
+                $('#left').css('display', 'none');
+                $('#middle').css('display', 'block');
+                $(this).removeClass('left-called');
+            }else {
+                $('#left').css('display', 'block');
+                $('#middle').css('display', 'none');
+                $(this).addClass('left-called');
+            }
+        })
+        $("#call-right").on('touchstart', function () {
+            $('#left').css('display', 'none');
+            $('#call-left').removeClass('left-called');
+            if($(this).hasClass("right-called")){
+                $('.market').css('display', 'none');
+                $('#middle').css('display', 'block');
+                $(this).removeClass('right-called');
+            }else {
+                $('.market').css('display', 'block');
+                $('#middle').css('display', 'none');
+                $(this).addClass('right-called');
+            }
+        })
+    </script>
 </div>
 </body>
 </html>

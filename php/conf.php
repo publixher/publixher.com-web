@@ -8,9 +8,9 @@
     $mid = $_SESSION['user']->getID();
     $mname = $_SESSION['user']->getUSERNAME();
     $mage = $_SESSION['user']->getBIRTH();
-    $mpic=str_replace('profile','crop24',$_SESSION['user']->getPIC());
-    $mpin=$_SESSION['user']->getPIN();
-    $mlevel=$_SESSION['user']->getLEVEL();
+    $mpic = str_replace('profile', 'crop24', $_SESSION['user']->getPIC());
+    $mpin = $_SESSION['user']->getPIN();
+    $mlevel = $_SESSION['user']->getLEVEL();
     $token = $_SESSION['token'];    //토큰
     //나이구하기
     $birthday = date("Y", strtotime($mage)); //생년월일
@@ -21,16 +21,22 @@
     <script>
         const token = "<?=$token?>";
         var pin = "<?=$mpin?>";
-        const level=<?=$mlevel?>;
+        const level =<?=$mlevel?>;
 
     </script>
     <div id="controller">
-        <a id="usrpic" href='/profile/<?= $mid ?>'><div class="usrpic-wrap"><img src="<?=$mpic?>"></div></a>
+        <a id="usrpic" href='/profile/<?= $mid ?>'>
+            <div class="usrpic-wrap"><img src="<?= $mpic ?>"></div>
+        </a>
         <!--이름 및 상태전환버튼-->
-            <div class="btn-group" id="usr">
-                <button type="button" id="username" class="btn btn-danger" role="group" onclick="location.href='/profile/<?= $mid ?>'" style="padding: 0;text-align: center;"><?=$mname?></button>
-                <button class="btn btn-danger" role="group" onclick="location.href='/php/data/profileChange.php?action=profileswap'"><span class="pubico pico-swap"></span></button>
-            </div>
+        <div class="btn-group" id="usr">
+            <button type="button" id="username" class="btn btn-danger" role="group"
+                    onclick="location.href='/profile/<?= $mid ?>'"
+                    style="padding: 0;text-align: center;"><?= $mname ?></button>
+            <button class="btn btn-danger" role="group"
+                    onclick="location.href='/php/data/profileChange.php?action=profileswap'"><span
+                    class="pubico pico-swap"></span></button>
+        </div>
         <!--노티,핀,설정버튼-->
         <!-- 노티버튼 -->
         <div class="btn-group" id="noti-drop">
@@ -39,7 +45,7 @@
                 <span class="pubico pico-bell"></span>
             </button>
             <ul class="dropdown-menu" role="menu" id="notilist">
-                <li id="li-noticenter"><a href="/notiCenter/<?=$mid?>" style="text-align: center;">알림센터 바로가기</a></li>
+                <li id="li-noticenter"><a href="/notiCenter/<?= $mid ?>" style="text-align: center;">알림센터 바로가기</a></li>
             </ul>
         </div>
         <!--핀버튼-->
@@ -54,17 +60,18 @@
         </div>
         <!--설정버튼-->
         <div class="btn-group" id="conf=drop">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="configbtn" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>
+            <button class="btn btn-danger dropdown-toggle" type="button" id="configbtn" data-toggle="dropdown"
+                    aria-expanded="false"><span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="conflist">
-
-
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">고객센터</a></li>
-                <li role="presentation" onclick="location.href='/php/logout.php'"><a role="menuitem" tabindex="-1" href="#">log-out</a></li>
+                <li role="presentation" onclick="location.href='/php/logout.php'"><a role="menuitem" tabindex="-1"
+                                                                                     href="#">log-out</a></li>
             </ul>
         </div>
-        
-        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href='/php/logout.php'" style="display: none;">
+
+        <button type="button" id="configbtn" class="btn btn-default" onclick="location.href='/php/logout.php'"
+                style="display: none;">
             <span class="caret"></span>
         </button>
     </div>
