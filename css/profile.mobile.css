@@ -1131,6 +1131,16 @@ li a {
   border: 1px solid #f1f1f1;
   background-color: #fafafa;
 }
+.hot-pic-wrap:hover{
+  -webkit-filter: grayscale(0%);
+}
+.hot-pic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
 .hot-body,
 .hot-data {
   white-space: nowrap;
@@ -1570,6 +1580,7 @@ a:hover {
   border: 1px solid #f1f1f1;
   border-top-right-radius: 10px;
   opacity: 0.7;
+  z-index: 2;
 }
 #call-right{
   position:fixed;
@@ -1580,6 +1591,7 @@ a:hover {
   border: 1px solid #f1f1f1;
   border-top-left-radius: 10px;
   opacity: 0.7;
+  z-index: 2;
 }
 #mod-pane div button,
 #publixh div div button,
