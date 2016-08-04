@@ -430,6 +430,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0 !important;
 }
 #wrap #middle .item .body .thumbPic,
 #wrap #middle .item-for-sale .body .thumbPic {
@@ -1814,6 +1815,10 @@ a:hover {
 }
 .rep-tag-friend:hover{
   background-color: #fafafa;
+}
+#call-left,
+#call-right{
+  display: none;
 }
 #mod-pane div button,
 #publixh div div button,

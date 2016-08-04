@@ -59,7 +59,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 
 #wrap #left {
     width: 100%;
+    height: 100%;
     padding: 50px 10px;
+    position: fixed;
+    overflow-y: scroll;
+    background-color: #fafafa;
 }
 #subscribe-btn{
     text-align: center;
@@ -272,14 +276,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
-    margin: 10px 0;
+    margin: 25px 0;
     height: inherit;
     background-color: white;
     width: 98%;
     margin-left: 1% !important;
     margin-right: 1% !important;
-    border-radius: 10px !important;
-    border-bottom: 1px solid #f1f1f1;
     float: left;
 }
 
@@ -312,17 +314,19 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item .commentReg,
 #wrap #middle .item-for-sale .commentReg {
-    width: 96% !important;
-    border-radius: 0;
+    width: 100% !important;
     padding: 8px 10px;
     font-size: 12px;
-    border: 1px solid #fff !important;
-    border-top: 1px solid #f1f1f1 !important;
+    border-radius: 4px;
+    border: 2px solid #f4f4f4 !important;
     min-height: 32px;
     margin-top: 10px;
-    margin-left: 2%;
     height:100%;
     word-break: break-all;
+}
+.tab-comment{
+    background-color: #f4f4f4;
+    border-radius: 4px;
 }
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
@@ -462,7 +466,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     height: 24px;
 }
 .tcomment, .tshare{
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 #wrap #middle .item .tail .tprice,
 #wrap #middle .item-for-sale .tail .tprice {
@@ -653,15 +658,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     cursor: pointer;
 }
 #wrap #right .market {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    top: 40px;
+    padding: 45px 0;
     width: 100%;
-    height: auto;
-    position: relative;
+    height: 100%;
+    position: fixed;
     z-index: 1;
-    overflow: hidden;
+    overflow-y: scroll;
     background-color: white;
 }
 #wrap #right .market #market-nav {
@@ -674,6 +676,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .market #market-nav div[role="tabpanel"] {
     width: 100%;
+    padding: 5px;
 }
 .carousel-control.right,
 .carousel-control.left {
@@ -1087,11 +1090,10 @@ li a {
 .now-list-item,
 .daily-list-item,
 .weekly-list-item {
-    height: 200px;
-    width: 96%;
+    height: 180px;
+    width: 48%;
     float: left;
-    border-bottom: 1px solid #f1f1f1;
-    margin: 2%;
+    margin: 1%;
 }
 #now-hot-list li,
 #daily-hot-list li,
@@ -1110,7 +1112,7 @@ li a {
     margin-right: auto;
 }
 .hot-pic-wrap {
-    height: 162px;
+    height: 144px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -1118,6 +1120,8 @@ li a {
     filter: gray; /* IE6-9 */
     filter: grayscale(1); /* W3C */
     transition: all 0.3s ease-in-out;
+    border: 1px solid #f1f1f1;
+    background-color: #fafafa;
 }
 .hot-pic-wrap:hover{
     -webkit-filter: grayscale(0%);
@@ -1127,7 +1131,7 @@ li a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 288px;
+    width: 100%;
 }
 .hot-body,
 .hot-data {
@@ -1140,7 +1144,7 @@ li a {
 }
 .hot-body{
     display: block;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 .hot-knock,
 .hot-reply,
@@ -1457,7 +1461,7 @@ a:hover {
 }
 #best-category-sel {
     WIDTH: 100%;
-    MARGIN-TOP: 15%;
+    MARGIN-TOP: 45px;
     border-radius: 0;
     border: 0;
     border-bottom: 1px solid #f1f1f1;
@@ -1559,6 +1563,30 @@ a:hover {
 .rep-tag-friend:hover{
     background-color: #fafafa;
 }
+#call-left{
+    position:fixed;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border: 1px solid #f1f1f1;
+    border-top-right-radius: 10px;
+    opacity: 0.7;
+    z-index: 2;
+    font-size: 12px;
+}
+#call-right{
+    position:fixed;
+    height: 30px;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #f1f1f1;
+    border-top-left-radius: 10px;
+    opacity: 0.7;
+    z-index: 2;
+    font-size: 12px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1589,4 +1617,7 @@ a:hover {
 }
 .tshare{
     display: none;
+}
+.bodypic{
+    margin-bottom: 0 !important;
 }
