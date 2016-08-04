@@ -387,7 +387,12 @@ LIMIT
     $prepare1->bindValue(':ID', $_GET['userID'], PDO::PARAM_STR);
     $prepare1->execute();
     echo '{"status":"1"}';
-} elseif ($act == 'repknock') {
+} elseif($act=="top-fall"){
+    $sql="UPDATE publixher.TBL_USER SET TOP_CONTENT='' WHERE ID=:ID";
+    $prepare=$db->prepare($sql);
+    $prepare->execute(array('ID'=>$_POST['mid']));
+    echo '{"result":"1"}';
+}elseif ($act == 'repknock') {
     //댓글에 노크처리
     $userID = $_GET['userID'];
     $ID = $_GET['repID'];

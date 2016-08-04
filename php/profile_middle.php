@@ -10,7 +10,7 @@
     $auth = $p->fetch(PDO::FETCH_ASSOC);
     $writeauth = $auth['WRITEAUTH'];
     $expauth = $auth['EXPAUTH'];
-    $viewauth=$auth['VIEWAUTH'];
+    $viewauth = $auth['VIEWAUTH'];
     //자신일경우
     $I = $targetid == $userID ? 1 : 0;
 
@@ -57,7 +57,11 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
-                    <li><button type="button" onclick="getFacebookFriend()" data-toggle="modal" data-target="#friend-recommend">페이스북 친구찾기</button></li>
+                    <li>
+                        <button type="button" onclick="getFacebookFriend()" data-toggle="modal"
+                                data-target="#friend-recommend">페이스북 친구찾기
+                        </button>
+                    </li>
                     <?php
                     $arr = array();
                     for ($i = 0; $i < count($friend_list); $i++) {
@@ -157,7 +161,8 @@ ORDER BY USER_NAME ASC";
                                                        class="expAuth" <? if (strpos($expauth, 'c') !== false) echo 'checked' ?>>전체</label>
                     <li><b>목록 공개</b></li>
                     <li class="checkbox"><label><input type="checkbox" value="z"
-                                                       class="viewAuth" <? if (strpos($viewauth, 'z') !== false) echo 'checked' ?>>친구</label></li>
+                                                       class="viewAuth" <? if (strpos($viewauth, 'z') !== false) echo 'checked' ?>>친구</label>
+                    </li>
                     <li class="checkbox"><label><input type="checkbox" value="y"
                                                        class="viewAuth" <? if (strpos($viewauth, 'y') !== false) echo 'checked' ?>>구독</label>
                     </li>
@@ -201,7 +206,7 @@ ORDER BY USER_NAME ASC";
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
                     <?php
-                    if(strpos($viewauth, 'z') !== false) {
+                    if (strpos($viewauth, 'z') !== false) {
                         $arr = array();
                         for ($i = 0; $i < count($friend_list); $i++) {
                             echo "<li><div class='friend-list-pic-wrap'><img src='" . $friend_list[$i]['PIC'] . "'></div><a href='/profile/" . $friend_list[$i]['ID'] . "' class='nameuser'>" . $friend_list[$i]['USER_NAME'] . "</a></li>";
@@ -209,7 +214,7 @@ ORDER BY USER_NAME ASC";
                         }
                         $arr = json_encode($arr);
                         echo "<script>var frievar=${arr};</script>";
-                    }else{
+                    } else {
                         echo "<li><div>친구목록 비공개</div></li>";
                     }
                     ?>
@@ -225,7 +230,7 @@ ORDER BY USER_NAME ASC";
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
                     <?php
-                    if(strpos($viewauth, 'y') !== false) {
+                    if (strpos($viewauth, 'y') !== false) {
                         $arr = array();
                         for ($i = 0; $i < count($master_list); $i++) {
                             echo "<li><div class='subs-list-pic-wrap'><img src='" . $master_list[$i]['PIC'] . "'></div><a href='/profile/" . $master_list[$i]['ID'] . "' class='nameuser'>" . $master_list[$i]['USER_NAME'] . "</a></li>";
@@ -233,7 +238,7 @@ ORDER BY USER_NAME ASC";
                         }
                         $arr = json_encode($arr);
                         echo "<script>var subsvar=${arr};</script>";
-                    }else{
+                    } else {
                         echo "<li><div>구독목록 비공개</div></li>";
                     }
                     ?>
@@ -294,9 +299,11 @@ ORDER BY USER_NAME ASC";
                                                                 role="button" aria-expanded="false">
                             <span id="exposeSettingSub">전체공개</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" id="expSublist">
-                            <?php if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']} 친구에게 공개</a></li>";
+                            <?php
+                            if (strpos($expauth, 'b') !== false and !$I) echo "<li><a>${target['USER_NAME']} 친구에게 공개</a></li>";
                             elseif (strpos($expauth, 'b') !== false and $I) echo "<li><a>친구에게 공개</a></li>";
-                            if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>'; ?>
+                            if (strpos($expauth, 'c') !== false OR $I) echo '<li><a>전체공개</a></li>';
+                            ?>
                             <li><a>나만보기</a></li>
                         </ul>
                     </li>
@@ -322,7 +329,7 @@ ORDER BY USER_NAME ASC";
                             }
                             ?>
                             <li><input type="text"
-                                                                                    class="form-control new-folder">
+                                       class="form-control new-folder">
                             </li>
                         </ul>
                     </li>
@@ -450,15 +457,17 @@ ORDER BY USER_NAME ASC";
     <!--    각 카드가 하나의 아이템-->
 </div>
 <!-- 친구추천 모달 -->
-<div class="modal fade" id="friend-recommend" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel" aria-hidden="true">
+<div class="modal fade" id="friend-recommend" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="friendModalLabel">혹시 이 사람을 아시나요?</h4>
             </div>
             <div class="modal-body" id="recommended-friend">
-                
+
             </div>
         </div>
     </div>
@@ -466,7 +475,7 @@ ORDER BY USER_NAME ASC";
 <script>
     var page = 0;
     var targetID = '<?=$targetid?>';
-    const mid='<?=$userID?>';
+    const mid = '<?=$userID?>';
     var loadOption = {ID: mid, nowpage: page, profile: targetID, I: I, frelation: frelation};
 </script>
 <!--    해시 태그-->

@@ -36,7 +36,10 @@ $(document).ready(function(){
                     var more = res['MORE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin,res['KNOCKED']);
-                    $('#topcon').append($(write).attr('id',$(write).attr('id')+'_topcon'));
+                    var topcon=$(write).attr('id',$(write).attr('id')+'_topcon');
+                    $('#topcon').append(topcon).find('.itemTop').parents('ul').append("<li><a class='Top-fall'>최상단 컨텐츠 취소</a></li>")
+
+
                     $('#'+ID).hide().fadeIn();
                 } else {
                     var write = '';
@@ -61,7 +64,8 @@ $(document).ready(function(){
                     var more = res['MORE'];
                     var tag = res['TAG'] ? res['TAG'].split(' ') : null;
                     write = itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic,expose,more,tag,pin,res['CATEGORY'], res['SUB_CATEGORY'],res['KNOCKED']);
-                    $('#topcon').append($(write).attr('id',$(write).attr('id')+'_topcon'));
+                    $(write).attr('id',$(write).attr('id')+'_topcon');
+                    $('#topcon').append($(write)).find('.itemTop').parents('ul').append("<li><a class='Top-fall'>최상단 컨텐츠 취소</a></li>")
                     $('#'+ID).hide().fadeIn();
                 }
             }

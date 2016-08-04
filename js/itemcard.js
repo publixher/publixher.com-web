@@ -1303,6 +1303,20 @@ $(document).ready(function () {
             }
         })
     });
+    //최상단 컨텐츠 취소 버튼 동작
+    $(document).on('click','.Top-fall',function(e){
+        var card=$(this).parents('.card');
+        $.ajax({
+            url:'/php/data/itemAct.php',
+            type:"POST",
+            data:{mid:mid,token:token,action:"top-fall"},
+            success:function(res){
+                card.fadeOut(function(){
+                    card.remove();
+                })
+            }
+        })
+    })
     //댓글 노크클릭시의 동작
     $(document).on("click", ".repknock", function (e) {
         var thisrepID = $(this).parents()[6].id;
