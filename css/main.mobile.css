@@ -59,7 +59,11 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 
 #wrap #left {
     width: 100%;
+    height: 100%;
     padding: 50px 10px;
+    position: fixed;
+    overflow-y: scroll;
+    background-color: #fafafa;
 }
 #subscribe-btn{
     text-align: center;
@@ -653,12 +657,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     cursor: pointer;
 }
 #wrap #right .market {
-    top: 45px;
+    padding: 45px 0;
     width: 100%;
     height: 100%;
-    position: relative;
+    position: fixed;
     z-index: 1;
-    overflow: scroll;
+    overflow-y: scroll;
     background-color: white;
 }
 #wrap #right .market #market-nav {
@@ -1456,7 +1460,7 @@ a:hover {
 }
 #best-category-sel {
     WIDTH: 100%;
-    MARGIN-TOP: 15%;
+    MARGIN-TOP: 45px;
     border-radius: 0;
     border: 0;
     border-bottom: 1px solid #f1f1f1;
