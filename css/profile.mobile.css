@@ -1101,11 +1101,10 @@ li a {
 .now-list-item,
 .daily-list-item,
 .weekly-list-item {
-  height: 200px;
-  width: 96%;
+  height: 180px;
+  width: 48%;
   float: left;
-  border-bottom: 1px solid #f1f1f1;
-  margin: 2%;
+  margin: 1%;
 }
 #now-hot-list li,
 #daily-hot-list li,
@@ -1124,7 +1123,7 @@ li a {
   margin-right: auto;
 }
 .hot-pic-wrap {
-  height: 162px;
+  height: 144px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -1132,16 +1131,8 @@ li a {
   filter: gray; /* IE6-9 */
   filter: grayscale(1); /* W3C */
   transition: all 0.3s ease-in-out;
-}
-.hot-pic-wrap:hover{
-  -webkit-filter: grayscale(0%);
-}
-.hot-pic {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 288px;
+  border: 1px solid #f1f1f1;
+  background-color: #fafafa;
 }
 .hot-body,
 .hot-data {
@@ -1154,7 +1145,7 @@ li a {
 }
 .hot-body{
   display: block;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 .hot-knock,
 .hot-reply,
