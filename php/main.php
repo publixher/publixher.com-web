@@ -81,8 +81,8 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-73277050-2', 'auto');
         ga('send', 'pageview');  </script>
-    <button id="call-left">왼쪽버튼</button>
-    <button id="call-right">오른쪽버튼</button>
+    <button id="call-left">subscription</button>
+    <button id="call-right">popular</button>
     <script>
         $("#call-left").on('touchstart', function () {
             $('.market').css('display', 'none');
