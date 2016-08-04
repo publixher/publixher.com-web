@@ -1559,6 +1559,24 @@ a:hover {
 .rep-tag-friend:hover{
     background-color: #fafafa;
 }
+#call-left{
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border: 1px solid #f1f1f1;
+    border-top-right-radius: 10px;
+    opacity: 0.7;
+}
+#call-right{
+    position:fixed;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #f1f1f1;
+    border-top-left-radius: 10px;
+    opacity: 0.7;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
