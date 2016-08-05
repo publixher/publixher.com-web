@@ -54,7 +54,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 
 #name{
+  text-align: center;
+  width: 160px;
+  font-size: 16px;
+  margin: 0 auto;
   margin-top: 10px;
+  font-weight: 600;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div {
@@ -78,13 +83,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   padding: 0 1%;
 }
 #left .profile-wrap{
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   overflow: hidden;
   border-radius: 4px;
-  float: left;
-  margin: 10px;
   position: relative;
+  margin: 0 auto;
 }
 #left .profile-wrap #profilepic{
   position: absolute;
@@ -1734,10 +1738,18 @@ a:hover {
 #pin-drop button{
   padding: 10px 12px;
 }
+#wrap #left .list-unstyled{
+  margin: 10px 0;
+}
+#wrap #left .list-unstyled li {
+  font-size: 14px;
+  text-align: center;
+}
 #profileMod{
-  width: 80%;
+  width: 60%;
   border-radius: 10px;
   margin: 0 auto;
+  padding: 2px;
   display: block;
   text-align: center;
   background-color: #f1f1f1;
