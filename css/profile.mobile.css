@@ -78,11 +78,19 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #pre-left{
   width: 100%;
   overflow-y: scroll;
+  margin: 50px 0 10px 0;
 }
 #wrap #left {
   width: 200%;
-  margin-top: 50px;
   padding: 0 1%;
+}
+#profile-info{
+  width: 50%;
+  float: left;
+}
+#profile-folder{
+  width: 50%;
+  float: left;
 }
 #left .profile-wrap{
   width: 160px;
