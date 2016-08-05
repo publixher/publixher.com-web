@@ -25,7 +25,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   padding: 6px;
   color: #ddd;
 }
-.pin-a:hover{
+.pin-a:hover,
+.pin-a:active,
+.pin-a:focus{
   color: #46799b;
 }
 #right .market
