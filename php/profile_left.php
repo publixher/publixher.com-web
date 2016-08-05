@@ -1,5 +1,6 @@
 <div id="pre-left">
 <div id="left">
+    <div id="profile-info">
     <?php
     require_once '../conf/getTarget.php';
     $profilepic = $target['PIC'];
@@ -29,6 +30,10 @@
         //현재 접속자와 타겟 유저가 같을때의 동작
         echo "<a href='/profileConfig/${targetid}' id='profileMod'>정보 수정하기</a>";
     }
+    ?>
+    </div>
+    <div id="profile-folder">
+    <?php
     //폴더목록 가져오기
     $sql1 = "SELECT CONTENT_NUM,DIR,ID FROM publixher.TBL_FOLDER WHERE ID_USER=:ID_USER";
     $prepare1 = $db->prepare($sql1);
@@ -52,6 +57,6 @@
 END;
     }
     ?>
-
+</div>
 </div>
     </div>
