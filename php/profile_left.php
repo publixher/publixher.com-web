@@ -19,9 +19,9 @@
         ?>
     </p>
     <ul class="list-unstyled" id="profile">
-        <li>생일 : <?= $birth ?></li>
-        <li>대학교 : <?= $target['UNIV'] ?></li>
-        <li>고등학교 : <?= $target['H_SCHOOL'] ?></li>
+        <li><?= $birth ?></li>
+        <li><?= $target['UNIV'] ?></li>
+        <li><?= $target['H_SCHOOL'] ?></li>
     </ul>
     <?php
     if ($userID == $targetid) {
@@ -34,9 +34,9 @@
     $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-    echo '<div id="FolDerFolDeR">폴더목록<ul>';
+    echo '<div id="FolDerFolDeR"><ul>';
     for ($i = 0; $i < count($FOLDER); $i++) {
-        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a>(' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
+        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a> (' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
     }
     echo '</ul></div>';
     if ($userinfo->getLEVEL() == 99) {

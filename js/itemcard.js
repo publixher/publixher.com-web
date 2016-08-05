@@ -241,13 +241,13 @@ $(document).ready(function () {
                     if (res['sort'] == 'best') {//각 탭별로 인덱스 심어서 페이지 나누기함
                         registRep(res, 'best-' + thisitemID);
                     } else if (res['sort'] == 'time') {
-                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest"></div>';
+                        var word = '<div style="text-align: center;font-size: 23px;" class="nobest"></div>';
                         $('#best-' + thisitemID).append(word);
                         registRep(res, 'time-' + thisitemID);
                         $('a[href=#time-' + thisitemID + ']').trigger('click');
                     } else if (res['result'] == 'NO') {
-                        var word = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest"></div>';
-                        var word2 = '<div style="text-align: center;margin: 20px 0 20px 0;font-size: 23px;" class="nobest"></div>';
+                        var word = '<div style="text-align: center;font-size: 23px;" class="nobest"></div>';
+                        var word2 = '<div style="text-align: center;font-size: 23px;" class="nobest"></div>';
                         $('#best-' + thisitemID).append(word);
                         $('#time-' + thisitemID).append(word2);
                         $('a[href=#time-' + thisitemID + ']').trigger('click');

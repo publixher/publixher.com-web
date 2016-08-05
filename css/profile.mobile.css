@@ -39,7 +39,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #profile-middle-nav {
   border-radius: 4px;
-  margin: 5px;
+  margin: 0 1%;
   border: 1px solid #f1f1f1;
 }
 #profile-middle-nav>div{
@@ -54,7 +54,12 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 
 #name{
+  text-align: center;
+  width: 160px;
+  font-size: 16px;
+  margin: 0 auto;
   margin-top: 10px;
+  font-weight: 600;
 }
 #wrap #middle #writing-pane .tab-content .tab-pane .cateinput div,
 #wrap #middle #writing-pane .tab-content .tab-pane .subcateinput div {
@@ -74,18 +79,16 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 
 #wrap #left {
   width: 100%;
-  height: 100%;
-  padding: 50px 10px;
-  background-color: #fafafa;
+  margin-top: 50px;
+  padding: 0 1%;
 }
 #left .profile-wrap{
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   overflow: hidden;
   border-radius: 4px;
-  float: left;
-  margin: 10px;
   position: relative;
+  margin: 0 auto;
 }
 #left .profile-wrap #profilepic{
   position: absolute;
@@ -279,7 +282,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #middle .item,
 #wrap #middle .item-for-sale {
-  margin: 25px 0;
+  margin: 30px 0;
   height: inherit;
   background-color: white;
   width: 98%;
@@ -287,6 +290,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   margin-right: 1% !important;
   float: left;
 }
+
 #wrap #middle .item .header .conf .btn-group button,
 #wrap #middle .item-for-sale .header .conf .btn-group button {
   border: 0 !important;
@@ -379,8 +383,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   display: inline;
   margin: 10px;
   vertical-align: baseline;
-  padding-left: 5px;
-  border-left: 1px solid #e3e3e3;
   color: #5f5f5f;
 }
 #wrap #middle .item .body,
@@ -579,16 +581,16 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 }
 #wrap #right .conf #controller #usr {
   margin: 3px 0;
-  background-color: #e8e8e8;
+  background-color: #e9e9e9;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
-  float: right;
-  color: #ddd;
-  height: 34px;
-  margin: 3px 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 7px 12px;
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
@@ -632,7 +634,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   float: left;
   cursor: pointer;
   margin: 3px 0;
-  background-color: #e8e8e8;
+  background-color: #e9e9e9;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
@@ -1008,13 +1010,12 @@ li a {
 }
 .body-tag {
   color: #5f5f5f;
-  background: #e8e8e8;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 2px;
-  padding: 4px;
+  padding: 2px 8px 2px 4px;
   line-height: 2.2em;
   font-size: 11px;
+  border-left: 1px solid #e3e3e3;
 }
 .body-tag:hover{
   color: #000;
@@ -1255,7 +1256,7 @@ li a {
   cursor: pointer;
   color: #5f5f5f;
   padding: 1px 8px;
-  background-color: #e8e8e8;
+  background-color: #f1f1f1;
   border-radius: 10px;
 }
 .item-category:hover,
@@ -1525,13 +1526,11 @@ a:hover {
   margin: 5px;
 }
 #FolDerFolDeR{
-  border: 1px solid #f1f1f1;
-  border-radius: 4px;
   padding: 5px;
-  background-color: #f5f5f5;
-  min-height: 68px;
   display: block;
-  margin-top: 50px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 .deletefolder {
   background-color: transparent;
@@ -1586,7 +1585,7 @@ a:hover {
   background-color: white;
   border: 1px solid #f1f1f1;
   border-top-left-radius: 10px;
-  opacity: 0.7;
+  opacity: 0.5;
   z-index: 2;
   font-size: 12px;
 }
@@ -1726,4 +1725,35 @@ a:hover {
 }
 .bodypic{
   margin-bottom: 0 !important;
+}
+#noti-drop,
+#pin-drop{
+  height:40px;
+}
+#noti-drop button{
+  padding: 9px 12px;
+}
+#pin-drop button{
+  padding: 10px 12px;
+}
+#wrap #left .list-unstyled{
+  margin: 10px 0;
+}
+#wrap #left .list-unstyled li {
+  font-size: 14px;
+  text-align: center;
+}
+#profileMod{
+  width: 60%;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 2px;
+  display: block;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-top: 10px;
+  font-size: 12px;
+}
+[data-loader='spinner']{
+  display: none;
 }
