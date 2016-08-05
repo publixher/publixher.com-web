@@ -34,11 +34,6 @@
     $prepare1->bindValue(':ID_USER', $targetid, PDO::PARAM_STR);
     $prepare1->execute();
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
-    echo '<div id="FolDerFolDeR"><ul>';
-    for ($i = 0; $i < count($FOLDER); $i++) {
-        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a> (' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
-    }
-    echo '</ul></div>';
     if ($userinfo->getLEVEL() == 99) {
         echo <<<END
 <hr>관리자 권한
@@ -53,3 +48,10 @@ END;
     ?>
 
 </div>
+<div id="left-folder">
+    echo '<div id="FolDerFolDeR"><ul>';
+            for ($i = 0; $i < count($FOLDER); $i++) {
+            echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a> (' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
+            }
+            echo '</ul></div>';
+    </div>
