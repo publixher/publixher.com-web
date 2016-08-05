@@ -1,3 +1,4 @@
+<div class="pre-left">
 <div id="left">
     <?php
     require_once '../conf/getTarget.php';
@@ -53,3 +54,4 @@ END;
     ?>
 
 </div>
+    </div>
