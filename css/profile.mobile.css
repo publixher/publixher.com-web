@@ -586,10 +586,10 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   height: 34px;
 }
 #wrap #right .conf #controller #configbtn {
-  float: right;
-  color: #ddd;
-  height: 34px;
-  margin: 3px 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 7px 12px;
 }
 #wrap #right .conf #controller #configbtn:hover,
 #wrap #right .conf #controller #configbtn:focus {
