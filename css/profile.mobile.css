@@ -2,6 +2,7 @@
 body {
   max-width: 530px;
   margin: 0 auto;
+  background-color: #fafafa;
 }
 html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   outline: 0 !important;
@@ -286,8 +287,8 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   margin-left: 1% !important;
   margin-right: 1% !important;
   float: left;
-  padding: 5px 0;
-  border-top: 1px solid #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 10px;
 }
 
 #wrap #middle .item .header .conf .btn-group button,
