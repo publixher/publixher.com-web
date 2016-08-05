@@ -19,9 +19,9 @@
         ?>
     </p>
     <ul class="list-unstyled" id="profile">
-        <li>생일 : <?= $birth ?></li>
-        <li>대학교 : <?= $target['UNIV'] ?></li>
-        <li>고등학교 : <?= $target['H_SCHOOL'] ?></li>
+        <li><?= $birth ?></li>
+        <li><?= $target['UNIV'] ?></li>
+        <li><?= $target['H_SCHOOL'] ?></li>
     </ul>
     <?php
     if ($userID == $targetid) {
