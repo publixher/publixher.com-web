@@ -78,7 +78,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #pre-left{
   width: 100%;
   overflow-y: scroll;
-  margin: 50px 0 10px 0;
+  margin: 45px 0 10px 0;
 }
 #wrap #left {
   width: 160%;
@@ -87,17 +87,20 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #profile-info{
   width: 62.5%;
   float: left;
+  padding: 10px 0;
 }
 #profile-folder{
   width: 37.5%;
   float: left;
+  padding: 10px 0;
 }
 #left .profile-wrap{
+  position: relative;
   width: 160px;
   height: 160px;
   overflow: hidden;
   border-radius: 4px;
-  position: relative;
+  border: 1px solid #f1f1f1;
   margin: 0 auto;
 }
 #left .profile-wrap #profilepic{
