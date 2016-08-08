@@ -69,8 +69,8 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
     }
-    write = '<div class="card-hr"></div>'
     return write;
+    write += '<div class="card-border">'
 }
 
 function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bought, preview, writer, folderID, foldername, pic, expose, more, tag, pin,category,sub_category,knocked) {
@@ -147,8 +147,8 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
     }
-    write = '<div class="card-hr"></div>'
     return write;
+    write += '<div class="card-border">'
 }
 
 function getCards() {
