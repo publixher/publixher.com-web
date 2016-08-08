@@ -65,11 +65,11 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
     } else {
         write += '<td class="blank"></td> </tr></table></div> </div>';
     }
-    write = '<div class="card-hr"></div>'
     if(knocked==1){
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
     }
+    write = '<div class="card-hr"></div>'
     return write;
 }
 
@@ -143,11 +143,11 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         } else {
             write += '<td class="blank"></td></tr></table></div> </div>';
         }
-    write = '<div class="card-hr"></div>'
     if(knocked==1){
         write=$(write);
         write.find('.pico-knock').addClass('knocked');
     }
+    write = '<div class="card-hr"></div>'
     return write;
 }
 
