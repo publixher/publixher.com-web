@@ -36,17 +36,34 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   background-color: transparent;
   border-color: transparent;
 }
-#profile-middle-nav {
+#profile-middle-nav,
+.others {
   border-radius: 4px;
   margin: 0 1%;
+  width: 98%;
   border: 1px solid #f1f1f1;
 }
-#profile-middle-nav>div{
+.others ul {
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 250px;
+  width: 530px;
+  position: inherit;
+  border-radius: 0;
+  border: 0;
+  margin-top: 0;
+  padding: 0;
+  box-shadow: 0 0 0;
+}
+#profile-middle-nav>div,
+.others>div {
   width: 50%;
   margin: 0 !important;
   padding: 1px
 }
-#profile-middle-nav div button{
+#profile-middle-nav button,
+.others button{
   width: 100%;
   border-radius: 0 !important;
   border: 0 solid #f1f1f1;
