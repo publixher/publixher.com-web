@@ -33,7 +33,7 @@ if ($_FILES) {
         $img = new imaging;
         $img->set_img($src);
         $img->set_quality(100);
-        if ($_GET['action']='profile') {
+        if ($_REQUEST['action']='profile') {
             //요청이 들어온 페이지가 프로필 수정페이지면 160으로 크롭하고 유저 테이블에 저장도 하세기!
             $set->set_order(1);
             $img->set_size(160, 160);
@@ -45,7 +45,7 @@ if ($_FILES) {
             $img->save_img($uploadDir."crop50/".$filepath);
             $img->set_size(24,24);
             $img->save_img($uploadDir."crop24/".$filepath);
-            $userID = $_GET['userID'];
+            $userID = $_REQUEST['userID'];
             $sqlup = "UPDATE publixher.TBL_USER SET PIC=:PIC WHERE ID=:ID;";
             $prepareup = $db->prepare($sqlup);
             $prepareup->bindValue(':PIC', '/img/profile/' . $filepath, PDO::PARAM_STR);
@@ -57,7 +57,7 @@ if ($_FILES) {
             $w->execute();
             $user=$w->fetchObject(User);
             $_SESSION['user'] = $user;
-        }elseif($_GET['action']=='content') {
+        }elseif($_REQUEST['action']=='content') {
             $img->set_size(528, 528);
             $img->save_img($uploadDir . "crop/" . $filepath);
             $img->set_origin(true);

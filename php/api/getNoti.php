@@ -3,8 +3,8 @@ header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
-$userID = $_GET['userID'];
-$action = $_GET['action'];
+$userID = $_REQUEST['userID'];
+$action = $_REQUEST['action'];
 
 if ($action == 'confonload') {
     $notinumsql = "SELECT COUNT(*) AS COUNT FROM publixher.TBL_CONTENT_NOTI WHERE ID_TARGET=:ID_TARGET AND CHECKED='N' AND NOT ID_ACTOR=:ID_ACTOR";
@@ -19,7 +19,7 @@ if ($action == 'confonload') {
     }
     echo json_encode(array('result'=>$number,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'confnotireq') {
-    $nowpage = $_GET['nowpage'] * 20;
+    $nowpage = $_REQUEST['nowpage'] * 20;
     /* 1: 내 컨텐츠가 구매될때:(컨텐츠 ID, 구매자 ID) , (컨텐츠 ID,컨텐츠 SALE,구매자 ID,구매자 이름)
 2: 친구 신청 : (신청자 ID) , (신청자 ID, 신청자 이름)
 3: 내 게시글에 댓글 :(내 게시글 ID , 댓글 ID , 댓글 단사람 ID) , (내 게시글 ID, 내 게시글 타이틀 , 댓글 ID, 댓글 요약, 댓글 단사람 ID,

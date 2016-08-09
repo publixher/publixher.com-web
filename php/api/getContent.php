@@ -4,25 +4,25 @@ require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
 require_once '../../lib/passing_time.php';
 require_once '../../lib/getC.php';
-$nowpage = $_GET['nowpage'] * 10;
-$userID = $_GET['userID'];
-$type = $_GET['type'];
-$category=isset($_GET['category'])?$_GET['category']:null;
-$sub_category=isset($_GET['sub_category'])?$_GET['sub_category']:null;
+$nowpage = $_REQUEST['nowpage'] * 10;
+$userID = $_REQUEST['userID'];
+$type = $_REQUEST['type'];
+$category=isset($_REQUEST['category'])?$_REQUEST['category']:null;
+$sub_category=isset($_REQUEST['sub_category'])?$_REQUEST['sub_category']:null;
 $getC = new getC($userID, $db);
 //콘텐츠 검색임시로 그냥 다 불러오기
 if ($type == 'profile') {   //프로필에선 그사람이 쓴거,그사람이 타겟인거 시간순 노출
-    $result = $getC->profile($nowpage, $_GET['target'],$category,$sub_category);
+    $result = $getC->profile($nowpage, $_REQUEST['target'],$category,$sub_category);
 } elseif ($type == 'folder') { //폴더에선 폴더 내용물이 시간순 노출
-    $result = $getC->folder($nowpage, $_GET['fid'],$category,$sub_category);
+    $result = $getC->folder($nowpage, $_REQUEST['fid'],$category,$sub_category);
 } elseif ($type == 'buyList') { //구매목록에선 구매한거 구매한 시간순(글쓴 시간순이 아님)으로 노출
     $result = $getC->buyList($nowpage,$category,$sub_category);
 } elseif ($type == 'one') {  //한개만 특정 주소로 가서 찾는것
-    $result = $getC->one($_GET['getItem']);
+    $result = $getC->one($_REQUEST['getItem']);
 } elseif ($type == 'tag') {
-    $result = $getC->tag($nowpage, $_GET['tag'],$category,$sub_category);
+    $result = $getC->tag($nowpage, $_REQUEST['tag'],$category,$sub_category);
 } elseif ($type == 'bodySearch') {
-    $result = $getC->body($nowpage, $_GET['body'],$category,$sub_category);
+    $result = $getC->body($nowpage, $_REQUEST['body'],$category,$sub_category);
 } elseif ($type == 'subscribe') {
     $result = $getC->subscribe($nowpage,$category,$sub_category);
 } elseif ($type == 'community') {

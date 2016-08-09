@@ -1,12 +1,12 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-$action = $_GET['action'];
-$userID = $_GET['userID'];
+$action = $_REQUEST['action'];
+$userID = $_REQUEST['userID'];
 if ($action == 'most') {
-    $sort = $_GET['sort'];
+    $sort = $_REQUEST['sort'];
     $SORT = '';
-    $page = $_GET['page'] * 5;
+    $page = $_REQUEST['page'] * 5;
     if ($sort == 'late') {
         $SORT = 'WRITE_DATE';
     } elseif ($sort == 'sell') {
@@ -46,8 +46,8 @@ LIMIT :PAGE,5";
     }
     echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'monthly') {
-    $start = $_GET['start'];
-    $end = $_GET['end'];
+    $start = $_REQUEST['start'];
+    $end = $_REQUEST['end'];
     //총출판,평균 판매 가격
     $sql = "SELECT COUNT(*) AS TOTAL_PUBLIXH,AVG(PRICE) AS AVG_PRICE
 FROM publixher.TBL_CONTENT 
@@ -94,7 +94,7 @@ GROUP BY CONT.ID";
     }
     echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
 }elseif($action=='item'){
-    $contentID = $_GET['contentID'];
+    $contentID = $_REQUEST['contentID'];
     //날짜와 그날 총 팔린 금액
     $sql= "SELECT DATE_FORMAT(BUY_DATE, '%Y/%m/%d %h') AS DATE,
   SUM(PRICE) AS PRICE

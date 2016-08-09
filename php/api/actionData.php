@@ -1,11 +1,11 @@
 <?php
 require_once '../../conf/mongo_conf.php';
-$action = $_GET['action'];
+$action = $_REQUEST['action'];
 
 if ($action == 'readDone') {
-    $itemID = $_GET['itemID'];
-    $userID = $_GET['userID'];
-    $time = $_GET['time'];
+    $itemID = $_REQUEST['itemID'];
+    $userID = $_REQUEST['userID'];
+    $time = $_REQUEST['time'];
     $total_read;
     $average_time;
     $average_time_new;

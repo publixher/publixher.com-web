@@ -2,9 +2,9 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 
-$thisitemID = $_GET['thisitemID'];
-$userID = $_GET['userID'];
-$point = $_GET['point'];
+$thisitemID = $_REQUEST['thisitemID'];
+$userID = $_REQUEST['userID'];
+$point = $_REQUEST['point'];
 
 $sql="SELECT CASH_POINT FROM publixher.TBL_CONNECTOR WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
 $prepare = $db->prepare($sql);

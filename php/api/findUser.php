@@ -1,11 +1,11 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-$action = $_GET['action'];
+$action = $_REQUEST['action'];
 if ($action == 'find_pass') {
-    $check_email = filter_var($_GET['email'], FILTER_VALIDATE_EMAIL);
+    $check_email = filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL);
     if ($check_email) {
-        $email = $_GET['email'];
+        $email = $_REQUEST['email'];
         $sql = "SELECT SUBSTRING(PASSWORD,20,8) FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
         $prepare = $db->prepare($sql);
         $prepare->execute(array('EMAIL' => $email));
@@ -31,8 +31,8 @@ if ($action == 'find_pass') {
         exit;
     }
 }elseif($action=='valid_pass'){
-    $email = $_GET['email'];
-    $valid = $_GET['valid'];
+    $email = $_REQUEST['email'];
+    $valid = $_REQUEST['valid'];
     $pass_sub;
 
     $sql="SELECT SUBSTRING(PASSWORD,20,8) FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
@@ -47,14 +47,14 @@ if ($action == 'find_pass') {
         exit;
     }
 }elseif($action=='change_pass'){
-    $email = $_GET['email'];
-    $valid=$_GET['valid'];
+    $email = $_REQUEST['email'];
+    $valid=$_REQUEST['valid'];
     $sql="SELECT SUBSTRING(PASSWORD,20,8) FROM publixher.TBL_USER WHERE EMAIL=:EMAIL";
     $prepare = $db->prepare($sql);
     $prepare->execute(array('EMAIL'=>$email));
     $pass_sub = $prepare->fetchColumn();
     if($pass_sub==$valid) {
-        $hash = password_hash($_GET['pass'], PASSWORD_DEFAULT);
+        $hash = password_hash($_REQUEST['pass'], PASSWORD_DEFAULT);
 
         $sql = "UPDATE publixher.TBL_USER SET PASSWORD=:PASS WHERE EMAIL=:EMAIL";
         $prepare=$db->prepare($sql);

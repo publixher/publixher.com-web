@@ -2,8 +2,8 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
-$action = $_GET['action'] ? $_GET['action'] : $_GET['action'];
-$itemID = $_GET['itemID'] ? $_GET['itemID'] : $_GET['itemID'];
+$action = $_REQUEST['action'] ? $_REQUEST['action'] : $_REQUEST['action'];
+$itemID = $_REQUEST['itemID'] ? $_REQUEST['itemID'] : $_REQUEST['itemID'];
 if ($action == 'get_item') {
     $gs = "SELECT TITLE,EXPOSE,CATEGORY,SUB_CATEGORY,PRICE,AGE,AD,BODY,FOLDER,TAG FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $pr = $db->prepare($gs);
@@ -30,9 +30,9 @@ if ($action == 'get_item') {
     $reg = "/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i";
     $br = "/(\<div\>\<br \/\>\<\/div\>){2,}/i";
     $a = "/class=\"gallery\"/i";
-    $body = $_GET['body'];
-    $body_text = $_GET['body_text'];
-    $for_sale=$_GET['for_sale'];
+    $body = $_REQUEST['body'];
+    $body_text = $_REQUEST['body_text'];
+    $for_sale=$_REQUEST['for_sale'];
     $body = $purifier->purify($body);
     $body_text = $purifier->purify($body_text);
 
@@ -142,9 +142,9 @@ if ($action == 'get_item') {
         $img->save_img($imgout);
     }
     //content테이블에 넣음
-    $ID_writer = $_GET['userID'];
-    $targetID = $_GET['targetID'];
-    $id=$_GET['ID'];
+    $ID_writer = $_REQUEST['userID'];
+    $targetID = $_REQUEST['targetID'];
+    $id=$_REQUEST['ID'];
 
     $q="SELECT ORIGINAL,CHANGED,BODY,FOLDER FROM publixher.TBL_CONTENT WHERE ID=:ID";
     $p=$db->prepare($q);
@@ -161,7 +161,7 @@ if ($action == 'get_item') {
         $fp->execute();
     }
 
-    if (!$_GET['for_sale']) {
+    if (!$_REQUEST['for_sale']) {
         $sql = "UPDATE publixher.TBL_CONTENT
 SET BODY    = :BODY, FOLDER = :FOLDER, EXPOSE = :EXPOSE, CHANGED = 1, PREVIEW = :PREVIEW, ORIGINAL = :ORIGINAL,
   TAG       = :TAG, BODY_TEXT = :BODY_TEXT,MORE=:MORE
@@ -177,25 +177,25 @@ WHERE ID = :ID";
     $prepare->bindValue(':ID', $id);
     $prepare->bindValue(':BODY', $body, PDO::PARAM_STR);
     $prepare->bindValue(':PREVIEW', $preview, PDO::PARAM_STR);
-    $prepare->bindValue(':FOLDER', $_GET['folder'], PDO::PARAM_STR);
-    $prepare->bindValue(':EXPOSE', $_GET['expose'], PDO::PARAM_STR);
+    $prepare->bindValue(':FOLDER', $_REQUEST['folder'], PDO::PARAM_STR);
+    $prepare->bindValue(':EXPOSE', $_REQUEST['expose'], PDO::PARAM_STR);
     $prepare->bindValue(':ORIGINAL', $originData, PDO::PARAM_STR);
     $prepare->bindValue(':BODY_TEXT', $body_text, PDO::PARAM_STR);
-    $prepare->bindValue(':TAG', $_GET['tag'] ? implode(' ', json_decode($_GET['tag'])) : null, PDO::PARAM_STR);
+    $prepare->bindValue(':TAG', $_REQUEST['tag'] ? implode(' ', json_decode($_REQUEST['tag'])) : null, PDO::PARAM_STR);
     $prepare->bindValue(':MORE',$more);
 
-    if ($_GET['for_sale']) {
-        $prepare->bindValue(':PRICE', $_GET['price'], PDO::PARAM_STR);
-        $prepare->bindValue(':CATEGORY', $_GET['category'], PDO::PARAM_STR);
-        $prepare->bindValue(':SUB_CATEGORY', $_GET['sub_category']?$_GET['sub_category']:null, PDO::PARAM_STR);
-        $prepare->bindValue(':TITLE', $_GET['title'], PDO::PARAM_STR);
+    if ($_REQUEST['for_sale']) {
+        $prepare->bindValue(':PRICE', $_REQUEST['price'], PDO::PARAM_STR);
+        $prepare->bindValue(':CATEGORY', $_REQUEST['category'], PDO::PARAM_STR);
+        $prepare->bindValue(':SUB_CATEGORY', $_REQUEST['sub_category']?$_REQUEST['sub_category']:null, PDO::PARAM_STR);
+        $prepare->bindValue(':TITLE', $_REQUEST['title'], PDO::PARAM_STR);
         $prepare->bindValue(':IMG', $previewimg?str_replace('crop','crop80',$previewimg) : null, PDO::PARAM_STR);
-        if ($_GET['adult'] == true) {
+        if ($_REQUEST['adult'] == true) {
             $prepare->bindValue(':AGE', "Y", PDO::PARAM_STR);
         } else {
             $prepare->bindValue(':AGE', "N", PDO::PARAM_STR);
         }
-        if ($_GET['ad'] == true) {
+        if ($_REQUEST['ad'] == true) {
             $prepare->bindValue(':AD', "Y", PDO::PARAM_STR);
         } else {
             $prepare->bindValue(':AD', "N", PDO::PARAM_STR);
@@ -240,22 +240,22 @@ WHERE (DEL = 'N' AND CONT.ID = :ID AND REPORT < 10)";
     $prepare->execute();
     $result = $prepare->fetch(PDO::FETCH_ASSOC);
 
-    if ($_GET['folder']) {
+    if ($_REQUEST['folder']) {
         //폴더에 내용 수 증가
         $sql3 = "UPDATE publixher.TBL_FOLDER SET CONTENT_NUM=CONTENT_NUM+1 WHERE ID=:ID";
         $prepare3 = $db->prepare($sql3);
-        $prepare3->bindValue(':ID', $_GET['folder'], PDO::PARAM_STR);
+        $prepare3->bindValue(':ID', $_REQUEST['folder'], PDO::PARAM_STR);
         $prepare3->execute();
         //폴더 이름 받아오기
         $sql4 = "SELECT DIR FROM publixher.TBL_FOLDER WHERE ID=:ID";
         $prepare4 = $db->prepare($sql4);
-        $prepare4->bindValue(':ID', $_GET['folder'], PDO::PARAM_STR);
+        $prepare4->bindValue(':ID', $_REQUEST['folder'], PDO::PARAM_STR);
         $prepare4->execute();
         $result = array_merge($result, $prepare4->fetch(PDO::FETCH_ASSOC));
     }
     //태그 넣기
-    if ($_GET['tags']) {
-        $tags = json_decode($_GET['tags']);
+    if ($_REQUEST['tags']) {
+        $tags = json_decode($_REQUEST['tags']);
         $tagsql = "INSERT INTO publixher.TBL_TAGS(TAG,ID_CONTENT) VALUES(:TAG,:ID_CONTENT)";
         $tpr = $db->prepare($tagsql);
         $tpr->bindValue(':ID_CONTENT', $uid);

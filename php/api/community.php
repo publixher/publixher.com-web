@@ -2,7 +2,7 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 
-$userID = $_GET['userID'];
+$userID = $_REQUEST['userID'];
 
 $sql="SELECT USER_NAME,REPLACE(PIC,'profile','crop34') AS PIC,
 USER.ID

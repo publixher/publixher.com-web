@@ -2,16 +2,16 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
-$userID = $_GET['userID'];
-if ($_GET['action'] == 'profilechange') {
-    $pass = $_GET['pass'];
+$userID = $_REQUEST['userID'];
+if ($_REQUEST['action'] == 'profilechange') {
+    $pass = $_REQUEST['pass'];
     $check_pass = preg_match("/^[[:alnum:]]{6,16}$/", $pass);
 
     $hash = null;
-    $region = $_GET['region'];
-    $hschool = $_GET['hschool'];
-    $univ = $_GET['univ'];
-    if ($_GET['pass'] == '') {
+    $region = $_REQUEST['region'];
+    $hschool = $_REQUEST['hschool'];
+    $univ = $_REQUEST['univ'];
+    if ($_REQUEST['pass'] == '') {
         //비밀번호 변경을 안했을때
         $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV,BIRTH=:BIRTH WHERE ID=:ID";
         $prepare = $db->prepare($sql);
@@ -21,7 +21,7 @@ if ($_GET['action'] == 'profilechange') {
         if ($check_pass) {
             $sql = "UPDATE publixher.TBL_USER SET REGION=:REGION,H_SCHOOL=:H_SCHOOL,UNIV=:UNIV,PASSWORD=:PASSWORD,BIRTH=:BIRTH WHERE ID=:ID";
             $prepare = $db->prepare($sql);
-            $hash = password_hash($_GET['pass'], PASSWORD_DEFAULT);
+            $hash = password_hash($_REQUEST['pass'], PASSWORD_DEFAULT);
             $prepare->bindValue(':PASSWORD', $hash, PDO::PARAM_STR);
         } else {
             echo json_encode(array('status' => -2), JSON_UNESCAPED_UNICODE);
@@ -32,7 +32,7 @@ if ($_GET['action'] == 'profilechange') {
     $prepare->bindValue(':H_SCHOOL', $hschool, PDO::PARAM_STR);
     $prepare->bindValue(':UNIV', $univ, PDO::PARAM_STR);
     $prepare->bindValue(':ID', $userID, PDO::PARAM_STR);
-    $prepare->bindValue(':BIRTH', $_GET['byear'] . $_GET['bmonth'] . $_GET['bday'], PDO::PARAM_STR);
+    $prepare->bindValue(':BIRTH', $_REQUEST['byear'] . $_REQUEST['bmonth'] . $_REQUEST['bday'], PDO::PARAM_STR);
     $prepare->execute();
     //새로 로그인한 세션을 잡는다
     $sqlin = "SELECT ID,EMAIL,LEVEL,USER_NAME,SEX,BIRTH,REGION,H_SCHOOL,UNIV,PIC,IS_NICK,WRITEAUTH,EXPAUTH,BAN FROM publixher.TBL_USER WHERE ID=:ID";
@@ -42,9 +42,9 @@ if ($_GET['action'] == 'profilechange') {
     $result = $preparein->fetch(PDO::FETCH_ASSOC);
     echo '{"status":1}';
 
-} elseif ($_GET['action'] == 'anonyregist') {
+} elseif ($_REQUEST['action'] == 'anonyregist') {
     //익명 적합성 검사
-    $nick = $_GET['nick'];
+    $nick = $_REQUEST['nick'];
     if (preg_match("/[\xA1-\xFE\xA1-\xFEa-zA-Z0-9]/", $nick)) {
         //현재 커넥터에 익명계정으로 연결된 계정의 in_use를 N으로 만들어서 계정자체는 살아있어서 닉네임을 쓸 수 없고 컨텐츠는 볼 수 있지만 접속은 할 수 없도록 만든다
         require_once '../../lib/random_64.php';
@@ -72,7 +72,7 @@ WHERE
   WHERE ID = :ID_USER";
         $prepare1 = $db->prepare($sql1);
         $prepare1->bindValue(':ID', $uid, PDO::PARAM_STR);
-        $prepare1->bindValue(':USER_NAME', $_GET['nick'], PDO::PARAM_STR);
+        $prepare1->bindValue(':USER_NAME', $_REQUEST['nick'], PDO::PARAM_STR);
         $prepare1->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
         $prepare1->execute();
         //익명계정과 실명계정을 맵핑
@@ -95,8 +95,8 @@ WHERE
     } else {
         echo '{"status":-3}';
     }
-} elseif ($_GET['action'] == 'profileswap') {
-    $isnick = $_GET['isNick'];
+} elseif ($_REQUEST['action'] == 'profileswap') {
+    $isnick = $_REQUEST['isNick'];
     if ($isnick == true) {
         //익명일때 실명으로 새로 로그인
         $sql = "SELECT
@@ -149,18 +149,18 @@ WHERE CONN.ID_ANONY = :ID";
             echo json_encode(array('result'=>$result,'status'=>array('code'=>1)), JSON_UNESCAPED_UNICODE);
         }
     }
-} elseif ($_GET['action'] == 'newfolder') {
+} elseif ($_REQUEST['action'] == 'newfolder') {
     require_once '../../lib/random_64.php';
     $fuid = uniqueid($db, 'folder');
     $sql = "INSERT INTO publixher.TBL_FOLDER(ID,ID_USER,DIR) VALUES(:ID,:ID_USER,:DIR)";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $fuid, PDO::PARAM_STR);
     $prepare->bindValue(':ID_USER', $userID, PDO::PARAM_STR);
-    $prepare->bindValue('DIR', $_GET['folder'], PDO::PARAM_STR);
+    $prepare->bindValue('DIR', $_REQUEST['folder'], PDO::PARAM_STR);
     $prepare->execute();
     echo '{"status":1,"result":{"ID":"'.$fuid.'"}}';
-} elseif ($_GET['action'] == 'deletefolder') {
-    $folderid = $_GET['folderID'];
+} elseif ($_REQUEST['action'] == 'deletefolder') {
+    $folderid = $_REQUEST['folderID'];
     $sql = "DELETE FROM publixher.TBL_FOLDER WHERE ID=:ID";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID', $folderid, PDO::PARAM_STR);
@@ -172,32 +172,32 @@ WHERE CONN.ID_ANONY = :ID";
     $prepare->bindValue(':FOLDER', $folderid, PDO::PARAM_STR);
     $prepare->execute();
     echo '{"status":1}';
-} elseif ($_GET['action'] == 'writeAuth') {
+} elseif ($_REQUEST['action'] == 'writeAuth') {
     $q = "UPDATE publixher.TBL_USER SET WRITEAUTH=:WRITEAUTH WHERE ID=:ID";
     $p = $db->prepare($q);
-    $p->bindValue(':WRITEAUTH', $_GET['radioValue']);
-    $p->bindValue(':ID', $_GET['userID']);
+    $p->bindValue(':WRITEAUTH', $_REQUEST['radioValue']);
+    $p->bindValue(':ID', $_REQUEST['userID']);
     $p->execute();
     echo '{"status":1}';
-} elseif ($_GET['action'] == 'expAuth') {
+} elseif ($_REQUEST['action'] == 'expAuth') {
     $q = "UPDATE publixher.TBL_USER SET EXPAUTH=:EXPAUTH WHERE ID=:ID";
     $p = $db->prepare($q);
-    $p->bindValue(':EXPAUTH', $_GET['checkValue']);
-    $p->bindValue(':ID', $_GET['userID']);
+    $p->bindValue(':EXPAUTH', $_REQUEST['checkValue']);
+    $p->bindValue(':ID', $_REQUEST['userID']);
     $p->execute();
     echo '{"status":1}';
-}elseif($_GET['action']=='charge'){
+}elseif($_REQUEST['action']=='charge'){
     $sql="UPDATE publixher.TBL_CONNECTOR SET CASH_POINT=CASH_POINT+:POINT WHERE ID_ANONY=:ID_ANONY OR ID_USER=:ID_USER";
     $prepare = $db->prepare($sql);
     $prepare->bindValue(':ID_ANONY', $userID);
     $prepare->bindValue(':ID_USER', $userID);
-    $prepare->bindValue(':POINT', $_GET['point']);
+    $prepare->bindValue(':POINT', $_REQUEST['point']);
     $prepare->execute();
     echo '{"status":1}';
-}elseif($_GET['action']=='viewAuth'){
+}elseif($_REQUEST['action']=='viewAuth'){
     $sql="UPDATE publixher.TBL_USER SET VIEWAUTH=:VIEWAUTH WHERE ID=:ID";
     $prepare=$db->prepare($sql);
-    $prepare->execute(array('VIEWAUTH'=>$_GET['checkValue'],'ID'=>$_GET['userID']));
+    $prepare->execute(array('VIEWAUTH'=>$_REQUEST['checkValue'],'ID'=>$_REQUEST['userID']));
     echo '{"status":1}';
 }
 ?>

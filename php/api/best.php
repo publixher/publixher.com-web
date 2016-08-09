@@ -1,10 +1,10 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-$action = $_GET['act'];
+$action = $_REQUEST['act'];
 if ($action == 'now') {
-    if (isset($_GET['category'])) {
-        if (isset($_GET['sub_category'])) {
+    if (isset($_REQUEST['category'])) {
+        if (isset($_REQUEST['sub_category'])) {
             $sql = "SELECT SQL_CACHE
   COMMENT,
   KNOCK,
@@ -44,8 +44,8 @@ LIMIT 10";
     }
     echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'daily') {
-    if (isset($_GET['category'])) {
-        if (isset($_GET['sub_category'])) {
+    if (isset($_REQUEST['category'])) {
+        if (isset($_REQUEST['sub_category'])) {
             $sql = "SELECT SQL_CACHE
   COMMENT,
   KNOCK,
@@ -84,8 +84,8 @@ LIMIT 10";
     }
     echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'weekly') {
-    if (isset($_GET['category'])) {
-        if (isset($_GET['sub_category'])) {
+    if (isset($_REQUEST['category'])) {
+        if (isset($_REQUEST['sub_category'])) {
             $sql = "SELECT SQL_CACHE
   COMMENT,
   KNOCK,
@@ -124,8 +124,8 @@ LIMIT 10";
     }
     echo json_encode(array('result' => $result, 'status' => array('code' => 1)), JSON_UNESCAPED_UNICODE);
 } elseif ($action == 'category') {
-    $category = implode('\',\'', $_GET['category']);
-    $sub_category = implode('\',\'', $_GET['sub_category']);
+    $category = implode('\',\'', $_REQUEST['category']);
+    $sub_category = implode('\',\'', $_REQUEST['sub_category']);
     $sql = "SELECT
   TITLE,
   ID,

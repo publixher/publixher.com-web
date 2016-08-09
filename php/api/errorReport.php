@@ -6,7 +6,7 @@
  * Time: 오후 5:05
  */
 header("Content-Type:application/json");
-$data=$_GET;
+$data=$_REQUEST;
 $mongomanager=new MongoDB\Driver\Manager("mongodb://DongGyun:Pp999223#@localhost:27017/publixher");
 $now=date('Y-m-d H:i:s');
 $bulk=new MongoDB\Driver\BulkWrite;

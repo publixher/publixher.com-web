@@ -1,9 +1,9 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
-$userID = $_GET['userID'];
-$action = $_GET['action'];
-$nowpage=$_GET['nowpage'];
+$userID = $_REQUEST['userID'];
+$action = $_REQUEST['action'];
+$nowpage=$_REQUEST['nowpage'];
 if($action=='loadpin'){
     $selPin="SELECT ID_CONTENT,MODIFIED,KNOCK,REPLY,LAST_UPDATE,BODY,ID_WRITER,REPLACE(WRITER_PIC,'profile','crop50') AS WRITER_PIC FROM publixher.TBL_PIN_LIST WHERE ID_USER=:ID_USER ORDER BY LAST_UPDATE DESC LIMIT :PAGE,20";
     $selpre=$db->prepare($selPin);
