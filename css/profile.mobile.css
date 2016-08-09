@@ -1738,6 +1738,13 @@ a:hover {
   padding: 10px;
   display: inline-block;
 }
+#frielist li:nth-child(2) button{
+  background-color: transparent;
+  padding: 15px;
+  border: 1px solid #f1f1f1;
+  border-radius: 20px !important;
+  font-size: 12px
+}
 .knocked-image{
   -webkit-filter: grayscale(0%) !important;
 }
