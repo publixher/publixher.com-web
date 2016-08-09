@@ -50,7 +50,11 @@ if ($check_email && $check_pass) {
         echo json_encode(array('status'=>1),JSON_UNESCAPED_UNICODE);
     } catch (PDOException $e) {
         $db->rollBack();
-        $msg='{"status":-1}';
+        if($e->getCode()==23000){
+            $msg='{"status":-3}';
+        }else {
+            $msg = '{"status":-1}';
+        }
         echo $msg;
     }
 } else {
