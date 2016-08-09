@@ -162,7 +162,7 @@
                 </td>
             </tr>
             <tr>
-                <td>나라</td>
+                <td>국적</td>
                 <td>
                     <select class="form-control" name='region' tabindex='8' id='mregion'>
                         <option value='KOR'>한국</option>
@@ -177,7 +177,7 @@
             <td colspan="2"><input type="submit" class="btn btn-default" value="수정하기" id="submit"></td>
             </tr>
             <tr style="margin-bottom: 10px;">
-                <td>프로필</td>
+                <td>프로필 사진</td>
                 <td id="picreg">
                     <img src="<?= $userpic ?>" class="file-input-img"/>
                     <input type="file" id="fileuploads" name="fileuploads[]" accept="image/*"
@@ -199,7 +199,7 @@
         <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
-            새로운 익명계정을 생성할 경우 기존의 익명계정은 더이상 접속할 수 없지만 익명계정으로 써진 글은 지워지지 않고 사람들이 구매한 컨텐츠는 구매자의 구매항목에 남아있습니다.
+            새로운 익명계정을 생성할 경우 기존의 익명계정으로 더이상 활동할 수 없습니다. 하지만 익명계정으로 작성한 모든 컨텐츠는 삭제되지 않습니다.
         </div>
     <?php }
 
