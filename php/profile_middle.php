@@ -53,7 +53,6 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     친구목록(<?= count($friend_list) ?>)
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
@@ -78,7 +77,6 @@ WHERE USER.ID=FRIEND.ID_FRIEND ORDER BY USER.USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     구독목록(<?= count($master_list) ?>)
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
@@ -114,7 +112,6 @@ ORDER BY USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     친구요청(<span id="frequestnum"><?= count($freq_list) ?></span>)
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="freqlist">
                     <li><input type="text" class="form-control"></li>
@@ -138,7 +135,6 @@ ORDER BY USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     설정
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasSelect" role="menu" id="confAut">
                     <li><b>글쓰기 권한</b></li>
@@ -201,7 +197,6 @@ ORDER BY USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     친구목록(<?= count($friend_list) ?>)
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="frielist">
                     <li><input type="text" class="form-control"></li>
@@ -225,7 +220,6 @@ ORDER BY USER_NAME ASC";
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                     구독목록(<?= count($master_list) ?>)
-                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu hasInput" role="menu" id="subslist">
                     <li><input type="text" class="form-control"></li>
