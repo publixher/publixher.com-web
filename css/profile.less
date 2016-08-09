@@ -1118,19 +1118,20 @@ li a {
   position: fixed;
   z-index: 4;
 }
-#wrap #middle #profile-middle-nav ul,
 .others ul {
   background-color: #fff;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 250px;
+  max-height: 400px;
   width: 530px;
-  position: inherit;
-  border-radius: 0;
-  border: 0;
-  margin-top: 0;
-  padding: 0;
-  box-shadow: 0 0 0;
+  position: fixed;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  padding: 5px;
+  left: 50%;
+  top: 50%;
+  margin: -200px 0 0 -265px;
+  box-shadow: 0 0 100px 100000px rgba(0, 0, 0, 0.5);
 }
 #profile-middle-nav>div,
 .others>div {
@@ -1142,6 +1143,7 @@ li a {
 .others button {
   width: 100% !important;
   border: 0;
+  border-radius: 0;
 }
 #middle>.btn-group{
   width: 532px;
