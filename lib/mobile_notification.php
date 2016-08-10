@@ -35,30 +35,3 @@ function send_notification (array $tokens,string $message)
     curl_close($ch);
     return $result;
 }
-
-
-//데이터베이스에 접속해서 토큰들을 가져와서 FCM에 발신요청
-//include_once 'config.php';
-//$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-//
-//$sql = "Select Token From users";
-//
-//$result = mysqli_query($conn,$sql);
-//$tokens = array();
-//
-//if(mysqli_num_rows($result) > 0 ){
-//
-//    while ($row = mysqli_fetch_assoc($result)) {
-//        $tokens[] = $row["Token"];
-//    }
-//}
-//
-//mysqli_close($conn);
-//
-//if ($myMessage == ""){
-//    $myMessage = "새글이 등록되었습니다.";
-//}
-//
-//$message = array("message" => $myMessage);
-//$message_status = send_notification($tokens, $message);
-//echo $message_status;

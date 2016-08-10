@@ -58,12 +58,7 @@ class Sendmail {
         $line = fgets($this->fp, 1024);
         preg_match("/^([0-9]+).(.*)$/", $line, $matches);
         $this->lastmsg = $matches[0];
-        if($this->debug) {
-           echo htmlspecialchars($cmd)."
-".$this->lastmsg."
-";
-            flush();
-        }
+
         if($matches[1] != $code) return false;
         return true;
     }
