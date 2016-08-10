@@ -71,8 +71,26 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   width: 100%;
   border-radius: 0 !important;
   border: 0 solid #f1f1f1;
+  background-color: white;
+  color: #434343;
 }
-
+#profile-middle-nav button:hover,
+.others button:hover,
+#profile-middle-nav button:focus,
+.others button:focus,
+#profile-middle-nav button:active,
+.others button:active{
+  color: #434343;
+  background-color: #fafafa;
+}
+#friends-dot{
+  margin: 0 8px;
+  color: #5cb85c;
+}
+#subs-dot{
+  margin: 0 8px;
+  color: #5bc0de;
+}
 #name{
   text-align: center;
   width: 160px;

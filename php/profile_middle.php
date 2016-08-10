@@ -252,7 +252,7 @@ ORDER BY USER_NAME ASC";
             } elseif ($allowed == 'N') {
                 echo '<div id="friend-btn"><button type="button" class="btn btn-default onrequest" id="friequst" >친구신청중</button></div>';
             } elseif ($allowed == 'Y') {
-                echo '<div id="friend-btn"><button type="button" class="btn btn-success onfriend" id="friequst">친구</button></div>';
+                echo '<div id="friend-btn"><button type="button" class="btn btn-success onfriend" id="friequst">친구<span id="friends-dot">●</span></button></div>';
             }
 
             //구독신청 버튼
@@ -265,7 +265,7 @@ ORDER BY USER_NAME ASC";
             if (!$subscribe) {
                 echo '<div id="subs-btn"><button type="button" class="btn btn-default subscribe" id="subsbtn">구독하기</button></div>';
             } else {
-                echo '<div id="subs-btn"><button type="button" class="btn btn-info dis_subscribe" id="subsbtn">구독중</button></div>';
+                echo '<div id="subs-btn"><button type="button" class="btn btn-info dis_subscribe" id="subsbtn">구독중<span id="subs-dot">●</span></button></div>';
             }
             ?>
         </div>
