@@ -60,7 +60,7 @@ WHERE KNOCK.ID_CONTENT = :ID_CONTENT";
     foreach($token_result as $token){
         $tokens[]=$token['DEVICE_TOKEN'];
     }
-    $noti_status=send_notification($tokens,"푸싱");
+    $noti_status=send_notification($tokens,"푸싱","제목");
     //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
