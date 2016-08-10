@@ -5,6 +5,7 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH
 }
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
+require_once '../../lib/mobile_notification.php';
 //토큰검사
 session_start();
 //CSRF검사
