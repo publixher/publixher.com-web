@@ -58,16 +58,21 @@ class Sendmail {
         $line = fgets($this->fp, 1024);
         preg_match("/^([0-9]+).(.*)$/", $line, $matches);
         $this->lastmsg = $matches[0];
-
+//        if($this->debug) {
+//           echo htmlspecialchars($cmd)."
+//".$this->lastmsg."
+//";
+//            flush();
+//        }
         if($matches[1] != $code) return false;
         return true;
     }
      /*   smptp 서버에 접속을 한다. */
     function connect($host='') {
-        if($this->debug) {
-            echo "SMTP(".$host.") Connecting...";
-            flush();
-        }
+//        if($this->debug) {
+//            echo "SMTP(".$host.") Connecting...";
+//            flush();
+//        }
         if(!$host) $host = $this->host;
         if(!$this->fp = fsockopen($host, 465, $errno, $errstr, 10)) {
             $this->lastmsg = "SMTP(".$host.") 서버접속에 실패했습니다.[".$errno.":".$errstr."]";
@@ -77,11 +82,11 @@ class Sendmail {
         preg_match("/^([0-9]+).(.*)$/", $line, $matches);
         $this->lastmsg = $matches[0];
         if($matches[1] != "220") return false;
-        if($this->debug) {
-            echo $this->lastmsg."
-";
-            flush();
-        }
+//        if($this->debug) {
+//            echo $this->lastmsg."
+//";
+//            flush();
+//        }
         $this->dialogue(250, "HELO phpmail");
         return true;
     }
