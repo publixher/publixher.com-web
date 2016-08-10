@@ -48,7 +48,20 @@ if ($act == 'knock') {
     $prepare5->bindValue(':ID_CONTENT', $ID);
     $prepare5->execute();
 
-
+    $sql= "SELECT DEVICE_TOKEN
+FROM publixher.TBL_DEVICES DEVICES 
+  INNER JOIN publixher.TBL_KNOCK_LIST KNOCK 
+    ON KNOCK.ID_USER = DEVICES.USER_ID
+WHERE KNOCK.ID_CONTENT = :ID_CONTENT";
+    try {
+        $prepare = $db->prepare($sql);
+    }catch(PDOException $e){
+        $a=$e->getMessage();
+        die();
+    }
+    $prepare->execute(array('ID_CONTENT'=>$ID));
+    $tokens=$prepare->fetchALL(PDO::FETCH_ASSOC);
+    $noti_status=send_notification($tokens,"푸싱");
     //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";
