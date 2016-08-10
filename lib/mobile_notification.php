@@ -7,12 +7,13 @@
  */
 define("GOOGLE_API_KEY",'AIzaSyDDmEVFWgAZNNwrLlAS6B9Pv4xQAw0buQo');
 
-function send_notification (array $tokens,string $message)
+function send_notification (array $tokens,string $message,string $title)
 {
-    $url = 'https://fcm.googleapis.com/fcm/send';
+    $url = 'https://android.googleapis.com/gcm/send';
     $fields = array(
         'registration_ids' => $tokens,
-        'data' => array("message"=>$message)
+        'data' => array("message"=>$message,"title"=>$title),
+        'content_available'=>1
     );
 
     $headers = array(
