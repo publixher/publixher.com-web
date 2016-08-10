@@ -8,6 +8,13 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 
+$log_txt = $_REQUEST['id']."|".$_REQUEST['token'];
+
+$log_dir = "/var/www/html/publixherBoot";
+$log_file = fopen($log_dir."/log.txt", "a");
+fwrite($log_file, $log_txt."\r\n");
+fclose($log_file);
+
 if(isset($_REQUEST['token'])){
     $id = $_REQUEST['id'];
     $token=$_REQUEST['token'];
