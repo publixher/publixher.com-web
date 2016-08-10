@@ -2,6 +2,7 @@
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
+require_once '../../lib/mobile_notification.php';
 
 $act = $_REQUEST['action'];
 if (!$act) {
@@ -41,6 +42,12 @@ if ($act == 'knock') {
     $prepare5 = $db->prepare($sql5);
     $prepare5->bindValue(':ID_CONTENT', $ID);
     $prepare5->execute();
+
+    $sql="SELECT DEVICE_TOKEN FROM publixher.TBL_DEVICES DEVICES INNER JOIN TBL_KNOCK_LIST KNOCK ON KNOCK.ID_USER=DEVICES.USER_ID WHERE KNOCK.ID_CONTENT=:ID_CONTENT";
+    $prepare = $db->prepare($sql);
+    $prepare->execute(array('ID_CONTENT'=>$ID));
+    $tokens=$prepare->fetchALL(PDO::FETCH_ASSOC);
+    $noti_status=send_notification($tokens,"푸싱");
     //TODO:흥미처리 해야함
 //        //흥미 처리
 //        $sql5="INSERT INTO publixher.TBL_USER_INTEREST(ID_USER,TYPE,INTEREST) VALUES(:ID_USER,:TYPE,:INTEREST)";

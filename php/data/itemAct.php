@@ -5,6 +5,7 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR $_SERVER['HTTP_X_REQUESTED_WITH
 }
 require_once '../../conf/database_conf.php';
 require_once '../../conf/User.php';
+require_once '../../lib/mobile_notification.php';
 //토큰검사
 session_start();
 //CSRF검사
@@ -12,35 +13,6 @@ if (!isset($_POST['token']) AND !isset($_GET['token'])) {
     exit('부정한 조작이 감지되었습니다. case1 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 } elseif ($_POST['token'] != $_SESSION['token'] AND $_GET['token'] != $_SESSION['token']) {
     exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
-}
-
-function send_notification ($tokens, $message)
-{
-    $url = 'https://fcm.googleapis.com/fcm/send';
-    $fields = array(
-        'registration_ids' => $tokens,
-        'data' => $message
-    );
-
-    $headers = array(
-        'Authorization:key =' . GOOGLE_API_KEY,
-        'Content-Type: application/json'
-    );
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-    $result = curl_exec($ch);
-    if ($result === FALSE) {
-        die('Curl failed: ' . curl_error($ch));
-    }
-    curl_close($ch);
-    return $result;
 }
 
 $act = $_POST['action'];
