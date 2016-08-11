@@ -12,6 +12,7 @@ if (!isset($_POST['token']) AND !isset($_GET['token'])) {
     exit('부정한 조작이 감지되었습니다. case2 \n$_POST["token"] :' . $_POST['token'] . ' \n $_GET["token"] :' . $_GET['token'] . '$_SESSION :' . $_SESSION);
 }
 require_once '../../conf/database_conf.php';
+require_once '../../lib/mobile_notification.php';
 $action = $_POST['action'];
 if ($action == 'request') {
     //친구신청 되 있는지 확인
@@ -36,6 +37,12 @@ if ($action == 'request') {
         $prepare4->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $myID, PDO::PARAM_STR);
         $prepare4->execute();
+        //신청한 친구의 이름 알기
+        $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+        $prepare = $db->prepare($sql);
+        $prepare->execute(array('ID' => $myID));
+        $myName = $prepare->fetchColumn(0);
+        send_notification($db, array($targetID), $myName . "님의 친구신청이 있습니다.");
         echo '{"result":"Y"}';
     } else {
         echo '{"result":"N","reason":"already requested"}';
@@ -76,11 +83,11 @@ if ($action == 'request') {
     $prepare2->execute();
     echo '{"result":"Y"}';
 } elseif ($action == 'cancelRequest') {
-    $targetID=$_POST['targetID'];
-    $userID=$_POST['myID'];
-    $sql="DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
-    $prepare=$db->prepare($sql);
-    $prepare->execute(array('ID_FRIEND'=>$targetID,'ID_USER'=>$userID,'ID_FRIEND2'=>$userID,'ID_USER2'=>$targetID));
+    $targetID = $_POST['targetID'];
+    $userID = $_POST['myID'];
+    $sql = "DELETE FROM publixher.TBL_FRIENDS WHERE (ID_FRIEND=:ID_FRIEND AND ID_USER=:ID_USER) OR (ID_FRIEND=:ID_FRIEND2 AND ID_USER=:ID_USER2)";
+    $prepare = $db->prepare($sql);
+    $prepare->execute(array('ID_FRIEND' => $targetID, 'ID_USER' => $userID, 'ID_FRIEND2' => $userID, 'ID_USER2' => $targetID));
     echo '{"result":"Y"}';
 } elseif ($action == 'subscribe') {
     $targetID = $_POST['targetID'];

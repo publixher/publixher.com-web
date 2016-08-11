@@ -1,6 +1,7 @@
 <?php
 header("Content-Type:application/json");
 require_once '../../conf/database_conf.php';
+require_once '../../lib/mobile_notification.php';
 $action = $_REQUEST['action'];
 if ($action == 'request') {
     //친구신청 되 있는지 확인
@@ -25,6 +26,12 @@ if ($action == 'request') {
         $prepare4->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
         $prepare4->bindValue(':ID_ACTOR', $myID, PDO::PARAM_STR);
         $prepare4->execute();
+        //신청한 친구의 이름 알기
+        $sql = "SELECT USER_NAME,PIC FROM publixher.TBL_USER WHERE ID=:ID";
+        $prepare = $db->prepare($sql);
+        $prepare->execute(array('ID' => $myID));
+        $myName = $prepare->fetchColumn(0);
+        send_notification($db, array($targetID), $myName . "님의 친구신청이 있습니다.");
         echo '{"status":1}';
     } else {
         echo '{"status":-3}';   //이미 친구
