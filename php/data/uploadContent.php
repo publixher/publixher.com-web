@@ -119,13 +119,13 @@ if (!empty($_POST)) {
     }
     if ($imgcount > 5) {
         for ($i = 0; $i < 4; $i++) {
-            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
+            $preview = $preview . "<br><div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
         $ex = $imgcount - 4;
         $preview = $preview . "<p style='font-size=20;font-weight:700;' class='oi'>&nbsp;외&nbsp;" . $ex . "장";
     } else {
         for ($i = 0; $i < count($blured); $i++) {
-            $preview = $preview . "<div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
+            $preview = $preview . "<br><div class='thumbPic-wrap'><img src='{$blured[$i]}' class='thumbPic'></div>";
         }
     }
     //사진 80으로 크롭시켜서 대표이미지로 등록
