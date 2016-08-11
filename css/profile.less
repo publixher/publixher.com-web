@@ -392,7 +392,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
       }
       .header {
         float: left;
-        padding: 10px 10px 0 10px;
+        padding: 10px;
         width: 528px;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
@@ -434,7 +434,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           width: 100%;
           margin-left: auto;
           margin-right: auto;
-          margin-bottom: 0 !important;
         }
         .thumbPic {
           position: absolute;
@@ -449,7 +448,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
           display: block;
           max-width: 528px;
           margin-left: -9px;
-          margin-top: 10px;
           margin-bottom: 10px;
           -webkit-filter: grayscale(1); /* Webkit */
           filter: gray; /* IE6-9 */
@@ -1665,7 +1663,7 @@ a:hover{
   position: relative;
   overflow: hidden !important;
   display: inline-block;
-  margin: 0 10px 0 0;
+  margin: 10px 10px 0 0;
   border-radius: 2px;
   -webkit-filter: grayscale(60%);
   transition: all 0.3s ease-in-out;
@@ -1738,8 +1736,6 @@ a:hover{
 .pre-body-pic{
   width: 528px;
   margin-left: -9px;
-  margin-top: 10px;
-  margin-bottom: -10px;
 }
 .pinned{
   color: #46799b !important;
@@ -1783,7 +1779,7 @@ a:hover{
 .opend-comment{
   margin: 9px 9px 0 9px !important;
 }
-.folder-cate{
+.cate-title{
   margin-top: 3px;
   display: inline-block;
   width: 100%;
@@ -1829,6 +1825,9 @@ a:hover{
 #call-left,
 #call-right{
   display: none;
+}
+#wrap #middle .item .header{
+  height:50px;
 }
 //유튜브
 #mod-pane div button,

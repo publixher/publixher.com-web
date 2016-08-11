@@ -331,7 +331,7 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
 #wrap #middle .item .header,
 #wrap #middle .item-for-sale .header {
     float: left;
-    padding: 6px 6px 0 6px;
+    padding: 6px;
     width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -395,7 +395,6 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     width: 106.2925170068027%;
     height: auto !important;
     display: block;
-    margin-top: 10px;
     margin-bottom: 10px;
     margin-left: -3.14625850340135%;
     box-shadow: 0 0 3px #ddd;
@@ -1476,7 +1475,7 @@ a:hover {
     position: relative;
     overflow: hidden !important;
     display: inline-block;
-    margin: 0 10px 0 0;
+    margin: 10px 10px 0 0;
     border-radius: 2px;
     opacity: 0.7;
 }
@@ -1585,6 +1584,9 @@ a:hover {
     z-index: 2;
     font-size: 12px;
 }
+#wrap #middle .item .header{
+    height:50px;
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
@@ -1604,7 +1606,7 @@ a:hover {
 .opend-comment{
     margin-bottom: 0 !important;
 }
-.folder-cate{
+.cate-title{
     margin-top: 3px;
     display: inline-block;
     width: 100%;
@@ -1617,7 +1619,6 @@ a:hover {
     display: none;
 }
 .bodypic{
-    margin-bottom: 0 !important;
 }
 #noti-drop,
 #pin-drop{

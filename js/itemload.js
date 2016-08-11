@@ -20,6 +20,13 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
+    if (targetID) {
+        write += ' <a href="/profile/' + targetID + '">to ' + targetname + '</a>'
+    }
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '"><span class="pubico pico-folder"></span>' + foldername + '</a></span>&nbsp;';
+    }
+
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -36,15 +43,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
 
-    write += '</div><div class="folder-cate">';
-
-    if (targetID) {
-        write += ' <a href="/profile/' + targetID + '">' + targetname + '</a>에게 '
-    }
-    if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    }
-
+    write += '</div><div class="cate-title">';
 
     write += '</div></div> <div class="body">'
     write += preview + '</div>';
@@ -91,6 +90,9 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             write += '<span class="content-expose">전체공개</span>';
             break;
     }
+    if (folderID) {
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '"><span class="pubico pico-folder"></span>' + foldername + '</a></span>&nbsp;';
+    }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
         write += '<a class="pin-a pubico pico-Pin_002 pinned"></a>';
@@ -104,11 +106,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
         write += '<ul class="dropdown-menu" role="menu"><li><a class="itemReport"><span class="pubico pico-alert"></span>신고</a></li></ul></div><br>'
     }
 
-    write += '</div><div class="folder-cate">';
-
-    if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
-    }
+    write += '</div><div class="cate-title">';
 
 //카테고리 표시부분
     if(category!='SNS') {
