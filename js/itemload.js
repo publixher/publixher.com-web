@@ -24,7 +24,7 @@ function itemLoad(write, ID, name, date, knock, comment, preview, writer, folder
         write += ' <a href="/profile/' + targetID + '">to ' + targetname + '</a>'
     }
     if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '"><span class="pubico pico-folder"></span>' + foldername + '</a></span>&nbsp;';
     }
 
     write += '</div> <div class="conf">';
@@ -91,7 +91,7 @@ function itemForSaleLoad(write, ID, name, date, title, knock, price, comment, bo
             break;
     }
     if (folderID) {
-        write += '<span class="content-folder"><a href="/folder/' + folderID + '">' + foldername + '</a></span>&nbsp;';
+        write += '<span class="content-folder"><a href="/folder/' + folderID + '"><span class="pubico pico-folder"></span>' + foldername + '</a></span>&nbsp;';
     }
     write += '</div> <div class="conf">';
     if (pin.indexOf(ID) != -1) {   //핀에 아이디가 있을경우
