@@ -97,7 +97,7 @@ if (!empty($_REQUEST)) {
     if (strlen($previewtxt) > 0 && $previewimg) {
         $preview =  "<div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if($gif) $preview.=" gif";
-        $preview.="'></div>".$previewtxt."<br>";
+        $preview.="'></div>".$previewtxt."";
     } else if ($previewimg) {
         $preview = "<div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if($gif) $preview.=" gif";
