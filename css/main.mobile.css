@@ -350,6 +350,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
     float: left;
     margin: 3px 0;
     width: 68%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #wrap #middle .item .header .conf,
 #wrap #middle .item-for-sale .header .conf {
