@@ -56,12 +56,12 @@ if (!empty($_REQUEST)) {
     //더보기가 있어야할지 검사
     $bodylen=mb_strlen($body,'utf-8');
     if(!$previewimg and $bodylen<=400){
-        $more=0;
+        $more=1;
     }elseif($previewimg and !$imgs[1][1] and $bodylen<=200){
         if($for_sale){
             $more=1;
         }else{
-            $more=0;
+            $more=1;
         }
     }else{
         $more=1;
