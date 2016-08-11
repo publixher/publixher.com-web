@@ -109,11 +109,11 @@ if (!empty($_POST)) {
     if (strlen($previewtxt) > 0 && $previewimg) {
         $preview =  "<div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if($gif) $preview.=" gif";
-        $preview.="'></div><br>".$previewtxt."<br>";
+        $preview.="'></div>".$previewtxt."<br>";
     } else if ($previewimg) {
         $preview = "<div class='pre-body-pic'><img src='{$previewimg}' class='BodyPic";
         if ($gif) $preview .= " gif";
-        $preview .= "'></div><br>";
+        $preview .= "'></div>";
     } else {
         $preview = $previewtxt;
     }
