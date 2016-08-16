@@ -129,6 +129,7 @@
 <div id="mask">
 </div>
 <div id="center">
+    <div id="login-form">
     <form method='post' action='/https/loginConfirm.php'>
         <table>
             <tr>
@@ -147,6 +148,19 @@
     </form>
     <button type="button" id="find-id" class="btn btn-default">비밀번호 찾기</button>
     <br>
+    <div id="api_login">
+        <div id="naver_id_login"></div>
+        <script>
+            var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
+            naver_id_login.setButton("white", 3, 40)
+            //            naver_id_login.setPopup();
+            naver_id_login.setDomain(".analograph.com");
+            naver_id_login.setState("");
+            naver_id_login.init_naver_id_login();
+        </script>
+        <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
+    </div>
+    </div>
     <div id="r-div">
         <form method='post' action='/php/data/registConfirm.php' id="rf">
             <table>
@@ -209,18 +223,6 @@
 
             </table>
         </form>
-        <div id="api_login">
-            <div id="naver_id_login"></div>
-            <script>
-                var naver_id_login = new naver_id_login("OJ9jBISrQELVlxFNyHlz", "http://analograph.com/php/naver_login.php");
-                naver_id_login.setButton("white", 3, 40)
-                //            naver_id_login.setPopup();
-                naver_id_login.setDomain(".analograph.com");
-                naver_id_login.setState("");
-                naver_id_login.init_naver_id_login();
-            </script>
-            <div onclick="facebooklogin()" id="facebook_id_login"><img src="/img/facebook.png"></div>
-        </div>
         <p>회원가입과 동시에 사용자는 analograph의 <a data-toggle="modal" data-target="#Terms-of-Use">이용약관</a>과
             <a data-toggle="modal" data-target="#Privacy-Statement">개인정보취급방침</a>
             및 <a data-toggle="modal" data-target="#Electronic-banking-agreement">전자금융거래약관</a>에
