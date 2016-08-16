@@ -128,6 +128,7 @@
 <script src="/https/regist.js"></script>
 <div id="mask">
 </div>
+<div id="center-pre">
 <div id="center">
     <div id="login-form">
     <form method='post' action='/https/loginConfirm.php'>
@@ -228,6 +229,7 @@
             및 <a data-toggle="modal" data-target="#Electronic-banking-agreement">전자금융거래약관</a>에
             동의한 것으로 간주됩니다.</p>
     </div>
+</div>
 </div>
 <!-- 이용약관 -->
 <div class="modal fade" id="Terms-of-Use" tabindex="-1" role="dialog" aria-labelledby="ToU-Label" aria-hidden="true">
