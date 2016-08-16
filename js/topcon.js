@@ -38,8 +38,6 @@ $(document).ready(function(){
                     write = itemLoad(write, ID, name, date, knock, comment, preview, writer, folderID, foldername, pic,targetID,targetname,expose,more,tag,pin,res['KNOCKED']);
                     var topcon=$(write).attr('id',$(write).attr('id')+'_topcon');
                     $('#topcon').append(topcon).find('.itemTop').parents('ul').append("<li><a class='Top-fall'>최상단 컨텐츠 취소</a></li>")
-
-
                     $('#'+ID).hide().fadeIn();
                 } else {
                     var write = '';

@@ -62,6 +62,12 @@ if ($action == 'request') {
     $prepare2->bindValue(':ID_FRIEND', $targetID, PDO::PARAM_STR);
     $prepare2->bindValue(':ID_USER', $myID, PDO::PARAM_STR);
     $prepare2->execute();
+    //알람처리
+    $sql4 = "INSERT INTO publixher.TBL_CONTENT_NOTI(ID_TARGET,ACT,ID_ACTOR) VALUES(:ID_TARGET,'a',:ID_ACTOR)";
+    $prepare4 = $db->prepare($sql4);
+    $prepare4->bindValue(':ID_TARGET', $targetID, PDO::PARAM_STR);
+    $prepare4->bindValue(':ID_ACTOR', $myID, PDO::PARAM_STR);
+    $prepare4->execute();
     echo '{"result":"Y"}';
 } elseif ($action == 'friendno') {
     $requestid = $_POST['requestid'];
