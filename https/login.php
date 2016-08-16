@@ -126,7 +126,9 @@
 </script>
 
 <script src="/https/regist.js"></script>
+<div id="mask-pre">
 <div id="mask">
+</div>
 </div>
 <div id="center-pre">
 <div id="center">
