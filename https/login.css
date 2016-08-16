@@ -89,11 +89,13 @@ body {
     width: 100%;
 }
 #find-id{
-    width: 80%;
+    width: 50%;
     display:block;
     margin: 0 auto;
-    border: 1px solid #e3e3e3;
-    margin-top: 10px;
+    background-color: transparent;
+    border: transparent;
+    font-size: 12px;
+    margin-top: 5px;
 }
 #years{
     width: 80px !important;
@@ -103,7 +105,9 @@ body {
     width: 60px !important;
     padding: 6px
 }
-
+#rf table tbody tr td:first-child{
+    width: 35%;
+}
 #r-div form table tbody>tr{
     display: block;
     margin-top: 10px !important;
