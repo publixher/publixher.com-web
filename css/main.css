@@ -619,6 +619,9 @@ html,body,th,td,input,select,textarea,button,div,p,a,span,li{
   position: relative;
   z-index: 1;
   overflow: hidden;
+  background-color: white;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
 }
 #wrap #right .market #market-nav {
   width: 100%;
@@ -1481,8 +1484,7 @@ a:hover {
   display: block;
   text-align: center;
   font-size: 12px;
-  background-color: #eaeaea;
-  border-radius: 10px;
+  border-bottom: 1px solid #f1f1f1;
 }
 #community-btn:hover,
 #subscribe-btn:hover{
