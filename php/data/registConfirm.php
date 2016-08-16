@@ -17,9 +17,6 @@ if($_POST['resend']=="false") {
 //통과시 등록
     if ($check_email && $check_pass) {
         $id = uniqueid($db, 'user');
-        $sendmail = new Sendmail();   //기본설정을 사용
-        $from = "analograph";
-        $subject = "analograph 회원가입을 위한 인증 메일입니다.";
         try {
             $db->beginTransaction();
             $sql = "INSERT INTO publixher.TBL_USER(ID,EMAIL,PASSWORD,USER_NAME,SEX,BIRTH,COMMUNITY) VALUES (:ID,:EMAIL,:PASSWORD,:USER_NAME,:SEX,:BIRTH,:COMMUNITY)";
@@ -39,12 +36,6 @@ if($_POST['resend']=="false") {
             $prepare2->bindValue(':ID_USER', $id, PDO::PARAM_STR);
             $prepare2->execute();
 //메일보내는작업
-            $id_crypt = sha1($seq . $id);
-            $body = "
-<p>analograph에 오신 것을 환영합니다!</p>
-<p>이메일 인증 후 익명 혹은 실명으로 자유롭게 소통하실 수 있습니다.</p>
-<p><a href='http://analograph.com/registValid/${id}-${id_crypt}'>여기</a>를 클릭하시면 회원가입 절차가 모두 완료됩니다.</p>";
-            $sendmail->send_mail($email, $from, $subject, $body);
             $bulk = new MongoDB\Driver\BulkWrite;
             $bulk->insert(['id'=>$id]);
             $result = $mongomanager->executeBulkWrite('publixher.user', $bulk);

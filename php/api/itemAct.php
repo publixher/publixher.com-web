@@ -382,7 +382,6 @@ LIMIT
         echo '{"status":-8}';
     }
 } elseif ($act == 'top') {
-    //한번 확인해주고
     $sql1 = "UPDATE publixher.TBL_USER SET TOP_CONTENT=:TOP_CONTENT WHERE ID=:ID";
     $prepare1 = $db->prepare($sql1);
     $prepare1->bindValue(':TOP_CONTENT', $_REQUEST['contID'], PDO::PARAM_STR);

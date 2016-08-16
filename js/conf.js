@@ -165,6 +165,10 @@ $(document).ready(function () {
                                 var word = res[i]['USER_NAME'] + "님이 \"" + res[i]['REPLY'] + "\" 댓글에 회원님을 소환했습니다.";
                                 $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
                                 break;
+                            case 'a':
+                                var word = res[i]['USER_NAME'] + "님이 친구가 되었습니다.";
+                                $('#notilist li:last-child').after('<li><div class="noti-img-wrap"><img class="noti-img" src="' + res[i]['PIC'] + '"></div><a href="/content/' + res[i]['ID_CONTENT'] + '">' + word + '</a><span class="noti-date">' + res[i]['NOTI_DATE'] + '</span></li>');
+                                break;
                         }
                     }
                     if (!$('#notilist').hasClass('loaded')) {

@@ -299,23 +299,3 @@ $(document).ready(function () {
         })
     });
 });
-
-//메일 재전송
-function send_valid_mail(formdata,resend) {
-    formdata=formdata+"&resend="+resend;
-    $.ajax({
-        url: "/php/data/registConfirm.php",
-        type: "POST",
-        data: formdata,
-        dataType: 'json',
-        success: function (res) {
-            if (res['result'] == 'reg') {
-                alert('회원가입이 완료되었습니다.이메일의 링크를 눌러 인증을 해주세요.');
-            } else if (res['result'] == 'server error') {
-                alert('서버 에러입니다. 다시 시도해 주세요')
-            } else if (res['result'] == 'check value') {
-                alert('입력값이 잘못되었습니다. 입력값을 확인해 주세요')
-            }
-        }
-    })
-}
