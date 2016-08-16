@@ -1591,6 +1591,9 @@ a:hover {
 #wrap #middle .item .header{
     height:50px;
 }
+.accordion-toggle[aria-expanded="true"] .caret{
+    transform:rotate(180deg);
+}
 #mod-pane div button,
 #publixh div div button,
 #send div:nth-child(2) button {
