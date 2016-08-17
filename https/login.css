@@ -5,12 +5,22 @@ body {
     background-position: center;
     background-size: cover;
 }
-
+@media only screen and (max-width: 768px) {
+    #mask-pre,
+    #center-pre{
+        height: 80%
+    }
+    #login-form,
+    #r-div{
+        width: 100% !important;
+    }
+}
 #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
     display: none;
     text-align: center;
     padding: 5px 5px 5px 5px;
 }
+
 #mask-pre {
     position: absolute;
     top: 50%;
@@ -51,7 +61,6 @@ body {
 #r-div{
     width: 50%;
     float: left;
-    min-width: 288px;
 }
 #login-form form table{
     width: 72%;
@@ -123,8 +132,10 @@ body {
     margin-top: 10px !important;
 }
 #submit{
-    width: 288px !important;
-    height: 62px;
+    width: 72%;
+    min-width: 260px;
+    max-width: 288px;
+    height: auto;
     margin: 0 auto;
     margin-bottom: 10px;
     display: block;
@@ -134,8 +145,10 @@ body {
 }
 #naver_id_login_anchor img,
 #facebook_id_login img{
-    width:288px;
-    height: 62px !important;
+    width: 72%;
+    min-width: 260px;
+    max-width: 288px;
+    height: auto;
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
