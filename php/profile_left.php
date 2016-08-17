@@ -42,8 +42,15 @@
     $FOLDER = $prepare1->fetchAll(PDO::FETCH_ASSOC);
     echo '<div id="FolDerFolDeR"><ul>';
     for ($i = 0; $i < count($FOLDER); $i++) {
-        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a> (' . $FOLDER[$i]['CONTENT_NUM'] . ')<button class="btn btn-danger deletefolder" data-folderid="' . $FOLDER[$i]['ID'] . '">X</button></li>';
+        echo '<li><a href="/folder/' . $FOLDER[$i]['ID'] . '">' . $FOLDER[$i]['DIR'] . '</a> (' . $FOLDER[$i]['CONTENT_NUM'] . ')';
     }
+    if ($userID == $targetid) {
+        //현재 접속자와 타겟 유저가 같을때 폴더삭제 버튼 표시
+        echo "<button class=\"btn btn-danger deletefolder\" data-folderid=\"' . $FOLDER[$i]['ID'] . '\">X</button></li>";
+    } else{
+        echo "</li>";
+    }
+
     echo '</ul></div>';
     if ($userinfo->getLEVEL() == 99) {
         echo <<<END
