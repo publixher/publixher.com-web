@@ -167,8 +167,8 @@
     </div>
     <div id="r-div">
         <form method='post' action='/php/data/registConfirm.php' id="rf">
-            <div id="sign-in-mask"></div>
             <span id="sign-in-span">회원가입</span>
+            <div id="sign-in-mask"></div>
             <table>
                 <tr>
                     <td>아이디<br>(이메일)</td>
