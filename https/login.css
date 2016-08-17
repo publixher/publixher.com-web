@@ -168,3 +168,18 @@ body {
 .form-control:focus{
     border: 1px solid #f1f1f1;
 }
+#sign-in-mask{
+    position: absolute;
+    margin: 5px 20px 0 20px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: white;
+    opacity: 0.7;
+}
+#sign-in-span{
+    display: block;
+    text-align: center;
+    margin: 5px 20px 0 20px;
+    padding: 5px;
+    border-radius: 20px;
+}
