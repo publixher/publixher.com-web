@@ -16,7 +16,7 @@ body {
     }
 }
 #idwrong, #pwwrong, #pwcheckwrong, #namewrong {
-    display: none;
+    display: none !important;
     text-align: center;
     padding: 5px 5px 5px 5px;
 }
@@ -106,12 +106,13 @@ body {
 }
 #find-id{
     width: 50%;
-    display:block;
+    display: block;
     margin: 0 auto;
     background-color: transparent;
     border: transparent;
     font-size: 12px;
     margin-top: 5px;
+    color: #6d6d6d;
 }
 #years{
     width: 80px !important;

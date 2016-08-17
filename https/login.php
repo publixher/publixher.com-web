@@ -170,7 +170,7 @@
             <span id="sign-in-span">회원가입</span>
             <table>
                 <tr>
-                    <td>아이디<br>(이메일)</td>
+                    <td>Email</td>
                     <td><input type='text' name='email' tabindex='5' id="mid" class='form-control'/></td>
                     <td>
                         <div class="alert alert-danger" role="alert" id="idwrong"></div>
@@ -178,35 +178,35 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>비밀번호</td>
+                    <td>Password</td>
                     <td><input type='password' name='pass' tabindex='6' id="mpass" class='form-control'/></td>
                     <td>
                         <div class="alert alert-danger" role="alert" id="pwwrong"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>비밀번호 확인</td>
+                    <td>Re-enter<br>password</td>
                     <td><input type="password" id="mpasscheck" tabindex="7" class='form-control'></td>
                     <td>
                         <div class="alert alert-danger" role="alert" id="pwcheckwrong"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>이름</td>
+                    <td>Name</td>
                     <td><input type='text' name='name' tabindex='8' id="mname" class='form-control'/></td>
                     <td>
                         <div class="alert alert-danger" role="alert" id="namewrong"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>성별</td>
+                    <td>Gender</td>
                     <td><select name='sex' tabindex="9" class='form-control'>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
                         </select></td>
                 </tr>
                 <tr>
-                    <td>생년월일<br>
+                    <td>Birthday<br>
                         <p style="font-size: 10px;">ex)19920318</p></td>
                     <td><select name="byear" tabindex="10" id="years" class='form-control'
                                 style="width: 65px;display:inline"></select>
@@ -218,7 +218,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" name="community">커뮤니티로 생성하기
+                        <input type="checkbox" name="community" style="display: none">커뮤니티로 생성하기
                     </td>
                 </tr>
                 <tr>
