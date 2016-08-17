@@ -29,9 +29,9 @@
     }
 
     if(isMobile()){
-        echo '<link href="/css/profile.mobile.css" rel="stylesheet">';
+        echo '<link href="/css/main.mobile.css" rel="stylesheet">';
     }else{
-        echo '<link href="/css/profile.css" rel="stylesheet">';
+        echo '<link href="/css/main.css" rel="stylesheet">';
     }
     ?>
     <!--[if lt IE 9]>
