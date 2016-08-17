@@ -6,6 +6,10 @@ body {
     background-size: cover;
 }
 @media only screen and (max-width: 768px) {
+    #mask-pre,
+    #center-pre{
+        height: 80% !important;
+    }
     #login-form,
     #r-div{
         width: 100% !important;
